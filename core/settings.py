@@ -29,6 +29,16 @@ DEBUG = True
 ALLOWED_HOSTS = ['*']
 
 
+CORS_ALLOWED_ORIGINS = [
+    'http://65.108.93.160',
+    "https://65.108.93.160"
+]
+
+CSRF_TRUSTED_ORIGINS = [
+    'http://65.108.93.160',
+    "https://65.108.93.160"
+]
+
 # Application definition
 
 INSTALLED_APPS = [
@@ -84,6 +94,17 @@ WSGI_APPLICATION = 'core.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': os.getenv('POSTGRES_DB', 'mydatabase'),
+#         'USER': os.getenv('POSTGRES_USER', 'digitask'),
+#         'PASSWORD': os.getenv('POSTGRES_PASSWORD', 'Caspera-12345'),
+#         'HOST': os.getenv('POSTGRES_HOST', 'localhost'),
+#         'PORT': os.getenv('POSTGRES_PORT', '5432'),
+#     }
+# }
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
@@ -126,15 +147,17 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.2/howto/static-files/
 
-STATIC_URL = 'staticfiles/'
+STATIC_URL = "staticfiles/"
 
+if DEBUG == False:
+    STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
+else:
+    STATICFILES_DIRS = [os.path.join(BASE_DIR, "staticfiles")]
+    
 MEDIA_URL = 'mediafiles/'
-
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'staticfiles')
-]
-# STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 MEDIA_ROOT = os.path.join(BASE_DIR, 'mediafiles/')
+
+# STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
