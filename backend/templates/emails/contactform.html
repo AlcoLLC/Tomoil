@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Yeni Əlaqə Formu Məlumatı</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        color: #333;
+        line-height: 1.6;
+        padding: 20px;
+      }
+      .label {
+        font-weight: bold;
+      }
+      .value {
+        margin-bottom: 15px;
+      }
+    </style>
+  </head>
+  <body>
+    <h2>Yeni əlaqə formu məlumatı</h2>
+
+    <p><span class="label">Ad Soyad:</span> {{ full_name }}</p>
+    <p><span class="label">Email:</span> {{ email }}</p>
+    <p><span class="label">Telefon:</span> {{ contact_number }}</p>
+    <p><span class="label">Ölkə:</span> {{ country }}</p>
+    <p><span class="label">Əlaqə növü:</span> {{ enquiry_type }}</p>
+    <p>
+      <span class="label">Əlaqə üsulu:</span> {{ preferred_contact_method }}
+    </p>
+    <p><span class="label">Mesaj:</span></p>
+    <p>{{ message|linebreaks }}</p>
+  </body>
+</html>
