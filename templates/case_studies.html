@@ -1,66 +1,89 @@
 {% extends 'base.html' %} {% load static %} {% block content %}
-
-
-    <!-- Page-Header -->
-    {% include 'components/page-header.html' %}
-
+<!-- Page-Header -->
+{% include 'components/page-header.html' %}
 <!-- Data Filter -->
-<div class="date-filter-container">
+<form method="get" id="filter-form">
+  <div class="date-filter-container">
     <div class="section-container">
-        <div class="date-filter">
-            <div class="date-input">
-                <input type="text" id="datepicker" placeholder="From (dd.mm.yyyy)">
-                <span class="clear-date">&times;</span>
-                <img src="{% static 'images/calendar-icon.svg' %}" alt="calendar-icon" class="calendar-icon" />
-            </div>
+      <div class="date-filter">
+        <div class="date-input">
+          <input
+            type="text"
+            name="from_date"
+            id="datepicker"
+            placeholder="From (dd.mm.yyyy)"
+            value="{{ formatted_date }}"
+          />
+          <span class="clear-date" onclick="clearDateFilter();">&times;</span>
+          <img
+            src="{% static 'images/calendar-icon.svg' %}"
+            alt="calendar-icon"
+            class="calendar-icon"
+          />
         </div>
+      </div>
     </div>
-</div>
-
-
+  </div>
+</form>
 <!-- Main Case Section -->
 <section class="main-case-section">
-    <div class="section-container">
-        <div class="news-grid">
-            <div class="news-card">
-                <img src="{% static 'images/image.png' %}" alt="Blue sports car" class="card-image" />
-                <div class="card-content">
-                    <div class="card-meta">
-                        <div class="card-date">
-                            <i class="far fa-calendar-alt date-icon"></i>
-                            April 1, 2025
-                        </div>
-                    </div>
-                    <h3 class="card-title">
-                        Testing of Tomoil 10W-40 LA motor oil at a passenger transport
-                        enterprise in Kazan
-                    </h3>
-                    <p class="card-description">
-                        We present you with another report on TOMOIL lubricants
-                        testing. Testing of Tomoil Engine Oil 10W-40 LA motor oil was
-                        conducted.
-                    </p>
-                    <a href="#" class="read-more">
-                        Read More
-                        <i class="fas fa-arrow-right-long read-more-icon"></i>
-                    </a>
-                </div>
+  <div class="section-container">
+    <div class="news-grid">
+      {% for case in page_obj %}
+      <div class="news-card">
+        <img src="{{ case.image_one.url }}" alt="{{ case.title }}" class="card-image" />
+        <div class="card-content">
+          <div class="card-meta">
+            <div class="card-date">
+              <i class="far fa-calendar-alt date-icon"></i>
+              {{ case.created_at|date:"F j, Y" }}
             </div>
+          </div>
+          <h3 class="card-title">{{ case.title }}</h3>
+          <p class="card-description">{{ case.description|truncatewords:25 }}</p>
+          <a href="{% url 'case_study_detail' case.id %}" class="read-more">
+            Read More
+            <i class="fas fa-arrow-right-long read-more-icon"></i>
+        </a>        
         </div>
-
-        <div class="pagination-container">
-            <p class="pagination-info">Displaying 1-8 of 127 results</p>
-            <div class="pagination">
-                <button class="page-btn active">1</button>
-                <button class="page-btn">2</button>
-                <button class="page-btn">3</button>
-            </div>
-        </div>
+      </div>
+      {% empty %}
+      <p>No case studies found.</p>
+      {% endfor %}
     </div>
+    <div class="pagination-container">
+      <p class="pagination-info">
+        Displaying {{ page_obj.start_index }}–{{ page_obj.end_index }} of {{ total_results }} results
+      </p>
+      <div class="pagination">
+        {% if page_obj.has_previous %}
+          <a href="?{% if request.GET.from_date %}from_date={{ request.GET.from_date }}&{% endif %}page={{ page_obj.previous_page_number }}" class="page-btn">
+            <i class="fas fa-chevron-left"></i> Previous
+          </a>
+        {% endif %}
+        
+        {% for num in page_obj.paginator.page_range %}
+          {% if page_obj.number == num %}
+            <span class="page-btn active">{{ num }}</span>
+          {% elif num >= page_obj.number|add:-2 and num <= page_obj.number|add:2 %}
+            <a href="?{% if request.GET.from_date %}from_date={{ request.GET.from_date }}&{% endif %}page={{ num }}" class="page-btn">{{ num }}</a>
+          {% endif %}
+        {% endfor %}
+        
+        {% if page_obj.has_next %}
+          <a href="?{% if request.GET.from_date %}from_date={{ request.GET.from_date }}&{% endif %}page={{ page_obj.next_page_number }}" class="page-btn">
+            Next <i class="fas fa-chevron-right"></i>
+          </a>
+        {% endif %}
+      </div>
+    </div>
+  </div>
 </section>
 
-
-
-
-
+<script>
+  function clearDateFilter() {
+    document.getElementById('datepicker').value = '';
+    document.getElementById('filter-form').submit();
+  }
+</script>
 {% endblock %}
