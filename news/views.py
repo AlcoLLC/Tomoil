@@ -10,7 +10,14 @@ def news_list(request):
     sort_by = request.GET.get('sort', 'relevance')
     start_date = request.GET.get('start_date')
     end_date = request.GET.get('end_date')
-    per_page = request.GET.get('per_page', 12)
+    per_page_raw = request.GET.get('per_page', '')
+
+    try:
+        per_page = int(per_page_raw)
+        if per_page <= 0:
+            per_page = 12
+    except ValueError:
+        per_page = 12
 
     news_items = News.objects.all()
 
@@ -29,7 +36,9 @@ def news_list(request):
         except ValueError:
             pass
 
-    if sort_by == 'latest':
+    if sort_by == 'relevance':
+        news_items = news_items.order_by('-views_count')
+    elif sort_by == 'latest':
         news_items = news_items.order_by('-created_at')
     elif sort_by == 'oldest':
         news_items = news_items.order_by('created_at')
@@ -43,10 +52,17 @@ def news_list(request):
     return render(request, 'news_list.html', {
         'page_obj': page_obj,
         'query': query,
-        'sort_by': sort_by
+        'sort_by': sort_by,
+        'per_page': per_page_raw,
     })
 
 
 def news_detail(request, pk):
     news_item = get_object_or_404(News, pk=pk)
-    return render(request, 'news_detail.html', {'news': news_item})
+
+    news_item.views_count += 1
+    news_item.save(update_fields=['views_count'])
+
+    return render(request, 'news_detail.html', {
+        'news_item': news_item
+    })
