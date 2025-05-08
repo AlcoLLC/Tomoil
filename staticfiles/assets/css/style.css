@@ -1153,7 +1153,7 @@ body {
   display: flex;
   flex-wrap: nowrap;
   justify-content: space-between;
-  font-family: Atyp Regular;
+  font-family: Atyp Regular !important;
 }
 
 .site-footer .footer-col {
@@ -1224,6 +1224,7 @@ body {
   color: #fff;
   text-decoration: none;
   font-size: 12px;
+  font-family: Atyp Regular !important;
 }
 
 .site-footer .footer-menu-icons {
@@ -1400,12 +1401,12 @@ body {
 
 .page-header .page-header-content {
   z-index: 2;
-  max-width: 800px;
+  max-width: 900px;
 }
 
 .page-header .page-header-content h2 {
   font-family: "Plus Jakarta Sans", sans-serif;
-  font-size: 53px;
+  font-size: 55px;
   line-height: 40px;
   font-weight: 700;
   color: white;
@@ -1416,6 +1417,6 @@ body {
   font-family: Atyp Regular;
   font-size: 12px;
   line-height: 20px;
-  max-width: 600px;
+  letter-spacing: 0.5px;
   color: #fff;
 }
