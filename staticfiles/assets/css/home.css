@@ -224,6 +224,7 @@ nav {
 }
 
 .home-header .btn-learn {
+  white-space: nowrap;
   background-color: #e22131;
   color: white;
   padding: 12px 24px;
@@ -238,7 +239,7 @@ nav {
   display: inline-block;
   margin-top: 20px;
   height: 52px;
-  width: 23vh;
+  width: 25vh;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -251,7 +252,7 @@ nav {
 .home-header .swiper-button-next {
   position: absolute !important;
   top: auto !important;
-  bottom: 140px !important;
+  bottom: 19vh !important;
   width: 45px !important;
   height: 45px !important;
   border-radius: 50%;
