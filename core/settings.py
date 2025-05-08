@@ -31,7 +31,9 @@ ALLOWED_HOSTS = ['*']
 
 CORS_ALLOWED_ORIGINS = [
     'http://65.108.93.160',
-    "https://65.108.93.160"
+    "https://65.108.93.160",
+    'http://65.108.93.160:100',
+    "https://65.108.93.160:100",
 ]
 
 CSRF_TRUSTED_ORIGINS = [
