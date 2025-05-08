@@ -1,16 +1,16 @@
 @font-face {
   font-family: Atyp Medium;
-  src: url("font/AtypTextMedium.otf") format("opentype");
+  src: url("../font/AtypTextMedium.otf") format("opentype");
 }
 
 @font-face {
   font-family: Atyp Regular;
-  src: url("font/AtypTextRegular.otf") format("opentype");
+  src: url("../font/AtypTextRegular.otf") format("opentype");
 }
 
 @font-face {
   font-family: Atyp Bold;
-  src: url("font/AtypTextBold.otf") format("opentype");
+  src: url("../font/AtypTextBold.otf") format("opentype");
 }
 
 
