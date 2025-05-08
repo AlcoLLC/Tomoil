@@ -13,6 +13,7 @@ class News(models.Model):
     image_three = models.ImageField(
         upload_to='news/images/', blank=True, null=True)
     created_at = models.DateTimeField(default=timezone.now)
+    views_count = models.PositiveIntegerField(default=0)
 
     def __str__(self):
         return self.title
