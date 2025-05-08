@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
+
 {% block content %}
 
 <!-- Page Tabs -->
@@ -20,24 +21,29 @@
             <h2 class="section-title">{{ case_study.title }}</h2>
             <div class="card-date">
                 <i class="far fa-calendar-alt date-icon"></i>
-                {{ case_study.created_at|date:"F j, Y" }}  <!-- Format the date -->
+                {{ case_study.created_at|date:"F j, Y" }}
             </div>
         </div>
         <p class="case-detail-title">
-            {{ case_study.description }}
+            {{ case_study.header_text }}
         </p>
 
         {% if case_study.image_one %}
-            <img src="{{ case_study.image_one.url }}" alt="Image One">
+            <img class="main-image" src="{{ case_study.image_one.url }}" alt="Main Image">
         {% endif %}
-        
-        {% if case_study.image_two %}
-            <img src="{{ case_study.image_two.url }}" alt="Image Two">
-        {% endif %}
-        
-        {% if case_study.image_three %}
-            <img src="{{ case_study.image_three.url }}" alt="Image Three">
-        {% endif %}
+
+        <p class="case-detail-description">
+            {{ case_study.description }}
+        </p>
+
+        <div class="case-detail-images">
+            {% if case_study.image_two %}
+                <img src="{{ case_study.image_two.url }}" alt="Image Two">
+            {% endif %}
+            {% if case_study.image_three %}
+                <img src="{{ case_study.image_three.url }}" alt="Image Three">
+            {% endif %}
+        </div>
     </div>
 </section>
 
