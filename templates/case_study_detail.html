@@ -1,8 +1,38 @@
 {% extends 'base.html' %} {% load static %} {% block content %}
 
+<!-- Page Tabs -->
+<div class="page-tabs">
+    <div class="section-container breadcrumb">
+        <span>Home</span>
+        <i class="fa-solid fa-angle-right"></i>
+        <span>Case Studies</span>
+        <i class="fa-solid fa-angle-right"></i>
+        <a href="#">Enhancing manufacturing efficienct</a>
+    </div>
+</div>
 
-    <!-- Case Study Detail -->
+<!-- Case Study Detail -->
+<section class="case-detail-section">
+    <div class="section-container">
+        <div class="section-header">
+            <h2 class="section-title">Enhancing Manufacturing Efficiency</h2>
+            <div class="card-date">
+                <i class="far fa-calendar-alt date-icon"></i>
+                April 1, 2025
+            </div>
+        </div>
+        <p class="case-detail-title">
+            In Morocco, TotalEnergies Marketing Maroc is seizing the opportunity offered by the energy transition to
+            help companies convert to LPG. This alternative makes it possible to reconcile reduced CO2 emissions with
+            enhanced energy performance. Bouchra Bel Abbes, the subsidiary's Gas Director, shares the best practices
+            implemented to offer manufacturers less carbon-intensive energy in line with climate objectives.
+        </p>
 
+        <img src="{% static 'images/case-detail-image1.png' %}" alt="">
+
+    </div>
+    </div>
+</section>
 
 
 {%endblock %}

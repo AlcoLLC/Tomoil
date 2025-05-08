@@ -3,18 +3,19 @@
 
 @font-face {
   font-family: Atyp Medium;
-  src: url("font/AtypTextMedium.otf") format("opentype");
+  src: url("../font/AtypTextMedium.otf") format("opentype");
 }
 
 @font-face {
   font-family: Atyp Regular;
-  src: url("font/AtypTextRegular.otf") format("opentype");
+  src: url("../font/AtypTextRegular.otf") format("opentype");
 }
 
 @font-face {
   font-family: Atyp Bold;
-  src: url("font/AtypTextBold.otf") format("opentype");
+  src: url("../font/AtypTextBold.otf") format("opentype");
 }
+
 
 * {
   margin: 0;
@@ -22,12 +23,25 @@
   box-sizing: border-box;
   text-decoration: none;
   list-style: none;
-  font-family: Atyp Regular;
+  font-family: Atyp Medium;
 }
 
 .main {
   background-color: #f1f3f9;
 }
+
+body {
+  background-color: #f1f3f9;
+}
+
+.section-title {
+  font-family: Atyp Medium;
+  color: #223160;
+  font-size: 40px;
+  line-height: 50px;
+  font-weight: 600;
+}
+
 
 nav {
   transition: all 0.3s ease;
