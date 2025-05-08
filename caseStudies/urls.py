@@ -1,10 +1,12 @@
 from django.urls import path
-from .views import case_studies_view
+from . import views
 from django.conf import settings
 from django.conf.urls.static import static
 
 urlpatterns = [
-    path('case-studies/', case_studies_view, name='case_studies'),
+    path('case-studies/', views.case_studies_view, name='case_studies'),
+    path('case-studies/<int:pk>/', views.case_study_detail_view,
+         name='case_study_detail'),
 ]
 
 urlpatterns += static(settings.MEDIA_URL,

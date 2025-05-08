@@ -1,0 +1,39 @@
+{% load static %} {% block content %}
+
+<form method="get">
+  <select name="sort">
+    <option value="relevance">Relevance</option>
+    <option value="latest">Latest</option>
+    <option value="oldest">Oldest</option>
+    <option value="a_to_z">From A to Z</option>
+  </select>
+
+  <input type="text" name="q" placeholder="Search..." value="{{ query }}" />
+  <input type="text" name="start_date" placeholder="From (dd.mm.yyyy)" />
+  <input type="text" name="end_date" placeholder="To (dd.mm.yyyy)" />
+
+  <select name="per_page">
+    <option value="12">12</option>
+    <option value="24">24</option>
+    <option value="48">48</option>
+  </select>
+
+  <button type="submit">View Result</button>
+  <a href="{% url 'news_list' %}">Clear All</a>
+</form>
+
+{% for news in page_obj %}
+<h2><a href="{% url 'news_detail' news.pk %}">{{ news.title }}</a></h2>
+<p>{{ news.header_text|truncatechars:100 }}</p>
+{% endfor %}
+
+<div>
+  {% if page_obj.has_previous %}
+  <a href="?page={{ page_obj.previous_page_number }}">&laquo; Previous</a>
+  {% endif %} Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}
+  {% if page_obj.has_next %}
+  <a href="?page={{ page_obj.next_page_number }}">Next &raquo;</a>
+  {% endif %}
+</div>
+
+{% endblock %}
