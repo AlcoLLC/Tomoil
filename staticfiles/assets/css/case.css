@@ -1,4 +1,3 @@
-
 /* Main Case Studies section */
 
 .main-case-section {
@@ -144,7 +143,7 @@
   color: #e22131;
 }
 
-.simple-calendar {
+.date-filter-container .simple-calendar {
   position: absolute;
   top: 100%;
   right: 0;
@@ -159,18 +158,18 @@
   display: none;
 }
 
-.simple-calendar.active {
+.date-filter-container .simple-calendar.active {
   display: block;
 }
 
-.calendar-header {
+.date-filter-container .calendar-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin-bottom: 15px;
 }
 
-.month-year {
+.date-filter-container .month-year {
   font-weight: 600;
   color: #223160;
   font-size: 16px;
@@ -179,16 +178,16 @@
   border-radius: 5px;
 }
 
-.month-year:hover {
+.date-filter-container .month-year:hover {
   background-color: #f5f5f5;
 }
 
-.calendar-nav {
+.date-filter-container .calendar-nav {
   display: flex;
   gap: 10px;
 }
 
-.calendar-nav button {
+.date-filter-container .calendar-nav button {
   background: none;
   border: none;
   color: #e22131;
@@ -201,17 +200,17 @@
   border-radius: 50%;
 }
 
-.calendar-nav button:hover {
+.date-filter-container .calendar-nav button:hover {
   background-color: #f5f5f5;
 }
 
-.calendar-body {
+.date-filter-container .calendar-body {
   display: grid;
   grid-template-columns: repeat(7, 1fr);
   gap: 5px;
 }
 
-.weekday {
+.date-filter-container .weekday {
   text-align: center;
   font-size: 12px;
   color: #223160;
@@ -219,7 +218,7 @@
   padding: 5px 0;
 }
 
-.day {
+.date-filter-container .day {
   text-align: center;
   padding: 8px 0;
   font-size: 13px;
@@ -233,36 +232,36 @@
   margin: 0 auto;
 }
 
-.day:hover {
+.date-filter-container .day:hover {
   background-color: #f5f5f5;
 }
 
-.day.today {
+.date-filter-container .day.today {
   background-color: #f5f5f5;
   font-weight: 600;
 }
 
-.day.selected {
+.date-filter-container .day.selected {
   background-color: #e22131;
   color: #fff;
 }
 
-.day.other-month {
+.date-filter-container .day.other-month {
   color: #ccc;
 }
 
-.date-input.error input {
+.date-filter-container .date-input.error input {
   border-color: #e22131;
 }
 
-.date-error {
+.date-filter-container .date-error {
   color: #e22131;
   font-size: 12px;
   margin-top: 5px;
   display: none;
 }
 
-.date-input.error .date-error {
+.date-filter-container .date-input.error .date-error {
   display: block;
 }
 
@@ -275,20 +274,20 @@
   margin-bottom: 40px;
 }
 
-.pagination-info {
+.pagination-container .pagination-info {
   font-size: 15px;
   color: #223160;
   margin-bottom: 15px;
   font-weight: 600;
 }
 
-.pagination {
+.pagination-container .pagination {
   display: flex;
   align-items: center;
   gap: 10px;
 }
 
-.page-btn {
+.pagination-container .page-btn {
   width: 40px;
   height: 40px;
   border-radius: 5px;
@@ -303,14 +302,86 @@
   transition: all 0.2s ease;
 }
 
-.page-btn:hover {
+.pagination-container .page-btn:hover {
   background-color: #fff;
 }
 
-.page-btn.active {
+.pagination-container .page-btn.active {
   border: 1px solid #e22131;
   background-color: #fff;
 }
 
+/* Case Study Details section */
 
-/* Main Case Studies section */
+.page-tabs {
+  padding-top: 180px;
+}
+
+.page-tabs .breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 14px;
+  color: #727272;
+  margin-bottom: 35px;
+  z-index: 2;
+}
+
+.page-tabs .breadcrumb a {
+  font-family: "Plus Jakarta Sans", sans-serif;
+  color: #223160;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.page-tabs .breadcrumb i {
+  font-size: 10px;
+}
+
+/* Case Study Detail */
+
+.case-detail-section {
+  margin: 35px 0;
+}
+
+.case-detail-section .section-header {
+  max-width: 800px;
+}
+.case-detail-section .section-title {
+  font-family: "Plus Jakarta Sans", sans-serif;
+  font-size: 50px;
+  color: #223160;
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: 1.4px;
+  margin-bottom: 12px;
+}
+
+.case-detail-section .card-date {
+  font-family: Atyp Regular;
+  color: #727272;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+}
+
+.case-detail-section .date-icon {
+  margin-right: 8px;
+  margin-bottom: 4px;
+  color: #e22131;
+}
+
+.case-detail-section .case-detail-title {
+  font-family: Atyp Regular;
+  color: #223160;
+  font-size: 16px;
+  line-height: 1.4;
+  margin: 20px 0;
+}
+
+
+.case-detail-section img {
+  width: 100%;
+  border-radius: 40px;
+  height: 550px;
+}
