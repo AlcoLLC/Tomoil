@@ -1,0 +1,66 @@
+{% extends 'base.html' %} {% load static %} {% block content %}
+
+
+    <!-- Page-Header -->
+    {% include 'components/page-header.html' %}
+
+<!-- Data Filter -->
+<div class="date-filter-container">
+    <div class="section-container">
+        <div class="date-filter">
+            <div class="date-input">
+                <input type="text" id="datepicker" placeholder="From (dd.mm.yyyy)">
+                <span class="clear-date">&times;</span>
+                <img src="{% static 'images/calendar-icon.svg' %}" alt="calendar-icon" class="calendar-icon" />
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Main Case Section -->
+<section class="main-case-section">
+    <div class="section-container">
+        <div class="news-grid">
+            <div class="news-card">
+                <img src="{% static 'images/image.png' %}" alt="Blue sports car" class="card-image" />
+                <div class="card-content">
+                    <div class="card-meta">
+                        <div class="card-date">
+                            <i class="far fa-calendar-alt date-icon"></i>
+                            April 1, 2025
+                        </div>
+                    </div>
+                    <h3 class="card-title">
+                        Testing of Tomoil 10W-40 LA motor oil at a passenger transport
+                        enterprise in Kazan
+                    </h3>
+                    <p class="card-description">
+                        We present you with another report on TOMOIL lubricants
+                        testing. Testing of Tomoil Engine Oil 10W-40 LA motor oil was
+                        conducted.
+                    </p>
+                    <a href="#" class="read-more">
+                        Read More
+                        <i class="fas fa-arrow-right-long read-more-icon"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="pagination-container">
+            <p class="pagination-info">Displaying 1-8 of 127 results</p>
+            <div class="pagination">
+                <button class="page-btn active">1</button>
+                <button class="page-btn">2</button>
+                <button class="page-btn">3</button>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+
+
+{% endblock %}

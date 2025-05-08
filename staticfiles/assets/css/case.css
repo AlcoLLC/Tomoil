@@ -1,0 +1,316 @@
+
+/* Main Case Studies section */
+
+.main-case-section {
+  margin-top: 50px;
+}
+
+.main-case-section .news-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.main-case-section .news-card {
+  width: 100%;
+  background-color: #fff;
+  border-radius: 20px;
+  overflow: hidden;
+  grid-row: span 2;
+  display: flex;
+  flex-direction: column;
+}
+
+.main-case-section .card-image {
+  display: block;
+  width: 100%;
+  object-fit: cover;
+  height: 245px;
+}
+
+.main-case-section .card-content {
+  padding: 25px;
+  margin: 10px;
+}
+
+.main-case-section .card-meta {
+  display: flex;
+  align-items: center;
+  margin-bottom: 5px;
+}
+
+.main-case-section .card-date {
+  color: #727272;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+}
+
+.main-case-section .date-icon {
+  margin-right: 3px;
+  color: #e22131;
+}
+
+.main-case-section .read-more i {
+  color: #e22131;
+}
+
+.main-case-section .card-title {
+  color: #223160;
+  font-family: Atyp Medium;
+  font-weight: 600;
+  font-size: 18px;
+  margin-bottom: 15px;
+  margin-top: 25px;
+  line-height: 1.2;
+}
+
+.main-case-section .card-description {
+  color: #727272;
+  font-size: 13px;
+  font-weight: 300;
+  line-height: 1.6;
+}
+
+.main-case-section .read-more {
+  color: #223160;
+  font-size: 12px;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  margin-top: 40px;
+}
+
+.main-case-section i {
+  font-size: 12px;
+  margin: 0px 10px 2px 8px;
+}
+
+/* Date Picker Styles */
+.date-filter-container {
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+.date-filter-container .date-filter {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+
+.date-filter-container .date-input {
+  position: relative;
+  width: 250px;
+}
+
+.date-filter-container .date-input input {
+  width: 100%;
+  font-family: Atyp Regular;
+  padding: 12px 40px 12px 15px;
+  border: 0.1px solid #e6e6e6;
+  border-radius: 32px;
+  font-size: 14px;
+  color: #034833;
+  background-color: #fff;
+}
+
+.date-filter-container .date-input input:focus {
+  outline: none;
+  border-color: #223160;
+}
+
+.date-filter-container .calendar-icon {
+  position: absolute;
+  right: 15px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #223160;
+  cursor: pointer;
+}
+
+.date-filter-container .clear-date {
+  position: absolute;
+  right: 40px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #223160;
+  cursor: pointer;
+  font-size: 18px;
+  padding: 0 5px;
+  display: none;
+}
+
+.date-filter-container .clear-date:hover {
+  color: #e22131;
+}
+
+.simple-calendar {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  width: 280px;
+  background-color: #fff;
+  border: 1px solid #e6e6e6;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  padding: 15px;
+  z-index: 100;
+  margin-top: 5px;
+  display: none;
+}
+
+.simple-calendar.active {
+  display: block;
+}
+
+.calendar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.month-year {
+  font-weight: 600;
+  color: #223160;
+  font-size: 16px;
+  cursor: pointer;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+.month-year:hover {
+  background-color: #f5f5f5;
+}
+
+.calendar-nav {
+  display: flex;
+  gap: 10px;
+}
+
+.calendar-nav button {
+  background: none;
+  border: none;
+  color: #e22131;
+  cursor: pointer;
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+}
+
+.calendar-nav button:hover {
+  background-color: #f5f5f5;
+}
+
+.calendar-body {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 5px;
+}
+
+.weekday {
+  text-align: center;
+  font-size: 12px;
+  color: #223160;
+  font-weight: 600;
+  padding: 5px 0;
+}
+
+.day {
+  text-align: center;
+  padding: 8px 0;
+  font-size: 13px;
+  border-radius: 50%;
+  cursor: pointer;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+}
+
+.day:hover {
+  background-color: #f5f5f5;
+}
+
+.day.today {
+  background-color: #f5f5f5;
+  font-weight: 600;
+}
+
+.day.selected {
+  background-color: #e22131;
+  color: #fff;
+}
+
+.day.other-month {
+  color: #ccc;
+}
+
+.date-input.error input {
+  border-color: #e22131;
+}
+
+.date-error {
+  color: #e22131;
+  font-size: 12px;
+  margin-top: 5px;
+  display: none;
+}
+
+.date-input.error .date-error {
+  display: block;
+}
+
+/* Pagination Styles */
+.pagination-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 40px;
+  margin-bottom: 40px;
+}
+
+.pagination-info {
+  font-size: 15px;
+  color: #223160;
+  margin-bottom: 15px;
+  font-weight: 600;
+}
+
+.pagination {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.page-btn {
+  width: 40px;
+  height: 40px;
+  border-radius: 5px;
+  background: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 0.1px solid #7272723e;
+  cursor: pointer;
+  color: #223160;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.page-btn:hover {
+  background-color: #fff;
+}
+
+.page-btn.active {
+  border: 1px solid #e22131;
+  background-color: #fff;
+}
+
+
+/* Main Case Studies section */
