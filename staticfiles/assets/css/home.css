@@ -1,4 +1,5 @@
 @import url("https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Unbounded:wght@200..900&display=swap");
 
 @font-face {
   font-family: Atyp Medium;
@@ -50,7 +51,7 @@ nav {
   z-index: 100;
   width: 100%;
   background-color: white !important;
-  height: 130px;
+  height: 115px;
   transition: all 0.3s ease;
 }
 
@@ -58,7 +59,7 @@ nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  height: 45px;
+  height: 40px;
   padding: 0 10px;
   background-color: #e22131;
   border-top-left-radius: 20px;
@@ -76,8 +77,8 @@ nav {
   gap: 7px;
   color: #fff;
   font-weight: 400;
-  font-size: 14px;
-  line-height: 20px;
+  font-size: 12px;
+  line-height: 18px;
   letter-spacing: 0%;
   vertical-align: middle;
 }
@@ -93,12 +94,12 @@ nav {
 
 .navbar .info-book button {
   border: none;
-  padding: 0 7px;
+  padding: 0 6px;
   border-radius: 150px;
   font-family: "Plus Jakarta Sans", sans-serif;
   font-weight: 600;
-  font-size: 14px;
-  line-height: 30px;
+  font-size: 12px;
+  line-height: 28px;
   letter-spacing: 0%;
   text-align: center;
 }
@@ -118,7 +119,7 @@ nav {
 }
 
 .navbar .logo img {
-  height: 20px;
+  height: 18px;
 }
 
 .navbar .nav-section {
@@ -127,22 +128,23 @@ nav {
   align-items: center;
   background-color: #fff;
   border-bottom-right-radius: 20px;
-  height: 70px;
+  height: 60px;
   padding: 0 60px;
 }
 
 .navbar .nav-section ul {
   display: flex;
   align-items: center;
-  gap: 20px;
+  gap: 30px;
+  margin-left: 100px;
 }
 
 .navbar .nav-section ul li a {
   color: #111214;
   font-weight: 400;
-  font-size: 14px;
-  line-height: 100%;
-  letter-spacing: 8%;
+  font-size: 12px;
+  line-height: 80%;
+  letter-spacing: 1px;
   vertical-align: middle;
   text-transform: uppercase;
 }
@@ -191,7 +193,7 @@ nav {
   color: white;
   z-index: 2;
   max-width: 600px;
-  margin-bottom: 60px;
+  margin-bottom: 20px;
 }
 
 .home-header .slide-content h5 {
@@ -204,7 +206,7 @@ nav {
 
 .home-header .slide-content h2 {
   font-family: Plus Jakarta Sans;
-  font-weight: 700;
+  font-weight: 600;
   font-size: 70px;
   line-height: 110px;
   text-transform: capitalize;
@@ -212,8 +214,9 @@ nav {
 }
 
 .home-header .slide-content p {
+  font-family: Atyp Regular;
   font-weight: 400;
-  font-size: 16px;
+  font-size: 14px;
   line-height: 24px;
   letter-spacing: 0%;
   vertical-align: middle;
@@ -224,9 +227,9 @@ nav {
   background-color: #e22131;
   color: white;
   padding: 12px 24px;
-  font-family: Unbounded;
+  font-family: "Unbounded", sans-serif;
   font-weight: 600;
-  font-size: 14px;
+  font-size: 12px;
   line-height: 100%;
   letter-spacing: 0%;
   text-align: center;
@@ -234,8 +237,8 @@ nav {
   text-transform: uppercase;
   display: inline-block;
   margin-top: 20px;
-  height: 58px;
-  width: 25vh;
+  height: 52px;
+  width: 23vh;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -248,9 +251,9 @@ nav {
 .home-header .swiper-button-next {
   position: absolute !important;
   top: auto !important;
-  bottom: 155px !important;
-  width: 50px !important;
-  height: 50px !important;
+  bottom: 140px !important;
+  width: 45px !important;
+  height: 45px !important;
   border-radius: 50%;
   border: 1px solid #d8dee3;
   color: white !important;
@@ -265,7 +268,7 @@ nav {
 }
 
 .home-header .swiper-button-next {
-  left: 23% !important;
+  left: 22% !important;
 }
 
 .home-header .swiper-button-prev::after,
@@ -275,7 +278,7 @@ nav {
 
 .home-header .swiper-button-prev i,
 .home-header .swiper-button-next i {
-  font-size: 18px;
+  font-size: 14px;
   color: white;
 }
 
@@ -889,7 +892,7 @@ nav {
 .header-whatsapp {
   position: absolute;
   bottom: 140px;
-  right: 110px;
+  right: 8%;
   display: flex;
   align-items: center;
   background-color: #34c759;
