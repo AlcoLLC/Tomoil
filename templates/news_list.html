@@ -12,11 +12,14 @@
   <input type="text" name="start_date" placeholder="From (dd.mm.yyyy)" />
   <input type="text" name="end_date" placeholder="To (dd.mm.yyyy)" />
 
-  <select name="per_page">
-    <option value="12">12</option>
-    <option value="24">24</option>
-    <option value="48">48</option>
-  </select>
+  <label for="per_page">Elements per page</label>
+  <input
+    type="number"
+    name="per_page"
+    value="{{ per_page }}"
+    min="1"
+    placeholder="Enter count"
+  />
 
   <button type="submit">View Result</button>
   <a href="{% url 'news_list' %}">Clear All</a>

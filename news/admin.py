@@ -4,5 +4,5 @@ from .models import News
 
 @admin.register(News)
 class NewsAdmin(admin.ModelAdmin):
-    list_display = ('title', 'created_at')
-    search_fields = ('title', 'header_text', 'description')
+    list_display = ('title', 'created_at', 'views_count')
+    search_fields = ('title', 'description')

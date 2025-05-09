@@ -5,8 +5,7 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     path('case-studies/', views.case_studies_view, name='case_studies'),
-    path('case-studies/<int:pk>/', views.case_study_detail_view,
-         name='case_study_detail'),
+    path('case-study/<int:pk>/', views.case_study_detail, name='case_study_detail'),
 ]
 
 urlpatterns += static(settings.MEDIA_URL,

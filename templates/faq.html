@@ -1,9 +1,80 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
-  </head>
-  <body></body>
-</html>
+{% extends 'base.html' %} {% load static %} {% block content %}
+
+<!-- Page-Header -->
+{% include 'components/page-header.html' %}
+
+<!-- FAQ Section -->
+<section class="section-questions">
+  <div class="section-container">
+    {% for question in questions %}
+    <div class="faq-item">
+      <div class="faq-question">
+        <h3>{{ question.question }}</h3>
+        <div class="faq-icon">
+          <i class="fa-solid fa-chevron-right"></i>
+        </div>
+      </div>
+      <div class="faq-answer">
+        <p>{{ question.answer }}</p>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</section>
+
+<!-- Wolver Section -->
+<section class="wolver-section section-container">
+  <div class="wolver-container">
+    <div class="wolver-content">
+      <h2 class="section-title">Wolver ecotec</h2>
+      <p class="content1">
+        Our EV fluids are engineered to meet the evolving demands of electric
+        mobility — delivering outstanding cooling, high-voltage insulation, and
+        long-term durability. Drive the future with Tomoil’s next-generation
+        fluid solutions.
+      </p>
+      <a href="#" class="wolver-btn">Go To Catalog</a>
+    </div>
+    <div class="wolver-products">
+      <div class="product-container">
+        <img
+          src="{% static 'images/image 64.svg' %}"
+          alt="Tomoil 0W-20"
+          class="oil-container top"
+        />
+        <img
+          src="{% static 'images/image 64.svg' %}"
+          alt="Tomoil Product"
+          class="oil-container middle"
+        />
+        <img
+          src="{% static 'images/image 64.svg' %}"
+          alt="Tomoil 5W-30"
+          class="oil-container bottom"
+        />
+        <img
+          src="{% static 'images/oil-barrel.png' %}"
+          alt="Tomoil Barrel"
+          class="oil-barrel"
+        />
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Need More Section -->
+<section class="need-more-section">
+  <div class="section-container">
+    <h2 class="section-title">NEED MORE ASSISTANCE?</h2>
+    <p class="section-description">
+      Begin your journey towards world class products and services today with
+      TOMOIL
+    </p>
+    <a href="#" class="need-more-btn">
+      <img src="{% static 'images/comments.svg' %}" alt="" />
+      TALK TO US</a
+    >
+  </div>
+</section>
+
+{% endblock %}
