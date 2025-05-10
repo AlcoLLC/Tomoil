@@ -8,29 +8,43 @@ from django.core.paginator import Paginator
 def case_studies_view(request):
     case_studies = CaseStudy.objects.all().order_by('-created_at')
 
-    case_study_filter = CaseStudyFilter(request.GET, queryset=case_studies)
-    filtered_case_studies = case_study_filter.qs
-
-    page_number = request.GET.get('page', 1)
-
-    paginator = Paginator(filtered_case_studies, 8)
-    page_obj = paginator.get_page(page_number)
     from_date = request.GET.get('from_date', '')
 
-    formatted_date = ''
     if from_date:
         try:
-            date_parts = from_date.split('-')
-            if len(date_parts) == 3:
-                formatted_date = f"{date_parts[2]}.{date_parts[1]}.{date_parts[0]}"
-        except:
-            formatted_date = from_date
+            if '.' in from_date:
+                day, month, year = from_date.split('.')
+                formatted_date = f"{year}-{month}-{day}"
+                case_studies = case_studies.filter(
+                    created_at__gte=formatted_date)
+            elif '-' in from_date:
+                case_studies = case_studies.filter(created_at__gte=from_date)
+        except (ValueError, IndexError):
+            pass
+
+    page_number = request.GET.get('page', 1)
+    paginator = Paginator(case_studies, 1)
+
+    try:
+        page_obj = paginator.get_page(page_number)
+    except (ValueError, TypeError):
+        page_obj = paginator.get_page(1)
+
+    formatted_display_date = ''
+    if from_date:
+        if '.' in from_date:
+            formatted_display_date = from_date
+        elif '-' in from_date:
+            try:
+                year, month, day = from_date.split('-')
+                formatted_display_date = f"{day}.{month}.{year}"
+            except (ValueError, IndexError):
+                formatted_display_date = from_date
 
     return render(request, 'case_studies.html', {
-        'filter': case_study_filter,
         'page_obj': page_obj,
         'total_results': paginator.count,
-        'formatted_date': formatted_date,
+        'formatted_date': formatted_display_date,
     })
 
 

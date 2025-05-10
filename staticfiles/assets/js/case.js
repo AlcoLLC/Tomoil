@@ -1,9 +1,6 @@
 document.addEventListener("DOMContentLoaded", function () {
   // Initialize Simple Date Picker
   initSimpleDatePicker();
-
-  // Initialize Pagination
-  initPagination();
 });
 
 function initSimpleDatePicker() {
@@ -91,7 +88,7 @@ function initSimpleDatePicker() {
         if (dateInput.value.length < 10) {
           dateFilterContainer.classList.add("error");
         } else {
-          validateDate(dateInput.value);
+          validateDate(dateInput.value, false); // Don't submit form automatically on blur
         }
       }
     }
@@ -102,10 +99,10 @@ function initSimpleDatePicker() {
       calendarContainer.classList.remove("active");
     } else if (e.key === "Enter") {
       if (dateInput.value.length === 10) {
-        const isValid = validateDate(dateInput.value);
+        const isValid = validateDate(dateInput.value, true);
         if (isValid) {
           e.preventDefault();
-          document.getElementById("filter-form").submit();
+          submitForm();
         }
       }
       calendarContainer.classList.remove("active");
@@ -132,7 +129,7 @@ function initSimpleDatePicker() {
     e.target.value = value;
 
     if (value.length === 10) {
-      validateDate(value);
+      validateDate(value, false); // Don't submit form automatically on input
     } else {
       dateFilterContainer.classList.remove("error");
     }
@@ -143,12 +140,12 @@ function initSimpleDatePicker() {
     if (dateInput.value.length > 0 && dateInput.value.length < 10) {
       dateFilterContainer.classList.add("error");
     } else if (dateInput.value.length === 10) {
-      validateDate(dateInput.value);
+      validateDate(dateInput.value, false); // Don't submit form automatically on blur
     }
   });
 
   // Validate date format
-  function validateDate(dateStr) {
+  function validateDate(dateStr, submitOnValid = false) {
     const regex = /^(\d{2})\.(\d{2})\.(\d{4})$/;
     const match = dateStr.match(regex);
 
@@ -180,10 +177,21 @@ function initSimpleDatePicker() {
     selectedDate = date;
     currentDate = new Date(year, month, 1);
 
-    // Submit the form with the selected date
-    document.getElementById("filter-form").submit();
+    // Submit the form if requested
+    if (submitOnValid) {
+      submitForm();
+    }
 
     return true;
+  }
+
+  function submitForm() {
+    // Reset page parameter if exists when filtering by date
+    const pageInput = document.querySelector('input[name="page"]');
+    if (pageInput) {
+      pageInput.remove();
+    }
+    document.getElementById("filter-form").submit();
   }
 
   // Render the calendar with current month and year
@@ -216,8 +224,8 @@ function initSimpleDatePicker() {
           <div class="calendar-header">
             <div class="month-year">${monthNames[month]} ${year}</div>
             <div class="calendar-nav">
-              <button class="prev-month"><i class="fas fa-chevron-left"></i></button>
-              <button class="next-month"><i class="fas fa-chevron-right"></i></button>
+              <button type="button" class="prev-month"><i class="fas fa-chevron-left"></i></button>
+              <button type="button" class="next-month"><i class="fas fa-chevron-right"></i></button>
             </div>
           </div>
           <div class="calendar-body">
@@ -345,10 +353,20 @@ function initSimpleDatePicker() {
     dateFilterContainer.classList.remove("error");
 
     // Submit the form with the selected date
-    document.getElementById("filter-form").submit();
+    submitForm();
   }
 }
-// Pagination functionality
+
+function clearDateFilter() {
+  document.getElementById('datepicker').value = '';
+  // Reset page parameter if exists
+  const pageInput = document.querySelector('input[name="page"]');
+  if (pageInput) {
+    pageInput.remove();
+  }
+  document.getElementById('filter-form').submit();
+}
+
 function initPagination() {
   const totalItems = 127;
   const itemsPerPage = 8;
