@@ -3,6 +3,7 @@ from PIL import Image
 from io import BytesIO
 from django.core.files.base import ContentFile
 
+
 class BrandPromotionalItem(models.Model):
     title = models.CharField(
         max_length=255, help_text="File name or promotion title")
@@ -32,7 +33,14 @@ class BrandPromotionalItem(models.Model):
     def __str__(self):
         return self.title
 
+
 class BrandImageLibrary(models.Model):
+    IMAGE_TYPES = [
+        ('corporate', 'Corporate'),
+        ('dealership', 'Dealership and Formulas'),
+        ('sponsorship', 'Sponsorship'),
+    ]
+
     title = models.CharField(
         max_length=255, help_text="File name or image title")
     preview_image = models.ImageField(
@@ -41,6 +49,12 @@ class BrandImageLibrary(models.Model):
         help_text="Preview image width (px)", editable=False, null=True, blank=True)
     height = models.IntegerField(
         help_text="Preview image height (px)", editable=False, null=True, blank=True)
+    type = models.CharField(
+        max_length=20,
+        choices=IMAGE_TYPES,
+        default='corporate',
+        help_text="Image category/type"
+    )
 
     def save(self, *args, **kwargs):
         super().save(*args, **kwargs)
@@ -57,6 +71,14 @@ class BrandImageLibrary(models.Model):
                 self.width, self.height = img.size
 
         super().save(update_fields=["width", "height"])
+
+    def __str__(self):
+        return self.title
+
+
+class BrandVideo(models.Model):
+    title = models.CharField(max_length=200)
+    video_url = models.URLField()
 
     def __str__(self):
         return self.title
