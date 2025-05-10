@@ -106,7 +106,6 @@
   color: #223160 !important;
 }
 
-
 .contact-section .name-inputs {
   display: flex;
   gap: 14px;
@@ -121,7 +120,7 @@
 .contact-section input[type="tel"],
 .contact-section select,
 .contact-section textarea {
-  padding: 14px;
+  padding: 12px;
   border: 1px solid #d8dee3;
   border-radius: 25px;
   font-family: Atyp Regular;
@@ -146,19 +145,8 @@
   gap: 2px;
 }
 
-.contact-section .country-code {
-  font-family: Atyp Regular;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 0 8px;
-  background-color: #fff;
-  border: 1px solid #d8dee3;
-  opacity: 50%;
-  border-radius: 20px;
-  color: #034833;
-  font-size: 12px;
-  width: 35%;
+.contact-section .country-code-input {
+  flex: 0.6;
 }
 
 .contact-section .phone-number-input {
@@ -166,8 +154,11 @@
   position: relative;
 }
 
+.contact-section .country-number-input input {
+  padding: 0px !important;
+}
 .contact-section .phone-number-input input {
-  padding-right: 40px;
+  padding-right: 10px;
 }
 
 .contact-section .phone-number-input img,
@@ -202,12 +193,10 @@
   resize: none;
 }
 
-.select-wrapper {
+.contact-section.select-wrapper {
   position: relative;
   width: 100%;
 }
-
-
 
 .contact-section .select-wrapper select {
   appearance: none;
@@ -247,7 +236,7 @@
   cursor: pointer;
 }
 
-.radio-option input[type="radio"]:checked::after {
+.contact-section .radio-option input[type="radio"]:checked::after {
   content: "";
   position: absolute;
   width: 10px;
@@ -324,9 +313,9 @@
   background-color: #d82b2a;
 }
 
-input:focus,
-select:focus,
-textarea:focus {
+.contact-section input:focus,
+.contact-section select:focus,
+.contact-section textarea:focus {
   outline: none;
   border-color: #223160;
 }
@@ -337,15 +326,14 @@ textarea:focus {
   height: 320px !important;
 }
 
-
 /* Custom Select Styling */
-.custom-select-wrapper {
+.contact-section .custom-select-wrapper {
   margin-top: -10px !important;
   position: relative;
   width: 100%;
 }
 
-.custom-select {
+.contact-section .custom-select {
   position: relative;
   display: block;
   width: 100%;
@@ -361,7 +349,7 @@ textarea:focus {
   user-select: none;
 }
 
-.custom-select:after {
+.contact-section .custom-select:after {
   content: "\f078"; /* FontAwesome chevron-down icon */
   font-family: "Font Awesome 5 Free";
   font-weight: 900;
@@ -373,11 +361,11 @@ textarea:focus {
   font-size: 12px;
 }
 
-.custom-select.open:after {
+.contact-section .custom-select.open:after {
   content: "\f077"; /* FontAwesome chevron-up icon */
 }
 
-.custom-options {
+.contact-section .custom-options {
   position: absolute;
   top: calc(100% + 6px);
   left: 0;
@@ -394,12 +382,12 @@ textarea:focus {
   z-index: 999;
 }
 
-.custom-select.open + .custom-options {
+.contact-section .custom-select.open + .custom-options {
   opacity: 1;
   visibility: visible;
 }
 
-.custom-option {
+.contact-section .custom-option {
   position: relative;
   display: block;
   padding: 12px 14px;
@@ -412,24 +400,24 @@ textarea:focus {
   border-bottom: 1px solid #f0f2f5;
 }
 
-.custom-option:last-child {
+.contact-section .custom-option:last-child {
   border-bottom: none;
 }
 
-.custom-option:hover {
+.contact-section .custom-option:hover {
   background-color: #f5f7fa;
 }
 
-.custom-option.selected {
+.contact-section .custom-option.selected {
   background-color: #f0f2f5;
 }
 
 /* For country select specific styling */
-.country-select .custom-select {
+.contact-section .country-select .custom-select {
   padding-left: 45px;
 }
 
-.country-select .flag-wrapper {
+.contact-section .country-select .flag-wrapper {
   display: flex;
   align-items: center;
   gap: 10px;
@@ -437,15 +425,15 @@ textarea:focus {
   padding: 2px 0;
 }
 
-.country-select .flag-wrapper:last-child {
+.contact-section .country-select .flag-wrapper:last-child {
   border-bottom: none;
 }
 
-.country-select span {
+.contact-section .country-select span {
   padding-left: 0;
 }
 
-.country-select .selected-flag {
+.contact-section .country-select .selected-flag {
   position: absolute;
   left: 14px;
   top: 50%;
@@ -458,7 +446,7 @@ textarea:focus {
   z-index: 1;
 }
 
-.country-select .custom-option .selected-flag {
+.contact-section .country-select .custom-option .selected-flag {
   position: static;
   transform: none;
 }
