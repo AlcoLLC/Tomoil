@@ -8,7 +8,8 @@ class Contact(models.Model):
         ('no_preference', 'No preference'),
     ]
 
-    full_name = models.CharField(max_length=100)
+    first_name = models.CharField(max_length=100)
+    last_name = models.CharField(max_length=100)
     contact_number = models.CharField(max_length=20)
     email = models.EmailField()
     country = models.CharField(max_length=100)
@@ -19,4 +20,4 @@ class Contact(models.Model):
     consent = models.BooleanField()
 
     def __str__(self):
-        return f"{self.full_name} - {self.email}"
+        return f"{self.first_name} {self.last_name} - {self.email}"

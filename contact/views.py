@@ -9,7 +9,8 @@ def index(request):
         form = ContactForm(request.POST)
 
         if form.is_valid():
-            full_name = form.cleaned_data['full_name']
+            first_name = form.cleaned_data['first_name']
+            last_name = form.cleaned_data['last_name']
             email = form.cleaned_data['email']
             contact_number = form.cleaned_data['contact_number']
             country = form.cleaned_data['country']
@@ -19,7 +20,7 @@ def index(request):
 
             email_subject = f"New Contact Form Submission: {enquiry_type}"
             email_message = f"""
-Name: {full_name}
+Name: {first_name} {last_name}
 Email: {email}
 Phone: {contact_number}
 Country: {country}
@@ -27,7 +28,8 @@ Preferred Contact: {preferred_contact_method}
 Message: {message}
 """
             html = render_to_string('emails/contactform.html', {
-                'full_name': full_name,
+                'first_name': first_name,
+                'last_name': last_name,
                 'email': email,
                 'contact_number': contact_number,
                 'country': country,

@@ -52,6 +52,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django_filters',
+    'django_ckeditor_5',
 
     # apps
     'products',
@@ -59,8 +60,22 @@ INSTALLED_APPS = [
     'caseStudies',
     'contact',
     'news',
-    'brands'
+    'brands',
+    'services',
+    'whoweare'
 ]
+
+CKEDITOR_5_FILE_STORAGE = "django.core.files.storage.FileSystemStorage"
+
+CKEDITOR_5_CONFIGS = {
+    'default': {
+        'toolbar': ['heading', '|', 'bold', 'italic', 'link', 'bulletedList', 'numberedList', 'blockQuote'],
+        'language': 'en',
+    },
+}
+
+CKEDITOR5_UPLOAD_PATH = "uploads/ckeditor5/"
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
