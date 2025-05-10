@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import VisionMission, Glance, OurCommitments
+from .models import VisionMission, Glance, OurCommitment
 
 
 @admin.register(Glance)
@@ -11,6 +11,7 @@ class GlanceAdmin(admin.ModelAdmin):
 class VisionMissionAdmin(admin.ModelAdmin):
     list_display = ('vision', 'mission')
 
-@admin.register(OurCommitments)
-class OurCommitmentsAdmin(admin.ModelAdmin):
+
+@admin.register(OurCommitment)
+class OurCommitmentAdmin(admin.ModelAdmin):
     list_display = ('title', 'description')
