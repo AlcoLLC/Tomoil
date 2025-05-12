@@ -77,104 +77,145 @@ function initProductSlider() {
 
 // Case Studies Slider Functionality
 function initCaseStudiesSlider() {
-    const sliderTrack = document.querySelector('.case-studies-track');
-    const cards = document.querySelectorAll('.case-study-card');
-    const prevBtn = document.querySelector('.prev-case');
-    const nextBtn = document.querySelector('.next-case');
-    const sliderContainer = document.querySelector('.case-studies-slider');
+  const sliderTrack = document.querySelector('.case-studies-track');
+  const cards = document.querySelectorAll('.case-study-card');
+  const prevBtn = document.querySelector('.prev-case');
+  const nextBtn = document.querySelector('.next-case');
+  const sliderContainer = document.querySelector('.case-studies-slider');
 
-    let currentIndex = 1;
-    const totalCards = cards.length;
+  let currentIndex = 0;
+  const totalCards = cards.length;
 
+  // İlkin olaraq bütün kartları interaktiv edək
+  cards.forEach(card => {
+    card.classList.add('interactive');
+  });
+
+  // İlk kartı aktiv edək
+  cards[currentIndex].classList.add('active');
+
+  // Slider'in hündürlüyünü təyin edək
+  function updateSliderHeight() {
+    let maxHeight = 0;
+    cards.forEach(card => {
+      const height = card.offsetHeight;
+      if (height > maxHeight) {
+        maxHeight = height;
+      }
+    });
+    sliderContainer.style.height = (maxHeight + 40) + 'px';
+  }
+
+  updateSliderHeight();
+
+  // Kartlara klik edildikdə aktiv etmək üçün hadisə dinləyicilərini əlavə edək
+  cards.forEach((card, index) => {
+    card.addEventListener('click', function() {
+      cards.forEach(c => c.classList.remove('active'));
+      this.classList.add('active');
+      currentIndex = index;
+      updateSliderPosition();
+    });
+  });
+
+  // Slider-i yeniləmək və mərkəzləşdirmə funksiyası
+  function updateSliderPosition() {
+    // Əvvəlcə bütün kartlardan 'active' sinifini silib
+    cards.forEach(card => {
+      card.classList.remove('active');
+    });
+
+    // Cari kartı aktiv edək
+    cards[currentIndex].classList.add('active');
+
+    // Kart genişliyi və boşluğu hesablayaq
+    const cardWidth = cards[0].getBoundingClientRect().width;
+    const gap = 20; // CSS-də təyin edilmiş boşluq
+
+    // Slider konteynerinin genişliyi
+    const containerWidth = sliderContainer.getBoundingClientRect().width;
+
+    // Hesablanan pozisiyanı mərkəzləşdirmək üçün düzəliş
+    const offset = (containerWidth - cardWidth) / 2;
+
+    // Cari kartın mövqeyini hesablayaq
+    let scrollPos = (currentIndex * (cardWidth + gap)) - offset;
+
+    // Minimum və maksimum sərhədlər üçün yoxlama
+    const trackWidth = ((cardWidth + gap) * totalCards) - gap;
+    const maxScroll = trackWidth - containerWidth;
+
+    // Sliderın sərhədlərini aşmamasını təmin edək
+    if (scrollPos < 0) scrollPos = 0;
+    if (scrollPos > maxScroll) scrollPos = maxScroll;
+
+    // Sliderı yeniləyək
+    sliderTrack.style.transition = 'transform 0.5s ease';
+    sliderTrack.style.transform = `translateX(-${scrollPos}px)`;
+  }
+
+  // İlkin pozisiyanı təyin edək
+  updateSliderPosition();
+
+  // Sağa və sola sürüşdürmə üçün düymələri əlavə edək
+  prevBtn.addEventListener('click', () => {
+    if (currentIndex > 0) {
+      currentIndex--;
+    } else {
+      currentIndex = totalCards - 1; // Dövrə keçmək üçün
+    }
+    updateSliderPosition();
+  });
+
+  nextBtn.addEventListener('click', () => {
+    if (currentIndex < totalCards - 1) {
+      currentIndex++;
+    } else {
+      currentIndex = 0; // Dövrə keçmək üçün
+    }
+    updateSliderPosition();
+  });
+
+  // Toxunma hadisələri üçün dəstək əlavə edək
+  let touchStartX = 0;
+  let touchEndX = 0;
+
+  sliderTrack.addEventListener('touchstart', (e) => {
+    touchStartX = e.changedTouches[0].screenX;
+  }, false);
+
+  sliderTrack.addEventListener('touchend', (e) => {
+    touchEndX = e.changedTouches[0].screenX;
+    handleSwipe();
+  }, false);
+
+  function handleSwipe() {
+    if (touchEndX < touchStartX - 50) {
+      // Sola sürüşdürmə (növbəti kart)
+      if (currentIndex < totalCards - 1) {
+        currentIndex++;
+      } else {
+        currentIndex = 0;
+      }
+      updateSliderPosition();
+    }
+
+    if (touchEndX > touchStartX + 50) {
+      // Sağa sürüşdürmə (əvvəlki kart)
+      if (currentIndex > 0) {
+        currentIndex--;
+      } else {
+        currentIndex = totalCards - 1;
+      }
+      updateSliderPosition();
+    }
+  }
+
+  // Ekran ölçüsü dəyişdikdə slideri yeniləyək
+  window.addEventListener('resize', () => {
     updateSliderHeight();
-
-    function updateSliderHeight() {
-        let maxHeight = 0;
-        cards.forEach(card => {
-            const cardHeight = card.offsetHeight;
-            if (cardHeight > maxHeight) {
-                maxHeight = cardHeight;
-            }
-        });
-        sliderContainer.style.height = (maxHeight + 40) + 'px';
-    }
-
-    cards.forEach((card, index) => {
-        card.classList.add('interactive');
-
-        card.addEventListener('click', function() {
-            cards.forEach(c => c.classList.remove('active'));
-            this.classList.add('active');
-            currentIndex = index;
-        });
-
-        card.addEventListener('mouseenter', function() {
-            if (index !== currentIndex) {
-                cards[currentIndex].classList.remove('active');
-            }
-        });
-
-        card.addEventListener('mouseleave', function() {
-            if (index !== currentIndex) {
-                cards[currentIndex].classList.add('active');
-            }
-        });
-    });
-
-    updateSlider();
-
-    function updateSlider() {
-        cards.forEach(card => {
-            card.classList.remove('active');
-        });
-
-        cards[currentIndex].classList.add('active');
-
-        const cardWidth = cards[0].offsetWidth;
-        const gap = 20;
-        const scrollPos = (currentIndex * (cardWidth + gap)) - (window.innerWidth / 2) + (cardWidth / 2);
-
-        sliderTrack.style.transform = `translateX(-${scrollPos}px)`;
-    }
-
-    prevBtn.addEventListener('click', () => {
-        currentIndex = (currentIndex - 1 + totalCards) % totalCards;
-        updateSlider();
-    });
-
-    nextBtn.addEventListener('click', () => {
-        currentIndex = (currentIndex + 1) % totalCards;
-        updateSlider();
-    });
-
-    let touchStartX = 0;
-    let touchEndX = 0;
-
-    sliderTrack.addEventListener('touchstart', (e) => {
-        touchStartX = e.changedTouches[0].screenX;
-    }, false);
-
-    sliderTrack.addEventListener('touchend', (e) => {
-        touchEndX = e.changedTouches[0].screenX;
-        handleSwipe();
-    }, false);
-
-    function handleSwipe() {
-        if (touchEndX < touchStartX - 50) {
-            currentIndex = (currentIndex + 1) % totalCards;
-            updateSlider();
-        }
-
-        if (touchEndX > touchStartX + 50) {
-            currentIndex = (currentIndex - 1 + totalCards) % totalCards;
-            updateSlider();
-        }
-    }
-
-    window.addEventListener('resize', () => {
-        updateSlider();
-        updateSliderHeight();
-    });
+    updateSliderPosition();
+  });
 }
 
 // Brand Logos Rotation Functionality
@@ -237,13 +278,33 @@ function initNumberCounters() {
 
     if (statBoxes.length === 0) return;
 
+    let animationInProgress = false;
+
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
-            if (entry.isIntersecting) {
+            if (entry.isIntersecting && !animationInProgress) {
+                animationInProgress = true;
+
+                let completedAnimations = 0;
                 statBoxes.forEach((box, index) => {
-                    animateNumber(box, statValues[index]);
+                    animateNumber(box, statValues[index], () => {
+                        completedAnimations++;
+                        // Bütün animasiyalar bitəndə statusu sıfırla
+                        if (completedAnimations === statBoxes.length) {
+                            animationInProgress = false;
+                        }
+                    });
                 });
-                observer.disconnect();
+            }
+            else if (!entry.isIntersecting) {
+                statBoxes.forEach((box, index) => {
+                    // Bu elementləri ilkin vəziyyətə qaytarır (opsiyonal)
+                    if (statValues[index].startFrom === 0) {
+                        box.textContent = "0" + statValues[index].unit;
+                    } else {
+                        box.textContent = statValues[index].startFrom.toFixed(1) + statValues[index].unit;
+                    }
+                });
             }
         });
     }, { threshold: 0.3 });
@@ -254,7 +315,7 @@ function initNumberCounters() {
     }
 }
 
-function animateNumber(element, statInfo) {
+function animateNumber(element, statInfo, callback) {
     const startValue = statInfo.startFrom;
     const targetValue = statInfo.value;
     const unit = statInfo.unit;
@@ -284,6 +345,8 @@ function animateNumber(element, statInfo) {
             element.textContent = Number.isInteger(targetValue)
                 ? targetValue.toString() + unit
                 : targetValue.toFixed(1) + unit;
+
+            if (callback) callback();
         }
     }
 

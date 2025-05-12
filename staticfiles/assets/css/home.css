@@ -620,9 +620,10 @@ nav {
 
 .cross-reference .cross-reference-content div button {
   display: flex;
+  white-space: nowrap;
   align-items: center;
   justify-content: center;
-  width: 17vw;
+  width: 15vw;
   justify-content: space-between;
   background-color: inherit;
   border: 1px solid #d8dee3;
@@ -632,7 +633,7 @@ nav {
 }
 
 .cross-reference .cross-reference-content div:nth-of-type(3) button {
-  width: 17vw;
+  width: 16vw;
 }
 
 .cross-reference .cross-reference-content > button {
@@ -896,16 +897,17 @@ nav {
 
 .product-range .nav-button {
   position: static !important;
-  width: 60px !important;
-  height: 60px !important;
-  border: 1px solid #d8dee3;
+  font-size: 12px;
+  width: 45px !important;
+  height: 45px !important;
+  border: 0.5px solid #d8dee3;
   border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
   margin: 0 !important;
   cursor: pointer;
-  color: #034833;
+  color: #727272;
   transition: all 0.4s ease;
   background-color: white;
 }
@@ -915,6 +917,9 @@ nav {
   display: none;
 }
 
+.product-range .swiper-button-next{
+  margin-right: 20px !important;
+}
 .product-range .swiper {
   padding-bottom: 10rem !important;
   margin-bottom: 1rem;
