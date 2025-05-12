@@ -131,6 +131,7 @@
 .featured-section .product-card.active .product-image:hover img {
   scale: 1.1;
 }
+
 .featured-section .product-image img {
   max-width: 100%;
   max-height: 100%;
@@ -138,6 +139,8 @@
   transition: all 0.4s ease;
   position: relative;
 }
+
+
 .featured-section .product-info {
   width: 75%;
   margin-left: 35px;

@@ -23,7 +23,7 @@ def case_studies_view(request):
             pass
 
     page_number = request.GET.get('page', 1)
-    paginator = Paginator(case_studies, 1)
+    paginator = Paginator(case_studies, 6)
 
     try:
         page_obj = paginator.get_page(page_number)
