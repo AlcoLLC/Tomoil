@@ -60,12 +60,11 @@
         </div>
       </div>
       {% empty %}
-      <p>No case studies found.</p>
+      <p class="news-count">No case studies found.</p>
       {% endfor %}
     </div>
 
     <!-- Pagination -->
-    {% if page_obj.paginator.num_pages > 1 %}
     <div class="pagination-container">
       <p class="pagination-info">
         Displaying {{ page_obj.start_index }}–{{ page_obj.end_index }} of {{ total_results }} results
@@ -83,7 +82,6 @@
         {% endif %} {% endfor %}
       </div>
     </div>
-    {% endif %}
   </div>
 </section>
 
