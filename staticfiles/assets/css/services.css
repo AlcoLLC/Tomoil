@@ -50,8 +50,8 @@
 }
 
 .section-services .service-item .img-light {
-    display: none;
-  }
+  display: none;
+}
 
 .section-services .service-item .img-dark {
   display: block;
@@ -60,7 +60,6 @@
 .section-services .service-item.active .img-light {
   display: block;
 }
-
 
 .section-services .service-item span {
   font-family: "Plus Jakarta Sans", sans-serif;
