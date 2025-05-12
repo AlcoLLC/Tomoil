@@ -155,7 +155,7 @@
 }
 
 .contact-section .country-number-input input {
-  padding: 0px !important;
+  font-size: 8px;
 }
 .contact-section .phone-number-input input {
   padding-right: 10px;

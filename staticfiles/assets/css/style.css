@@ -543,18 +543,15 @@
   transition: background-color 0.3s;
 }
 
-.section-case-studies .prev-case {
-  padding: 22px;
-}
-
+.section-case-studies .prev-case,
 .section-case-studies .next-case {
-  color: white;
   padding: 22px;
-  background-color: #e22131;
 }
 
-.section-case-studies .next-case:hover {
+.section-case-studies .next-case:hover,
+.section-case-studies .prev-case:hover {
   background-color: #c62232;
+  color: white;
 }
 
 .section-case-studies .case-studies-slider {
@@ -651,7 +648,6 @@
 .section-oem {
   background-color: #3579bc;
   color: white;
-  padding: 35px 0px;
   border-radius: 20px;
   margin-top: 60px !important;
   margin-bottom: 60px !important;
@@ -663,7 +659,7 @@
 }
 
 .section-oem .oem-container {
-  padding: 0 20px;
+  padding: 30px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -673,7 +669,7 @@
 .section-oem .oem-content {
   flex: 0 0 50%;
   max-width: 380px;
-  margin: 0px 30px;
+  margin: 0px 20px;
 }
 
 .section-oem .section-subtitle,
