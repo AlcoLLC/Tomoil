@@ -281,6 +281,11 @@
   font-weight: 600;
 }
 
+.news-grid .news-count {
+  font-size: 15px;
+  color: #223160;
+}
+
 .pagination-container .pagination {
   display: flex;
   align-items: center;
