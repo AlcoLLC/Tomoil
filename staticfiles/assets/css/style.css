@@ -125,7 +125,6 @@
 .featured-section .product-card.active .product-image:hover::after {
   background-color: #e22131;
   outline-color: #e22131;
-
 }
 
 .featured-section .product-card.active .product-image:hover img {
@@ -138,6 +137,8 @@
   transition: all 0.4s ease;
   position: relative;
 }
+
+
 .featured-section .product-info {
   width: 75%;
   margin-left: 35px;
