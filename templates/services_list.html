@@ -1,0 +1,190 @@
+{% extends 'base.html' %} {% load static %} {% block content %}
+
+<!-- Page-Header -->
+{% include 'components/page-header.html' %}
+
+
+<!-- Services Section -->
+
+<section class="section-services">
+    <div class="section-container">
+        <!-- Service Navigation -->
+        <div class="services-nav">
+            <div class="service-item active" data-service="lubelq">
+                <div class="service-icon">
+                    <img src="{% static 'images/LubelQ-icon.svg' %}" class="img-dark" alt="LubelQ Icon">
+                    <img src="{% static 'images/LubelQ-icon-light.svg' %}" class="img-light" alt="LubelQ Icon">
+                </div>
+                <span>LubelQ</span>
+                <div class="arrow-icon">
+                    <i class="fa-solid fa-chevron-right"></i>
+                </div>
+            </div>
+            <div class="service-item" data-service="techtalk">
+                <div class="service-icon">
+                    <img src="{% static 'images/TechTalk-icon.svg' %}" class="img-dark" alt="TechTalk Icon">
+                    <img src="{% static 'images/TechTalk-icon-light.svg' %}" class="img-light" alt="TechTalk Icon">
+                </div>
+                <span>TechTalk</span>
+                <div class="arrow-icon">
+                    <i class="fa-solid fa-chevron-right"></i>
+                </div>
+            </div>
+            <div class="service-item" data-service="oilroute">
+                <div class="service-icon">
+                    <img src="{% static 'images/OilRoute-icon.svg' %}" class="img-dark" alt="OilRoute Icon">
+                    <img src="{% static 'images/OilRoute-icon-light.svg' %}" class="img-light" alt="OilRoute Icon">
+                </div>
+                <span>OilRoute</span>
+                <div class="arrow-icon">
+                    <i class="fa-solid fa-chevron-right"></i>
+                </div>
+            </div>
+            <div class="service-item" data-service="carehub">
+                <div class="service-icon">
+                    <img src="{% static 'images/CareHub-icon.svg' %}" class="img-dark" alt="CareHub Icon">
+                    <img src="{% static 'images/CareHub-icon-light.svg' %}" class="img-light" alt="CareHub Icon">
+                </div>
+                <span>CareHub</span>
+                <div class="arrow-icon">
+                    <i class="fa-solid fa-chevron-right"></i>
+                </div>
+            </div>
+        </div>
+
+        <!-- Service Content -->
+        <div class="service-content">
+            <!-- LubelQ Content -->
+            <div class="service-detail active" id="lubelq-content">
+                <div class="service-header">
+                    <h2 class="section-title">LubelQ</h2>
+                    <p class="section-description">Smarter Oil Monitoring, Better Equipment Health. <br> LubelQ brings
+                        intelligent lubricant analysis to your fingertips. With advanced testing and clear reporting, we
+                        help you catch problems before they start, reduce wear, and improve performance - saving time,
+                        money, and machinery.</p>
+                </div>
+
+                <div class="statistics">
+                    <div class="stat-item">
+                        <div class="stat-icon">
+                            <img src="{% static 'images/lubel-testing.svg' %}" alt="Statistic Icon">
+                        </div>
+                        <div class="stat-value">+50</div>
+                        <div class="stat-label">Testing Instruments</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-icon">
+                            <img src="{% static 'images/lubel-parameter.svg' %}" alt="Statistic Icon">
+                        </div>
+                        <div class="stat-value">+30</div>
+                        <div class="stat-label">Test Parameters</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-icon">
+                            <img src="{% static 'images/lubel-accuracy.svg' %}" alt="Statistic Icon">
+                        </div>
+                        <div class="stat-value">>99%</div>
+                        <div class="stat-label">Accuracy Rate</div>
+                    </div>
+                </div>
+
+                <p class="section-description">
+                    At Eurotec, we believe that true performance begins in the lab. That's why we offer in-house Lab
+                    Analysis & Quality Testing as a premium value-added service - ensuring every product meets the
+                    most stringent standards of quality, safety, and consistency.
+                    Our laboratory is one of the most advanced lubricant testing centers in the region, operating
+                    under the strict protocols of ISO/IEC 17025 accreditation. Equipped with the latest technology
+                    and staffed by skilled professionals, it performs testing on over 30 key indicators using
+                    internationally recognized IEC and ASTM methods.
+                    From incoming raw material verification to final batch release, every Eurotec product is
+                    subjected to multi-stage quality control procedures. Our lab plays a critical role in ensuring
+                    that each lubricant and fluid we deliver is precisely formulated, chemically stable, and ready
+                    to perform under the most demanding operating conditions.With Eurotec, you don't just get a
+                    product - you get lab-validated performance and peace of
+                    mind.Our laboratory capabilities are not just about control - they're about competitive
+                    advantage. As
+                    part of our integrated technical support, they empower our partners and clients with
+                    scientifically proven performance, helping build trust, credibility, and long-term success in
+                    both local and global markets.Trust in Eurotec's lab expertise – where accuracy meets German
+                    engineering excellence!
+                </p>
+            </div>
+
+            <!-- TechTalk Content -->
+            <div class="service-detail" id="techtalk-content">
+                <div class="service-header">
+                    <h2 class="section-title">Technical Expertise & Consultancy</h2>
+                </div>
+                <p class="section-description">
+                    At Eurotec, we bring cutting-edge technical expertise and personalized consultancy to empower
+                    your business. Our team of skilled professionals is dedicated to solving complex challenges,
+                    optimizing performance, and delivering innovative solutions tailored to your unique needs.
+                    Whether you're seeking guidance or hands-on support, we're here to help you stay ahead in a fast
+                    evolving technological landscape. From system design to implementation, we develop bespoke
+                    technology solutions that align with your goals.Enhance efficiency and productivity with our
+                    proven strategies for streamlining operations.Equip your team with the skills and insights they
+                    need through comprehensive training sessions and ongoing technical assistance. With Eurotec as
+                    your partner, you gain access to a wealth of experience and a commitment to excellence. Our
+                    technical expertise and consultancy services are designed to drive your success, nomatter the
+                    challenge. Contact us today to explore how we can support your next project!
+                </p>
+            </div>
+
+            <!-- OilRoute Content -->
+            <div class="service-detail" id="oilroute-content">
+                <div class="service-header">
+                    <h2 class="section-title">Logistics and Global Delivery</h2>
+                </div>
+                <p class="section-description">
+                    Eurotec guarantees fast, reliable, and efficient global delivery through a robust logistics
+                    infrastructure and advanced supply chain operations. Our modern production facility,
+                    strategically located in the Sumgait Chemical Industrial Park in Azerbaijan, enables us to serve
+                    international markets with ease and speed.
+                    EUROTEC products are currently shipped to over 50 countries and more than 50 key international
+                    ports - spanning locations from Durban to Cartagena, Singapore to Haifa, Naples to Algeciras -
+                    demonstrating our strong global presence and logistical capabilities.
+                    To ensure optimal transit times and cost efficiency, EUROTEC maintains direct partnerships with
+                    the world’s leading shipping companies, including Maersk, MSC, Evergreen, CMA CGM, Hapag-Lloyd,
+                    and others. These partnerships allow us to provide our clients with competitive freight rates,
+                    guaranteed space availability, and customized shipping schedules.
+                    Our logistics solutions are tailored to meet the diverse requirements of our international
+                    clients. Whether by sea, land, or air, Eurotec offers flexible, safe, and timely transportation
+                    options. Depending on the size and nature of the order, we utilize various transport modes such
+                    as 20 ft and 40 ft containers, ISO tanks, Flexitanks, trailer trucks, railway cisterns, and
+                    other specialized transport methods as needed.
+                    With a dedicated and experienced logistics team, EUROTEC ensures the smooth coordination and
+                    on-time delivery of our high-performance lubricants and related products to destinations across
+                    the globe.
+                </p>
+            </div>
+
+            <!-- CareHub Content -->
+            <div class="service-detail" id="carehub-content">
+                <div class="service-header">
+                    <h2 class="section-title">Marketing Support</h2>
+                </div>
+                <p class="section-description">
+                    At Eurotec, decisive marketing drives business success. Our comprehensive marketing support
+                    services are designed to elevate your brand, engage your audience, and pave the way for growth.
+                    We’recommitted to equipping our distributors and partners with the tools, insights, and
+                    resources they need to thrive in their markets.
+                    Brand Development: Build a consistent and impactful brand identity that sets you apart from the
+                    competition.
+                    Market Research & Insights: We’re always happy to share our analyses of similar markets,
+                    presenting success stories and actionable strategies to help our distributors succeed or become
+                    even more successful in their regions.
+                    Marketing Materials: Our marketing support includes marketing materials, complimentary
+                    merchandise, visuals, and even printed adverts. These resources allow our customers to show
+                    their audiences the benefits of using Eurotec products effectively.
+                    Marketing Campaigns: From planning to execution and analysis, we ensure your marketing efforts
+                    deliver maximum return on investment.
+                </p>
+            </div>
+        </div>
+</section>
+
+
+
+
+
+{% endblock %}

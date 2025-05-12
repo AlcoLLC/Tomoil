@@ -112,7 +112,7 @@ document.addEventListener('DOMContentLoaded', function() {
           // API integration can be added here later to get country code prefix
           const code = this.value.replace(/[^0-9+]/g, '');
           if (code) {
-     
+
             this.value = '(+' + code.replace('+', '') + ')';
 
           }
