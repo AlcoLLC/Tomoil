@@ -1,35 +1,96 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
     <meta charset="utf-8" />
-    <title>Yeni Əlaqə Formu Məlumatı</title>
+    <title>New Contact Form Submission</title>
     <style>
       body {
-        font-family: Arial, sans-serif;
+        font-family: "Helvetica Neue", Arial, sans-serif;
         color: #333;
-        line-height: 1.6;
+        line-height: 1.7;
+        max-width: 600px;
+        margin: 0 auto;
         padding: 20px;
+        background-color: #f4f4f4;
+      }
+      .container {
+        background-color: white;
+        border-radius: 8px;
+        padding: 30px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      }
+      .header {
+        background-color: #2c3e50;
+        color: white;
+        text-align: center;
+        padding: 15px;
+        border-top-left-radius: 8px;
+        border-top-right-radius: 8px;
+        margin: -30px -30px 30px;
       }
       .label {
-        font-weight: bold;
+        font-weight: 600;
+        color: #2c3e50;
+        margin-right: 10px;
       }
       .value {
+        color: #34495e;
+      }
+      .section {
+        border-bottom: 1px solid #ecf0f1;
+        padding-bottom: 15px;
         margin-bottom: 15px;
+      }
+      .section:last-child {
+        border-bottom: none;
+      }
+      .message {
+        background-color: #f9f9f9;
+        padding: 15px;
+        border-radius: 5px;
       }
     </style>
   </head>
   <body>
-    <h2>Yeni əlaqə formu məlumatı</h2>
+    <div class="container">
+      <div class="header">
+        <h2>New Contact Form Submission</h2>
+      </div>
 
-    <p><span class="label">Ad Soyad:</span> {{ first_name }} {{ last_name }}</p>
-    <p><span class="label">Email:</span> {{ email }}</p>
-    <p><span class="label">Telefon:</span> {{ contact_number }}</p>
-    <p><span class="label">Ölkə:</span> {{ country }}</p>
-    <p><span class="label">Əlaqə növü:</span> {{ enquiry_type }}</p>
-    <p>
-      <span class="label">Əlaqə üsulu:</span> {{ preferred_contact_method }}
-    </p>
-    <p><span class="label">Mesaj:</span></p>
-    <p>{{ message|linebreaks }}</p>
+      <div class="section">
+        <span class="label">Full Name:</span>
+        <span class="value">{{ first_name }} {{ last_name }}</span>
+      </div>
+
+      <div class="section">
+        <span class="label">Email Address:</span>
+        <span class="value">{{ email }}</span>
+      </div>
+
+      <div class="section">
+        <span class="label">Contact Number:</span>
+        <span class="value">{{ contact_number }}</span>
+      </div>
+
+      <div class="section">
+        <span class="label">Country:</span>
+        <span class="value">{{ country }}</span>
+      </div>
+
+      <div class="section">
+        <span class="label">Inquiry Type:</span>
+        <span class="value">{{ enquiry_type }}</span>
+      </div>
+
+      <div class="section">
+        <span class="label">Preferred Contact Method:</span>
+        <span class="value">{{ preferred_contact_method }}</span>
+      </div>
+
+      <div class="section">
+        <span class="label">Message:</span>
+        <div class="message">{{ message|linebreaks }}</div>
+      </div>
+    </div>
   </body>
 </html>

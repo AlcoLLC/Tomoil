@@ -171,6 +171,16 @@
   text-align: justify;
 }
 
+.section-services .service-description h3{
+  font-family: Plus Jakarta Sans;
+font-weight: 600;
+font-size: 30px;
+line-height: 36px;
+letter-spacing: 0%;
+text-transform: capitalize;
+color: #223160;
+}
+
 /* TechTalk and Other Services Styles */
 .subsection-title {
   font-size: 24px;
