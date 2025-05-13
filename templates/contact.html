@@ -6,8 +6,10 @@
       <div class="section-header">
         <p class="section-subtitle">Contact Us</p>
         <h2 class="section-title">Any Questions Or Feedback?</h2>
-        <p class="contact-description">Fill out the form below if you are interested or inquiring on Tomoil products or
-          services for your business.</p>
+        <p class="contact-description">
+          Fill out the form below if you are interested or inquiring on Tomoil
+          products or services for your business.
+        </p>
       </div>
 
       <div class="contact-info">
@@ -45,127 +47,232 @@
           <label for="full-name">Full name*</label>
           <div class="name-inputs">
             <div class="input-wrapper">
-              <input type="text" name="first_name" placeholder="First name" required />
+              <input
+                type="text"
+                name="first_name"
+                placeholder="First name"
+                required
+              />
+              {% if form.first_name.errors %}
+              <span class="error-message">{{ form.first_name.errors.0 }}</span>
+              {% endif %}
             </div>
             <div class="input-wrapper">
-              <input type="text" name="last_name" placeholder="Last name" required />
+              <input
+                type="text"
+                name="last_name"
+                placeholder="Last name"
+                required
+              />
+              {% if form.last_name.errors %}
+              <span class="error-message">{{ form.last_name.errors.0 }}</span>
+              {% endif %}
             </div>
           </div>
         </div>
-
         <div class="form-row">
           <div class="form-group">
             <label for="contact-number">Contact number*</label>
             <div class="phone-input">
               <div class="country-code-input">
-                <input type="tel" name="country_code" placeholder="( +994 )"  required />
+                <div class="custom-select-wrapper">
+                  <div class="custom-select" id="selected-country-code">
+                    Select
+                  </div>
+                  <div class="custom-options">
+                    {% for code in country_codes %}
+                    <div
+                      class="custom-option"
+                      data-value="{{ code.code }}"
+                      data-short="{{ code.short }}"
+                    >
+                      {{ code.code }} ({{ code.name }})
+                    </div>
+                    {% endfor %}
+                  </div>
+                  <input
+                    type="hidden"
+                    name="country_code"
+                    id="country_code"
+                    value=""
+                    required
+                  />
+                  {% if form.country_code.errors %}
+                  <span class="error-message"
+                    >{{ form.country_code.errors.0 }}</span
+                  >
+                  {% endif %}
+                </div>
               </div>
               <div class="phone-number-input">
-                <input type="tel" name="contact_number" placeholder="Phone number" required />
+                <input
+                  type="tel"
+                  name="contact_number"
+                  id="contact_number"
+                  placeholder="Phone number"
+                  required
+                />
                 <img src="{% static 'images/phone-volume.svg' %}" alt="Phone" />
               </div>
+              {% if form.contact_number.errors %}
+              <span class="error-message"
+                >{{ form.contact_number.errors.0 }}</span
+              >
+              {% endif %}
             </div>
+            <div id="phone-validation-message" class="validation-message"></div>
           </div>
 
           <div class="form-group">
             <label for="email">Email*</label>
             <div class="email-input">
-              <input type="email" name="email" placeholder="example@gmail.com" required />
+              <input
+                type="email"
+                name="email"
+                placeholder="example@gmail.com"
+                required
+              />
               <img src="{% static 'images/email-envelope.svg' %}" alt="Email" />
+              {% if form.email.errors %}
+              <span class="error-message">{{ form.email.errors.0 }}</span>
+              {% endif %}
             </div>
           </div>
         </div>
 
         <div class="form-group">
-          <label for="country">Country</label>
+          <label for="country">Country*</label>
         </div>
         <div class="custom-select-wrapper country-select">
-          <img class="selected-flag" src="{% static 'images/az.png' %}" alt="Flag" />
-          <div class="custom-select">Azerbaijan</div>
-          <div class="custom-options">
-            <div class="custom-option selected" data-value="Azerbaijan" data-flag="az">
-              <div class="flag-wrapper">
-                <img class="selected-flag" src="{% static 'images/az.png' %}" alt="Flag" />
-                <span>Azerbaijan</span>
-              </div>
-            </div>
-            <div class="custom-option" data-value="Turkey" data-flag="tr">
-              <div class="flag-wrapper">
-                <img class="selected-flag" src="{% static 'images/az.png' %}" alt="Flag" />
-                <span>Turkey</span>
-              </div>
-            </div>
-            <div class="custom-option" data-value="USA" data-flag="us">
-              <div class="flag-wrapper">
-                <img class="selected-flag" src="{% static 'images/az.png' %}" alt="Flag" />
-                <span>USA</span>
-              </div>
-            </div>
-
+          <img
+            class="selected-flag"
+            id="selected-flag"
+            src="{% static 'images/az.png' %}"
+            alt="Flag"
+          />
+          <div class="custom-select" id="selected-country-name">
+            Select Country
           </div>
-
-          <select id="country" class="hidden-select" style="display: none;">
-            <option value="Azerbaijan" data-flag="az" selected>Azerbaijan</option>
-            <option value="Turkey" data-flag="tr">Turkey</option>
-            <option value="USA" data-flag="us">USA</option>
-          </select>
+          <div class="custom-options country-options">
+            <div class="search-box">
+              <input
+                type="text"
+                id="country-search"
+                placeholder="Search country..."
+              />
+            </div>
+            <div class="options-container">
+              {% for country in countries %}
+              <div
+                class="custom-option"
+                data-value="{{ country.name }}"
+                data-flag="{{ country.flag }}"
+                data-code="{{ country.code }}"
+              >
+                <div class="flag-wrapper">
+                  <img src="{{ country.flag }}" alt="{{ country.name }} Flag" />
+                  <span>{{ country.name }}</span>
+                </div>
+              </div>
+              {% endfor %}
+            </div>
+          </div>
+          <input type="hidden" name="country" id="country" value="" required />
+          {% if form.country.errors %}
+          <span class="error-message">{{ form.country.errors.0 }}</span>
+          {% endif %}
         </div>
 
         <div class="form-group">
-          <label for="country">Type of Enquiry*</label>
+          <label for="enquiry_type">Type of Enquiry*</label>
         </div>
         <div class="custom-select-wrapper">
-          <div class="custom-select">Select</div>
+          <div class="custom-select" id="selected-enquiry">Select</div>
           <div class="custom-options">
-            <div class="custom-option" data-value="Support">Support</div>
-            <div class="custom-option" data-value="Sales">Sales</div>
-            <div class="custom-option" data-value="Other">Other</div>
+            {% for value, display in enquiry_types %}
+            <div class="custom-option" data-value="{{ value }}">
+              {{ display }}
+            </div>
+            {% endfor %}
           </div>
-          <select name="enquiry_type" id="enquiry-type" required style="display: none;">
-            <option value="" disabled selected>Select</option>
-            <option value="Support">Support</option>
-            <option value="Sales">Sales</option>
-            <option value="Other">Other</option>
-          </select>
+          <input
+            type="hidden"
+            name="enquiry_type"
+            id="enquiry_type"
+            value=""
+            required
+          />
+          {% if form.enquiry_type.errors %}
+          <span class="error-message">{{ form.enquiry_type.errors.0 }}</span>
+          {% endif %}
         </div>
-
 
         <div class="form-group">
           <label>Preferred Method of Contact*</label>
           <div class="radio-options">
+            {% for value, display in contact_methods %}
             <div class="radio-option">
-              <input type="radio" name="preferred_contact_method" id="email-method" value="email" />
-              <label for="email-method">Email</label>
+              <input
+                type="radio"
+                name="preferred_contact_method"
+                id="method-{{ value }}"
+                value="{{ value }}"
+                required
+              />
+              <label for="method-{{ value }}">{{ display }}</label>
             </div>
-            <div class="radio-option">
-              <input type="radio" name="preferred_contact_method" id="phone-method" value="phone" />
-              <label for="phone-method">Phone</label>
-            </div>
-            <div class="radio-option">
-              <input type="radio" name="preferred_contact_method" id="no-preference" value="no-preference" />
-              <label for="no-preference">No preference</label>
-            </div>
+            {% endfor %}
           </div>
+          {% if form.preferred_contact_method.errors %}
+          <span class="error-message"
+            >{{ form.preferred_contact_method.errors.0 }}</span
+          >
+          {% endif %}
         </div>
 
         <div class="form-group textarea-message">
           <label for="message">Your message</label>
           <div class="message-input">
-            <textarea name="message" id="message" placeholder="Type your message here"></textarea>
-            <img src="{% static 'images/email-envelope.svg' %}" alt="Message" class="message-icon" />
+            <textarea
+              name="message"
+              id="message"
+              placeholder="Type your message here"
+            ></textarea>
+            <img
+              src="{% static 'images/email-envelope.svg' %}"
+              alt="Message"
+              class="message-icon"
+            />
           </div>
+          {% if form.message.errors %}
+          <span class="error-message">{{ form.message.errors.0 }}</span>
+          {% endif %}
         </div>
 
         <div class="form-group checkbox">
           <div class="checkbox-wrapper">
             <input type="checkbox" name="consent" id="consent" required />
-            <label for="consent">By ticking this box, I consent to the use of my personal information provided above by
-              Tomoil, its subsidiaries and affiliate partners to contact me with regard to my enquiry/request.</label>
+            <label for="consent"
+              >By ticking this box, I consent to the use of my personal
+              information provided above by Tomoil, its subsidiaries and
+              affiliate partners to contact me with regard to my
+              enquiry/request.</label
+            >
           </div>
+          {% if form.consent.errors %}
+          <span class="error-message">{{ form.consent.errors.0 }}</span>
+          {% endif %}
         </div>
 
         <div class="form-group submit-group">
-          <button type="submit" class="submit-button">SUBMIT</button>
+          <button
+            type="submit"
+            id="submit-button"
+            class="submit-button"
+            disabled
+          >
+            SUBMIT
+          </button>
         </div>
       </form>
     </div>
@@ -176,11 +283,13 @@
   <div class="section-container">
     <iframe
       src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3040.025687676661!2d49.83139807582456!3d40.36395477144821!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40307d277a2e85cd%3A0xd89a5cf24b320ca7!2sALCO%20LLC!5e0!3m2!1str!2saz!4v1746859404914!5m2!1str!2saz"
-      width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
-      referrerpolicy="no-referrer-when-downgrade"></iframe>
+      width="600"
+      height="450"
+      style="border: 0"
+      allowfullscreen=""
+      loading="lazy"
+      referrerpolicy="no-referrer-when-downgrade"
+    ></iframe>
   </div>
 </section>
-
-
-
-{%endblock %}
+{% endblock %}

@@ -23,6 +23,24 @@
           />
         </div>
       </div>
+      <div class="date-filter">
+        <div class="date-input">
+          <input
+            type="text"
+            name="from_date"
+            id="datepicker2"
+            placeholder="From (dd.mm.yyyy)"
+            value="{{ formatted_date }}"
+            autocomplete="off"
+          />
+          <span class="clear-date" onclick="clearDateFilter();">&times;</span>
+          <img
+            src="{% static 'images/calendar-icon.svg' %}"
+            alt="calendar-icon"
+            class="calendar-icon"
+          />
+        </div>
+      </div>
     </div>
   </div>
   <!-- Hidden input for page if needed -->

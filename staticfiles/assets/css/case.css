@@ -91,6 +91,12 @@
   margin-bottom: 30px;
 }
 
+.date-filter-container > div {
+  display: flex;
+  justify-content: end;
+  gap: 5px;
+}
+
 .date-filter-container .date-filter {
   display: flex;
   align-items: center;
