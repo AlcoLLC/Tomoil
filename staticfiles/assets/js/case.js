@@ -1,12 +1,12 @@
 document.addEventListener("DOMContentLoaded", function () {
-  // Initialize Simple Date Picker
-  initSimpleDatePicker();
+  initSimpleDatePicker("datepicker");
+  initSimpleDatePicker("datepicker2");
 });
 
-function initSimpleDatePicker() {
-  const dateInput = document.getElementById("datepicker");
-  const calendarIcon = document.querySelector(".calendar-icon");
-  const dateFilterContainer = document.querySelector(".date-input");
+function initSimpleDatePicker(inputId) {
+  const dateInput = document.getElementById(inputId);
+  const calendarIcon = dateInput.closest('.date-input').querySelector('.calendar-icon');
+  const dateFilterContainer = dateInput.closest('.date-input');
 
   if (!dateInput || !calendarIcon || !dateFilterContainer) return;
 
@@ -67,6 +67,13 @@ function initSimpleDatePicker() {
   });
 
   function toggleCalendar() {
+    // Close any other open calendars
+    document.querySelectorAll('.simple-calendar.active').forEach(cal => {
+      if (cal !== calendarContainer) {
+        cal.classList.remove('active');
+      }
+    });
+
     if (calendarContainer.classList.contains("active")) {
       calendarContainer.classList.remove("active");
     } else {
@@ -203,33 +210,23 @@ function initSimpleDatePicker() {
     const lastDay = new Date(year, month + 1, 0);
 
     const monthNames = [
-      "January",
-      "February",
-      "March",
-      "April",
-      "May",
-      "June",
-      "July",
-      "August",
-      "September",
-      "October",
-      "November",
-      "December",
+      "January", "February", "March", "April", "May", "June",
+      "July", "August", "September", "October", "November", "December"
     ];
 
     const dayNames = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 
     // Calendar structure
     let calendarHTML = `
-          <div class="calendar-header">
-            <div class="month-year">${monthNames[month]} ${year}</div>
-            <div class="calendar-nav">
-              <button type="button" class="prev-month"><i class="fas fa-chevron-left"></i></button>
-              <button type="button" class="next-month"><i class="fas fa-chevron-right"></i></button>
-            </div>
-          </div>
-          <div class="calendar-body">
-        `;
+      <div class="calendar-header">
+        <div class="month-year">${monthNames[month]} ${year}</div>
+        <div class="calendar-nav">
+          <button type="button" class="prev-month"><i class="fas fa-chevron-left"></i></button>
+          <button type="button" class="next-month"><i class="fas fa-chevron-right"></i></button>
+        </div>
+      </div>
+      <div class="calendar-body">
+    `;
 
     // Weekday headers
     dayNames.forEach((day) => {
@@ -358,12 +355,16 @@ function initSimpleDatePicker() {
 }
 
 function clearDateFilter() {
+  // Clear both date inputs
   document.getElementById('datepicker').value = '';
+  document.getElementById('datepicker2').value = '';
+
   // Reset page parameter if exists
   const pageInput = document.querySelector('input[name="page"]');
   if (pageInput) {
     pageInput.remove();
   }
+
   document.getElementById('filter-form').submit();
 }
 
@@ -453,3 +454,5 @@ function filterByDate(day, month, year) {
 
   window.location.href = url.toString();
 }
+
+

@@ -1,42 +1,277 @@
-{% load static %} {% block content %}
+{% extends 'base.html' %}
+{% load static %}
 
-<form method="get">
-  <select name="sort">
-    <option value="relevance">Relevance</option>
-    <option value="latest">Latest</option>
-    <option value="oldest">Oldest</option>
-    <option value="a_to_z">From A to Z</option>
-  </select>
+{% block content %}
+<!-- Page-Header -->
+{% include 'components/page-header.html' %}
 
-  <input type="text" name="q" placeholder="Search..." value="{{ query }}" />
-  <input type="text" name="start_date" placeholder="From (dd.mm.yyyy)" />
-  <input type="text" name="end_date" placeholder="To (dd.mm.yyyy)" />
-
-  <label for="per_page">Elements per page</label>
-  <input
-    type="number"
-    name="per_page"
-    value="{{ per_page }}"
-    min="1"
-    placeholder="Enter count"
-  />
-
-  <button type="submit">View Result</button>
-  <a href="{% url 'news_list' %}">Clear All</a>
-</form>
-
-{% for news in page_obj %}
-<h2><a href="{% url 'news_detail' news.pk %}">{{ news.title }}</a></h2>
-<p>{{ news.header_text|truncatechars:100 }}</p>
-{% endfor %}
-
-<div>
-  {% if page_obj.has_previous %}
-  <a href="?page={{ page_obj.previous_page_number }}">&laquo; Previous</a>
-  {% endif %} Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}
-  {% if page_obj.has_next %}
-  <a href="?page={{ page_obj.next_page_number }}">Next &raquo;</a>
-  {% endif %}
+<!-- News Filter Container -->
+<div class="news-filter-container">
+  <div class="section-container">
+    <div class="news-filter-header">
+      <div class="search-bar">
+        <input type="text" placeholder="Search" class="search-input">
+        <button class="search-button">
+          <img src="{% static 'images/search-icon.svg' %}" alt="Search">
+        </button>
+      </div>
+      <div class="news-view-options">
+        <div class="filter-sort-button">
+          <img src="{% static 'images/filter-icon.svg' %}" alt="Filter">
+          Filter and Sort
+        </div>
+        <div class="view-buttons">
+          <button class="view-button grid-view active">
+            <img class="icon-dark" src="{% static 'images/grid-icon-dark.svg' %}" alt="Grid view">
+            <img class="icon-light" src="{% static 'images/grid-icon-light.svg' %}" alt="Grid view active">
+          </button>
+          <button class="view-button list-view">
+            <img class="icon-dark" src="{% static 'images/list view-icon-dark.svg' %}" alt="List view">
+            <img class="icon-light" src="{% static 'images/list view-icon-light.svg' %}" alt="List view active">
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
+
+<!-- Filter and Sort Modal -->
+
+<div id="filterSortModalOverlay" class="modal-overlay">
+  <div class="filter-sort-modal">
+    <form id="filter-form" class="modal-form">
+      <div class="form-group">
+        <label>Sort by</label>
+        <div class="input-wrapper">
+          <div class="custom-select-wrapper sort-by-select">
+            <div class="custom-select">Relevance</div>
+            <div class="custom-options">
+              <div class="custom-option selected" data-value="Relevance">
+                <span>Relevance</span>
+              </div>
+              <div class="custom-option" data-value="Date">
+                <span>Date</span>
+              </div>
+              <div class="custom-option" data-value="popularity">
+                <span>Popularity</span>
+              </div>
+            </div>
+          </div>
+          <select name="sort_by">
+            <option value="Relevance" selected>Relevance</option>
+            <option value="Date">Date</option>
+            <option value="popularity">Popularity</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>Period</label>
+        <div class="form-group-calendar">
+
+          <div class="date-filter input-wrapper">
+            <div class="date-input">
+              <input type="text" name="from_date" id="datepicker" placeholder="From (dd.mm.yyyy)"
+                value="{{ formatted_date }}" autocomplete="off" />
+              <span class="clear-date" onclick="clearDateFilter();">&times;</span>
+              <img src="{% static 'images/calendar-icon.svg' %}" alt="calendar-icon" class="calendar-icon" />
+            </div>
+          </div>
+
+          <div class="date-filter input-wrapper">
+            <div class="date-input">
+              <input type="text" name="from_date" id="datepicker2" placeholder="From (dd.mm.yyyy)"
+                value="{{ formatted_date }}" autocomplete="off" />
+              <span class="clear-date" onclick="clearDateFilter();">&times;</span>
+              <img src="{% static 'images/calendar-icon.svg' %}" alt="calendar-icon" class="calendar-icon" />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label>Elements per page</label>
+        <div class="input-wrapper">
+          <div class="custom-select-wrapper per-page-select">
+            <div class="custom-select">12</div>
+            <div class="custom-options">
+              <div class="custom-option selected" data-value="12">
+                <span>12</span>
+              </div>
+              <div class="custom-option" data-value="24">
+                <span>24</span>
+              </div>
+              <div class="custom-option" data-value="36">
+                <span>36</span>
+              </div>
+            </div>
+          </div>
+          <select name="per_page">
+            <option value="12" selected>12</option>
+            <option value="24">24</option>
+            <option value="36">36</option>
+          </select>
+        </div>
+      </div>
+
+
+      <div class="modal-actions">
+        <button type="button" class="btn btn-clear">CLEAR ALL</button>
+        <button type="submit" class="btn btn-view">VIEW RESULT</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+
+<!-- Latest News Section -->
+<section class="section-latest-news">
+  <div class="section-container">
+    <div class="news-content grid-view-active" id="newsContent">
+      <!-- Grid View Content -->
+      <div class="news-grid">
+        <div class="news-card">
+          <img src="{% static 'images/image.png' %}" alt="TOMOIL Lubricants" class="card-image" />
+          <div class="card-content">
+            <div class="card-meta">
+              <div class="card-date">
+                <i class="far fa-calendar-alt date-icon"></i>
+                April 1, 2025
+              </div>
+              <div class="share-button">
+                <i class="fas fa-share-alt share-icon"></i>
+                Share
+              </div>
+            </div>
+            <h3 class="card-title">
+              TOMOIL Lubricants for Agricultural Machinery
+            </h3>
+            <p class="card-description">
+              We present you with another report on TOMOIL lubricants testing.
+            </p>
+            <a href="#" class="read-more">
+              Read More
+              <i class="fas fa-arrow-right-long read-more-icon"></i>
+            </a>
+          </div>
+        </div>
+
+        <div class="news-card">
+          <img src="{% static 'images/image.png' %}" alt="TOMOIL Lubricants" class="card-image" />
+          <div class="card-content">
+            <div class="card-meta">
+              <div class="card-date">
+                <i class="far fa-calendar-alt date-icon"></i>
+                April 1, 2025
+              </div>
+              <div class="share-button">
+                <i class="fas fa-share-alt share-icon"></i>
+                Share
+              </div>
+            </div>
+            <h3 class="card-title">
+              TOMOIL Lubricants for Agricultural Machinery
+            </h3>
+            <p class="card-description">
+              We present you with another report on TOMOIL lubricants testing.
+            </p>
+            <a href="#" class="read-more">
+              Read More
+              <i class="fas fa-arrow-right-long read-more-icon"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- List View Content -->
+      <div class="news-list">
+        <div class="news-list-item">
+          <div class="list-item-image">
+            <img src="{% static 'images/image.png' %}" alt="TOMOIL Lubricants" />
+          </div>
+          <div class="list-item-content">
+            <div class="card-meta">
+              <div class="card-date">
+                <i class="far fa-calendar-alt date-icon"></i>
+                April 1, 2025
+              </div>
+              <div class="share-button">
+                <i class="fas fa-share-alt share-icon"></i>
+                Share
+              </div>
+            </div>
+            <h3 class="card-title">
+              TOMOIL Lubricants for Agricultural Machinery
+            </h3>
+            <p class="card-description">
+              We present you with another report on TOMOIL lubricants testing.
+            </p>
+            <a href="#" class="read-more">
+              Read More
+              <i class="fas fa-arrow-right-long read-more-icon"></i>
+            </a>
+          </div>
+        </div>
+
+        <div class="news-list-item">
+          <div class="list-item-image">
+            <img src="{% static 'images/image.png' %}" alt="TOMOIL Lubricants" />
+          </div>
+          <div class="list-item-content">
+            <div class="card-meta">
+              <div class="card-date">
+                <i class="far fa-calendar-alt date-icon"></i>
+                April 1, 2025
+              </div>
+              <div class="share-button">
+                <i class="fas fa-share-alt share-icon"></i>
+                Share
+              </div>
+            </div>
+            <h3 class="card-title">
+              TOMOIL Lubricants for Agricultural Machinery
+            </h3>
+            <p class="card-description">
+              We present you with another report on TOMOIL lubricants testing.
+            </p>
+            <a href="#" class="read-more">
+              Read More
+              <i class="fas fa-arrow-right-long read-more-icon"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Pagination -->
+    <div class="pagination-container">
+      <p class="pagination-info">
+        Displaying {{ page_obj.start_index }}–{{ page_obj.end_index }} of {{ total_results }} results
+      </p>
+      <div class="pagination">
+        <!-- Page Numbers -->
+        {% for num in page_obj.paginator.page_range %} {% if page_obj.number == num %}
+        <span class="page-btn active">{{ num }}</span>
+        {% elif num > page_obj.number|add:-3 and num < page_obj.number|add:3 %} <a
+          href="?from_date={{ formatted_date|urlencode }}&page={{ num }}" class="page-btn">{{ num }}</a>
+          {% endif %} {% endfor %}
+      </div>
+    </div>
+    </div>
+  </div>
+
+
+</section>
+<script>
+  function clearDateFilter() {
+    document.getElementById("datepicker").value = "";
+
+    const pageInput = document.querySelector('input[name="page"]');
+    if (pageInput) {
+      pageInput.remove();
+    }
+
+    document.getElementById("filter-form").submit();
+  }
+</script>
 
 {% endblock %}
