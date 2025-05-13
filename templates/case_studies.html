@@ -7,20 +7,10 @@
     <div class="section-container">
       <div class="date-filter">
         <div class="date-input">
-          <input
-            type="text"
-            name="from_date"
-            id="datepicker"
-            placeholder="From (dd.mm.yyyy)"
-            value="{{ formatted_date }}"
-            autocomplete="off"
-          />
+          <input type="text" name="from_date" id="datepicker" placeholder="From (dd.mm.yyyy)"
+            value="{{ formatted_date }}" autocomplete="off" />
           <span class="clear-date" onclick="clearDateFilter();">&times;</span>
-          <img
-            src="{% static 'images/calendar-icon.svg' %}"
-            alt="calendar-icon"
-            class="calendar-icon"
-          />
+          <img src="{% static 'images/calendar-icon.svg' %}" alt="calendar-icon" class="calendar-icon" />
         </div>
       </div>
     </div>
@@ -37,11 +27,7 @@
     <div class="news-grid">
       {% for case in page_obj %}
       <div class="news-card">
-        <img
-          src="{{ case.image_one.url }}"
-          alt="{{ case.title }}"
-          class="card-image"
-        />
+        <img src="{{ case.image_one.url }}" alt="{{ case.title }}" class="card-image" />
         <div class="card-content">
           <div class="card-meta">
             <div class="card-date">
@@ -73,13 +59,9 @@
         <!-- Page Numbers -->
         {% for num in page_obj.paginator.page_range %} {% if page_obj.number == num %}
         <span class="page-btn active">{{ num }}</span>
-        {% elif num > page_obj.number|add:-3 and num < page_obj.number|add:3 %}
-        <a
-          href="?from_date={{ formatted_date|urlencode }}&page={{ num }}"
-          class="page-btn"
-          >{{ num }}</a
-        >
-        {% endif %} {% endfor %}
+        {% elif num > page_obj.number|add:-3 and num < page_obj.number|add:3 %} <a
+          href="?from_date={{ formatted_date|urlencode }}&page={{ num }}" class="page-btn">{{ num }}</a>
+          {% endif %} {% endfor %}
       </div>
     </div>
   </div>
