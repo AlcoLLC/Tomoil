@@ -4,7 +4,7 @@ from django.core.exceptions import ValidationError
 
 
 class News(models.Model):
-    title = models.CharField(max_length=255)
+    title = models.CharField(max_length=100)
     header_text = models.TextField()
     description = models.TextField()
     image_one = models.ImageField(upload_to='news/images/')

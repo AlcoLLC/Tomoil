@@ -1,68 +1,95 @@
-from django.shortcuts import render, get_object_or_404
-from .models import News
-from django.db.models import Q
+from django.utils.dateparse import parse_date
 from django.core.paginator import Paginator
-from datetime import datetime
+from django.http import HttpResponse, JsonResponse
+from django.shortcuts import render
+from .models import News
+from django.http import JsonResponse
+from django.core.serializers import serialize
+from django.views.decorators.http import require_http_methods
+import json
+
+
+@require_http_methods(["GET"])
+def news_api(request):
+    try:
+        news_items = News.objects.all()
+
+        news_data = json.loads(serialize('json', news_items))
+
+        formatted_news = []
+        for item in news_data:
+            news_dict = {
+                'id': item['pk'],
+                **item['fields'],
+                'image_one': request.build_absolute_uri('/media/' + item['fields']['image_one']),
+            }
+
+            if item['fields'].get('image_two'):
+                news_dict['image_two'] = request.build_absolute_uri(
+                    '/media/' + item['fields']['image_two'])
+
+            if item['fields'].get('image_three'):
+                news_dict['image_three'] = request.build_absolute_uri(
+                    '/media/' + item['fields']['image_three'])
+
+            formatted_news.append(news_dict)
+
+        return JsonResponse(formatted_news, safe=False)
+
+    except Exception as e:
+        return JsonResponse({'error': str(e)}, status=500)
 
 
 def news_list(request):
-    query = request.GET.get('q', '')
-    sort_by = request.GET.get('sort', 'relevance')
-    start_date = request.GET.get('start_date')
-    end_date = request.GET.get('end_date')
-    per_page_raw = request.GET.get('per_page', '')
-
-    try:
-        per_page = int(per_page_raw)
-        if per_page <= 0:
-            per_page = 12
-    except ValueError:
-        per_page = 12
+    sort_by = request.GET.get("sort_by", "Relevance")
+    per_page = int(request.GET.get("per_page", 12))
+    from_date = request.GET.get("from_date")
+    to_date = request.GET.get("to_date")
 
     news_items = News.objects.all()
 
-    if query:
-        news_items = news_items.filter(
-            Q(title__icontains=query) |
-            Q(header_text__icontains=query) |
-            Q(description__icontains=query)
-        )
+    # Tarih filtreleme
+    if from_date:
+        parsed_from = parse_date(from_date.replace('.', '-'))
+        if parsed_from:
+            news_items = news_items.filter(created_at__gte=parsed_from)
 
-    if start_date and end_date:
-        try:
-            start = datetime.strptime(start_date, '%d.%m.%Y')
-            end = datetime.strptime(end_date, '%d.%m.%Y')
-            news_items = news_items.filter(created_at__range=(start, end))
-        except ValueError:
-            pass
+    if to_date:
+        parsed_to = parse_date(to_date.replace('.', '-'))
+        if parsed_to:
+            news_items = news_items.filter(created_at__lte=parsed_to)
 
-    if sort_by == 'relevance':
-        news_items = news_items.order_by('-views_count')
-    elif sort_by == 'latest':
-        news_items = news_items.order_by('-created_at')
-    elif sort_by == 'oldest':
-        news_items = news_items.order_by('created_at')
-    elif sort_by == 'a_to_z':
-        news_items = news_items.order_by('title')
+    # Sıralama
+    if sort_by == "Latest":
+        news_items = news_items.order_by("-created_at")
+    elif sort_by == "Oldest":
+        news_items = news_items.order_by("created_at")
+    elif sort_by == "From A to Z":
+        news_items = news_items.order_by("title")
 
+    # Pagination
     paginator = Paginator(news_items, per_page)
-    page_number = request.GET.get('page')
+    page_number = request.GET.get("page")
     page_obj = paginator.get_page(page_number)
 
-    return render(request, 'news_list.html', {
-        'page_obj': page_obj,
-        'query': query,
-        'sort_by': sort_by,
-        'per_page': per_page_raw,
-    })
+    context = {
+        "page_obj": page_obj,
+        "total_results": paginator.count,
+        "formatted_date": from_date or "",
+    }
+
+    return render(request, "news_list.html", context)
 
 
 def news_detail(request, pk):
-    news_item = get_object_or_404(News, pk=pk)
+    try:
+        news_item = News.objects.get(pk=pk)
 
-    news_item.views_count += 1
-    news_item.save(update_fields=['views_count'])
+        news_item.views_count += 1
+        news_item.save(update_fields=['views_count'])
 
-    return render(request, 'news_detail.html', {
-        'news_item': news_item
-    })
+        return render(request, 'news_detail.html', {
+            'news_item': news_item
+        })
+    except News.DoesNotExist:
+        return HttpResponse('News article not found', status=404)

@@ -234,6 +234,7 @@
 }
 
 .section-latest-news .news-list-item {
+  height: 24vw;
   width: 100%;
   background-color: #fff;
   border-radius: 20px 20px 0px 20px;
@@ -244,7 +245,6 @@
   align-items: center;
   padding-left: 20px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
-  height: 250px;
 }
 
 .section-latest-news .list-item-image {
