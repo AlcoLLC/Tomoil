@@ -3,5 +3,6 @@ from . import views
 
 urlpatterns = [
     path('glance/', views.glance_list, name='glance'),
-    path('vision_mission/', views.vision_mision_list, name='vision_mission')
+    path('vision_mission/', views.vision_mision_list, name='vision_mission'),
+    path('our_commitment/', views.our_commitment_list, name='our_commitment_list')
 ]
