@@ -15,6 +15,8 @@ const swiper = new Swiper(".home-header .mySwiper", {
   },
 });
 
+
+
 document.addEventListener("DOMContentLoaded", function () {
   const commentSwiper = new Swiper(".comments-section .commentSwiper", {
     cssMode: true,

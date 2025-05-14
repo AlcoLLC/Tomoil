@@ -1,0 +1,37 @@
+{% extends 'base.html' %} {% load static %} {% block content %}
+
+<!-- Page-Header -->
+{% include 'components/page-header.html' %}
+
+<!-- All Data Sheets  -->
+<section class="data-sheet-section section-container">
+    <div class="data-sheet-container">
+        <table>
+            <thead>
+                <tr>
+                    <th>Product ID</th>
+                    <th>Product name</th>
+                    <th>Language</th>
+                    <th>Document type</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="product-id">470158</td>
+                    <td>PureMax OW-20</td>
+                    <td>English</td>
+                    <td>PDS | SDS</td>
+                </tr>
+                <tr>
+                    <td class="product-id">470158</td>
+                    <td>PureMax OW-20</td>
+                    <td>English</td>
+                    <td>PDS | SDS</td>
+                </tr>
+            </tbody>
+        </table>
+        <button class="refine-search-btn">REFINE SEARCH</button>
+    </div>
+</section>
+
+{%endblock %}

@@ -16,7 +16,6 @@
   src: url("../font/AtypTextBold.otf") format("opentype");
 }
 
-
 * {
   margin: 0;
   padding: 0;
@@ -55,7 +54,6 @@ body {
   margin: 0 auto;
   padding: 20px;
 }
-
 
 .section-container {
   width: 1000px;
@@ -155,11 +153,6 @@ nav {
   color: #fff;
 }
 
-.navbar .logo {
-  display: flex;
-  gap: 1px;
-}
-
 .navbar .logo img {
   height: 18px;
 }
@@ -180,6 +173,9 @@ nav {
   gap: 30px;
   margin-left: 100px;
 }
+.navbar .nav-section ul li {
+  position: relative;
+}
 
 .navbar .nav-section ul li a {
   color: #111214;
@@ -189,12 +185,85 @@ nav {
   letter-spacing: 1px;
   vertical-align: middle;
   text-transform: uppercase;
+  transition: color 0.3s ease !important;
+}
+
+.navbar .nav-section ul li:hover a {
+  color: #e22131;
 }
 
 .navbar .search {
   background-color: inherit;
   border: none;
   font-size: 14px;
+}
+
+/* Dropdown menu styles */
+
+.navbar .nav-section ul li {
+  position: relative;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: white;
+  min-width: 190px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.1);
+  border-radius: 20px;
+  padding: 10px 14px;
+  z-index: 1;
+  top: 25px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.dropdown::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 20px;
+  bottom: -20px;
+  left: 0;
+}
+
+.dropdown-content a {
+  color: #111214 !important ;
+  font-family: Atyp Medium;
+  padding: 12px;
+  text-decoration: none;
+  display: block;
+  text-align: center;
+  font-weight: 600;
+  font-size: 12px !important;
+  border-bottom: 1px solid #f1f3f9;
+  transition: color 0.3s ease !important;
+}
+
+.dropdown-content a:last-child {
+  border-bottom: none;
+}
+
+.dropdown-content a:hover {
+  color: #e22131 !important;
+}
+
+.dropdown:hover .dropdown-content,
+.dropdown-content:hover {
+  display: block;
+  visibility: visible;
+  opacity: 1;
+}
+
+.dropdown .dropdown-content {
+  transition: all 0.3s ease;
+  visibility: hidden;
+  opacity: 0;
+}
+
+.dropdown:hover .dropdown-content {
+  visibility: visible;
+  opacity: 1;
 }
 
 .home-header {
@@ -916,7 +985,7 @@ nav {
   display: none;
 }
 
-.product-range .swiper-button-next{
+.product-range .swiper-button-next {
   margin-right: 20px !important;
 }
 .product-range .swiper {

@@ -28,8 +28,9 @@
 </head>
 
 <body>
+   {% include 'components/navbar.html' %} 
   <div class="main">
-    {% include 'components/navbar.html' %} {% block content %} {% endblock %}
+   {% block content %} {% endblock %}
 
     {% include 'components/footer.html' %}
   </div>

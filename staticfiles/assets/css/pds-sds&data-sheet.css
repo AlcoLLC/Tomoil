@@ -43,7 +43,7 @@
   line-height: 1.5;
 }
 
-.pds-sds-section input[type="text"]{
+.pds-sds-section input[type="text"] {
   padding: 15px;
   border: 1px solid #d8dee3;
   border-radius: 25px;
@@ -55,7 +55,7 @@
   opacity: 80%;
 }
 
-.pds-sds-section  input::placeholder {
+.pds-sds-section input::placeholder {
   color: #034833;
 }
 
@@ -120,7 +120,74 @@
   background-color: #c61d29;
 }
 
-.pds-sds-section input:focus{
+.pds-sds-section input:focus {
   outline: none;
   border-color: #034833;
+}
+
+/* All Data SHeets Style */
+
+.data-sheet-section {
+  margin-top: 50px;
+}
+
+.data-sheet-section .data-sheet-container {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.data-sheet-section table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  background-color: #fff;
+  border-radius: 18px;
+  overflow: hidden;
+  text-align: center;
+}
+
+.data-sheet-section thead {
+  background-color: #dce0eb;
+}
+
+.data-sheet-section th {
+  width: 25%;
+  padding: 15px;
+  font-size: 16px;
+  color: #223160;
+  border-right: 1px solid #f1f3f9;
+}
+
+.data-sheet-section td {
+  font-size: 15px;
+  font-family: Atyp Regular;
+  padding: 15px;
+  border: 1px solid #f1f3f9;
+  color: #223160;
+}
+
+.data-sheet-section .product-id {
+  color: #e22131;
+}
+
+.data-sheet-section .refine-search-btn {
+  display: block;
+  background-color: #e22131;
+  color: white;
+  text-align: center;
+  font-size: 12px;
+  padding: 13px;
+  border-bottom-left-radius: 20px;
+  border-top-right-radius: 20px;
+  margin-top: 20px;
+  cursor: pointer;
+  border: none;
+  width: 30%;
+  float: right;
+  text-transform: uppercase;
+  transition: background-color 0.3s ease;
+}
+
+.data-sheet-section .refine-search-btn:hover {
+  background-color: #c62232;
 }
