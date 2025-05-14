@@ -138,7 +138,6 @@
   position: relative;
 }
 
-
 .featured-section .product-info {
   width: 75%;
   margin-left: 35px;
@@ -497,7 +496,6 @@
 }
 
 /* Case Studies Section */
-
 .section-case-studies {
   overflow: hidden;
   padding: 0%;
@@ -515,7 +513,8 @@
 }
 
 .section-case-studies .all-case-studies {
-  color: #e22131;
+  color:
+#e22131;
   font-size: 16px;
   line-height: 1.5;
   display: inline-block;
@@ -523,7 +522,8 @@
 }
 
 .section-case-studies .all-case-studies:hover {
-  color: #c62232;
+  color:
+#c62232;
 }
 
 .section-case-studies .slider-controls {
@@ -537,7 +537,8 @@
   border-radius: 50%;
   border: none;
   background-color: white;
-  color: #727272;
+  color:
+#727272;
   border: 0.1px solid #72727237;
   font-size: 11px;
   padding: 12px;
@@ -555,7 +556,8 @@
 
 .section-case-studies .next-case:hover,
 .section-case-studies .prev-case:hover {
-  background-color: #c62232;
+  background-color:
+#c62232;
   color: white;
 }
 
@@ -621,7 +623,8 @@
   margin: 0 auto;
   width: 95%;
   padding: 25px;
-  background-color: #e22131;
+  background-color:
+#e22131;
   border-radius: 10px;
   color: white;
   opacity: 0;
@@ -1201,7 +1204,7 @@
   color: #fff;
   border: none;
   border-radius: 25px;
-  padding: 12px;
+  padding: 12px 14px;
   cursor: pointer;
   transition: background-color 0.3s;
 }

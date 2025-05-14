@@ -26,11 +26,10 @@
   font-family: Atyp Medium;
 }
 
-.main {
+body {
   background-color: #f1f3f9;
 }
-
-body {
+.main {
   background-color: #f1f3f9;
 }
 
