@@ -7,5 +7,7 @@ urlpatterns = [
     path('brand/', views.BrandPortalView.as_view(), name='brand_portal'),
     path('download/<str:model_name>/<int:pk>/',
          views.download_file, name='download_file'),
-    path('catalogue/view/<int:pk>/', views.view_catalogue, name='view_catalogue'),
+    path('catalogue/view/<int:catalogue_id>/',
+         views.view_catalogue, name='view_catalogue'),
+
 ]

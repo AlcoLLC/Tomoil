@@ -1,4 +1,6 @@
-{% extends 'base.html' %} {% load static %} {% block content %}
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
 
 <!-- Page-Header -->
 {% include 'components/page-header.html' %}
@@ -6,49 +8,26 @@
 <!-- Glance Section -->
 <section class="glance-section section-container">
     <div class="glance-container">
-        <h2 class="section-title">Empowering Journeys, Fueling Progress</h2>
-        <p class="section-description">
-            Tomoil is a dynamic energy company dedicated to delivering high-quality fuel products and services. With a
-            strong presence across key markets, Tomoil focuses on innovation, sustainability, and customer satisfaction.
-            Our commitment is to power everyday journeys, support economic growth, and drive a cleaner energy future.
-        </p>
+    <h2 class="section-title">{{ item.title }}</h2>
+    <p class="section-description">{{ item.header_text }}</p>
 
-        <div class="guides-grid">
-            <div>
-                <h4><i class="fa-solid fa-square-check"></i> Safety Guides </h4>
-                    <p class="glance-description">Lorem ipsum dolor sit amet, cons ectetur adipiscing elit</p>
-            </div>
-            <div>
-                <h4><i class="fa-solid fa-square-check"></i> Safety Guides </h4>
-                    <p class="glance-description">Lorem ipsum dolor sit amet, cons ectetur adipiscing elit</p>
-            </div>
-            <div>
-                <h4><i class="fa-solid fa-square-check"></i> Safety Guides </h4>
-                    <p class="glance-description">Lorem ipsum dolor sit amet, cons ectetur adipiscing elit</p>
-            </div>
-            <div>
-                <h4><i class="fa-solid fa-square-check"></i> Safety Guides </h4>
-                    <p class="glance-description">Lorem ipsum dolor sit amet, cons ectetur adipiscing elit</p>
-            </div>
+    <div class="guides-grid">
+        {% for guide in item.guides.all %}
+        <div>
+            <h4><i class="fa-solid fa-square-check"></i> {{ guide.guide }}</h4>
+            <p class="glance-description">{{ guide.guide_text }}</p>
         </div>
+        {% endfor %}
+    </div>
 
-        <img src="{% static 'images/case-detail-image1.png' %}" alt="Glance Imgae">
+    <img src="{{ item.image.url }}" alt="Glance Image">
 
-        <h3 class="section-title glance-title">Our Benefits</h3>
+    <h3 class="section-title glance-title">{{ item.description_header_text }}</h3>
+    <div class="glance-description">
+        {{ item.description|safe }}
+    </div>
 
-        <p class="glance-description">Tomoil is a dynamic energy company dedicated to delivering high-quality fuel
-            products and services. With a
-            strong presence across key markets, Tomoil focuses on innovation, sustainability, and customer satisfaction.
-            Our commitment is to power everyday journeys, support economic growth, and drive a cleaner energy future.
-            Tomoil is a dynamic energy company dedicated to delivering high-quality fuel products and services. With a
-            strong presence across key markets,
-            Tomoil focuses on innovation, sustainability, and customer satisfaction. Our commitment is to power everyday
-            journeys, support economic growth, and drive a cleaner energy future. Tomoil is a dynamic energy company
-            dedicated to delivering high-quality fuel products and services. With a strong presence across key markets,
-            Tomoil focuses on innovation, sustainability, and customer satisfaction. Our commitment is to power everyday
-            journeys, support economic growth, and drive a cleaner energy future.
-        </p>
     </div>
 </section>
 
-{%endblock %}
+{% endblock %}

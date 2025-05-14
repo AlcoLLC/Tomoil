@@ -75,12 +75,11 @@ def view_catalogue(request, catalogue_id):
     catalogue = get_object_or_404(BrandCatalogue, id=catalogue_id)
     file_path = catalogue.document.path
 
+    if not os.path.exists(file_path):
+        raise Http404("Dosya bulunamadı.")
+
     mime_type, _ = mimetypes.guess_type(file_path)
     if mime_type is None:
-        mime_type = 'application/octet-stream'
+        mime_type = 'application/pdf'
 
-    file_name = os.path.basename(file_path)
-
-    response = FileResponse(open(file_path, 'rb'), content_type=mime_type)
-    response['Content-Disposition'] = f'inline; filename="{file_name}"'
-    return response
+    return FileResponse(open(file_path, 'rb'), content_type=mime_type)
