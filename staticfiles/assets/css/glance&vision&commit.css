@@ -1,0 +1,228 @@
+/* Glance section */
+
+.glance-section {
+  margin-top: 50px;
+}
+
+.glance-section .section-description {
+  color: #223160;
+  text-align: justify;
+  margin-top: 20px;
+  letter-spacing: 0.2px;
+}
+
+.glance-section .guides-grid {
+  margin-top: 30px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 30px;
+}
+
+.glance-section .guides-grid h4,
+.vision-mission-section .values-grid h4 {
+  font-family: Atyp Regular;
+  color: #223160;
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+.glance-section .guides-grid i {
+  color: #e22131;
+  margin-right: 5px;
+}
+
+.glance-section .glance-description {
+  font-family: Atyp Regular;
+  font-size: 12px;
+  color: #727272;
+  line-height: 1.3;
+}
+
+.glance-section img {
+  width: 100%;
+  height: 32vh;
+  object-fit: cover;
+  border-radius: 20px;
+  margin: 30px 0;
+}
+
+.glance-section .glance-title {
+  font-size: 24px;
+}
+
+/* //////////////////////////////////////////////////////////////////////////////////////////////// */
+
+/* Vision Mission Section */
+
+.vision-mission-section {
+  margin-top: 50px;
+}
+.vision-mission-section .vision-mission-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 25px;
+}
+
+.vision-mission-section .vision-mission-top-left {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  gap: 35px;
+}
+
+.vision-mission-section .section-description {
+  color: #223160;
+  line-height: 1.2;
+}
+
+.vision-mission-section .vision-mission-top .section-description {
+  margin-top: 20px;
+  text-align: justify;
+}
+
+.vision-mission-section img {
+  width: 40%;
+  height: 50vh;
+  object-fit: cover;
+  border-radius: 20px;
+}
+.vision-mission-section .vision-mission-bottom {
+  margin-top: 50px;
+}
+.vision-mission-section .values-grid {
+  margin-top: 30px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 40px;
+}
+
+.vision-mission-section .values-grid .values-grid-item {
+  display: flex;
+  align-items: start;
+  gap: 10px;
+}
+
+.vision-mission-section .values-grid .values-grid-item i {
+  color: #e22131;
+}
+
+/* //////////////////////////////////////////////////////////////////////////////////////////////// */
+
+/* Our Commitments Section  */
+
+.our-commitments-section {
+  margin-top: 50px;
+}
+
+.our-commitments-section .commitments-container {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 55px;
+}
+
+.our-commitments-section .commitments-container .commitments-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.our-commitments-section .commitments-container .commitments-content {
+  width: 100%;
+}
+
+.our-commitments-section .commitments-container .commitments-item {
+  display: flex;
+  align-items: center;
+  padding: 16px 20px;
+  background-color: #fff;
+  border-radius: 100px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.our-commitments-section .commitments-container .commitments-item span {
+  color: #223160;
+  font-family: "Plus Jakarta Sans", sans-serif;
+  flex-grow: 1;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.our-commitments-section .commitments-container .commitments-item.active {
+  background-color: #e22131;
+  color: white;
+}
+
+.our-commitments-section .commitments-container .commitments-item.active span {
+  color: white;
+}
+
+.our-commitments-section .commitments-container .arrow-icon {
+  width: 28px;
+  height: 28px;
+  background-color: #e221311c;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.our-commitments-section .commitments-container .arrow-icon i {
+  font-size: 12px;
+  color: #223160;
+  font-weight: 600;
+}
+
+.our-commitments-section .commitments-container .commitments-item.active i {
+  color: #e22131;
+}
+
+.our-commitments-section
+  .commitments-container
+  .commitments-item.active
+  .arrow-icon {
+  background-color: #fff;
+}
+
+.our-commitments-section .commitments-detail {
+  display: none;
+}
+
+.our-commitments-section .commitments-detail.active {
+  display: block;
+}
+
+.our-commitments-section .commitments-detail {
+  transition: opacity 0.3s ease;
+  opacity: 0;
+}
+
+.our-commitments-section .commitments-detail.active {
+  opacity: 1;
+}
+
+.our-commitments-section .section-description {
+  margin-top: 20px;
+  font-size: 16px;
+  line-height: 1.3;
+  color: #223160;
+  text-align: justify;
+}
+
+.our-commitments-section .commitments-description h3 {
+  font-family: Plus Jakarta Sans;
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 30px;
+  color: #223160;
+}
+
+.our-commitments-section img {
+  width: 100%;
+  height: 35vh;
+  border-radius: 20px;
+  object-fit: cover;
+  margin: 30px 0px;
+}
