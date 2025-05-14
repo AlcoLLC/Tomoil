@@ -94,8 +94,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
     if (customSelect) {
       options.forEach((opt) => {
-        const optValue = opt.getAttribute("data-value");
-        if (optValue === value) {
+        const optValue = opt.getAttribute("data-value").toLowerCase();
+        if (optValue === value.toLowerCase()) {
           customSelect.innerText = opt.querySelector("span").innerText.trim();
           options.forEach((o) => o.classList.remove("selected"));
           opt.classList.add("selected");
@@ -127,37 +127,45 @@ document.addEventListener("DOMContentLoaded", function () {
   };
 
   function initializeCustomSelect(wrapper) {
+    if (!wrapper) return;
+
     const customSelect = wrapper.querySelector(".custom-select");
     const customOptions = wrapper.querySelector(".custom-options");
     const options = wrapper.querySelectorAll(".custom-option");
     const hiddenSelect = wrapper.querySelector("select");
 
-    customSelect.addEventListener("click", function (e) {
+    if (!customSelect || !customOptions || !options || !hiddenSelect) return;
+
+    // Remove existing event listeners by cloning and replacing elements
+    const newCustomSelect = customSelect.cloneNode(true);
+    customSelect.parentNode.replaceChild(newCustomSelect, customSelect);
+
+    // Add new event listener
+    newCustomSelect.addEventListener("click", function (e) {
       e.preventDefault();
       e.stopPropagation();
       this.classList.toggle("open");
     });
 
-    document.addEventListener("click", function () {
-      customSelect.classList.remove("open");
-    });
-
-    customOptions.addEventListener("click", function (e) {
-      e.stopPropagation();
-    });
-
+    // Remove existing event listeners from options
     options.forEach(function (option) {
-      option.addEventListener("click", function (e) {
+      const newOption = option.cloneNode(true);
+      option.parentNode.replaceChild(newOption, option);
+
+      newOption.addEventListener("click", function (e) {
         e.preventDefault();
         e.stopPropagation();
 
         const selectedText = this.querySelector("span").innerText.trim();
-        customSelect.innerText = selectedText;
+        newCustomSelect.innerText = selectedText;
 
         const value = this.getAttribute("data-value");
         if (hiddenSelect) {
           for (let i = 0; i < hiddenSelect.options.length; i++) {
-            if (hiddenSelect.options[i].value === value) {
+            if (
+              hiddenSelect.options[i].value.toLowerCase() ===
+              value.toLowerCase()
+            ) {
               hiddenSelect.selectedIndex = i;
               break;
             }
@@ -169,10 +177,12 @@ document.addEventListener("DOMContentLoaded", function () {
           hiddenSelect.dispatchEvent(event);
         }
 
-        options.forEach((opt) => opt.classList.remove("selected"));
+        wrapper
+          .querySelectorAll(".custom-option")
+          .forEach((opt) => opt.classList.remove("selected"));
         this.classList.add("selected");
 
-        customSelect.classList.remove("open");
+        newCustomSelect.classList.remove("open");
       });
     });
   }
@@ -180,18 +190,63 @@ document.addEventListener("DOMContentLoaded", function () {
   function reinitializeCustomSelects() {
     const customSelects = document.querySelectorAll(".custom-select-wrapper");
     customSelects.forEach(initializeCustomSelect);
+
+    // Add document click handler to close any open select
+    document.addEventListener("click", function () {
+      document.querySelectorAll(".custom-select").forEach((select) => {
+        select.classList.remove("open");
+      });
+    });
+
+    // Prevent closing when clicking inside options
+    document.querySelectorAll(".custom-options").forEach((options) => {
+      options.addEventListener("click", function (e) {
+        e.stopPropagation();
+      });
+    });
   }
 
   async function fetchNews() {
     try {
-      const response = await fetch("/api/news/");
+      // Build the API URL with all current filters
+      let apiUrl = "/api/news/";
+      const params = new URLSearchParams();
+
+      if (state.sortBy) {
+        params.set("sort_by", state.sortBy);
+      }
+
+      if (state.searchQuery) {
+        params.set("search", state.searchQuery);
+      }
+
+      if (state.startDate) {
+        params.set("from_date", state.startDate);
+      }
+
+      if (state.endDate) {
+        params.set("to_date", state.endDate);
+      }
+
+      if (params.toString()) {
+        apiUrl += "?" + params.toString();
+      }
+
+      console.log("Fetching news from: " + apiUrl);
+
+      const response = await fetch(apiUrl);
       if (!response.ok) {
         throw new Error("Network response was not ok");
       }
       const data = await response.json();
       state.news = data;
       state.filteredNews = [...data];
-      applyFilters();
+
+      // Apply client-side filtering for search
+      applyClientFilters();
+
+      renderNews();
+      updatePagination();
     } catch (error) {
       console.error("Error fetching news:", error);
       displayErrorMessage("Failed to load news data. Please try again later.");
@@ -208,7 +263,7 @@ document.addEventListener("DOMContentLoaded", function () {
     newsContent.appendChild(errorDiv);
   }
 
-  function applyFilters() {
+  function applyClientFilters() {
     let filtered = [...state.news];
 
     if (state.searchQuery) {
@@ -221,60 +276,15 @@ document.addEventListener("DOMContentLoaded", function () {
       );
     }
 
-    if (state.startDate) {
-      const startDate = new Date(parseDate(state.startDate));
-      startDate.setHours(0, 0, 0, 0);
-
-      filtered = filtered.filter((item) => {
-        const itemDate = new Date(item.created_at);
-        return itemDate >= startDate;
-      });
-    }
-
-    if (state.endDate) {
-      const endDate = new Date(parseDate(state.endDate));
-      endDate.setHours(23, 59, 59, 999);
-
-      filtered = filtered.filter((item) => {
-        const itemDate = new Date(item.created_at);
-        return itemDate <= endDate;
-      });
-    }
-
-    console.log("Applying sort by:", state.sortBy);
-
-    switch (state.sortBy.toLowerCase()) {
-      case "relevance":
-        filtered.sort((a, b) => b.views_count - a.views_count);
-        console.log("Sorted by relevance");
-        break;
-      case "latest":
-        filtered.sort(
-          (a, b) => new Date(b.created_at) - new Date(a.created_at)
-        );
-        console.log("Sorted by latest");
-        break;
-      case "oldest":
-        filtered.sort(
-          (a, b) => new Date(a.created_at) - new Date(b.created_at)
-        );
-        console.log("Sorted by oldest");
-        break;
-      case "from a to z":
-        filtered.sort((a, b) => a.title.localeCompare(b.title));
-        console.log("Sorted alphabetically");
-        break;
-      default:
-        console.log("Unknown sort option:", state.sortBy);
-        filtered.sort((a, b) => b.views_count - a.views_count);
-    }
-
     state.filteredNews = filtered;
     console.log("Filtered news count:", state.filteredNews.length);
-    renderNews();
-    updatePagination();
 
     updateUrl();
+  }
+
+  function applyFilters() {
+    // Instead of filtering client-side, refetch from the API with the new parameters
+    fetchNews();
   }
 
   function parseDate(dateStr) {
@@ -298,6 +308,7 @@ document.addEventListener("DOMContentLoaded", function () {
   function createNewsCard(item) {
     return `
             <div class="news-card">
+            <a  href="/news/${item.id}/">
             <img src="${
               item.image_one
             }" alt="${item.title}" class="card-image" />
@@ -323,6 +334,7 @@ document.addEventListener("DOMContentLoaded", function () {
                         <i class="fas fa-arrow-right-long read-more-icon"></i>
                     </a>
                 </div>
+                </a>
             </div>
         `;
   }
@@ -588,7 +600,7 @@ document.addEventListener("DOMContentLoaded", function () {
     function applyFilterFromForm() {
       if (selectors.sortBySelect) {
         const sortValue = selectors.sortBySelect.value;
-        state.sortBy = sortValue;
+        state.sortBy = sortValue.toLowerCase();
         console.log("Sort by selected:", sortValue);
       }
 
