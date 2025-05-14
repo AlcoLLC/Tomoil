@@ -1,52 +1,86 @@
-from .models import BrandVideo
-from django.shortcuts import render
-from django.http import FileResponse, Http404
+from django.shortcuts import render, get_object_or_404
+from django.http import FileResponse, Http404, HttpResponse
+from django.views.generic import TemplateView
 import os
-from django.views.generic import ListView
-from .models import BrandPromotionalItem, BrandImageLibrary
-from django.shortcuts import get_object_or_404
+import mimetypes
 
-# Brand Promotional Item
+from .models import (
+    BrandPromotionalItem,
+    BrandImageLibrary,
+    BrandVideo,
+    BrandGuidelineDocument,
+    BrandCatalogue
+)
 
 
-class BrandPromotionalListView(ListView):
-    model = BrandPromotionalItem
+class BrandPortalView(TemplateView):
     template_name = 'brand_list.html'
-    context_object_name = 'items'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+
+        context['promotional_items'] = BrandPromotionalItem.objects.all()
+        context['image_library'] = {
+            'corporate': BrandImageLibrary.objects.filter(type='corporate'),
+            'dealership': BrandImageLibrary.objects.filter(type='dealership'),
+            'sponsorship': BrandImageLibrary.objects.filter(type='sponsorship'),
+        }
+        context['videos'] = BrandVideo.objects.all()
+        context['brand_guidelines'] = BrandGuidelineDocument.objects.all()
+        context['catalogues'] = BrandCatalogue.objects.all()
+
+        active_tab = self.request.GET.get('tab', 'brand-guideline')
+        context['active_tab'] = active_tab
+
+        return context
 
 
-def download_brand_promotional_item(request, pk):
-    from .models import BrandPromotionalItem
-    item = get_object_or_404(BrandPromotionalItem, pk=pk)
-    file_path = item.preview_image.path
+def download_file(request, model_name, pk):
+    model_map = {
+        'promotional': BrandPromotionalItem,
+        'image': BrandImageLibrary,
+        'guideline': BrandGuidelineDocument,
+        'catalogue': BrandCatalogue,
+    }
+
+    field_map = {
+        'promotional': 'preview_image',
+        'image': 'preview_image',
+        'guideline': 'document',
+        'catalogue': 'document',
+    }
+
+    if model_name not in model_map:
+        raise Http404("Invalid model type")
+
+    model = model_map[model_name]
+    field = field_map[model_name]
+
+    item = get_object_or_404(model, pk=pk)
+    file_field = getattr(item, field)
+    file_path = file_field.path
 
     if not os.path.exists(file_path):
         raise Http404("File not found.")
 
-    return FileResponse(open(file_path, 'rb'), as_attachment=True, filename=os.path.basename(file_path))
-
-# Brand Image Library
-
-
-class BrandImageLibraryListView(ListView):
-    model = BrandImageLibrary
-    template_name = 'brand_image_library_list.html'
-    context_object_name = 'images'
+    filename = os.path.basename(file_path)
+    return FileResponse(
+        open(file_path, 'rb'),
+        as_attachment=True,
+        filename=filename
+    )
 
 
-def download_brand_image_library_item(request, pk):
-    from .models import BrandImageLibrary
-    item = get_object_or_404(BrandImageLibrary, pk=pk)
-    file_path = item.preview_image.path
+def view_catalogue(request, catalogue_id):
+    catalogue = get_object_or_404(BrandCatalogue, id=catalogue_id)
+    file_path = catalogue.document.path
 
-    if not os.path.exists(file_path):
-        raise Http404("File not found.")
+    mime_type, _ = mimetypes.guess_type(file_path)
+    if mime_type is None:
+        mime_type = 'application/octet-stream'
 
-    return FileResponse(open(file_path, 'rb'), as_attachment=True, filename=os.path.basename(file_path))
+    file_name = os.path.basename(file_path)
 
-# Videos tab
-
-
-def brand_videos_view(request):
-    videos = BrandVideo.objects.all()
-    return render(request, 'brand_videos.html', {'videos': videos})
+    response = FileResponse(open(file_path, 'rb'), content_type=mime_type)
+    response['Content-Disposition'] = f'inline; filename="{file_name}"'
+    return response

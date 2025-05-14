@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import BrandPromotionalItem, BrandImageLibrary, BrandVideo
+from .models import BrandPromotionalItem, BrandImageLibrary, BrandVideo, BrandCatalogue
 
 
 @admin.register(BrandPromotionalItem)
@@ -18,3 +18,8 @@ class BrandImageLibraryAdmin(admin.ModelAdmin):
 @admin.register(BrandVideo)
 class BrandVideoAdmin(admin.ModelAdmin):
     list_display = ('title', 'video_url')
+
+
+@admin.register(BrandCatalogue)
+class BrandCatalogueAdmin(admin.ModelAdmin):
+    list_display = ('title', 'description')

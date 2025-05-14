@@ -14,6 +14,33 @@ def news_api(request):
     try:
         news_items = News.objects.all()
 
+        sort_by = request.GET.get("sort_by", "relevance").lower()
+        if sort_by == "latest":
+            news_items = news_items.order_by("-created_at")
+        elif sort_by == "oldest":
+            news_items = news_items.order_by("created_at")
+        elif sort_by == "from a to z":
+            news_items = news_items.order_by("title")
+        else:
+            news_items = news_items.order_by("-views_count")
+
+        from_date = request.GET.get("from_date")
+        to_date = request.GET.get("to_date")
+
+        if from_date:
+            parts = from_date.split('.')
+            if len(parts) == 3:
+                formatted_date = f"{parts[2]}-{parts[1]}-{parts[0]}"
+                news_items = news_items.filter(
+                    created_at__date__gte=formatted_date)
+
+        if to_date:
+            parts = to_date.split('.')
+            if len(parts) == 3:
+                formatted_date = f"{parts[2]}-{parts[1]}-{parts[0]}"
+                news_items = news_items.filter(
+                    created_at__date__lte=formatted_date)
+
         news_data = json.loads(serialize('json', news_items))
 
         formatted_news = []
@@ -48,7 +75,6 @@ def news_list(request):
 
     news_items = News.objects.all()
 
-    # Tarih filtreleme
     if from_date:
         parsed_from = parse_date(from_date.replace('.', '-'))
         if parsed_from:
@@ -59,15 +85,12 @@ def news_list(request):
         if parsed_to:
             news_items = news_items.filter(created_at__lte=parsed_to)
 
-    # Sıralama
     if sort_by == "Latest":
         news_items = news_items.order_by("-created_at")
     elif sort_by == "Oldest":
         news_items = news_items.order_by("created_at")
     elif sort_by == "From A to Z":
         news_items = news_items.order_by("title")
-
-    # Pagination
     paginator = Paginator(news_items, per_page)
     page_number = request.GET.get("page")
     page_obj = paginator.get_page(page_number)
