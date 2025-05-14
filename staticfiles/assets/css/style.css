@@ -513,8 +513,7 @@
 }
 
 .section-case-studies .all-case-studies {
-  color:
-#e22131;
+  color: #e22131;
   font-size: 16px;
   line-height: 1.5;
   display: inline-block;
@@ -522,8 +521,7 @@
 }
 
 .section-case-studies .all-case-studies:hover {
-  color:
-#c62232;
+  color: #c62232;
 }
 
 .section-case-studies .slider-controls {
@@ -537,8 +535,7 @@
   border-radius: 50%;
   border: none;
   background-color: white;
-  color:
-#727272;
+  color: #727272;
   border: 0.1px solid #72727237;
   font-size: 11px;
   padding: 12px;
@@ -556,8 +553,7 @@
 
 .section-case-studies .next-case:hover,
 .section-case-studies .prev-case:hover {
-  background-color:
-#c62232;
+  background-color: #c62232;
   color: white;
 }
 
@@ -623,8 +619,7 @@
   margin: 0 auto;
   width: 95%;
   padding: 25px;
-  background-color:
-#e22131;
+  background-color: #e22131;
   border-radius: 10px;
   color: white;
   opacity: 0;

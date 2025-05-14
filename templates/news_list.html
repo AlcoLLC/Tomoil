@@ -243,19 +243,19 @@
       </div>
 
       <!-- Pagination -->
-    <div class="pagination-container">
-      <p class="pagination-info">
-        Displaying {{ page_obj.start_index }}–{{ page_obj.end_index }} of {{ total_results }} results
-      </p>
-      <div class="pagination">
-        <!-- Page Numbers -->
-        {% for num in page_obj.paginator.page_range %} {% if page_obj.number == num %}
-        <span class="page-btn active">{{ num }}</span>
-        {% elif num > page_obj.number|add:-3 and num < page_obj.number|add:3 %} <a
-          href="?from_date={{ formatted_date|urlencode }}&page={{ num }}" class="page-btn">{{ num }}</a>
-          {% endif %} {% endfor %}
+      <div class="pagination-container">
+        <p class="pagination-info">
+          Displaying {{ page_obj.start_index }}–{{ page_obj.end_index }} of {{ total_results }} results
+        </p>
+        <div class="pagination">
+          <!-- Page Numbers -->
+          {% for num in page_obj.paginator.page_range %} {% if page_obj.number == num %}
+          <span class="page-btn active">{{ num }}</span>
+          {% elif num > page_obj.number|add:-3 and num < page_obj.number|add:3 %} <a
+            href="?from_date={{ formatted_date|urlencode }}&page={{ num }}" class="page-btn">{{ num }}</a>
+            {% endif %} {% endfor %}
+        </div>
       </div>
-    </div>
     </div>
   </div>
 
