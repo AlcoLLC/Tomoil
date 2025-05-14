@@ -5,14 +5,22 @@ from django_ckeditor_5.fields import CKEditor5Field
 class Glance(models.Model):
     title = models.CharField(max_length=255)
     header_text = models.TextField()
-    guide = models.CharField(max_length=255)
-    guide_text = models.TextField()
     image = models.ImageField(upload_to="glance/images/")
     description_header_text = models.CharField(max_length=255)
     description = CKEditor5Field()
 
     def __str__(self):
         return self.title
+
+
+class GlanceGuide(models.Model):
+    glance = models.ForeignKey(Glance, related_name='guides', on_delete=models.CASCADE)
+    guide = models.CharField(max_length=255)
+    guide_text = models.TextField()
+
+    def __str__(self):
+        return f"{self.guide} - {self.glance.title}"
+
 
 
 class VisionMission(models.Model):
