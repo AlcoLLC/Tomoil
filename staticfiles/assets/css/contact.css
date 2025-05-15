@@ -389,7 +389,7 @@
   width: 200% !important;
 }
 
-.contact-section .custom-select.open + .custom-options {
+.contact-section  .custom-options.active {
   opacity: 1;
   visibility: visible;
 }

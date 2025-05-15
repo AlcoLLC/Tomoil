@@ -82,4 +82,8 @@ def view_catalogue(request, catalogue_id):
     if mime_type is None:
         mime_type = 'application/pdf'
 
-    return FileResponse(open(file_path, 'rb'), content_type=mime_type)
+    response = FileResponse(open(file_path, 'rb'), content_type=mime_type)
+
+    response['Content-Disposition'] = f'inline; filename="{os.path.basename(file_path)}"'
+
+    return response

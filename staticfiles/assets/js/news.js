@@ -60,13 +60,9 @@ document.addEventListener("DOMContentLoaded", function () {
       params.set("search", state.searchQuery);
     }
 
-    if (state.sortBy && state.sortBy !== "relevance") {
-      params.set("sort_by", state.sortBy);
-    }
+    params.set("sort_by", state.sortBy);
 
-    if (state.perPage !== 12) {
-      params.set("per_page", state.perPage.toString());
-    }
+    params.set("per_page", state.perPage.toString());
 
     if (state.currentPage > 1) {
       params.set("page", state.currentPage.toString());
@@ -114,7 +110,7 @@ document.addEventListener("DOMContentLoaded", function () {
     newsList: document.querySelector(".news-list"),
     filterSortButton: document.querySelector(".filter-sort-button"),
     modalOverlay: document.getElementById("filterSortModalOverlay"),
-    filterForm: document.getElementById("filter-form"),
+    filterForm: document.getElementById("filter-form-news"),
     clearAllButton: document.querySelector(".btn-clear"),
     paginationContainer: document.querySelector(".pagination-container"),
     paginationInfo: document.querySelector(".pagination-info"),
@@ -136,21 +132,30 @@ document.addEventListener("DOMContentLoaded", function () {
 
     if (!customSelect || !customOptions || !options || !hiddenSelect) return;
 
-    // Remove existing event listeners by cloning and replacing elements
+    // Remove old event listeners by replacing with clones
+    const newOptions = document.createElement("div");
+    newOptions.className = "custom-options";
+    customOptions.parentNode.replaceChild(newOptions, customOptions);
+
     const newCustomSelect = customSelect.cloneNode(true);
     customSelect.parentNode.replaceChild(newCustomSelect, customSelect);
 
-    // Add new event listener
+    // Add event listener to custom select
     newCustomSelect.addEventListener("click", function (e) {
       e.preventDefault();
       e.stopPropagation();
       this.classList.toggle("open");
     });
 
-    // Remove existing event listeners from options
+    // Create new option elements with event listeners
     options.forEach(function (option) {
-      const newOption = option.cloneNode(true);
-      option.parentNode.replaceChild(newOption, option);
+      const newOption = document.createElement("div");
+      newOption.className = option.className;
+      newOption.setAttribute("data-value", option.getAttribute("data-value"));
+      newOption.innerHTML = option.innerHTML;
+      if (option.classList.contains("selected")) {
+        newOption.classList.add("selected");
+      }
 
       newOption.addEventListener("click", function (e) {
         e.preventDefault();
@@ -161,6 +166,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         const value = this.getAttribute("data-value");
         if (hiddenSelect) {
+          // Update the hidden select value
           for (let i = 0; i < hiddenSelect.options.length; i++) {
             if (
               hiddenSelect.options[i].value.toLowerCase() ===
@@ -173,17 +179,22 @@ document.addEventListener("DOMContentLoaded", function () {
 
           console.log(`Custom select changed to: ${value}`);
 
+          // Trigger change event on the hidden select
           const event = new Event("change", { bubbles: true });
           hiddenSelect.dispatchEvent(event);
         }
 
+        // Update selected class
         wrapper
           .querySelectorAll(".custom-option")
           .forEach((opt) => opt.classList.remove("selected"));
         this.classList.add("selected");
 
+        // Close the dropdown
         newCustomSelect.classList.remove("open");
       });
+
+      newOptions.appendChild(newOption);
     });
   }
 
@@ -191,14 +202,14 @@ document.addEventListener("DOMContentLoaded", function () {
     const customSelects = document.querySelectorAll(".custom-select-wrapper");
     customSelects.forEach(initializeCustomSelect);
 
-    // Add document click handler to close any open select
+    // Close all dropdowns when clicking outside
     document.addEventListener("click", function () {
       document.querySelectorAll(".custom-select").forEach((select) => {
         select.classList.remove("open");
       });
     });
 
-    // Prevent closing when clicking inside options
+    // Prevent dropdown from closing when clicking inside options
     document.querySelectorAll(".custom-options").forEach((options) => {
       options.addEventListener("click", function (e) {
         e.stopPropagation();
@@ -208,13 +219,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
   async function fetchNews() {
     try {
-      // Build the API URL with all current filters
       let apiUrl = "/api/news/";
       const params = new URLSearchParams();
 
-      if (state.sortBy) {
-        params.set("sort_by", state.sortBy);
-      }
+      params.set("sort_by", state.sortBy);
 
       if (state.searchQuery) {
         params.set("search", state.searchQuery);
@@ -242,11 +250,11 @@ document.addEventListener("DOMContentLoaded", function () {
       state.news = data;
       state.filteredNews = [...data];
 
-      // Apply client-side filtering for search
       applyClientFilters();
 
       renderNews();
       updatePagination();
+      updateUrl();
     } catch (error) {
       console.error("Error fetching news:", error);
       displayErrorMessage("Failed to load news data. Please try again later.");
@@ -278,12 +286,9 @@ document.addEventListener("DOMContentLoaded", function () {
 
     state.filteredNews = filtered;
     console.log("Filtered news count:", state.filteredNews.length);
-
-    updateUrl();
   }
 
   function applyFilters() {
-    // Instead of filtering client-side, refetch from the API with the new parameters
     fetchNews();
   }
 
@@ -306,6 +311,10 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   function createNewsCard(item) {
+    const shortDescription =
+      item.description.length > 120
+        ? item.description.substring(0, 120) + "..."
+        : item.description;
     return `
             <div class="news-card">
             <a  href="/news/${item.id}/">
@@ -327,7 +336,7 @@ document.addEventListener("DOMContentLoaded", function () {
                         ${item.title}
                     </h3>
                     <p class="card-description">
-                        ${item.description}
+                        ${shortDescription}
                     </p>
                     <a href="/news/${item.id}/" class="read-more">
                         Read More
@@ -340,6 +349,10 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   function createNewsListItem(item) {
+    const shortDescription =
+      item.description.length > 100
+        ? item.description.substring(0, 100) + "..."
+        : item.description;
     return `
             <div class="news-list-item">
                 <div class="list-item-image">
@@ -360,7 +373,7 @@ document.addEventListener("DOMContentLoaded", function () {
                         ${item.title}
                     </h3>
                     <p class="card-description">
-                        ${item.description}
+                        ${shortDescription}
                     </p>
                     <a href="/news/${item.id}/" class="read-more">
                         Read More
@@ -535,6 +548,10 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 
+  function closeModal() {
+    selectors.modalOverlay.style.display = "none";
+  }
+
   function initializeFilterModal() {
     selectors.filterSortButton.addEventListener("click", function () {
       if (selectors.sortBySelect) {
@@ -565,48 +582,119 @@ document.addEventListener("DOMContentLoaded", function () {
       reinitializeCustomSelects();
     });
 
+    // Improve modal close behavior
     selectors.modalOverlay.addEventListener("click", function (e) {
       if (e.target === selectors.modalOverlay) {
-        selectors.modalOverlay.style.display = "none";
+        closeModal();
+      }
+    });
+
+    // Add escape key to close modal
+    document.addEventListener("keydown", function (e) {
+      if (
+        e.key === "Escape" &&
+        selectors.modalOverlay.style.display === "flex"
+      ) {
+        closeModal();
       }
     });
 
     const filterSortModal = document.querySelector(".filter-sort-modal");
-    filterSortModal.addEventListener("click", function (e) {
-      e.stopPropagation();
-    });
+    if (filterSortModal) {
+      filterSortModal.addEventListener("click", function (e) {
+        e.stopPropagation();
+      });
+    }
 
-    selectors.filterForm.addEventListener("submit", function (e) {
-      e.preventDefault();
-      e.stopPropagation();
-      console.log("Form submit event triggered");
+    // Ensure form submission works correctly
+    if (selectors.filterForm) {
+      selectors.filterForm.addEventListener("submit", function (e) {
+        e.preventDefault();
+        e.stopPropagation();
+        console.log("Form submit event triggered");
 
-      applyFilterFromForm();
-    });
+        applyFilterFromForm();
+        closeModal();
+      });
+    }
 
-    if (selectors.viewResultBtn) {
+    // Fix View Result button functionality
+    const setupViewResultButton = () => {
+      // First check if the button exists
+      const viewResultBtn = document.querySelector(".btn-view");
+      if (!viewResultBtn) {
+        console.error("View Result button not found");
+        return;
+      }
+
+      // Remove any existing listeners by cloning
+      const newViewResultBtn = viewResultBtn.cloneNode(true);
+      viewResultBtn.parentNode.replaceChild(newViewResultBtn, viewResultBtn);
+
+      // Update the selector
+      selectors.viewResultBtn = newViewResultBtn;
+
+      // Add the click event listener
       selectors.viewResultBtn.addEventListener("click", function (e) {
         e.preventDefault();
         e.stopPropagation();
         console.log("View Result button clicked!");
 
-        applyFilterFromForm();
-        selectors.modalOverlay.style.display = "none";
+        // Directly get values from the actual select elements
+        if (document.querySelector('select[name="sort_by"]')) {
+          state.sortBy = document
+            .querySelector('select[name="sort_by"]')
+            .value.toLowerCase();
+          console.log("Applied sort_by:", state.sortBy);
+        }
+
+        if (document.querySelector('select[name="per_page"]')) {
+          state.perPage = parseInt(
+            document.querySelector('select[name="per_page"]').value
+          );
+          console.log("Applied per_page:", state.perPage);
+        }
+
+        // Get date values
+        if (document.getElementById("datepicker3")) {
+          state.startDate = document.getElementById("datepicker3").value;
+        }
+
+        if (document.getElementById("datepicker4")) {
+          state.endDate = document.getElementById("datepicker4").value;
+        }
+
+        state.currentPage = 1;
+
+        console.log("Filter applied with values:", {
+          sortBy: state.sortBy,
+          perPage: state.perPage,
+          startDate: state.startDate,
+          endDate: state.endDate,
+        });
+
+        applyFilters();
+        closeModal();
       });
-    } else {
-      console.error("View Result button not found in DOM");
-    }
+    };
+
+    // Call this function to set up the button
+    setupViewResultButton();
 
     function applyFilterFromForm() {
-      if (selectors.sortBySelect) {
-        const sortValue = selectors.sortBySelect.value;
-        state.sortBy = sortValue.toLowerCase();
-        console.log("Sort by selected:", sortValue);
+      // Get values directly from the select elements
+      if (document.querySelector('select[name="sort_by"]')) {
+        state.sortBy = document
+          .querySelector('select[name="sort_by"]')
+          .value.toLowerCase();
+        console.log("Applied sort_by:", state.sortBy);
       }
 
-      if (selectors.perPageSelect) {
-        state.perPage = parseInt(selectors.perPageSelect.value);
-        console.log("Per page selected:", state.perPage);
+      if (document.querySelector('select[name="per_page"]')) {
+        state.perPage = parseInt(
+          document.querySelector('select[name="per_page"]').value
+        );
+        console.log("Applied per_page:", state.perPage);
       }
 
       state.startDate = selectors.startDateInput
@@ -627,15 +715,29 @@ document.addEventListener("DOMContentLoaded", function () {
       applyFilters();
     }
 
-    if (selectors.clearAllButton) {
+    // Set up clear all button
+    const setupClearAllButton = () => {
+      const clearAllBtn = document.querySelector(".btn-clear");
+      if (!clearAllBtn) {
+        console.error("Clear All button not found");
+        return;
+      }
+
+      const newClearAllBtn = clearAllBtn.cloneNode(true);
+      clearAllBtn.parentNode.replaceChild(newClearAllBtn, clearAllBtn);
+
+      selectors.clearAllButton = newClearAllBtn;
+
       selectors.clearAllButton.addEventListener("click", function (e) {
         e.preventDefault();
         e.stopPropagation();
-
         console.log("Clear All button clicked");
 
-        selectors.filterForm.reset();
+        if (selectors.filterForm) {
+          selectors.filterForm.reset();
+        }
 
+        // Reset custom select displays
         document
           .querySelectorAll(".custom-select-wrapper")
           .forEach((wrapper) => {
@@ -651,23 +753,35 @@ document.addEventListener("DOMContentLoaded", function () {
 
               options.forEach((opt) => opt.classList.remove("selected"));
               initialOption.classList.add("selected");
-
-              const hiddenSelect = wrapper.querySelector("select");
-              if (hiddenSelect) {
-                hiddenSelect.selectedIndex = 0;
-              }
             }
           });
 
+        // Reset the actual select elements
+        if (document.querySelector('select[name="sort_by"]')) {
+          document.querySelector('select[name="sort_by"]').selectedIndex = 0;
+        }
+
+        if (document.querySelector('select[name="per_page"]')) {
+          document.querySelector('select[name="per_page"]').selectedIndex = 0;
+        }
+
+        // Reset date inputs
         if (selectors.startDateInput) selectors.startDateInput.value = "";
         if (selectors.endDateInput) selectors.endDateInput.value = "";
 
+        // Update state
         state.startDate = "";
         state.endDate = "";
         state.sortBy = "relevance";
         state.perPage = 12;
+
+        applyFilters();
+        closeModal();
       });
-    }
+    };
+
+    // Call this function to set up the clear all button
+    setupClearAllButton();
   }
 
   function initializeDatepickers() {
@@ -688,6 +802,7 @@ document.addEventListener("DOMContentLoaded", function () {
           }
         },
         onClose: function (selectedDates, dateStr, instance) {
+          // Don't close modal when date picker closes
           return false;
         },
       };
@@ -736,6 +851,12 @@ document.addEventListener("DOMContentLoaded", function () {
     selectors.newsList.style.display = "none";
 
     fetchNews();
+
+    document.addEventListener("click", function () {
+      document.querySelectorAll(".custom-select").forEach(function (select) {
+        select.classList.remove("open");
+      });
+    });
   }
 
   init();

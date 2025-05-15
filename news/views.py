@@ -14,14 +14,14 @@ def news_api(request):
     try:
         news_items = News.objects.all()
 
-        sort_by = request.GET.get("sort_by", "relevance").lower()
-        if sort_by == "latest":
+        sort_by = request.GET.get("sort_by", "Relevance")
+        if sort_by.lower() == "latest":
             news_items = news_items.order_by("-created_at")
-        elif sort_by == "oldest":
+        elif sort_by.lower() == "oldest":
             news_items = news_items.order_by("created_at")
-        elif sort_by == "from a to z":
+        elif sort_by.lower() == "from a to z":
             news_items = news_items.order_by("title")
-        else:
+        else:  # Default is Relevance
             news_items = news_items.order_by("-views_count")
 
         from_date = request.GET.get("from_date")
@@ -68,7 +68,7 @@ def news_api(request):
 
 
 def news_list(request):
-    sort_by = request.GET.get("sort_by", "Relevance")
+    sort_by = request.GET.get("sort_by", "relevance")
     per_page = int(request.GET.get("per_page", 12))
     from_date = request.GET.get("from_date")
     to_date = request.GET.get("to_date")
@@ -85,12 +85,15 @@ def news_list(request):
         if parsed_to:
             news_items = news_items.filter(created_at__lte=parsed_to)
 
-    if sort_by == "Latest":
+    if sort_by.lower() == "latest":
         news_items = news_items.order_by("-created_at")
-    elif sort_by == "Oldest":
+    elif sort_by.lower() == "oldest":
         news_items = news_items.order_by("created_at")
-    elif sort_by == "From A to Z":
+    elif sort_by.lower() == "from a to z":
         news_items = news_items.order_by("title")
+    else:
+        news_items = news_items.order_by("-views_count")
+
     paginator = Paginator(news_items, per_page)
     page_number = request.GET.get("page")
     page_obj = paginator.get_page(page_number)
@@ -99,6 +102,8 @@ def news_list(request):
         "page_obj": page_obj,
         "total_results": paginator.count,
         "formatted_date": from_date or "",
+        "sort_by": sort_by,
+        "per_page": per_page,
     }
 
     return render(request, "news_list.html", context)

@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<!-- Page-Header -->
+{% include 'components/page-header.html' %}
+
+<!-- vision-mission Section -->
+<section class="vision-mission-section section-container">
+    <div class="vision-mission-top">
+        <div class="vision-mission-top-left">
+            <div>
+                <h2 class="section-title">VISION</h2>
+                <p class="section-description">
+                    {{ item.vision }}
+                </p>
+            </div>
+            <div>
+                <h2 class="section-title">MISSION</h2>
+                <p class="section-description">
+                    {{ item.mission }}
+                </p>
+            </div>
+        </div>
+
+        <img src="{% static 'images/case-detail-image1.png' %}" alt="vision-mission Image">
+
+    </div>
+    <div class="vision-mission-bottom">
+
+        <h2 class="section-title">VALUES</h2>
+
+        <div class="values-grid">
+            {% for value in item.values.all %}
+                <div class="values-grid-item">
+                    <i class="fa-solid fa-check"></i>
+                    <div>
+                        <h4>{{ value.title }}</h4>
+                        <p class="section-description">{{ value.description }}</p>
+                    </div>
+                </div>
+            {% empty %}
+                <p>No values available.</p>
+            {% endfor %}
+        </div>
+
+    </div>
+</section>
+
+{% endblock %}
