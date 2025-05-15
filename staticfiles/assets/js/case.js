@@ -5,8 +5,10 @@ document.addEventListener("DOMContentLoaded", function () {
 
 function initSimpleDatePicker(inputId) {
   const dateInput = document.getElementById(inputId);
-  const calendarIcon = dateInput.closest('.date-input').querySelector('.calendar-icon');
-  const dateFilterContainer = dateInput.closest('.date-input');
+  const calendarIcon = dateInput
+    .closest(".date-input")
+    .querySelector(".calendar-icon");
+  const dateFilterContainer = dateInput.closest(".date-input");
 
   if (!dateInput || !calendarIcon || !dateFilterContainer) return;
 
@@ -36,7 +38,7 @@ function initSimpleDatePicker(inputId) {
     if (!match) return null;
 
     const day = parseInt(match[1], 10);
-    const month = parseInt(match[2], 10) - 1; // 0-based month
+    const month = parseInt(match[2], 10) - 1;
     const year = parseInt(match[3], 10);
 
     const date = new Date(year, month, day);
@@ -67,10 +69,9 @@ function initSimpleDatePicker(inputId) {
   });
 
   function toggleCalendar() {
-    // Close any other open calendars
-    document.querySelectorAll('.simple-calendar.active').forEach(cal => {
+    document.querySelectorAll(".simple-calendar.active").forEach((cal) => {
       if (cal !== calendarContainer) {
-        cal.classList.remove('active');
+        cal.classList.remove("active");
       }
     });
 
@@ -82,7 +83,6 @@ function initSimpleDatePicker(inputId) {
     }
   }
 
-  // Close calendar when clicking outside
   document.addEventListener("click", function (e) {
     if (
       !calendarContainer.contains(e.target) &&
@@ -95,7 +95,7 @@ function initSimpleDatePicker(inputId) {
         if (dateInput.value.length < 10) {
           dateFilterContainer.classList.add("error");
         } else {
-          validateDate(dateInput.value, false); // Don't submit form automatically on blur
+          validateDate(dateInput.value, false); 
         }
       }
     }
@@ -116,7 +116,6 @@ function initSimpleDatePicker(inputId) {
     }
   });
 
-  // Input validation and formatting
   dateInput.addEventListener("input", function (e) {
     let value = e.target.value;
 
@@ -136,22 +135,20 @@ function initSimpleDatePicker(inputId) {
     e.target.value = value;
 
     if (value.length === 10) {
-      validateDate(value, false); // Don't submit form automatically on input
+      validateDate(value, false); 
     } else {
       dateFilterContainer.classList.remove("error");
     }
   });
 
-  // Add blur event to validate when leaving field
   dateInput.addEventListener("blur", function () {
     if (dateInput.value.length > 0 && dateInput.value.length < 10) {
       dateFilterContainer.classList.add("error");
     } else if (dateInput.value.length === 10) {
-      validateDate(dateInput.value, false); // Don't submit form automatically on blur
+      validateDate(dateInput.value, false); 
     }
   });
 
-  // Validate date format
   function validateDate(dateStr, submitOnValid = false) {
     const regex = /^(\d{2})\.(\d{2})\.(\d{4})$/;
     const match = dateStr.match(regex);
@@ -162,12 +159,12 @@ function initSimpleDatePicker(inputId) {
     }
 
     const day = parseInt(match[1], 10);
-    const month = parseInt(match[2], 10) - 1; // 0-based month
+    const month = parseInt(match[2], 10) - 1;
     const year = parseInt(match[3], 10);
 
     const date = new Date(year, month, day);
 
-    // Check if date is valid
+  
     if (
       date.getDate() !== day ||
       date.getMonth() !== month ||
@@ -178,13 +175,10 @@ function initSimpleDatePicker(inputId) {
       dateFilterContainer.classList.add("error");
       return false;
     }
-
-    // Valid date
     dateFilterContainer.classList.remove("error");
     selectedDate = date;
     currentDate = new Date(year, month, 1);
 
-    // Submit the form if requested
     if (submitOnValid) {
       submitForm();
     }
@@ -193,15 +187,12 @@ function initSimpleDatePicker(inputId) {
   }
 
   function submitForm() {
-    // Reset page parameter if exists when filtering by date
     const pageInput = document.querySelector('input[name="page"]');
     if (pageInput) {
       pageInput.remove();
     }
-    document.getElementById("filter-form").submit();
   }
 
-  // Render the calendar with current month and year
   function renderCalendar() {
     const year = currentDate.getFullYear();
     const month = currentDate.getMonth();
@@ -210,13 +201,22 @@ function initSimpleDatePicker(inputId) {
     const lastDay = new Date(year, month + 1, 0);
 
     const monthNames = [
-      "January", "February", "March", "April", "May", "June",
-      "July", "August", "September", "October", "November", "December"
+      "January",
+      "February",
+      "March",
+      "April",
+      "May",
+      "June",
+      "July",
+      "August",
+      "September",
+      "October",
+      "November",
+      "December",
     ];
 
     const dayNames = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
 
-    // Calendar structure
     let calendarHTML = `
       <div class="calendar-header">
         <div class="month-year">${monthNames[month]} ${year}</div>
@@ -228,17 +228,13 @@ function initSimpleDatePicker(inputId) {
       <div class="calendar-body">
     `;
 
-    // Weekday headers
     dayNames.forEach((day) => {
       calendarHTML += `<div class="weekday">${day}</div>`;
     });
 
-    // Get starting day of week (0 = Sunday, adjusting to Monday start)
     let startDay = firstDay.getDay();
-    // Convert Sunday (0) to 6 for proper positioning
     startDay = startDay === 0 ? 6 : startDay - 1;
 
-    // Previous month days
     const prevMonth = new Date(year, month, 0);
     const prevMonthDays = prevMonth.getDate();
 
@@ -247,7 +243,6 @@ function initSimpleDatePicker(inputId) {
       calendarHTML += `<div class="day other-month">${day}</div>`;
     }
 
-    // Current month days
     const today = new Date();
     const currentMonth = today.getMonth();
     const currentYear = today.getFullYear();
@@ -256,12 +251,10 @@ function initSimpleDatePicker(inputId) {
     for (let i = 1; i <= lastDay.getDate(); i++) {
       let classes = "day";
 
-      // Check if this day is today
       if (i === currentDay && month === currentMonth && year === currentYear) {
         classes += " today";
       }
 
-      // Check if this day is selected
       if (
         selectedDate &&
         i === selectedDate.getDate() &&
@@ -274,7 +267,6 @@ function initSimpleDatePicker(inputId) {
       calendarHTML += `<div class="${classes}" data-day="${i}">${i}</div>`;
     }
 
-    // Next month days to fill the calendar grid
     const daysShown = startDay + lastDay.getDate();
     const rowsNeeded = Math.ceil(daysShown / 7);
     const totalCells = rowsNeeded * 7;
@@ -287,7 +279,6 @@ function initSimpleDatePicker(inputId) {
     calendarHTML += "</div>";
     calendarContainer.innerHTML = calendarHTML;
 
-    // Add click events to days
     const dayElements = calendarContainer.querySelectorAll(
       ".day:not(.other-month)"
     );
@@ -298,14 +289,13 @@ function initSimpleDatePicker(inputId) {
       });
     });
 
-    // Add click events to navigation
     const prevButton = calendarContainer.querySelector(".prev-month");
     const nextButton = calendarContainer.querySelector(".next-month");
 
     prevButton.addEventListener("click", function (e) {
       e.stopPropagation();
       currentDate.setMonth(currentDate.getMonth() - 1);
-      // If we go to previous year
+
       if (currentDate.getMonth() === 11) {
         currentDate.setFullYear(currentDate.getFullYear() - 1);
       }
@@ -315,58 +305,58 @@ function initSimpleDatePicker(inputId) {
     nextButton.addEventListener("click", function (e) {
       e.stopPropagation();
       currentDate.setMonth(currentDate.getMonth() + 1);
-      // If we go to next year
       if (currentDate.getMonth() === 0) {
         currentDate.setFullYear(currentDate.getFullYear() + 1);
       }
       renderCalendar();
     });
 
-    // Add month/year click to show current month/year
     const monthYearElement = calendarContainer.querySelector(".month-year");
     monthYearElement.addEventListener("click", function (e) {
       e.stopPropagation();
-      // Reset to current month/year
       const today = new Date();
       currentDate = new Date(today.getFullYear(), today.getMonth(), 1);
       renderCalendar();
     });
   }
-
-  // Select a date from the calendar
   function selectDate(day, month, year) {
     selectedDate = new Date(year, month, day);
-
-    // Format date as dd.mm.yyyy
     const formattedDay = String(day).padStart(2, "0");
     const formattedMonth = String(month + 1).padStart(2, "0");
 
     dateInput.value = `${formattedDay}.${formattedMonth}.${year}`;
-
-    // Hide calendar after selection
     calendarContainer.classList.remove("active");
-
-    // Remove error state if exists
     dateFilterContainer.classList.remove("error");
-
-    // Submit the form with the selected date
-    submitForm();
   }
 }
 
 function clearDateFilter() {
-  // Clear both date inputs
-  document.getElementById('datepicker').value = '';
-  document.getElementById('datepicker2').value = '';
+  document.getElementById("datepicker").value = "";
+  document.getElementById("datepicker2").value = "";
 
-  // Reset page parameter if exists
   const pageInput = document.querySelector('input[name="page"]');
   if (pageInput) {
     pageInput.remove();
   }
 
-  document.getElementById('filter-form').submit();
+  document.getElementById("filter-form").submit();
 }
+
+document.addEventListener("DOMContentLoaded", function () {
+  const searchButton = document.querySelector(".date-filter-container button");
+  if (searchButton) {
+    searchButton.addEventListener("click", function (e) {
+      e.preventDefault();
+
+      const pageInput = document.querySelector('input[name="page"]');
+      if (pageInput) {
+        pageInput.remove();
+      }
+
+      document.getElementById("filter-form").submit();
+    });
+  }
+});
 
 function initPagination() {
   const totalItems = 127;
@@ -454,5 +444,3 @@ function filterByDate(day, month, year) {
 
   window.location.href = url.toString();
 }
-
-

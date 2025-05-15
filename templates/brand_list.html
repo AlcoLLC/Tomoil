@@ -138,10 +138,12 @@
                     {% for catalogue in catalogues %}
                     <div class="brochure-card">
                         <div class="brochure-info">
-                            <h2 class="section-title">{{ catalogue.title }}</h2>
+                            <div>
+                                <h2 class="section-title">{{ catalogue.title }}</h2>
                             <p class="section-description">
                                 {{ catalogue.description }}
                             </p>
+                            </div>
                             <div class="brochure-buttons">
                                 <a href="{% url 'brand_portal:download_file' 'catalogue' catalogue.id %}" class="download-btn">DOWNLOAD</a>
                                 <a href="{% url 'brand_portal:view_catalogue' catalogue.id %}" class="view-btn" target="_blank">VIEW</a>
@@ -158,12 +160,6 @@
                     {% endfor %}
                 </div>
             </div>
-            <div id="pdfModal" class="modal">
-            <div class="modal-content">
-                <span class="close-btn">&times;</span>
-                <iframe id="pdfViewer" src="" frameborder="0" width="100%" height="600px"></iframe>
-            </div>
-            </div>
             <!-- Promotional Items Tab -->
             <div class="tab-content {% if active_tab == 'promotional' %}active{% endif %}" id="promotional">
                 <div class="promotional-row">
@@ -177,9 +173,7 @@
                                 <h2 class="section-title">{{ item.title }}</h2>
                                 <p class="section-description">{{ item.width }} x {{ item.height }} px</p>
                             </div>
-                            <a href="{% url 'brand_portal:download_file' 'promotional' item.id %}" class="promotional-button">
-                                <img src="{% static 'images/download-icon-dark.svg' %}" alt="Download Image">
-                            </a>
+                            
                         </div>
                     </div>
                     {% endfor %}

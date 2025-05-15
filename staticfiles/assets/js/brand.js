@@ -35,9 +35,7 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     });
   });
-});
 
-document.addEventListener("DOMContentLoaded", function () {
   const modal = document.getElementById("videoModal");
   const videoFrame = document.getElementById("videoFrame");
   const closeBtn = document.querySelector(".close-modal");
@@ -80,29 +78,4 @@ document.addEventListener("DOMContentLoaded", function () {
     const videoId = match ? match[1] : null;
     return videoId ? `https://www.youtube.com/embed/${videoId}` : "";
   }
-
-  const pdfModal = document.getElementById("pdfModal");
-  const pdfViewer = document.getElementById("pdfViewer");
-  const pdfCloseBtn = document.querySelector(".close-btn");
-
-  document.querySelectorAll(".view-btn").forEach(function (btn) {
-    btn.addEventListener("click", function (e) {
-      e.preventDefault();
-      const pdfUrl = this.getAttribute("href");
-      pdfViewer.src = pdfUrl;
-      pdfModal.style.display = "block";
-    });
-  });
-
-  pdfCloseBtn.addEventListener("click", function () {
-    pdfModal.style.display = "none";
-    pdfViewer.src = "";
-  });
-
-  window.addEventListener("click", function (event) {
-    if (event.target == pdfModal) {
-      pdfModal.style.display = "none";
-      pdfViewer.src = "";
-    }
-  });
 });
