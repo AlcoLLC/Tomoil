@@ -85,7 +85,6 @@ letter-spacing: 0%;
 .vision-mission-section .vision-mission-top-left {
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: space-between;
   gap: 35px;
 }

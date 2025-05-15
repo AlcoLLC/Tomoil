@@ -8,10 +8,10 @@ def glance_list(request):
 
 
 def vision_mision_list(request):
-    items = VisionMission.objects.last()
-    return render(request, 'vision_mision.html', {'items': items})
+    item = VisionMission.objects.prefetch_related('values').last()
+    return render(request, 'vision_mission.html', {'item': item})
 
 
 def our_commitment_list(request):
-    items = OurCommitment.objects.last()
+    items = OurCommitment.objects.all()
     return render(request, 'our_commitment.html', {'items': items})

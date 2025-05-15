@@ -5,63 +5,48 @@
 
 <!-- Our commitment Section -->
 <section class="our-commitment-section section-container">
-    <div class="commitment-container">
-        <div class="commitment-nav">
-            <div class="commitment-item active" data-commitment="corporate">
-                <span>Corporate</span>
-                <div class="arrow-icon">
-                    <i class="fa-solid fa-chevron-right"></i>
-                </div>
-            </div>
-            <div class="commitment-item" data-commitment="dealership">
-                <span>Dealership and formulas</span>
-                <div class="arrow-icon">
-                    <i class="fa-solid fa-chevron-right"></i>
-                </div>
-            </div>
-
+  <div class="commitment-container">
+    <!-- Tab Titles -->
+    <div class="commitment-nav">
+      {% for item in items %}
+      <div
+        class="commitment-item {% if forloop.first %}active{% endif %}"
+        data-commitment="commitment-{{ forloop.counter }}"
+      >
+        <span>{{ item.tab_title }}</span>
+        <div class="arrow-icon">
+          <i class="fa-solid fa-chevron-right"></i>
         </div>
-
-        <div class="commitment-content">
-            <div class="commitment-detail active" id="corporate-content">
-                <div class="commitment-header">
-                    <h2 class="section-title">Oil diagnosis and check-up</h2>
-                    <p class="section-description">Thanks to the internal laboratory and the huge database developed
-                        along the years, Pakelo offers several consultancy services including: Predictive analysis (GAP
-                        Policy) with the aim to prevent breakdowns connected to wear and malfunctioning.</p>
-                </div>
-
-                <img src="{% static 'images/case-detail-image1.png' %}" alt="commitment Image">
-
-                <div class="commitment-description">
-                    <h3>GAP Policy (Preventive Analysis Management)</h3>
-                    <div class="section-description">Thanks to the internal laboratory and the huge database developed
-                        along the years, Pakelo offers several consultancy services including: Predictive analysis (GAP
-                        Policy) with the aim to prevent breakdowns connected to wear and malfunctioning.</div>
-                </div>
-            </div>
-
-            <div class="commitment-detail" id="dealership-content">
-                <div class="commitment-header">
-                    <h2 class="section-title">Oil diagnosis and check-up</h2>
-                    <p class="section-description">Thanks to the internal laboratory and the huge database developed
-                        along the years, Pakelo offers several consultancy services including: Predictive analysis (GAP
-                        Policy) with the aim to prevent breakdowns connected to wear and malfunctioning.</p>
-                </div>
-
-                <img src="{% static 'images/case-detail-img2.png' %}" alt="commitment Image">
-
-                <div class="commitment-description">
-                    <h3>GAP Policy (Preventive Analysis Management)</h3>
-                    <div class="section-description">Thanks to the internal laboratory and the huge database developed
-                        along the years, Pakelo offers several consultancy services including: Predictive analysis (GAP
-                        Policy) with the aim to prevent breakdowns connected to wear and malfunctioning.</div>
-                </div>
-            </div>
-
-        </div>
+      </div>
+      {% endfor %}
     </div>
+
+    <!-- Tab Contents -->
+    <div class="commitment-content">
+      {% for item in items %}
+      <div
+        class="commitment-detail {% if forloop.first %}active{% endif %}"
+        id="commitment-{{ forloop.counter }}-content"
+      >
+        <div class="commitment-header">
+          <h2 class="section-title">{{ item.title }}</h2>
+          <div class="section-description">
+            {{ item.header_description|safe }}
+          </div>
+        </div>
+
+        {% if item.image %}
+        <img src="{{ item.image.url }}" alt="commitment Image" />
+        {% endif %}
+
+        <div class="commitment-description">
+          <h3>{{ item.description_title }}</h3>
+          <div class="section-description">{{ item.description|safe }}</div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
 </section>
 
-
-{%endblock %}
+{% endblock %}

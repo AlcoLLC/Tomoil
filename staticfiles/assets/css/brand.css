@@ -306,6 +306,7 @@
   padding: 25px;
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
 }
 
 .brand-portal-section .brochure-info .section-title {
@@ -316,7 +317,6 @@
 .brand-portal-section .brochure-info .section-description {
   font-size: 12px;
   color: #727272;
-  margin-bottom: 25px;
 }
 
 .brand-portal-section .brochure-image {
