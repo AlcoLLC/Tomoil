@@ -14,7 +14,7 @@ def news_api(request):
     try:
         news_items = News.objects.all()
 
-        sort_by = request.GET.get("sort_by", "Relevance")
+        sort_by = request.GET.get("sort_by", "relevance")
         if sort_by.lower() == "latest":
             news_items = news_items.order_by("-created_at")
         elif sort_by.lower() == "oldest":
