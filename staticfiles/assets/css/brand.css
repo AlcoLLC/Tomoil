@@ -290,6 +290,7 @@
   grid-template-columns: repeat(2, 1fr);
   gap: 25px;
   margin-bottom: 30px;
+  height: 240px;
 }
 
 .brand-portal-section .brochure-card {
@@ -408,11 +409,12 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: 3px;
 }
 
 .brand-portal-section .promotional-info .section-title {
   font-size: 16px;
-  line-height: 25px;
+  line-height: 20px;
 }
 
 .brand-portal-section .promotional-info .section-description {
@@ -488,6 +490,7 @@
   flex-grow: 1;
   font-size: 14px;
   font-weight: 600;
+  width: 60%;
 }
 
 .brand-portal-section .image-library-container .brand-item.active {

@@ -86,7 +86,7 @@ nav {
   margin-top: 15px;
 }
 
-.scrolled-nav {
+.grid{
   position: fixed;
   z-index: 100;
   width: 100%;
