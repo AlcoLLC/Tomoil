@@ -1,5 +1,5 @@
 {% load static %}
-<nav>
+<nav class="">
   <div class="container">
     <div class="navbar">
       <div class="info">
@@ -24,29 +24,31 @@
             <a href="">Lets book a call</a>
           </button>
           <button>
-            <a href="">PSD/SDS</a>
+            <a href="/pds_sds">PSD/SDS</a>
           </button>
           <button>AZE <i class="fa-solid fa-angle-down"></i></button>
         </div>
       </div>
       <div class="nav-section">
         <div class="logo">
-          <img src="{% static 'images_folder/t.svg' %}" alt="" />
-          <img src="{% static 'images_folder/o.svg' %}" alt="" />
-          <img src="{% static 'images_folder/m.svg' %}" alt="" />
-          <img src="{% static 'images_folder/o.svg' %}" alt="" />
-          <img src="{% static 'images_folder/i.svg' %}" alt="" />
-          <img src="{% static 'images_folder/l.svg' %}" alt="" />
+          <img src="{% static 'images/tomoil-logo.svg' %}" alt="" />
         </div>
         <div class="nav-list">
           <ul>
-            <li><a href="">Who we Are</a></li>
-            <li><a href="">Products</a></li>
-            <li><a href="">SERVICES</a></li>
-            <li><a href="">Brand portal</a></li>
-            <li><a href="">news</a></li>
-            <li><a href="">faq</a></li>
-            <li><a href="">Contact US</a></li>
+            <li class="dropdown">
+              <a href="">Who we Are</a>
+              <div class="dropdown-content">
+                <a href="/glance">GLANCE</a>
+                <a href="/vision_mission">VISION & MISSION</a>
+                <a href="/our_commitment">OUR COMMITMENTS</a>
+              </div>
+            </li>
+            <li><a href="/products">Products</a></li>
+            <li><a href="/services">SERVICES</a></li>
+            <li><a href="/brand">Brand portal</a></li>
+            <li><a href="/news">news</a></li>
+            <li><a href="/faq">faq</a></li>
+            <li><a href="/contact">Contact US</a></li>
           </ul>
         </div>
         <button class="search">

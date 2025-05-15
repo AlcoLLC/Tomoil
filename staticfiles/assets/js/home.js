@@ -15,6 +15,8 @@ const swiper = new Swiper(".home-header .mySwiper", {
   },
 });
 
+
+
 document.addEventListener("DOMContentLoaded", function () {
   const commentSwiper = new Swiper(".comments-section .commentSwiper", {
     cssMode: true,
@@ -127,10 +129,8 @@ window.addEventListener("scroll", function () {
     navbar.classList.add("transparent");
     navbar.classList.remove("scrolled");
     nav.classList.remove("scrolled-nav");
-  }
-});
+  };
 
-window.addEventListener("scroll", function () {
   const headerWhatsapp = document.querySelector(".header-whatsapp");
   const fixedWhatsapp = document.querySelector(".fixed-whatsapp");
   const scrollPosition = window.scrollY;
