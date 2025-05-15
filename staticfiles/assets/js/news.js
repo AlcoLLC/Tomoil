@@ -28,16 +28,14 @@ document.addEventListener("DOMContentLoaded", function () {
       selectors.searchInput.value = state.searchQuery;
     }
 
-    if (state.sortBy && selectors.sortBySelect) {
-      selectors.sortBySelect.value = state.sortBy;
+    if (state.sortBy) {
       updateCustomSelect(
         document.querySelector(".sort-by-select"),
         state.sortBy
       );
     }
 
-    if (state.perPage && selectors.perPageSelect) {
-      selectors.perPageSelect.value = state.perPage.toString();
+    if (state.perPage) {
       updateCustomSelect(
         document.querySelector(".per-page-select"),
         state.perPage.toString()
@@ -118,8 +116,6 @@ document.addEventListener("DOMContentLoaded", function () {
     startDateInput: document.getElementById("datepicker3"),
     endDateInput: document.getElementById("datepicker4"),
     viewResultBtn: document.querySelector(".btn-view"),
-    sortBySelect: document.querySelector('select[name="sort_by"]'),
-    perPageSelect: document.querySelector('select[name="per_page"]'),
   };
 
   function initializeCustomSelect(wrapper) {
@@ -128,9 +124,8 @@ document.addEventListener("DOMContentLoaded", function () {
     const customSelect = wrapper.querySelector(".custom-select");
     const customOptions = wrapper.querySelector(".custom-options");
     const options = wrapper.querySelectorAll(".custom-option");
-    const hiddenSelect = wrapper.querySelector("select");
 
-    if (!customSelect || !customOptions || !options || !hiddenSelect) return;
+    if (!customSelect || !customOptions || !options) return;
 
     // Remove old event listeners by replacing with clones
     const newOptions = document.createElement("div");
@@ -165,23 +160,14 @@ document.addEventListener("DOMContentLoaded", function () {
         newCustomSelect.innerText = selectedText;
 
         const value = this.getAttribute("data-value");
-        if (hiddenSelect) {
-          // Update the hidden select value
-          for (let i = 0; i < hiddenSelect.options.length; i++) {
-            if (
-              hiddenSelect.options[i].value.toLowerCase() ===
-              value.toLowerCase()
-            ) {
-              hiddenSelect.selectedIndex = i;
-              break;
-            }
-          }
 
-          console.log(`Custom select changed to: ${value}`);
+        console.log(`Custom select changed to: ${value}`);
 
-          // Trigger change event on the hidden select
-          const event = new Event("change", { bubbles: true });
-          hiddenSelect.dispatchEvent(event);
+        // Update state immediately based on which dropdown was changed
+        if (wrapper.classList.contains("sort-by-select")) {
+          state.sortBy = value;
+        } else if (wrapper.classList.contains("per-page-select")) {
+          state.perPage = parseInt(value);
         }
 
         // Update selected class
@@ -554,21 +540,16 @@ document.addEventListener("DOMContentLoaded", function () {
 
   function initializeFilterModal() {
     selectors.filterSortButton.addEventListener("click", function () {
-      if (selectors.sortBySelect) {
-        selectors.sortBySelect.value = state.sortBy;
-        updateCustomSelect(
-          document.querySelector(".sort-by-select"),
-          state.sortBy
-        );
-      }
+      // Make sure we're using current state values when opening the modal
+      updateCustomSelect(
+        document.querySelector(".sort-by-select"),
+        state.sortBy
+      );
 
-      if (selectors.perPageSelect) {
-        selectors.perPageSelect.value = state.perPage.toString();
-        updateCustomSelect(
-          document.querySelector(".per-page-select"),
-          state.perPage.toString()
-        );
-      }
+      updateCustomSelect(
+        document.querySelector(".per-page-select"),
+        state.perPage.toString()
+      );
 
       if (selectors.startDateInput) {
         selectors.startDateInput.value = state.startDate;
@@ -606,18 +587,6 @@ document.addEventListener("DOMContentLoaded", function () {
       });
     }
 
-    // Ensure form submission works correctly
-    if (selectors.filterForm) {
-      selectors.filterForm.addEventListener("submit", function (e) {
-        e.preventDefault();
-        e.stopPropagation();
-        console.log("Form submit event triggered");
-
-        applyFilterFromForm();
-        closeModal();
-      });
-    }
-
     // Fix View Result button functionality
     const setupViewResultButton = () => {
       // First check if the button exists
@@ -640,19 +609,27 @@ document.addEventListener("DOMContentLoaded", function () {
         e.stopPropagation();
         console.log("View Result button clicked!");
 
-        // Directly get values from the actual select elements
-        if (document.querySelector('select[name="sort_by"]')) {
-          state.sortBy = document
-            .querySelector('select[name="sort_by"]')
-            .value.toLowerCase();
-          console.log("Applied sort_by:", state.sortBy);
+        // Get values from selected custom options
+        const sortByWrapper = document.querySelector(".sort-by-select");
+        if (sortByWrapper) {
+          const selectedOption = sortByWrapper.querySelector(
+            ".custom-option.selected"
+          );
+          if (selectedOption) {
+            state.sortBy = selectedOption.getAttribute("data-value");
+            console.log("Applied sort_by:", state.sortBy);
+          }
         }
 
-        if (document.querySelector('select[name="per_page"]')) {
-          state.perPage = parseInt(
-            document.querySelector('select[name="per_page"]').value
+        const perPageWrapper = document.querySelector(".per-page-select");
+        if (perPageWrapper) {
+          const selectedOption = perPageWrapper.querySelector(
+            ".custom-option.selected"
           );
-          console.log("Applied per_page:", state.perPage);
+          if (selectedOption) {
+            state.perPage = parseInt(selectedOption.getAttribute("data-value"));
+            console.log("Applied per_page:", state.perPage);
+          }
         }
 
         // Get date values
@@ -680,40 +657,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Call this function to set up the button
     setupViewResultButton();
-
-    function applyFilterFromForm() {
-      // Get values directly from the select elements
-      if (document.querySelector('select[name="sort_by"]')) {
-        state.sortBy = document
-          .querySelector('select[name="sort_by"]')
-          .value.toLowerCase();
-        console.log("Applied sort_by:", state.sortBy);
-      }
-
-      if (document.querySelector('select[name="per_page"]')) {
-        state.perPage = parseInt(
-          document.querySelector('select[name="per_page"]').value
-        );
-        console.log("Applied per_page:", state.perPage);
-      }
-
-      state.startDate = selectors.startDateInput
-        ? selectors.startDateInput.value
-        : "";
-      state.endDate = selectors.endDateInput
-        ? selectors.endDateInput.value
-        : "";
-      state.currentPage = 1;
-
-      console.log("Filter applied with values:", {
-        sortBy: state.sortBy,
-        perPage: state.perPage,
-        startDate: state.startDate,
-        endDate: state.endDate,
-      });
-
-      applyFilters();
-    }
 
     // Set up clear all button
     const setupClearAllButton = () => {
@@ -755,15 +698,6 @@ document.addEventListener("DOMContentLoaded", function () {
               initialOption.classList.add("selected");
             }
           });
-
-        // Reset the actual select elements
-        if (document.querySelector('select[name="sort_by"]')) {
-          document.querySelector('select[name="sort_by"]').selectedIndex = 0;
-        }
-
-        if (document.querySelector('select[name="per_page"]')) {
-          document.querySelector('select[name="per_page"]').selectedIndex = 0;
-        }
 
         // Reset date inputs
         if (selectors.startDateInput) selectors.startDateInput.value = "";
