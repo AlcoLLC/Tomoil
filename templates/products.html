@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<!-- Page-Header -->
+{% include 'components/page-header.html' %}
+
+<!-- Products section  -->
+<section class="products-section section-container">
+    <div class="products-container">
+        <div class="filter-products">
+            <button class="reset-filter-btn">RESET FILTERS</button>
+
+        </div>
+        <div class="products-list">
+            <a href="" class="product-card">
+                <div class="product-image">
+                    <img src="" alt="Product Image">
+                </div>
+                <div class="product-info">
+                    <div>
+                        <h2 class="product-title"></h2>
+                        <p class="product-description"></p>
+                        <p class="product-id"></p>
+                    </div>
+                    <a href="#" class="show-more">
+                        Show More
+                        <i class="fas fa-arrow-right-long"></i>
+                    </a>
+                </div>
+            </a>
+        </div>
+    </div>
+</section>
+
+
+
+{% endblock %}

@@ -1314,6 +1314,7 @@
 .page-header .breadcrumb a {
   color: #fff;
   text-decoration: none;
+  cursor: pointer;
 }
 
 .page-header .breadcrumb i {
@@ -1340,4 +1341,8 @@
   line-height: 20px;
   letter-spacing: 0.5px;
   color: #fff;
+}
+
+.page-header .header-whatsapp {
+  bottom: 60px;
 }
