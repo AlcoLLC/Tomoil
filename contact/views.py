@@ -111,7 +111,6 @@ Message: {message}
                     fail_silently=False,
                 )
 
-                # User thank you email
                 user_email_subject = "Thank you for contacting Tomoil"
                 user_email_message = f"""
 Dear {first_name},

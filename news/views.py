@@ -7,6 +7,7 @@ from django.http import JsonResponse
 from django.core.serializers import serialize
 from django.views.decorators.http import require_http_methods
 import json
+from pageheader.models import PageHeader
 
 
 @require_http_methods(["GET"])
@@ -21,7 +22,7 @@ def news_api(request):
             news_items = news_items.order_by("created_at")
         elif sort_by.lower() == "from a to z":
             news_items = news_items.order_by("title")
-        else:  # Default is Relevance
+        else:
             news_items = news_items.order_by("-views_count")
 
         from_date = request.GET.get("from_date")
@@ -98,12 +99,31 @@ def news_list(request):
     page_number = request.GET.get("page")
     page_obj = paginator.get_page(page_number)
 
+    try:
+        page_header = PageHeader.objects.get(page_key='news_list')
+        header_context = {
+            'breadcrumb_title': page_header.breadcrumb_title,
+            'breadcrumb_url': page_header.breadcrumb_url,
+            'page_title': page_header.page_title,
+            'page_description': page_header.page_description,
+            'background_image': page_header.background_image
+        }
+    except PageHeader.DoesNotExist:
+        header_context = {
+            'breadcrumb_title': 'News',
+            'breadcrumb_url': '/news/',
+            'page_title': 'Latest News',
+            'page_description': 'Stay updated with the latest news and developments from our company.',
+            'background_image': None
+        }
+
     context = {
         "page_obj": page_obj,
         "total_results": paginator.count,
         "formatted_date": from_date or "",
         "sort_by": sort_by,
         "per_page": per_page,
+        **header_context
     }
 
     return render(request, "news_list.html", context)

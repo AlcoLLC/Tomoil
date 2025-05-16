@@ -127,7 +127,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
     if (!customSelect || !customOptions || !options) return;
 
-    // Remove old event listeners by replacing with clones
     const newOptions = document.createElement("div");
     newOptions.className = "custom-options";
     customOptions.parentNode.replaceChild(newOptions, customOptions);
@@ -135,14 +134,12 @@ document.addEventListener("DOMContentLoaded", function () {
     const newCustomSelect = customSelect.cloneNode(true);
     customSelect.parentNode.replaceChild(newCustomSelect, customSelect);
 
-    // Add event listener to custom select
     newCustomSelect.addEventListener("click", function (e) {
       e.preventDefault();
       e.stopPropagation();
       this.classList.toggle("open");
     });
 
-    // Create new option elements with event listeners
     options.forEach(function (option) {
       const newOption = document.createElement("div");
       newOption.className = option.className;
@@ -163,20 +160,17 @@ document.addEventListener("DOMContentLoaded", function () {
 
         console.log(`Custom select changed to: ${value}`);
 
-        // Update state immediately based on which dropdown was changed
         if (wrapper.classList.contains("sort-by-select")) {
           state.sortBy = value;
         } else if (wrapper.classList.contains("per-page-select")) {
           state.perPage = parseInt(value);
         }
 
-        // Update selected class
         wrapper
           .querySelectorAll(".custom-option")
           .forEach((opt) => opt.classList.remove("selected"));
         this.classList.add("selected");
 
-        // Close the dropdown
         newCustomSelect.classList.remove("open");
       });
 
@@ -188,14 +182,12 @@ document.addEventListener("DOMContentLoaded", function () {
     const customSelects = document.querySelectorAll(".custom-select-wrapper");
     customSelects.forEach(initializeCustomSelect);
 
-    // Close all dropdowns when clicking outside
     document.addEventListener("click", function () {
       document.querySelectorAll(".custom-select").forEach((select) => {
         select.classList.remove("open");
       });
     });
 
-    // Prevent dropdown from closing when clicking inside options
     document.querySelectorAll(".custom-options").forEach((options) => {
       options.addEventListener("click", function (e) {
         e.stopPropagation();
@@ -540,7 +532,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
   function initializeFilterModal() {
     selectors.filterSortButton.addEventListener("click", function () {
-      // Make sure we're using current state values when opening the modal
       updateCustomSelect(
         document.querySelector(".sort-by-select"),
         state.sortBy
@@ -563,14 +554,12 @@ document.addEventListener("DOMContentLoaded", function () {
       reinitializeCustomSelects();
     });
 
-    // Improve modal close behavior
     selectors.modalOverlay.addEventListener("click", function (e) {
       if (e.target === selectors.modalOverlay) {
         closeModal();
       }
     });
 
-    // Add escape key to close modal
     document.addEventListener("keydown", function (e) {
       if (
         e.key === "Escape" &&
@@ -587,29 +576,23 @@ document.addEventListener("DOMContentLoaded", function () {
       });
     }
 
-    // Fix View Result button functionality
     const setupViewResultButton = () => {
-      // First check if the button exists
       const viewResultBtn = document.querySelector(".btn-view");
       if (!viewResultBtn) {
         console.error("View Result button not found");
         return;
       }
 
-      // Remove any existing listeners by cloning
       const newViewResultBtn = viewResultBtn.cloneNode(true);
       viewResultBtn.parentNode.replaceChild(newViewResultBtn, viewResultBtn);
 
-      // Update the selector
       selectors.viewResultBtn = newViewResultBtn;
 
-      // Add the click event listener
       selectors.viewResultBtn.addEventListener("click", function (e) {
         e.preventDefault();
         e.stopPropagation();
         console.log("View Result button clicked!");
 
-        // Get values from selected custom options
         const sortByWrapper = document.querySelector(".sort-by-select");
         if (sortByWrapper) {
           const selectedOption = sortByWrapper.querySelector(
@@ -632,7 +615,6 @@ document.addEventListener("DOMContentLoaded", function () {
           }
         }
 
-        // Get date values
         if (document.getElementById("datepicker3")) {
           state.startDate = document.getElementById("datepicker3").value;
         }
@@ -655,10 +637,8 @@ document.addEventListener("DOMContentLoaded", function () {
       });
     };
 
-    // Call this function to set up the button
     setupViewResultButton();
 
-    // Set up clear all button
     const setupClearAllButton = () => {
       const clearAllBtn = document.querySelector(".btn-clear");
       if (!clearAllBtn) {
@@ -680,7 +660,6 @@ document.addEventListener("DOMContentLoaded", function () {
           selectors.filterForm.reset();
         }
 
-        // Reset custom select displays
         document
           .querySelectorAll(".custom-select-wrapper")
           .forEach((wrapper) => {
@@ -699,11 +678,9 @@ document.addEventListener("DOMContentLoaded", function () {
             }
           });
 
-        // Reset date inputs
         if (selectors.startDateInput) selectors.startDateInput.value = "";
         if (selectors.endDateInput) selectors.endDateInput.value = "";
 
-        // Update state
         state.startDate = "";
         state.endDate = "";
         state.sortBy = "relevance";
@@ -714,7 +691,6 @@ document.addEventListener("DOMContentLoaded", function () {
       });
     };
 
-    // Call this function to set up the clear all button
     setupClearAllButton();
   }
 
@@ -736,7 +712,6 @@ document.addEventListener("DOMContentLoaded", function () {
           }
         },
         onClose: function (selectedDates, dateStr, instance) {
-          // Don't close modal when date picker closes
           return false;
         },
       };

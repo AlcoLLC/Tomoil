@@ -3,6 +3,7 @@ from .models import CaseStudy
 from .filters import CaseStudyFilter
 from django.shortcuts import get_object_or_404, render
 from django.core.paginator import Paginator
+from pageheader.models import PageHeader
 
 
 def case_studies_view(request):
@@ -41,10 +42,29 @@ def case_studies_view(request):
             except (ValueError, IndexError):
                 formatted_display_date = from_date
 
+    try:
+        page_header = PageHeader.objects.get(page_key='case_studies_view')
+        header_context = {
+            'breadcrumb_title': page_header.breadcrumb_title,
+            'breadcrumb_url': page_header.breadcrumb_url,
+            'page_title': page_header.page_title,
+            'page_description': page_header.page_description,
+            'background_image': page_header.background_image
+        }
+    except PageHeader.DoesNotExist:
+        header_context = {
+            'breadcrumb_title': 'Case Studies',
+            'breadcrumb_url': '/case-studies/',
+            'page_title': 'Case Studies',
+            'page_description': '',
+            'background_image': None
+        }
+
     return render(request, 'case_studies.html', {
         'page_obj': page_obj,
         'total_results': paginator.count,
         'formatted_date': formatted_display_date,
+        **header_context
     })
 
 

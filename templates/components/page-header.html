@@ -1,13 +1,14 @@
-<header class="placeholder-header page-header">
+<header class="placeholder-header page-header" {% if background_image %}style="background-image: url('{{ background_image.url }}')"{% endif %}>
     <div class="breadcrumb">
         <a href="/">Home</a>
+        {% if breadcrumb_title %}
         <i class="fa-solid fa-angle-right"></i>
-        <a href="/">FAQ</a>
+            <a href="{{ breadcrumb_url|default:'/' }}">{{ breadcrumb_title }}</a>
+        {% endif %}
     </div>
     <div class="page-header-content">
-        <h2>Frequently Asked Questions</h2>
-        <p>To help you understand oil better, here are the answers to the questions we're most frequently asked.
-        </p>
+        <h2>{{ page_title}}</h2>
+        <p>{{ page_description }}</p>
     </div>
     <a href="https://wa.me/message/YOUR_WHATSAPP_NUMBER" class="header-whatsapp">
         <i class="fab fa-whatsapp"></i>

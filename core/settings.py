@@ -62,7 +62,8 @@ INSTALLED_APPS = [
     'news',
     'brands',
     'services',
-    'whoweare'
+    'whoweare',
+    'pageheader',
 ]
 
 CKEDITOR_5_FILE_STORAGE = "django.core.files.storage.FileSystemStorage"
