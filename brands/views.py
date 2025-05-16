@@ -11,7 +11,7 @@ from .models import (
     BrandGuidelineDocument,
     BrandCatalogue
 )
-
+from pageheader.models import PageHeader
 
 class BrandPortalView(TemplateView):
     template_name = 'brand_list.html'
@@ -32,8 +32,25 @@ class BrandPortalView(TemplateView):
         active_tab = self.request.GET.get('tab', 'brand-guideline')
         context['active_tab'] = active_tab
 
-        return context
+        try:
+            page_header = PageHeader.objects.get(page_key='brand_portal')
+            context.update({
+                'breadcrumb_title': page_header.breadcrumb_title,
+                'breadcrumb_url': page_header.breadcrumb_url,
+                'page_title': page_header.page_title,
+                'page_description': page_header.page_description,
+                'background_image': page_header.background_image
+            })
+        except PageHeader.DoesNotExist:
+            context.update({
+                'breadcrumb_title': 'Brand Portal',
+                'breadcrumb_url': '/brand/',
+                'page_title': 'Brand Portal',
+                'page_description': 'Access our brand assets and guidelines.',
+                'background_image': None
+            })
 
+        return context
 
 def download_file(request, model_name, pk):
     model_map = {
