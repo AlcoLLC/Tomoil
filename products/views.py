@@ -36,7 +36,7 @@ def all_data_sheets_view(request):
         }
     except PageHeader.DoesNotExist:
         header_context = {
-            'breadcrumb_title': 'Faq',
+            'breadcrumb_title': 'All Data Sheets',
             'breadcrumb_url': '/all_data_sheets/ ',
             'page_title': 'All Data Sheets',
             'page_description': '',
@@ -58,9 +58,9 @@ def products_view(request):
         }
     except PageHeader.DoesNotExist:
         header_context = {
-            'breadcrumb_title': 'Faq',
-            'breadcrumb_url': '/faq/',
-            'page_title': 'Frequently Asked Questions',
+            'breadcrumb_title': 'Products',
+            'breadcrumb_url': '/products/',
+            'page_title': 'Products',
             'page_description': '',
             'background_image': None
         }
