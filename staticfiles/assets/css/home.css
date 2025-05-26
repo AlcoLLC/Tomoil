@@ -1158,7 +1158,19 @@ nav {
     text-align: center !important;
       font-family: Atyp Regular !important;
     font-weight: 400 !important;
-    font-size: 16px !important;
-    line-height: 1.5 !important;
+    font-size: 15px !important;
+    line-height: 1 !important;
     letter-spacing: 1px;
+}
+
+.fm-tooltip-comment span img {
+  width: 30px !important;
+}
+
+.fm-tooltip-comment span {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 7px;
+    text-align: center;
 }

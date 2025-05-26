@@ -34,7 +34,7 @@ var map_cfg = {
     st1: {
       name: "",
       shortname: "●",
-      comment: "Afghanistan",
+      comment: '<img src="https://flagcdn.com/w80/af.png" alt="Afghanistan Flag" width="40">  Afghanistan',
       link: "",
       color: "#BDBDBD",
       colorOver: "#9E9E9E",
@@ -50,7 +50,7 @@ var map_cfg = {
     st3: {
       name: "",
       shortname: "●",
-      comment: "Albania",
+      comment: '<img src="https://flagpedia.net/data/flags/w580/al.webp" alt="Albania Flag" width="40"> Albania',
       link: "",
       color: "#BDBDBD",
       colorOver: "#9E9E9E",
@@ -58,7 +58,7 @@ var map_cfg = {
     st4: {
       name: "",
       shortname: "●",
-      comment: "Algeria",
+      comment: '<img src="https://flagpedia.net/data/flags/w580/dz.webp" alt="Algeria Flag" width="40"> Algeria',
       link: "",
       color: "#BDBDBD",
       colorOver: "#9E9E9E",
@@ -146,15 +146,15 @@ var map_cfg = {
     st15: {
       name: "",
       shortname: "●",
-      comment: "Austria",
+      comment: '<img src="https://flagpedia.net/data/flags/w580/at.webp" alt="Austria Flag" width="40"> Austria',
       link: "",
       color: "#BDBDBD",
       colorOver: "#9E9E9E",
     },
     st16: {
       name: "", // Azerbaijan
-      shortname: "",
-      comment: "",
+      // shortname: "●",
+      // comment: '<img src="https://flagpedia.net/data/flags/w580/az.webp" alt="Azerbaijan Flag" width="40"> Azerbaijan',
       link: "",
       color: "#BDBDBD",
       colorOver: "#9E9E9E",
@@ -194,7 +194,7 @@ var map_cfg = {
     st21: {
       name: "",
       shortname: "●",
-      comment: "Belarus",
+      comment: '<img src="https://flagpedia.net/data/flags/w580/by.webp" alt="Belarus Flag" width="40"> Belarus',
       link: "",
       color: "#BDBDBD",
       colorOver: "#9E9E9E",
@@ -274,7 +274,7 @@ var map_cfg = {
     st31: {
       name: "",
       shortname: "●",
-      comment: "Brazil",
+      comment: '<img src="https://flagpedia.net/data/flags/w580/br.webp" alt="Brazil Flag" width="40"> Brazil',
       link: "",
       color: "#BDBDBD",
       colorOver: "#9E9E9E",
@@ -298,7 +298,7 @@ var map_cfg = {
     st34: {
       name: "",
       shortname: "●",
-      comment: "Bulgaria",
+      comment: '<img src="https://flagpedia.net/data/flags/w580/bg.webp" alt="Bulgaria Flag" width="40"> Bulgaria',
       link: "",
       color: "#BDBDBD",
       colorOver: "#9E9E9E",
@@ -418,7 +418,7 @@ var map_cfg = {
     st49: {
       name: "",
       shortname: "●",
-      comment: "Colombia",
+      comment: '<img src="https://flagpedia.net/data/flags/w580/co.webp" alt="Colombia Flag" width="40"> Colombia',
       link: "",
       color: "#BDBDBD",
       colorOver: "#9E9E9E",
@@ -498,7 +498,7 @@ var map_cfg = {
     st59: {
       name: "",
       shortname: "●",
-      comment: "Cyprus",
+      comment: '<img src="https://flagpedia.net/data/flags/w580/cy.webp" alt="Cyprus Flag" width="40"> Cyprus',
       link: "",
       color: "#BDBDBD",
       colorOver: "#9E9E9E",
@@ -586,7 +586,7 @@ var map_cfg = {
     st70: {
       name: "",
       shortname: "●",
-      comment: "Estonia",
+      comment: '<img src="hhttps://flagpedia.net/data/flags/w580/ee.webp" alt="Estonia Flag" width="40"> Estonia',
       link: "",
       color: "#BDBDBD",
       colorOver: "#9E9E9E",
@@ -690,7 +690,7 @@ var map_cfg = {
     st83: {
       name: "",
       shortname: "●",
-      comment: "Georgia",
+      comment: '<img src="https://flagpedia.net/data/flags/w580/ge.webp" alt="Georgia Flag" width="40"> Georgia',
       link: "",
       color: "#BDBDBD",
       colorOver: "#9E9E9E",
@@ -722,7 +722,7 @@ var map_cfg = {
     st87: {
       name: "",
       shortname: "●",
-      comment: "Greece",
+      comment: '<img src="https://flagpedia.net/data/flags/w580/gr.webp" alt="Greece Flag" width="40"> Greece',
       link: "",
       color: "#BDBDBD",
       colorOver: "#9E9E9E",
@@ -874,7 +874,7 @@ var map_cfg = {
     st106: {
       name: "",
       shortname: "●",
-      comment: "Iraq",
+      comment: '<img src="https://flagpedia.net/data/flags/w580/iq.webp" alt="Iraq Flag" width="40"> Iraq',
       link: "",
       color: "#BDBDBD",
       colorOver: "#9E9E9E",
@@ -898,7 +898,7 @@ var map_cfg = {
     st109: {
       name: "",
       shortname: "●",
-      comment: "Israel",
+      comment: '<img src="https://flagpedia.net/data/flags/w580/il.webp" alt="Israel Flag" width="40"> Israel',
       link: "",
       color: "#BDBDBD",
       colorOver: "#9E9E9E",
@@ -906,7 +906,7 @@ var map_cfg = {
     st110: {
       name: "",
       shortname: "●",
-      comment: "Italy",
+      comment: '<img src="https://flagpedia.net/data/flags/w580/it.webp" alt="Italy Flag" width="40"> Italy',
       link: "",
       color: "#BDBDBD",
       colorOver: "#9E9E9E",
@@ -938,7 +938,7 @@ var map_cfg = {
     st114: {
       name: "",
       shortname: "●",
-      comment: "Jordan",
+      comment: '<img src="https://flagpedia.net/data/flags/w580/jo.webp" alt="Jordan Flag" width="40"> Jordan',
       link: "",
       color: "#BDBDBD",
       colorOver: "#9E9E9E",
@@ -1010,7 +1010,7 @@ var map_cfg = {
     st123: {
       name: "",
       shortname: "●",
-      comment: "Lebanon",
+      comment: '<img src="https://flagpedia.net/data/flags/w580/lb.webp" alt="Lebanon Flag" width="40"> Lebanon',
       link: "",
       color: "#BDBDBD",
       colorOver: "#9E9E9E",
@@ -1034,7 +1034,7 @@ var map_cfg = {
     st126: {
       name: "",
       shortname: "●",
-      comment: "Libya",
+      comment: '<img src="https://flagpedia.net/data/flags/w580/ly.webp" alt="Libya Flag" width="40"> Libya',
       link: "",
       color: "#BDBDBD",
       colorOver: "#9E9E9E",
@@ -1186,7 +1186,7 @@ var map_cfg = {
     st145: {
       name: "",
       shortname: "●",
-      comment: "Moldova",
+      comment: '<img src="https://flagpedia.net/data/flags/w580/md.webp" alt="Moldova Flag" width="40"> Moldova',
       link: "",
       color: "#BDBDBD",
       colorOver: "#9E9E9E",
@@ -1474,7 +1474,7 @@ var map_cfg = {
     st181: {
       name: "",
       shortname: "●",
-      comment: "Romania",
+      comment: '<img src="https://flagpedia.net/data/flags/w580/ro.webp" alt="Romania Flag" width="40"> Romania',
       link: "",
       color: "#BDBDBD",
       colorOver: "#9E9E9E",
@@ -1482,7 +1482,7 @@ var map_cfg = {
     st182: {
       name: "",
       shortname: "●",
-      comment: "Russian Federation",
+      comment: '<img src="https://flagpedia.net/data/flags/w580/ru.webp" alt="Russian Federation Flag" width="40"> Russian Federation',
       link: "",
       color: "#BDBDBD",
       colorOver: "#9E9E9E",
@@ -1658,7 +1658,7 @@ var map_cfg = {
     st204: {
       name: "",
       shortname: "●",
-      comment: "South Africa",
+      comment: '<img src="https://flagpedia.net/data/flags/w580/za.webp" alt="South Africa Flag" width="40"> South Africa',
       link: "",
       color: "#BDBDBD",
       colorOver: "#9E9E9E",
@@ -1682,7 +1682,7 @@ var map_cfg = {
     st207: {
       name: "",
       shortname: "●",
-      comment: "South Sudan",
+      comment: '<img src="https://flagpedia.net/data/flags/w580/ss.webp" alt="South Sudan Flag" width="40"> South Sudan',
       link: "",
       color: "#BDBDBD",
       colorOver: "#9E9E9E",
@@ -1690,7 +1690,7 @@ var map_cfg = {
     st208: {
       name: "",
       shortname: "●",
-      comment: "Spain",
+      comment: '<img src="https://flagpedia.net/data/flags/w580/es.webp" alt="Spain Flag" width="40"> Spain',
       link: "",
       color: "#BDBDBD",
       colorOver: "#9E9E9E",
@@ -1778,7 +1778,7 @@ var map_cfg = {
     st219: {
       name: "",
       shortname: "●",
-      comment: "Tajikistan",
+      comment: '<img src="https://flagpedia.net/data/flags/w580/tj.webp" alt="Tajikistan Flag" width="40"> Tajikistan',
       link: "",
       color: "#BDBDBD",
       colorOver: "#9E9E9E",
@@ -1802,7 +1802,7 @@ var map_cfg = {
     st222: {
       name: "",
       shortname: "●",
-      comment: "The Netherlands",
+      comment: '<img src="https://flagpedia.net/data/flags/w580/nl.webp" alt="The Netherlands Flag" width="40"> The Netherlands',
       link: "",
       color: "#BDBDBD",
       colorOver: "#9E9E9E",
@@ -1858,7 +1858,7 @@ var map_cfg = {
     st229: {
       name: "",
       shortname: "●",
-      comment: "Turkey",
+      comment: '<img src="https://flagpedia.net/data/flags/w580/tr.webp" alt="Turkey Flag" width="40"> Turkey',
       link: "",
       color: "#BDBDBD",
       colorOver: "#9E9E9E",
@@ -1866,7 +1866,7 @@ var map_cfg = {
     st230: {
       name: "",
       shortname: "●",
-      comment: "Turkmenistan",
+      comment: '<img src="https://flagpedia.net/data/flags/w580/tm.webp" alt="Turkmenistan Flag" width="40"> Turkmenistan',
       link: "",
       color: "#BDBDBD",
       colorOver: "#9E9E9E",
@@ -1914,7 +1914,7 @@ var map_cfg = {
     st236: {
       name: "",
       shortname: "●",
-      comment: "United Kingdom",
+      comment: '<img src="https://flagpedia.net/data/flags/w580/gb.webp" alt="United Kingdom Flag" width="40"> United Kingdom',
       link: "",
       color: "#BDBDBD",
       colorOver: "#9E9E9E",
@@ -1946,7 +1946,7 @@ var map_cfg = {
     st240: {
       name: "",
       shortname: "●",
-      comment: "Uzbekistan",
+      comment: '<img src="https://flagpedia.net/data/flags/w580/uz.webp" alt="Uzbekistan Flag" width="40"> Uzbekistan',
       link: "",
       color: "#BDBDBD",
       colorOver: "#9E9E9E",
@@ -1970,7 +1970,7 @@ var map_cfg = {
     st243: {
       name: "",
       shortname: "●",
-      comment: "Venezuela",
+      comment: '<img src="https://flagpedia.net/data/flags/w580/ve.webp" alt="Venezuela Flag" width="40"> Venezuela',
       link: "",
       color: "#BDBDBD",
       colorOver: "#9E9E9E",
@@ -2018,7 +2018,7 @@ var map_cfg = {
     st249: {
       name: "",
       shortname: "●",
-      comment: "Yemen",
+      comment: '<img src="https://flagpedia.net/data/flags/w580/ye.webp" alt="Yemen Flag" width="40"> Yemen',
       link: "",
       color: "#BDBDBD",
       colorOver: "#9E9E9E",
