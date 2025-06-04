@@ -80,9 +80,9 @@ def products_detail_view(request):
         }
     except PageHeader.DoesNotExist:
         header_context = {
-            'breadcrumb_title': 'Faq',
-            'breadcrumb_url': '/faq/',
-            'page_title': 'Frequently Asked Questions',
+            'breadcrumb_title': 'Product Details',
+            'breadcrumb_url': '/products_detail/',
+            'page_title': 'Product Details',
             'page_description': '',
             'background_image': None
         }

@@ -1,14 +1,17 @@
-<header class="placeholder-header page-header" {% if background_image %}style="background-image: url('{{ background_image.url }}')"{% endif %}>
-    <div class="breadcrumb">
-        <a href="/">Home</a>
-        {% if breadcrumb_title %}
-        <i class="fa-solid fa-angle-right"></i>
+<header class="placeholder-header page-header " 
+{% if background_image  %}style="background-image: url('{{ background_image.url }}')" {% endif %}>
+    <div class="section-container">
+        <div class="breadcrumb">
+            <a href="/">Home</a>
+            {% if breadcrumb_title %}
+            <i class="fa-solid fa-angle-right"></i>
             <a href="{{ breadcrumb_url|default:'/' }}">{{ breadcrumb_title }}</a>
-        {% endif %}
-    </div>
-    <div class="page-header-content">
-        <h2>{{ page_title}}</h2>
-        <p>{{ page_description }}</p>
+            {% endif %}
+        </div>
+        <div class="page-header-content">
+            <h2>{{ page_title}}</h2>
+            <p>{{ page_description }}</p>
+        </div>
     </div>
     <a href="https://wa.me/message/YOUR_WHATSAPP_NUMBER" class="header-whatsapp">
         <i class="fab fa-whatsapp"></i>

@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<!-- Page-Header -->
+{% include 'components/page-header.html' %}
+
+<!-- Product detail section  -->
+
+
+<section class="product-details-section section-container">
+
+    <div class="product-details-info">
+        <div class="left-content">
+            <div class="product-detail-content">
+                <h2 class="section-title">Fully Synthetic Engine Oil</h2>
+                <p class="section-description">We have everything in place to promote our Carbon Neutral products. Here
+                    you
+                    will find marketing materials including images, printed materials, our digital additives brochure,
+                    and
+                    individual videos. These materials are available for download and can be used to promote and support
+                    the
+                    Carbon Neutral products. Think about using them for social media, websites, presentations, and
+                    more. 
+
+                    We have everything in place to promote our Carbon Neutral products. Here you will find marketing
+                    materials including images, printed materials, our digital additives brochure, and individual
+                    videos.
+                </p>
+            </div>
+            <div>
+                <h3>Are you interested in partnership?</h3>
+                <button class="button-style">
+                    <a href="">GET IN TOUCH <i class="fas fa-arrow-right-long"></i></a>
+                </button>
+            </div>
+        </div>
+
+        <div class="details-image">
+            <img src="{% static 'images/image 79.svg' %}" alt="Product Image">
+        </div>
+    </div>
+
+
+    <div class="data-sheets">
+        <h3>Data Sheets</h3>
+
+        <div class="sheet-buttons">
+            <button>
+                Product Data Sheet
+                <img src="{% static 'images/download-icon.svg' %}" alt="Download Icon">
+            </button>
+            <button>
+                Safety Data Sheet
+                <img src="{% static 'images/download-icon.svg' %}" alt="Download Icon">
+            </button>
+        </div>
+
+
+    </div>
+
+
+
+
+
+
+</section>
+
+
+
+{% endblock %}
