@@ -56,8 +56,135 @@
             </button>
         </div>
 
-
     </div>
+
+    <div class="product-properties">
+        <div class="featured">
+            <h3>Features & Benefits</h3>
+            <div class="featured-content">
+                <i class="fa-solid fa-check"></i>
+                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.Lorem Ipsum is simply dummy
+                    text of the printing and typesetting industry.</p>
+            </div>
+        </div>
+        <div class="application">
+            <h3>Application</h3>
+            <div class="app-content">
+                <i class="fa-solid fa-check"></i>
+                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.Lorem Ipsum is simply dummy
+                    text of the printing and typesetting industry.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="product-specifications">
+        <div class="specifications-components">
+            <div class="tabs">
+                <div class="tab active {% if active_tab == 'performance' %}active{% endif %}" data-tab="performance">
+                    Performance</div>
+                <div class="tab {% if active_tab == 'typical-properties' %}active{% endif %}"
+                    data-tab="typical-properties">Typical Properties</div>
+                <div class="tab {% if active_tab == 'packaging-sizes' %}active{% endif %}" data-tab="packaging-sizes">
+                    Packaging & Sizes</div>
+            </div>
+        </div>
+        <div class="specifications-content">
+            <!-- Brand Guideline Tab -->
+            <div class="tab-content active {% if active_tab == 'performance' %}active{% endif %}" id="performance">
+                <div class="performance-content">
+                    <h3>Specifications / Approvals:</h3>
+                    <p>API SP, ILSAC GF-6A, GM dexos1 Gen 3, Chrysler MS-6395, Ford WSS-M2C 962-A1, Ford WSS-M2C 947-B1
+                    </p>
+
+                    <p> <span>Tomoil</span> recommends this product for vehicles or assemblies for which the
+                        following
+                        specifications or original spare part numbers are required:</p>
+                    <p>ACEA C2, API CF, BMW Longlife-01 FE (up to 2018), Fiat 9.55535, VW 500.00, VW 502.00, VW 503.00,
+                        VW 503.01, VW 505.00, VW 505.01, VW 506.00, VW 506.01 (with the exception of R5 and V10 TDI
+                        before 6/2006)</p>
+                </div>
+            </div>
+            <div class="tab-content  {% if active_tab == 'typical-properties' %}active{% endif %}"
+                id="typical-properties">
+                <div class="specifications-table ">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Property</th>
+                                <th>Unit</th>
+                                <th>Test Method</th>
+                                <th>Typical Value</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Kinematic Viscosity at 100°C</td>
+                                <td>cst</td>
+                                <td>ASTM D 445</td>
+                                <td>8.200</td>
+                            </tr>
+                            <tr>
+                                <td>Kinematic Viscosity at 100°C</td>
+                                <td>cst</td>
+                                <td>ASTM D 445</td>
+                                <td>8.200</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="tab-content  {% if active_tab == 'packaging-sizes' %}active{% endif %}" id="packaging-sizes">
+                <div class="specifications-table ">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Size</th>
+                                <th>Packing Type</th>
+                                <th>Units Per Box</th>
+                                <th>Boxes Per Pallet</th>
+                                <th>Units Per Pallet</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1 L</td>
+                                <td>Canister Plastic</td>
+                                <td>12</td>
+                                <td>54</td>
+                                <td>648</td>
+                            </tr>
+
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div class="product-opinions">
+        <div class="product-detail-content">
+            <h2 class="section-title">Your opinion is important to us!</h2>
+            <p class="section-description">Be a trailblazer and rate the product, so that others can benefit from your
+                experience and we can keep on optimising!
+            </p>
+
+            <button class="button-style">
+                <a href="">Be THE FIRST to RATE PRODUCTS <i class="fas fa-arrow-right-long"></i></a>
+            </button>
+        </div>
+
+        <div class="opinions">
+            <i class="fa-solid fa-star"></i>
+            <i class="fa-regular fa-star"></i>
+            <h3>Aykhan Safarli</h3> <span>11.05.2025</span>
+            <p class="section-description" >Your opinion is important to us! Be a pioneer and rate the product so that others can benefit from your
+                experience and we can always optimize!</p>
+        </div>
+    </div>
+
+
 
 
 

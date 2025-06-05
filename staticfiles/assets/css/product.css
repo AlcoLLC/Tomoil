@@ -401,7 +401,7 @@
   margin-bottom: 20px;
 }
 
-.product-details-section .product-details-info .left-content .product-detail-content {
+ .product-detail-content {
   display: flex;
   flex-direction: column;
   gap: 20px;
@@ -452,18 +452,187 @@
   text-align: center;
 }
 
-.product-details-section .data-sheets .sheet-buttons  {
+.product-details-section .data-sheets .sheet-buttons {
   margin: 50px auto;
   display: flex;
+  column-gap: 20px;
   align-items: center;
   justify-content: center;
-  column-gap: 20px;
 }
 
 .product-details-section .data-sheets .sheet-buttons button {
-  margin: 50px auto;
+  background-color: #fff;
+  border: 1px solid #D8DEE3;
+  border-top-right-radius: 20px;
+  border-bottom-left-radius: 20px;
+  min-width: 300px;
+  padding: 10px 20px;
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  font-weight: 600;
+  color: #223160;
+  font-family: Unbounded, sans-serif;
+  justify-content: space-between;
+}
+
+
+.product-details-section .product-properties {
+  margin: 70px auto;
+  display: flex;
+  align-items: start;
+  gap: 50px;
+}
+
+.product-details-section .product-properties .featured-content,
+.product-details-section .product-properties .app-content {
+  display: flex;
+  align-items: start;
+  gap: 15px;
+
+}
+
+.product-details-section .product-properties p {
+  text-align: justify;
+  color: #223160;
+  font-size: 16px;
+  line-height: 20px;
+  letter-spacing: 0%;
+  font-family: Atyp Regular !important;
+
+}
+
+.product-details-section .product-properties i {
+  color: #E22131;
+  font-size: 16px;
+  padding-top: 5px;
+  font-weight: 600;
+}
+
+
+
+/* Product specifications section */
+
+.product-specifications .specifications-components {
+  border: 1px solid #f1f3f9;
+  border-bottom-left-radius: 20px;
+  border-top-right-radius: 20px;
+  overflow: hidden;
+  background-color: white;
+  margin: 40px 0;
+}
+
+.product-specifications .tabs {
   display: flex;
   align-items: center;
   justify-content: center;
-  column-gap: 22px;
+  position: relative;
+}
+
+.product-specifications .tab {
+  white-space: nowrap;
+  padding: 15px;
+  cursor: pointer;
+  color: #223160;
+  font-size: 16px;
+  font-weight: 600;
+  background-color: white;
+  flex: 1;
+  text-align: center;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.product-specifications .tab:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  top: 0;
+  height: 100%;
+  width: 1px;
+  background-color: #f1f3f9;
+}
+
+.product-specifications .tab.active {
+  background-color: #223160;
+  color: white;
+  border-top-right-radius: 20px;
+  border-bottom-left-radius: 20px;
+}
+
+.product-specifications .tab-content {
+  display: none;
+}
+
+.product-specifications .tab-content.active {
+  display: block;
+  width: 100%;
+  height: auto;
+  background-color: #fff;
+  padding: 25px;
+  border-top: 3px solid #E22131;
+  border-radius: 25px;
+
+}
+
+.product-specifications .tab-content.active .performance-content p {
+  font-family: Atyp Regular;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 20px;
+  letter-spacing: 0%;
+  color: #223160;
+  margin-top: 30px ;
+}
+
+.product-specifications .tab-content.active .performance-content p span {
+  font-family: Atyp Medium;
+  font-weight: 600;
+  font-size: 16px;
+}
+
+/* Typical properties */
+
+
+.specifications-table {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.specifications-table table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  background-color: #fff;
+  border-radius: 18px;
+  overflow: hidden;
+  text-align: center;
+  border: 1px solid #f1f3f9;
+  table-layout: fixed; 
+}
+
+.specifications-table th {
+  white-space: nowrap;
+  padding: 15px;
+  font-size: 16px;
+  color: #223160;
+  border: 1px solid #f1f3f9;
+}
+
+.specifications-table td {
+  font-size: 15px;
+  font-family: Atyp Regular;
+  padding: 15px;
+  color: #223160;
+  border: 1px solid #f1f3f9;
+
+}
+
+
+.product-opinions {
+  margin: 50px auto;
+  color: #223160;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
