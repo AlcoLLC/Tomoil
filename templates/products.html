@@ -14,39 +14,14 @@
             <div class="filter-section">
                 <h3>Product Range</h3>
                 <div class="checkbox-area">
+                    {% for product_range in product_ranges %}
                     <label class="checkbox-group">
-                        <input type="checkbox" />
-                        <span class="checkbox-label">Engine Oils</span>
+                        <input type="checkbox" name="product_range" value="{{ product_range.id }}" 
+                                   {% if product_range.id|stringformat:"s" in selected_product_ranges %}checked{% endif %}
+                                   onchange="submitForm()" />
+                        <span class="checkbox-label">{{ product_range.name }}</span>
                     </label>
-                    <label class="checkbox-group">
-                        <input type="checkbox" />
-                        <span class="checkbox-label">Universal Tractor Oils</span>
-                    </label>
-                    <label class="checkbox-group">
-                        <input type="checkbox" />
-                        <span class="checkbox-label">Automatic Transmission Fluids</span>
-                    </label>
-                    <label class="checkbox-group">
-                        <input type="checkbox" />
-                        <span class="checkbox-label">Manual Transmission Fluids</span>
-                    </label>
-                    <label class="checkbox-group">
-                        <input type="checkbox" />
-                        <span class="checkbox-label">Hydraulic Oils</span>
-                    </label>
-                    <!-- Additional items that will be shown when expanded -->
-                    <label class="checkbox-group">
-                        <input type="checkbox" />
-                        <span class="checkbox-label">Gear Oils</span>
-                    </label>
-                    <label class="checkbox-group">
-                        <input type="checkbox" />
-                        <span class="checkbox-label">Brake Fluids</span>
-                    </label>
-                    <label class="checkbox-group">
-                        <input type="checkbox" />
-                        <span class="checkbox-label">Coolants</span>
-                    </label>
+                    {% endfor %}
                 </div>
                 <div class="filter-show-more">
                     <a href="#" class="show-more">
@@ -58,33 +33,21 @@
             <div class="filter-section">
                 <h3>Application area</h3>
                 <div class="application-area">
-                    <button class="icon-button" data-type="car">
-                        <img src="{% static 'images/download-icon-dark.svg' %}" alt="Filter icon">
-                    </button>
-                    <button class="icon-button" data-type="truck">
-                        <img src="{% static 'images/download-icon-dark.svg' %}" alt="Filter icon">
-                    </button>
-                    <button class="icon-button" data-type="motorcycle">
-                        <img src="{% static 'images/download-icon-dark.svg' %}" alt="Filter icon">
-                    </button>
-                    <button class="icon-button" data-type="electric-car">
-                        <img src="{% static 'images/download-icon-dark.svg' %}" alt="Filter icon">
-                    </button>
-                    <button class="icon-button" data-type="tractor">
-                        <img src="{% static 'images/download-icon-dark.svg' %}" alt="Filter icon">
-                    </button>
-                    <button class="icon-button active" data-type="construction">
-                        <img src="{% static 'images/download-icon-dark.svg' %}" alt="Filter icon">
-                    </button>
-                    <button class="icon-button" data-type="marine">
-                        <img src="{% static 'images/download-icon-dark.svg' %}" alt="Filter icon">
-                    </button>
-                    <button class="icon-button" data-type="industrial">
-                        <img src="{% static 'images/download-icon-dark.svg' %}" alt="Filter icon">
-                    </button>
-                    <button class="icon-button" data-type="aviation">
-                        <img src="{% static 'images/download-icon-dark.svg' %}" alt="Filter icon">
-                    </button>
+                     {% for application_area in application_areas %}
+                     <button type="button" class="icon-button {% if application_area.id|stringformat:"s" in selected_application_areas %}active{% endif %}" 
+                                data-type="app-{{ application_area.id }}" onclick="toggleApplicationArea({{ application_area.id }})">
+                            {% if application_area.icon %}
+                                <img src="{{ application_area.icon.url }}" alt="{{ application_area.name }}">
+                            {% else %}
+                                <img src="{% static 'images/download-icon-dark.svg' %}" alt="{{ application_area.name }}">
+                            {% endif %}
+                     </button>
+                    {% endfor %}
+                   {% for application_area in application_areas %}
+                        <input type="checkbox" name="application_area" value="{{ application_area.id }}" 
+                               {% if application_area.id|stringformat:"s" in selected_application_areas %}checked{% endif %}
+                               style="display: none;" id="app-{{ application_area.id }}" onchange="submitForm()" />
+                        {% endfor %}
                 </div>
                 <div class="filter-show-more">
                     <a href="#" class="show-more">
@@ -97,41 +60,21 @@
                 <h3>Product Specifications</h3>
 
                 <div class="search-bar">
-                    <input type="text" placeholder="Search" class="search-input" />
-                    <button class="search-button">
-                        <img src="{% static 'images/search-icon.svg' %}" alt="Search" />
-                    </button>
+                    <input type="text" name="search" placeholder="Search" class="search-input" 
+                               value="{{ search_query }}" onkeyup="delayedSubmit()" />
+                        <button type="button" class="search-button" onclick="submitForm()">
+                            <img src="{% static 'images/search-icon.svg' %}" alt="Search" />
+                        </button>
                 </div>
                 <div class="checkbox-area">
-                    <label class="checkbox-group">
-                        <input type="checkbox" />
-                        <span class="checkbox-label">API SP</span>
-                    </label>
-                    <label class="checkbox-group">
-                        <input type="checkbox" />
-                        <span class="checkbox-label">API SN</span>
-                    </label>
-                    <label class="checkbox-group">
-                        <input type="checkbox" />
-                        <span class="checkbox-label">ACEA C5</span>
-                    </label>
-                    <label class="checkbox-group">
-                        <input type="checkbox" />
-                        <span class="checkbox-label">ACEA A3/B4</span>
-                    </label>
-                    <label class="checkbox-group">
-                        <input type="checkbox" />
-                        <span class="checkbox-label">MB 229.5</span>
-                    </label>
-                    <!-- Additional items -->
-                    <label class="checkbox-group">
-                        <input type="checkbox" />
-                        <span class="checkbox-label">BMW LL-01</span>
-                    </label>
-                    <label class="checkbox-group">
-                        <input type="checkbox" />
-                        <span class="checkbox-label">VW 504.00/507.00</span>
-                    </label>
+                     {% for specification in specifications %}
+                        <label class="checkbox-group">
+                            <input type="checkbox" name="specification" value="{{ specification.id }}" 
+                                   {% if specification.id|stringformat:"s" in selected_specifications %}checked{% endif %}
+                                   onchange="submitForm()" />
+                            <span class="checkbox-label">{{ specification.name }}</span>
+                        </label>
+                        {% endfor %}
                 </div>
                 <div class="filter-show-more">
                     <a href="#" class="show-more">
@@ -143,35 +86,14 @@
             <div class="filter-section">
                 <h3>Viscosity</h3>
                 <div class="checkbox-area">
-                    <label class="checkbox-group">
-                        <input type="checkbox" />
-                        <span class="checkbox-label">0W-8</span>
-                    </label>
-                    <label class="checkbox-group">
-                        <input type="checkbox" />
-                        <span class="checkbox-label">0W-16</span>
-                    </label>
-                    <label class="checkbox-group">
-                        <input type="checkbox" />
-                        <span class="checkbox-label">0W-20</span>
-                    </label>
-                    <label class="checkbox-group">
-                        <input type="checkbox" />
-                        <span class="checkbox-label">5W-30</span>
-                    </label>
-                    <label class="checkbox-group">
-                        <input type="checkbox" />
-                        <span class="checkbox-label">10W-40</span>
-                    </label>
-                    <!-- Additional items -->
-                    <label class="checkbox-group">
-                        <input type="checkbox" />
-                        <span class="checkbox-label">15W-40</span>
-                    </label>
-                    <label class="checkbox-group">
-                        <input type="checkbox" />
-                        <span class="checkbox-label">20W-50</span>
-                    </label>
+                     {% for viscosity in viscosities %}
+                        <label class="checkbox-group">
+                            <input type="checkbox" name="viscosity" value="{{ viscosity.id }}" 
+                                   {% if viscosity.id|stringformat:"s" in selected_viscosities %}checked{% endif %}
+                                   onchange="submitForm()" />
+                            <span class="checkbox-label">{{ viscosity.name }}</span>
+                        </label>
+                        {% endfor %}
                 </div>
                 <div class="filter-show-more">
                     <a href="#" class="show-more">
@@ -183,34 +105,14 @@
             <div class="filter-section">
                 <h3>Composition</h3>
                 <div class="checkbox-area">
-                    <label class="checkbox-group">
-                        <input type="checkbox" />
-                        <span class="checkbox-label">Mineral</span>
-                    </label>
-                    <label class="checkbox-group">
-                        <input type="checkbox" />
-                        <span class="checkbox-label">Semi-synthetic</span>
-                    </label>
-                    <label class="checkbox-group">
-                        <input type="checkbox" />
-                        <span class="checkbox-label">Synthetic</span>
-                    </label>
-                    <label class="checkbox-group">
-                        <input type="checkbox" />
-                        <span class="checkbox-label">Semi-synthetic</span>
-                    </label>
-                    <label class="checkbox-group">
-                        <input type="checkbox" />
-                        <span class="checkbox-label">Synthetic</span>
-                    </label>
-                    <label class="checkbox-group">
-                        <input type="checkbox" />
-                        <span class="checkbox-label">Semi-synthetic</span>
-                    </label>
-                    <label class="checkbox-group">
-                        <input type="checkbox" />
-                        <span class="checkbox-label">Synthetic</span>
-                    </label>
+                   {% for composition in compositions %}
+                        <label class="checkbox-group">
+                            <input type="checkbox" name="composition" value="{{ composition.id }}" 
+                                   {% if composition.id|stringformat:"s" in selected_compositions %}checked{% endif %}
+                                   onchange="submitForm()" />
+                            <span class="checkbox-label">{{ composition.name }}</span>
+                        </label>
+                        {% endfor %}
                 </div>
                 <div class="filter-show-more">
                     <a href="#" class="show-more">
@@ -222,16 +124,17 @@
             <div class="filter-section">
                 <h3>Pack sizes</h3>
                 <div class="pack-size-area">
-                    <button class="icon-button" data-type="size-1">6</button>
-                    <button class="icon-button" data-type="size-2">12</button>
-                    <button class="icon-button active" data-type="size-3">18</button>
-                    <button class="icon-button" data-type="size-4">24</button>
-                    <button class="icon-button" data-type="size-5">36</button>
-                    <button class="icon-button" data-type="size-6">48</button>
-                    <button class="icon-button" data-type="size-7">60</button>
-                    <button class="icon-button" data-type="size-8">72</button>
-                    <button class="icon-button" data-type="size-9">100</button>
-                    <button class="icon-button" data-type="size-10">200</button>
+                    {% for pack_size in pack_sizes %}
+                        <button type="button" class="icon-button {% if pack_size.id|stringformat:"s" in selected_pack_sizes %}active{% endif %}" 
+                                data-type="size-{{ pack_size.id }}" onclick="togglePackSize({{ pack_size.id }})">
+                            {{ pack_size.size|floatformat:0 }}
+                        </button>
+                        {% endfor %}
+                        {% for pack_size in pack_sizes %}
+                        <input type="checkbox" name="pack_size" value="{{ pack_size.id }}" 
+                               {% if pack_size.id|stringformat:"s" in selected_pack_sizes %}checked{% endif %}
+                               style="display: none;" id="size-{{ pack_size.id }}" onchange="submitForm()" />
+                        {% endfor %}
                 </div>
                 <div class="filter-show-more">
                     <a href="#" class="show-more">
@@ -239,81 +142,36 @@
                     </a>
                 </div>
             </div>
-
-        
             <button type="button" class="filter-results-button" id="filterResultsBtn">View Result</button>
-      
         </div>
 
         <div class="products-list">
+             {% for product in products %}
             <div class="product-card">
-                <div class="product-type">ENGINE OIL</div>
-                <a href="" class="product-image" >
-                    <img src="{% static 'images/image 79.svg' %}" alt="Product Image">
-                </a>
-                <div class="product-info">
+                <div class="product-type">{{ product.product_range.name|upper }}</div>
+                 <a href="{% url 'product_detail' product.product_id %}" class="product-image">
+                    {% if product.image %}
+                        <img src="{{ product.image.url }}" alt="{{ product.title }}">
+                    {% else %}
+                    {% endif %}
+                 </a>
+                 <div class="product-info">
                     <div>
-                        <h2 class="product-title">PureMax 10W-30</h2>
-                        <p class="product-description">Fully Syntetic</p>
-                        <p class="product-id">ID: 394020394</p>
+                        <h2 class="product-title">{{ product.title }}</h2>
+                        <p class="product-description">{{ product.description|truncatechars:50 }}</p>
+                        <p class="product-id">ID: {{ product.product_id }}</p>
                     </div>
-                    <a href="#" class="show-more">
+                    <a href="{% url 'product_detail' product.product_id %}" class="show-more">
                         Show More
                         <i class="fas fa-arrow-right-long"></i>
                     </a>
                 </div>
             </div>
-            <div class="product-card">
-                <div class="product-type">ENGİNE OIL</div>
-                <a class="product-image" href="">
-                    <img src="{% static 'images/image 80.svg' %}" alt="Product Image">
-                </a>
-                <div class="product-info">
-                    <div>
-                        <h2 class="product-title">PureMax 10W-30</h2>
-                        <p class="product-description">Fully Syntetic</p>
-                        <p class="product-id">ID: 394020394</p>
-                    </div>
-                    <a href="#" class="show-more">
-                        Show More
-                        <i class="fas fa-arrow-right-long"></i>
-                    </a>
-                </div>
+              {% empty %}
+            <div class="no-products">
+                <p>No products found matching your criteria.</p>
             </div>
-            <div class="product-card">
-                <div class="product-type">ENGİNE OIL</div>
-                <a href="" class="product-image">
-                    <img src="{% static 'images/product.png' %}" alt="Product Image">
-                </a>
-                <div class="product-info">
-                    <div>
-                        <h2 class="product-title">PureMax 10W-30</h2>
-                        <p class="product-description">Fully Syntetic</p>
-                        <p class="product-id">ID: 394020394</p>
-                    </div>
-                    <a href="#" class="show-more">
-                        Show More
-                        <i class="fas fa-arrow-right-long"></i>
-                    </a>
-                </div>
-            </div>
-            <div class="product-card">
-                <div class="product-type">ENGİNE OIL</div>
-                <a href="" class="product-image">
-                    <img src="{% static 'images/product.png' %}" alt="Product Image">
-                </a>
-                <div class="product-info">
-                    <div>
-                        <h2 class="product-title">PureMax 10W-30</h2>
-                        <p class="product-description">Fully Syntetic</p>
-                        <p class="product-id">ID: 394020394</p>
-                    </div>
-                    <a href="#" class="show-more">
-                        Show More
-                        <i class="fas fa-arrow-right-long"></i>
-                    </a>
-                </div>
-            </div>
+            {% endfor %}
         </div>
     </div>
 </section>
