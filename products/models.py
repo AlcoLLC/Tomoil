@@ -81,7 +81,6 @@ class Product(models.Model):
     features_benefits = models.TextField(blank=True, null=True)
     application = models.TextField(blank=True, null=True)
     
-    # Relations
     product_range = models.ForeignKey(ProductRange, on_delete=models.CASCADE, related_name='products')
     application_areas = models.ManyToManyField(ApplicationArea, blank=True, related_name='products')
     specifications = models.ManyToManyField(Specification, blank=True, related_name='products')
@@ -89,7 +88,6 @@ class Product(models.Model):
     compositions = models.ManyToManyField(Composition, blank=True, related_name='products')
     pack_sizes = models.ManyToManyField(PackSize, blank=True, related_name='products')
     
-    # Timestamps
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     is_active = models.BooleanField(default=True)

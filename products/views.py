@@ -78,6 +78,39 @@ def products_view(request):
 
     products = Product.objects.filter(is_active=True)
 
+    from_date = request.GET.get('from_date', '')
+
+    if from_date:
+        try:
+            if '.' in from_date:
+                day, month, year = from_date.split('.')
+                formatted_date = f"{year}-{month}-{day}"
+                products = products.filter(
+                    created_at__gte=formatted_date)
+            elif '-' in from_date:
+                products = products.filter(created_at__gte=from_date)
+        except (ValueError, IndexError):
+            pass
+        
+    page_number = request.GET.get('page', 1)
+    paginator = Paginator(products, 6)
+
+    try:
+        page_obj = paginator.get_page(page_number)
+    except (ValueError, TypeError):
+        page_obj = paginator.get_page(1)
+
+    formatted_display_date = ''
+    if from_date:
+        if '.' in from_date:
+            formatted_display_date = from_date
+        elif '-' in from_date:
+            try:
+                year, month, day = from_date.split('-')
+                formatted_display_date = f"{day}.{month}.{year}"
+            except (ValueError, IndexError):
+                formatted_display_date = from_date
+
     if product_ranges:
         products = products.filter(product_range__id__in=product_ranges)
     
@@ -110,9 +143,7 @@ def products_view(request):
         'viscosities', 'compositions', 'pack_sizes'
     )
 
-    paginator = Paginator(products, 12) 
-    page_number = request.GET.get('page')
-    page_obj = paginator.get_page(page_number)
+    
 
     context = {
         **header_context,
@@ -130,7 +161,8 @@ def products_view(request):
         'selected_compositions': [str(id) for id in compositions],
         'selected_pack_sizes': [str(id) for id in pack_sizes],
         'search_query': search_query,
-        'total_products': products.count(),
+        'formatted_date': formatted_display_date,
+        **header_context
     }
 
     return render(request, 'products.html', context)
