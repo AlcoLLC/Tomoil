@@ -8,151 +8,150 @@
 <!-- Products section  -->
 <section class="products-section section-container">
     <div class="products-container">
-        <div class="filter-products">
-            <button class="reset-filter-btn">RESET FILTERS</button>
+        <form id="filterForm" method="GET" action="{% url 'products:products_list' %}">
+            <div class="filter-products">
+                <button type="button" class="reset-filter-btn" onclick="resetFilters()">RESET FILTERS</button>
 
-            <div class="filter-section">
-                <h3>Product Range</h3>
-                <div class="checkbox-area">
-                    {% for product_range in product_ranges %}
-                    <label class="checkbox-group">
-                        <input type="checkbox" name="product_range" value="{{ product_range.id }}" 
-                                   {% if product_range.id|stringformat:"s" in selected_product_ranges %}checked{% endif %}
-                                   onchange="submitForm()" />
-                        <span class="checkbox-label">{{ product_range.name }}</span>
-                    </label>
-                    {% endfor %}
-                </div>
-                <div class="filter-show-more">
-                    <a href="#" class="show-more">
-                        Show more <i class="fas fa-arrow-right"></i>
-                    </a>
-                </div>
-            </div>
-
-            <div class="filter-section">
-                <h3>Application area</h3>
-                <div class="application-area">
-                     {% for application_area in application_areas %}
-                     <button type="button" class="icon-button {% if application_area.id|stringformat:"s" in selected_application_areas %}active{% endif %}" 
-                                data-type="app-{{ application_area.id }}" onclick="toggleApplicationArea({{ application_area.id }})">
-                            {% if application_area.icon %}
-                                <img src="{{ application_area.icon.url }}" alt="{{ application_area.name }}">
-                            {% else %}
-                                <img src="{% static 'images/download-icon-dark.svg' %}" alt="{{ application_area.name }}">
-                            {% endif %}
-                     </button>
-                    {% endfor %}
-                   {% for application_area in application_areas %}
-                        <input type="checkbox" name="application_area" value="{{ application_area.id }}" 
-                               {% if application_area.id|stringformat:"s" in selected_application_areas %}checked{% endif %}
-                               style="display: none;" id="app-{{ application_area.id }}" onchange="submitForm()" />
-                        {% endfor %}
-                </div>
-                <div class="filter-show-more">
-                    <a href="#" class="show-more">
-                        Show more <i class="fas fa-arrow-right"></i>
-                    </a>
-                </div>
-            </div>
-
-            <div class="filter-section">
-                <h3>Product Specifications</h3>
-
-                <div class="search-bar">
-                    <input type="text" name="search" placeholder="Search" class="search-input" 
-                               value="{{ search_query }}" onkeyup="delayedSubmit()" />
-                        <button type="button" class="search-button" onclick="submitForm()">
-                            <img src="{% static 'images/search-icon.svg' %}" alt="Search" />
-                        </button>
-                </div>
-                <div class="checkbox-area">
-                     {% for specification in specifications %}
+                <div class="filter-section">
+                    <h3>Product Range</h3>
+                    <div class="checkbox-area">
+                        {% for product_range in product_ranges %}
                         <label class="checkbox-group">
-                            <input type="checkbox" name="specification" value="{{ specification.id }}" 
-                                   {% if specification.id|stringformat:"s" in selected_specifications %}checked{% endif %}
-                                   onchange="submitForm()" />
-                            <span class="checkbox-label">{{ specification.name }}</span>
+                            <input type="checkbox" name="product_range" value="{{ product_range.id }}" 
+                                       {% if product_range.id|stringformat:"s" in selected_product_ranges %}checked{% endif %} />
+                            <span class="checkbox-label">{{ product_range.name }}</span>
                         </label>
                         {% endfor %}
+                    </div>
+                    <div class="filter-show-more">
+                        <a href="#" class="show-more">
+                            Show more <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
                 </div>
-                <div class="filter-show-more">
-                    <a href="#" class="show-more">
-                        Show more <i class="fas fa-arrow-right"></i>
-                    </a>
-                </div>
-            </div>
 
-            <div class="filter-section">
-                <h3>Viscosity</h3>
-                <div class="checkbox-area">
-                     {% for viscosity in viscosities %}
-                        <label class="checkbox-group">
-                            <input type="checkbox" name="viscosity" value="{{ viscosity.id }}" 
-                                   {% if viscosity.id|stringformat:"s" in selected_viscosities %}checked{% endif %}
-                                   onchange="submitForm()" />
-                            <span class="checkbox-label">{{ viscosity.name }}</span>
-                        </label>
+                <div class="filter-section">
+                    <h3>Application area</h3>
+                    <div class="application-area">
+                         {% for application_area in application_areas %}
+                         <button type="button" class="icon-button {% if application_area.id|stringformat:"s" in selected_application_areas %}active{% endif %}" 
+                                    data-type="app-{{ application_area.id }}" onclick="toggleApplicationArea({{ application_area.id }})">
+                                {% if application_area.icon %}
+                                    <img src="{{ application_area.icon.url }}" alt="{{ application_area.name }}">
+                                {% else %}
+                                    <img src="{% static 'images/download-icon-dark.svg' %}" alt="{{ application_area.name }}">
+                                {% endif %}
+                         </button>
                         {% endfor %}
+                       {% for application_area in application_areas %}
+                            <input type="checkbox" name="application_area" value="{{ application_area.id }}" 
+                                   {% if application_area.id|stringformat:"s" in selected_application_areas %}checked{% endif %}
+                                   style="display: none;" id="app-{{ application_area.id }}" />
+                            {% endfor %}
+                    </div>
+                    <div class="filter-show-more">
+                        <a href="#" class="show-more">
+                            Show more <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
                 </div>
-                <div class="filter-show-more">
-                    <a href="#" class="show-more">
-                        Show more <i class="fas fa-arrow-right"></i>
-                    </a>
-                </div>
-            </div>
 
-            <div class="filter-section">
-                <h3>Composition</h3>
-                <div class="checkbox-area">
-                   {% for composition in compositions %}
-                        <label class="checkbox-group">
-                            <input type="checkbox" name="composition" value="{{ composition.id }}" 
-                                   {% if composition.id|stringformat:"s" in selected_compositions %}checked{% endif %}
-                                   onchange="submitForm()" />
-                            <span class="checkbox-label">{{ composition.name }}</span>
-                        </label>
-                        {% endfor %}
+                <div class="filter-section">
+                    <h3>Product Specifications</h3>
+                    {% comment %} 
+                    <div class="search-bar">
+                        <input type="text" name="search" placeholder="Search" class="search-input" 
+                                   value="{{ search_query }}" />
+                            <button type="button" class="search-button" onclick="applyFilters()">
+                                <img src="{% static 'images/search-icon.svg' %}" alt="Search" />
+                            </button>
+                    </div> {% endcomment %}
+                    <div class="checkbox-area">
+                         {% for specification in specifications %}
+                            <label class="checkbox-group">
+                                <input type="checkbox" name="specification" value="{{ specification.id }}" 
+                                       {% if specification.id|stringformat:"s" in selected_specifications %}checked{% endif %} />
+                                <span class="checkbox-label">{{ specification.name }}</span>
+                            </label>
+                            {% endfor %}
+                    </div>
+                    <div class="filter-show-more">
+                        <a href="#" class="show-more">
+                            Show more <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
                 </div>
-                <div class="filter-show-more">
-                    <a href="#" class="show-more">
-                        Show more <i class="fas fa-arrow-right"></i>
-                    </a>
-                </div>
-            </div>
 
-            <div class="filter-section">
-                <h3>Pack sizes</h3>
-                <div class="pack-size-area">
-                    {% for pack_size in pack_sizes %}
-                        <button type="button" class="icon-button {% if pack_size.id|stringformat:"s" in selected_pack_sizes %}active{% endif %}" 
-                                data-type="size-{{ pack_size.id }}" onclick="togglePackSize({{ pack_size.id }})">
-                            {{ pack_size.size|floatformat:0 }}
-                        </button>
-                        {% endfor %}
+                <div class="filter-section">
+                    <h3>Viscosity</h3>
+                    <div class="checkbox-area">
+                         {% for viscosity in viscosities %}
+                            <label class="checkbox-group">
+                                <input type="checkbox" name="viscosity" value="{{ viscosity.id }}" 
+                                       {% if viscosity.id|stringformat:"s" in selected_viscosities %}checked{% endif %} />
+                                <span class="checkbox-label">{{ viscosity.name }}</span>
+                            </label>
+                            {% endfor %}
+                    </div>
+                    <div class="filter-show-more">
+                        <a href="#" class="show-more">
+                            Show more <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="filter-section">
+                    <h3>Composition</h3>
+                    <div class="checkbox-area">
+                       {% for composition in compositions %}
+                            <label class="checkbox-group">
+                                <input type="checkbox" name="composition" value="{{ composition.id }}" 
+                                       {% if composition.id|stringformat:"s" in selected_compositions %}checked{% endif %} />
+                                <span class="checkbox-label">{{ composition.name }}</span>
+                            </label>
+                            {% endfor %}
+                    </div>
+                    <div class="filter-show-more">
+                        <a href="#" class="show-more">
+                            Show more <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="filter-section">
+                    <h3>Pack sizes</h3>
+                    <div class="pack-size-area">
                         {% for pack_size in pack_sizes %}
-                        <input type="checkbox" name="pack_size" value="{{ pack_size.id }}" 
-                               {% if pack_size.id|stringformat:"s" in selected_pack_sizes %}checked{% endif %}
-                               style="display: none;" id="size-{{ pack_size.id }}" onchange="submitForm()" />
-                        {% endfor %}
+                            <button type="button" class="icon-button {% if pack_size.id|stringformat:"s" in selected_pack_sizes %}active{% endif %}" 
+                                    data-type="size-{{ pack_size.id }}" onclick="togglePackSize({{ pack_size.id }})">
+                                {{ pack_size.size|floatformat:0 }}
+                            </button>
+                            {% endfor %}
+                            {% for pack_size in pack_sizes %}
+                            <input type="checkbox" name="pack_size" value="{{ pack_size.id }}" 
+                                   {% if pack_size.id|stringformat:"s" in selected_pack_sizes %}checked{% endif %}
+                                   style="display: none;" id="size-{{ pack_size.id }}" />
+                            {% endfor %}
+                    </div>
+                    <div class="filter-show-more">
+                        <a href="#" class="show-more">
+                            Show more <i class="fas fa-arrow-right"></i>
+                        </a>
+                    </div>
                 </div>
-                <div class="filter-show-more">
-                    <a href="#" class="show-more">
-                        Show more <i class="fas fa-arrow-right"></i>
-                    </a>
-                </div>
+                <button type="button" class="filter-results-button" id="filterResultsBtn" onclick="applyFilters()">View Results</button>
             </div>
-            <button type="button" class="filter-results-button" id="filterResultsBtn">View Result</button>
-        </div>
+        </form>
 
         <div class="products-list">
              {% for product in products %}
             <div class="product-card">
                 <div class="product-type">{{ product.product_range.name|upper }}</div>
-                 <a href="{% url 'product_detail' product.product_id %}" class="product-image">
+                 <a href="{% url 'products:product_detail' product.product_id %}" class="product-image">
                     {% if product.image %}
                         <img src="{{ product.image.url }}" alt="{{ product.title }}">
                     {% else %}
+                        <img src="{% static 'images/placeholder-product.jpg' %}" alt="{{ product.title }}">
                     {% endif %}
                  </a>
                  <div class="product-info">
@@ -161,7 +160,7 @@
                         <p class="product-description">{{ product.description|truncatechars:50 }}</p>
                         <p class="product-id">ID: {{ product.product_id }}</p>
                     </div>
-                    <a href="{% url 'product_detail' product.product_id %}" class="show-more">
+                    <a href="{% url 'products:product_detail' product.product_id %}" class="show-more">
                         Show More
                         <i class="fas fa-arrow-right-long"></i>
                     </a>
@@ -173,9 +172,21 @@
             </div>
             {% endfor %}
         </div>
+
+        <!-- Pagination -->
+<div class="pagination-container">
+      <p class="pagination-info">
+        Displaying {{ page_obj.start_index }}–{{ page_obj.end_index }} of {{ total_results }} results
+      </p>
+      <div class="pagination">
+        <!-- Page Numbers -->
+        {% for num in page_obj.paginator.page_range %} {% if page_obj.number == num %}
+        <span class="page-btn active">{{ num }}</span>
+        {% elif num > page_obj.number|add:-3 and num < page_obj.number|add:3 %} <a
+          href="?from_date={{ from_date_formatted|urlencode }}&to_date={{ to_date_formatted|urlencode }}&page={{ num }}" class="page-btn">{{ num }}</a>
+          {% endif %} {% endfor %}
+      </div>
     </div>
-</section>
+    </section>
 
-
-
-{% endblock %}
+ {% endblock %}
