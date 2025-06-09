@@ -35,16 +35,19 @@ body {
   background-color: #f1f3f9;
 }
 
-.main {
-  background-color: #f1f3f9;
-}
-
 .section-title {
   font-family: Atyp Medium;
   color: #223160;
   font-size: 40px;
   line-height: 50px;
   font-weight: 600;
+}
+
+.section-description {
+  font-family: Atyp Regular;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 1.5;
 }
 
 .section-subtitle {
@@ -67,13 +70,6 @@ body {
   max-width: 95%;
   margin: auto;
   padding: 0px;
-}
-
-.section-description {
-  font-family: Atyp Regular;
-  font-weight: 400;
-  font-size: 16px;
-  line-height: 1.5;
 }
 
 nav {
@@ -1105,6 +1101,7 @@ nav {
   border-bottom-left-radius: 29px;
   background-color: #e22131;
   border: none;
+  cursor: pointer;
   transition: all 0.3s ease;
 }
 

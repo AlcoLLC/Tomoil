@@ -170,27 +170,123 @@
                 experience and we can keep on optimising!
             </p>
 
-            <button class="button-style">
-                <a href="">Be THE FIRST to RATE PRODUCTS <i class="fas fa-arrow-right-long"></i></a>
+            <button class="button-style" id="openReviewModal">
+                <a>BE THE FIRST TO RATE PRODUCTS <i class="fas fa-arrow-right"></i></a>
             </button>
         </div>
-
         <div class="opinions">
-            <i class="fa-solid fa-star"></i>
-            <i class="fa-regular fa-star"></i>
-            <h3>Aykhan Safarli</h3> <span>11.05.2025</span>
-            <p class="section-description" >Your opinion is important to us! Be a pioneer and rate the product so that others can benefit from your
-                experience and we can always optimize!</p>
+            <div class="opinion active" data-index="0">
+                <div class="star-rating">
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-regular fa-star"></i>
+                </div>
+                <div class="review-header">
+                    <h3>Aykhan Safarli</h3>
+                    <span>11.05.2025</span>
+                </div>
+                <p class="section-description">Your opinion is important to us! Be a pioneer and rate the product so
+                    that others can benefit from your experience and we can always optimize! </p>
+            </div>
+
+            <div class="opinion" data-index="1">
+                <div class="star-rating">
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-regular fa-star"></i>
+                </div>
+                <div class="review-header">
+                    <h3>Aytac Mehdizade</h3>
+                    <span>12.05.2025</span>
+                </div>
+                <p class="section-description">Your opinion is important to us! Be a pioneer and rate the product so
+                    that others can benefit from your experience and we can always optimize!</p>
+            </div>
+
+            <div class="opinion" data-index="2">
+                <div class="star-rating">
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-regular fa-star"></i>
+                </div>
+                <div class="review-header">
+                    <h3>Aygun Amiraslanova</h3>
+                    <span>13.05.2025</span>
+                </div>
+                <p class="section-description">Your opinion is important to us! Be a pioneer and rate the product so
+                    that others can benefit from your experience and we can always optimize!</p>
+            </div>
         </div>
+
     </div>
 
+    <!-- Modal HTML -->
+    <div id="reviewModalOverlay" class="review-modal-overlay">
+        <div class="review-modal">
+            <div class="modal-header">
+                <h2 class="modal-title">Your Review</h2>
+                <button class="close-btn" id="closeModal"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            <form id="review-form" class="modal-form">
+                <div class="form-section">
+                    <label>Sort by</label>
+                    <div class="star-selector">
+                        <i class="fas fa-star star" data-rating="1"></i>
+                        <i class="fas fa-star star" data-rating="2"></i>
+                        <i class="fas fa-star star" data-rating="3"></i>
+                        <i class="fas fa-star star" data-rating="4"></i>
+                        <i class="fas fa-star star" data-rating="5"></i>
+                    </div>
+                </div>
 
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="firstName">First name</label>
+                        <input type="text" id="firstName" name="firstName" placeholder="Enter your name">
+                    </div>
+                    <div class="form-group">
+                        <label for="surname">Surname</label>
+                        <input type="text" id="surname" name="surname" placeholder="Enter your surname">
+                    </div>
+                </div>
 
+                <div class="form-section">
+                    <div class="form-group">
+                        <label for="email">Email address</label>
+                        <input type="email" id="email" name="email" placeholder="Enter your email">
+                    </div>
+                </div>
 
+                <div class="form-section">
+                    <div class="form-group">
+                        <label for="summary">Summary of your review</label>
+                        <input type="text" id="summary" name="summary" placeholder="Enter your review">
+                    </div>
+                </div>
 
+                <div class="form-section">
+                    <div class="form-group">
+                        <label for="review">Review</label>
+                        <textarea id="review" name="review" placeholder="Write here..."></textarea>
+                    </div>
+                </div>
 
+                <div class="checkbox-container">
+                    <input type="checkbox" id="agreement" name="agreement" required>
+                    <label for="agreement">I agree to the publication and the <a href="#">evaluation
+                            conditions</a>.</label>
+                </div>
 
-
+                <button type="submit" class="submit-btn">SUBMIT</button>
+            </form>
+        </div>
+    </div>
 </section>
 
 
