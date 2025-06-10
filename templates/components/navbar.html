@@ -26,7 +26,21 @@
           <button>
             <a href="/pds_sds">PSD/SDS</a>
           </button>
-          <button>AZE <i class="fa-solid fa-angle-down"></i></button>
+
+          <div class="language-dropdown">
+            <button>
+              EN <i class="fa-solid fa-angle-down"></i>
+            </button>
+            <div class="dropdown-content" id="languageDropdown">
+              <button onclick="changeLanguage('DE')">DE</button>
+              <button onclick="changeLanguage('ES')">ES</button>
+              <button onclick="changeLanguage('FR')">FR</button>
+              <button onclick="changeLanguage('IT')">IT</button>
+              <button onclick="changeLanguage('RM')">RM</button>
+              <button onclick="changeLanguage('汉语')">汉语</button>
+            </div>
+          </div>
+
         </div>
       </div>
       <div class="nav-section">
@@ -35,9 +49,9 @@
         </a>
         <div class="nav-list">
           <ul>
-            <li class="dropdown">
-              <a href="">Who we Are</a>
-              <div class="dropdown-content">
+            <li class="dropdown ">
+              <a class="no-pointer" >Who we Are</a>
+              <div class="dropdown-content ">
                 <a href="/glance">GLANCE</a>
                 <a href="/vision_mission">VISION & MISSION</a>
                 <a href="/our_commitment">OUR COMMITMENTS</a>
@@ -51,10 +65,89 @@
             <li><a href="/contact">Contact US</a></li>
           </ul>
         </div>
-        <button class="search">
-          <i class="fa-solid fa-magnifying-glass"></i>
-        </button>
+        <div class="flex-buttons">
+          <button class="search">
+            <i class="fa-solid fa-magnifying-glass"></i>
+          </button>
+
+          <button class="hamburger" id="hamburger">
+            <i class="fas fa-bars"></i>
+          </button>
+
+        </div>
+
       </div>
     </div>
   </div>
 </nav>
+
+<div class="mobile-menu" id="mobile-menu">
+  <div class="mobile-nav-content">
+    <ul class="mobile-nav-list">
+      <li class="mobile-dropdown">
+        <a class="mobile-dropdown-head">WHO WE ARE <i class="fa-solid fa-chevron-right"></i></a>
+        <div class="mobile-dropdown-content">
+          <a href="/glance">GLANCE</a>
+          <a href="/vision_mission">VISION & MISSION</a>
+          <a href="/our_commitment">OUR COMMITMENTS</a>
+        </div>
+      </li>
+      <li class="mobile-nav-item">
+        <a href="/products">PRODUCTS </a>
+      </li>
+      <li class="mobile-nav-item">
+        <a href="/services">SERVICES </a>
+      </li>
+      <li class="mobile-nav-item">
+        <a href="/brand">BRAND PORTAL </a>
+      </li>
+      <li class="mobile-nav-item">
+        <a href="/news">NEWS</a>
+      </li>
+      <li class="mobile-nav-item">
+        <a href="/faq">FAQ</a>
+      </li>
+      <li class="mobile-nav-item">
+        <a href="/contact">CONTACT US</a>
+      </li>
+    </ul>
+  </div>
+
+  <div class="mobile-footer">
+    <div class="mobile-buttons">
+      <button class="mobile-btn">
+        <a href="">Lets book a call</a>
+      </button>
+      <button class="mobile-btn">
+        <a href="/pds_sds">PSD/SDS</a>
+      </button>
+    </div>
+
+    <div class="mobile-contact">
+      <div class="contact-item">
+        <i class="fa-solid fa-location-dot"></i>
+        <span>Leitzstraße 45, 70469 Stuttgart, Germany</span>
+      </div>
+      <div class="contact-item">
+        <i class="fa-solid fa-envelope"></i>
+        <a href="mailto:info@tomoil.de">info@tomoil.de</a>
+      </div>
+      <div class="contact-item">
+        <i class="fa-solid fa-phone"></i>
+        <a href="tel:+4915781234567">+49 1578 1234567</a>
+      </div>
+    </div>
+
+    <div class="mobile-languages">
+      <button class="lang-btn active" data-lang="EN">EN</button>
+      <button class="lang-btn" data-lang="DE">DE</button>
+      <button class="lang-btn" data-lang="ES">ES</button>
+      <button class="lang-btn" data-lang="FR">FR</button>
+      <button class="lang-btn" data-lang="IT">IT</button>
+      <button class="lang-btn" data-lang="RM">RM</button>
+      <button class="lang-btn" data-lang="汉语">汉语</button>
+    </div>
+  </div>
+</div>
+
+

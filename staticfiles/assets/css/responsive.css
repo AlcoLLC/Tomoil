@@ -1,0 +1,478 @@
+/* Responsive  */
+
+@media screen and (max-width: 1550px) {
+    .navbar {
+        width: 75vw;
+        max-width: 1400px;
+    }
+
+    .page-header .section-container {
+        padding-top: 12%;
+    }
+}
+
+@media screen and (max-width: 1400px) {
+    .navbar {
+        width: 90vw;
+        max-width: 1200px;
+    }
+
+    .navbar .nav-section {
+        padding: 0 40px;
+    }
+
+    .navbar .nav-section ul {
+        margin-left: 60px;
+        gap: 25px;
+    }
+
+    .page-header .section-container {
+        padding-top: 16%;
+    }
+
+
+    .site-footer {
+        padding: 60px 40px 0px 40px;
+    }
+
+    .footer-container,
+    .site-footer .footer-bottom-container {
+        max-width: 90vw;
+    }
+
+}
+
+@media screen and (max-width: 1200px) {
+    .navbar {
+        width: 95vw;
+        max-width: 1150px;
+    }
+
+    .navbar .nav-section ul {
+        margin-left: 40px;
+        gap: 20px;
+    }
+
+
+    .navbar .info {
+        height: 35px;
+        padding: 0 8px;
+    }
+
+
+    .navbar .info div ul {
+        gap: 15px;
+    }
+
+    .navbar .info div ul li {
+        gap: 5px;
+        font-size: 10px;
+        line-height: 15px;
+    }
+
+    .navbar .info-book button {
+        padding: 0 4px;
+        font-weight: 400;
+        font-size: 10px;
+        line-height: 22px;
+    }
+
+    .language-dropdown .dropdown-content {
+        min-width: 50px;
+    }
+
+    .navbar .nav-section {
+        height: 55px;
+        padding: 0 30px;
+    }
+
+    .navbar .nav-section ul li a {
+        font-size: 10px;
+        line-height: 75%;
+    }
+
+    .navbar .logo img {
+        height: 15px;
+    }
+
+    .dropdown-content {
+        min-width: 160px;
+    }
+
+    .dropdown-content a {
+        padding: 10px;
+        font-weight: 400;
+        font-size: 10px !important;
+    }
+
+    .language-dropdown .dropdown-content button {
+        padding: 6px;
+        font-size: 10px !important;
+    }
+
+    .page-header .section-container {
+        padding-top: 18%;
+    }
+
+
+
+    .header-whatsapp {
+        bottom: 30px !important;
+        right: 2%;
+    }
+
+    .header-whatsapp i {
+        font-size: 20px;
+    }
+
+    .header-whatsapp span {
+        font-size: 12px;
+    }
+
+
+    .site-footer .footer-brand {
+        max-width: 200px;
+    }
+
+    .site-footer .footer-links,
+    .site-footer .footer-menu2 {
+        max-width: 100px;
+    }
+
+    .site-footer .footer-info {
+        max-width: 200px !important;
+    }
+
+    .site-footer .footer-gallery {
+        max-width: 160px;
+    }
+
+    .site-footer .gallery-item img {
+        width: 50px;
+        height: 50px;
+    }
+
+    .site-footer .newsletter-text {
+        margin: 10px 0;
+    }
+
+    .site-footer .newsletter-form input {
+        padding: 12px;
+    }
+
+    .site-footer .submit-btn {
+        border-radius: 25px;
+        padding: 10px 12px;
+    }
+
+}
+
+@media screen and (max-width: 956px) {
+    .navbar {
+        max-width: 900px;
+    }
+
+    .navbar .nav-section ul {
+        margin-left: 35px;
+        gap: 14px;
+    }
+
+    .page-header {
+        height: 350px;
+    }
+
+    .page-header .page-header-content h2 {
+        font-size: 45px;
+        line-height: 50px;
+    }
+
+
+    .header-whatsapp {
+        justify-content: center;
+        width: 55PX;
+        height: 55PX;
+        padding: 20px;
+        border-top-right-radius: 22px;
+        border-bottom-left-radius: 22Px;
+        bottom: 20px !important;
+    }
+
+    .header-whatsapp i {
+        font-size: 26px;
+        margin: 0px auto !important;
+    }
+
+    .header-whatsapp span {
+        display: none !important;
+    }
+
+
+    .site-footer {
+        padding: 40px 20px 0px 20px;
+    }
+
+    .site-footer .footer-description,
+    .site-footer .footer-menu a,
+    .site-footer .newsletter-text,
+    .site-footer .newsletter-form input,
+    .site-footer .copyright,
+    .site-footer .footer-links-bottom a {
+        font-size: 11px;
+    }
+
+    .site-footer .footer-title {
+        font-size: 16px;
+    }
+
+    .site-footer .footer-brand {
+        max-width: 180px;
+    }
+
+    .site-footer .footer-links,
+    .site-footer .footer-menu2 {
+        max-width: 90px;
+    }
+
+    .site-footer .footer-info {
+        max-width: 160px !important;
+    }
+
+    .site-footer .newsletter-form input {
+        width: 70%;
+    }
+
+    .site-footer .footer-gallery {
+        max-width: 140px;
+    }
+
+    .site-footer .gallery-item img {
+        width: 45px;
+        height: 45px;
+    }
+}
+
+
+@media (max-width: 860px) {
+
+    .site-footer .footer-container {
+        flex-wrap: wrap;
+        align-items: center;
+    }
+
+    .site-footer .footer-brand {
+        max-width: 200px;
+    }
+
+    .site-footer .footer-links,
+    .site-footer .footer-menu2 {
+        max-width: 140px;
+    }
+
+
+    .site-footer .footer-info {
+        width: 100%;
+        max-width: 300px !important;
+    }
+
+    .site-footer .footer-gallery {
+        width: 100%;
+        max-width: 200px !important;
+    }
+
+    .site-footer .gallery-item img {
+        width: 60px;
+        height: 60px;
+    }
+
+    .site-footer .footer-bottom {
+        padding: 20px 0;
+    }
+
+    .site-footer .footer-bottom-container {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .site-footer .copyright,
+    .site-footer .footer-links-bottom a {
+        font-size: 12px;
+    }
+
+}
+
+@media screen and (max-width: 800px) {
+
+    .navbar {
+        max-width: 700px;
+    }
+
+    .navbar .info {
+        display: none;
+    }
+
+    .navbar .nav-section {
+        height: 50px;
+        padding: 0 20px;
+        border-radius: 0 20px 0 20px;
+
+    }
+
+    .navbar .nav-section ul {
+        display: none;
+    }
+
+    .hamburger {
+        display: block !important;
+    }
+
+
+    .navbar .logo img {
+        height: 14px;
+    }
+
+}
+
+
+@media (max-width: 620px) {
+    .page-header {
+        height: 320px;
+    }
+
+    .page-header .breadcrumb {
+        font-size: 12px;
+        margin-bottom: 18px;
+
+    }
+
+    .page-header .section-container {
+        padding-top: 28%;
+    }
+
+    .page-header .page-header-content {
+        max-width: 80%;
+    }
+
+    .page-header .page-header-content h2 {
+        font-size: 36px;
+        line-height: 40px;
+    }
+
+    .page-header .page-header-content P {
+        line-height: 16px;
+    }
+
+    .site-footer .footer-description,
+    .site-footer .newsletter-text,
+    .site-footer .newsletter-form input,
+    .site-footer .copyright,
+    .site-footer .footer-links-bottom a {
+        font-size: 12px;
+    }
+
+    .site-footer .footer-menu a,
+    .site-footer .footer-menu-icons a {
+        font-size: 14px;
+    }
+
+    .site-footer .footer-title {
+        font-size: 18px;
+    }
+
+    .site-footer .footer-brand {
+        max-width: 500px;
+    }
+
+    .site-footer .footer-links,
+    .site-footer .footer-menu2 {
+        max-width: 130px;
+    }
+
+
+    .site-footer .footer-info {
+        width: 100%;
+        max-width: 500px !important;
+    }
+
+    .site-footer .newsletter-text {
+        max-width: 75%;
+    }
+
+    .site-footer .newsletter-form {
+        width: 85%;
+        border-radius: 50px !important;
+    }
+
+    .site-footer .newsletter-form input {
+        padding: 22px;
+        font-size: 14px;
+        border-radius: 50px !important;
+    }
+
+    .site-footer .submit-btn {
+        border-radius: 40px;
+        padding: 22px 25px;
+    }
+
+    .site-footer .submit-btn i {
+        font-size: 26px;
+    }
+
+    .site-footer .footer-gallery {
+        width: 100%;
+        max-width: 300px !important;
+    }
+
+    .site-footer .gallery-item img {
+        width: 90px;
+        height: 90px;
+    }
+
+    .site-footer .footer-bottom {
+        padding: 20px 0;
+    }
+
+    .site-footer .footer-bottom-container {
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    .site-footer .social-icons {
+        gap: 45px;
+        margin-bottom: 20px !important;
+
+    }
+
+    .site-footer .social-icon i {
+        font-size: 25px !important;
+    }
+
+}
+
+
+@media screen and (max-width: 500px) {
+
+    .page-header {
+        height: 300px;
+    }
+
+    .page-header .page-header-content h2 {
+        font-size: 26px;
+        line-height: 30px;
+    }
+
+    .page-header .page-header-content P {
+        line-height: 16px;
+    }
+
+
+    .navbar .nav-section {
+        padding: 0 15px;
+    }
+
+
+    .mobile-languages .lang-btn {
+        padding: 5px;
+    }
+
+
+}
