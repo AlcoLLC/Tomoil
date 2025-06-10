@@ -456,13 +456,13 @@
     }
 
     .market-segments .market-segments-header p {
-        font-size: 12px;
+        font-size: 14px;
         line-height: 16px;
     }
 
     .market-segments ul li a {
         gap: 10px;
-        font-size: 12px !important;
+        font-size: 14px !important;
     }
 
     .market-segments .btn-market-segments {
@@ -647,11 +647,7 @@
         margin: 20px auto;
     }
 
-    .market-segments .market-segments-header h2 {
-        font-size: 20px;
-        line-height: 24px;
-    }
-
+  
     .market-segments .market-segments-header {
         width: 100%;
     }
