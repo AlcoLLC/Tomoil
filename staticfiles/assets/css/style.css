@@ -44,6 +44,10 @@
 .featured-section .featured-container {
   position: relative;
   z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 .featured-section .section-header {
@@ -77,7 +81,6 @@
 .featured-section .product-card {
   flex: 0 0 calc(33.33% - 30px);
   width: 33%;
-  max-width: 50%;
   margin: auto;
   position: relative;
   opacity: 0.7;
@@ -143,13 +146,12 @@
   width: 75%;
   margin-left: 35px;
   font-family: Regular;
-  color: #727272;
+  color: #223160;
 }
 
 .featured-section .product-title {
   font-size: 16px;
   font-weight: 600;
-  opacity: 0.9;
   text-align: start;
 }
 
@@ -204,9 +206,8 @@
 
 .featured-section .view-catalog {
   display: block;
-  width: 190px;
-  height: 45px;
-  margin: 20px auto 0;
+  padding: 1px 20px;
+  text-align: center;
   background-color: #e22131;
   color: white;
   text-align: center;
@@ -221,69 +222,11 @@
   z-index: 2;
 }
 
+
 .featured-section .view-catalog:hover {
   background-color: #c62232;
 }
 
-@media (max-width: 1280px) {
-  .featured-section {
-    width: 90%;
-  }
-}
-
-@media (max-width: 992px) {
-  .featured-section .slider-container {
-    gap: 15px;
-  }
-
-  .featured-section .product-card {
-    flex: 0 0 33%;
-  }
-
-  .featured-section .product-image {
-    height: 200px;
-  }
-}
-
-@media (max-width: 768px) {
-  .featured-section .product-card {
-    width: calc(100% - 40px);
-    max-width: 250px;
-  }
-
-  .featured-section .product-card.active .product-image::after {
-    width: 150px;
-    height: 150px;
-    outline-offset: 5px;
-  }
-
-  .featured-section .slider-container {
-    justify-content: center;
-  }
-}
-
-@media (max-width: 576px) {
-  .featured-section {
-    border-radius: 30px;
-    padding: 30px 15px;
-  }
-
-  .featured-section .section-title {
-    font-size: 24px;
-  }
-
-  .featured-section .product-card.active .product-image::after {
-    width: 130px;
-    height: 130px;
-    outline-offset: 5px;
-  }
-
-  .featured-section .product-card {
-    width: calc(100% - 20px);
-    max-width: 220px;
-    margin: 0 10px;
-  }
-}
 
 /* Adventure Section  */
 

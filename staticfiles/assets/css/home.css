@@ -36,7 +36,6 @@ body {
   background-color: #f1f3f9;
 }
 
-
 .section-title {
   font-family: Atyp Medium;
   color: #223160;
@@ -283,7 +282,8 @@ nav {
 
 .navbar .search i {
   color: #223160;
-  font-size: 15px;
+  font-size: 20px;
+  margin-right: 10px;
 }
 
 
@@ -358,8 +358,8 @@ nav {
   display: none;
   background: none;
   border: none;
-  color: #111214;
-  font-size: 16px;
+  color: #223160;
+  font-size: 24px;
   cursor: pointer;
   transition: color 0.3s ease;
   z-index: 1000001;
@@ -371,7 +371,7 @@ nav {
   right: -100%;
   width: 95vw;
   max-width: 700px;
-  height: 90vh;
+  height: 80vh;
   padding: 20px;
   z-index: 999999;
   background-color: #fff;
@@ -403,7 +403,7 @@ nav {
 
 .mobile-nav-content {
   flex: 1;
-  padding: 20px 0;
+  padding: 25px 0;
 }
 
 .mobile-nav-list {
@@ -421,7 +421,7 @@ nav {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 20px;
+  padding: 17px;
   color: #223160;
   text-decoration: none;
   font-size: 14px;
@@ -644,11 +644,12 @@ nav {
 .home-header .slide-content {
   color: white;
   z-index: 2;
-  max-width: 600px;
+  max-width: 680px;
   margin-bottom: 20px;
 }
 
 .home-header .slide-content h5 {
+  white-space: nowrap;
   font-weight: 400;
   font-size: 16px;
   line-height: 26px;
@@ -668,30 +669,28 @@ nav {
 .home-header .slide-content p {
   font-family: Atyp Regular;
   font-weight: 400;
-  font-size: 14px;
+  font-size: 16px;
   line-height: 24px;
   letter-spacing: 0%;
   vertical-align: middle;
-  color: #b3b6b8;
+  color: #F1F3F9;
 }
 
 .btn-learn {
-  white-space: nowrap;
   background-color: #e22131;
   color: white;
   padding: 12px 24px;
   font-family: "Unbounded", sans-serif;
   font-weight: 600;
   font-size: 12px;
-  line-height: 100%;
-  letter-spacing: 0%;
+  line-height: 20px;
   text-align: center;
   vertical-align: middle;
   text-transform: uppercase;
   display: inline-block;
   margin-top: 20px;
-  height: 52px;
-  width: 25vh;
+  min-height: 52px;
+  width: 240px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -781,7 +780,7 @@ nav {
   margin-bottom: 20px;
 }
 
-.market-segments  .btn-market-segments {
+.market-segments .btn-market-segments {
   padding: 10px 25px;
   border-radius: 999px;
   display: flex;
@@ -1355,7 +1354,7 @@ nav {
 
 .header-whatsapp {
   position: absolute;
-  bottom: 140px;
+  bottom: 19vh;
   right: 8%;
   display: flex;
   align-items: center;

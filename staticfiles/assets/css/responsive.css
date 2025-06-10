@@ -74,6 +74,9 @@
 
     }
 
+    .featured-section {
+        width: 90%;
+    }
 
 }
 
@@ -221,6 +224,79 @@
         height: 50px !important;
     }
 
+    .home-header .swiper {
+        height: 85vh;
+    }
+
+    .home-header .swiper-slide {
+        padding-left: 8%;
+    }
+
+
+    .home-header .slide-content h5 {
+        font-size: 14px;
+    }
+
+    .home-header .slide-content h2 {
+        font-size: 55px;
+    }
+
+    .home-header .slide-content p {
+        font-size: 14px;
+    }
+
+    .home-header .slide-content {
+        max-width: 600px;
+    }
+
+    .btn-learn {
+        font-weight: 400;
+        font-size: 11px;
+        min-height: 48px;
+        width: 210px;
+    }
+
+    .home-header .swiper-button-prev,
+    .home-header .swiper-button-next {
+        width: 40px !important;
+        height: 40px !important;
+    }
+
+    .home-header .swiper-button-prev {
+        left: 15% !important;
+    }
+
+    .section-title {
+        font-size: 32px;
+        line-height: 40px;
+    }
+
+    .featured-section .slider-container {
+        gap: 15px;
+    }
+
+    .featured-section .product-card {
+        flex: 0 0 33%;
+    }
+
+    .featured-section .product-image {
+        height: 190px;
+    }
+
+
+    .featured-section .product-title {
+        font-size: 15px;
+
+    }
+
+    .featured-section .product-card.active .product-image::after {
+        width: 170px;
+        height: 170px;
+        outline-offset: 5px;
+    }
+
+
+
 }
 
 @media screen and (max-width: 956px) {
@@ -340,6 +416,16 @@
         width: 40px;
         height: 35px;
     }
+
+    .featured-section .product-card.active .product-image::after {
+        width: 185px;
+        height: 185px;
+    }
+
+    .section-title {
+        font-size: 26px;
+        line-height: 32px;
+    }
 }
 
 
@@ -406,6 +492,54 @@
         font-size: 14px;
     }
 
+    .home-header .swiper {
+        height: 75vh;
+    }
+
+    .home-header .swiper-slide {
+        padding-top: 10%;
+    }
+
+
+    .home-header .slide-content h5 {
+        font-size: 13px;
+    }
+
+    .home-header .slide-content h2 {
+        font-size: 42px;
+    }
+
+    .home-header .slide-content p {
+        font-size: 12px;
+    }
+
+    .home-header .slide-content {
+        max-width: 65%;
+    }
+
+    .btn-learn {
+        font-size: 10px;
+        min-height: 42px;
+        width: 200px;
+    }
+
+    .home-header .swiper-button-prev,
+    .home-header .swiper-button-next {
+        width: 38px !important;
+        height: 38px !important;
+        bottom: 12vh !important;
+    }
+
+    .header-whatsapp {
+        bottom: 12vh;
+
+    }
+
+    .home-header .swiper-button-prev {
+        left: 13% !important;
+    }
+
+
 
 }
 
@@ -436,9 +570,50 @@
 
 
     .navbar .logo img {
-        height: 14px;
+        height: 15px;
     }
 
+    .section-title {
+        font-size: 24px;
+        line-height: 30px;
+    }
+
+    .featured-section .section-title {
+        max-width: 90%;
+    }
+
+    .featured-section .slider-container {
+        justify-content: center;
+    }
+
+    .featured-section .slider-container {
+        gap: 20px;
+    }
+
+    .featured-section .product-image {
+        height: 155px;
+    }
+
+    .featured-section .product-title {
+        font-size: 13px;
+        font-weight: 400;
+
+    }
+
+    .featured-section {
+        border-radius: 30px;
+        padding: 20px 15px;
+    }
+
+    .featured-section .product-card.active .product-image::after {
+        width: 145px;
+        height: 145px;
+    }
+
+    .featured-section .main-container {
+        width: 100%;
+        padding: 20px 0;
+    }
 
 }
 
@@ -601,6 +776,75 @@
         width: 80% !important;
     }
 
+    .home-header .swiper {
+        height: 53vh;
+    }
+
+    .home-header .slide-content h2 {
+        font-size: 30px;
+        line-height: 80px;
+    }
+
+    .home-header .slide-content p {
+        line-height: 16px;
+    }
+
+
+    .btn-learn {
+        font-size: 10px;
+        min-height: 42px;
+        width: 200px;
+    }
+
+    .home-header .swiper-button-prev,
+    .home-header .swiper-button-next {
+        bottom: 30px !important;
+    }
+
+    .home-header .swiper-button-prev {
+        left: 10% !important;
+    }
+
+    .header-whatsapp {
+        width: 47px;
+        height: 47px;
+    }
+
+
+    .header-whatsapp {
+        bottom: 30px !important;
+    }
+
+    .featured-section {
+        width: 100%;
+        margin-top: 0px !important;
+        border-radius: 0px;
+        padding: 40px 0px !important;
+    }
+
+    .featured-section .background-svg {
+        top: -50px;
+        left: -450px;
+    }
+
+    .featured-section .slider-nav {
+        display: none;
+    }
+
+    .featured-section .product-card {
+        flex: 0 0 60%;
+    }
+
+    .featured-section .product-image {
+        height: 280px;
+    }
+
+
+    .featured-section .product-card.active .product-image::after {
+        width: 240px;
+        height: 240px;
+        outline-offset: 8px;
+    }
 
 }
 
@@ -608,10 +852,6 @@
 
     .page-header {
         height: 260px;
-    }
-
-    .header-whatsapp {
-        bottom: 25px !important;
     }
 
     .page-header .page-header-content h2 {
@@ -622,11 +862,6 @@
     .page-header .page-header-content p {
         line-height: 15px;
         font-size: 11px;
-    }
-
-    .header-whatsapp {
-        width: 47px;
-        height: 47px;
     }
 
 
@@ -647,7 +882,7 @@
         margin: 20px auto;
     }
 
-  
+
     .market-segments .market-segments-header {
         width: 100%;
     }
@@ -668,6 +903,41 @@
         flex-direction: column;
         justify-content: center;
         text-align: center;
+    }
+
+    .section-title {
+        font-size: 20px;
+        line-height: 28px;
+    }
+
+    .featured-section .product-card {
+        flex: 0 0 65%;
+    }
+
+    .featured-section .product-image {
+        height: 250px;
+    }
+
+
+    .featured-section .product-card.active .product-image::after {
+        width: 200px;
+        height: 200px;
+    }
+
+}
+
+@media screen and (max-width: 400px) {
+    .home-header .swiper {
+        height: 50vh;
+    }
+
+    .home-header .slide-content h2 {
+        font-size: 24px;
+        line-height: 70px;
+    }
+
+    .home-header .slide-content {
+        max-width: 90%;
     }
 
 }
