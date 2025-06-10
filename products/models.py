@@ -1,10 +1,17 @@
 from django.db import models
 from django.core.validators import MinValueValidator, MaxValueValidator
+from django.utils.text import slugify
 
 class ProductRange(models.Model):
     name = models.CharField(max_length=100, unique=True)
+    slug = models.SlugField(max_length=120, unique=True, blank=True)
     is_active = models.BooleanField(default=True)
     order = models.PositiveIntegerField(default=0, verbose_name="Order")
+    
+    def save(self, *args, **kwargs):
+        if not self.slug:
+            self.slug = slugify(self.name)
+        super().save(*args, **kwargs)
     
     def __str__(self):
         return self.name
@@ -16,8 +23,16 @@ class ProductRange(models.Model):
 
 class ApplicationArea(models.Model):
     name = models.CharField(max_length=100, blank=True, null=True)
+    slug = models.SlugField(max_length=120, unique=True, blank=True)
     icon = models.ImageField(upload_to='application_icons/')
     is_active = models.BooleanField(default=True)
+    
+    def save(self, *args, **kwargs):
+        if not self.slug and self.name:
+            self.slug = slugify(self.name)
+        elif not self.slug:
+            self.slug = f"application-area-{self.id}"
+        super().save(*args, **kwargs)
     
     def __str__(self):
         return self.name if self.name else f"Application Area {self.id}"
@@ -28,7 +43,13 @@ class ApplicationArea(models.Model):
 
 class Specification(models.Model):
     name = models.CharField(max_length=100, unique=True)
+    slug = models.SlugField(max_length=120, unique=True, blank=True)
     is_active = models.BooleanField(default=True)
+    
+    def save(self, *args, **kwargs):
+        if not self.slug:
+            self.slug = slugify(self.name)
+        super().save(*args, **kwargs)
     
     def __str__(self):
         return self.name
@@ -39,7 +60,13 @@ class Specification(models.Model):
 
 class Viscosity(models.Model):
     name = models.CharField(max_length=255)
+    slug = models.SlugField(max_length=275, unique=True, blank=True)
     is_active = models.BooleanField(default=True)
+    
+    def save(self, *args, **kwargs):
+        if not self.slug:
+            self.slug = slugify(self.name)
+        super().save(*args, **kwargs)
     
     def __str__(self):
         return self.name
@@ -50,7 +77,13 @@ class Viscosity(models.Model):
 
 class Composition(models.Model):
     name = models.CharField(max_length=255)
+    slug = models.SlugField(max_length=275, unique=True, blank=True)
     is_active = models.BooleanField(default=True)
+    
+    def save(self, *args, **kwargs):
+        if not self.slug:
+            self.slug = slugify(self.name)
+        super().save(*args, **kwargs)
     
     def __str__(self):
         return self.name
@@ -61,7 +94,13 @@ class Composition(models.Model):
 
 class PackSize(models.Model):
     size = models.DecimalField(max_digits=10, decimal_places=2)
+    slug = models.SlugField(max_length=50, unique=True, blank=True)
     is_active = models.BooleanField(default=True)
+    
+    def save(self, *args, **kwargs):
+        if not self.slug:
+            self.slug = slugify(f"pack-size-{self.size}")
+        super().save(*args, **kwargs)
     
     def __str__(self):
         return str(self.size)
@@ -73,6 +112,7 @@ class PackSize(models.Model):
 
 class Product(models.Model):
     title = models.CharField(max_length=200)
+    slug = models.SlugField(max_length=220, unique=True, blank=True)
     description = models.TextField(blank=True, null=True)
     product_id = models.CharField(max_length=50, unique=True)
     image = models.ImageField(upload_to='products/')
@@ -91,6 +131,11 @@ class Product(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     is_active = models.BooleanField(default=True)
+    
+    def save(self, *args, **kwargs):
+        if not self.slug:
+            self.slug = slugify(self.title)
+        super().save(*args, **kwargs)
     
     def __str__(self):
         return self.title
