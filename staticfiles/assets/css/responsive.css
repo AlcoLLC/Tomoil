@@ -189,8 +189,8 @@
 
     .header-whatsapp {
         justify-content: center;
-        width: 55PX;
-        height: 55PX;
+        width: 55px;
+        height: 55px;
         padding: 20px;
         border-top-right-radius: 22px;
         border-bottom-left-radius: 22Px;
@@ -410,11 +410,11 @@
 
     .site-footer .submit-btn {
         border-radius: 40px;
-        padding: 22px 25px;
+        padding: 18px 20px;
     }
 
     .site-footer .submit-btn i {
-        font-size: 26px;
+        font-size: 22px;
     }
 
     .site-footer .footer-gallery {
@@ -452,7 +452,7 @@
 @media screen and (max-width: 500px) {
 
     .page-header {
-        height: 300px;
+        height: 290px;
     }
 
     .page-header .page-header-content h2 {
@@ -460,10 +460,20 @@
         line-height: 30px;
     }
 
-    .page-header .page-header-content P {
-        line-height: 16px;
+    .page-header .page-header-content p {
+        line-height: 15px;
+        font-size: 11px;
     }
 
+    .header-whatsapp {
+        width: 47px;
+        height: 47px;
+    }
+
+
+    .header-whatsapp i {
+        font-size: 22px;
+    }
 
     .navbar .nav-section {
         padding: 0 15px;

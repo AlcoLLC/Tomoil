@@ -1,0 +1,59 @@
+{% extends 'base.html' %} {% load static %} {% block content %}
+
+<!-- Page-Header -->
+
+<header class="placeholder-header page-header ">
+    <div class="section-container">
+        <!-- <div class="breadcrumb">
+            <a href="/">Home</a>
+            {% if breadcrumb_title %}
+            <i class="fa-solid fa-angle-right"></i>
+            <a href="{{ breadcrumb_url|default:'/' }}">{{ breadcrumb_title }}</a>
+            {% endif %}
+        </div> -->
+        <div class="page-header-content">
+            <h2>Search</h2>
+            <div class="container search-bar">
+                <form method="GET" class="search-form">
+                    <input type="text" name="search" class="search-input" value="{{ query }}" placeholder=Search... />
+                    <button type="button" class="cancel-button">
+                        <i class="fa-solid fa-xmark"></i>
+                    </button>
+                </form>
+            </div>
+        </div>
+
+    </div>
+    <a href="https://wa.me/message/YOUR_WHATSAPP_NUMBER" class="header-whatsapp">
+        <i class="fab fa-whatsapp"></i>
+        <span>Any questions? Ask in WhatsApp</span>
+    </a>
+</header>
+<a href="https://wa.me/message/YOUR_WHATSAPP_NUMBER" class="fixed-whatsapp">
+    <i class="fab fa-whatsapp"></i>
+</a>
+
+
+<section class="search-section section-container">
+    <span class="search-results-count"> 0
+    </span>
+
+    <div class="search-result">
+        <div class="result-content">
+            <div class="result-image">
+                <img src="{% static 'images_folder/engine-oils.svg' %}" alt="{{ result.title }}" />
+            </div>
+            <div class="result-text">
+                <a href="" class="result-type"> result.type ></a>
+                <h2>title</h2>
+                <p class="result-description">description</p>
+            </div>
+        </div>
+        <button class="result-btn">
+            <a href=""><i class="fa-solid fa-arrow-right"></i></a>
+        </button>
+    </div>
+
+</section>
+
+{% endblock %}

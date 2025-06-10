@@ -29,6 +29,8 @@ urlpatterns = [
     path('', include("services.urls")),
     path('', include("whoweare.urls")),
     path('', include("products.urls")),
+    path('', include("search.urls")),
+
     path('ckeditor5/', include('django_ckeditor_5.urls')),
 
 ]
