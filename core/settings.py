@@ -41,7 +41,7 @@ if USE_POSTGRES:
             'USER': os.getenv('POSTGRES_USER'),
             'PASSWORD': os.getenv('POSTGRES_PASSWORD'),
             'HOST': os.getenv('POSTGRES_HOST', 'localhost'),
-            'PORT': os.getenv('POSTGRES_PORT', '5432'),
+            'PORT': os.getenv('POSTGRES_PORT', '5433'),
         }
     }
 else:
