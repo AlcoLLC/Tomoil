@@ -17,8 +17,8 @@
                     <div class="checkbox-area">
                         {% for product_range in product_ranges %}
                         <label class="checkbox-group">
-                            <input type="checkbox" name="product_range" value="{{ product_range.id }}" 
-                                       {% if product_range.id|stringformat:"s" in selected_product_ranges %}checked{% endif %} />
+                            <input type="checkbox" name="product_range" value="{{ product_range.slug }}" 
+                                   {% if product_range.slug in selected_product_ranges %}checked{% endif %} />
                             <span class="checkbox-label">{{ product_range.name }}</span>
                         </label>
                         {% endfor %}
@@ -34,8 +34,8 @@
                     <h3>Application area</h3>
                     <div class="application-area">
                          {% for application_area in application_areas %}
-                         <button type="button" class="icon-button {% if application_area.id|stringformat:"s" in selected_application_areas %}active{% endif %}" 
-                                    data-type="app-{{ application_area.id }}" onclick="toggleApplicationArea({{ application_area.id }})">
+                         <button type="button" class="icon-button {% if application_area.slug in selected_application_areas %}active{% endif %}" 
+                                data-type="app-{{ application_area.slug }}" onclick="toggleApplicationArea('{{ application_area.slug }}')">
                                 {% if application_area.icon %}
                                     <img src="{{ application_area.icon.url }}" alt="{{ application_area.name }}">
                                 {% else %}
@@ -44,9 +44,9 @@
                          </button>
                         {% endfor %}
                        {% for application_area in application_areas %}
-                            <input type="checkbox" name="application_area" value="{{ application_area.id }}" 
-                                   {% if application_area.id|stringformat:"s" in selected_application_areas %}checked{% endif %}
-                                   style="display: none;" id="app-{{ application_area.id }}" />
+                            <input type="checkbox" name="application_area" value="{{ application_area.slug }}" 
+                                   {% if application_area.slug in selected_application_areas %}checked{% endif %}
+                                   style="display: none;" id="app-{{ application_area.slug }}" />
                             {% endfor %}
                     </div>
                     <div class="filter-show-more">
@@ -69,8 +69,8 @@
                     <div class="checkbox-area">
                          {% for specification in specifications %}
                             <label class="checkbox-group">
-                                <input type="checkbox" name="specification" value="{{ specification.id }}" 
-                                       {% if specification.id|stringformat:"s" in selected_specifications %}checked{% endif %} />
+                                <input type="checkbox" name="specification" value="{{ specification.slug }}" 
+                                       {% if specification.slug in selected_specifications %}checked{% endif %} />
                                 <span class="checkbox-label">{{ specification.name }}</span>
                             </label>
                             {% endfor %}
@@ -87,8 +87,8 @@
                     <div class="checkbox-area">
                          {% for viscosity in viscosities %}
                             <label class="checkbox-group">
-                                <input type="checkbox" name="viscosity" value="{{ viscosity.id }}" 
-                                       {% if viscosity.id|stringformat:"s" in selected_viscosities %}checked{% endif %} />
+                                <input type="checkbox" name="viscosity" value="{{ viscosity.slug }}" 
+                                       {% if viscosity.slug in selected_viscosities %}checked{% endif %} />
                                 <span class="checkbox-label">{{ viscosity.name }}</span>
                             </label>
                             {% endfor %}
@@ -105,8 +105,8 @@
                     <div class="checkbox-area">
                        {% for composition in compositions %}
                             <label class="checkbox-group">
-                                <input type="checkbox" name="composition" value="{{ composition.id }}" 
-                                       {% if composition.id|stringformat:"s" in selected_compositions %}checked{% endif %} />
+                                <input type="checkbox" name="composition" value="{{ composition.slug }}" 
+                                       {% if composition.slug in selected_compositions %}checked{% endif %} />
                                 <span class="checkbox-label">{{ composition.name }}</span>
                             </label>
                             {% endfor %}
@@ -122,15 +122,15 @@
                     <h3>Pack sizes</h3>
                     <div class="pack-size-area">
                         {% for pack_size in pack_sizes %}
-                            <button type="button" class="icon-button {% if pack_size.id|stringformat:"s" in selected_pack_sizes %}active{% endif %}" 
-                                    data-type="size-{{ pack_size.id }}" onclick="togglePackSize({{ pack_size.id }})">
+                            <button type="button" class="icon-button {% if pack_size.slug in selected_pack_sizes %}active{% endif %}" 
+                                    data-type="size-{{ pack_size.slug }}" onclick="togglePackSize('{{ pack_size.slug }}')">
                                 {{ pack_size.size|floatformat:0 }}
                             </button>
                             {% endfor %}
                             {% for pack_size in pack_sizes %}
-                            <input type="checkbox" name="pack_size" value="{{ pack_size.id }}" 
-                                   {% if pack_size.id|stringformat:"s" in selected_pack_sizes %}checked{% endif %}
-                                   style="display: none;" id="size-{{ pack_size.id }}" />
+                            <input type="checkbox" name="pack_size" value="{{ pack_size.slug }}" 
+                                   {% if pack_size.slug in selected_pack_sizes %}checked{% endif %}
+                                   style="display: none;" id="size-{{ pack_size.slug }}" />
                             {% endfor %}
                     </div>
                     <div class="filter-show-more">
@@ -147,7 +147,7 @@
              {% for product in products %}
             <div class="product-card">
                 <div class="product-type">{{ product.product_range.name|upper }}</div>
-                 <a href="{% url 'products:product_detail' product.product_id %}" class="product-image">
+                 <a href="{% url 'products:product_detail' product.slug %}" class="product-image">
                     {% if product.image %}
                         <img src="{{ product.image.url }}" alt="{{ product.title }}">
                     {% else %}
@@ -160,7 +160,7 @@
                         <p class="product-description">{{ product.description|truncatechars:50 }}</p>
                         <p class="product-id">ID: {{ product.product_id }}</p>
                     </div>
-                    <a href="{% url 'products:product_detail' product.product_id %}" class="show-more">
+                    <a href="{% url 'products:product_detail' product.slug %}" class="show-more">
                         Show More
                         <i class="fas fa-arrow-right-long"></i>
                     </a>
@@ -174,19 +174,35 @@
         </div>
 
         <!-- Pagination -->
-<div class="pagination-container">
-      <p class="pagination-info">
-        Displaying {{ page_obj.start_index }}–{{ page_obj.end_index }} of {{ total_results }} results
-      </p>
-      <div class="pagination">
-        <!-- Page Numbers -->
-        {% for num in page_obj.paginator.page_range %} {% if page_obj.number == num %}
-        <span class="page-btn active">{{ num }}</span>
-        {% elif num > page_obj.number|add:-3 and num < page_obj.number|add:3 %} <a
-          href="?from_date={{ from_date_formatted|urlencode }}&to_date={{ to_date_formatted|urlencode }}&page={{ num }}" class="page-btn">{{ num }}</a>
-          {% endif %} {% endfor %}
-      </div>
+        <div class="pagination-container">
+            <p class="pagination-info">
+                Displaying {{ products.start_index }}–{{ products.end_index }} of {{ total_results }} results
+            </p>
+            <div class="pagination">
+                <!-- Previous Button -->
+                {% if products.has_previous %}
+                    <a href="?{% for key, values in request.GET.lists %}{% if key != 'page' %}{% for value in values %}{{ key }}={{ value|urlencode }}&{% endfor %}{% endif %}{% endfor %}page={{ products.previous_page_number }}" class="page-btn">
+                        <i class="fas fa-chevron-left"></i>
+                    </a>
+                {% endif %}
+                
+                <!-- Page Numbers -->
+                {% for num in products.paginator.page_range %}
+                    {% if products.number == num %}
+                        <span class="page-btn active">{{ num }}</span>
+                    {% elif num > products.number|add:-3 and num < products.number|add:3 %}
+                        <a href="?{% for key, values in request.GET.lists %}{% if key != 'page' %}{% for value in values %}{{ key }}={{ value|urlencode }}&{% endfor %}{% endif %}{% endfor %}page={{ num }}" class="page-btn">{{ num }}</a>
+                    {% endif %}
+                {% endfor %}
+                
+                <!-- Next Button -->
+                {% if products.has_next %}
+                    <a href="?{% for key, values in request.GET.lists %}{% if key != 'page' %}{% for value in values %}{{ key }}={{ value|urlencode }}&{% endfor %}{% endif %}{% endfor %}page={{ products.next_page_number }}" class="page-btn">
+                        <i class="fas fa-chevron-right"></i>
+                    </a>
+                {% endif %}
+            </div>
+        </div>
     </div>
-    </section>
-
- {% endblock %}
+</section>
+{% endblock %}

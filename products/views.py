@@ -68,12 +68,13 @@ def products_view(request):
             'background_image': None
         }
 
-    product_ranges = request.GET.getlist('product_range')
-    application_areas = request.GET.getlist('application_area')
-    specifications = request.GET.getlist('specification')
-    viscosities = request.GET.getlist('viscosity')
-    compositions = request.GET.getlist('composition')
-    pack_sizes = request.GET.getlist('pack_size')
+    # Get filter parameters by slug
+    product_range_slugs = request.GET.getlist('product_range')
+    application_area_slugs = request.GET.getlist('application_area')
+    specification_slugs = request.GET.getlist('specification')
+    viscosity_slugs = request.GET.getlist('viscosity')
+    composition_slugs = request.GET.getlist('composition')
+    pack_size_slugs = request.GET.getlist('pack_size')
     search_query = request.GET.get('search', '')
 
     products = Product.objects.filter(is_active=True)
@@ -91,7 +92,41 @@ def products_view(request):
                 products = products.filter(created_at__gte=from_date)
         except (ValueError, IndexError):
             pass
-        
+
+    # Apply slug-based filters
+    if product_range_slugs:
+        products = products.filter(product_range__slug__in=product_range_slugs)
+    
+    if application_area_slugs:
+        products = products.filter(application_areas__slug__in=application_area_slugs)
+    
+    if specification_slugs:
+        products = products.filter(specifications__slug__in=specification_slugs)
+    
+    if viscosity_slugs:
+        products = products.filter(viscosities__slug__in=viscosity_slugs)
+    
+    if composition_slugs:
+        products = products.filter(compositions__slug__in=composition_slugs)
+    
+    if pack_size_slugs:
+        products = products.filter(pack_sizes__slug__in=pack_size_slugs)
+    
+    if search_query:
+        products = products.filter(
+            Q(title__icontains=search_query) |
+            Q(description__icontains=search_query) |
+            Q(product_id__icontains=search_query) |
+            Q(features_benefits__icontains=search_query) |
+            Q(application__icontains=search_query)
+        )
+
+    products = products.distinct().prefetch_related(
+        'product_range', 'application_areas', 'specifications', 
+        'viscosities', 'compositions', 'pack_sizes'
+    )
+
+    # Pagination
     page_number = request.GET.get('page', 1)
     paginator = Paginator(products, 6)
 
@@ -111,40 +146,6 @@ def products_view(request):
             except (ValueError, IndexError):
                 formatted_display_date = from_date
 
-    if product_ranges:
-        products = products.filter(product_range__id__in=product_ranges)
-    
-    if application_areas:
-        products = products.filter(application_areas__id__in=application_areas)
-    
-    if specifications:
-        products = products.filter(specifications__id__in=specifications)
-    
-    if viscosities:
-        products = products.filter(viscosities__id__in=viscosities)
-    
-    if compositions:
-        products = products.filter(compositions__id__in=compositions)
-    
-    if pack_sizes:
-        products = products.filter(pack_sizes__id__in=pack_sizes)
-    
-    if search_query:
-        products = products.filter(
-            Q(title__icontains=search_query) |
-            Q(description__icontains=search_query) |
-            Q(product_id__icontains=search_query) |
-            Q(features_benefits__icontains=search_query) |
-            Q(application__icontains=search_query)
-        )
-
-    products = products.distinct().prefetch_related(
-        'product_range', 'application_areas', 'specifications', 
-        'viscosities', 'compositions', 'pack_sizes'
-    )
-
-    
-
     context = {
         **header_context,
         'products': page_obj,
@@ -154,27 +155,27 @@ def products_view(request):
         'viscosities': Viscosity.objects.filter(is_active=True).order_by('name'),
         'compositions': Composition.objects.filter(is_active=True).order_by('name'),
         'pack_sizes': PackSize.objects.filter(is_active=True).order_by('size'),
-        'selected_product_ranges': [str(id) for id in product_ranges],
-        'selected_application_areas': [str(id) for id in application_areas],
-        'selected_specifications': [str(id) for id in specifications],
-        'selected_viscosities': [str(id) for id in viscosities],
-        'selected_compositions': [str(id) for id in compositions],
-        'selected_pack_sizes': [str(id) for id in pack_sizes],
+        'selected_product_ranges': product_range_slugs,
+        'selected_application_areas': application_area_slugs,
+        'selected_specifications': specification_slugs,
+        'selected_viscosities': viscosity_slugs,
+        'selected_compositions': composition_slugs,
+        'selected_pack_sizes': pack_size_slugs,
         'search_query': search_query,
         'formatted_date': formatted_display_date,
-        **header_context
+        'total_results': paginator.count,
     }
 
     return render(request, 'products.html', context)
 
-def products_detail_view(request, product_id):
+def products_detail_view(request, product_slug):
     product = get_object_or_404(
         Product.objects.prefetch_related(
             'application_areas', 'specifications', 'viscosities', 
             'compositions', 'pack_sizes', 'typical_properties', 
             'packaging_sizes', 'reviews'
         ), 
-        product_id=product_id, 
+        slug=product_slug, 
         is_active=True
     )
     
@@ -190,7 +191,7 @@ def products_detail_view(request, product_id):
     except PageHeader.DoesNotExist:
         header_context = {
             'breadcrumb_title': 'Product Detail',
-            'breadcrumb_url': f'/products/{product_id}/',
+            'breadcrumb_url': f'/products/{product_slug}/',
             'page_title': product.title,
             'page_description': product.description or '',
             'background_image': None
