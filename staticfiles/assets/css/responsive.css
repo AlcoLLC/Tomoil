@@ -9,6 +9,26 @@
     .page-header .section-container {
         padding-top: 12%;
     }
+
+
+    .comments-section .swiper {
+        width: 80vw;
+    }
+
+    .comments-section .swiper-wrapper {
+        max-width: 60vw;
+    }
+
+    .comments-section .swiper-slide {
+        width: 47% !important;
+        height: 400px;
+
+    }
+
+    .comments-section .swiper-slide>div:first-of-type>p {
+        font-size: 16px;
+        line-height: 22px;
+    }
 }
 
 @media screen and (max-width: 1400px) {
@@ -31,6 +51,7 @@
     }
 
 
+
     .site-footer {
         padding: 60px 40px 0px 40px;
     }
@@ -39,6 +60,20 @@
     .site-footer .footer-bottom-container {
         max-width: 90vw;
     }
+
+    .comments-section .swiper {
+        width: 90vw;
+    }
+
+    .comments-section .swiper-wrapper {
+        max-width: 70vw;
+    }
+
+    .comments-section .swiper-slide {
+        height: 420px;
+
+    }
+
 
 }
 
@@ -117,7 +152,6 @@
 
 
     .header-whatsapp {
-        bottom: 30px !important;
         right: 2%;
     }
 
@@ -165,6 +199,28 @@
         padding: 10px 12px;
     }
 
+    .comments-section .swiper {
+        width: 95vw;
+    }
+
+    .comments-section .swiper-wrapper {
+        max-width: 75vw;
+    }
+
+    .comments-section .swiper-slide>div>div>h5 {
+        font-size: 20px;
+    }
+
+    .comments-section .swiper-slide>div>div>p {
+        font-size: 15px;
+    }
+
+    .comments-section .swiper-button-prev,
+    .comments-section .swiper-button-next {
+        width: 50px !important;
+        height: 50px !important;
+    }
+
 }
 
 @media screen and (max-width: 956px) {
@@ -194,7 +250,6 @@
         padding: 20px;
         border-top-right-radius: 22px;
         border-bottom-left-radius: 22Px;
-        bottom: 20px !important;
     }
 
     .header-whatsapp i {
@@ -249,6 +304,32 @@
         width: 45px;
         height: 45px;
     }
+
+    .market-segments .market-segments-header h2 {
+        font-size: 34px;
+    }
+
+    .market-segments .market-segments-header p {
+        font-size: 14px;
+        line-height: 20px;
+    }
+
+    .market-segments div:first-of-type button a {
+        font-size: 12px;
+    }
+
+    .market-segments ul li a {
+        gap: 10px;
+        font-size: 15px !important;
+    }
+
+    .market-segments ul li {
+        padding: 10px;
+    }
+
+    .market-segments ul {
+        gap: 10px;
+    }
 }
 
 
@@ -298,6 +379,24 @@
         font-size: 12px;
     }
 
+    .comments-section .swiper-slide {
+        width: 85% !important;
+        height: 400px;
+    }
+
+
+    .comments-section .swiper-button-prev,
+    .comments-section .swiper-button-next {
+        width: 45px !important;
+        height: 45px !important;
+    }
+
+    .comments-section .swiper-button-prev i,
+    .comments-section .swiper-button-next i {
+        font-size: 14px;
+    }
+
+
 }
 
 @media screen and (max-width: 800px) {
@@ -328,6 +427,37 @@
 
     .navbar .logo img {
         height: 14px;
+    }
+
+    .market-segments ul {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px;
+        margin-top: 30px;
+    }
+
+    .market-segments .market-segments-header h2 {
+        font-size: 26px;
+        line-height: 30px;
+    }
+
+    .market-segments .market-segments-header p {
+        font-size: 12px;
+        line-height: 18px;
+    }
+
+    .market-segments div:first-of-type button a,
+    .market-segments div:first-of-type button i {
+        font-size: 11px;
+    }
+
+    .market-segments ul li a {
+        gap: 10px;
+        font-size: 12px !important;
+    }
+
+    .market-segments div:first-of-type button {
+        padding: 6px 16px;
     }
 
 }
@@ -446,13 +576,34 @@
         font-size: 25px !important;
     }
 
-}
+    .comments-section .swiper-button-prev,
+    .comments-section .swiper-button-next {
+        display: none !important;
+    }
 
+    .comments-section .swiper {
+        width: 95%;
+    }
+
+    .comments-section .swiper-wrapper {
+        max-width: 95%;
+    }
+
+    .comments-section .swiper-slide {
+        width: 80% !important;
+    }
+
+
+}
 
 @media screen and (max-width: 500px) {
 
     .page-header {
-        height: 290px;
+        height: 260px;
+    }
+
+    .header-whatsapp {
+        bottom: 25px !important;
     }
 
     .page-header .page-header-content h2 {
