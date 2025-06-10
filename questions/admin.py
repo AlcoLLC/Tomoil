@@ -1,5 +1,12 @@
 from django.contrib import admin
 from .models import Question
-# Register your models here.
+from modeltranslation.admin import TranslationAdmin
 
-admin.site.register(Question)
+
+@admin.register(Question)
+class QuestionAdmin(TranslationAdmin):
+    list_display = ('question', 'created_at')
+    search_fields = ('question', 'answer')
+    list_filter = ('created_at',)
+    date_hierarchy = 'created_at'
+    

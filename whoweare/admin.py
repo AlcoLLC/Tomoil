@@ -1,34 +1,66 @@
 from .models import Glance, GlanceGuide
 from django.contrib import admin
+from django.db import models
 from .models import VisionMission, Value, Glance, GlanceGuide, OurCommitment
+from modeltranslation.admin import TranslationAdmin, TranslationTabularInline
+from ckeditor_uploader.widgets import CKEditorUploadingWidget
 
 
-class ValueInline(admin.TabularInline):
-    model = Value
-    extra = 1
-
-
-@admin.register(VisionMission)
-class VisionMissionAdmin(admin.ModelAdmin):
-    inlines = [ValueInline]
-
-
-admin.site.register(Value)
-
-
-@admin.register(OurCommitment)
-class OurCommitmentAdmin(admin.ModelAdmin):
-    list_display = ('title', 'description')
-
-
-class GlanceGuideInline(admin.TabularInline):
+class GlanceGuideInline(TranslationTabularInline):
     model = GlanceGuide
     extra = 1
+    
+    formfield_overrides = {
+        models.TextField: {'widget': CKEditorUploadingWidget},
+    }
 
 
 @admin.register(Glance)
-class GlanceAdmin(admin.ModelAdmin):
+class GlanceAdmin(TranslationAdmin):
+    list_display = ('title', 'description_header_text')
+    search_fields = ('title', 'header_text', 'description_header_text')
     inlines = [GlanceGuideInline]
+    
+    formfield_overrides = {
+        models.TextField: {'widget': CKEditorUploadingWidget},
+    }
+    
+    class Media:
+        js = (
+            '/static/admin/js/vendor/jquery/jquery.js',
+            '/static/admin/js/jquery.init.js',
+            '/static/modeltranslation/js/tabbed_translation_fields.js',
+        )
+        css = {
+            'screen': ('/static/modeltranslation/css/tabbed_translation_fields.css',),
+        }
 
 
-admin.site.register(GlanceGuide)
+class ValueInline(TranslationTabularInline):
+    model = Value
+    extra = 1
+    
+    formfield_overrides = {
+        models.TextField: {'widget': CKEditorUploadingWidget},
+    }
+
+
+@admin.register(VisionMission)
+class VisionMissionAdmin(TranslationAdmin):
+    list_display = ('vision', 'mission')
+    inlines = [ValueInline]
+    
+    formfield_overrides = {
+        models.TextField: {'widget': CKEditorUploadingWidget},
+    }
+    
+
+@admin.register(OurCommitment)
+class OurCommitmentAdmin(TranslationAdmin):
+    list_display = ('tab_title', 'title', 'description_title')
+    search_fields = ('tab_title', 'title', 'description_title')
+    
+    formfield_overrides = {
+        models.TextField: {'widget': CKEditorUploadingWidget},
+    }
+    
