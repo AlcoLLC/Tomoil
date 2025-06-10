@@ -1,5 +1,4 @@
 from django.db import models
-from django_ckeditor_5.fields import CKEditor5Field
 
 
 class Glance(models.Model):
@@ -7,7 +6,7 @@ class Glance(models.Model):
     header_text = models.TextField()
     image = models.ImageField(upload_to="glance/images/")
     description_header_text = models.CharField(max_length=255)
-    description = CKEditor5Field()
+    description = models.TextField()
 
     def __str__(self):
         return self.title
@@ -47,11 +46,11 @@ class Value(models.Model):
 class OurCommitment(models.Model):
     tab_title = models.CharField(max_length=255)
     title = models.CharField(max_length=255)
-    header_description = CKEditor5Field()
+    header_description = models.TextField()
     image = models.ImageField(
         upload_to='ourcommitments/images/', blank=True, null=True)
     description_title = models.CharField(max_length=255)
-    description = CKEditor5Field()
+    description = models.TextField()
 
     def __str__(self):
         return self.title

@@ -74,6 +74,7 @@ CSRF_TRUSTED_ORIGINS = [
 
 INSTALLED_APPS = [
     'jazzmin',
+    'modeltranslation',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -81,7 +82,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django_filters',
-    'django_ckeditor_5',
+    'ckeditor',
+    'ckeditor_uploader',
 
     # apps
     'products',
@@ -97,16 +99,18 @@ INSTALLED_APPS = [
 
 ]
 
-CKEDITOR_5_FILE_STORAGE = "django.core.files.storage.FileSystemStorage"
+CKEDITOR_UPLOAD_PATH = "uploads/"
+CKEDITOR_IMAGE_BACKEND = "pillow"
+CKEDITOR_JQUERY_URL = 'https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js'
 
-CKEDITOR_5_CONFIGS = {
+CKEDITOR_CONFIGS = {
     'default': {
-        'toolbar': ['heading', '|', 'bold', 'italic', 'link', 'bulletedList', 'numberedList', 'blockQuote'],
-        'language': 'en',
+        'toolbar': 'full',
+        'height': 300,
+        'width': '100%',
     },
 }
 
-CKEDITOR5_UPLOAD_PATH = "uploads/ckeditor5/"
 
 
 MIDDLEWARE = [
@@ -168,14 +172,46 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/5.2/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGES = [
+    ('en', 'English'),
+    ('az', 'Azerbaijani'),
+    ('de', 'German'),        
+    ('es', 'Spanish'),      
+    ('fr', 'French'),       
+    ('it', 'Italian'),       
+    ('ca', 'Catalan'),
+    ('zh-hans', 'Chinese (Simplified)'),   
+]
 
-TIME_ZONE = 'UTC'
+MODELTRANSLATION_DEFAULT_LANGUAGE = 'en'
+MODELTRANSLATION_LANGUAGES = ('en', 'az', 'de', 'es', 'fr', 'it', 'ca', 'zh-hans')
+
+
+LANGUAGE_CODE = 'en'
+DEFAULT_LANGUAGE = 1
+
+LOCALE_PATHS = [
+    BASE_DIR / 'locale',
+]
+
+TIME_ZONE = 'Asia/Baku' 
 
 USE_I18N = True
-
+USE_L10N = True
 USE_TZ = True
 
+
+LANGUAGE_SESSION_KEY = 'django_language'
+LANGUAGE_COOKIE_NAME = 'django_language'
+LANGUAGE_COOKIE_AGE = 60 * 60 * 24 * 365
+LANGUAGE_COOKIE_DOMAIN = None
+LANGUAGE_COOKIE_PATH = '/'
+LANGUAGE_COOKIE_SECURE = False 
+LANGUAGE_COOKIE_HTTPONLY = False
+
+SESSION_COOKIE_AGE = 60 * 60 * 24 * 30 
+SESSION_SAVE_EVERY_REQUEST = True
+SESSION_EXPIRE_AT_BROWSER_CLOSE = False
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.2/howto/static-files/
