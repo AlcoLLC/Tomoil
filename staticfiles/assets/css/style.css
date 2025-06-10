@@ -1061,7 +1061,6 @@
 
 /* Footer Styles */
 
-/* Footer Styles */
 .site-footer {
   width: 100%;
   background-color: #223160;
@@ -1071,7 +1070,7 @@
 }
 
 .footer-container {
-  max-width: 1300px;
+  max-width: 68vw;
   margin: 0 auto;
   display: flex;
   flex-wrap: nowrap;
@@ -1240,7 +1239,7 @@
 }
 
 .site-footer .footer-bottom-container {
-  max-width: 1300px;
+  max-width: 68vw;
   margin: 0 auto;
   display: flex;
   flex-wrap: wrap;
@@ -1288,7 +1287,7 @@
   flex-direction: column;
   justify-content: end;
   align-items: flex-start;
-  padding-top: 10%;
+  padding-top: 9%;
   position: relative;
 }
 
@@ -1310,7 +1309,7 @@
   gap: 10px;
   color: #fff;
   font-size: 14px;
-  margin-bottom: 35px;
+  margin-bottom: 25px;
   z-index: 2;
 }
 
@@ -1326,7 +1325,7 @@
 
 .page-header .page-header-content {
   z-index: 2;
-  max-width: 900px;
+  max-width: 70%;
 }
 
 .page-header .page-header-content h2 {

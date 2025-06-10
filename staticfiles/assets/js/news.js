@@ -19,7 +19,6 @@ document.addEventListener("DOMContentLoaded", function () {
     state.searchQuery = params.get("search") || "";
     state.startDate = params.get("from_date") || "";
     state.endDate = params.get("to_date") || "";
-
     updateFormWithUrlParams();
   }
 
