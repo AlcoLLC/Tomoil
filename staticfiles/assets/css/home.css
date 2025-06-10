@@ -781,7 +781,7 @@ nav {
   margin-bottom: 20px;
 }
 
-.market-segments div:first-of-type button {
+.market-segments  .btn-market-segments {
   padding: 10px 25px;
   border-radius: 999px;
   display: flex;
@@ -795,7 +795,7 @@ nav {
   align-self: end;
 }
 
-.market-segments div:first-of-type button a {
+.market-segments .btn-market-segments a {
   white-space: nowrap;
   color: #fff;
   font-family: "Plus Jakarta Sans", sans-serif;
@@ -806,15 +806,19 @@ nav {
 
 }
 
-.market-segments div:first-of-type button i {
+.market-segments .btn-market-segments i {
   margin-left: 8px;
+}
+
+.market-segments .btn-none {
+  display: none;
 }
 
 .market-segments ul {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 15px;
-  margin-top: 30px;
+  margin: 30px auto;
 }
 
 .market-segments ul li a {

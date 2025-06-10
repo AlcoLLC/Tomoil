@@ -314,7 +314,7 @@
         line-height: 20px;
     }
 
-    .market-segments div:first-of-type button a {
+    .market-segments .btn-market-segments a {
         font-size: 12px;
     }
 
@@ -329,6 +329,16 @@
 
     .market-segments ul {
         gap: 10px;
+    }
+
+    .market-segments ul li div {
+        width: 55px;
+        height: 55px;
+    }
+
+    .market-segments ul li div img {
+        width: 40px;
+        height: 35px;
     }
 }
 
@@ -429,6 +439,10 @@
         height: 14px;
     }
 
+
+}
+
+@media (max-width: 720px) {
     .market-segments ul {
         display: grid;
         grid-template-columns: repeat(2, 1fr);
@@ -443,12 +457,7 @@
 
     .market-segments .market-segments-header p {
         font-size: 12px;
-        line-height: 18px;
-    }
-
-    .market-segments div:first-of-type button a,
-    .market-segments div:first-of-type button i {
-        font-size: 11px;
+        line-height: 16px;
     }
 
     .market-segments ul li a {
@@ -456,12 +465,11 @@
         font-size: 12px !important;
     }
 
-    .market-segments div:first-of-type button {
+    .market-segments .btn-market-segments {
         padding: 6px 16px;
     }
 
 }
-
 
 @media (max-width: 620px) {
     .page-header {
@@ -635,5 +643,35 @@
         padding: 5px;
     }
 
+    .market-segments ul {
+        margin: 20px auto;
+    }
+
+    .market-segments .market-segments-header h2 {
+        font-size: 20px;
+        line-height: 24px;
+    }
+
+    .market-segments .market-segments-header {
+        width: 100%;
+    }
+
+
+    .market-segments .btn-block {
+        display: none !important;
+    }
+
+    .market-segments .btn-none {
+        width: 100%;
+        display: block !important;
+    }
+
+    .market-segments ul li a {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        justify-content: center;
+        text-align: center;
+    }
 
 }
