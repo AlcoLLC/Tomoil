@@ -113,6 +113,7 @@
         id="performance"
       >
         <div class="performance-content">
+          {% if performance %}
           <h3>{% trans 'Specifications / Approvals:' %}</h3>
           <p>{{ performance.specifications|linebreaks }}</p>
           <p>
@@ -121,6 +122,7 @@
             part numbers are required: {% endblocktrans %}
           </p>
           <p>{{ performance.recommendation|linebreaks }}</p>
+          {% endif %}
         </div>
       </div>
       <div

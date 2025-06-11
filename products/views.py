@@ -9,10 +9,6 @@ from .models import (
 )
 
 def pds_sds_view(request):
-    """
-    Bu view yalnız axtarış formasını göstərmək üçündür.
-    Formanın "action" atributu 'all_data_sheets' səhifəsinə yönləndirəcək.
-    """
     try:
         page_header = PageHeader.objects.get(page_key='pds_sds_view')
         header_context = {
@@ -31,7 +27,7 @@ def pds_sds_view(request):
             'background_image': None
         }
 
-    # Forma üçün axtarış dəyərlərini kontekstə əlavə edirik ki, səhifə yeniləndikdə itsin
+   
     context = {
         **header_context,
         'search_product_name': '',
@@ -41,10 +37,6 @@ def pds_sds_view(request):
     return render(request, 'pds&sds.html', context)
 
 def all_data_sheets_view(request):
-    """
-    Bu view həm bütün data sheet-ləri göstərir, həm də axtarış nəticələrini filtrləyir.
-    Axtarış parametrləri GET sorğusu ilə qəbul edilir.
-    """
     try:
         page_header = PageHeader.objects.get(page_key='all_data_sheets_view')
         header_context = {
@@ -63,23 +55,18 @@ def all_data_sheets_view(request):
             'background_image': None
         }
 
-    # GET sorğusundan axtarış parametrlərini alırıq
     product_name = request.GET.get('product_name', '').strip()
     product_id = request.GET.get('product_id', '').strip()
     document_type = request.GET.get('document_type', 'all')
 
-    # Axtarışın edilib-edilmədiyini yoxlayırıq
     is_search = bool(product_name or product_id)
 
-    # Axtarış olarsa, səhifə başlığını dəyişirik
     if is_search:
         header_context['page_title'] = 'Search Results'
         header_context['breadcrumb_title'] = 'Search Results'
 
-    # Əsas sorğu: PDS və ya SDS-i olan aktiv məhsullar
     base_query = Q(is_active=True) & (Q(pds__isnull=False, pds__gt='') | Q(sds__isnull=False, sds__gt=''))
     
-    # Axtarış parametrlərinə görə sorğunu filtrləyirik
     search_query = Q()
     if product_name:
         search_query &= Q(title__icontains=product_name)
@@ -165,7 +152,6 @@ def products_view(request):
         except (ValueError, IndexError):
             pass
 
-    # Apply slug-based filters
     if product_range_slugs:
         products = products.filter(product_range__slug__in=product_range_slugs)
     
@@ -198,7 +184,6 @@ def products_view(request):
         'viscosities', 'compositions', 'pack_sizes'
     )
 
-    # Pagination
     page_number = request.GET.get('page', 1)
     paginator = Paginator(products, 6)
 
@@ -253,7 +238,6 @@ def products_detail_view(request, product_slug):
     
     if request.method == 'POST':
         try:
-            # Rating değerini alırken None ihtimaline karşı 0 olarak ayarla
             rating_value = request.POST.get('rating')
             if not rating_value:
                 messages.error(request, 'Please select a rating.')
@@ -266,15 +250,15 @@ def products_detail_view(request, product_slug):
                 email_address=request.POST.get('email_address'),
                 summary=request.POST.get('summary'),
                 review=request.POST.get('review'),
-                rating=int(rating_value), # Artık bu satır daha güvenli
+                rating=int(rating_value), 
                 is_approved=False  
             )
-            # Modeli kaydetmeden önce tüm alanların doğruluğunu kontrol et
+            
             review.full_clean() 
             review.save()
             messages.success(request, 'Thank you for your review! It will be published after approval.')
             return redirect('products:products_detail_view', product_slug=product_slug)
-        except ValueError: # Özellikle int() dönüşüm hatası için
+        except ValueError:
             messages.error(request, 'Invalid rating value submitted. Please select a rating.')
         except Exception as e:
             messages.error(request, f'There was an error submitting your review: {e}')

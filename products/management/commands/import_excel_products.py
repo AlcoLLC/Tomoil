@@ -185,6 +185,7 @@ class Command(BaseCommand):
             'description': description,
             'features_benefits': safe_get('features_benefits'),
             'application': safe_get('application'),
+            'recommendation': safe_get('recommendation'),  # Recommendation field added
             'product_id': product_id,
             'slug': self.generate_slug(product_name),  # Product name'den slug oluştur
         }

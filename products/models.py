@@ -120,6 +120,7 @@ class Product(models.Model):
     sds = models.URLField(max_length=500, blank=True, null=True, verbose_name="Safety Data Sheet")
     features_benefits = models.TextField(blank=True, null=True)
     application = models.TextField(blank=True, null=True)
+    recommendation = models.TextField(blank=True, null=True)
     
     product_range = models.ForeignKey(ProductRange, on_delete=models.CASCADE, related_name='products', blank=True, null=True)
     application_areas = models.ManyToManyField(ApplicationArea, blank=True, related_name='products')
@@ -144,18 +145,6 @@ class Product(models.Model):
         verbose_name = "Product"
         verbose_name_plural = "Products"
         ordering = ['-created_at']
-
-class Performance(models.Model):
-    product = models.OneToOneField(Product, on_delete=models.CASCADE, related_name='performance')
-    specifications = models.TextField(help_text="API SP, ILSAC GF-6A, GM dexos1 Gen 3, etc.")
-    recommendation = models.TextField(help_text="EuroTec recommendation for specific vehicles")
-    
-    def __str__(self):
-        return f"Performance - {self.product.title}"
-    
-    class Meta:
-        verbose_name = "Performance"
-        verbose_name_plural = "Performances"
 
 class TypicalProperties(models.Model):
     product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name='typical_properties')
