@@ -1,5 +1,4 @@
-{% extends 'base.html' %}
-{% load static %}
+{% extends 'base.html' %} {% load static %} {% load i18n %}
 {% block content %}
 
 <!-- Page-Header -->
@@ -7,288 +6,334 @@
 
 <!-- Product detail section  -->
 
-
 <section class="product-details-section section-container">
-
-    <div class="product-details-info">
-        <div class="left-content">
-            <div class="product-detail-content">
-                <h2 class="section-title">Fully Synthetic Engine Oil</h2>
-                <p class="section-description">We have everything in place to promote our Carbon Neutral products. Here
-                    you
-                    will find marketing materials including images, printed materials, our digital additives brochure,
-                    and
-                    individual videos. These materials are available for download and can be used to promote and support
-                    the
-                    Carbon Neutral products. Think about using them for social media, websites, presentations, and
-                    more. 
-
-                    We have everything in place to promote our Carbon Neutral products. Here you will find marketing
-                    materials including images, printed materials, our digital additives brochure, and individual
-                    videos.
-                </p>
-            </div>
-            <div>
-                <h3>Are you interested in partnership?</h3>
-                <button class="button-style">
-                    <a href="">GET IN TOUCH <i class="fas fa-arrow-right-long"></i></a>
-                </button>
-            </div>
-        </div>
-
-        <div class="details-image">
-            <img src="{% static 'images/image 79.svg' %}" alt="Product Image">
-        </div>
+  <div class="product-details-info">
+    <div class="left-content">
+      <div class="product-detail-content">
+        <h2 class="section-title">
+          {% for composition in product.compositions.all %} {{composition.name}}{% if not forloop.last %}, {% endif %} {% endfor %} {{product.product_range.name }}
+        </h2>
+        <p class="section-description">{{ product.description }}</p>
+      </div>
+      <div>
+        <h3>{% trans 'Are you interested in partnership?' %} </h3>
+        <button class="button-style">
+          <a href="">{% trans 'GET IN TOUCH' %} <i class="fas fa-arrow-right-long"></i></a>
+        </button>
+      </div>
     </div>
 
-
-    <div class="data-sheets">
-        <h3>Data Sheets</h3>
-
-        <div class="sheet-buttons">
-            <button>
-                Product Data Sheet
-                <img src="{% static 'images/download-icon.svg' %}" alt="Download Icon">
-            </button>
-            <button>
-                Safety Data Sheet
-                <img src="{% static 'images/download-icon.svg' %}" alt="Download Icon">
-            </button>
-        </div>
-
+    <div class="details-image">
+      {% if product.image %}
+      <img src="{{ product.image.url }}" alt="{{ product.title }}" />
+      {% else %} {% endif %}
     </div>
+  </div>
 
-    <div class="product-properties">
-        <div class="featured">
-            <h3>Features & Benefits</h3>
-            <div class="featured-content">
-                <i class="fa-solid fa-check"></i>
-                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.Lorem Ipsum is simply dummy
-                    text of the printing and typesetting industry.</p>
-            </div>
-        </div>
-        <div class="application">
-            <h3>Application</h3>
-            <div class="app-content">
-                <i class="fa-solid fa-check"></i>
-                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.Lorem Ipsum is simply dummy
-                    text of the printing and typesetting industry.</p>
-            </div>
-        </div>
+  {% if product.pds or product.sds %}
+  <div class="data-sheets">
+    <h3>{% trans 'Data Sheets' %}</h3>
+
+    <div class="sheet-buttons">
+      {% if product.pds %}
+      <a href="{{ product.pds }}" target="_blank">
+        <button>
+          {% trans 'Product Data Sheet' %}
+          <img
+            src="{% static 'images/download-icon.svg' %}"
+            alt="Download Icon"
+          />
+        </button>
+      </a>
+      {% endif %} {% if product.sds %}
+      <a href="{{ product.sds }}" target="_blank">
+        <button>
+          {% trans 'Safety Data Sheet' %}
+          <img
+            src="{% static 'images/download-icon.svg' %}"
+            alt="Download Icon"
+          />
+        </button>
+      </a>
+      {% endif %}
     </div>
+  </div>
+  {% endif %}
 
-    <div class="product-specifications">
-        <div class="specifications-components">
-            <div class="tabs">
-                <div class="tab active {% if active_tab == 'performance' %}active{% endif %}" data-tab="performance">
-                    Performance</div>
-                <div class="tab {% if active_tab == 'typical-properties' %}active{% endif %}"
-                    data-tab="typical-properties">Typical Properties</div>
-                <div class="tab {% if active_tab == 'packaging-sizes' %}active{% endif %}" data-tab="packaging-sizes">
-                    Packaging & Sizes</div>
-            </div>
-        </div>
-        <div class="specifications-content">
-            <!-- Brand Guideline Tab -->
-            <div class="tab-content active {% if active_tab == 'performance' %}active{% endif %}" id="performance">
-                <div class="performance-content">
-                    <h3>Specifications / Approvals:</h3>
-                    <p>API SP, ILSAC GF-6A, GM dexos1 Gen 3, Chrysler MS-6395, Ford WSS-M2C 962-A1, Ford WSS-M2C 947-B1
-                    </p>
-
-                    <p> <span>Tomoil</span> recommends this product for vehicles or assemblies for which the
-                        following
-                        specifications or original spare part numbers are required:</p>
-                    <p>ACEA C2, API CF, BMW Longlife-01 FE (up to 2018), Fiat 9.55535, VW 500.00, VW 502.00, VW 503.00,
-                        VW 503.01, VW 505.00, VW 505.01, VW 506.00, VW 506.01 (with the exception of R5 and V10 TDI
-                        before 6/2006)</p>
-                </div>
-            </div>
-            <div class="tab-content  {% if active_tab == 'typical-properties' %}active{% endif %}"
-                id="typical-properties">
-                <div class="specifications-table ">
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Property</th>
-                                <th>Unit</th>
-                                <th>Test Method</th>
-                                <th>Typical Value</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>Kinematic Viscosity at 100°C</td>
-                                <td>cst</td>
-                                <td>ASTM D 445</td>
-                                <td>8.200</td>
-                            </tr>
-                            <tr>
-                                <td>Kinematic Viscosity at 100°C</td>
-                                <td>cst</td>
-                                <td>ASTM D 445</td>
-                                <td>8.200</td>
-                            </tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-
-            <div class="tab-content  {% if active_tab == 'packaging-sizes' %}active{% endif %}" id="packaging-sizes">
-                <div class="specifications-table ">
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Size</th>
-                                <th>Packing Type</th>
-                                <th>Units Per Box</th>
-                                <th>Boxes Per Pallet</th>
-                                <th>Units Per Pallet</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>1 L</td>
-                                <td>Canister Plastic</td>
-                                <td>12</td>
-                                <td>54</td>
-                                <td>648</td>
-                            </tr>
-
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-
-        </div>
+  <div class="product-properties">
+      {% if product.features_benefits %}
+    <div class="featured">
+      <h3>{% trans 'Features & Benefits' %}</h3>
+      <div class="featured-content">
+        <i class="fa-solid fa-check"></i>
+        <p>{{ product.features_benefits }}</p>
+      </div>
     </div>
+    {% else %}
+      {% endif %}
+    {% if product.application %}
+    <div class="application">
+      <h3>{% trans 'Application' %}</h3>
 
-    <div class="product-opinions">
-        <div class="product-detail-content">
-            <h2 class="section-title">Your opinion is important to us!</h2>
-            <p class="section-description">Be a trailblazer and rate the product, so that others can benefit from your
-                experience and we can keep on optimising!
-            </p>
-
-            <button class="button-style" id="openReviewModal">
-                <a>BE THE FIRST TO RATE PRODUCTS <i class="fas fa-arrow-right"></i></a>
-            </button>
-        </div>
-        <div class="opinions">
-            <div class="opinion active" data-index="0">
-                <div class="star-rating">
-                    <i class="fa-solid fa-star"></i>
-                    <i class="fa-solid fa-star"></i>
-                    <i class="fa-solid fa-star"></i>
-                    <i class="fa-solid fa-star"></i>
-                    <i class="fa-regular fa-star"></i>
-                </div>
-                <div class="review-header">
-                    <h3>Aykhan Safarli</h3>
-                    <span>11.05.2025</span>
-                </div>
-                <p class="section-description">Your opinion is important to us! Be a pioneer and rate the product so
-                    that others can benefit from your experience and we can always optimize! </p>
-            </div>
-
-            <div class="opinion" data-index="1">
-                <div class="star-rating">
-                    <i class="fa-solid fa-star"></i>
-                    <i class="fa-solid fa-star"></i>
-                    <i class="fa-solid fa-star"></i>
-                    <i class="fa-solid fa-star"></i>
-                    <i class="fa-regular fa-star"></i>
-                </div>
-                <div class="review-header">
-                    <h3>Aytac Mehdizade</h3>
-                    <span>12.05.2025</span>
-                </div>
-                <p class="section-description">Your opinion is important to us! Be a pioneer and rate the product so
-                    that others can benefit from your experience and we can always optimize!</p>
-            </div>
-
-            <div class="opinion" data-index="2">
-                <div class="star-rating">
-                    <i class="fa-solid fa-star"></i>
-                    <i class="fa-solid fa-star"></i>
-                    <i class="fa-solid fa-star"></i>
-                    <i class="fa-solid fa-star"></i>
-                    <i class="fa-regular fa-star"></i>
-                </div>
-                <div class="review-header">
-                    <h3>Aygun Amiraslanova</h3>
-                    <span>13.05.2025</span>
-                </div>
-                <p class="section-description">Your opinion is important to us! Be a pioneer and rate the product so
-                    that others can benefit from your experience and we can always optimize!</p>
-            </div>
-        </div>
-
+      <div class="app-content">
+        <i class="fa-solid fa-check"></i>
+        <p>{{ product.specifications }}</p>
+      </div>
     </div>
+    {% else %} {% endif %}
+  </div>
 
-    <!-- Modal HTML -->
-    <div id="reviewModalOverlay" class="review-modal-overlay">
-        <div class="review-modal">
-            <div class="modal-header">
-                <h2 class="modal-title">Your Review</h2>
-                <button class="close-btn" id="closeModal"><i class="fa-solid fa-xmark"></i></button>
-            </div>
-            <form id="review-form" class="modal-form">
-                <div class="form-section">
-                    <label>Sort by</label>
-                    <div class="star-selector">
-                        <i class="fas fa-star star" data-rating="1"></i>
-                        <i class="fas fa-star star" data-rating="2"></i>
-                        <i class="fas fa-star star" data-rating="3"></i>
-                        <i class="fas fa-star star" data-rating="4"></i>
-                        <i class="fas fa-star star" data-rating="5"></i>
-                    </div>
-                </div>
-
-                <div class="form-row">
-                    <div class="form-group">
-                        <label for="firstName">First name</label>
-                        <input type="text" id="firstName" name="firstName" placeholder="Enter your name">
-                    </div>
-                    <div class="form-group">
-                        <label for="surname">Surname</label>
-                        <input type="text" id="surname" name="surname" placeholder="Enter your surname">
-                    </div>
-                </div>
-
-                <div class="form-section">
-                    <div class="form-group">
-                        <label for="email">Email address</label>
-                        <input type="email" id="email" name="email" placeholder="Enter your email">
-                    </div>
-                </div>
-
-                <div class="form-section">
-                    <div class="form-group">
-                        <label for="summary">Summary of your review</label>
-                        <input type="text" id="summary" name="summary" placeholder="Enter your review">
-                    </div>
-                </div>
-
-                <div class="form-section">
-                    <div class="form-group">
-                        <label for="review">Review</label>
-                        <textarea id="review" name="review" placeholder="Write here..."></textarea>
-                    </div>
-                </div>
-
-                <div class="checkbox-container">
-                    <input type="checkbox" id="agreement" name="agreement" required>
-                    <label for="agreement">I agree to the publication and the <a href="#">evaluation
-                            conditions</a>.</label>
-                </div>
-
-                <button type="submit" class="submit-btn">SUBMIT</button>
-            </form>
+  <div class="product-specifications">
+    <div class="specifications-components">
+      <div class="tabs">
+        <div
+          class="tab active {% if active_tab == 'performance' %}active{% endif %}"
+          data-tab="performance"
+        >
+          {% trans 'Performance' %}
         </div>
+        <div
+          class="tab {% if active_tab == 'typical-properties' %}active{% endif %}"
+          data-tab="typical-properties"
+        >
+          {% trans 'Typical Properties' %}
+        </div>
+        <div
+          class="tab {% if active_tab == 'packaging-sizes' %}active{% endif %}"
+          data-tab="packaging-sizes"
+        >
+          {% trans 'Packaging & Sizes' %}
+        </div>
+      </div>
     </div>
+    <div class="specifications-content">
+      <!-- Brand Guideline Tab -->
+      <div
+        class="tab-content active {% if active_tab == 'performance' %}active{% endif %}"
+        id="performance"
+      >
+        <div class="performance-content">
+          {% if performance %}
+          <h3>{% trans 'Specifications / Approvals:' %}</h3>
+          <p>{{ performance.specifications|linebreaks }}</p>
+          <p>
+            <span>Tomoil</span> {% blocktrans %} recommends this product for vehicles or
+            assemblies for which the following specifications or original spare
+            part numbers are required: {% endblocktrans %}
+          </p>
+          <p>{{ performance.recommendation|linebreaks }}</p>
+          {% endif %}
+        </div>
+      </div>
+      <div
+        class="tab-content {% if active_tab == 'typical-properties' %}active{% endif %}"
+        id="typical-properties"
+      >
+        <div class="specifications-table">
+          {% if typical_properties %}
+          <table>
+            <thead>
+              <tr>
+                <th>{% trans 'Property' %}</th>
+                <th>{% trans 'Unit' %}</th>
+                <th>{% trans 'Test Method' %}</th>
+                <th>{% trans 'Typical Value' %}</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for property in typical_properties %}
+              <tr>
+                <td>{{ property.property }}</td>
+                <td>{{ property.unit|default:"-" }}</td>
+                <td>{{ property.test_method|default:"-" }}</td>
+                <td>{{ property.typical_value }}</td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+          {% else %}
+          <p>{% trans 'Typical properties information will be available soon.' %}</p>
+          {% endif %}
+        </div>
+      </div>
+
+      <div
+        class="tab-content {% if active_tab == 'packaging-sizes' %}active{% endif %}"
+        id="packaging-sizes"
+      >
+        <div class="specifications-table">
+          {% if packaging_sizes %}
+          <table>
+            <thead>
+              <tr>
+                <th>{% trans 'Size' %}</th>
+                <th>{% trans 'Packing Type' %}</th>
+                <th>{% trans 'Units Per Box' %}</th>
+                <th>{% trans 'Boxes Per Pallet' %}</th>
+                <th>{% trans 'Units Per Pallet' %}</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for package in packaging_sizes %}
+              <tr>
+                <td>{{ package.size }}</td>
+                <td>{{ package.packaging_type }}</td>
+                <td>{{ package.units_per_box|default:"-" }}</td>
+                <td>{{ package.boxes_per_pallet|default:"-" }}</td>
+                <td>{{ package.units_per_pallet|default:"-" }}</td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+          {% else %}
+          <p>{% trans 'Packaging information will be available soon.' %}</p>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="product-opinions">
+    <div class="product-detail-content">
+      <h2 class="section-title">{% trans 'Your opinion is important to us!' %}</h2>
+      <p class="section-description">
+        {% blocktrans %}
+        Be a trailblazer and rate the product, so that others can benefit from
+        your experience and we can keep on optimising!
+        {% endblocktrans %}
+      </p>
+
+      <button class="button-style" id="openReviewModal">
+        <a
+          >{% if reviews_count > 0 %}{% trans 'ADD YOUR REVIEW' %}{% else %}{% trans 'BE THE FIRST TO RATE PRODUCTS' %}{% endif %} <i class="fas fa-arrow-right"></i
+        ></a>
+      </button>
+    </div>
+    {% if reviews %}
+    <div class="opinions">
+      {% for review in reviews %}
+      <div
+        class="opinion {% if forloop.first %}active{% endif %}"
+        data-index="{{ forloop.counter0 }}"
+      >
+        <div class="star-rating">
+          {% for i in "12345" %} {% if forloop.counter <= review.rating %}
+          <i class="fa-solid fa-star"></i>
+          {% else %}
+          <i class="fa-regular fa-star"></i>
+          {% endif %} {% endfor %}
+        </div>
+        <div class="review-header">
+          <h3>{{ review.full_name }}</h3>
+          <span>{{ review.created_at|date:"d.m.Y" }}</span>
+        </div>
+        <p class="section-description">{{ review.review }}</p>
+      </div>
+      {% endfor %}
+    </div>
+    {% else %}
+   
+    {% endif %}
+  </div>
+
+  <!-- Modal HTML -->
+  <div id="reviewModalOverlay" class="review-modal-overlay">
+    <div class="review-modal">
+      <div class="modal-header">
+        <h2 class="modal-title">{% trans 'Your Review' %}</h2>
+        <button class="close-btn" id="closeModal">
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+      </div>
+      <form id="review-form" class="modal-form" method="POST">
+        {% csrf_token %}
+        <div class="form-section">
+          <label>{% trans 'Rating' %}</label>
+          <div class="star-selector">
+            <i class="fas fa-star star" data-rating="1"></i>
+            <i class="fas fa-star star" data-rating="2"></i>
+            <i class="fas fa-star star" data-rating="3"></i>
+            <i class="fas fa-star star" data-rating="4"></i>
+            <i class="fas fa-star star" data-rating="5"></i>
+          </div>
+          <input type="hidden" name="rating" id="rating-input" required />
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="firstName">{% trans 'First name' %}</label>
+            <input
+              type="text"
+              id="firstName"
+              name="first_name"
+              placeholder="{% trans 'Enter your name' %}"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label for="surname">{% trans 'Surname' %}</label>
+            <input
+              type="text"
+              id="surname"
+              name="surname"
+              placeholder="{% trans 'Enter your surname' %}"
+              required
+            />
+          </div>
+        </div>
+
+        <div class="form-section">
+          <div class="form-group">
+            <label for="email">{% trans 'Email address' %}</label>
+            <input
+              type="email"
+              id="email"
+              name="email_address"
+              placeholder="{% trans 'Enter your email' %}"
+              required
+            />
+          </div>
+        </div>
+
+        <div class="form-section">
+          <div class="form-group">
+            <label for="summary">{% trans 'Summary of your review' %}</label>
+            <input
+              type="text"
+              id="summary"
+              name="summary"
+              placeholder="{% trans 'Enter your review summary' %}"
+              required
+              maxlength="200"
+            />
+          </div>
+        </div>
+
+        <div class="form-section">
+          <div class="form-group">
+            <label for="review">{% trans 'Review' %}</label>
+            <textarea
+              id="review"
+              name="review"
+              placeholder="{% trans 'Write your detailed review here...' %}"
+              required
+            ></textarea>
+          </div>
+        </div>
+
+        <div class="checkbox-container">
+          <input type="checkbox" id="agreement" name="agreement" required />
+          <label for="agreement"
+            >{% trans 'I agree to the publication and the' %}
+            <a href="#">{% trans 'evaluation conditions' %}</a>.</label
+          >
+        </div>
+      <p id="form-error-message" style="color: red; text-align: center; margin-bottom: 15px;"></p>
+
+        <button type="submit" class="submit-btn">{% trans 'SUBMIT' %}</button>
+      </form>
+    </div>
+  </div>
 </section>
-
-
 
 {% endblock %}

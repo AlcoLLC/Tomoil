@@ -1,4 +1,5 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
+from django.contrib import messages
 from django.db.models import Q, Avg
 from django.core.paginator import Paginator
 from pageheader.models import PageHeader
@@ -8,6 +9,10 @@ from .models import (
 )
 
 def pds_sds_view(request):
+    """
+    Bu view yalnız axtarış formasını göstərmək üçündür.
+    Formanın "action" atributu 'all_data_sheets' səhifəsinə yönləndirəcək.
+    """
     try:
         page_header = PageHeader.objects.get(page_key='pds_sds_view')
         header_context = {
@@ -21,14 +26,25 @@ def pds_sds_view(request):
         header_context = {
             'breadcrumb_title': 'PDS & SDS',
             'breadcrumb_url': '/pds_sds/',
-            'page_title': 'PDS & SDS',
-            'page_description': '',
+            'page_title': 'PDS & SDS Search',
+            'page_description': 'Find the product data sheets and safety data sheets you need.',
             'background_image': None
         }
 
-    return render(request, 'pds&sds.html', {**header_context})
+    # Forma üçün axtarış dəyərlərini kontekstə əlavə edirik ki, səhifə yeniləndikdə itsin
+    context = {
+        **header_context,
+        'search_product_name': '',
+        'search_product_id': '',
+        'search_document_type': 'all',
+    }
+    return render(request, 'pds&sds.html', context)
 
 def all_data_sheets_view(request):
+    """
+    Bu view həm bütün data sheet-ləri göstərir, həm də axtarış nəticələrini filtrləyir.
+    Axtarış parametrləri GET sorğusu ilə qəbul edilir.
+    """
     try:
         page_header = PageHeader.objects.get(page_key='all_data_sheets_view')
         header_context = {
@@ -43,11 +59,68 @@ def all_data_sheets_view(request):
             'breadcrumb_title': 'All Data Sheets',
             'breadcrumb_url': '/all_data_sheets/',
             'page_title': 'All Data Sheets',
-            'page_description': '',
+            'page_description': 'Browse all available product and safety data sheets.',
             'background_image': None
         }
 
-    return render(request, 'all_data_sheets.html', {**header_context})
+    # GET sorğusundan axtarış parametrlərini alırıq
+    product_name = request.GET.get('product_name', '').strip()
+    product_id = request.GET.get('product_id', '').strip()
+    document_type = request.GET.get('document_type', 'all')
+
+    # Axtarışın edilib-edilmədiyini yoxlayırıq
+    is_search = bool(product_name or product_id)
+
+    # Axtarış olarsa, səhifə başlığını dəyişirik
+    if is_search:
+        header_context['page_title'] = 'Search Results'
+        header_context['breadcrumb_title'] = 'Search Results'
+
+    # Əsas sorğu: PDS və ya SDS-i olan aktiv məhsullar
+    base_query = Q(is_active=True) & (Q(pds__isnull=False, pds__gt='') | Q(sds__isnull=False, sds__gt=''))
+    
+    # Axtarış parametrlərinə görə sorğunu filtrləyirik
+    search_query = Q()
+    if product_name:
+        search_query &= Q(title__icontains=product_name)
+    if product_id:
+        search_query &= Q(product_id__icontains=product_id)
+    if document_type == 'pds':
+        search_query &= Q(pds__isnull=False, pds__gt='')
+    elif document_type == 'sds':
+        search_query &= Q(sds__isnull=False, sds__gt='')
+
+    final_query = base_query & search_query
+    products = Product.objects.filter(final_query).order_by('title')
+
+    data_sheets_list = []
+    for product in products:
+        data_sheets_list.append({
+            'product_id': product.product_id,
+            'product_name': product.title,
+            'language': 'English',
+            'has_pds': bool(product.pds),
+            'has_sds': bool(product.sds),
+            'pds_url': product.pds,
+            'sds_url': product.sds,
+        })
+
+    paginator = Paginator(data_sheets_list, 15) 
+    page_number = request.GET.get('page', 1)
+    page_obj = paginator.get_page(page_number)
+
+    context = {
+        **header_context,   
+        'data_sheets': page_obj,
+        'results_count': paginator.count,
+        'is_search': is_search,
+        'search_product_name': product_name,
+        'search_product_id': product_id,
+        'search_document_type': document_type,
+    }
+
+    return render(request, 'all_data_sheets.html', context)
+
 
 def products_view(request):
     try:
@@ -68,7 +141,6 @@ def products_view(request):
             'background_image': None
         }
 
-    # Get filter parameters by slug
     product_range_slugs = request.GET.getlist('product_range')
     application_area_slugs = request.GET.getlist('application_area')
     specification_slugs = request.GET.getlist('specification')
@@ -179,6 +251,35 @@ def products_detail_view(request, product_slug):
         is_active=True
     )
     
+    if request.method == 'POST':
+        try:
+            # Rating değerini alırken None ihtimaline karşı 0 olarak ayarla
+            rating_value = request.POST.get('rating')
+            if not rating_value:
+                messages.error(request, 'Please select a rating.')
+                return redirect('products:products_detail_view', product_slug=product_slug)
+
+            review = Review(
+                product=product,
+                first_name=request.POST.get('first_name'),
+                surname=request.POST.get('surname'),
+                email_address=request.POST.get('email_address'),
+                summary=request.POST.get('summary'),
+                review=request.POST.get('review'),
+                rating=int(rating_value), # Artık bu satır daha güvenli
+                is_approved=False  
+            )
+            # Modeli kaydetmeden önce tüm alanların doğruluğunu kontrol et
+            review.full_clean() 
+            review.save()
+            messages.success(request, 'Thank you for your review! It will be published after approval.')
+            return redirect('products:products_detail_view', product_slug=product_slug)
+        except ValueError: # Özellikle int() dönüşüm hatası için
+            messages.error(request, 'Invalid rating value submitted. Please select a rating.')
+        except Exception as e:
+            messages.error(request, f'There was an error submitting your review: {e}')
+    
+    
     try:
         page_header = PageHeader.objects.get(page_key='products_detail_view')
         header_context = {
@@ -190,8 +291,8 @@ def products_detail_view(request, product_slug):
         }
     except PageHeader.DoesNotExist:
         header_context = {
-            'breadcrumb_title': 'Product Detail',
-            'breadcrumb_url': f'/products/{product_slug}/',
+            'breadcrumb_title': 'Products',
+            'breadcrumb_url': '/products/',
             'page_title': product.title,
             'page_description': product.description or '',
             'background_image': None
@@ -206,7 +307,7 @@ def products_detail_view(request, product_slug):
     context = {
         **header_context,
         'product': product,
-        'reviews': reviews[:5],
+        'reviews': reviews[:10], 
         'reviews_count': reviews.count(),
         'avg_rating': avg_rating,
         'typical_properties': product.typical_properties.all().order_by('order'),

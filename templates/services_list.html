@@ -1,4 +1,5 @@
-{% extends 'base.html' %} {% load static %} {% block content %}
+{% extends 'base.html' %} {% load static %} {% load i18n %}
+{% block content %}
 
 <!-- Page-Header -->
 {% include 'components/page-header.html' %}
@@ -22,7 +23,7 @@
             alt="LubelQ Icon"
           />
         </div>
-        <span>LubelQ</span>
+        <span>{% trans 'LubelQ' %}</span>
         <div class="arrow-icon">
           <i class="fa-solid fa-chevron-right"></i>
         </div>
@@ -60,7 +61,7 @@
               />
             </div>
             <div class="stat-value">+{{ lubelq.testing_instruments }}</div>
-            <div class="stat-label">Testing Instruments</div>
+            <div class="stat-label">{% trans 'Testing Instruments' %}</div>
           </div>
           <div class="stat-item">
             <div class="stat-icon">
@@ -70,7 +71,7 @@
               />
             </div>
             <div class="stat-value">+{{ lubelq.test_parameters }}</div>
-            <div class="stat-label">Test Parameters</div>
+            <div class="stat-label">{% trans 'Test Parameters' %}</div>
           </div>
           <div class="stat-item">
             <div class="stat-icon">
@@ -80,7 +81,7 @@
               />
             </div>
             <div class="stat-value">{{ lubelq.accuracy_rate }}%</div>
-            <div class="stat-label">Accuracy Rate</div>
+            <div class="stat-label">{% trans 'Accuracy Rate' %}</div>
           </div>
         </div>
 

@@ -1,14 +1,15 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load i18n %}
 
 {% block content %}
 
 <!-- Page Tabs -->
 <div class="page-tabs">
     <div class="section-container breadcrumb">
-        <span>Home</span>
+        <span>{% trans 'Home' %}</span>
         <i class="fa-solid fa-angle-right"></i>
-        <span>Case Studies</span>
+        <span>{% trans 'Case Studies' %}</span>
         <i class="fa-solid fa-angle-right"></i>
         <a href="#">{{ case_study.title }}</a>
     </div>

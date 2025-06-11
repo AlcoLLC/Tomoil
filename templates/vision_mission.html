@@ -1,5 +1,6 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load i18n %}
 {% block content %}
 
 <!-- Page-Header -->
@@ -10,13 +11,13 @@
     <div class="vision-mission-top">
         <div class="vision-mission-top-left">
             <div>
-                <h2 class="section-title">VISION</h2>
+                <h2 class="section-title">{% trans 'VISION' %}</h2>
                 <p class="section-description">
                     {{ item.vision }}
                 </p>
             </div>
             <div>
-                <h2 class="section-title">MISSION</h2>
+                <h2 class="section-title">{% trans 'MISSION' %}</h2>
                 <p class="section-description">
                     {{ item.mission }}
                 </p>
@@ -28,7 +29,7 @@
     </div>
     <div class="vision-mission-bottom">
 
-        <h2 class="section-title">VALUES</h2>
+        <h2 class="section-title">{% trans 'VALUES' %}</h2>
 
         <div class="values-grid">
             {% for value in item.values.all %}
@@ -40,7 +41,7 @@
                     </div>
                 </div>
             {% empty %}
-                <p>No values available.</p>
+                <p>{% trans 'No values available.' %}</p>
             {% endfor %}
         </div>
 

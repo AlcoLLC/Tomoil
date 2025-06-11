@@ -1,5 +1,7 @@
 {% extends 'base.html' %}
 {% load static %}
+{% load i18n %}
+
 {% block content %}
 
 <!-- Page-Header -->
@@ -10,10 +12,10 @@
     <div class="products-container">
         <form id="filterForm" method="GET" action="{% url 'products:products_list' %}">
             <div class="filter-products">
-                <button type="button" class="reset-filter-btn" onclick="resetFilters()">RESET FILTERS</button>
+                <button type="button" class="reset-filter-btn" onclick="resetFilters()">{% trans 'RESET FILTERS' %}</button>
 
                 <div class="filter-section">
-                    <h3>Product Range</h3>
+                    <h3>{% trans 'Product Range' %}</h3>
                     <div class="checkbox-area">
                         {% for product_range in product_ranges %}
                         <label class="checkbox-group">
@@ -25,13 +27,13 @@
                     </div>
                     <div class="filter-show-more">
                         <a href="#" class="show-more">
-                            Show more <i class="fas fa-arrow-right"></i>
+                            {% trans 'Show more' %} <i class="fas fa-arrow-right"></i>
                         </a>
                     </div>
                 </div>
 
                 <div class="filter-section">
-                    <h3>Application area</h3>
+                    <h3>{% trans 'Application area' %}</h3>
                     <div class="application-area">
                          {% for application_area in application_areas %}
                          <button type="button" class="icon-button {% if application_area.slug in selected_application_areas %}active{% endif %}" 
@@ -51,13 +53,13 @@
                     </div>
                     <div class="filter-show-more">
                         <a href="#" class="show-more">
-                            Show more <i class="fas fa-arrow-right"></i>
+                            {% trans 'Show more' %} <i class="fas fa-arrow-right"></i>
                         </a>
                     </div>
                 </div>
 
                 <div class="filter-section">
-                    <h3>Product Specifications</h3>
+                    <h3>{% trans 'Product Specifications' %}</h3>
                     {% comment %} 
                     <div class="search-bar">
                         <input type="text" name="search" placeholder="Search" class="search-input" 
@@ -77,13 +79,13 @@
                     </div>
                     <div class="filter-show-more">
                         <a href="#" class="show-more">
-                            Show more <i class="fas fa-arrow-right"></i>
+                            {% trans 'Show more' %} <i class="fas fa-arrow-right"></i>
                         </a>
                     </div>
                 </div>
 
                 <div class="filter-section">
-                    <h3>Viscosity</h3>
+                    <h3>{% trans 'Viscosity' %}</h3>
                     <div class="checkbox-area">
                          {% for viscosity in viscosities %}
                             <label class="checkbox-group">
@@ -95,13 +97,13 @@
                     </div>
                     <div class="filter-show-more">
                         <a href="#" class="show-more">
-                            Show more <i class="fas fa-arrow-right"></i>
+                            {% trans 'Show more' %} <i class="fas fa-arrow-right"></i>
                         </a>
                     </div>
                 </div>
 
                 <div class="filter-section">
-                    <h3>Composition</h3>
+                    <h3>{% trans 'Composition' %}</h3>
                     <div class="checkbox-area">
                        {% for composition in compositions %}
                             <label class="checkbox-group">
@@ -113,13 +115,13 @@
                     </div>
                     <div class="filter-show-more">
                         <a href="#" class="show-more">
-                            Show more <i class="fas fa-arrow-right"></i>
+                            {% trans 'Show more' %} <i class="fas fa-arrow-right"></i>
                         </a>
                     </div>
                 </div>
 
                 <div class="filter-section">
-                    <h3>Pack sizes</h3>
+                    <h3>{% trans 'Pack sizes' %}</h3>
                     <div class="pack-size-area">
                         {% for pack_size in pack_sizes %}
                             <button type="button" class="icon-button {% if pack_size.slug in selected_pack_sizes %}active{% endif %}" 
@@ -135,11 +137,11 @@
                     </div>
                     <div class="filter-show-more">
                         <a href="#" class="show-more">
-                            Show more <i class="fas fa-arrow-right"></i>
+                            {% trans 'Show more' %} <i class="fas fa-arrow-right"></i>
                         </a>
                     </div>
                 </div>
-                <button type="button" class="filter-results-button" id="filterResultsBtn" onclick="applyFilters()">View Results</button>
+                <button type="button" class="filter-results-button" id="filterResultsBtn" onclick="applyFilters()">{% trans 'View Results' %}</button>
             </div>
         </form>
 
@@ -147,7 +149,7 @@
              {% for product in products %}
             <div class="product-card">
                 <div class="product-type">{{ product.product_range.name|upper }}</div>
-                 <a href="{% url 'products:product_detail' product.slug %}" class="product-image">
+                 <a href="{% url 'products:products_detail_view' product.slug %}" class="product-image">
                     {% if product.image %}
                         <img src="{{ product.image.url }}" alt="{{ product.title }}">
                     {% else %}
@@ -160,23 +162,25 @@
                         <p class="product-description">{{ product.description|truncatechars:50 }}</p>
                         <p class="product-id">ID: {{ product.product_id }}</p>
                     </div>
-                    <a href="{% url 'products:product_detail' product.slug %}" class="show-more">
-                        Show More
+                    <a href="{% url 'products:products_detail_view' product.slug %}" class="show-more">
+                        {% trans 'Show More' %}
                         <i class="fas fa-arrow-right-long"></i>
                     </a>
                 </div>
             </div>
               {% empty %}
             <div class="no-products">
-                <p>No products found matching your criteria.</p>
+                <p>{% trans 'No products found matching your criteria.' %}</p>
             </div>
             {% endfor %}
         </div>
 
-        <!-- Pagination -->
+       
+    </div>
+     <!-- Pagination -->
         <div class="pagination-container">
             <p class="pagination-info">
-                Displaying {{ products.start_index }}–{{ products.end_index }} of {{ total_results }} results
+                {% trans 'Displaying' %} {{ products.start_index }}–{{ products.end_index }} {% trans 'of' %} {{ total_results }} {% trans 'results' %}
             </p>
             <div class="pagination">
                 <!-- Previous Button -->
@@ -203,6 +207,5 @@
                 {% endif %}
             </div>
         </div>
-    </div>
 </section>
 {% endblock %}

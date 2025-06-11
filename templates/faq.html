@@ -1,4 +1,7 @@
-{% extends 'base.html' %} {% load static %} {% block content %}
+{% extends 'base.html' %} {% load static %}
+{% load i18n %}
+
+{% block content %}
 
 <!-- Page-Header -->
 {% include 'components/page-header.html' %}
@@ -26,14 +29,17 @@
 <section class="wolver-section section-container">
   <div class="wolver-container">
     <div class="wolver-content">
-      <h2 class="section-title">Wolver ecotec</h2>
+      <h2 class="section-title">{% trans 'Wolver ecotec' %}</h2>
       <p class="content1">
+        {% blocktrans %}
         Our EV fluids are engineered to meet the evolving demands of electric
         mobility — delivering outstanding cooling, high-voltage insulation, and
         long-term durability. Drive the future with Tomoil’s next-generation
         fluid solutions.
+        {% endblocktrans %}
+        
       </p>
-      <a href="#" class="wolver-btn">Go To Catalog</a>
+      <a href="#" class="wolver-btn">{% trans 'Go To Catalog' %}</a>
     </div>
     <div class="wolver-products">
       <div class="product-container">
@@ -65,14 +71,13 @@
 <!-- Need More Section -->
 <section class="need-more-section">
   <div class="section-container">
-    <h2 class="section-title">NEED MORE ASSISTANCE?</h2>
+    <h2 class="section-title">{% trans 'NEED MORE ASSISTANCE?' %}</h2>
     <p class="section-description">
-      Begin your journey towards world class products and services today with
-      TOMOIL
+      {% trans 'Begin your journey towards world class products and services today with TOMOIL' %}
     </p>
     <a href="#" class="need-more-btn">
       <img src="{% static 'images/comments.svg' %}" alt="" />
-      TALK TO US</a
+      {% trans 'TALK TO US' %}</a
     >
   </div>
 </section>

@@ -379,7 +379,7 @@
 /* Product Details */
 
 .product-details-section {
-  margin: 50px auto;
+  margin: 80px auto 20px !important;
   color: #223160;
 }
 

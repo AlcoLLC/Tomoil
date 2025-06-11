@@ -1,67 +1,67 @@
-{% extends 'base.html' %} {% load static %} {% block content %}
-<!-- Page-Header -->
+{% extends 'base.html' %} 
+{% load static %} 
+{% load i18n %}
+
+{% block content %}
 {% include 'components/page-header.html' %}
 
-<!-- PDS SDS Container -->
 <section class="pds-sds-section section-container">
     <div class="pds-sds-container">
         <div class="pds-sds-left">
-            <h2 class="section-title">Access essential PDS & SDS documents to stay informed</h2>
-            <p class="section-description">Tomoil is a dynamic energy company dedicated to delivering high-quality fuel
+            <h2 class="section-title">{% trans 'Access essential PDS & SDS documents to stay informed' %}</h2>
+            <p class="section-description">
+                {% blocktrans %} 
+                Tomoil is a dynamic energy company dedicated to delivering high-quality fuel
                 products and services. With a strong presence across key markets, Tomoil focuses on innovation,
                 sustainability, and customer satisfaction. Our commitment is to power everyday journeys, support
-                economic growth, and drive a cleaner energy future.</p>
+                economic growth, and drive a cleaner energy future.
+                {% endblocktrans %}
+                </p>
         </div>
 
         <div class="pds-sds-right">
-            <form class="pds-sds-form" method="POST" novalidate>
-                {% csrf_token %}
-
+            <form class="pds-sds-form" method="GET" action="{% url 'products:all_data_sheets' %}" novalidate>
+                
                 <div class="form-group product-name">
-                    <label for="full-name">Product name</label>
+                    <label for="product-name-input">{% trans 'Product name' %}</label>
                     <div class="input-wrapper">
-                        <input type="text" name="product_name" placeholder="Enter product name" required />
+                        <input type="text" id="product-name-input" name="product_name" placeholder="Enter product name" value="{{ search_product_name|default:'' }}" />
                     </div>
                 </div>
 
                 <div class="form-group product-id">
-                    <label for="full-name">Product ID</label>
+                    <label for="product-id-input">{% trans 'Product ID' %}</label>
                     <div class="input-wrapper">
-                        <input type="text" name="product_id" placeholder="Enter product ID" required />
+                        <input type="text" id="product-id-input" name="product_id" placeholder="Enter product ID" value="{{ search_product_id|default:'' }}" />
                     </div>
                 </div>
 
                 <div class="form-group document-type">
-                    <label>Document type</label>
+                    <label>{% trans 'Document type' %}</label>
                     <div class="radio-options">
                         <div class="radio-option">
-                            <input type="radio" name="document_type" id="document-type-method" value="email" required />
-                            <label for="document-type-method">All Data Sheets</label>
+                            <input type="radio" name="document_type" id="doc-type-all" value="all" {% if search_document_type == 'all' or not search_document_type %}checked{% endif %} />
+                            <label for="doc-type-all">{% trans 'All Data Sheets' %}</label>
                         </div>
                         <div class="radio-option">
-                            <input type="radio" name="document_type" id="" value="document-type-method" required />
-                            <label for="document-type-method">Safety Data Sheets</label>
+                            <input type="radio" name="document_type" id="doc-type-sds" value="sds" {% if search_document_type == 'sds' %}checked{% endif %} />
+                            <label for="doc-type-sds">{% trans 'Safety Data Sheets (SDS)' %}</label>
                         </div>
                         <div class="radio-option">
-                            <input type="radio" name="document_type" id="" value="document-type-method" required />
-                            <label for="document-type-method">Product Data Sheets</label>
+                            <input type="radio" name="document_type" id="doc-type-pds" value="pds" {% if search_document_type == 'pds' %}checked{% endif %} />
+                            <label for="doc-type-pds">{% trans 'Product Data Sheets (PDS)' %}</label>
                         </div>
-
                     </div>
                 </div>
 
                 <div class="form-group submit-group">
-                    <button type="submit" id="submit-button" class="submit-button" >
-                        SEARCH
+                    <button type="submit" id="submit-button" class="submit-button">
+                        {% trans 'SEARCH' %}
                     </button>
                 </div>
             </form>
-
-
         </div>
-
     </div>
 </section>
 
-
-{%endblock %}
+{% endblock %}

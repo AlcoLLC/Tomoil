@@ -1,11 +1,12 @@
-{% extends 'base.html' %} {% load static %} {% block content %}
+{% extends 'base.html' %} {% load static %} {% load i18n %}
+ {% block content %}
 
 <!-- Page Tabs -->
 <div class="page-tabs">
   <div class="section-container breadcrumb">
-    <span>Home</span>
+    <span>{% trans 'Home' %}</span>
     <i class="fa-solid fa-angle-right"></i>
-    <span>News</span>
+    <span>{% trans 'News' %}</span>
     <i class="fa-solid fa-angle-right"></i>
     <a href="#">{{ news_item.title }}</a>
   </div>

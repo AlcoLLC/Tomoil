@@ -1,4 +1,5 @@
-{% extends 'base.html' %} {% load static %} {% block content %}
+{% extends 'base.html' %} {% load static %} {% load i18n %}
+ {% block content %}
 
 <div class="main">
   <header class="placeholder-header home-header">
@@ -6,73 +7,81 @@
       <div class="swiper-wrapper">
         <div class="swiper-slide slide-back">
           <div class="slide-content">
-            <h5>T3 SPECIAL HYBRID ADDITIVE PACK</h5>
-            <h2>Full Synthetic Engine Oil</h2>
+            <h5>{% trans 'T3 SPECIAL HYBRID ADDITIVE PACK' %}</h5>
+            <h2>{% trans 'Full Synthetic Engine Oil' %}</h2>
             <p>
+              {% blocktrans %}
               TOMOIL T3 SPECIAL HYBRID SAE 0W20 C5 is a full synthetic
               high-performance engine oil. It is recommended for all types of
               modern vehicles.
+              {% endblocktrans %}
             </p>
             <a href="#" class="btn-learn">LEARN MORE</a>
           </div>
           <a href="https://wa.me/message/YOUR_WHATSAPP_NUMBER" class="header-whatsapp">
             <i class="fab fa-whatsapp"></i>
-            <span>Any questions? Ask in WhatsApp</span>
+            <span>{% trans 'Any questions? Ask in WhatsApp' %}</span>
           </a>
         </div>
         <div class="swiper-slide" style="
             background-image: url('https://swiperjs.com/demos/images/nature-2.jpg');
           ">
           <div class="slide-content">
-            <h5>T3 SPECIAL HYBRID ADDITIVE PACK</h5>
-            <h2>Full Synthetic Engine Oil</h2>
+            <h5>{% trans 'T3 SPECIAL HYBRID ADDITIVE PACK' %}</h5>
+            <h2>{% trans 'Full Synthetic Engine Oil' %}</h2>
             <p>
+             {% blocktrans %}
               TOMOIL T3 SPECIAL HYBRID SAE 0W20 C5 is a full synthetic
               high-performance engine oil. It is recommended for all types of
               modern vehicles.
+              {% endblocktrans %}
             </p>
-            <a href="#" class="btn-learn">LEARN MORE </a>
+            <a href="#" class="btn-learn">{% trans 'LEARN MORE' %} </a>
           </div>
           <a href="https://wa.me/message/YOUR_WHATSAPP_NUMBER" class="header-whatsapp">
             <i class="fab fa-whatsapp"></i>
-            <span>Any questions? Ask in WhatsApp</span>
+            <span>{% trans 'Any questions? Ask in WhatsApp' %}</span>
           </a>
         </div>
         <div class="swiper-slide" style="
             background-image: url('https://swiperjs.com/demos/images/nature-3.jpg');
           ">
           <div class="slide-content">
-            <h5>T3 SPECIAL HYBRID ADDITIVE PACK</h5>
-            <h2>Full Synthetic Engine Oil</h2>
+            <h5>{% trans 'T3 SPECIAL HYBRID ADDITIVE PACK' %}</h5>
+            <h2>{% trans 'Full Synthetic Engine Oil' %}</h2>
             <p>
+              {% blocktrans %}
               TOMOIL T3 SPECIAL HYBRID SAE 0W20 C5 is a full synthetic
               high-performance engine oil. It is recommended for all types of
               modern vehicles.
+              {% endblocktrans %}
             </p>
             
-            <a href="#" class="btn-learn">LEARN MORE</a>
+            <a href="#" class="btn-learn">{% trans 'LEARN MORE' %}</a>
           </div>
           <a href="https://wa.me/message/YOUR_WHATSAPP_NUMBER" class="header-whatsapp">
             <i class="fab fa-whatsapp"></i>
-            <span>Any questions? Ask in WhatsApp</span>
+            <span>{% trans 'Any questions? Ask in WhatsApp' %}</span>
           </a>
         </div>
         <div class="swiper-slide" style="
             background-image: url('https://swiperjs.com/demos/images/nature-4.jpg');
           ">
           <div class="slide-content">
-            <h5>T3 SPECIAL HYBRID ADDITIVE PACK</h5>
-            <h2>Full Synthetic Engine Oil</h2>
+            <h5>{% trans 'T3 SPECIAL HYBRID ADDITIVE PACK' %}</h5>
+            <h2>{% trans 'Full Synthetic Engine Oil' %}</h2>
             <p>
+              {% blocktrans %}
               TOMOIL T3 SPECIAL HYBRID SAE 0W20 C5 is a full synthetic
               high-performance engine oil. It is recommended for all types of
               modern vehicles.
+              {% endblocktrans %}
             </p>
-            <a href="#" class="btn-learn">LEARN MORE</a>
+            <a href="#" class="btn-learn">{% trans 'LEARN MORE' %}</a>
           </div>
           <a href="https://wa.me/message/YOUR_WHATSAPP_NUMBER" class="header-whatsapp">
             <i class="fab fa-whatsapp"></i>
-            <span>Any questions? Ask in WhatsApp</span>
+            <span>{% trans 'Any questions? Ask in WhatsApp' %}</span>
           </a>
         </div>
       </div>
@@ -95,8 +104,8 @@
 
     <div class="featured-container main-container">
       <div class="section-header">
-        <p class="section-subtitle">FEATURED PRODUCTS</p>
-        <h2 class="section-title">Discover our top-recommended products</h2>
+        <p class="section-subtitle">{% trans 'FEATURED PRODUCTS' %}</p>
+        <h2 class="section-title">{% trans 'Discover our top-recommended products' %}</h2>
       </div>
 
       <div class="products-slider">
@@ -107,8 +116,8 @@
               <img src="{% static 'images/image 64.svg' %}" alt="TOMOIL DEXOS 2 SAE 5W30 SN/CF" />
             </div>
             <div class="product-info">
-              <h3 class="product-title">TOMOIL DEXOS 2 SAE 5W30 SN/CF</h3>
-              <p class="product-description">Motor oil for cars</p>
+              <h3 class="product-title">{% trans 'TOMOIL DEXOS 2 SAE 5W30 SN/CF' %}</h3>
+              <p class="product-description">{% trans 'Motor oil for cars' %}</p>
             </div>
           </div>
 
@@ -118,8 +127,8 @@
               <img src="{% static 'images/image 79.svg' %}" alt="TOMOIL DEXOS 2 SAE 5W30 SN/CF" />
             </div>
             <div class="product-info">
-              <h3 class="product-title">TOMOIL DEXOS 2 SAE 5W30 SN/CF</h3>
-              <p class="product-description">Motor oil for cars</p>
+              <h3 class="product-title">{% trans 'TOMOIL DEXOS 2 SAE 5W30 SN/CF' %}</h3>
+              <p class="product-description">{% trans 'Motor oil for cars' %}</p>
             </div>
           </div>
 
@@ -129,8 +138,8 @@
               <img src="{% static 'images/image 80.svg' %}" alt="TOMOIL DEXOS 2 SAE 5W30 SN/CF" />
             </div>
             <div class="product-info">
-              <h3 class="product-title">TOMOIL DEXOS 2 SAE 5W30 SN/CF</h3>
-              <p class="product-description">Motor oil for cars</p>
+              <h3 class="product-title">{% trans 'TOMOIL DEXOS 2 SAE 5W30 SN/CF' %}</h3>
+              <p class="product-description">{% trans 'Motor oil for cars' %}</p>
             </div>
           </div>
 
@@ -140,8 +149,8 @@
               <img src="{% static 'images/image 64.svg' %}" alt="TOMOIL DEXOS 2 SAE 0W20 SN/CF" />
             </div>
             <div class="product-info">
-              <h3 class="product-title">TOMOIL DEXOS 2 SAE 5W20 SN/CF</h3>
-              <p class="product-description">Motor oil for cars</p>
+              <h3 class="product-title">{% trans 'TOMOIL DEXOS 2 SAE 5W20 SN/CF' %}</h3>
+              <p class="product-description">{% trans 'Motor oil for cars' %}</p>
             </div>
           </div>
 
@@ -150,8 +159,8 @@
               <img src="{% static 'images/image 79.svg' %}" alt="TOMOIL DEXOS 2 SAE 10W40 SN/CF" />
             </div>
             <div class="product-info">
-              <h3 class="product-title">TOMOIL DEXOS 2 SAE 10W40 SN/CF</h3>
-              <p class="product-description">Motor oil for cars</p>
+              <h3 class="product-title">{% trans 'TOMOIL DEXOS 2 SAE 10W40 SN/CF' %}</h3>
+              <p class="product-description">{% trans 'Motor oil for cars' %}</p>
             </div>
           </div>
 
@@ -160,8 +169,8 @@
               <img src="{% static 'images/image 80.svg' %}" alt="TOMOIL DEXOS 2 SAE 15W40 SN/CF" />
             </div>
             <div class="product-info">
-              <h3 class="product-title">TOMOIL DEXOS 2 SAE 15W40 SN/CF</h3>
-              <p class="product-description">Motor oil for cars</p>
+              <h3 class="product-title">{% trans 'TOMOIL DEXOS 2 SAE 15W40 SN/CF' %}</h3>
+              <p class="product-description">{% trans 'Motor oil for cars' %}</p>
             </div>
           </div>
         </div>
@@ -174,7 +183,7 @@
         </div>
       </div>
 
-      <a href="#" class="view-catalog">VIEW OUR CATALOGUE</a>
+      <a href="#" class="view-catalog">{% trans 'VIEW OUR CATALOGUE' %}</a>
     </div>
   </section>
 

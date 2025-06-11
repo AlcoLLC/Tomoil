@@ -1,8 +1,11 @@
+{% load static %}
+{% load i18n %}
+
 <header class="placeholder-header page-header " 
 {% if background_image  %}style="background-image: url('{{ background_image.url }}')" {% endif %}>
     <div class="section-container">
         <div class="breadcrumb">
-            <a href="/">Home</a>
+            <a href="/">{% trans 'Home' %}</a>
             {% if breadcrumb_title %}
             <i class="fa-solid fa-angle-right"></i>
             <a href="{{ breadcrumb_url|default:'/' }}">{{ breadcrumb_title }}</a>
@@ -15,7 +18,7 @@
     </div>
     <a href="https://wa.me/message/YOUR_WHATSAPP_NUMBER" class="header-whatsapp">
         <i class="fab fa-whatsapp"></i>
-        <span>Any questions? Ask in WhatsApp</span>
+        <span>{% trans 'Any questions? Ask in WhatsApp' %}</span>
     </a>
 </header>
 <a href="https://wa.me/message/YOUR_WHATSAPP_NUMBER" class="fixed-whatsapp">

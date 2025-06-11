@@ -1,4 +1,6 @@
 {% load static %}
+{% load i18n %}
+
 <nav class="">
   <div class="container">
     <div class="navbar">
@@ -7,7 +9,7 @@
           <ul>
             <li>
               <i class="fa-solid fa-location-dot"></i>
-              <p>Leitzstraße 45, 70469 Stuttgart, Germany</p>
+              <p>{% trans 'Leitzstraße 45, 70469 Stuttgart, Germany' %}</p>
             </li>
             <li>
               <i class="fa-solid fa-envelope"></i>
@@ -21,10 +23,10 @@
         </div>
         <div class="info-book">
           <button>
-            <a href="">Lets book a call</a>
+            <a href="">{% trans 'Lets book a call' %}</a>
           </button>
           <button>
-            <a href="/pds_sds">PSD/SDS</a>
+            <a href="/pds_sds">{% trans 'PSD/SDS' %}</a>
           </button>
 
           <div class="language-dropdown">
@@ -50,19 +52,19 @@
         <div class="nav-list">
           <ul>
             <li class="dropdown ">
-              <a class="no-pointer">Who we Are</a>
+              <a class="no-pointer">{% trans 'Who we Are' %}</a>
               <div class="dropdown-content ">
-                <a href="/glance">GLANCE</a>
-                <a href="/vision_mission">VISION & MISSION</a>
-                <a href="/our_commitment">OUR COMMITMENTS</a>
+                <a href="/glance">{% trans 'GLANCE' %}</a>
+                <a href="/vision_mission">{% trans 'VISION & MISSION' %}</a>
+                <a href="/our_commitment">{% trans 'OUR COMMITMENTS' %}</a>
               </div>
             </li>
-            <li><a href="/products">Products</a></li>
-            <li><a href="/services">SERVICES</a></li>
-            <li><a href="/brand">Brand portal</a></li>
-            <li><a href="/news">news</a></li>
-            <li><a href="/faq">faq</a></li>
-            <li><a href="/contact">Contact US</a></li>
+            <li><a href="/products">{% trans 'Products' %}</a></li>
+            <li><a href="/services">{% trans 'SERVICES' %}</a></li>
+            <li><a href="/brand">{% trans 'Brand portal' %}</a></li>
+            <li><a href="/news">{% trans 'news' %}</a></li>
+            <li><a href="/faq">{% trans 'faq' %}</a></li>
+            <li><a href="/contact">{% trans 'Contact US' %}</a></li>
           </ul>
         </div>
         <div class="flex-buttons">
@@ -86,30 +88,30 @@
   <div class="mobile-nav-content">
     <ul class="mobile-nav-list">
       <li class="mobile-dropdown">
-        <a class="mobile-dropdown-head">WHO WE ARE <i class="fa-solid fa-chevron-right"></i></a>
+        <a class="mobile-dropdown-head">{% trans 'WHO WE ARE' %} <i class="fa-solid fa-chevron-right"></i></a>
         <div class="mobile-dropdown-content">
-          <a href="/glance">GLANCE</a>
-          <a href="/vision_mission">VISION & MISSION</a>
-          <a href="/our_commitment">OUR COMMITMENTS</a>
+          <a href="/glance">{% trans 'GLANCE' %}</a>
+          <a href="/vision_mission">{% trans 'VISION & MISSION' %}</a>
+          <a href="/our_commitment">{% trans 'OUR COMMITMENTS' %}</a>
         </div>
       </li>
       <li class="mobile-nav-item">
-        <a href="/products">PRODUCTS </a>
+        <a href="/products">{% trans 'PRODUCTS' %} </a>
       </li>
       <li class="mobile-nav-item">
-        <a href="/services">SERVICES </a>
+        <a href="/services">{% trans 'SERVICES' %} </a>
       </li>
       <li class="mobile-nav-item">
-        <a href="/brand">BRAND PORTAL </a>
+        <a href="/brand">{% trans 'BRAND PORTAL' %} </a>
       </li>
       <li class="mobile-nav-item">
-        <a href="/news">NEWS</a>
+        <a href="/news">{% trans 'NEWS' %}</a>
       </li>
       <li class="mobile-nav-item">
-        <a href="/faq">FAQ</a>
+        <a href="/faq">{% trans 'FAQ' %}</a>
       </li>
       <li class="mobile-nav-item">
-        <a href="/contact">CONTACT US</a>
+        <a href="/contact">{% trans 'CONTACT US' %}</a>
       </li>
     </ul>
   </div>
@@ -117,17 +119,17 @@
   <div class="mobile-footer">
     <div class="mobile-buttons">
       <button class="mobile-btn">
-        <a href="">Lets book a call</a>
+        <a href="">{% trans 'Lets book a call' %}</a>
       </button>
       <button class="mobile-btn">
-        <a href="/pds_sds">PSD/SDS</a>
+        <a href="/pds_sds">{% trans 'PSD/SDS' %}</a>
       </button>
     </div>
 
     <div class="mobile-contact">
       <div class="contact-item">
         <i class="fa-solid fa-location-dot"></i>
-        <span>Leitzstraße 45, 70469 Stuttgart, Germany</span>
+        <span>{% trans 'Leitzstraße 45, 70469 Stuttgart, Germany' %}</span>
       </div>
       <div class="contact-item">
         <i class="fa-solid fa-envelope"></i>
