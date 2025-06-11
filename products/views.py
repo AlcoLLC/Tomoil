@@ -286,7 +286,7 @@ def products_detail_view(request, product_slug):
             'breadcrumb_title': page_header.breadcrumb_title,
             'breadcrumb_url': page_header.breadcrumb_url,
             'page_title': product.title,
-            'page_description': product.description or page_header.page_description,
+            'page_description': product.product_id,
             'background_image': page_header.background_image
         }
     except PageHeader.DoesNotExist:
@@ -294,7 +294,7 @@ def products_detail_view(request, product_slug):
             'breadcrumb_title': 'Products',
             'breadcrumb_url': '/products/',
             'page_title': product.title,
-            'page_description': product.description or '',
+            'page_description': product.product_id or '',
             'background_image': None
         }
 
