@@ -28,7 +28,7 @@
             <a href="">{% trans 'Lets book a call' %}</a>
           </button>
           <button>
-            <a href="{% url 'products:pds_sds' %}">{% trans 'PSD/SDS' %}</a>
+            <ahref="{% url 'uygulamaniz:products' %}">{% trans 'PSD/SDS' %}</ahref=>
           </button>
 
           <div class="language-dropdown">
@@ -42,7 +42,7 @@
               <button class="lang-option {% if LANGUAGE_CODE == 'es' %}active{% endif %}" data-lang="es">ES</button>
               <button class="lang-option {% if LANGUAGE_CODE == 'fr' %}active{% endif %}" data-lang="fr">FR</button>
               <button class="lang-option {% if LANGUAGE_CODE == 'it' %}active{% endif %}" data-lang="it">IT</button>
-              <button class="lang-option {% if LANGUAGE_CODE == 'ca' %}active{% endif %}" data-lang="ca">CA</button>
+              <button class="lang-option {% if LANGUAGE_CODE == 'ca' %}active{% endif %}" data-lang="ca">RM</button>
               <button class="lang-option {% if LANGUAGE_CODE == 'zh-hans' %}active{% endif %}" data-lang="zh-hans">汉语</button>
             </div>
           </div>
@@ -50,7 +50,7 @@
         </div>
       </div>
       <div class="nav-section">
-        <a href="{% url 'contact:home' %}" class="logo">
+        <a href="{% if LANGUAGE_CODE == 'en' %}/{% elif LANGUAGE_CODE == 'de' %}/de/{% elif LANGUAGE_CODE == 'es' %}/es/{% elif LANGUAGE_CODE == 'fr' %}/fr/{% elif LANGUAGE_CODE == 'it' %}/it/{% elif LANGUAGE_CODE == 'ca' %}/ca/{% elif LANGUAGE_CODE == 'zh-hans' %}/zh-hans/{% endif %}" class="logo">
           <img src="{% static 'images/tomoil-logo.svg' %}" alt="Tomoil Logo" />
         </a>
         <div class="nav-list">
@@ -58,13 +58,13 @@
             <li class="dropdown">
               <a class="no-pointer">{% trans 'Who we Are' %}</a>
               <div class="dropdown-content">
-                <a href="{% url 'whoweare:glance' %}">{% trans 'GLANCE' %}</a>
-                <a href="{% url 'whoweare:vision_mission' %}">{% trans 'VISION & MISSION' %}</a>
-                <a href="{% url 'whoweare:our_commitment_list' %}">{% trans 'OUR COMMITMENTS' %}</a>
+                <a href="{% url 'uygulamaniz:products' %}">{% trans 'GLANCE' %}</a>
+                <a href="{% url 'uygulamaniz:products' %}">{% trans 'VISION & MISSION' %}</a>
+                <a href="{% url 'uygulamaniz:products' %}">{% trans 'OUR COMMITMENTS' %}</a>
               </div>
             </li>
             <li><a href="{% url 'products:products_list' %}">{% trans 'Products' %}</a></li>
-            <li><a href="{% url 'services:services_list' %}">{% trans 'SERVICES' %}</a></li>
+            <li><a href="{% url 'uygulamaniz:products' %}">{% trans 'SERVICES' %}</a></li>
             <li><a href="{% url 'brand_portal:brand_portal' %}">{% trans 'Brand portal' %}</a></li>
             <li><a href="{% url 'news:news_list' %}">{% trans 'news' %}</a></li>
             <li><a href="{% url 'faq:faq' %}">{% trans 'faq' %}</a></li>
@@ -74,7 +74,7 @@
         <div class="flex-buttons">
 
           <button class="search">
-            <a href="{% url 'search:search' %}"><i class="fa-solid fa-magnifying-glass"></i></a>
+            <a href="{% if LANGUAGE_CODE == 'en' %}/search{% elif LANGUAGE_CODE == 'de' %}/de/search{% elif LANGUAGE_CODE == 'es' %}/es/search{% elif LANGUAGE_CODE == 'fr' %}/fr/search{% elif LANGUAGE_CODE == 'it' %}/it/search{% elif LANGUAGE_CODE == 'ca' %}/ca/search{% elif LANGUAGE_CODE == 'zh-hans' %}/zh-hans/search{% endif %}"><i class="fa-solid fa-magnifying-glass"></i></a>
           </button>
 
           <button class="hamburger" id="hamburger">
@@ -94,17 +94,29 @@
       <li class="mobile-dropdown">
         <a class="mobile-dropdown-head">{% trans 'WHO WE ARE' %} <i class="fa-solid fa-chevron-right"></i></a>
         <div class="mobile-dropdown-content">
-          <a href="{% url 'whoweare:glance' %}">{% trans 'GLANCE' %}</a>
-          <a href="{% url 'whoweare:vision_mission' %}">{% trans 'VISION & MISSION' %}</a>
-          <a href="{% url 'whoweare:our_commitment_list' %}">{% trans 'OUR COMMITMENTS' %}</a>
+          <a href="{% if LANGUAGE_CODE == 'en' %}/glance{% elif LANGUAGE_CODE == 'de' %}/de/glance{% elif LANGUAGE_CODE == 'es' %}/es/glance{% elif LANGUAGE_CODE == 'fr' %}/fr/glance{% elif LANGUAGE_CODE == 'it' %}/it/glance{% elif LANGUAGE_CODE == 'ca' %}/ca/glance{% elif LANGUAGE_CODE == 'zh-hans' %}/zh-hans/glance{% endif %}">{% trans 'GLANCE' %}</a>
+          <a href="{% if LANGUAGE_CODE == 'en' %}/vision_mission{% elif LANGUAGE_CODE == 'de' %}/de/vision_mission{% elif LANGUAGE_CODE == 'es' %}/es/vision_mission{% elif LANGUAGE_CODE == 'fr' %}/fr/vision_mission{% elif LANGUAGE_CODE == 'it' %}/it/vision_mission{% elif LANGUAGE_CODE == 'ca' %}/ca/vision_mission{% elif LANGUAGE_CODE == 'zh-hans' %}/zh-hans/vision_mission{% endif %}">{% trans 'VISION & MISSION' %}</a>
+          <a href="{% if LANGUAGE_CODE == 'en' %}/our_commitment{% elif LANGUAGE_CODE == 'de' %}/de/our_commitment{% elif LANGUAGE_CODE == 'es' %}/es/our_commitment{% elif LANGUAGE_CODE == 'fr' %}/fr/our_commitment{% elif LANGUAGE_CODE == 'it' %}/it/our_commitment{% elif LANGUAGE_CODE == 'ca' %}/ca/our_commitment{% elif LANGUAGE_CODE == 'zh-hans' %}/zh-hans/our_commitment{% endif %}">{% trans 'OUR COMMITMENTS' %}</a>
         </div>
       </li>
-      <li class="mobile-nav-item"><a href="{% url 'products:products_list' %}">{% trans 'Products' %}</a></li>
-      <li class="mobile-nav-item"><a href="{% url 'services:services_list' %}">{% trans 'SERVICES' %}</a></li>
-      <li class="mobile-nav-item"><a href="{% url 'brand_portal:brand_portal' %}">{% trans 'BRAND PORTAL' %}</a></li>
-      <li class="mobile-nav-item"><a href="{% url 'news:news_list' %}">{% trans 'NEWS' %}</a></li>
-      <li class="mobile-nav-item"><a href="{% url 'faq:faq' %}">{% trans 'FAQ' %}</a></li>
-      <li class="mobile-nav-item"><a href="{% url 'contact:contact' %}">{% trans 'CONTACT US' %}</a></li>
+      <li class="mobile-nav-item">
+        <a href="{% if LANGUAGE_CODE == 'en' %}/products{% elif LANGUAGE_CODE == 'de' %}/de/products{% elif LANGUAGE_CODE == 'es' %}/es/products{% elif LANGUAGE_CODE == 'fr' %}/fr/products{% elif LANGUAGE_CODE == 'it' %}/it/products{% elif LANGUAGE_CODE == 'ca' %}/ca/products{% elif LANGUAGE_CODE == 'zh-hans' %}/zh-hans/products{% endif %}">{% trans 'PRODUCTS' %} </a>
+      </li>
+      <li class="mobile-nav-item">
+        <a href="{% if LANGUAGE_CODE == 'en' %}/services{% elif LANGUAGE_CODE == 'de' %}/de/services{% elif LANGUAGE_CODE == 'es' %}/es/services{% elif LANGUAGE_CODE == 'fr' %}/fr/services{% elif LANGUAGE_CODE == 'it' %}/it/services{% elif LANGUAGE_CODE == 'ca' %}/ca/services{% elif LANGUAGE_CODE == 'zh-hans' %}/zh-hans/services{% endif %}">{% trans 'SERVICES' %} </a>
+      </li>
+      <li class="mobile-nav-item">
+        <a href="{% if LANGUAGE_CODE == 'en' %}/brand{% elif LANGUAGE_CODE == 'de' %}/de/brand{% elif LANGUAGE_CODE == 'es' %}/es/brand{% elif LANGUAGE_CODE == 'fr' %}/fr/brand{% elif LANGUAGE_CODE == 'it' %}/it/brand{% elif LANGUAGE_CODE == 'ca' %}/ca/brand{% elif LANGUAGE_CODE == 'zh-hans' %}/zh-hans/brand{% endif %}">{% trans 'BRAND PORTAL' %} </a>
+      </li>
+      <li class="mobile-nav-item">
+        <a href="{% if LANGUAGE_CODE == 'en' %}/news{% elif LANGUAGE_CODE == 'de' %}/de/news{% elif LANGUAGE_CODE == 'es' %}/es/news{% elif LANGUAGE_CODE == 'fr' %}/fr/news{% elif LANGUAGE_CODE == 'it' %}/it/news{% elif LANGUAGE_CODE == 'ca' %}/ca/news{% elif LANGUAGE_CODE == 'zh-hans' %}/zh-hans/news{% endif %}">{% trans 'NEWS' %}</a>
+      </li>
+      <li class="mobile-nav-item">
+        <a href="{% if LANGUAGE_CODE == 'en' %}/faq{% elif LANGUAGE_CODE == 'de' %}/de/faq{% elif LANGUAGE_CODE == 'es' %}/es/faq{% elif LANGUAGE_CODE == 'fr' %}/fr/faq{% elif LANGUAGE_CODE == 'it' %}/it/faq{% elif LANGUAGE_CODE == 'ca' %}/ca/faq{% elif LANGUAGE_CODE == 'zh-hans' %}/zh-hans/faq{% endif %}">{% trans 'FAQ' %}</a>
+      </li>
+      <li class="mobile-nav-item">
+        <a href="{% if LANGUAGE_CODE == 'en' %}/contact{% elif LANGUAGE_CODE == 'de' %}/de/contact{% elif LANGUAGE_CODE == 'es' %}/es/contact{% elif LANGUAGE_CODE == 'fr' %}/fr/contact{% elif LANGUAGE_CODE == 'it' %}/it/contact{% elif LANGUAGE_CODE == 'ca' %}/ca/contact{% elif LANGUAGE_CODE == 'zh-hans' %}/zh-hans/contact{% endif %}">{% trans 'CONTACT US' %}</a>
+      </li>
     </ul>
   </div>
 
@@ -114,7 +126,7 @@
         <a href="">{% trans 'Lets book a call' %}</a>
       </button>
       <button class="mobile-btn">
-            <a href="{% url 'products:pds_sds' %}">{% trans 'PSD/SDS' %}</a>
+        <a href="{% if LANGUAGE_CODE == 'en' %}/pds_sds{% elif LANGUAGE_CODE == 'de' %}/de/pds_sds{% elif LANGUAGE_CODE == 'es' %}/es/pds_sds{% elif LANGUAGE_CODE == 'fr' %}/fr/pds_sds{% elif LANGUAGE_CODE == 'it' %}/it/pds_sds{% elif LANGUAGE_CODE == 'ca' %}/ca/pds_sds{% elif LANGUAGE_CODE == 'zh-hans' %}/zh-hans/pds_sds{% endif %}">{% trans 'PSD/SDS' %}</a>
       </button>
     </div>
 
