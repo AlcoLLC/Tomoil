@@ -4,7 +4,7 @@
   margin-top: 50px;
 }
 
-.glance-section .section-description {
+.glance-section .section-description p {
   color: #223160;
   text-align: justify;
   margin-top: 20px;
@@ -90,6 +90,12 @@ letter-spacing: 0%;
 }
 
 .vision-mission-section .section-description {
+  color: #223160;
+  line-height: 1.2;
+}
+
+
+.vision-mission-section .section-description p {
   color: #223160;
   line-height: 1.2;
 }

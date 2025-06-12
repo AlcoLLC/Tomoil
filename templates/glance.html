@@ -11,13 +11,16 @@
 <section class="glance-section section-container">
     <div class="glance-container">
     <h2 class="section-title">{{ item.title }}</h2>
-    <p class="section-description">{{ item.header_text }}</p>
-
+   <div class="section-description">
+    {{ item.header_text|safe }}
+</div>
     <div class="guides-grid">
         {% for guide in item.guides.all %}
         <div>
             <h4><i class="fa-solid fa-square-check"></i> {{ guide.guide }}</h4>
-            <p class="glance-description">{{ guide.guide_text }}</p>
+            <div class="glance-description">
+                {{ guide.guide_text|safe }}
+            </div>
         </div>
         {% endfor %}
     </div>

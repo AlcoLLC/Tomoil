@@ -12,15 +12,15 @@
         <div class="vision-mission-top-left">
             <div>
                 <h2 class="section-title">{% trans 'VISION' %}</h2>
-                <p class="section-description">
-                    {{ item.vision }}
-                </p>
+                <div class="section-description">
+                    {{ item.vision|safe }}
+                </div>
             </div>
             <div>
                 <h2 class="section-title">{% trans 'MISSION' %}</h2>
-                <p class="section-description">
-                    {{ item.mission }}
-                </p>
+                <div class="section-description">
+                    {{ item.mission|safe }}
+                </div>
             </div>
         </div>
 
@@ -37,7 +37,7 @@
                     <i class="fa-solid fa-check"></i>
                     <div>
                         <h4>{{ value.title }}</h4>
-                        <p class="section-description">{{ value.description }}</p>
+                        <div class="section-description">{{ value.description|safe }}</div>
                     </div>
                 </div>
             {% empty %}
