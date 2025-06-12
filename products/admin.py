@@ -10,35 +10,35 @@ from .models import (
 class ProductRangeAdmin(TranslationAdmin):
     list_display = ('name', 'order', 'is_active')
     list_filter = ('is_active',)
-    search_fields = ('name', 'name_en', 'name_az')
+    search_fields = ('name', 'name_en')
     list_editable = ('order', 'is_active')
 
 @admin.register(ApplicationArea)
-class ApplicationAreaAdmin(TranslationAdmin):
+class ApplicationAreaAdmin(admin.ModelAdmin):
     list_display = ('name', 'is_active')
     list_filter = ('is_active',)
-    search_fields = ('name', 'name_en', 'name_az')
+    search_fields = ('name',)
     list_editable = ('is_active',)
 
 @admin.register(Specification)
-class SpecificationAdmin(TranslationAdmin):
+class SpecificationAdmin(admin.ModelAdmin):
     list_display = ('name', 'is_active')
     list_filter = ('is_active',)
-    search_fields = ('name', 'name_en', 'name_az')
+    search_fields = ('name',)
     list_editable = ('is_active',)
 
 @admin.register(Viscosity)
-class ViscosityAdmin(TranslationAdmin):
+class ViscosityAdmin(admin.ModelAdmin):
     list_display = ('name', 'is_active')
     list_filter = ('is_active',)
-    search_fields = ('name', 'name_en', 'name_az')
+    search_fields = ('name',)
     list_editable = ('is_active',)
 
 @admin.register(Composition)
 class CompositionAdmin(TranslationAdmin):
     list_display = ('name', 'is_active')
     list_filter = ('is_active',)
-    search_fields = ('name', 'name_en', 'name_az')
+    search_fields = ('name', 'name_en')
     list_editable = ('is_active',)
 
 @admin.register(PackSize)
@@ -62,7 +62,7 @@ class PackagingSizesInline(admin.TabularInline):
 class ProductAdmin(TranslationAdmin):
     list_display = ('title', 'product_id', 'product_range', 'is_active', 'created_at')
     list_filter = ('is_active', 'product_range', 'created_at')
-    search_fields = ('title', 'product_id', 'description', 'description_en', 'description_az')
+    search_fields = ('title', 'product_id', 'description', 'description_en')
     list_editable = ('is_active',)
     filter_horizontal = ('application_areas', 'specifications', 'viscosities', 'compositions', 'pack_sizes')
     
@@ -88,7 +88,7 @@ class ProductAdmin(TranslationAdmin):
 class TypicalPropertiesAdmin(TranslationAdmin):
     list_display = ('product', 'property', 'unit', 'typical_value', 'order')
     list_filter = ('product',)
-    search_fields = ('product__title', 'property', 'property_en', 'property_az')
+    search_fields = ('product__title', 'property', 'property_en')
     list_editable = ('order',)
 
 @admin.register(PackagingSizes)

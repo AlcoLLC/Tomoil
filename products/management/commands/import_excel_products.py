@@ -175,6 +175,9 @@ class Command(BaseCommand):
         product_id = safe_get('product_id')
         product_name = safe_get('product_name')
         description = safe_get('description')
+        features_benefits = safe_get('features_benefits')
+        application = safe_get('application')
+        recommendation = safe_get('recommendation')
         
         if not product_id or not product_name:
             raise ValueError(f"Missing required fields: product_id='{product_id}', product_name='{product_name}'")
@@ -182,10 +185,11 @@ class Command(BaseCommand):
         # Title sadece product_name olacak
         product_data = {
             'title': product_name,  # Sadece product name
-            'description': description,
-            'features_benefits': safe_get('features_benefits'),
-            'application': safe_get('application'),
-            'recommendation': safe_get('recommendation'),  # Recommendation field added
+            # Translatable fields - Excel'den gelen veri EN olarak kaydedilir
+            'description_en': description,
+            'features_benefits_en': features_benefits,
+            'application_en': application,
+            'recommendation': recommendation,  # Recommendation field - normal field olarak eklendi
             'product_id': product_id,
             'slug': self.generate_slug(product_name),  # Product name'den slug oluştur
         }

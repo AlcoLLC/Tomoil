@@ -1,20 +1,8 @@
 from modeltranslation.translator import register, TranslationOptions
-from .models import (
-    ProductRange, ApplicationArea, Viscosity, 
-    Composition, Product, TypicalProperties
-)
+from .models import ProductRange, Composition, Product, TypicalProperties
 
 @register(ProductRange)
 class ProductRangeTranslationOptions(TranslationOptions):
-    fields = ('name',)
-
-@register(ApplicationArea)
-class ApplicationAreaTranslationOptions(TranslationOptions):
-    fields = ('name',)
-
-
-@register(Viscosity)
-class ViscosityTranslationOptions(TranslationOptions):
     fields = ('name',)
 
 @register(Composition)
@@ -23,8 +11,7 @@ class CompositionTranslationOptions(TranslationOptions):
 
 @register(Product)
 class ProductTranslationOptions(TranslationOptions):
-    fields = ('title', 'description', 'features_benefits', 'application')
-
+    fields = ('description', 'features_benefits', 'application')
 
 @register(TypicalProperties)
 class TypicalPropertiesTranslationOptions(TranslationOptions):
