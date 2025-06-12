@@ -125,15 +125,15 @@
             {% else %}
                 <p>No specifications available for this product.</p>
             {% endif %}
+             {% if product.recommendation %}
           <p>
             <span>Tomoil</span> {% blocktrans %} recommends this product for vehicles or
             assemblies for which the following specifications or original spare
             part numbers are required: {% endblocktrans %}
           </p>
-          {% if product.recommendation %}
+         
                   <p>{{ product.recommendation|linebreaks }}</p>
             {% else %}
-                <p>No recommendations available for this product.</p>
             {% endif %}
         
         </div>

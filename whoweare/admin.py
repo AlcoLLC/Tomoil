@@ -25,16 +25,6 @@ class GlanceAdmin(TranslationAdmin):
         models.TextField: {'widget': CKEditorUploadingWidget},
     }
     
-    class Media:
-        js = (
-            '/static/admin/js/vendor/jquery/jquery.js',
-            '/static/admin/js/jquery.init.js',
-            '/static/modeltranslation/js/tabbed_translation_fields.js',
-        )
-        css = {
-            'screen': ('/static/modeltranslation/css/tabbed_translation_fields.css',),
-        }
-
 
 class ValueInline(TranslationTabularInline):
     model = Value
