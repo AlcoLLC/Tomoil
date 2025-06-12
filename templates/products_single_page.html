@@ -113,16 +113,29 @@
         id="performance"
       >
         <div class="performance-content">
-          {% if performance %}
           <h3>{% trans 'Specifications / Approvals:' %}</h3>
-          <p>{{ performance.specifications|linebreaks }}</p>
+             {% if product.specifications.exists %}
+                  <p>
+                    {% for specification in product.specifications.all %}
+                        {% if specification.is_active %}
+                            {{ specification.name }}{% if not forloop.last %}, {% endif %}
+                        {% endif %}
+                    {% endfor %}
+                </p>
+            {% else %}
+                <p>No specifications available for this product.</p>
+            {% endif %}
           <p>
             <span>Tomoil</span> {% blocktrans %} recommends this product for vehicles or
             assemblies for which the following specifications or original spare
             part numbers are required: {% endblocktrans %}
           </p>
-          <p>{{ performance.recommendation|linebreaks }}</p>
-          {% endif %}
+          {% if product.recommendation %}
+                  <p>{{ product.recommendation|linebreaks }}</p>
+            {% else %}
+                <p>No recommendations available for this product.</p>
+            {% endif %}
+        
         </div>
       </div>
       <div

@@ -232,9 +232,9 @@ def products_detail_view(request, product_slug):
             'compositions', 'pack_sizes', 'typical_properties', 
             'packaging_sizes', 'reviews'
         ), 
-        slug=product_slug, 
-        is_active=True
-    )
+    slug=product_slug, 
+    is_active=True
+)
     
     if request.method == 'POST':
         try:
