@@ -16,7 +16,6 @@
   src: url("../font/AtypTextBold.otf") format("opentype");
 }
 
-
 * {
   margin: 0;
   padding: 0;
@@ -202,7 +201,6 @@ nav {
   cursor: pointer;
   width: 100%;
   font-family: "Plus Jakarta Sans", sans-serif;
-
 }
 
 .navbar .language-dropdown .dropdown-content button:last-child {
@@ -285,7 +283,6 @@ nav {
   font-size: 20px;
   margin-right: 10px;
 }
-
 
 /* Main dropdown menu styles */
 .navbar .dropdown .no-pointer {
@@ -389,8 +386,6 @@ nav {
   transform: translateX(-50%);
 }
 
-
-
 .mobile-close {
   background: none;
   border: none;
@@ -399,7 +394,6 @@ nav {
   cursor: pointer;
   transition: color 0.3s ease;
 }
-
 
 .mobile-nav-content {
   flex: 1;
@@ -430,12 +424,10 @@ nav {
   cursor: pointer;
 }
 
-
 .mobile-dropdown-head i {
   color: #223160;
   font-size: 12px;
   transition: transform 0.3s ease;
-
 }
 
 .mobile-dropdown.active .mobile-dropdown-head i {
@@ -465,7 +457,6 @@ nav {
   justify-content: flex-start !important;
 }
 
-
 .mobile-footer {
   padding: 20px;
 }
@@ -479,16 +470,14 @@ nav {
 .mobile-btn {
   flex: 1;
   padding: 12px 16px;
-  border: 1px solid #D8DEE3;
+  border: 1px solid #d8dee3;
   border-radius: 25px;
   font-weight: 600;
   font-size: 12px;
   cursor: pointer;
   transition: all 0.3s ease;
-  background-color: #E221311A;
-
+  background-color: #e221311a;
 }
-
 
 .mobile-btn a {
   color: #223160;
@@ -532,7 +521,7 @@ nav {
 
 .mobile-languages .lang-btn {
   padding: 10px;
-  border: 1px solid #D8DEE3;
+  border: 1px solid #d8dee3;
   background-color: #fff;
   color: #223160;
   border-radius: 5px;
@@ -543,7 +532,7 @@ nav {
 }
 
 .mobile-languages .lang-btn.active {
-  background-color: #F1F3F9;
+  background-color: #f1f3f9;
 }
 
 .mobile-languages .lang-btn:hover:not(.active) {
@@ -571,11 +560,11 @@ nav {
 }
 
 .navbar .nav-section ul li a.active,
-.navbar .nav-section ul li.active>a {
+.navbar .nav-section ul li.active > a {
   color: #e22131 !important;
 }
 
-.navbar .nav-section ul li.dropdown.active>a {
+.navbar .nav-section ul li.dropdown.active > a {
   color: #e22131 !important;
 }
 
@@ -597,13 +586,11 @@ nav {
   transform: rotate(90deg);
 }
 
-
 .mobile-dropdown-content.active {
   max-height: 500px;
   opacity: 1;
   padding-bottom: 20px;
 }
-
 
 /* HEADER */
 
@@ -673,13 +660,13 @@ nav {
   line-height: 24px;
   letter-spacing: 0%;
   vertical-align: middle;
-  color: #F1F3F9;
+  color: #f1f3f9;
 }
 
 .btn-learn {
   background-color: #e22131;
   color: white;
-  padding: 12px 24px;
+  padding: 6px 14px;
   font-family: "Unbounded", sans-serif;
   font-weight: 600;
   font-size: 12px;
@@ -755,26 +742,12 @@ nav {
   margin-top: 30px;
 }
 
-.market-segments .market-segments-header h2 {
-  font-family: Atyp Bold;
-  font-weight: 400;
-  font-size: 40px;
-  line-height: 40px;
-  letter-spacing: 0%;
-  color: #223160;
-  text-align: left;
-}
-
-.market-segments .market-segments-header p {
-  font-weight: 400;
-  font-size: 16px;
-  line-height: 22px;
-  letter-spacing: 0%;
+.market-segments .market-segments-header .section-description {
   color: #223160;
   margin: 15px 0;
 }
 
-.market-segments>div:first-of-type {
+.market-segments > div:first-of-type {
   display: flex;
   justify-content: space-between;
   margin-bottom: 20px;
@@ -802,7 +775,6 @@ nav {
   font-size: 14px;
   line-height: 30px;
   letter-spacing: 0%;
-
 }
 
 .market-segments .btn-market-segments i {
@@ -854,24 +826,12 @@ nav {
   height: 40px;
 }
 
-.product-range .title {
-  font-family: Atyp Bold;
-  font-weight: 400;
-  font-size: 40px;
-  line-height: 40px;
-  letter-spacing: 0%;
-  color: #223160;
-  margin-bottom: 10px;
-}
+/* Product Range Section */
 
-.product-range .description {
-  font-weight: 400;
-  font-size: 16px;
-  line-height: 22px;
-  letter-spacing: 0%;
+.product-range .section-description {
+  max-width: 90%;
   color: #223160;
-  margin-bottom: 20px;
-  max-width: 800px;
+  margin: 15px 0;
 }
 
 .product-range .navigation {
@@ -893,11 +853,15 @@ nav {
   justify-content: center;
 }
 
+.product-range .navigation.nav-none {
+  display: none;
+}
+
 .product-range-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  margin: 40px 0 20px 0;
+  margin: 40px 0 10px 0;
 }
 
 .product-range .navigation a {
@@ -917,14 +881,19 @@ nav {
 
 .product-range .card-container .card-content {
   position: absolute;
-  top: 190px;
+  top: 80%;
   right: 0;
   background-color: #fff;
   width: 92%;
-  padding: 30px 20px;
+  padding: 20px;
+  min-height: 120px;
   max-height: 155px;
   border-top-right-radius: 50px;
   border-bottom-left-radius: 50px;
+  display: flex;
+  align-items: start;
+  justify-content: space-between;
+  box-shadow: 0px 0px 60px 0px #0000000d;
 }
 
 .product-range .card-image {
@@ -932,30 +901,38 @@ nav {
   border-radius: 20px;
 }
 
+.product-range .card-text {
+  width: 80% !important;
+}
+
 .product-range .card-title {
-  font-weight: 400;
-  font-size: 22px;
-  line-height: 30px;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 28px;
   letter-spacing: 0%;
   color: #034833;
 }
 
 .product-range .card-description {
   font-weight: 400;
-  font-size: 15px;
+  font-size: 14px;
   line-height: 20px;
   letter-spacing: 0%;
   margin-top: 10px;
   color: #727272;
 }
 
+.product-range .card-button-container {
+  width: 18%;
+}
+
 .product-range .card-button {
+  width: 100%;
   text-decoration: none;
   color: #034833;
   border-radius: 20px;
   border: 1px solid #d8dee3;
-  width: 80px;
-  height: 58.35px;
+  height: 45px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -963,16 +940,11 @@ nav {
 }
 
 .product-range .card-button i {
-  font-family: Font Awesome 6 Free;
-  font-weight: 900;
-  font-size: 20px;
+  font-family: Font Awesome 6 Free !important;
+  font-weight: 600;
+  font-size: 16px;
   line-height: 100%;
   letter-spacing: 0%;
-}
-
-.product-range .card-content {
-  display: flex;
-  box-shadow: 0px 0px 60px 0px #0000000d;
 }
 
 .home-header .swiper-button-prev:hover,
@@ -990,7 +962,7 @@ nav {
   padding-top: 50px;
 }
 
-.cross-reference>div {
+.cross-reference > div {
   width: 100%;
   height: 100%;
   background-color: white !important;
@@ -1005,37 +977,35 @@ nav {
   margin-bottom: 30px;
 }
 
-.cross-reference .cross-reference-header p {
-  font-weight: 400;
-  font-size: 12px;
-  line-height: 20px;
-  letter-spacing: 1.4px;
-  text-transform: uppercase;
-  color: #223160;
+.cross-reference .section-title {
+  width: 82%;
 }
 
-.cross-reference .cross-reference-header h2 {
-  font-weight: 400;
-  font-family: Atyp Bold;
-  font-size: 40px;
-  line-height: 50px;
-  letter-spacing: 0%;
+.cross-reference .cross-reference-header p {
   color: #223160;
 }
 
 .cross-reference .cross-reference-content {
+  width: 100%;
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: start;
+  gap: 6px;
 }
 
 .cross-reference .cross-reference-content h3 {
   font-weight: 400;
-  font-size: 16px;
+  font-size: 14px;
   line-height: 22px;
   letter-spacing: 0%;
   color: #111214;
-  margin-bottom: 10px;
+}
+
+.cross-reference .cross-reference-content .dropdown {
+  width: 30%;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
 }
 
 .cross-reference .cross-reference-content div button {
@@ -1043,31 +1013,34 @@ nav {
   white-space: nowrap;
   align-items: center;
   justify-content: center;
-  width: 15vw;
+  width: 100%;
   justify-content: space-between;
   background-color: inherit;
   border: 1px solid #d8dee3;
-  padding: 17px;
+  padding: 12px 15px;
   border-radius: 999px;
   cursor: pointer;
 }
 
-.cross-reference .cross-reference-content div:nth-of-type(3) button {
-  width: 16vw;
-}
-
-.cross-reference .cross-reference-content>button {
+.cross-reference .cross-reference-content > button {
   display: flex;
   align-items: center;
   justify-content: center;
+  gap: 10px;
   background-color: #e22131;
   color: white;
-  padding: 21px;
+  padding: 16px;
   border: none;
   border-radius: 999px;
   align-self: self-end;
   cursor: pointer;
   transition: all 0.3s ease;
+}
+
+.cross-reference .cross-reference-content > button span{
+  font-size: 14px;
+  color: white;
+  display: none;
 }
 
 .cross-reference .cross-reference-content p,
@@ -1076,17 +1049,51 @@ nav {
   font-size: 15px;
   line-height: 22px;
   letter-spacing: 0%;
-  color: #727272;
+  color: #727272c6;
 }
 
 .cross-reference .cross-reference-content div button i {
   color: #223160;
 }
 
-.cross-reference .cross-reference-content>button i {
+.cross-reference .cross-reference-content > button i {
   font-size: 16px;
 }
 
+.cross-reference-content .dropdown-menu {
+  position: absolute;
+  top: calc(100% + 10px);
+  left: 0;
+  width: 100%;
+  background-color: white;
+  border: 1px solid #d8dee3;
+  border-radius: 20px;
+  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.1);
+  max-height: 180px;
+  overflow-y: auto;
+  display: none;
+  z-index: 999;
+}
+
+.cross-reference-content .dropdown-menu li {
+  padding: 12px 20px;
+  cursor: pointer;
+  color: #034833a8;
+  font-size: 14px;
+  border-bottom: 1px solid #f1f3f9;
+}
+
+.cross-reference-content .dropdown-menu li:hover {
+  background-color: #f3f3f3;
+}
+
+.cross-reference-content .dropdown.open .dropdown-menu {
+  display: block;
+}
+
+.cross-reference-content .dropdown {
+  position: relative;
+}
 .logos-section {
   margin: 30px auto;
 }
@@ -1188,21 +1195,21 @@ nav {
   padding: 30px;
 }
 
-.comments-section .swiper-slide>div:first-of-type {
+.comments-section .swiper-slide > div:first-of-type {
   display: flex;
   flex-direction: column;
 }
 
-.comments-section .swiper-slide>div:first-of-type img {
+.comments-section .swiper-slide > div:first-of-type img {
   margin-bottom: 15px;
 }
 
-.comments-section .swiper-slide>div>img {
+.comments-section .swiper-slide > div > img {
   width: 53px;
   height: 30px;
 }
 
-.comments-section .swiper-slide>div:first-of-type>p {
+.comments-section .swiper-slide > div:first-of-type > p {
   font-family: "Plus Jakarta Sans", sans-serif;
   font-weight: 400;
   font-size: 18px;
@@ -1211,14 +1218,13 @@ nav {
   color: #727272;
 }
 
-
-.comments-section .swiper-slide>div>div>img {
+.comments-section .swiper-slide > div > div > img {
   width: 50px;
   height: 50px;
   border-radius: 999px;
 }
 
-.comments-section .swiper-slide>div>div>h5 {
+.comments-section .swiper-slide > div > div > h5 {
   font-weight: 400;
   font-size: 22px;
   line-height: 30px;
@@ -1226,7 +1232,7 @@ nav {
   color: #223160;
 }
 
-.comments-section .swiper-slide>div>div>p {
+.comments-section .swiper-slide > div > div > p {
   font-weight: 400;
   font-size: 16px;
   line-height: 22px;
@@ -1234,14 +1240,14 @@ nav {
   color: #223160;
 }
 
-.swiper-horizontal>.swiper-pagination-bullets,
+.swiper-horizontal > .swiper-pagination-bullets,
 .swiper-pagination-bullets.swiper-pagination-horizontal,
 .swiper-pagination-custom,
 .swiper-pagination-fraction {
   display: none !important;
 }
 
-.comments-section .swiper-slide>div:last-of-type {
+.comments-section .swiper-slide > div:last-of-type {
   display: flex;
   gap: 15px;
 }
@@ -1274,39 +1280,6 @@ nav {
   color: #223160;
 }
 
-.cross-reference-content .dropdown {
-  position: relative;
-}
-
-.cross-reference-content .dropdown-menu {
-  position: absolute;
-  top: calc(100% + 10px);
-  left: 0;
-  width: 100%;
-  background-color: white;
-  border: 1px solid #d8dee3;
-  border-radius: 20px;
-  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.1);
-  max-height: 180px;
-  overflow-y: auto;
-  display: none;
-  z-index: 999;
-}
-
-.cross-reference-content .dropdown-menu li {
-  padding: 12px 20px;
-  cursor: pointer;
-  color: #2b3a55;
-}
-
-.cross-reference-content .dropdown-menu li:hover {
-  background-color: #f3f3f3;
-}
-
-.cross-reference-content .dropdown.open .dropdown-menu {
-  display: block;
-}
-
 .product-range .nav-button {
   position: static !important;
   font-size: 12px;
@@ -1335,7 +1308,7 @@ nav {
 
 .product-range .swiper {
   padding-bottom: 10rem !important;
-  margin-bottom: 1rem;
+  margin-bottom: 10px;
   width: 100%;
 }
 
@@ -1345,7 +1318,7 @@ nav {
   height: auto;
 }
 
-.cross-reference .cross-reference-content>button:hover,
+.cross-reference .cross-reference-content > button:hover,
 .home-header .btn-learn:hover,
 .market-segments ul li div:hover,
 .button-style:hover {
@@ -1463,17 +1436,13 @@ nav {
   color: #fff;
 }
 
-
-
 .home-header .slide-back {
   background-image: url("../../images_folder/header.jpg");
 }
 
 /* /////////////////////////////////////////////////// */
 
-
 @keyframes pulse {
-
   0%,
   100% {
     stroke-width: 2px;
