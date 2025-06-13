@@ -33,7 +33,7 @@
 
           <div class="language-dropdown">
             <button class="lang-dropdown-btn">
-              {% if LANGUAGE_CODE == 'en' %}EN{% elif LANGUAGE_CODE == 'de' %}DE{% elif LANGUAGE_CODE == 'es' %}ES{% elif LANGUAGE_CODE == 'fr' %}FR{% elif LANGUAGE_CODE == 'it' %}IT{% elif LANGUAGE_CODE == 'ca' %}CA{% elif LANGUAGE_CODE == 'zh-hans' %}汉语{% else %}EN{% endif %} 
+              {% if LANGUAGE_CODE == 'en' %}EN{% elif LANGUAGE_CODE == 'de' %}DE{% elif LANGUAGE_CODE == 'es' %}ES{% elif LANGUAGE_CODE == 'fr' %}FR{% elif LANGUAGE_CODE == 'it' %}IT{% elif LANGUAGE_CODE == 'ca' %}RM{% elif LANGUAGE_CODE == 'zh-hans' %}汉语{% else %}EN{% endif %} 
               <i class="fa-solid fa-angle-down"></i>
             </button>
             <div class="dropdown-content" id="languageDropdown">
@@ -42,7 +42,7 @@
               <button class="lang-option {% if LANGUAGE_CODE == 'es' %}active{% endif %}" data-lang="es">ES</button>
               <button class="lang-option {% if LANGUAGE_CODE == 'fr' %}active{% endif %}" data-lang="fr">FR</button>
               <button class="lang-option {% if LANGUAGE_CODE == 'it' %}active{% endif %}" data-lang="it">IT</button>
-              <button class="lang-option {% if LANGUAGE_CODE == 'ca' %}active{% endif %}" data-lang="ca">CA</button>
+              <button class="lang-option {% if LANGUAGE_CODE == 'ca' %}active{% endif %}" data-lang="ca">RM</button>
               <button class="lang-option {% if LANGUAGE_CODE == 'zh-hans' %}active{% endif %}" data-lang="zh-hans">汉语</button>
             </div>
           </div>
@@ -139,7 +139,7 @@
       <button class="mobile lang-btn {% if LANGUAGE_CODE == 'es' %}active{% endif %}" data-lang="es">ES</button>
       <button class="mobile lang-btn {% if LANGUAGE_CODE == 'fr' %}active{% endif %}" data-lang="fr">FR</button>
       <button class="mobile lang-btn {% if LANGUAGE_CODE == 'it' %}active{% endif %}" data-lang="it">IT</button>
-      <button class="mobile lang-btn {% if LANGUAGE_CODE == 'ca' %}active{% endif %}" data-lang="ca">CA</button>
+      <button class="mobile lang-btn {% if LANGUAGE_CODE == 'ca' %}active{% endif %}" data-lang="ca">RM</button>
       <button class="mobile lang-btn {% if LANGUAGE_CODE == 'zh-hans' %}active{% endif %}" data-lang="zh-hans">汉语</button>
     </div>
   </div>
