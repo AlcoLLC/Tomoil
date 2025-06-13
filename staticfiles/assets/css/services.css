@@ -1,6 +1,6 @@
 /* Services Section Styles */
 .section-services {
-  padding: 60px 0;
+  padding-top: 60px;
   background-color: #f1f3f9;
 }
 
@@ -67,6 +67,7 @@
   font-size: 14px;
   font-weight: 600;
   width: 60%;
+  padding-right: 10px;
 }
 
 .section-services .arrow-icon {
@@ -160,6 +161,7 @@
 .section-services .stat-label {
   font-size: 12px;
   color: #727272d6;
+  line-height: 18px;
 }
 
 /* Description Styles */
@@ -172,14 +174,14 @@
   text-align: justify;
 }
 
-.section-services .service-description h3{
+.section-services .service-description h3 {
   font-family: Plus Jakarta Sans;
-font-weight: 600;
-font-size: 30px;
-line-height: 36px;
-letter-spacing: 0%;
-text-transform: capitalize;
-color: #223160;
+  font-weight: 600;
+  font-size: 30px;
+  line-height: 36px;
+  letter-spacing: 0%;
+  text-transform: capitalize;
+  color: #223160;
 }
 
 /* TechTalk and Other Services Styles */

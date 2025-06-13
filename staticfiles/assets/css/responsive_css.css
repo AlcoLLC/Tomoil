@@ -1,4 +1,8 @@
-/* Glance page */
+@media screen and (max-width: 956px) {
+  .section-services .service-detail .section-description {
+    margin-top: 15px;
+  }
+}
 
 @media screen and (max-width: 900px) {
   .glance-section .guides-grid {
@@ -20,7 +24,8 @@
   .our-commitment-section .commitment-container {
     grid-template-columns: repeat(1, 1fr);
   }
-  .our-commitment-section .commitment-container .commitment-nav {
+  .our-commitment-section .commitment-container .commitment-nav,
+  .section-services .services-nav {
     flex-direction: row;
     overflow-x: auto;
     gap: 10px;
@@ -30,10 +35,12 @@
   }
   .our-commitment-section
     .commitment-container
-    .commitment-nav::-webkit-scrollbar {
+    .commitment-nav::-webkit-scrollbar,
+  .section-services .services-nav::-webkit-scrollbar {
     display: none;
   }
-  .our-commitment-section .commitment-container .commitment-item {
+  .our-commitment-section .commitment-container .commitment-item,
+  .section-services .service-item {
     display: flex;
     white-space: nowrap;
     gap: 10px;
@@ -43,23 +50,53 @@
     max-width: none;
     overflow: visible;
   }
-  .our-commitment-section .commitment-container .arrow-icon {
+  .our-commitment-section .commitment-container .arrow-icon,
+  .section-services .arrow-icon {
     width: 24px;
     height: 24px;
   }
-  .our-commitment-section .commitment-container .arrow-icon i {
+  .our-commitment-section .commitment-container .arrow-icon i,
+  .section-services .arrow-icon i {
     font-size: 11px;
   }
   .our-commitment-section
     .commitment-container
     .commitment-item.active
-    .arrow-icon {
+    .arrow-icon,
+  .section-services .arrow-icon {
     display: flex;
     align-items: center;
     justify-content: center;
   }
   .our-commitment-section .commitment-container {
     gap: 40px;
+  }
+  .section-services .section-container {
+    flex-direction: column;
+  }
+  .section-services .services-nav,
+  .section-services .service-content {
+    width: 100%;
+  }
+  .section-services .services-nav {
+    flex-direction: row;
+  }
+  .section-services .service-item span {
+    width: inherit;
+  }
+  .section-services .service-description h3 {
+    font-size: 26px;
+  }
+  .section-services .stat-value {
+    font-size: 20px;
+  }
+  .section-services img {
+    width: 21px;
+    height: 21px;
+  }
+  .section-services .stat-icon {
+    width: 40px;
+    height: 40px;
   }
 }
 
@@ -77,6 +114,23 @@
   .vision-mission-section img {
     width: 100%;
   }
+  .section-services .statistics {
+    flex-direction: column;
+  }
+  .section-services .stat-item {
+    align-items: start;
+    flex-direction: row;
+  }
+  .section-services .stat-item > div:last-of-type {
+    text-align: left;
+    margin-left: 5px;
+  }
+  .section-services .stat-item {
+    padding: 18px 20px;
+  }
+  .section-services .service-description h3 {
+    font-size: 24px;
+  }
 }
 
 @media screen and (max-width: 500px) {
@@ -85,7 +139,6 @@
   }
   .section-description p {
     font-size: 14px !important;
-    line-height: 1.1 !important;
   }
   .glance-section .guides-grid h4,
   .vision-mission-section .values-grid h4 {
@@ -97,5 +150,12 @@
   .our-commitment-section .commitment-description h3 {
     font-size: 18px;
     line-height: 25px;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .section-services .service-description h3 {
+    font-size: 24px;
+    line-height: 33px;
   }
 }
