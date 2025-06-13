@@ -227,14 +227,12 @@
 
     .home-header .slide-content h2 {
         font-size: 55px;
+        line-height: 70px;
+
     }
 
     .home-header .slide-content p {
         font-size: 14px;
-    }
-
-    .home-header .slide-content {
-        max-width: 600px;
     }
 
     .btn-learn {
@@ -296,6 +294,9 @@
         max-height: 65px;
     }
 
+    .logos-section #carousel {
+        max-width: 90%;
+    }
 }
 
 @media screen and (max-width: 956px) {
@@ -470,10 +471,6 @@
         padding: 8px;
     }
 
-    .logos-section #carousel {
-        width: 95%;
-    }
-
     .section-best-offers .stat-box h3 {
         font-size: 30px;
         line-height: 1.3;
@@ -498,6 +495,30 @@
 
     .adventure-section .read-more {
         margin-top: 15px;
+    }
+
+    .products-section .filter-products h3 {
+        font-size: 16px;
+    }
+
+    .products-section .filter-products .checkbox-group span {
+        font-size: 11px;
+    }
+
+    .products-section .filter-products .reset-filter-btn,
+    .products-section .filter-results-button {
+        font-size: 11px;
+        padding: 12px;
+    }
+
+    .products-section .products-list {
+        min-height: 410px;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px;
+    }
+
+    .products-section .product-card .product-title {
+        font-size: 18px;
     }
 
 }
@@ -576,10 +597,12 @@
 
     .home-header .slide-content h2 {
         font-size: 40px;
+        line-height: 55px;
     }
 
     .home-header .slide-content p {
         font-size: 12px;
+        line-height: 18px;
     }
 
     .home-header .slide-content {
@@ -899,6 +922,38 @@
         padding-top: 0;
     }
 
+    .products-section .filter-products {
+        display: none !important;
+    }
+
+    .products-section .products-container {
+        display: flex;
+        align-items: start;
+        gap: 15px;
+    }
+
+    .products-section .filter-mobile {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+    }
+
+    .products-section .products-list {
+        min-height: 430px;
+    }
+
+    .products-section .product-card .product-title {
+        font-size: 16px;
+    }
+
+    .products-section .show-more {
+        font-size: 11px;
+    }
+
+    .products-section .product-card .product-type {
+        font-size: 8px;
+    }
 }
 
 @media (max-width: 620px) {
@@ -1038,12 +1093,9 @@
 
     .home-header .slide-content h2 {
         font-size: 28px;
-        line-height: 80px;
+        line-height: 45px;
     }
 
-    .home-header .slide-content p {
-        line-height: 14px;
-    }
 
     .btn-learn {
         font-size: 10px;
@@ -1227,7 +1279,6 @@
 
     .section-description {
         font-size: 14px;
-        line-height: 1.1;
     }
 
     .featured-section .product-card {
@@ -1350,18 +1401,20 @@
         height: 90px;
     }
 
-    .section-case-studies .case-btn {
-        display: none !important;
+    .products-section .products-list {
+        min-height: 500px;
     }
 
-    .section-case-studies .case-none {
-        display: block;
-        display: flex;
-        gap: 10px;
-        margin: 6px auto;
-        align-items: center;
-        justify-content: center;
+    .products-section .product-card .product-image {
+        height: 55%;
     }
+
+    .products-section .product-card .product-info {
+        height: 45%;
+    }
+
+    
+    
 
 }
 
@@ -1372,10 +1425,26 @@
 
     .home-header .slide-content h2 {
         font-size: 22px;
-        line-height: 60px;
+        line-height: 40px;
     }
 
     .home-header .slide-content {
         max-width: 90%;
+    }
+
+     .products-section .products-list {
+        min-height: 500px;
+    }
+
+    .products-section .product-card .product-image {
+        height: 50%;
+    }
+
+    .products-section .product-card .product-info {
+        height: 50%;
+    }
+
+    .products-section .product-card .product-title {
+        font-size: 14px;
     }
 }

@@ -27,13 +27,13 @@ def pds_sds_view(request):
             'background_image': None
         }
 
-   
     context = {
         **header_context,
         'search_product_name': '',
         'search_product_id': '',
         'search_document_type': 'all',
     }
+    
     return render(request, 'pds&sds.html', context)
 
 def all_data_sheets_view(request):

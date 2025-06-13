@@ -9,6 +9,9 @@
 
 <!-- Products section  -->
 <section class="products-section section-container">
+    <button class="filter-mobile" id="filterMobileBtn">
+        <img src="{% static 'images/filter-icon.svg' %}" alt="">
+        Filter</button>
     <div class="products-container">
         <form id="filterForm" method="GET" action="{% url 'products:products_list' %}">
             <div class="filter-products">
