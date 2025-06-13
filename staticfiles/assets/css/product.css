@@ -2,10 +2,26 @@
   margin-top: 50px;
 }
 
+.products-section .filter-mobile {
+  width: 100%;
+  background-color: #fff;
+  padding: 10px;
+  margin-bottom: 25px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  color: #223160;
+  font-size: 16px;
+  border: 1px solid #D8DEE3;
+  border-radius: 30px;
+  display: none;
+}
+
 .products-section .products-container {
   display: grid;
   grid-template-columns: 1fr 3fr;
-  gap: 20px;
+  gap: 15px;
   align-items: start;
 }
 
@@ -193,17 +209,22 @@
 
 .products-section .products-list {
   width: 100%;
+  min-height: 480px;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
+  gap: 15px;
   align-items: stretch;
 }
 
+.products-section .products-list .no-products p {
+  color: #223160;
+  font-size: 20px;
+  line-height: 1.5;
+}
 
 .products-section .product-card {
   width: 100%;
   height: 100%;
-  min-height: 350px;
   background-color: #fff;
   border-radius: 20px;
   position: relative;
@@ -216,6 +237,7 @@
 
 .products-section .product-card .product-type {
   position: absolute;
+  width: 90%;
   background-color: #e22131;
   padding: 8px 14px;
   border-top-right-radius: 30px;
@@ -223,18 +245,18 @@
   color: white;
   top: 8px;
   right: 5px;
-  font-size: 10px;
+  font-size: 9px;
+  line-height: 11px;
   font-family: Unbounded, sans-serif;
   z-index: 20;
 }
-
 
 .products-section .product-card .product-image {
   display: block;
   text-decoration: none;
   color: inherit;
   width: 100%;
-  height: 100%;
+  height: 60%;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -244,8 +266,7 @@
 }
 
 .products-section .product-card .product-image img {
-  width: 150px;
-  height: 150px;
+  width: 85%;
   object-fit: contain;
   background-position: top;
   position: relative;
@@ -254,18 +275,19 @@
 
 .products-section .product-card .product-info {
   width: 100%;
+  height: 40%;
   padding: 15px;
   display: flex;
   flex-direction: column;
   align-items: start;
   justify-content: space-between;
-  gap: 10px;
+  gap: 5px;
 }
 
 .products-section .product-card .product-title {
   color: #223160;
   font-size: 20px;
-  line-height: 1.5;
+  line-height: 1.1;
 }
 
 .products-section .product-card .product-description {
@@ -358,8 +380,8 @@
 
 
 .products-section .filter-results-button {
-  width: 60%;
-  height: 40px;
+  width: 90%;
+  padding: 12px;
   background-color: #E22131;
   color: white;
   border: none;
