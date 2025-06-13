@@ -1,0 +1,16 @@
+/* Glance page */
+
+@media screen and (max-width: 900px) {
+.glance-section .guides-grid{
+        grid-template-columns: repeat(2, 1fr);
+}
+}
+@media screen and (max-width: 600px) {
+.glance-section .guides-grid{
+        grid-template-columns: repeat(1, 1fr);
+}
+.glance-section .glance-title {
+            font-size: 20px;
+        line-height: 28px;
+}
+}
