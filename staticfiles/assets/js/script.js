@@ -1,4 +1,4 @@
-document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener('DOMContentLoaded', function () {
   initProductSlider();
   initCaseStudiesSlider();
   initBrandLogosRotation();
@@ -7,39 +7,39 @@ document.addEventListener("DOMContentLoaded", function () {
 
 function initProductSlider() {
   const sliderContainer = document.querySelector(
-    ".featured-section .slider-container"
+    '.featured-section .slider-container'
   );
   const productCards = document.querySelectorAll(
-    ".featured-section .product-card"
+    '.featured-section .product-card'
   );
-  const prevBtn = document.querySelector(".featured-section .prev-btn");
-  const nextBtn = document.querySelector(".featured-section .next-btn");
+  const prevBtn = document.querySelector('.featured-section .prev-btn');
+  const nextBtn = document.querySelector('.featured-section .next-btn');
 
   let currentIndex = 1;
   const totalProducts = productCards.length;
 
   function updateSlider() {
     productCards.forEach((card) => {
-      card.classList.remove("visible");
-      card.classList.remove("active");
+      card.classList.remove('visible');
+      card.classList.remove('active');
     });
 
     const prevIndex = (currentIndex - 1 + totalProducts) % totalProducts;
     const nextIndex = (currentIndex + 1) % totalProducts;
 
-    productCards[prevIndex].classList.add("visible");
-    productCards[currentIndex].classList.add("visible", "active");
-    productCards[nextIndex].classList.add("visible");
+    productCards[prevIndex].classList.add('visible');
+    productCards[currentIndex].classList.add('visible', 'active');
+    productCards[nextIndex].classList.add('visible');
   }
 
-  prevBtn.addEventListener("click", () => {
+  prevBtn.addEventListener('click', () => {
     if (currentIndex - 1 > 0) {
       currentIndex = currentIndex - 1;
       updateSlider();
     }
   });
 
-  nextBtn.addEventListener("click", () => {
+  nextBtn.addEventListener('click', () => {
     if (currentIndex + 1 < totalProducts - 1) {
       currentIndex = currentIndex + 1;
       updateSlider();
@@ -52,7 +52,7 @@ function initProductSlider() {
   let touchEndX = 0;
 
   sliderContainer.addEventListener(
-    "touchstart",
+    'touchstart',
     (e) => {
       touchStartX = e.changedTouches[0].screenX;
     },
@@ -60,7 +60,7 @@ function initProductSlider() {
   );
 
   sliderContainer.addEventListener(
-    "touchend",
+    'touchend',
     (e) => {
       touchEndX = e.changedTouches[0].screenX;
       handleSwipe();
@@ -86,14 +86,55 @@ function initProductSlider() {
 }
 
 function initCaseStudiesSlider() {
-  const sliderTrack = document.querySelector(".case-studies-track");
-  const cards = document.querySelectorAll(".case-study-card");
-  const prevBtn = document.querySelector(".prev-case");
-  const nextBtn = document.querySelector(".next-case");
-  const sliderContainer = document.querySelector(".case-studies-slider");
+  const sliderTrack = document.querySelector('.case-studies-track');
+  const cards = document.querySelectorAll('.case-study-card');
+  const prevBtn = document.querySelector('.prev-case');
+  const nextBtn = document.querySelector('.next-case');
+  const sliderContainer = document.querySelector('.case-studies-slider');
 
-  let currentIndex = 1;
+  if (
+    !sliderTrack ||
+    !cards.length ||
+    !prevBtn ||
+    !nextBtn ||
+    !sliderContainer
+  ) {
+    return;
+  }
+
+  let currentIndex = 0;
   const totalCards = cards.length;
+  const visibleCards = 5; // Həmişə 5 kart görünəcək
+  let isTransitioning = false;
+  let autoplayInterval;
+  const autoplayDelay = 2000; // 2 saniyə
+
+  // Klonlaşdırma - sonsuz dövrə üçün
+  function createClones() {
+    // Əvvələ son kartları əlavə et
+    for (let i = totalCards - visibleCards; i < totalCards; i++) {
+      const clone = cards[i].cloneNode(true);
+      clone.classList.add('clone');
+      sliderTrack.insertBefore(clone, cards[0]);
+    }
+
+    // Sona ilk kartları əlavə et
+    for (let i = 0; i < visibleCards; i++) {
+      const clone = cards[i].cloneNode(true);
+      clone.classList.add('clone');
+      sliderTrack.appendChild(clone);
+    }
+  }
+
+  // Yalnız 5-dən çox kart varsa klonlaşdır
+  if (totalCards > visibleCards) {
+    createClones();
+  }
+
+  // Yenilənmiş kart siyahısı (klonlar daxil olmaqla)
+  const allCards = document.querySelectorAll('.case-study-card');
+  const startIndex = totalCards > visibleCards ? visibleCards + 1 : 1; // İkinci element aktiv olsun
+  currentIndex = startIndex;
 
   updateSliderHeight();
 
@@ -105,63 +146,156 @@ function initCaseStudiesSlider() {
         maxHeight = cardHeight;
       }
     });
-    sliderContainer.style.height = maxHeight + 40 + "px";
+    sliderContainer.style.height = maxHeight + 40 + 'px';
   }
 
-  cards.forEach((card, index) => {
-    card.classList.add("interactive");
-
-    card.addEventListener("click", function () {
-      cards.forEach((c) => c.classList.remove("active"));
-      this.classList.add("active");
-      currentIndex = index;
-    });
-
-    card.addEventListener("mouseenter", function () {
-      if (index !== currentIndex) {
-        cards[currentIndex].classList.remove("active");
+  // Autoplay funksiyası
+  function startAutoplay() {
+    stopAutoplay(); // Əvvəl mövcud interval-ı dayandır
+    autoplayInterval = setInterval(() => {
+      if (!isTransitioning) {
+        nextBtn.click();
       }
+    }, autoplayDelay);
+  }
+
+  function stopAutoplay() {
+    if (autoplayInterval) {
+      clearInterval(autoplayInterval);
+      autoplayInterval = null;
+    }
+  }
+
+  // Kart interaksiyaları
+  function setupCardInteractions() {
+    allCards.forEach((card, index) => {
+      card.classList.add('interactive');
+
+      card.addEventListener('mouseenter', function () {
+        stopAutoplay(); // Hover zamanı autoplay-i dayandır
+        const currentActiveCard = document.querySelector(
+          '.case-study-card.active'
+        );
+        if (currentActiveCard && currentActiveCard !== this) {
+          currentActiveCard.classList.remove('active');
+        }
+        this.classList.add('active');
+      });
+
+      card.addEventListener('mouseleave', function () {
+        startAutoplay(); // Hover bitdikdə autoplay-i yenidən başlat
+        // Yalnız aktivləşdirilmiş kart aktivliyini saxla
+        allCards.forEach((c) => c.classList.remove('active'));
+        allCards[currentIndex].classList.add('active');
+      });
     });
+  }
 
-    card.addEventListener("mouseleave", function () {
-      if (index !== currentIndex) {
-        cards[currentIndex].classList.add("active");
-      }
-    });
-  });
+  setupCardInteractions();
 
-  updateSlider();
+  function updateSlider(withTransition = true) {
+    if (withTransition) {
+      sliderTrack.classList.add('transitioning');
+    } else {
+      sliderTrack.classList.remove('transitioning');
+    }
 
-  function updateSlider() {
-    cards.forEach((card) => {
-      card.classList.remove("active");
-    });
+    // Aktiv kartı təyin et
+    allCards.forEach((card) => card.classList.remove('active'));
+    if (allCards[currentIndex]) {
+      allCards[currentIndex].classList.add('active');
+    }
 
-    cards[currentIndex].classList.add("active");
-
-    const cardWidth = cards[0].offsetWidth;
+    // Slider mövqeyini hesabla
+    const cardWidth = allCards[0] ? allCards[0].offsetWidth : 150;
+    const expandedWidth = 330;
     const gap = 20;
-    const scrollPos =
-      currentIndex * (cardWidth + gap) - window.innerWidth / 2 + cardWidth / 2;
 
-    sliderTrack.style.transform = `translateX(-${scrollPos}px)`;
+    let translateX;
+
+    if (totalCards <= visibleCards) {
+      // 5 və ya daha az kart varsa, soldan başla
+      translateX = 0;
+    } else {
+      // 5-dən çox kart varsa, aktiv kartı mərkəzləşdir
+      const activeCardOffset = currentIndex * (cardWidth + gap);
+      const centerOffset = sliderContainer.offsetWidth / 2 - expandedWidth / 2;
+      translateX = centerOffset - activeCardOffset;
+    }
+
+    sliderTrack.style.transform = `translateX(${translateX}px)`;
+
+    // Sonsuz dövrə üçün mövqe yoxlaması
+    if (totalCards > visibleCards && withTransition) {
+      setTimeout(() => {
+        handleInfiniteLoop();
+      }, 300);
+    }
   }
 
-  prevBtn.addEventListener("click", () => {
-    currentIndex = (currentIndex - 1 + totalCards) % totalCards;
-    updateSlider();
+  function handleInfiniteLoop() {
+    if (totalCards <= visibleCards) return;
+
+    sliderTrack.classList.remove('transitioning');
+
+    // Son klonlara çatdıqda əvvələ qayıt
+    if (currentIndex >= allCards.length - visibleCards) {
+      currentIndex = visibleCards;
+      updateSlider(false);
+    }
+    // İlk klonlara çatdıqda sona qayıt
+    else if (currentIndex < visibleCards) {
+      currentIndex = allCards.length - visibleCards - 1;
+      updateSlider(false);
+    }
+  }
+
+  // İlkin slider mövqeyi
+  updateSlider(false);
+
+  // Düymə hadisələri
+  prevBtn.addEventListener('click', () => {
+    if (isTransitioning) return;
+    stopAutoplay(); // Manual naviqasiya zamanı autoplay-i dayandır
+    isTransitioning = true;
+
+    currentIndex--;
+    if (totalCards <= visibleCards && currentIndex < 0) {
+      currentIndex = totalCards - 1;
+    }
+
+    updateSlider(true);
+
+    setTimeout(() => {
+      isTransitioning = false;
+      startAutoplay(); // Autoplay-i yenidən başlat
+    }, 300);
   });
 
-  nextBtn.addEventListener("click", () => {
-    currentIndex = (currentIndex + 1) % totalCards;
-    updateSlider();
+  nextBtn.addEventListener('click', () => {
+    if (isTransitioning) return;
+    stopAutoplay(); // Manual naviqasiya zamanı autoplay-i dayandır
+    isTransitioning = true;
+
+    currentIndex++;
+    if (totalCards <= visibleCards && currentIndex >= totalCards) {
+      currentIndex = 0;
+    }
+
+    updateSlider(true);
+
+    setTimeout(() => {
+      isTransitioning = false;
+      startAutoplay(); // Autoplay-i yenidən başlat
+    }, 300);
   });
 
+  // Touch hadisələri
   let touchStartX = 0;
   let touchEndX = 0;
 
   sliderTrack.addEventListener(
-    "touchstart",
+    'touchstart',
     (e) => {
       touchStartX = e.changedTouches[0].screenX;
     },
@@ -169,8 +303,9 @@ function initCaseStudiesSlider() {
   );
 
   sliderTrack.addEventListener(
-    "touchend",
+    'touchend',
     (e) => {
+      if (isTransitioning) return;
       touchEndX = e.changedTouches[0].screenX;
       handleSwipe();
     },
@@ -178,28 +313,41 @@ function initCaseStudiesSlider() {
   );
 
   function handleSwipe() {
-    if (touchEndX < touchStartX - 50) {
-      currentIndex = (currentIndex + 1) % totalCards;
-      updateSlider();
-    }
+    const swipeThreshold = 50;
 
-    if (touchEndX > touchStartX + 50) {
-      currentIndex = (currentIndex - 1 + totalCards) % totalCards;
-      updateSlider();
+    if (touchEndX < touchStartX - swipeThreshold) {
+      // Sağa swipe - növbəti
+      nextBtn.click();
+    } else if (touchEndX > touchStartX + swipeThreshold) {
+      // Sola swipe - əvvəlki
+      prevBtn.click();
     }
   }
 
-  window.addEventListener("resize", () => {
-    updateSlider();
+  // Slider container hover hadisələri - autoplay idarəsi
+  sliderContainer.addEventListener('mouseenter', () => {
+    stopAutoplay();
+  });
+
+  sliderContainer.addEventListener('mouseleave', () => {
+    startAutoplay();
+  });
+
+  // Autoplay-i başlat
+  startAutoplay();
+
+  // Ekran ölçüsü dəyişdikdə yenilə
+  window.addEventListener('resize', () => {
+    updateSlider(false);
     updateSliderHeight();
   });
 }
 
 function initBrandLogosRotation() {
   const allLogos = Array.from(
-    document.querySelectorAll(".brand-logo-container")
+    document.querySelectorAll('.brand-logo-container')
   );
-  const brandLogosWrapper = document.querySelector(".brand-logos");
+  const brandLogosWrapper = document.querySelector('.brand-logos');
 
   if (!brandLogosWrapper || allLogos.length === 0) return;
 
@@ -208,7 +356,7 @@ function initBrandLogosRotation() {
   let hiddenLogos = allLogos.slice(visibleCount);
 
   function updateVisibleLogos() {
-    brandLogosWrapper.innerHTML = "";
+    brandLogosWrapper.innerHTML = '';
 
     visibleLogos.forEach((logo) => {
       brandLogosWrapper.appendChild(logo);
@@ -227,14 +375,14 @@ function initBrandLogosRotation() {
     visibleLogos[visibleIndex] = hiddenLogo;
     hiddenLogos[hiddenIndex] = visibleLogo;
 
-    visibleLogo.classList.add("changing");
-    hiddenLogo.classList.add("changing");
+    visibleLogo.classList.add('changing');
+    hiddenLogo.classList.add('changing');
 
     updateVisibleLogos();
 
     setTimeout(() => {
-      visibleLogo.classList.remove("changing");
-      hiddenLogo.classList.remove("changing");
+      visibleLogo.classList.remove('changing');
+      hiddenLogo.classList.remove('changing');
     }, 500);
   }
 
@@ -245,14 +393,14 @@ function initBrandLogosRotation() {
 
 function initNumberCounters() {
   const statValues = [
-    { value: 8, unit: "", startFrom: 0 },
-    { value: 1.5, unit: "k", startFrom: 1.0 },
-    { value: 82, unit: "", startFrom: 0 },
-    { value: 8, unit: "m", startFrom: 0 },
+    { value: 8, unit: '', startFrom: 0 },
+    { value: 1.5, unit: 'k', startFrom: 1.0 },
+    { value: 82, unit: '', startFrom: 0 },
+    { value: 8, unit: 'm', startFrom: 0 },
   ];
 
   const statBoxes = document.querySelectorAll(
-    ".section-best-offers .stat-box h3"
+    '.section-best-offers .stat-box h3'
   );
 
   if (statBoxes.length === 0) return;
@@ -271,7 +419,7 @@ function initNumberCounters() {
     { threshold: 0.3 }
   );
 
-  const bestOffersSection = document.querySelector(".section-best-offers");
+  const bestOffersSection = document.querySelector('.section-best-offers');
   if (bestOffersSection) {
     observer.observe(bestOffersSection);
   }

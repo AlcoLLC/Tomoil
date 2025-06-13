@@ -369,14 +369,6 @@
       </div>
     </div>
 
-    <div class="navigation nav-none">
-      <div class="swiper-button-prev nav-button left">
-        <i class="fa-solid fa-arrow-left-long"></i>
-      </div>
-      <div class="swiper-button-next nav-button right">
-        <i class="fa-solid fa-arrow-right-long"></i>
-      </div>
-    </div>
   </div>
 
   <!-- Adventure Section -->
@@ -385,7 +377,7 @@
       <div class="header-container">
         <p class="section-subtitle">LATEST NEWS</p>
         <h2 class="section-title">Adventure Thrills and Excitement Await</h2>
-        <a href="#" class="all-news-button">
+        <a href="#" class="all-news-button news-btn">
           All news
           <i class="fas fa-arrow-right-long all-news-icon"></i>
         </a>
@@ -475,6 +467,11 @@
           </div>
         </div>
       </div>
+
+      <a href="#" class="all-news-button news-none">
+        All news
+        <i class="fas fa-arrow-right-long all-news-icon"></i>
+      </a>
     </div>
   </section>
 
@@ -586,7 +583,7 @@
           <h2 class="section-title">Fresh Insights from Recent Case Studies</h2>
           <a href="#" class="all-case-studies">All Case Studies</a>
         </div>
-        <div class="slider-controls">
+        <div class="slider-controls case-btn">
           <button class="slider-arrow prev-case">
             <i class="fas fa-arrow-left-long"></i>
           </button>
@@ -676,6 +673,24 @@
               </p>
             </div>
           </div>
+
+          <!-- Case Study 6 -->
+          <div class="case-study-card">
+            <div class="case-study-image">
+              <img src="{% static 'images/case-slide1.png' %}" alt="Industrial machinery" />
+            </div>
+            <div class="case-study-info">
+              <h3 class="case-study-title">
+                Manufacturing Equipment Performance
+              </h3>
+              <p class="case-study-desc">
+                Reduced unplanned downtime, extended machine lifespan, lower
+                maintenance costs and improved efficiency of the production
+                process.
+              </p>
+            </div>
+          </div>
+
         </div>
       </div>
     </div>
@@ -829,9 +844,9 @@
         <p>
           Our EV fluids are engineered to meet the evolving demands of electric
           mobility — delivering outstanding cooling, high-voltage insulation,
-          and long-term durability.  Drive the future with Tomoil's next-generation fluid solutions.
+          and long-term durability. Drive the future with Tomoil's next-generation fluid solutions.
         </p>
-        
+
         <a href="#" class="explore-btn">Explore EV Fluids</a>
       </div>
       <div class="e-mobility-image">
