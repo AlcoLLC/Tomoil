@@ -1,5 +1,5 @@
 {% extends 'base.html' %} {% load static %} {% load i18n %}
- {% block content %}
+{% block content %}
 
 <div class="main">
   <header class="placeholder-header home-header">
@@ -30,7 +30,7 @@
             <h5>{% trans 'T3 SPECIAL HYBRID ADDITIVE PACK' %}</h5>
             <h2>{% trans 'Full Synthetic Engine Oil' %}</h2>
             <p>
-             {% blocktrans %}
+              {% blocktrans %}
               TOMOIL T3 SPECIAL HYBRID SAE 0W20 C5 is a full synthetic
               high-performance engine oil. It is recommended for all types of
               modern vehicles.
@@ -56,7 +56,7 @@
               modern vehicles.
               {% endblocktrans %}
             </p>
-            
+
             <a href="#" class="btn-learn">{% trans 'LEARN MORE' %}</a>
           </div>
           <a href="https://wa.me/message/YOUR_WHATSAPP_NUMBER" class="header-whatsapp">
@@ -191,8 +191,8 @@
   <div class="section-container market-segments">
     <div>
       <div class="market-segments-header">
-        <h2>Market Segments</h2>
-        <p>
+        <h2 class="section-title">Market Segments</h2>
+        <p class="section-description">
           Tomoil products are developed to meet the diverse technical
           requirements of various industries and operating environments -
           regardless of application complexity.
@@ -264,14 +264,14 @@
   <div class="section-container product-range">
     <div class="product-range-header">
       <div>
-        <h1 class="title">Product Range</h1>
-        <p class="description">
+        <h1 class="section-title">Product Range</h1>
+        <p class="section-description">
           Explore our extensive portfolio of over 400 premium lubricants and
           service fluids — engineered for exceptional performance, protection,
           and efficiency.
         </p>
       </div>
-      <div class="navigation">
+      <div class="navigation nav-top">
         <div class="swiper-button-prev nav-button left">
           <i class="fa-solid fa-arrow-left-long"></i>
         </div>
@@ -285,77 +285,96 @@
         <div class="swiper-slide card">
           <img src="{% static 'images_folder/engine-oils.svg' %}" alt="Engine Oils" class="card-image" />
           <div class="card-content">
-            <div>
+            <div class="card-text">
               <h2 class="card-title">Engine Oils</h2>
               <p class="card-description">
                 There are many variants of passages of engineer
               </p>
             </div>
-            <a href="#" class="card-button"><i class="fa-solid fa-arrow-up" style="transform: rotate(45deg)"></i></a>
+            <div class="card-button-container">
+              <a href="#" class="card-button"><i class="fa-solid fa-arrow-up" style="transform: rotate(45deg)"></i></a>
+            </div>
           </div>
         </div>
         <div class="swiper-slide card">
           <img src="{% static 'images_folder/motorcycleoils.svg' %}" alt="Motorcycle Oils" class="card-image" />
           <div class="card-content">
-            <div>
+            <div class="card-text">
               <h2 class="card-title">Motorcycle Oils</h2>
               <p class="card-description">
                 There are many variants of passages of engineer
               </p>
             </div>
-            <a href="#" class="card-button red"><i class="fa-solid fa-arrow-up"
-                style="transform: rotate(45deg)"></i></a>
+            <div class="card-button-container">
+              <a href="#" class="card-button"><i class="fa-solid fa-arrow-up" style="transform: rotate(45deg)"></i></a>
+            </div>
           </div>
         </div>
 
         <div class="swiper-slide card">
           <img src="{% static 'images_folder/evfuilds.svg' %}" alt="EV Fluids" class="card-image" />
           <div class="card-content">
-            <div>
+            <div class="card-text">
               <h2 class="card-title">EV Fluids</h2>
               <p class="card-description">
                 There are many variants of passages of engineer
               </p>
             </div>
-            <a href="#" class="card-button"><i class="fa-solid fa-arrow-up" style="transform: rotate(45deg)"></i></a>
+            <div class="card-button-container">
+              <a href="#" class="card-button"><i class="fa-solid fa-arrow-up" style="transform: rotate(45deg)"></i></a>
+            </div>
           </div>
         </div>
 
         <div class="swiper-slide card">
           <img src="{% static 'images_folder/evfuilds.svg' %}" alt="Hydraulic Oils" class="card-image" />
           <div class="card-content">
-            <div>
+            <div class="card-text">
               <h2 class="card-title">Hydraulic Oils</h2>
               <p class="card-description">
                 High-performance hydraulic solutions
               </p>
             </div>
-            <a href="#" class="card-button red"><i class="fa-solid fa-arrow-up"
-                style="transform: rotate(45deg)"></i></a>
+            <div class="card-button-container">
+              <a href="#" class="card-button"><i class="fa-solid fa-arrow-up" style="transform: rotate(45deg)"></i></a>
+            </div>
           </div>
         </div>
         <div class="swiper-slide card">
           <img src="{% static 'images_folder/engine-oils.svg' %}" alt="Gear Oils" class="card-image" />
           <div class="card-content">
-            <div>
+
+            <div class="card-text">
               <h2 class="card-title">Gear Oils</h2>
               <p class="card-description">Protection for gear systems</p>
             </div>
-            <a href="#" class="card-button"><i class="fa-solid fa-arrow-up" style="transform: rotate(45deg)"></i></a>
+            <div class="card-button-container">
+              <a href="#" class="card-button"><i class="fa-solid fa-arrow-up" style="transform: rotate(45deg)"></i></a>
+            </div>
           </div>
         </div>
 
         <div class="swiper-slide card">
           <img src="{% static 'images_folder/engine-oils.svg' %}" alt="Coolants" class="card-image" />
           <div class="card-content">
-            <div>
+            <div class="card-text">
               <h2 class="card-title">Coolants</h2>
               <p class="card-description">Engine cooling and efficiency</p>
             </div>
-            <a href="#" class="card-button red"><i class="fa-solid fa-arrow-up"
-                style="transform: rotate(45deg)"></i></a>
+            <div class="card-button-container">
+              <a href="#" class="card-button"><i class="fa-solid fa-arrow-up" style="transform: rotate(45deg)"></i></a>
+            </div>
           </div>
         </div>
+      </div>
+    </div>
+
+    <div class="navigation nav-none">
+      <div class="swiper-button-prev nav-button left">
+        <i class="fa-solid fa-arrow-left-long"></i>
+      </div>
+      <div class="swiper-button-next nav-button right">
+        <i class="fa-solid fa-arrow-right-long"></i>
       </div>
     </div>
   </div>
@@ -505,8 +524,8 @@
   <section class="section-container cross-reference">
     <div>
       <div class="cross-reference-header">
-        <p>CROSS REFERENCE</p>
-        <h2>
+        <p class="section-subtitle">CROSS REFERENCE</p>
+        <h2 class="section-title">
           Find equivalent products by brand with our oil cross-reference tool
         </h2>
       </div>
@@ -553,7 +572,7 @@
             <li>Product 4</li>
           </ul>
         </div>
-        <button><i class="fa-solid fa-magnifying-glass"></i></button>
+        <button><span>Search</span><i class="fa-solid fa-magnifying-glass"></i></button>
       </div>
     </div>
   </section>
@@ -807,14 +826,12 @@
     <div class="e-mobility-container">
       <div class="e-mobility-content">
         <h2 class="section-title">POWERING THE FUTURE OF E-MOBILITY</h2>
-        <p class="content1">
+        <p>
           Our EV fluids are engineered to meet the evolving demands of electric
           mobility — delivering outstanding cooling, high-voltage insulation,
-          and long-term durability.
+          and long-term durability.  Drive the future with Tomoil's next-generation fluid solutions.
         </p>
-        <p class="content2">
-          Drive the future with Tomoil's next-generation fluid solutions.
-        </p>
+        
         <a href="#" class="explore-btn">Explore EV Fluids</a>
       </div>
       <div class="e-mobility-image">
@@ -943,5 +960,7 @@
     </div>
   </section>
 </div>
+
+
 
 {% endblock %}
