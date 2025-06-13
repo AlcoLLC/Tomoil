@@ -105,6 +105,7 @@
   font-family: Atyp Regular;
   letter-spacing: 0.2px;
   color: #727272;
+  max-width: 85%;
 }
 
 .products-section .filter-products .application-area {
@@ -318,10 +319,11 @@
 .products-section .filter-products .checkbox-area,
 .products-section .filter-products .application-area,
 .products-section .filter-products .pack-size-area {
-  max-height: 115px;
+  max-height: 140px;
   transition: overflow 0.2s ease;
   scrollbar-width: thin;
   scrollbar-color: #ccc transparent;
+  overflow-x: clip;
 }
 
 .products-section .filter-products .application-area,
