@@ -506,11 +506,21 @@
     }
 
     .products-section .filter-products .reset-filter-btn,
-    .products-section .filter-results-button{
+    .products-section .filter-results-button {
         font-size: 11px;
         padding: 12px;
     }
-    
+
+    .products-section .products-list {
+        min-height: 410px;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px;
+    }
+
+    .products-section .product-card .product-title {
+        font-size: 18px;
+    }
+
 }
 
 @media (max-width: 860px) {
@@ -912,6 +922,38 @@
         padding-top: 0;
     }
 
+    .products-section .filter-products {
+        display: none !important;
+    }
+
+    .products-section .products-container {
+        display: flex;
+        align-items: start;
+        gap: 15px;
+    }
+
+    .products-section .filter-mobile {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+    }
+
+    .products-section .products-list {
+        min-height: 430px;
+    }
+
+    .products-section .product-card .product-title {
+        font-size: 16px;
+    }
+
+    .products-section .show-more {
+        font-size: 11px;
+    }
+
+    .products-section .product-card .product-type {
+        font-size: 8px;
+    }
 }
 
 @media (max-width: 620px) {
@@ -1358,6 +1400,22 @@
     .section-oem .brand-logo-container {
         height: 90px;
     }
+
+    .products-section .products-list {
+        min-height: 500px;
+    }
+
+    .products-section .product-card .product-image {
+        height: 55%;
+    }
+
+    .products-section .product-card .product-info {
+        height: 45%;
+    }
+
+    
+    
+
 }
 
 @media screen and (max-width: 400px) {
@@ -1372,5 +1430,21 @@
 
     .home-header .slide-content {
         max-width: 90%;
+    }
+
+     .products-section .products-list {
+        min-height: 500px;
+    }
+
+    .products-section .product-card .product-image {
+        height: 50%;
+    }
+
+    .products-section .product-card .product-info {
+        height: 50%;
+    }
+
+    .products-section .product-card .product-title {
+        font-size: 14px;
     }
 }
