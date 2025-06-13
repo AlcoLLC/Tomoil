@@ -51,7 +51,7 @@ class PackSizeAdmin(admin.ModelAdmin):
 class TypicalPropertiesInline(admin.TabularInline):
     model = TypicalProperties
     extra = 1
-    fields = ('property', 'property_en', 'property_az', 'unit', 'test_method', 'typical_value', 'order')
+    fields = ('property', 'unit', 'test_method', 'typical_value', 'order')
 
 class PackagingSizesInline(admin.TabularInline):
     model = PackagingSizes
@@ -88,7 +88,7 @@ class ProductAdmin(TranslationAdmin):
 class TypicalPropertiesAdmin(TranslationAdmin):
     list_display = ('product', 'property', 'unit', 'typical_value', 'order')
     list_filter = ('product',)
-    search_fields = ('product__title', 'property', 'property_en')
+    search_fields = ('product__title', 'property')
     list_editable = ('order',)
 
 @admin.register(PackagingSizes)

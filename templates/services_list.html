@@ -1,5 +1,4 @@
-{% extends 'base.html' %} {% load static %} {% load i18n %}
-{% block content %}
+{% extends 'base.html' %} {% load static %} {% load i18n %} {% block content %}
 
 <!-- Page-Header -->
 {% include 'components/page-header.html' %}
@@ -49,7 +48,7 @@
       <div class="service-detail active" id="lubelq-content">
         <div class="service-header">
           <h2 class="section-title">{{ lubelq.title }}</h2>
-          <p class="section-description">{{ lubelq.header_text }}</p>
+          <div class="section-description">{{ lubelq.header_text|safe }}</div>
         </div>
 
         <div class="statistics">
@@ -60,8 +59,10 @@
                 alt="Testing Instruments"
               />
             </div>
-            <div class="stat-value">+{{ lubelq.testing_instruments }}</div>
-            <div class="stat-label">{% trans 'Testing Instruments' %}</div>
+            <div>
+              <div class="stat-value">+{{ lubelq.testing_instruments }}</div>
+              <div class="stat-label">{% trans 'Testing Instruments' %}</div>
+            </div>
           </div>
           <div class="stat-item">
             <div class="stat-icon">
@@ -70,8 +71,10 @@
                 alt="Test Parameters"
               />
             </div>
-            <div class="stat-value">+{{ lubelq.test_parameters }}</div>
-            <div class="stat-label">{% trans 'Test Parameters' %}</div>
+            <div>
+              <div class="stat-value">+{{ lubelq.test_parameters }}</div>
+              <div class="stat-label">{% trans 'Test Parameters' %}</div>
+            </div>
           </div>
           <div class="stat-item">
             <div class="stat-icon">
@@ -80,8 +83,10 @@
                 alt="Accuracy Rate"
               />
             </div>
-            <div class="stat-value">{{ lubelq.accuracy_rate }}%</div>
-            <div class="stat-label">{% trans 'Accuracy Rate' %}</div>
+            <div>
+              <div class="stat-value">{{ lubelq.accuracy_rate }}%</div>
+              <div class="stat-label">{% trans 'Accuracy Rate' %}</div>
+            </div>
           </div>
         </div>
 
