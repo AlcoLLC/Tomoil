@@ -2,12 +2,12 @@ from django.shortcuts import render, redirect
 from django.core.mail import send_mail
 from django.template.loader import render_to_string
 from django.http import JsonResponse
-from .models import Contact
+from .models import Contact, HomeSwiper
 from .forms import ContactForm
 import requests
 import re
 import phonenumbers
-
+from products.models import Product
 
 def validate_phone_number(phone_number, country_code):
     try:
@@ -196,4 +196,12 @@ def get_countries_and_codes(form):
 
 
 def home_view(request):
-    return render(request, 'home.html')
+    swiper_images = HomeSwiper.objects.filter(is_active=True).order_by('order')
+    products = Product.objects.filter(is_home=True).order_by('order')
+
+    context = {
+        'swiper_images': swiper_images,
+        'products': products,
+        
+    }
+    return render(request, 'home.html', context)

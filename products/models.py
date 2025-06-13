@@ -128,10 +128,12 @@ class Product(models.Model):
     viscosities = models.ManyToManyField(Viscosity, blank=True, related_name='products')
     compositions = models.ManyToManyField(Composition, blank=True, related_name='products')
     pack_sizes = models.ManyToManyField(PackSize, blank=True, related_name='products')
+    order = models.PositiveIntegerField(default=0, verbose_name="Order")
     
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     is_active = models.BooleanField(default=True)
+    is_home = models.BooleanField(default=False, verbose_name="Show on Home Page")
     
     def save(self, *args, **kwargs):
         if not self.slug:
