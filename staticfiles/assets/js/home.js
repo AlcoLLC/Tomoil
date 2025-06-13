@@ -50,48 +50,6 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 });
 
-const gap = 120;
-const itemWidth = 100;
-const scrollAmount = itemWidth + gap;
-
-const carousel = document.getElementById('carousel');
-const content = document.getElementById('content');
-const next = document.getElementById('next');
-const prev = document.getElementById('prev');
-
-const cloneContent = content.cloneNode(true);
-cloneContent.setAttribute('aria-hidden', 'true');
-content.appendChild(cloneContent);
-
-let isScrolling = false;
-
-next.addEventListener('click', () => {
-  if (isScrolling) return;
-  isScrolling = true;
-  carousel.scrollBy({ left: scrollAmount, behavior: 'smooth' });
-
-  setTimeout(() => {
-    if (carousel.scrollLeft >= content.scrollWidth - carousel.clientWidth) {
-      carousel.scrollLeft = 0;
-    }
-    isScrolling = false;
-  }, 400);
-});
-
-prev.addEventListener('click', () => {
-  if (isScrolling) return;
-  isScrolling = true;
-  carousel.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
-
-  setTimeout(() => {
-    if (carousel.scrollLeft <= 0) {
-      carousel.scrollLeft = content.scrollWidth / 2;
-    }
-    isScrolling = false;
-  }, 400);
-});
-
-// dropdown menu
 
 document.addEventListener('DOMContentLoaded', () => {
   const dropdowns = document.querySelectorAll(

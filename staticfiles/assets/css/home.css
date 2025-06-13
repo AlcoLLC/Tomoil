@@ -633,7 +633,7 @@ nav {
 .home-header .slide-content {
   color: white;
   z-index: 2;
-  max-width: 680px;
+  max-width: 70%;
   margin-bottom: 20px;
 }
 
@@ -649,13 +649,15 @@ nav {
 .home-header .slide-content h2 {
   font-family: "Plus Jakarta Sans", sans-serif;
   font-weight: 600;
-  font-size: 70px;
-  line-height: 110px;
+  font-size: 75px;
+  line-height: 90px;
+  margin-top: 10px;
+  margin-bottom: 20px;
   text-transform: capitalize;
-  white-space: nowrap;
 }
 
 .home-header .slide-content p {
+  max-width: 70%;
   font-family: Atyp Regular;
   font-weight: 400;
   font-size: 16px;
@@ -1117,7 +1119,7 @@ nav {
   scroll-behavior: smooth;
   scrollbar-width: none;
   box-sizing: content-box;
-  max-width: 90%;
+  max-width: 1000px;
   margin: 0 auto;
 }
 
