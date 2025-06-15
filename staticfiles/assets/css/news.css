@@ -17,8 +17,7 @@
 
 .news-filter-container .search-input {
   width: 100%;
-  height: 48px;
-  padding: 0 50px 0 20px;
+  padding: 14px 20px;
   border-radius: 50px;
   border: 1px solid #d8dee3;
   background-color: #ffffff;
@@ -140,6 +139,7 @@
 
 .section-latest-news .news-card {
   width: 100%;
+  min-height: 150px;
   background-color: #fff;
   border-radius: 20px;
   overflow: hidden;
@@ -157,7 +157,10 @@
 
 .section-latest-news .card-content {
   padding: 25px;
-  margin: 10px;
+  min-height: 240px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .section-latest-news .card-meta {
@@ -234,10 +237,10 @@
 }
 
 .section-latest-news .news-list-item {
-  height: 24vw;
+  height: 320px;
   width: 100%;
   background-color: #fff;
-  border-radius: 20px 20px 0px 20px;
+  border-radius: 20px;
   overflow: hidden;
   display: flex;
   flex-direction: row-reverse;
@@ -257,7 +260,6 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  border-radius: 20px 0px 0px 20px;
 }
 
 .section-latest-news .list-item-content {
@@ -312,6 +314,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: 10px;
 }
 
 .modal-overlay .form-group-calendar .input-wrapper {
@@ -350,7 +353,7 @@
 
 .modal-overlay .input-wrapper .calendar-icon {
   position: absolute;
-  right: 20px;
+  right: 8%;
   top: 50%;
   width: 18px;
   transform: translateY(-50%);
@@ -366,6 +369,7 @@
 .modal-overlay .btn {
   width: 45%;
   padding: 14px 24px;
+  text-align: center;
   border-radius: 0px 20px 0px 20px;
   font-size: 12px;
   border: none;
@@ -480,7 +484,6 @@
   display: none;
 }
 
-
 /* Date Picker Styles */
 .modal-overlay {
   margin-top: 30px;
@@ -495,11 +498,16 @@
 
 .modal-overlay .date-input {
   position: relative;
-  width: 250px;
+  max-width: 100%;
+}
+
+.modal-overlay .date-input span {
+  visibility: hidden !important;
+  opacity: 0 !important;
 }
 
 .modal-overlay .date-input input {
-  width: 100%;
+  width: 100% ;
   font-family: Atyp Regular;
   padding: 12px 40px 12px 15px;
   border: 0.1px solid #e6e6e6;
@@ -543,7 +551,7 @@
   position: absolute;
   top: 100%;
   right: 0;
-  width: 220px; 
+  width: 220px;
   background-color: #fff;
   border: 1px solid #e6e6e6;
   border-radius: 10px;
