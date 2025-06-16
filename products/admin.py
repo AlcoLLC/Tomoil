@@ -68,7 +68,7 @@ class ProductAdmin(TranslationAdmin):
     
     fieldsets = (
         ('Basic Information', {
-            'fields': ('title', 'description',  'product_id', 'image', 'is_active', 'is_home', 'order')
+            'fields': ('title', 'description',  'product_id', 'image', 'is_active', 'is_home', 'order', 'slug')
         }),
         ('Documents', {
             'fields': ('pds', 'sds')

@@ -11,6 +11,8 @@ class CaseStudy(models.Model):
         upload_to='caseStudy/images/', blank=True, null=True)
     image_three = models.ImageField(upload_to='caseStudy/images/', blank=True, null=True)
     created_at = models.DateTimeField(default=timezone.now)
+    is_home = models.BooleanField(
+        default=False, verbose_name="Show on Home Page")
 
     def __str__(self):
         return self.title

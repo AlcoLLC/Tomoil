@@ -8,6 +8,9 @@ import requests
 import re
 import phonenumbers
 from products.models import Product, ApplicationArea
+from news.models import News
+from caseStudies.models import CaseStudy
+
 
 def validate_phone_number(phone_number, country_code):
     try:
@@ -199,11 +202,18 @@ def home_view(request):
     swiper_images = HomeSwiper.objects.filter(is_active=True).order_by('order')
     products = Product.objects.filter(is_home=True).order_by('order')
     application_areas = ApplicationArea.objects.filter(is_home=True)
+    home_news = News.objects.filter(in_home=True).order_by('-created_at')
+    home_news_list = list(home_news[:3])
+    large_card_news = home_news_list[0] if home_news_list else None
+    small_cards_news = home_news_list[1:3] if len(home_news_list) > 1 else []
+    case_studies = CaseStudy.objects.filter(is_home=True).order_by('-created_at')
 
     context = {
         'swiper_images': swiper_images,
         'products': products,
         'application_areas': application_areas,
-        
+        'large_card_news': large_card_news,
+        'small_cards_news': small_cards_news,
+        'case_studies': case_studies,
     }
-    return render(request, 'home.html', context)
+    return render(request, 'home.html', context) 

@@ -7,8 +7,7 @@
         {% for swiper in swiper_images %}
         <div
           class="swiper-slide"
-          {%if swiper.image  %}style="background-image: url('{{ swiper.image.url }}');"
-          {% endif %}
+          style="background-image: url('{{ swiper.image.url }}');"
         >
           <div class="slide-content">
             <h5>{{ swiper.title }}</h5>
@@ -66,17 +65,13 @@
           <div class="product-card">
             <div class="product-image">
               <a href="{% url 'products:products_detail_view' product.slug %}">
-               <img
-                src="{{ product.image.url }}"
-                alt="{{ product.title }}"
-              />
+                <img src="{{ product.image.url }}" alt="{{ product.title }}" />
               </a>
-             
             </div>
             <div class="product-info">
-             <a href="{% url 'products:products_detail_view' product.slug %}">
-               <h3 class="product-title">{{ product.title }}</h3>
-             </a>
+              <a href="{% url 'products:products_detail_view' product.slug %}">
+                <h3 class="product-title">{{ product.title }}</h3>
+              </a>
             </div>
           </div>
           {% endfor %}
@@ -90,7 +85,9 @@
         </div>
       </div>
 
-      <a href="/products" class="view-catalog">{% trans 'VIEW OUR CATALOGUE' %}</a>
+      <a href="/products" class="view-catalog"
+        >{% trans 'VIEW OUR CATALOGUE' %}</a
+      >
     </div>
   </section>
 
@@ -100,31 +97,31 @@
       <div class="market-segments-header">
         <h2 class="section-title">{% trans 'Market Segments' %}</h2>
         <p class="section-description">
-          {% blocktrans %}
-          Tomoil products are developed to meet the diverse technical
-          requirements of various industries and operating environments -
-          regardless of application complexity.
-          {% endblocktrans %}
+          {% blocktrans %} Tomoil products are developed to meet the diverse
+          technical requirements of various industries and operating
+          environments - regardless of application complexity. {%endblocktrans%}
         </p>
       </div>
       <button class="btn-market-segments btn-block">
-        <a href="/products">See More <i class="fa-solid fa-arrow-right-long"></i></a>
+        <a href="/products"
+          >See More <i class="fa-solid fa-arrow-right-long"></i
+        ></a>
       </button>
     </div>
     <div class="market-segments-list">
       <ul>
         {% for area in application_areas %}
-<li>
-  <a href="{% url 'products:products_list' %}?application_area={{ area.slug }}">
-    <div>
-      <img src="{{ area.icon.url }}" alt="{{ area.name }}" />
-    </div>
-    {{ area.name }}
-  </a>
-</li>
-{% endfor %}
-
-      
+        <li>
+          <a
+            href="{% url 'products:products_list' %}?application_area={{ area.slug }}"
+          >
+            <div>
+              <img src="{{ area.icon.url }}" alt="{{ area.name }}" />
+            </div>
+            {{ area.name }}
+          </a>
+        </li>
+        {% endfor %}
       </ul>
     </div>
 
@@ -139,11 +136,9 @@
       <div>
         <h1 class="section-title">{% trans 'Product Range' %}</h1>
         <p class="section-description">
-          {% blocktrans %}
-          Explore our extensive portfolio of over 400 premium lubricants and
-          service fluids — engineered for exceptional performance, protection,
-          and efficiency.
-          {% endblocktrans %}
+          {% blocktrans %} Explore our extensive portfolio of over 400 premium
+          lubricants and service fluids — engineered for exceptional
+          performance, protection, and efficiency. {% endblocktrans %}
         </p>
       </div>
       <div class="navigation nav-top">
@@ -303,51 +298,59 @@
     <div class="section-container">
       <div class="header-container">
         <p class="section-subtitle">{% trans "LATEST NEWS" %}</p>
-        <h2 class="section-title">{% trans "Adventure Thrills and Excitement Await" %}</h2>
-        <a href="#" class="all-news-button news-btn">
+        <h2 class="section-title">
+          {% trans "Adventure Thrills and Excitement Await" %}
+        </h2>
+        <a href="/news" class="all-news-button news-btn">
           {% trans "All news" %}
           <i class="fas fa-arrow-right-long all-news-icon"></i>
         </a>
       </div>
 
       <div class="news-grid">
+        {% if large_card_news %}
+        <!-- Large Card - En son eklenen haber -->
         <div class="news-card card-large">
           <img
-            src="{% static 'images/image.png' %}"
-            alt="Blue sports car"
+            src="{{ large_card_news.image_one.url }}"
+            alt="{{ large_card_news.title }}"
             class="card-image"
           />
           <div class="card-content">
             <div class="card-meta">
               <div class="card-date">
                 <i class="far fa-calendar-alt date-icon"></i>
-                April 1, 2025
+                {{ large_card_news.created_at|date:"F j, Y" }}
               </div>
-              <div class="share-button">
+              <div
+                class="share-button"
+                data-url="{% url 'news:news_detail' large_card_news.id %}"
+                onclick="copyToClipboard(this)"
+              >
                 <i class="fas fa-share-alt share-icon"></i>
                 Share
               </div>
             </div>
-            <h3 class="card-title">
-              Testing of Tomoil 10W-40 LA motor oil at a passenger transport
-              enterprise in Kazan
-            </h3>
+            <h3 class="card-title">{{ large_card_news.title }}</h3>
             <p class="card-description">
-              We present you with another report on TOMOIL lubricants testing.
-              Testing of Tomoil Engine Oil 10W-40 LA motor oil was conducted.
+              {{ large_card_news.description|truncatewords:20 }}
             </p>
-            <a href="#" class="read-more">
+            <a
+              href="{% url 'news:news_detail' large_card_news.id %}"
+              class="read-more"
+            >
               Read More
               <i class="fas fa-arrow-right-long read-more-icon"></i>
             </a>
+            <div class="copy-message">Copied!</div>
           </div>
         </div>
-
+        {% endif %} {% for news in small_cards_news %}
         <div class="news-card card-small">
           <div class="card-image-container">
             <img
-              src="{% static 'images/image (1).png' %}"
-              alt="Truck with oil containers"
+              src="{{ news.image_one.url }}"
+              alt="{{ news.title }}"
               class="card-image"
             />
           </div>
@@ -355,60 +358,35 @@
             <div class="card-meta">
               <div class="card-date">
                 <i class="far fa-calendar-alt date-icon"></i>
-                April 1, 2025
+                {{ news.created_at|date:"F j, Y" }}
               </div>
-              <div class="share-button">
-                <i class="fas fa-share-alt share-icon"></i>
-                Share
+              <div class="share-button-container">
+                <div
+                  class="share-button"
+                  data-url="{% url 'news:news_detail' news.id %}"
+                  onclick="copyToClipboard(this)"
+                >
+                  <i class="fas fa-share-alt share-icon"></i>
+                  Share
+                </div>
               </div>
             </div>
-            <h3 class="card-title">
-              TOMOIL Lubricants for Agricultural Machinery
-            </h3>
+            <h3 class="card-title">{{ news.title }}</h3>
             <p class="card-description">
-              We present you with another report on TOMOIL lubricants testing.
+              {{ news.description|truncatewords:15 }}
             </p>
-            <a href="#" class="read-more">
+            <a href="{% url 'news:news_detail' news.id %}" class="read-more">
               Read More
               <i class="fas fa-arrow-right-long read-more-icon"></i>
             </a>
+            <div class="copy-message">Copied!</div>
           </div>
         </div>
-
-        <!-- Small Card 2 -->
-        <div class="news-card card-small">
-          <div class="card-image-container">
-            <img
-              src="{% static 'images/image (2).png' %}"
-              alt="Engine with oil"
-              class="card-image"
-            />
-          </div>
-          <div class="card-content">
-            <div class="card-meta">
-              <div class="card-date">
-                <i class="far fa-calendar-alt date-icon"></i>
-                April 1, 2025
-              </div>
-              <div class="share-button">
-                <i class="fas fa-share-alt share-icon"></i>
-                Share
-              </div>
-            </div>
-            <h3 class="card-title">TOMOIL oil in stock at AUTODRIVE</h3>
-            <p class="card-description">
-              We present you with another report on TOMOIL lubricants testing.
-            </p>
-            <a href="#" class="read-more">
-              Read More
-              <i class="fas fa-arrow-right-long read-more-icon"></i>
-            </a>
-          </div>
-        </div>
+        {% endfor %}
       </div>
 
-      <a href="#" class="all-news-button news-none">
-        All news
+      <a href="/news" class="all-news-button news-none">
+        {% trans " All news" %}
         <i class="fas fa-arrow-right-long all-news-icon"></i>
       </a>
     </div>
@@ -417,11 +395,16 @@
   <!-- Accross Section -->
   <section class="accross-section">
     <div class="section-container">
-      <p class="section-subtitle">Across Continents, Beyond Borders</p>
-      <h2 class="section-title">Tomoil products are available worldwide</h2>
+      <p class="section-subtitle">
+        {% trans "Across Continents, Beyond Borders" %}
+      </p>
+      <h2 class="section-title">
+        {% trans "Tomoil products are available worldwide" %}
+      </h2>
       <p class="section-description">
-        Tomoil products are distributed to over 50 countries across the globe
-        vida our reliable network of exclusive partners.
+        {% blocktrans %} Tomoil products are distributed to over 50 countries
+        across the globe vida our reliable network of exclusive partners.
+        {%endblocktrans %}
       </p>
     </div>
   </section>
@@ -434,10 +417,11 @@
           <div class="preview__content">
             <div id="map-container">
               <div class="map-header">
-                <h6>Are you interested in partnership?</h6>
+                <h6>{% trans "Are you interested in partnership?" %}</h6>
                 <button class="button-style">
                   <a href=""
-                    >GET IN TOUCH <i class="fas fa-arrow-right-long"></i
+                    >{% trans "GET IN TOUCH" %}
+                    <i class="fas fa-arrow-right-long"></i
                   ></a>
                 </button>
               </div>
@@ -522,9 +506,13 @@
     <div class="case-studies-container">
       <div class="case-studies-header">
         <div class="header-text">
-          <span class="section-subtitle">CASE STUDIES</span>
-          <h2 class="section-title">Fresh Insights from Recent Case Studies</h2>
-          <a href="#" class="all-case-studies">All Case Studies</a>
+          <span class="section-subtitle">{% trans "CASE STUDIES" %}</span>
+          <h2 class="section-title">
+            {% trans "Fresh Insights from Recent Case Studies" %}
+          </h2>
+          <a href="/case-studies" class="all-case-studies"
+            >{% trans "All Case Studies" %}</a
+          >
         </div>
         <div class="slider-controls case-btn">
           <button class="slider-arrow prev-case">
@@ -539,118 +527,22 @@
       <div class="case-studies-slider">
         <div class="case-studies-track">
           <!-- Case Study 1 -->
+          {% for case_study in case_studies %}
           <div class="case-study-card">
             <div class="case-study-image">
               <img
-                src="{% static 'images/case-slide1.png' %}"
+                src="{{ case_study.image_one.url }}"
                 alt="Industrial machinery"
               />
             </div>
             <div class="case-study-info">
-              <h3 class="case-study-title">
-                Manufacturing Equipment Performance
-              </h3>
+              <h3 class="case-study-title">{{ case_study.title }}</h3>
               <p class="case-study-desc">
-                Reduced unplanned downtime, extended machine lifespan, lower
-                maintenance costs and improved efficiency of the production
-                process.
+                {{ case_study.header_text|truncatewords:20 }}
               </p>
             </div>
           </div>
-
-          <!-- Case Study 2 -->
-          <div class="case-study-card">
-            <div class="case-study-image">
-              <img
-                src="{% static 'images/case-slide2.png' %}"
-                alt="Lubrication drilling equipment"
-              />
-            </div>
-            <div class="case-study-info">
-              <h3 class="case-study-title">
-                Lubrication drilling equipment steel industry
-              </h3>
-              <p class="case-study-desc">
-                Reduced unplanned downtime, extended machine lifespan, lower
-                maintenance costs and improved efficiency of the production
-                process.
-              </p>
-            </div>
-          </div>
-
-          <!-- Case Study 3 -->
-          <div class="case-study-card">
-            <div class="case-study-image">
-              <img
-                src="{% static 'images/case-slide3.png' %}"
-                alt="Automotive maintenance"
-              />
-            </div>
-            <div class="case-study-info">
-              <h3 class="case-study-title">Automotive Maintenance Solutions</h3>
-              <p class="case-study-desc">
-                Reduced unplanned downtime, extended machine lifespan, lower
-                maintenance costs and improved efficiency of the production
-                process.
-              </p>
-            </div>
-          </div>
-
-          <!-- Case Study 4 -->
-          <div class="case-study-card">
-            <div class="case-study-image">
-              <img
-                src="{% static 'images/case-slide4.png' %}"
-                alt="Oil pouring"
-              />
-            </div>
-            <div class="case-study-info">
-              <h3 class="case-study-title">Oil Performance Analysis</h3>
-              <p class="case-study-desc">
-                Reduced unplanned downtime, extended machine lifespan, lower
-                maintenance costs and improved efficiency of the production
-                process.
-              </p>
-            </div>
-          </div>
-
-          <!-- Case Study 5 -->
-          <div class="case-study-card">
-            <div class="case-study-image">
-              <img
-                src="{% static 'images/case-slide5.png' %}"
-                alt="Urban automotive"
-              />
-            </div>
-            <div class="case-study-info">
-              <h3 class="case-study-title">Urban Transport Solutions</h3>
-              <p class="case-study-desc">
-                Reduced unplanned downtime, extended machine lifespan, lower
-                maintenance costs and improved efficiency of the production
-                process.
-              </p>
-            </div>
-          </div>
-
-          <!-- Case Study 6 -->
-          <div class="case-study-card">
-            <div class="case-study-image">
-              <img
-                src="{% static 'images/case-slide1.png' %}"
-                alt="Industrial machinery"
-              />
-            </div>
-            <div class="case-study-info">
-              <h3 class="case-study-title">
-                Manufacturing Equipment Performance
-              </h3>
-              <p class="case-study-desc">
-                Reduced unplanned downtime, extended machine lifespan, lower
-                maintenance costs and improved efficiency of the production
-                process.
-              </p>
-            </div>
-          </div>
+          {% endfor %}
         </div>
       </div>
     </div>
