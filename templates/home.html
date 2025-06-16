@@ -108,7 +108,7 @@
         </p>
       </div>
       <button class="btn-market-segments btn-block">
-        <a href="">See More <i class="fa-solid fa-arrow-right-long"></i></a>
+        <a href="/products">See More <i class="fa-solid fa-arrow-right-long"></i></a>
       </button>
     </div>
     <div class="market-segments-list">
@@ -137,11 +137,13 @@
   <div class="section-container product-range">
     <div class="product-range-header">
       <div>
-        <h1 class="section-title">Product Range</h1>
+        <h1 class="section-title">{% trans 'Product Range' %}</h1>
         <p class="section-description">
+          {% blocktrans %}
           Explore our extensive portfolio of over 400 premium lubricants and
           service fluids — engineered for exceptional performance, protection,
           and efficiency.
+          {% endblocktrans %}
         </p>
       </div>
       <div class="navigation nav-top">
@@ -300,10 +302,10 @@
   <section class="adventure-section">
     <div class="section-container">
       <div class="header-container">
-        <p class="section-subtitle">LATEST NEWS</p>
-        <h2 class="section-title">Adventure Thrills and Excitement Await</h2>
+        <p class="section-subtitle">{% trans "LATEST NEWS" %}</p>
+        <h2 class="section-title">{% trans "Adventure Thrills and Excitement Await" %}</h2>
         <a href="#" class="all-news-button news-btn">
-          All news
+          {% trans "All news" %}
           <i class="fas fa-arrow-right-long all-news-icon"></i>
         </a>
       </div>
