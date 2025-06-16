@@ -1,7 +1,7 @@
 /* Faq section */
 
 .section-questions {
-  font-family: Atyp Regular;
+  font-family: "Atyp Regular", sans-serif;
   padding: 40px 0;
 }
 
@@ -55,7 +55,7 @@
 }
 
 .section-questions .faq-answer p {
-  font-family: Atyp Regular;
+  font-family: "Atyp Regular", sans-serif;
   text-align: justify;
   width: 85%;
   margin: 0;
@@ -96,12 +96,11 @@
 }
 
 .wolver-section .wolver-container {
+  margin: 0 auto;
   height: 250px;
   width: 100%;
-  max-width: 1000px;
   display: flex;
   align-items: center;
-  justify-content: space-between;
   padding: 0 50px;
   background-image: url("../../images/explore-background.png");
   background-size: cover;
@@ -124,13 +123,13 @@
 
 .wolver-section .wolver-content p {
   font-size: 9px;
-  font-family: Atyp Regular !important;
+  font-family: "Atyp Regular", sans-serif !important;
   line-height: 1.5;
   letter-spacing: 0.5px;
 }
 
 .wolver-section .wolver-content .content1 {
-  width: 80%;
+  width: 75%;
 }
 
 .wolver-section .wolver-btn {
@@ -172,14 +171,25 @@
 }
 
 .wolver-products .oil-container {
-  width: 160px;
-  height: auto;
+  width: auto;
+  height: 100%;
   object-fit: contain;
   margin-right: -70px;
   position: relative;
   bottom: -25px;
   right: -238px;
 }
+
+.wolver-products .oil-barrel {
+  height: 110%;
+  width: auto;
+  object-fit: contain;
+  position: relative;
+  bottom: 5px;
+  right: -120px;
+  z-index: 10;
+}
+
 .wolver-products .oil-container.top {
   z-index: 5;
 }
@@ -192,20 +202,11 @@
   z-index: 3;
 }
 
-.wolver-products .oil-barrel {
-  height: 270px;
-  width: auto;
-  object-fit: contain;
-  position: relative;
-  bottom: 5px;
-  right: -120px;
-  z-index: 10;
-}
 
 /* Need More Section */
 
 .need-more-section .section-container {
-  font-family: Atyp Bold;
+  font-family: "Atyp Bold", sans-serif;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -257,6 +258,7 @@
   width: 20px;
   margin-bottom: 2px;
 }
+
 .need-more-section .need-more-btn:hover {
   background-color: #c62232;
 }

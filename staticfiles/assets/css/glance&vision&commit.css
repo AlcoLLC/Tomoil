@@ -20,7 +20,7 @@
 
 .glance-section .guides-grid h4,
 .vision-mission-section .values-grid h4 {
-  font-family: Atyp Regular;
+  font-family: "Atyp Regular", sans-serif;
   color: #223160;
   font-size: 16px;
   margin-bottom: 10px;
@@ -44,7 +44,7 @@
 }
 
 .glance-section .glance-description p {
-  font-family: Atyp Regular;
+  font-family: "Atyp Regular", sans-serif;
   font-size: 12px;
   color: #727272;
   font-weight: 400;
@@ -73,6 +73,7 @@
 .vision-mission-section {
   margin-top: 50px;
 }
+
 .vision-mission-section .vision-mission-top {
   display: flex;
   align-items: center;
@@ -95,7 +96,7 @@
 .vision-mission-section .section-description p {
   color: #223160;
   line-height: 1.2;
-  font-family: Atyp Regular;
+  font-family: "Atyp Regular", sans-serif;
   font-weight: 400;
   font-size: 16px;
 }
@@ -111,9 +112,11 @@
   object-fit: cover;
   border-radius: 20px;
 }
+
 .vision-mission-section .vision-mission-bottom {
   margin-top: 50px;
 }
+
 .vision-mission-section .values-grid {
   margin-top: 30px;
   display: grid;
@@ -205,10 +208,7 @@
   color: #e22131;
 }
 
-.our-commitment-section
-  .commitment-container
-  .commitment-item.active
-  .arrow-icon {
+.our-commitment-section .commitment-container .commitment-item.active .arrow-icon {
   background-color: #fff;
 }
 
@@ -242,7 +242,7 @@
 }
 
 .our-commitment-section .commitment-description h3 {
-  font-family: Plus Jakarta Sans;
+  font-family: "Plus Jakarta Sans", sans-serif;
   font-weight: 600;
   font-size: 24px;
   line-height: 30px;

@@ -22,7 +22,7 @@
   border: 1px solid #d8dee3;
   background-color: #ffffff;
   color: #223160;
-  font-family: Atyp Regular;
+    font-family: "Atyp Regular", sans-serif;
   font-size: 12px;
   outline: none;
 }
@@ -63,7 +63,7 @@
   border: 1px solid #d8dee3;
   border-radius: 50px;
   color: #223160;
-  font-family: Atyp Regular;
+    font-family: "Atyp Regular", sans-serif;
   font-size: 12px;
   cursor: pointer;
   transition: background-color 0.3s;
@@ -187,7 +187,7 @@
 
 .section-latest-news .card-title {
   color: #223160;
-  font-family: Atyp Medium;
+    font-family: "Atyp Medium", sans-serif;
   font-weight: 600;
   font-size: 18px;
   margin-bottom: 15px;
@@ -330,7 +330,7 @@
   padding: 0 20px;
   color: #034833;
   font-size: 12px;
-  font-family: Atyp Regular;
+  font-family: "Atyp Regular", sans-serif;
   appearance: none;
   -webkit-appearance: none;
   -moz-appearance: none;
@@ -339,7 +339,7 @@
 .modal-overlay .modal-form input::placeholder {
   color: #034833;
   font-size: 12px;
-  font-family: Atyp Regular;
+  font-family: "Atyp Regular", sans-serif;
 }
 
 .modal-overlay .input-wrapper .down-icon {
@@ -409,7 +409,7 @@
   padding: 14px;
   border: 1px solid #d8dee38a;
   border-radius: 25px;
-  font-family: Atyp Regular;
+    font-family: "Atyp Regular", sans-serif;
   font-size: 12px;
   color: #034833;
   background-color: #fff;
@@ -450,7 +450,7 @@
   z-index: 999;
 }
 
-.modal-overlay .filter-sort-modal .custom-select.open + .custom-options {
+.modal-overlay .filter-sort-modal .custom-select.open+.custom-options {
   opacity: 1;
   visibility: visible;
 }
@@ -459,7 +459,7 @@
   position: relative;
   display: block;
   padding: 12px 14px;
-  font-family: Atyp Regular;
+    font-family: "Atyp Regular", sans-serif;
   font-size: 12px;
   color: #034833;
   opacity: 80%;
@@ -507,8 +507,8 @@
 }
 
 .modal-overlay .date-input input {
-  width: 100% ;
-  font-family: Atyp Regular;
+  width: 100%;
+    font-family: "Atyp Regular", sans-serif;
   padding: 12px 40px 12px 15px;
   border: 0.1px solid #e6e6e6;
   border-radius: 32px;

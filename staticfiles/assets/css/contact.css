@@ -20,7 +20,7 @@
 }
 
 .contact-section .contact-description {
-  font-family: Atyp Regular;
+  font-family: "Atyp Regular", sans-serif;
   color: #000000;
   font-size: 12px;
   line-height: 1.3;
@@ -53,7 +53,7 @@
 }
 
 .contact-section .info-label {
-  font-family: Atyp Regular;
+  font-family: "Atyp Regular", sans-serif;
   color: #727272;
   font-size: 14px;
   margin-bottom: 4px;
@@ -96,7 +96,7 @@
 }
 
 .contact-section label {
-  font-family: Atyp Regular;
+  font-family: "Atyp Regular", sans-serif;
   color: #034833;
   font-size: 14px;
   line-height: 1.5;
@@ -123,7 +123,7 @@
   padding: 12px;
   border: 1px solid #d8dee3;
   border-radius: 25px;
-  font-family: Atyp Regular;
+  font-family: "Atyp Regular", sans-serif;
   font-size: 12px;
   color: #034833;
   width: 100%;
@@ -159,6 +159,7 @@
 .contact-section .country-number-input input {
   font-size: 8px;
 }
+
 .contact-section .phone-number-input input {
   padding-right: 10px;
 }
@@ -252,7 +253,7 @@
 
 .contact-section .radio-option label {
   cursor: pointer;
-  font-family: Atyp Regular;
+  font-family: "Atyp Regular", sans-serif;
   font-size: 12px;
   opacity: 60%;
   color: #034833;
@@ -291,7 +292,7 @@
 }
 
 .contact-section .checkbox-wrapper label {
-  font-family: Atyp Regular;
+  font-family: "Atyp Regular", sans-serif;
   font-size: 13px;
   line-height: 1.5;
   color: #223160;
@@ -303,7 +304,7 @@
   border: none;
   border-radius: 0px 20px 0px 20px;
   padding: 14px;
-  font-family: Atyp Medium;
+  font-family: "Atyp Medium", sans-serif;
   font-size: 12px;
   letter-spacing: 1px;
   cursor: pointer;
@@ -342,7 +343,7 @@
   gap: 5px;
   border: 1px solid #d8dee3;
   border-radius: 25px;
-  font-family: Atyp Regular;
+  font-family: "Atyp Regular", sans-serif;
   font-size: 12px;
   color: #034833;
   background-color: #fff;
@@ -352,7 +353,7 @@
 }
 
 .contact-section .custom-select:after {
-  content: "\f078"; 
+  content: "\f078";
   font-family: "Font Awesome 5 Free";
   font-weight: 900;
   position: absolute;
@@ -364,7 +365,8 @@
 }
 
 .contact-section .custom-select.open:after {
-  content: "\f077"; /* FontAwesome chevron-up icon */
+  content: "\f077";
+  /* FontAwesome chevron-up icon */
 }
 
 .contact-section .custom-options {
@@ -385,11 +387,11 @@
   z-index: 999;
 }
 
-.contact-section .phone-input .custom-options{
+.contact-section .phone-input .custom-options {
   width: 200% !important;
 }
 
-.contact-section  .custom-options.active {
+.contact-section .custom-options.active {
   opacity: 1;
   visibility: visible;
 }
@@ -398,7 +400,7 @@
   position: relative;
   display: block;
   padding: 12px 14px;
-  font-family: Atyp Regular;
+  font-family: "Atyp Regular", sans-serif;
   font-size: 12px;
   color: #034833;
   opacity: 80%;
@@ -480,10 +482,11 @@
   border-radius: 2px;
 }
 
-.validation-message, .error-message {
+.validation-message,
+.error-message {
   color: red;
-font-weight: 400;
-font-size: 12px;
-line-height: 16px;
-letter-spacing: 0%;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 16px;
+  letter-spacing: 0%;
 }

@@ -56,7 +56,7 @@
 
 .main-case-section .card-title {
   color: #223160;
-  font-family: Atyp Medium;
+  font-family: "Atyp Medium", sans-serif;
   font-weight: 600;
   font-size: 18px;
   margin-bottom: 15px;
@@ -91,25 +91,25 @@
   margin-bottom: 30px;
 }
 
-.date-filter-container > div {
+.date-filter-container>div {
   display: flex;
   justify-content: end;
   gap: 5px;
 }
 
 .date-filter-container button {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: #e22131;
-    color: white;
-    padding: 14px;
-    border: none;
-    border-radius: 999px;
-    align-self: self-end;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    margin-left: 7px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #e22131;
+  color: white;
+  padding: 14px;
+  border: none;
+  border-radius: 999px;
+  align-self: self-end;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-left: 7px;
 }
 
 .date-filter-container .date-filter {
@@ -125,7 +125,7 @@
 
 .date-filter-container .date-input input {
   width: 100%;
-  font-family: Atyp Regular;
+  font-family: "Atyp Regular", sans-serif;
   padding: 12px 40px 12px 15px;
   border: 0.1px solid #e6e6e6;
   border-radius: 32px;
@@ -372,6 +372,7 @@
 .case-detail-section .section-header {
   max-width: 800px;
 }
+
 .case-detail-section .section-title {
   font-family: "Plus Jakarta Sans", sans-serif;
   font-size: 50px;
@@ -383,7 +384,7 @@
 }
 
 .case-detail-section .card-date {
-  font-family: Atyp Regular;
+  font-family: "Atyp Regular", sans-serif;
   color: #727272;
   font-size: 14px;
   display: flex;
@@ -397,7 +398,7 @@
 }
 
 .case-detail-section p {
-  font-family: Atyp Regular;
+  font-family: "Atyp Regular", sans-serif;
   text-align: justify;
   color: #223160;
   font-size: 16px;

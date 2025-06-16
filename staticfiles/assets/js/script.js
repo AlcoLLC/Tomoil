@@ -1,8 +1,9 @@
 document.addEventListener('DOMContentLoaded', function () {
-  initProductSlider();
   initCaseStudiesSlider();
   initBrandLogosRotation();
   initNumberCounters();
+  initProductSlider();
+
 });
 
 function initProductSlider() {
