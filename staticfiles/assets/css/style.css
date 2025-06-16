@@ -144,12 +144,12 @@
 
 .featured-section .product-info {
   width: 75%;
-  font-family: Regular;
+  font-family: "Atyp Regular", sans-serif;
   color: #223160;
 }
 
-.featured-container .product-card.active  .product-info{
-    margin-left: 35px;
+.featured-container .product-card.active .product-info {
+  margin-left: 35px;
 
 }
 
@@ -328,7 +328,7 @@
 
 .adventure-section .card-title {
   color: #223160;
-  font-family: Atyp Medium;
+  font-family: "Atyp Medium", sans-serif;
   font-weight: 600;
   font-size: 18px;
   margin-bottom: 15px;
@@ -561,7 +561,7 @@
 }
 
 .section-case-studies .case-study-desc {
-  font-family: Atyp Regular;
+  font-family: "Atyp Regular", sans-serif;
   font-size: 12px;
   line-height: 1.5;
 }
@@ -610,7 +610,7 @@
 }
 
 .section-oem .section-description {
-  font-family: Atyp Regular;
+  font-family: "Atyp Regular", sans-serif;
   margin-top: 15px;
   padding-right: 30px;
   font-weight: 300;
@@ -702,7 +702,7 @@
 }
 
 .section-best-offers .offer-content h2 {
-  font-family: Atyp Bold;
+  font-family: "Atyp Bold", sans-serif;
   font-size: 18px;
   font-weight: 300;
   color: #223160;
@@ -711,7 +711,7 @@
 
 .section-best-offers .offer-content p {
   color: #727272;
-  font-family: Atyp Regular;
+  font-family: "Atyp Regular", sans-serif;
   font-size: 12px;
   line-height: 1.5;
   margin-bottom: 20px;
@@ -771,7 +771,6 @@
 }
 
 .section-best-offers .stat-box h3 {
-  font-family: Atyp Medium;
   font-size: 40px;
   font-weight: 600;
   line-height: 1.5;
@@ -783,7 +782,7 @@
 }
 
 .section-best-offers .stat-box p {
-  font-family: Atyp Regular;
+  font-family: "Atyp Regular", sans-serif;
   font-size: 12px;
   line-height: 1.5;
 }
@@ -822,7 +821,7 @@
 
 .e-mobility-section .e-mobility-content p {
   font-size: 9px;
-  font-family: Atyp Regular;
+  font-family: "Atyp Regular", sans-serif;
   line-height: 1.5;
   width: 70%;
 }
@@ -874,7 +873,7 @@
   display: flex;
   flex-wrap: nowrap;
   justify-content: space-between;
-  font-family: Atyp Regular !important;
+  font-family: "Atyp Regular", sans-serif !important;
 }
 
 .site-footer .footer-col {
@@ -945,7 +944,7 @@
   color: #fff;
   text-decoration: none;
   font-size: 12px;
-  font-family: Atyp Regular !important;
+  font-family: "Atyp Regular", sans-serif !important;
 }
 
 .site-footer .footer-menu-icons {
@@ -1136,7 +1135,7 @@
 }
 
 .page-header .page-header-content p {
-  font-family: Atyp Regular;
+  font-family: "Atyp Regular", sans-serif;
   font-size: 12px;
   line-height: 20px;
   letter-spacing: 0.5px;
