@@ -3,7 +3,7 @@ from .models import ProductRange, Composition, Product, TypicalProperties
 
 @register(ProductRange)
 class ProductRangeTranslationOptions(TranslationOptions):
-    fields = ('name',)
+    fields = ('name', 'description',)
 
 @register(Composition)
 class CompositionTranslationOptions(TranslationOptions):

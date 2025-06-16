@@ -2,7 +2,8 @@ from django.shortcuts import render, redirect
 from django.core.mail import send_mail
 from django.template.loader import render_to_string
 from django.http import JsonResponse
-from .models import Contact, HomeSwiper
+from .models import Contact, HomeSwiper, CarLogo, PartnerLogo, TomoilReview
+from products.models import ProductRange
 from .forms import ContactForm
 import requests
 import re
@@ -28,7 +29,6 @@ def validate_phone_number(phone_number, country_code):
     except Exception:
         return False
 
-
 def get_country_name_by_code(country_code):
     try:
         code = country_code.replace('+', '')
@@ -42,7 +42,6 @@ def get_country_name_by_code(country_code):
         return None
     except Exception:
         return None
-
 
 def validate_phone_api(request):
     if request.method == 'POST':
@@ -59,7 +58,6 @@ def validate_phone_api(request):
         })
 
     return JsonResponse({'valid': False})
-
 
 def index(request):
     if request.method == 'POST':
@@ -146,9 +144,7 @@ Tomoil Support Team
     context = get_countries_and_codes(form)
     return render(request, 'contact.html', context)
 
-
 def get_countries_and_codes(form):
-    """Fetch countries and their codes for the form"""
     try:
         countries_response = requests.get(
             'https://restcountries.com/v3.1/all?fields=name,flags,cca2,idd')
@@ -197,7 +193,6 @@ def get_countries_and_codes(form):
         'contact_methods': Contact.CONTACT_METHODS
     }
 
-
 def home_view(request):
     swiper_images = HomeSwiper.objects.filter(is_active=True).order_by('order')
     products = Product.objects.filter(is_home=True).order_by('order')
@@ -207,6 +202,10 @@ def home_view(request):
     large_card_news = home_news_list[0] if home_news_list else None
     small_cards_news = home_news_list[1:3] if len(home_news_list) > 1 else []
     case_studies = CaseStudy.objects.filter(is_home=True).order_by('-created_at')
+    car_logos = CarLogo.objects.filter(is_active=True).order_by('order')
+    partner_logos = PartnerLogo.objects.filter(is_active=True).order_by('order')
+    reviews = TomoilReview.objects.filter(is_active=True).order_by('-created_at')
+    product_ranges = ProductRange.objects.filter(is_home=True).order_by('order')
 
     context = {
         'swiper_images': swiper_images,
@@ -215,5 +214,9 @@ def home_view(request):
         'large_card_news': large_card_news,
         'small_cards_news': small_cards_news,
         'case_studies': case_studies,
+        'car_logos': car_logos,
+        'partner_logos': partner_logos,
+        'reviews': reviews,
+        'product_ranges': product_ranges,
     }
     return render(request, 'home.html', context) 

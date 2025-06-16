@@ -152,143 +152,34 @@
     </div>
     <div class="swiper mySwiper">
       <div class="swiper-wrapper card-container">
+        {% for product_range in product_ranges %}
         <div class="swiper-slide card">
           <img
-            src="{% static 'images_folder/engine-oils.svg' %}"
+            src="{{ product_range.image.url }}"
             alt="Engine Oils"
             class="card-image"
           />
           <div class="card-content">
             <div class="card-text">
-              <h2 class="card-title">Engine Oils</h2>
+              <h2 class="card-title">{{ product_range.name }}</h2>
               <p class="card-description">
-                There are many variants of passages of engineer
+                {{ product_range.description|truncatewords:13 }}
               </p>
             </div>
             <div class="card-button-container">
-              <a href="#" class="card-button"
-                ><i
+              <a
+                href="{% url 'products:products_list' %}?product_range={{ product_range.slug }}"
+                class="card-button"
+              >
+                <i
                   class="fa-solid fa-arrow-up"
                   style="transform: rotate(45deg)"
-                ></i
-              ></a>
+                ></i>
+              </a>
             </div>
           </div>
         </div>
-        <div class="swiper-slide card">
-          <img
-            src="{% static 'images_folder/motorcycleoils.svg' %}"
-            alt="Motorcycle Oils"
-            class="card-image"
-          />
-          <div class="card-content">
-            <div class="card-text">
-              <h2 class="card-title">Motorcycle Oils</h2>
-              <p class="card-description">
-                There are many variants of passages of engineer
-              </p>
-            </div>
-            <div class="card-button-container">
-              <a href="#" class="card-button"
-                ><i
-                  class="fa-solid fa-arrow-up"
-                  style="transform: rotate(45deg)"
-                ></i
-              ></a>
-            </div>
-          </div>
-        </div>
-
-        <div class="swiper-slide card">
-          <img
-            src="{% static 'images_folder/evfuilds.svg' %}"
-            alt="EV Fluids"
-            class="card-image"
-          />
-          <div class="card-content">
-            <div class="card-text">
-              <h2 class="card-title">EV Fluids</h2>
-              <p class="card-description">
-                There are many variants of passages of engineer
-              </p>
-            </div>
-            <div class="card-button-container">
-              <a href="#" class="card-button"
-                ><i
-                  class="fa-solid fa-arrow-up"
-                  style="transform: rotate(45deg)"
-                ></i
-              ></a>
-            </div>
-          </div>
-        </div>
-
-        <div class="swiper-slide card">
-          <img
-            src="{% static 'images_folder/evfuilds.svg' %}"
-            alt="Hydraulic Oils"
-            class="card-image"
-          />
-          <div class="card-content">
-            <div class="card-text">
-              <h2 class="card-title">Hydraulic Oils</h2>
-              <p class="card-description">
-                High-performance hydraulic solutions
-              </p>
-            </div>
-            <div class="card-button-container">
-              <a href="#" class="card-button"
-                ><i
-                  class="fa-solid fa-arrow-up"
-                  style="transform: rotate(45deg)"
-                ></i
-              ></a>
-            </div>
-          </div>
-        </div>
-        <div class="swiper-slide card">
-          <img
-            src="{% static 'images_folder/engine-oils.svg' %}"
-            alt="Gear Oils"
-            class="card-image"
-          />
-          <div class="card-content">
-            <div class="card-text">
-              <h2 class="card-title">Gear Oils</h2>
-              <p class="card-description">Protection for gear systems</p>
-            </div>
-            <div class="card-button-container">
-              <a href="#" class="card-button"
-                ><i
-                  class="fa-solid fa-arrow-up"
-                  style="transform: rotate(45deg)"
-                ></i
-              ></a>
-            </div>
-          </div>
-        </div>
-
-        <div class="swiper-slide card">
-          <img
-            src="{% static 'images_folder/engine-oils.svg' %}"
-            alt="Coolants"
-            class="card-image"
-          />
-          <div class="card-content">
-            <div class="card-text">
-              <h2 class="card-title">Coolants</h2>
-              <p class="card-description">Engine cooling and efficiency</p>
-            </div>
-            <div class="card-button-container">
-              <a href="#" class="card-button"
-                ><i
-                  class="fa-solid fa-arrow-up"
-                  style="transform: rotate(45deg)"
-                ></i
-              ></a>
-            </div>
-          </div>
-        </div>
+        {% endfor %}
       </div>
     </div>
   </div>
@@ -339,10 +230,10 @@
               href="{% url 'news:news_detail' large_card_news.id %}"
               class="read-more"
             >
-              Read More
+              {% trans "Read More" %}
               <i class="fas fa-arrow-right-long read-more-icon"></i>
             </a>
-            <div class="copy-message">Copied!</div>
+            <div class="copy-message">{% trans "Copied!" %}</div>
           </div>
         </div>
         {% endif %} {% for news in small_cards_news %}
@@ -367,7 +258,7 @@
                   onclick="copyToClipboard(this)"
                 >
                   <i class="fas fa-share-alt share-icon"></i>
-                  Share
+                  {% trans "Share" %}
                 </div>
               </div>
             </div>
@@ -376,10 +267,10 @@
               {{ news.description|truncatewords:15 }}
             </p>
             <a href="{% url 'news:news_detail' news.id %}" class="read-more">
-              Read More
+              {% trans "Read More" %}
               <i class="fas fa-arrow-right-long read-more-icon"></i>
             </a>
-            <div class="copy-message">Copied!</div>
+            <div class="copy-message">{% trans "Copied!" %}</div>
           </div>
         </div>
         {% endfor %}
@@ -446,16 +337,17 @@
   <section class="section-container cross-reference">
     <div>
       <div class="cross-reference-header">
-        <p class="section-subtitle">CROSS REFERENCE</p>
+        <p class="section-subtitle">{% trans "CROSS REFERENCE" %}</p>
         <h2 class="section-title">
-          Find equivalent products by brand with our oil cross-reference tool
+          {% blocktrans %} Find equivalent products by brand with our oil
+          cross-reference tool{% endblocktrans %}
         </h2>
       </div>
       <div class="cross-reference-content">
         <div class="dropdown">
-          <h3>Brand</h3>
+          <h3>{% trans "Brand" %}</h3>
           <button class="dropdown-toggle">
-            <p>Select a brand</p>
+            <p>{% trans "Select a brand" %}</p>
             <i class="fa-solid fa-chevron-down"></i>
           </button>
           <ul class="dropdown-menu">
@@ -469,9 +361,9 @@
           </ul>
         </div>
         <div class="dropdown">
-          <h3>Product Group</h3>
+          <h3>{% trans "Product Group" %}</h3>
           <button class="dropdown-toggle">
-            <p>Select a product group</p>
+            <p>{% trans "Select a product group" %}</p>
             <i class="fa-solid fa-chevron-down"></i>
           </button>
           <ul class="dropdown-menu">
@@ -482,9 +374,9 @@
           </ul>
         </div>
         <div class="dropdown">
-          <h3>Product</h3>
+          <h3>{% trans "Product" %}</h3>
           <button class="dropdown-toggle">
-            <p>Select a product</p>
+            <p>{% trans "Select a product" %}</p>
             <i class="fa-solid fa-chevron-down"></i>
           </button>
           <ul class="dropdown-menu">
@@ -495,7 +387,8 @@
           </ul>
         </div>
         <button>
-          <span>Search</span><i class="fa-solid fa-magnifying-glass"></i>
+          <span>{% trans "Search" %}</span
+          ><i class="fa-solid fa-magnifying-glass"></i>
         </button>
       </div>
     </div>
@@ -552,97 +445,33 @@
   <section class="section-oem section-container">
     <div class="oem-container">
       <div class="oem-content">
-        <span class="section-subtitle">OEM APPROVALS & LICENSES</span>
-        <h2 class="section-title">Where Trust Meets Proven Results</h2>
+        <span class="section-subtitle"
+          >{% trans "OEM APPROVALS & LICENSES" %}</span
+        >
+        <h2 class="section-title">
+          {% trans "Where Trust Meets Proven Results" %}
+        </h2>
         <p class="section-description">
-          Over the years, we've had the privilege of earning the trust of
-          countless individuals and organizations. Their continued confidence in
-          our expertise, dedication, and values is what drives us forward.
+          {% blocktrans %} Over the years, we've had the privilege of earning
+          the trust of countless individuals and organizations. Their continued
+          confidence in our expertise, dedication, and values is what drives us
+          forward. {% endblocktrans %}
         </p>
       </div>
 
       <div class="brand-logos">
+        {% for car_logo in car_logos %}``
         <div class="brand-logo-container">
           <div class="brand-logo">
             <img
-              src="{% static 'images/car-brand1.png' %}"
+              src="{{ car_logo.image.url }}"
               alt="Mercedes-Benz"
               class="logo-img"
               data-brand="mercedes"
             />
           </div>
         </div>
-        <div class="brand-logo-container">
-          <div class="brand-logo">
-            <img
-              src="{% static 'images/car-brand2.png' %}"
-              alt="BMW"
-              class="logo-img"
-              data-brand="bmw"
-            />
-          </div>
-        </div>
-        <div class="brand-logo-container">
-          <div class="brand-logo">
-            <img
-              src="{% static 'images/car-brand3.png' %}"
-              alt="Volkswagen"
-              class="logo-img"
-              data-brand="vw"
-            />
-          </div>
-        </div>
-        <div class="brand-logo-container">
-          <div class="brand-logo">
-            <img
-              src="{% static 'images/car-brand4.png' %}"
-              alt="Volkswagen"
-              class="logo-img"
-              data-brand="vw"
-            />
-          </div>
-        </div>
-        <div class="brand-logo-container">
-          <div class="brand-logo">
-            <img
-              src="{% static 'images/car-brand5.png' %}"
-              alt="Volkswagen"
-              class="logo-img"
-              data-brand="vw"
-            />
-          </div>
-        </div>
-        <div class="brand-logo-container">
-          <div class="brand-logo">
-            <img
-              src="{% static 'images/car-brand6.png' %}"
-              alt="Volkswagen"
-              class="logo-img"
-              data-brand="vw"
-            />
-          </div>
-        </div>
-        <div class="brand-logo-container">
-          <div class="brand-logo">
-            <img
-              src="{% static 'images/car-brand7.png' %}"
-              alt="Volkswagen"
-              class="logo-img"
-              data-brand="vw"
-            />
-          </div>
-        </div>
-        ...
-        <div class="brand-logo-container">
-          <div class="brand-logo">
-            <img
-              src="{% static 'images/image 71.svg' %}"
-              alt="Ford"
-              class="logo-img"
-              data-brand="ford"
-            />
-          </div>
-        </div>
+        {% endfor %}
       </div>
     </div>
   </section>
@@ -652,15 +481,9 @@
     <div id="wrapper">
       <div id="carousel">
         <div id="content">
-          <img src="{% static 'images_folder/chevron.svg' %}" class="item" />
-          <img src="{% static 'images_folder/exxonmobil.svg' %}" class="item" />
-          <img src="{% static 'images_folder/sasol.svg' %}" class="item" />
-          <img src="{% static 'images_folder/evonik.svg' %}" class="item" />
-          <img src="{% static 'images_folder/eni.svg' %}" class="item" />
-          <img src="{% static 'images_folder/exxonmobil.svg' %}" class="item" />
-          <img src="{% static 'images_folder/evonik.svg' %}" class="item" />
-          <img src="{% static 'images_folder/sasol.svg' %}" class="item" />
-          <img src="{% static 'images_folder/exxonmobil.svg' %}" class="item" />
+          {% for partner_logo in partner_logos %}
+          <img src="{{ partner_logo.image.url }}" class="item" />
+          {% endfor %}
         </div>
       </div>
       <button id="prev">
@@ -704,13 +527,15 @@
               <div class="offer-icon">
                 <img src="{% static 'images/Group.svg' %}" alt="Icon" />
               </div>
-              <h2>Get our best offers quickly</h2>
+              <h2>{% trans "Get our best offers quickly" %}</h2>
               <p>
-                Lorem Ipsum is simply dummy text the printing and typese<br />
+                {% blocktrans %} Lorem Ipsum is simply dummy text the printing
+                and typese<br />
                 Lorem Ipsum has been the industry's standard dummy
+                {%endblocktrans %}
               </p>
-              <a href="#" class="quote-btn"
-                >Get a quote
+              <a href="/contact" class="quote-btn"
+                >{% trans "Get a quote" %}
                 <i class="fa-solid fa-arrow-right-long"></i>
               </a>
             </div>
@@ -721,19 +546,19 @@
           <div class="offer-right-bottom">
             <div class="stat-box">
               <h3>8</h3>
-              <p>Years Of<br />Experience</p>
+              <p>{% trans "Years Of<br />Experience" %}</p>
             </div>
             <div class="stat-box">
               <h3>1,5k</h3>
-              <p>Partners<br />Worldwide</p>
+              <p>{% trans "Partners<br />Worldwide" %}</p>
             </div>
             <div class="stat-box">
               <h3>82</h3>
-              <p>Unique<br />Products</p>
+              <p>{% trans "Unique<br />Products" %}</p>
             </div>
             <div class="stat-box">
               <h3>8m</h3>
-              <p>Product<br />Sales</p>
+              <p>{% trans "Product<br />Sales" %}</p>
             </div>
           </div>
         </div>
@@ -745,15 +570,21 @@
   <section class="e-mobility-section section-container">
     <div class="e-mobility-container">
       <div class="e-mobility-content">
-        <h2 class="section-title">POWERING THE FUTURE OF E-MOBILITY</h2>
+        <h2 class="section-title">
+          {% trans "POWERING THE FUTURE OF E-MOBILITY" %}
+        </h2>
         <p>
-          Our EV fluids are engineered to meet the evolving demands of electric
-          mobility — delivering outstanding cooling, high-voltage insulation,
-          and long-term durability. Drive the future with Tomoil's
-          next-generation fluid solutions.
+          {% blocktrans %} Our EV fluids are engineered to meet the evolving
+          demands of electric mobility — delivering outstanding cooling,
+          high-voltage insulation, and long-term durability. Drive the future
+          with Tomoil's next-generation fluid solutions. {% endblocktrans %}
         </p>
 
-        <a href="#" class="explore-btn">Explore EV Fluids</a>
+        <a
+          href="{% url 'products:products_list' %}?product_range=ev-fluids"
+          class="explore-btn"
+          >{% trans "Explore EV Fluids" %}</a
+        >
       </div>
       <div class="e-mobility-image">
         <img
@@ -769,126 +600,25 @@
   <section class="comments-section container">
     <div class="swiper commentSwiper">
       <div class="swiper-wrapper section-case-studies">
+        {% for review in reviews %}
         <div class="swiper-slide">
           <div>
             <div>
               <img src="{% static 'images_folder/vector.svg' %}" alt="" />
             </div>
-            <p>
-              Tomoil has completely changed the way we manage our fleet. Fuel
-              efficiency has improved, and their service is always reliable.
-              Tomoil has completely changed the way we manage our fleet. Fuel
-              efficiency has improved, and their service is always reliable.
-            </p>
+            <p>{{review.review|truncatewords:80}}</p>
           </div>
           <div>
             <div>
-              <img
-                src="{% static 'images_folder/commentPerson.svg' %}"
-                alt=""
-              />
+              <img src="{{ review.image.url}}" alt="" />
             </div>
             <div>
-              <h5>Ali Mammadov</h5>
-              <p>Logistics Manager</p>
+              <h5>{{ review.name }}</h5>
+              <p>{{ review.position }}</p>
             </div>
           </div>
         </div>
-        <div class="swiper-slide">
-          <div>
-            <div>
-              <img src=" {% static 'images_folder/vector.svg' %}" alt="" />
-            </div>
-            <p>
-              We've been using Tomoil for over a year now. The quality is
-              top-notch, and customer support is always there when we need it.
-            </p>
-          </div>
-          <div>
-            <div>
-              <img
-                src="{% static 'images_folder/commentPerson2.svg' %}"
-                alt=""
-              />
-            </div>
-            <div>
-              <h5>Leyla Ramizgizi</h5>
-              <p>Operations Director</p>
-            </div>
-          </div>
-        </div>
-        <div class="swiper-slide">
-          <div>
-            <div>
-              <img src="{% static 'images_folder/vector.svg' %}" alt="" />
-            </div>
-            <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit.
-              Recusandae, ad totam ipsam similique aut quam possimus. Eos
-              debitis cupiditate minus nesciunt illum quaerat autem ad eaque
-              libero, quia maxime temporibus.
-            </p>
-          </div>
-          <div>
-            <div>
-              <img
-                src="{% static 'images_folder/commentPerson.svg' %}"
-                alt=""
-              />
-            </div>
-            <div>
-              <h5>Ali Mammadov</h5>
-              <p>Logistics Manager</p>
-            </div>
-          </div>
-        </div>
-
-        <div class="swiper-slide">
-          <div>
-            <div>
-              <img src="{% static 'images_folder/vector.svg' %}" alt="" />
-            </div>
-            <p>
-              Tomoil has completely changed the way we manage our fleet. Fuel
-              efficiency has improved, and their service is always reliable.
-            </p>
-          </div>
-          <div>
-            <div>
-              <img
-                src="{% static 'images_folder/commentPerson.svg' %}"
-                alt=""
-              />
-            </div>
-            <div>
-              <h5>Ali Mammadov</h5>
-              <p>Logistics Manager</p>
-            </div>
-          </div>
-        </div>
-        <div class="swiper-slide">
-          <div>
-            <div>
-              <img src="{% static 'images_folder/vector.svg' %}" alt="" />
-            </div>
-            <p>
-              Tomoil has completely changed the way we manage our fleet. Fuel
-              efficiency has improved, and their service is always reliable.
-            </p>
-          </div>
-          <div>
-            <div>
-              <img
-                src="{% static 'images_folder/commentPerson.svg' %}"
-                alt=""
-              />
-            </div>
-            <div>
-              <h5>Ali Mammadov</h5>
-              <p>Logistics Manager</p>
-            </div>
-          </div>
-        </div>
+        {% endfor %}
       </div>
       <div class="swiper-button-prev">
         <i class="fa-solid fa-arrow-left"></i>

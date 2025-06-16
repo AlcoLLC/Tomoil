@@ -1,5 +1,6 @@
 from django.contrib import admin
-from .models import Contact, HomeSwiper
+from .models import Contact, HomeSwiper, CarLogo, PartnerLogo, TomoilReview
+from modeltranslation.admin import TranslationAdmin
 
 
 @admin.register(Contact)
@@ -35,3 +36,32 @@ class HomeSwiperAdmin(admin.ModelAdmin):
         css = {
             'all': ('admin/css/custom_admin.css',)
         }
+
+@admin.register(CarLogo)
+class CarLogoAdmin(admin.ModelAdmin):
+    list_display = ( 'image', 'order', 'is_active')
+    list_filter = ('is_active',)
+    list_editable = ('order', 'is_active')
+
+
+@admin.register(PartnerLogo)
+class PartnerLogoAdmin(admin.ModelAdmin):
+    list_display = ( 'image', 'order', 'is_active')
+    list_filter = ('is_active',)
+    list_editable = ('order', 'is_active')
+
+@admin.register(TomoilReview)
+class TomoilReviewAdmin(admin.ModelAdmin):
+    list_display = ('name', 'created_at', 'is_active')
+    list_filter = ('is_active',)
+    search_fields = ('name', 'review')
+    ordering = ('-created_at',)
+    
+    fieldsets = (
+        ('Basic Information', {
+            'fields': ('name', 'image', 'is_active', 'position')
+        }),
+        ('Contents', {
+            'fields': ('review',)
+        }),
+    )
