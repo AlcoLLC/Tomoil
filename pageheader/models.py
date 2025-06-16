@@ -2,8 +2,6 @@ from django.db import models
 
 
 class PageHeader(models.Model):
-    """Model for storing page header information that can be managed from admin."""
-
     page_key = models.CharField(
         max_length=100,
         unique=True,
@@ -39,3 +37,4 @@ class PageHeader(models.Model):
     class Meta:
         verbose_name = "Page Header"
         verbose_name_plural = "Page Headers"
+

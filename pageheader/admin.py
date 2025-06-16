@@ -1,6 +1,6 @@
 from django.contrib import admin
 from .models import PageHeader
-from modeltranslation.admin import TranslationAdmin, TranslationTabularInline, TranslationStackedInline
+from modeltranslation.admin import TranslationAdmin
 
 @admin.register(PageHeader)
 class PageHeaderAdmin(TranslationAdmin):

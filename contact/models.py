@@ -73,3 +73,73 @@ class HomeSwiper(models.Model):
         ordering = ['order']
         verbose_name = "Home Swiper Image"
         verbose_name_plural = "Home Swiper Images"
+
+class CarLogo(models.Model):
+    image = models.ImageField(
+        upload_to='car_logos/',
+        help_text="Image of the car logo"
+    )
+    is_active = models.BooleanField(
+        default=True,
+        help_text="Whether this car logo is active and should be displayed"
+    )
+    order = models.PositiveIntegerField(
+        default=0,
+        help_text="Order of the car logo in the display"
+    )
+    
+    def __str__(self):
+        return f"Car Logo - {'Active' if self.is_active else 'Inactive'}"
+
+    class Meta:
+        verbose_name = "Car Logo"
+        verbose_name_plural = "Car Logos"
+
+class PartnerLogo(models.Model):
+    image = models.ImageField(
+        upload_to='partner_logos/',
+        help_text="Image of the partner's logo"
+    )
+    is_active = models.BooleanField(
+        default=True,
+        help_text="Whether this partner's logo is active and should be displayed"
+    )
+    order = models.PositiveIntegerField(
+        default=0,
+        help_text="Order of the partner's logo in the display"
+    )
+    
+    def __str__(self):
+        return f"Partner Logo - {'Active' if self.is_active else 'Inactive'}"
+
+    class Meta:
+        verbose_name = "Partner Logo"
+        verbose_name_plural = "Partner Logos"
+
+class TomoilReview(models.Model):
+    name = models.CharField(
+        max_length=100,
+        help_text="Name of the person giving the review"
+    )
+    position = models.CharField(
+        max_length=100,
+        help_text="Position of the person giving the review"
+    )
+    image = models.ImageField(
+        upload_to='tomoil_reviews/',
+        help_text="Image of the person giving the review"
+    )
+    review = models.TextField(
+        help_text="Review text"
+    )
+    is_active = models.BooleanField(
+        default=True,
+        help_text="Whether this review is active and should be displayed"
+    )
+    created_at = models.DateTimeField(
+        default=timezone.now,
+        help_text="Date and time when the review was created"
+    )
+
+    def __str__(self):
+        return f"{self.name}"

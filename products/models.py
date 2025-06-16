@@ -4,9 +4,12 @@ from django.utils.text import slugify
 
 class ProductRange(models.Model):
     name = models.CharField(max_length=100, unique=True)
+    image = models.ImageField(upload_to='product_ranges/', blank=True, null=True)
     slug = models.SlugField(max_length=120, unique=True, blank=True)
     is_active = models.BooleanField(default=True)
     order = models.PositiveIntegerField(default=0, verbose_name="Order")
+    description = models.TextField(blank=True, null=True, verbose_name="Description")
+    is_home = models.BooleanField(default=False, verbose_name="Show on Home Page")
     
     def save(self, *args, **kwargs):
         if not self.slug:
