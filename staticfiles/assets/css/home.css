@@ -2,18 +2,22 @@
 @import url("https://fonts.googleapis.com/css2?family=Unbounded:wght@200..900&display=swap");
 
 @font-face {
-  font-family: Atyp Medium;
-  src: url("/static/assets/font/AtypTextMedium.otf") format("opentype");
+  font-family: "Atyp Medium";
+  src: url("/static/assets/font/AtypTextMedium.woff2") format("woff2");
+  font-display: swap;
 }
 
 @font-face {
-  font-family: Atyp Regular;
-  src: url("/static/assets/font/AtypTextRegular.otf") format("opentype");
+  font-family: "Atyp Regular";
+  src: url("/static/assets/font/AtypTextRegular.woff2") format("woff2");
+  font-display: swap;
+
 }
 
 @font-face {
   font-family: Atyp Bold;
-  src: url("/static/assets/font/AtypTextBold.otf") format("opentype");
+  src: url("/static/assets/font/AtypTextBold.woff2") format("woff2");
+  font-display: swap;
 }
 
 * {
@@ -22,7 +26,7 @@
   box-sizing: border-box;
   text-decoration: none;
   list-style: none;
-  font-family: Atyp Medium;
+  font-family: "Atyp Medium", sans-serif;
 }
 
 .container {
@@ -50,7 +54,7 @@ body {
 }
 
 .section-title {
-  font-family: Atyp Medium;
+  font-family: "Atyp Medium", sans-serif;
   color: #223160;
   font-size: 40px;
   line-height: 50px;
@@ -58,7 +62,7 @@ body {
 }
 
 .section-description {
-  font-family: Atyp Regular;
+    font-family: "Atyp Regular", sans-serif;
   font-weight: 400;
   font-size: 16px;
   line-height: 1.5;
@@ -560,11 +564,11 @@ nav {
 }
 
 .navbar .nav-section ul li a.active,
-.navbar .nav-section ul li.active > a {
+.navbar .nav-section ul li.active>a {
   color: #e22131 !important;
 }
 
-.navbar .nav-section ul li.dropdown.active > a {
+.navbar .nav-section ul li.dropdown.active>a {
   color: #e22131 !important;
 }
 
@@ -656,7 +660,7 @@ nav {
 
 .home-header .slide-content p {
   max-width: 70%;
-  font-family: Atyp Regular;
+    font-family: "Atyp Regular", sans-serif;
   font-weight: 400;
   font-size: 16px;
   line-height: 24px;
@@ -749,7 +753,7 @@ nav {
   margin: 15px 0;
 }
 
-.market-segments > div:first-of-type {
+.market-segments>div:first-of-type {
   display: flex;
   justify-content: space-between;
   margin-bottom: 20px;
@@ -964,7 +968,7 @@ nav {
   padding-top: 50px;
 }
 
-.cross-reference > div {
+.cross-reference>div {
   width: 100%;
   height: 100%;
   background-color: white !important;
@@ -1024,7 +1028,7 @@ nav {
   cursor: pointer;
 }
 
-.cross-reference .cross-reference-content > button {
+.cross-reference .cross-reference-content>button {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1039,7 +1043,7 @@ nav {
   transition: all 0.3s ease;
 }
 
-.cross-reference .cross-reference-content > button span {
+.cross-reference .cross-reference-content>button span {
   font-size: 14px;
   color: white;
   display: none;
@@ -1058,7 +1062,7 @@ nav {
   color: #223160;
 }
 
-.cross-reference .cross-reference-content > button i {
+.cross-reference .cross-reference-content>button i {
   font-size: 16px;
 }
 
@@ -1201,21 +1205,21 @@ nav {
   padding: 30px;
 }
 
-.comments-section .swiper-slide > div:first-of-type {
+.comments-section .swiper-slide>div:first-of-type {
   display: flex;
   flex-direction: column;
 }
 
-.comments-section .swiper-slide > div:first-of-type img {
+.comments-section .swiper-slide>div:first-of-type img {
   margin-bottom: 15px;
 }
 
-.comments-section .swiper-slide > div > img {
+.comments-section .swiper-slide>div>img {
   width: 53px;
   height: 30px;
 }
 
-.comments-section .swiper-slide > div:first-of-type > p {
+.comments-section .swiper-slide>div:first-of-type>p {
   font-family: "Plus Jakarta Sans", sans-serif;
   font-weight: 400;
   font-size: 18px;
@@ -1224,13 +1228,13 @@ nav {
   color: #727272;
 }
 
-.comments-section .swiper-slide > div > div > img {
+.comments-section .swiper-slide>div>div>img {
   width: 50px;
   height: 50px;
   border-radius: 999px;
 }
 
-.comments-section .swiper-slide > div > div > h5 {
+.comments-section .swiper-slide>div>div>h5 {
   font-weight: 400;
   font-size: 22px;
   line-height: 30px;
@@ -1238,7 +1242,7 @@ nav {
   color: #223160;
 }
 
-.comments-section .swiper-slide > div > div > p {
+.comments-section .swiper-slide>div>div>p {
   font-weight: 400;
   font-size: 16px;
   line-height: 22px;
@@ -1246,14 +1250,14 @@ nav {
   color: #223160;
 }
 
-.swiper-horizontal > .swiper-pagination-bullets,
+.swiper-horizontal>.swiper-pagination-bullets,
 .swiper-pagination-bullets.swiper-pagination-horizontal,
 .swiper-pagination-custom,
 .swiper-pagination-fraction {
   display: none !important;
 }
 
-.comments-section .swiper-slide > div:last-of-type {
+.comments-section .swiper-slide>div:last-of-type {
   display: flex;
   gap: 15px;
 }
@@ -1324,7 +1328,7 @@ nav {
   height: auto;
 }
 
-.cross-reference .cross-reference-content > button:hover,
+.cross-reference .cross-reference-content>button:hover,
 .home-header .btn-learn:hover,
 .market-segments ul li div:hover,
 .button-style:hover {
@@ -1413,7 +1417,7 @@ nav {
   letter-spacing: 0%;
   text-align: center;
   color: #223160;
-  font-family: Atyp Medium;
+  font-family: "Atyp Medium", sans-serif;
 }
 
 .button-style {
@@ -1449,6 +1453,7 @@ nav {
 /* /////////////////////////////////////////////////// */
 
 @keyframes pulse {
+
   0%,
   100% {
     stroke-width: 2px;
@@ -1482,7 +1487,7 @@ nav {
 .fm-tooltip-comment {
   color: #223160 !important;
   text-align: center !important;
-  font-family: Atyp Regular !important;
+  font-family: "Atyp Medium", sans-serif !important;
   font-weight: 400 !important;
   font-size: 16px !important;
   line-height: 1.5 !important;
