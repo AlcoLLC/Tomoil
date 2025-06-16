@@ -11,7 +11,7 @@
 <section class="products-section section-container">
     <button class="filter-mobile" id="filterMobileBtn">
         <img src="{% static 'images/filter-icon.svg' %}" alt="">
-        Filter</button>
+        {% trans 'Filter and Sort' %}</button>
     <div class="products-container">
         <form id="filterForm" method="GET" action="{% url 'products:products_list' %}">
             <div class="filter-products">
@@ -22,8 +22,8 @@
                     <div class="checkbox-area">
                         {% for product_range in product_ranges %}
                         <label class="checkbox-group">
-                            <input type="checkbox" name="product_range" value="{{ product_range.slug }}" 
-                                   {% if product_range.slug in selected_product_ranges %}checked{% endif %} />
+                            <input type="checkbox" name="product_range" value="{{ product_range.slug }}"
+                            {% if product_range.slug in selected_product_ranges %}checked{% endif %} />
                             <span class="checkbox-label">{{ product_range.name }}</span>
                         </label>
                         {% endfor %}
@@ -38,21 +38,23 @@
                 <div class="filter-section">
                     <h3>{% trans 'Application area' %}</h3>
                     <div class="application-area">
-                         {% for application_area in application_areas %}
-                         <button type="button" class="icon-button {% if application_area.slug in selected_application_areas %}active{% endif %}" 
-                                data-type="app-{{ application_area.slug }}" onclick="toggleApplicationArea('{{ application_area.slug }}')">
-                                {% if application_area.icon %}
-                                    <img src="{{ application_area.icon.url }}" alt="{{ application_area.name }}">
-                                {% else %}
-                                    <img src="{% static 'images/download-icon-dark.svg' %}" alt="{{ application_area.name }}">
-                                {% endif %}
-                         </button>
+                        {% for application_area in application_areas %}
+                        <button type="button"
+                            class="icon-button {% if application_area.slug in selected_application_areas %}active{% endif %}"
+                            data-type="app-{{ application_area.slug }}"
+                            onclick="toggleApplicationArea('{{ application_area.slug }}')">
+                            {% if application_area.icon %}
+                            <img src="{{ application_area.icon.url }}" alt="{{ application_area.name }}">
+                            {% else %}
+                            <img src="{% static 'images/download-icon-dark.svg' %}" alt="{{ application_area.name }}">
+                            {% endif %}
+                        </button>
                         {% endfor %}
-                       {% for application_area in application_areas %}
-                            <input type="checkbox" name="application_area" value="{{ application_area.slug }}" 
-                                   {% if application_area.slug in selected_application_areas %}checked{% endif %}
-                                   style="display: none;" id="app-{{ application_area.slug }}" />
-                            {% endfor %}
+                        {% for application_area in application_areas %}
+                        <input type="checkbox" name="application_area" value="{{ application_area.slug }}"
+                        {% if application_area.slug in selected_application_areas %}checked{% endif %}
+                            style="display: none;" id="app-{{ application_area.slug }}" />
+                        {% endfor %}
                     </div>
                     <div class="filter-show-more">
                         <a href="#" class="show-more">
@@ -63,22 +65,22 @@
 
                 <div class="filter-section">
                     <h3>{% trans 'Product Specifications' %}</h3>
-                    {% comment %} 
+                    {% comment %}
                     <div class="search-bar">
-                        <input type="text" name="search" placeholder="Search" class="search-input" 
-                                   value="{{ search_query }}" />
-                            <button type="button" class="search-button" onclick="applyFilters()">
-                                <img src="{% static 'images/search-icon.svg' %}" alt="Search" />
-                            </button>
+                        <input type="text" name="search" placeholder="Search" class="search-input"
+                            value="{{ search_query }}" />
+                        <button type="button" class="search-button" onclick="applyFilters()">
+                            <img src="{% static 'images/search-icon.svg' %}" alt="Search" />
+                        </button>
                     </div> {% endcomment %}
                     <div class="checkbox-area">
-                         {% for specification in specifications %}
-                            <label class="checkbox-group">
-                                <input type="checkbox" name="specification" value="{{ specification.slug }}" 
-                                       {% if specification.slug in selected_specifications %}checked{% endif %} />
-                                <span class="checkbox-label">{{ specification.name }}</span>
-                            </label>
-                            {% endfor %}
+                        {% for specification in specifications %}
+                        <label class="checkbox-group">
+                            <input type="checkbox" name="specification" value="{{ specification.slug }}"
+                            {% if specification.slug in selected_specifications %}checked{% endif %} />
+                            <span class="checkbox-label">{{ specification.name }}</span>
+                        </label>
+                        {% endfor %}
                     </div>
                     <div class="filter-show-more">
                         <a href="#" class="show-more">
@@ -90,13 +92,13 @@
                 <div class="filter-section">
                     <h3>{% trans 'Viscosity' %}</h3>
                     <div class="checkbox-area">
-                         {% for viscosity in viscosities %}
-                            <label class="checkbox-group">
-                                <input type="checkbox" name="viscosity" value="{{ viscosity.slug }}" 
-                                       {% if viscosity.slug in selected_viscosities %}checked{% endif %} />
-                                <span class="checkbox-label">{{ viscosity.name }}</span>
-                            </label>
-                            {% endfor %}
+                        {% for viscosity in viscosities %}
+                        <label class="checkbox-group">
+                            <input type="checkbox" name="viscosity" value="{{ viscosity.slug }}"
+                             {% if viscosity.slug in selected_viscosities %}checked{% endif %} />
+                            <span class="checkbox-label">{{ viscosity.name }}</span>
+                        </label>
+                        {% endfor %}
                     </div>
                     <div class="filter-show-more">
                         <a href="#" class="show-more">
@@ -108,13 +110,13 @@
                 <div class="filter-section">
                     <h3>{% trans 'Composition' %}</h3>
                     <div class="checkbox-area">
-                       {% for composition in compositions %}
-                            <label class="checkbox-group">
-                                <input type="checkbox" name="composition" value="{{ composition.slug }}" 
-                                       {% if composition.slug in selected_compositions %}checked{% endif %} />
-                                <span class="checkbox-label">{{ composition.name }}</span>
-                            </label>
-                            {% endfor %}
+                        {% for composition in compositions %}
+                        <label class="checkbox-group">
+                            <input type="checkbox" name="composition" value="{{ composition.slug }}"
+                            {% if composition.slug in selected_compositions %}checked{% endif %} />
+                            <span class="checkbox-label">{{ composition.name }}</span>
+                        </label>
+                        {% endfor %}
                     </div>
                     <div class="filter-show-more">
                         <a href="#" class="show-more">
@@ -127,16 +129,17 @@
                     <h3>{% trans 'Pack sizes' %}</h3>
                     <div class="pack-size-area">
                         {% for pack_size in pack_sizes %}
-                            <button type="button" class="icon-button {% if pack_size.slug in selected_pack_sizes %}active{% endif %}" 
-                                    data-type="size-{{ pack_size.slug }}" onclick="togglePackSize('{{ pack_size.slug }}')">
-                                {{ pack_size.size|floatformat:0 }}
-                            </button>
-                            {% endfor %}
-                            {% for pack_size in pack_sizes %}
-                            <input type="checkbox" name="pack_size" value="{{ pack_size.slug }}" 
-                                   {% if pack_size.slug in selected_pack_sizes %}checked{% endif %}
-                                   style="display: none;" id="size-{{ pack_size.slug }}" />
-                            {% endfor %}
+                        <button type="button"
+                            class="icon-button {% if pack_size.slug in selected_pack_sizes %}active{% endif %}"
+                            data-type="size-{{ pack_size.slug }}" onclick="togglePackSize('{{ pack_size.slug }}')">
+                            {{ pack_size.size|floatformat:0 }}
+                        </button>
+                        {% endfor %}
+                        {% for pack_size in pack_sizes %}
+                        <input type="checkbox" name="pack_size" value="{{ pack_size.slug }}"
+                        {% if pack_size.slug in selected_pack_sizes %}checked{% endif %} style="display: none;"
+                            id="size-{{ pack_size.slug }}" />
+                        {% endfor %}
                     </div>
                     <div class="filter-show-more">
                         <a href="#" class="show-more">
@@ -144,22 +147,23 @@
                         </a>
                     </div>
                 </div>
-                <button type="button" class="filter-results-button" id="filterResultsBtn" onclick="applyFilters()">{% trans 'View Results' %}</button>
+                <button type="button" class="filter-results-button" id="filterResultsBtn" onclick="applyFilters()">
+                    {% trans 'View Results' %}</button>
             </div>
         </form>
 
         <div class="products-list">
-             {% for product in products %}
+            {% for product in products %}
             <div class="product-card">
                 <div class="product-type">{{ product.product_range.name|upper }}</div>
-                 <a href="{% url 'products:products_detail_view' product.slug %}" class="product-image">
+                <a href="{% url 'products:products_detail_view' product.slug %}" class="product-image">
                     {% if product.image %}
-                        <img src="{{ product.image.url }}" alt="{{ product.title }}">
+                    <img src="{{ product.image.url }}" alt="{{ product.title }}">
                     {% else %}
-                        <img src="{% static 'images/placeholder-product.jpg' %}" alt="{{ product.title }}">
+                    <img src="{% static 'images/placeholder-product.jpg' %}" alt="{{ product.title }}">
                     {% endif %}
-                 </a>
-                 <div class="product-info">
+                </a>
+                <div class="product-info">
                     <div>
                         <h2 class="product-title">{{ product.title }}</h2>
                         <p class="product-description">{{ product.description|truncatechars:50 }}</p>
@@ -171,44 +175,498 @@
                     </a>
                 </div>
             </div>
-              {% empty %}
+            {% empty %}
             <div class="no-products">
                 <p>{% trans 'No products found matching your criteria.' %}</p>
             </div>
             {% endfor %}
         </div>
 
-       
+
     </div>
-     <!-- Pagination -->
-        <div class="pagination-container">
-            <p class="pagination-info">
-                {% trans 'Displaying' %} {{ products.start_index }}–{{ products.end_index }} {% trans 'of' %} {{ total_results }} {% trans 'results' %}
-            </p>
-            <div class="pagination">
-                <!-- Previous Button -->
-                {% if products.has_previous %}
-                    <a href="?{% for key, values in request.GET.lists %}{% if key != 'page' %}{% for value in values %}{{ key }}={{ value|urlencode }}&{% endfor %}{% endif %}{% endfor %}page={{ products.previous_page_number }}" class="page-btn">
-                        <i class="fas fa-chevron-left"></i>
-                    </a>
-                {% endif %}
-                
-                <!-- Page Numbers -->
-                {% for num in products.paginator.page_range %}
-                    {% if products.number == num %}
-                        <span class="page-btn active">{{ num }}</span>
-                    {% elif num > products.number|add:-3 and num < products.number|add:3 %}
-                        <a href="?{% for key, values in request.GET.lists %}{% if key != 'page' %}{% for value in values %}{{ key }}={{ value|urlencode }}&{% endfor %}{% endif %}{% endfor %}page={{ num }}" class="page-btn">{{ num }}</a>
-                    {% endif %}
-                {% endfor %}
-                
-                <!-- Next Button -->
-                {% if products.has_next %}
-                    <a href="?{% for key, values in request.GET.lists %}{% if key != 'page' %}{% for value in values %}{{ key }}={{ value|urlencode }}&{% endfor %}{% endif %}{% endfor %}page={{ products.next_page_number }}" class="page-btn">
-                        <i class="fas fa-chevron-right"></i>
-                    </a>
-                {% endif %}
+
+
+    <!-- Product Filter Modal -->
+    <div class="product-modal-overlay" id="productFilterModal">
+        <div class="product-modal-content">
+            <div class="product-modal-header">
+                <h2 class="product-modal-title"> {% trans 'FILTER AND SORT' %}</h2>
+                <button class="product-modal-close" id="productModalClose">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+
+            <div class="product-modal-body">
+                <form method="GET" id="modalFilterForm">
+                    <!-- Product Range Filter -->
+                    <div class="modal-filter-section">
+                        <div class="modal-filter-header" data-toggle="product-range">
+                            <div class="modal-filter-title"> {% trans 'Product Range' %}</div>
+                            <div class="modal-filter-icon">
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
+                        </div>
+                        <div class="modal-filter-content" id="modal-product-range">
+                            {% for product_range in product_ranges %}
+                            <label class="modal-checkbox-group">
+                                <input type="checkbox" name="product_range" value="{{ product_range.slug }}"
+                                {% if product_range.slug in selected_product_ranges %}checked{% endif %} />
+                                <span class="modal-checkbox-label">{{ product_range.name }}</span>
+                            </label>
+                            {% endfor %}
+                        </div>
+                    </div>
+
+                    <!-- Application Area Filter -->
+                    <div class="modal-filter-section">
+                        <div class="modal-filter-header" data-toggle="application-area">
+                            <div class="modal-filter-title">{% trans 'Application Area' %}</div>
+                            <div class="modal-filter-icon">
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
+                        </div>
+                        <div class="modal-filter-content" id="modal-application-area">
+                            <div class="modal-icon-grid">
+                                {% for application_area in application_areas %}
+                                <button type="button"
+                                    class="modal-icon-button {% if application_area.slug in selected_application_areas %}active{% endif %}"
+                                    data-type="modal-app-{{ application_area.slug }}"
+                                    onclick="toggleModalApplicationArea('{{ application_area.slug }}')">
+                                    {% if application_area.icon %}
+                                    <img src="{{ application_area.icon.url }}" alt="{{ application_area.name }}">
+                                    {% else %}
+                                    <i class="fas fa-car"></i>
+                                    {% endif %}
+                                </button>
+                                <input type="checkbox" name="application_area" value="{{ application_area.slug }}"
+                                {% if application_area.slug in selected_application_areas %}checked{% endif %}
+                                    style="display: none;" id="modal-app-{{ application_area.slug }}" />
+                                {% endfor %}
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <!-- Specifications Filter -->
+                    <div class="modal-filter-section">
+                        <div class="modal-filter-header" data-toggle="specifications">
+                            <div class="modal-filter-title">{% trans 'Specifications' %}</div>
+                            <div class="modal-filter-icon">
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
+                        </div>
+                        <div class="modal-filter-content" id="modal-specifications">
+                            <div class="modal-search-bar">
+                                <input type="text" placeholder="Search" class="modal-search-input" />
+                                <button type="button" class="modal-search-button">
+                                    <i class="fas fa-search"></i>
+                                </button>
+                            </div>
+                            {% for specification in specifications %}
+                            <label class="modal-checkbox-group">
+                                <input type="checkbox" name="specification" value="{{ specification.slug }}"
+                                {% if specification.slug in selected_specifications %}checked{% endif %} />
+                                <span class="modal-checkbox-label">{{ specification.name }}</span>
+                            </label>
+                            {% endfor %}
+
+                        </div>
+                    </div>
+
+                    <!-- Viscosity Filter -->
+                    <div class="modal-filter-section">
+                        <div class="modal-filter-header" data-toggle="viscosity">
+                            <div class="modal-filter-title">{% trans 'Viscosity' %}</div>
+                            <div class="modal-filter-icon">
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
+                        </div>
+                        <div class="modal-filter-content" id="modal-viscosity">
+                            {% for viscosity in viscosities %}
+                            <label class="modal-checkbox-group">
+                                <input type="checkbox" name="viscosity" value="{{ viscosity.slug }}"
+                                {% if viscosity.slug in selected_viscosities %}checked{% endif %} />
+                                <span class="modal-checkbox-label">{{ viscosity.name }}</span>
+                            </label>
+                            {% endfor %}
+
+                        </div>
+                    </div>
+
+                    <!-- Composition Filter -->
+                    <div class="modal-filter-section">
+                        <div class="modal-filter-header" data-toggle="composition">
+                            <div class="modal-filter-title">{% trans 'Composition' %}</div>
+                            <div class="modal-filter-icon">
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
+                        </div>
+                        <div class="modal-filter-content" id="modal-composition">
+                            {% for composition in compositions %}
+                            <label class="modal-checkbox-group">
+                                <input type="checkbox" name="composition" value="{{ composition.slug }}"
+                                 {% if composition.slug in selected_compositions %}checked{% endif %} />
+                                <span class="modal-checkbox-label">{{ composition.name }}</span>
+                            </label>
+                            {% endfor %}
+
+                        </div>
+                    </div>
+
+                    <!-- Pack Sizes Filter -->
+                    <div class="modal-filter-section">
+                        <div class="modal-filter-header" data-toggle="pack-sizes">
+                            <div class="modal-filter-title">{% trans 'Pack sizes' %}</div>
+                            <div class="modal-filter-icon">
+                                <i class="fas fa-chevron-down"></i>
+                            </div>
+                        </div>
+                        <div class="modal-filter-content" id="modal-pack-sizes">
+                            <div class="modal-pack-size-grid">
+                                {% for pack_size in pack_sizes %}
+                                <button type="button"
+                                    class="modal-pack-size-button {% if pack_size.slug in selected_pack_sizes %}active{% endif %}"
+                                    data-type="modal-size-{{ pack_size.slug }}"
+                                    onclick="toggleModalPackSize('{{ pack_size.slug }}')">
+                                    {{ pack_size.size|floatformat:0 }}
+                                </button>
+                                <input type="checkbox" name="pack_size" value="{{ pack_size.slug }}"
+                                {% if pack_size.slug in selected_pack_sizes %}checked{% endif %} style="display: none;"
+                                    id="modal-size-{{ pack_size.slug }}" />
+                                {% endfor %}
+                            </div>
+
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+            <div class="product-modal-footer">
+                <button type="button" class="modal-reset-btn" id="modalResetBtn">{% trans 'RESET FILTERS' %}</button>
+                <button type="button" class="modal-apply-btn" id="modalApplyBtn">{% trans 'APPLY FILTERS' %}</button>
             </div>
         </div>
+    </div>
+    <!-- Pagination -->
+    <div class="pagination-container">
+        <p class="pagination-info">
+            {% trans 'Displaying' %} {{ products.start_index }}–{{ products.end_index }} {% trans 'of' %} {{ total_results }} {% trans 'results' %}
+        </p>
+        <div class="pagination">
+            <!-- Previous Button -->
+            {% if products.has_previous %}
+            <a href="?{% for key, values in request.GET.lists %}{% if key != 'page' %}{% for value in values %}{{ key }}={{ value|urlencode }}&{% endfor %}{% endif %}{% endfor %}page={{ products.previous_page_number }}"
+                class="page-btn">
+                <i class="fas fa-chevron-left"></i>
+            </a>
+            {% endif %}
+
+            <!-- Page Numbers -->
+            {% for num in products.paginator.page_range %}
+            {% if products.number == num %}
+            <span class="page-btn active">{{ num }}</span>
+            {% elif num > products.number|add:-3 and num < products.number|add:3 %} <a
+                href="?{% for key, values in request.GET.lists %}{% if key != 'page' %}{% for value in values %}{{ key }}={{ value|urlencode }}&{% endfor %}{% endif %}{% endfor %}page={{ num }}"
+                class="page-btn">{{ num }}</a>
+                {% endif %}
+                {% endfor %}
+
+                <!-- Next Button -->
+                {% if products.has_next %}
+                <a href="?{% for key, values in request.GET.lists %}{% if key != 'page' %}{% for value in values %}{{ key }}={{ value|urlencode }}&{% endfor %}{% endif %}{% endfor %}page={{ products.next_page_number }}"
+                    class="page-btn">
+                    <i class="fas fa-chevron-right"></i>
+                </a>
+                {% endif %}
+        </div>
+    </div>
 </section>
+
+<script>
+
+// Product Filter Modal JavaScript
+document.addEventListener('DOMContentLoaded', function() {
+    const modal = document.getElementById('productFilterModal');
+    const filterMobileBtn = document.getElementById('filterMobileBtn');
+    const modalCloseBtn = document.getElementById('productModalClose');
+    const modalApplyBtn = document.getElementById('modalApplyBtn');
+    const modalResetBtn = document.getElementById('modalResetBtn');
+    const modalForm = document.getElementById('modalFilterForm');
+    const mainForm = document.getElementById('filterForm');
+
+    // Open modal when filter button is clicked
+    if (filterMobileBtn) {
+        filterMobileBtn.addEventListener('click', function() {
+            openModal();
+        });
+    }
+
+    // Close modal when close button is clicked
+    if (modalCloseBtn) {
+        modalCloseBtn.addEventListener('click', function() {
+            closeModal();
+        });
+    }
+
+    // Close modal when clicking outside
+    modal.addEventListener('click', function(e) {
+        if (e.target === modal) {
+            closeModal();
+        }
+    });
+
+    // Handle ESC key
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && modal.classList.contains('active')) {
+            closeModal();
+        }
+    });
+
+    // Initialize filter section toggles
+    initFilterSectionToggles();
+
+    // Apply filters button
+    if (modalApplyBtn) {
+        modalApplyBtn.addEventListener('click', function() {
+            applyModalFilters();
+        });
+    }
+
+    // Reset filters button
+    if (modalResetBtn) {
+        modalResetBtn.addEventListener('click', function() {
+            resetModalFilters();
+        });
+    }
+
+    // Handle show more/less functionality
+    initModalShowMore();
+
+    // Sync modal form with main form on open
+    function syncModalWithMainForm() {
+        if (modalForm && mainForm) {
+            const mainInputs = mainForm.querySelectorAll('input[type="checkbox"], input[type="text"]');
+            const modalInputs = modalForm.querySelectorAll('input[type="checkbox"], input[type="text"]');
+
+            mainInputs.forEach(mainInput => {
+                const modalInput = modalForm.querySelector(`input[name="${mainInput.name}"][value="${mainInput.value}"]`) ||
+                                  modalForm.querySelector(`input[name="${mainInput.name}"]`);
+
+                if (modalInput) {
+                    if (mainInput.type === 'checkbox') {
+                        modalInput.checked = mainInput.checked;
+                        updateModalButtonState(modalInput);
+                    } else if (mainInput.type === 'text') {
+                        modalInput.value = mainInput.value;
+                    }
+                }
+            });
+        }
+    }
+
+    function openModal() {
+        syncModalWithMainForm();
+        modal.style.display = 'flex';
+        setTimeout(() => {
+            modal.classList.add('active');
+        }, 10);
+        document.body.style.overflow = 'hidden';
+    }
+
+    function closeModal() {
+        modal.classList.remove('active');
+        setTimeout(() => {
+            modal.style.display = 'none';
+            document.body.style.overflow = '';
+        }, 300);
+    }
+
+    function initFilterSectionToggles() {
+        const filterHeaders = document.querySelectorAll('.modal-filter-header[data-toggle]');
+
+        filterHeaders.forEach(header => {
+            const toggleTarget = header.getAttribute('data-toggle');
+            const content = document.getElementById(`modal-${toggleTarget}`);
+
+            if (content) {
+                header.addEventListener('click', function() {
+                    const isExpanded = content.classList.contains('expanded');
+
+                    if (isExpanded) {
+                        content.classList.remove('expanded');
+                        header.classList.remove('expanded');
+                    } else {
+                        content.classList.add('expanded');
+                        header.classList.add('expanded');
+                    }
+                });
+            }
+        });
+    }
+
+    function initModalShowMore() {
+        const showMoreElements = document.querySelectorAll('.modal-show-more');
+
+        showMoreElements.forEach(showMore => {
+            showMore.addEventListener('click', function() {
+                const content = showMore.closest('.modal-filter-content');
+                const textElement = showMore.querySelector('.modal-show-more-text');
+                const icon = showMore.querySelector('i');
+
+                if (content.style.maxHeight === 'none' || content.style.maxHeight === '') {
+                    content.style.maxHeight = 'none';
+                    textElement.textContent = 'Show less';
+                    icon.className = 'fas fa-arrow-up';
+                } else {
+                    content.style.maxHeight = '400px';
+                    textElement.textContent = 'Show more';
+                    icon.className = 'fas fa-arrow-right';
+                }
+            });
+        });
+    }
+
+    function applyModalFilters() {
+        if (modalForm && mainForm) {
+            // Clear main form
+            const mainInputs = mainForm.querySelectorAll('input[type="checkbox"], input[type="text"]');
+            mainInputs.forEach(input => {
+                if (input.type === 'checkbox') {
+                    input.checked = false;
+                } else {
+                    input.value = '';
+                }
+            });
+
+            // Update main form buttons
+            const mainButtons = mainForm.querySelectorAll('.icon-button.active');
+            mainButtons.forEach(button => {
+                button.classList.remove('active');
+            });
+
+            // Copy modal form values to main form
+            const modalInputs = modalForm.querySelectorAll('input[type="checkbox"]:checked, input[type="text"]');
+            modalInputs.forEach(modalInput => {
+                const mainInput = mainForm.querySelector(`input[name="${modalInput.name}"][value="${modalInput.value}"]`) ||
+                                 mainForm.querySelector(`input[name="${modalInput.name}"]`);
+
+                if (mainInput) {
+                    if (modalInput.type === 'checkbox') {
+                        mainInput.checked = true;
+                        updateMainButtonState(modalInput);
+                    } else if (modalInput.type === 'text' && modalInput.value) {
+                        mainInput.value = modalInput.value;
+                    }
+                }
+            });
+
+            // Submit main form
+            mainForm.submit();
+        }
+        closeModal();
+    }
+
+    function resetModalFilters() {
+        const modalInputs = modalForm.querySelectorAll('input[type="checkbox"], input[type="text"]');
+        modalInputs.forEach(input => {
+            if (input.type === 'checkbox') {
+                input.checked = false;
+            } else {
+                input.value = '';
+            }
+        });
+
+        // Reset modal buttons
+        const modalButtons = modalForm.querySelectorAll('.modal-icon-button.active, .modal-pack-size-button.active');
+        modalButtons.forEach(button => {
+            button.classList.remove('active');
+        });
+    }
+
+    function updateModalButtonState(input) {
+        const name = input.getAttribute('name');
+        const value = input.getAttribute('value');
+
+        if (name === 'application_area') {
+            const button = modalForm.querySelector(`[data-type="modal-app-${value}"]`);
+            if (button) {
+                button.classList.toggle('active', input.checked);
+            }
+        } else if (name === 'pack_size') {
+            const button = modalForm.querySelector(`[data-type="modal-size-${value}"]`);
+            if (button) {
+                button.classList.toggle('active', input.checked);
+            }
+        }
+    }
+
+    function updateMainButtonState(modalInput) {
+        const name = modalInput.getAttribute('name');
+        const value = modalInput.getAttribute('value');
+
+        if (name === 'application_area') {
+            const button = mainForm.querySelector(`[data-type="app-${value}"]`);
+            if (button) {
+                button.classList.toggle('active', modalInput.checked);
+            }
+        } else if (name === 'pack_size') {
+            const button = mainForm.querySelector(`[data-type="size-${value}"]`);
+            if (button) {
+                button.classList.toggle('active', modalInput.checked);
+            }
+        }
+    }
+
+    // Modal checkbox change handlers
+    const modalCheckboxes = modalForm.querySelectorAll('input[type="checkbox"]');
+    modalCheckboxes.forEach(checkbox => {
+        checkbox.addEventListener('change', function() {
+            updateModalButtonState(this);
+        });
+    });
+
+    // Search functionality in modal
+    const modalSearchInput = modalForm.querySelector('.modal-search-input');
+    if (modalSearchInput) {
+        modalSearchInput.addEventListener('input', function() {
+            const searchTerm = this.value.toLowerCase();
+            const checkboxGroups = this.closest('.modal-filter-content').querySelectorAll('.modal-checkbox-group');
+
+            checkboxGroups.forEach(group => {
+                const label = group.querySelector('.modal-checkbox-label');
+                if (label) {
+                    const text = label.textContent.toLowerCase();
+                    if (text.includes(searchTerm)) {
+                        group.style.display = 'flex';
+                    } else {
+                        group.style.display = 'none';
+                    }
+                }
+            });
+        });
+    }
+});
+
+// Toggle functions for modal buttons
+function toggleModalApplicationArea(id) {
+    const button = document.querySelector(`[data-type="modal-app-${id}"]`);
+    const checkbox = document.getElementById(`modal-app-${id}`);
+
+    if (checkbox && button) {
+        checkbox.checked = !checkbox.checked;
+        button.classList.toggle('active', checkbox.checked);
+    }
+}
+
+function toggleModalPackSize(id) {
+    const button = document.querySelector(`[data-type="modal-size-${id}"]`);
+    const checkbox = document.getElementById(`modal-size-${id}`);
+
+    if (checkbox && button) {
+        checkbox.checked = !checkbox.checked;
+        button.classList.toggle('active', checkbox.checked);
+    }
+}
+
+</script>
 {% endblock %}

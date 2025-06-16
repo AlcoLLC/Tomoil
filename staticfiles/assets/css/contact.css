@@ -352,7 +352,7 @@
 }
 
 .contact-section .custom-select:after {
-  content: "\f078"; /* FontAwesome chevron-down icon */
+  content: "\f078"; 
   font-family: "Font Awesome 5 Free";
   font-weight: 900;
   position: absolute;

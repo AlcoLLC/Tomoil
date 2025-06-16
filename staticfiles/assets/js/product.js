@@ -34,11 +34,11 @@ document.addEventListener('DOMContentLoaded', function() {
     // Auto-update product count when filters change
     const checkboxes = document.querySelectorAll('input[type="checkbox"]');
     const searchInput = document.querySelector('input[name="search"]');
-    
+
     checkboxes.forEach(checkbox => {
         checkbox.addEventListener('change', updateProductCount);
     });
-    
+
     if (searchInput) {
         searchInput.addEventListener('input', debounce(updateProductCount, 500));
     }
@@ -53,7 +53,7 @@ function applyFilters() {
 function toggleApplicationArea(id) {
     const button = document.querySelector(`[data-type="app-${id}"]`);
     const checkbox = document.getElementById(`app-${id}`);
-    
+
     if (checkbox && button) {
         checkbox.checked = !checkbox.checked;
         button.classList.toggle('active', checkbox.checked);
@@ -64,7 +64,7 @@ function toggleApplicationArea(id) {
 function togglePackSize(id) {
     const button = document.querySelector(`[data-type="size-${id}"]`);
     const checkbox = document.getElementById(`size-${id}`);
-    
+
     if (checkbox && button) {
         checkbox.checked = !checkbox.checked;
         button.classList.toggle('active', checkbox.checked);
@@ -75,7 +75,7 @@ function togglePackSize(id) {
 function resetFilters() {
     const form = document.getElementById('filterForm');
     const inputs = form.querySelectorAll('input');
-    
+
     inputs.forEach(input => {
         if (input.type === 'checkbox') {
             input.checked = false;
@@ -83,13 +83,13 @@ function resetFilters() {
             input.value = '';
         }
     });
-    
+
     // Reset active states on buttons
     const activeButtons = document.querySelectorAll('.icon-button.active');
     activeButtons.forEach(button => {
         button.classList.remove('active');
     });
-    
+
     // Submit form to show all products
     form.submit();
 }
@@ -98,7 +98,7 @@ function resetFilters() {
 function updateProductCount() {
     const button = document.getElementById('filterResultsBtn');
     const formData = new FormData(document.getElementById('filterForm'));
-    
+
     // You can make an AJAX call here to get updated count
     // For now, we'll just update the button text
     button.textContent = 'View Results';
