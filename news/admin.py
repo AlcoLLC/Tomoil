@@ -5,7 +5,7 @@ from modeltranslation.admin import TranslationAdmin
 
 @admin.register(News)
 class NewsAdmin(TranslationAdmin):
-    list_display = ('title', 'created_at', 'views_count')
+    list_display = ('title', 'created_at', 'views_count', 'in_home')
     search_fields = ('title', 'header_text', 'description')
     list_filter = ('created_at',)
     date_hierarchy = 'created_at'

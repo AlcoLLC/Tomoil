@@ -14,6 +14,8 @@ class News(models.Model):
         upload_to='news/images/', blank=True, null=True)
     created_at = models.DateTimeField(default=timezone.now)
     views_count = models.PositiveIntegerField(default=0)
+    in_home = models.BooleanField(
+        default=False, verbose_name="Show on Home Page")
 
     def __str__(self):
         return self.title
