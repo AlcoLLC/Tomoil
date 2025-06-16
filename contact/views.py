@@ -7,7 +7,7 @@ from .forms import ContactForm
 import requests
 import re
 import phonenumbers
-from products.models import Product
+from products.models import Product, ApplicationArea
 
 def validate_phone_number(phone_number, country_code):
     try:
@@ -198,10 +198,12 @@ def get_countries_and_codes(form):
 def home_view(request):
     swiper_images = HomeSwiper.objects.filter(is_active=True).order_by('order')
     products = Product.objects.filter(is_home=True).order_by('order')
+    application_areas = ApplicationArea.objects.filter(is_home=True)
 
     context = {
         'swiper_images': swiper_images,
         'products': products,
+        'application_areas': application_areas,
         
     }
     return render(request, 'home.html', context)
