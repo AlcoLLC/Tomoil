@@ -68,7 +68,7 @@
               <a href="{% url 'products:products_detail_view' product.slug %}">
                <img
                 src="{{ product.image.url }}"
-                alt="TOMOIL DEXOS 2 SAE 5W30 SN/CF"
+                alt="{{ product.title }}"
               />
               </a>
              
@@ -90,7 +90,7 @@
         </div>
       </div>
 
-      <a href="#" class="view-catalog">{% trans 'VIEW OUR CATALOGUE' %}</a>
+      <a href="/products" class="view-catalog">{% trans 'VIEW OUR CATALOGUE' %}</a>
     </div>
   </section>
 
@@ -98,11 +98,13 @@
   <div class="section-container market-segments">
     <div>
       <div class="market-segments-header">
-        <h2 class="section-title">Market Segments</h2>
+        <h2 class="section-title">{% trans 'Market Segments' %}</h2>
         <p class="section-description">
+          {% blocktrans %}
           Tomoil products are developed to meet the diverse technical
           requirements of various industries and operating environments -
           regardless of application complexity.
+          {% endblocktrans %}
         </p>
       </div>
       <button class="btn-market-segments btn-block">
@@ -111,57 +113,18 @@
     </div>
     <div class="market-segments-list">
       <ul>
-        <li>
-          <a href="">
-            <div>
-              <img src="{% static 'images_folder/car.svg' %}" alt="" />
-            </div>
-            Passenger Cars
-          </a>
-        </li>
-        <li>
-          <a href="">
-            <div>
-              <img src="{% static 'images_folder/trucks.svg' %}" alt="" />
-            </div>
-            Trucks & Buses
-          </a>
-        </li>
-        <li>
-          <a href="">
-            <div>
-              <img src="{% static 'images_folder/motorcycle.svg' %}" alt="" />
-            </div>
-            Motorcycle & ATV
-          </a>
-        </li>
-        <li>
-          <a href="">
-            <div>
-              <img src="{% static 'images_folder/emobility.svg' %}" alt="" />
-            </div>
-            E-Mobility
-          </a>
-        </li>
-        <li>
-          <a href="">
-            <div>
-              <img
-                src="{% static 'images_folder/e-construction.svg' %}"
-                alt=""
-              />
-            </div>
-            E-Construction & Earthmoving
-          </a>
-        </li>
-        <li>
-          <a href="">
-            <div>
-              <img src="{% static 'images_folder/minings.svg' %}" alt="" />
-            </div>
-            Mining & Quarrying
-          </a>
-        </li>
+        {% for area in application_areas %}
+<li>
+  <a href="{% url 'products:products_list' %}?application_area={{ area.slug }}">
+    <div>
+      <img src="{{ area.icon.url }}" alt="{{ area.name }}" />
+    </div>
+    {{ area.name }}
+  </a>
+</li>
+{% endfor %}
+
+      
       </ul>
     </div>
 

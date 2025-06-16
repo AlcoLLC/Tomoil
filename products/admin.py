@@ -15,7 +15,7 @@ class ProductRangeAdmin(TranslationAdmin):
 
 @admin.register(ApplicationArea)
 class ApplicationAreaAdmin(admin.ModelAdmin):
-    list_display = ('name', 'is_active')
+    list_display = ('name', 'is_active', 'is_home')
     list_filter = ('is_active',)
     search_fields = ('name',)
     list_editable = ('is_active',)
