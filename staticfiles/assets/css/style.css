@@ -99,7 +99,7 @@
   z-index: 5;
 }
 
-.featured-section .product-image {
+.featured-section .product-image a {
   height: 250px;
   display: flex;
   align-items: center;
@@ -109,7 +109,7 @@
   transition: transform 0.3s ease;
 }
 
-.featured-section .product-card.active .product-image::after {
+.featured-section .product-card.active .product-image a::after {
   content: "";
   position: absolute;
   width: 200px;
@@ -125,7 +125,7 @@
   transition: background-color 0.7s ease;
 }
 
-.featured-section .product-card.active .product-image:hover::after {
+.featured-section .product-card.active .product-image a:hover::after {
   background-color: #e22131;
   outline-color: #e22131;
 }
@@ -144,15 +144,20 @@
 
 .featured-section .product-info {
   width: 75%;
-  margin-left: 35px;
   font-family: Regular;
   color: #223160;
+}
+
+.featured-container .product-card.active  .product-info{
+    margin-left: 35px;
+
 }
 
 .featured-section .product-title {
   font-size: 16px;
   font-weight: 600;
   text-align: start;
+  color: #223160;
 }
 
 .featured-section .product-description {
@@ -385,7 +390,6 @@
   margin: 0px 10px 2px 8px;
 }
 
-
 /* Accross Section */
 
 .accross-section {
@@ -442,7 +446,6 @@
   display: flex;
   gap: 10px;
 }
-
 
 .section-case-studies .slider-arrow {
   width: 40px;
@@ -510,9 +513,6 @@
   width: 330px;
 }
 
-
-
-
 .case-study-card:not(.interactive) {
   cursor: default;
 }
@@ -578,7 +578,6 @@
   transform: translateX(0px);
 }
 
-
 /* OEM Section Styles */
 .section-oem {
   background-color: #3579bc;
@@ -643,7 +642,6 @@
   align-items: center;
   justify-content: center;
   padding: 15px;
-
 }
 
 .section-oem .logo-img {
@@ -789,8 +787,6 @@
   font-size: 12px;
   line-height: 1.5;
 }
-
-
 
 /* E-Mobility Section */
 .e-mobility-section {

@@ -4,31 +4,36 @@
   <header class="placeholder-header home-header">
     <div class="swiper mySwiper">
       <div class="swiper-wrapper">
-  {% for swiper in swiper_images %}
-    <div class="swiper-slide" {% if swiper.image %}style="background-image: url('{{ swiper.image.url }}');"{% endif %}>
-      <div class="slide-content">
-        <h5>{{ swiper.title }}</h5>
-        {% if swiper.title_description %}
-          <h2>{{ swiper.title_description }}</h2>
-        {% endif %}
-        {% if swiper.description %}
-          <p>{{ swiper.description }}</p>
-        {% endif %}
-        {% if swiper.link %}
-          <a href="{{ swiper.link }}" class="btn-learn">{% trans 'LEARN MORE' %}</a>
-        {% else %}
-          <a href="#" class="btn-learn">{% trans 'LEARN MORE' %}</a>
-        {% endif %}
+        {% for swiper in swiper_images %}
+        <div
+          class="swiper-slide"
+          {%if swiper.image  %}style="background-image: url('{{ swiper.image.url }}');"
+          {% endif %}
+        >
+          <div class="slide-content">
+            <h5>{{ swiper.title }}</h5>
+            {% if swiper.title_description %}
+            <h2>{{ swiper.title_description }}</h2>
+            {% endif %} {% if swiper.description %}
+            <p>{{ swiper.description }}</p>
+            {% endif %} {% if swiper.link %}
+            <a href="{{ swiper.link }}" class="btn-learn"
+              >{% trans 'LEARN MORE' %}</a
+            >
+            {% else %}
+            <a href="#" class="btn-learn">{% trans 'LEARN MORE' %}</a>
+            {% endif %}
+          </div>
+          <a
+            href="https://wa.me/message/YOUR_WHATSAPP_NUMBER"
+            class="header-whatsapp"
+          >
+            <i class="fab fa-whatsapp"></i>
+            <span>{% trans 'Any questions? Ask in WhatsApp' %}</span>
+          </a>
+        </div>
+        {% empty %} {% endfor %}
       </div>
-      <a href="https://wa.me/message/YOUR_WHATSAPP_NUMBER" class="header-whatsapp">
-        <i class="fab fa-whatsapp"></i>
-        <span>{% trans 'Any questions? Ask in WhatsApp' %}</span>
-      </a>
-    </div>
-  {% empty %}
-   
-  {% endfor %}
-</div>
       <div class="swiper-button-prev">
         <i class="fa-solid fa-arrow-left"></i>
       </div>
@@ -57,98 +62,24 @@
       <div class="products-slider">
         <div class="slider-container">
           <!-- Product 1 -->
+          {% for product in products %}
           <div class="product-card">
             <div class="product-image">
-              <img
-                src="{% static 'images/image 64.svg' %}"
+              <a href="{% url 'products:products_detail_view' product.slug %}">
+               <img
+                src="{{ product.image.url }}"
                 alt="TOMOIL DEXOS 2 SAE 5W30 SN/CF"
               />
-            </div>
-            <div class="product-info">
-              <h3 class="product-title">
-                {% trans 'TOMOIL DEXOS 2 SAE 5W30 SN/CF' %}
-              </h3>
+              </a>
              
             </div>
-          </div>
-
-          <!-- Product 2 -->
-          <div class="product-card">
-            <div class="product-image">
-              <img
-                src="{% static 'images/image 79.svg' %}"
-                alt="TOMOIL DEXOS 2 SAE 5W30 SN/CF"
-              />
-            </div>
             <div class="product-info">
-              <h3 class="product-title">
-                {% trans 'TOMOIL DEXOS 2 SAE 5W30 SN/CF' %}
-              </h3>
-            
+             <a href="{% url 'products:products_detail_view' product.slug %}">
+               <h3 class="product-title">{{ product.title }}</h3>
+             </a>
             </div>
           </div>
-
-          <!-- Product 3 -->
-          <div class="product-card">
-            <div class="product-image">
-              <img
-                src="{% static 'images/image 80.svg' %}"
-                alt="TOMOIL DEXOS 2 SAE 5W30 SN/CF"
-              />
-            </div>
-            <div class="product-info">
-              <h3 class="product-title">
-                {% trans 'TOMOIL DEXOS 2 SAE 5W30 SN/CF' %}
-              </h3>
-            
-            </div>
-          </div>
-
-          <!-- Additional Products (using the same images for demonstration) -->
-          <div class="product-card">
-            <div class="product-image">
-              <img
-                src="{% static 'images/image 64.svg' %}"
-                alt="TOMOIL DEXOS 2 SAE 0W20 SN/CF"
-              />
-            </div>
-            <div class="product-info">
-              <h3 class="product-title">
-                {% trans 'TOMOIL DEXOS 2 SAE 5W20 SN/CF' %}
-              </h3>
-            
-            </div>
-          </div>
-
-          <div class="product-card">
-            <div class="product-image">
-              <img
-                src="{% static 'images/image 79.svg' %}"
-                alt="TOMOIL DEXOS 2 SAE 10W40 SN/CF"
-              />
-            </div>
-            <div class="product-info">
-              <h3 class="product-title">
-                {% trans 'TOMOIL DEXOS 2 SAE 10W40 SN/CF' %}
-              </h3>
-             
-            </div>
-          </div>
-
-          <div class="product-card">
-            <div class="product-image">
-              <img
-                src="{% static 'images/image 80.svg' %}"
-                alt="TOMOIL DEXOS 2 SAE 15W40 SN/CF"
-              />
-            </div>
-            <div class="product-info">
-              <h3 class="product-title">
-                {% trans 'TOMOIL DEXOS 2 SAE 15W40 SN/CF' %}
-              </h3>
-            
-            </div>
-          </div>
+          {% endfor %}
         </div>
 
         <div class="slider-nav prev-btn">
