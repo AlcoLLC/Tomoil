@@ -598,9 +598,23 @@
     .product-opinions .section-title {
         font-size: 24px;
     }
+
+    .brand-portal-section .tab {
+        font-size: 14px;
+    }
 }
 
 @media (max-width: 860px) {
+
+    .brand-portal-section .brochure-info .section-title {
+        font-size: 14px;
+        line-height: 18px;
+    }
+
+    .brand-portal-section .brochure-info .section-description {
+        line-height: 14px;
+    }
+
     .site-footer .footer-container {
         flex-wrap: wrap;
         align-items: center;
@@ -753,6 +767,60 @@
 }
 
 @media screen and (max-width: 800px) {
+    .brand-portal-section .promotional-row {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .review-modal {
+        width: 95%;
+        max-width: 95%;
+        max-height: 85vh;
+    }
+
+    .brand-portal-section .brochure-row {
+        grid-template-columns: repeat(1, 1fr);
+        height: 400px;
+    }
+
+    .review-modal .form-row {
+        flex-direction: column;
+    }
+
+    .review-modal-overlay .modal-header {
+        padding-bottom: 10px;
+    }
+
+    .review-modal-overlay .modal-title {
+        font-size: 20px;
+    }
+
+    .review-modal-overlay .form-section {
+        margin-bottom: 12px;
+    }
+
+    .review-modal-overlay .form-group textarea {
+        min-height: 80px;
+    }
+
+    .review-modal-overlay .modal-form {
+        padding: 14px 25px;
+    }
+
+    .review-modal-overlay .form-group input,
+    .review-modal-overlay .form-group textarea {
+        padding: 10px;
+    }
+
+    .review-modal-overlay .checkbox-container label,
+    .review-modal-overlay label {
+        font-size: 13px;
+    }
+
+    .review-modal-overlay .submit-btn {
+        font-size: 12px;
+        padding: 10px;
+    }
+
     .wolver-section .wolver-container {
         height: 400px;
         display: block;
@@ -823,24 +891,29 @@
         height: 280px;
     }
 
-    .section-latest-news .card-image {
+    .section-latest-news .card-image,
+    .main-case-section .card-image {
         height: 200px;
     }
 
-    .section-latest-news .card-content {
+    .section-latest-news .card-content,
+    .main-case-section .card-content {
         min-height: 250px;
     }
 
-    .section-latest-news .read-more {
+    .section-latest-news .read-more,
+    .main-case-section .read-more {
         margin-top: 20px;
     }
 
-    .section-latest-news .card-title {
+    .section-latest-news .card-title,
+    .main-case-section .card-title {
         font-size: 16px;
         line-height: 20px;
     }
 
-    .section-latest-news .card-date {
+    .section-latest-news .card-date,
+    .main-case-section .card-date {
         font-size: 12px;
     }
 
@@ -1015,9 +1088,30 @@
         font-size: 28px;
         color: white;
     }
+
+    .case-detail-section .case-detail-images img {
+        height: 350px;
+    }
 }
 
 @media (max-width: 720px) {
+    .brand-portal-section .tabs {
+        flex-direction: column;
+    }
+
+    .brand-portal-section .tab {
+        width: 100%;
+    }
+
+    .brand-portal-section .tab:not(:last-child)::before {
+        content: "";
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        height: 1px;
+        width: 100%;
+        background-color: #f1f3f9;
+    }
 
     .specifications-table th,
     .specifications-table td,
@@ -1244,14 +1338,53 @@
         font-size: 14px;
     }
 
+    .case-detail-section .main-image {
+        height: 380px;
+    }
+
+    .case-detail-section .case-detail-images img {
+        height: 340px;
+    }
+
 
 
 }
 
 @media (max-width: 620px) {
-    .need-more-section .need-more-btn{
+    .brand-portal-section .brand-video-gallery {
+        grid-template-columns: repeat(1, 1fr);
+    }
+
+    .date-filter-container .filter-flex {
+        flex-direction: column;
+    }
+
+    .brand-portal-section .brochure-row {
+        min-height: 850px;
+    }
+
+    .brand-portal-section .brochure-image {
+        width: 100%;
+        height: 50%;
+    }
+
+    .brand-portal-section .brochure-image img {
+        border-radius: 0px;
+    }
+
+    .brand-portal-section .brochure-card {
+        flex-direction: column-reverse;
+    }
+
+    .brand-portal-section .brochure-info {
+        width: 100%;
+        height: 50%;
+    }
+
+    .need-more-section .need-more-btn {
         padding: 10px 30px;
     }
+
     .wolver-section .wolver-container {
         height: 350px;
     }
@@ -1296,23 +1429,27 @@
         gap: 20px;
     }
 
-    .section-latest-news .card-content {
+    .section-latest-news .card-content,
+    .main-case-section .card-content {
         min-height: 210px;
         padding: 15px;
     }
 
-    .section-latest-news .card-image {
+    .section-latest-news .card-image,
+    .main-case-section .card-image {
         height: 180px;
     }
 
-    .section-latest-news .card-title {
+    .section-latest-news .card-title,
+    .main-case-section .card-title {
         font-size: 14px;
         line-height: 17px;
         margin-top: 10px;
         margin-bottom: 10px;
     }
 
-    .section-latest-news .card-date {
+    .section-latest-news .card-date,
+    .main-case-section .card-date {
         width: 100%;
         font-size: 11px;
     }
@@ -1323,7 +1460,8 @@
         margin-left: 5px;
     }
 
-    .section-latest-news .read-more {
+    .section-latest-news .read-more,
+    .main-case-section .read-more {
         margin-top: 15px;
     }
 
@@ -1610,6 +1748,23 @@
 }
 
 @media screen and (max-width: 500px) {
+    .brand-portal-section .promotional-row {
+        grid-template-columns: repeat(1, 1fr);
+    }
+
+    .brand-portal-section .promotional-info .section-title {
+        font-size: 14px;
+    }
+
+    .case-detail-section .main-image {
+        height: 280px;
+    }
+
+    .case-detail-section .case-detail-images img {
+        height: 230px;
+
+    }
+
     .wolver-section .wolver-container {
         height: 320px;
     }
@@ -1694,16 +1849,19 @@
         justify-content: stretch;
     }
 
-    .section-latest-news .card-description {
+    .section-latest-news .card-description,
+    .main-case-section .card-description {
         font-size: 12px;
         line-height: 15px;
     }
 
-    .section-latest-news .card-image {
+    .section-latest-news .card-image,
+    .main-case-section .card-image {
         height: 140px;
     }
 
-    .section-latest-news .card-content {
+    .section-latest-news .card-content,
+    .main-case-section .card-content {
         min-height: 220px;
     }
 
@@ -1926,9 +2084,21 @@
 }
 
 @media screen and (max-width: 400px) {
+
+    .case-detail-section .main-image {
+        height: 220px;
+    }
+
+    .case-detail-section .case-detail-images img {
+        height: 180px;
+
+    }
+
+
     .wolver-section .wolver-container {
         padding: 15px 20px;
     }
+
 
     .wolver-section .wolver-content h2 {
         font-size: 20px;
@@ -1963,16 +2133,19 @@
         height: 250px;
     }
 
-    .section-latest-news .card-title {
+    .section-latest-news .card-title,
+    .main-case-section .card-title {
         font-size: 12px;
         line-height: 15px;
     }
 
-    .section-latest-news .card-date {
+    .section-latest-news .card-date,
+    .main-case-section .card-date {
         font-size: 10px;
     }
 
-    .section-latest-news .read-more {
+    .section-latest-news .read-more,
+    .main-case-section .read-more {
         font-size: 11px;
         margin-top: 10px;
     }

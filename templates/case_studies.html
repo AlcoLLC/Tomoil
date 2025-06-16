@@ -6,7 +6,8 @@
 <form method="get" id="filter-form" action="{% url 'case_studies:case_studies' %}">
   <div class="date-filter-container">
     <div class="section-container">
-      <div class="date-filter">
+      <div class="filter-flex">
+        <div class="date-filter">
         <div class="date-input">
           <input 
             type="text" 
@@ -19,8 +20,8 @@
           <span class="clear-date" onclick="clearDateFilter();">&times;</span>
           <img src="{% static 'images/calendar-icon.svg' %}" alt="calendar-icon" class="calendar-icon" />
         </div>
-      </div>
-      <div class="date-filter">
+        </div>
+        <div class="date-filter">
         <div class="date-input">
           <input
             type="text"
@@ -36,6 +37,7 @@
             alt="calendar-icon"
             class="calendar-icon"
           />
+        </div>
         </div>
       </div>
       <button type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
