@@ -150,7 +150,6 @@
 
 .featured-container .product-card.active .product-info {
   margin-left: 35px;
-
 }
 
 .featured-section .product-title {
@@ -347,7 +346,7 @@
   color: #223160;
   font-size: 12px;
   text-decoration: none;
-  display: flex;
+  display: inline-flex;
   align-items: center;
   margin-top: 30px;
 }
@@ -1145,4 +1144,18 @@
 
 .page-header .header-whatsapp {
   bottom: 60px;
+}
+
+.adventure-section .news-card .copy-message {
+  display: none;
+  font-size: 0.85rem;
+  color: #223160;
+  font-weight: 600;
+  transition: opacity 0.3s ease;
+  margin-left: 15px;
+}
+
+.adventure-section .news-card .copy-message.show {
+  display: inline;
+  opacity: 1;
 }
