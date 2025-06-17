@@ -1,60 +1,137 @@
-{% extends 'base.html' %} {% load static %} {% load i18n %}
-{% block content %}
+{% extends 'base.html' %} {% load static %} {% load i18n %} {% block content %}
 
 <!-- Page-Header -->
 
-<header class="placeholder-header page-header ">
-    <div class="section-container">
-        <!-- <div class="breadcrumb">
-            <a href="/">Home</a>
-            {% if breadcrumb_title %}
-            <i class="fa-solid fa-angle-right"></i>
-            <a href="{{ breadcrumb_url|default:'/' }}">{{ breadcrumb_title }}</a>
-            {% endif %}
-        </div> -->
-        <div class="page-header-content">
-            <h2>{% trans 'Search' %}</h2>
-            <div class="container search-bar">
-                <form method="GET" class="search-form">
-                    <input type="text" name="search" class="search-input" value="{{ query }}" placeholder=Search... />
-                    <button type="button" class="cancel-button">
-                        <i class="fa-solid fa-xmark"></i>
-                    </button>
-                </form>
-            </div>
-        </div>
-
+<header class="placeholder-header page-header">
+  <div class="section-container">
+    <div class="page-header-content">
+      <h2>{% trans 'Search' %}</h2>
+      <div class="container search-bar">
+        <form method="GET" class="search-form">
+          <input
+            type="text"
+            name="search"
+            class="search-input"
+            value="{{ query }}"
+            placeholder="{% trans 'Search...' %}"
+          />
+          <button type="button" class="cancel-button">
+            <i class="fa-solid fa-xmark"></i>
+          </button>
+        </form>
+      </div>
     </div>
-    <a href="https://wa.me/message/YOUR_WHATSAPP_NUMBER" class="header-whatsapp">
-        <i class="fab fa-whatsapp"></i>
-        <span>{% trans 'Any questions? Ask in WhatsApp' %}</span>
-    </a>
+  </div>
+  <a href="https://wa.me/message/YOUR_WHATSAPP_NUMBER" class="header-whatsapp">
+    <i class="fab fa-whatsapp"></i>
+    <span>{% trans 'Any questions? Ask in WhatsApp' %}</span>
+  </a>
 </header>
 <a href="https://wa.me/message/YOUR_WHATSAPP_NUMBER" class="fixed-whatsapp">
-    <i class="fab fa-whatsapp"></i>
+  <i class="fab fa-whatsapp"></i>
 </a>
 
-
 <section class="search-section section-container">
-    <span class="search-results-count"> 0
-    </span>
+  {% if query %}
+  <span class="search-results-count">
+    {% blocktrans count counter=total_results %} {{ counter }} result found {% plural %} {{ counter }} results found {% endblocktrans %}
+  </span>
 
-    <div class="search-result">
-        <div class="result-content">
-            <div class="result-image">
-                <img src="{% static 'images_folder/engine-oils.svg' %}" alt="{{ result.title }}" />
-            </div>
-            <div class="result-text">
-                <a href="" class="result-type"> {% trans 'result.type' %}</a>
-                <h2>{% trans 'title' %}</h2>
-                <p class="result-description">{% trans 'description' %}</p>
-            </div>
-        </div>
-        <button class="result-btn">
-            <a href=""><i class="fa-solid fa-arrow-right"></i></a>
-        </button>
+  {% if results %} {% for result in results %}
+  <div class="search-result">
+    <div class="result-content">
+      {% if result.image %}
+      <div class="result-image">
+        <img src="{{ result.image }}" alt="{{ result.title }}" />
+      </div>
+      {% endif %}
+      <div class="result-text">
+        <a href="{{ result.url }}" class="result-type">{{ result.type }} ></a>
+        <h2>{{ result.title }}</h2>
+        {% if result.description %}
+        <p class="result-description">{{ result.description|safe }}</p>
+        {% endif %}
+      </div>
     </div>
+    <button class="result-btn">
+      <a href="{{ result.url }}"><i class="fa-solid fa-arrow-right"></i></a>
+    </button>
+  </div>
+  {% endfor %} 
+  
+  {% if results.has_other_pages %}
+  <div class="pagination-container">
+    <p class="pagination-info">
+      {% trans 'Displaying' %} {{ results.start_index }}–{{ results.end_index }}
+      {% trans 'of' %} {{ total_results }} {% trans 'results' %}
+    </p>
+    <div class="pagination">
+      <!-- Previous Button -->
+      {% if results.has_previous %}
+      <a
+        href="?{% for key, values in request.GET.lists %}{% if key != 'page' %}{% for value in values %}{{ key }}={{ value|urlencode }}&{% endfor %}{% endif %}{% endfor %}page={{ results.previous_page_number }}"
+        class="page-btn"
+      >
+        <i class="fa-solid fa-chevron-left"></i>
+      </a>
+      {% endif %}
 
+      <!-- Page Numbers -->
+      {% for num in results.paginator.page_range %}
+        {% if results.number == num %}
+          <!-- Current Page -->
+          <span class="page-btn active">{{ num }}</span>
+        {% else %}
+          {% if num == 1 %}
+            <!-- First Page -->
+            <a
+              href="?{% for key, values in request.GET.lists %}{% if key != 'page' %}{% for value in values %}{{ key }}={{ value|urlencode }}&{% endfor %}{% endif %}{% endfor %}page={{ num }}"
+              class="page-btn"
+            >{{ num }}</a>
+            {% if results.number > 5 %}
+              <span class="ellipsis">...</span>
+            {% endif %}
+          {% else %}
+            {% if num == results.paginator.num_pages %}
+              <!-- Last Page -->
+              {% if results.number < results.paginator.num_pages|add:'-4' %}
+                <span class="ellipsis">...</span>
+              {% endif %}
+              <a
+                href="?{% for key, values in request.GET.lists %}{% if key != 'page' %}{% for value in values %}{{ key }}={{ value|urlencode }}&{% endfor %}{% endif %}{% endfor %}page={{ num }}"
+                class="page-btn"
+              >{{ num }}</a>
+            {% else %}
+              {% if num >= results.number|add:'-2' and num <= results.number|add:'2' %}
+                <!-- Pages around current page (±2 range) -->
+                <a
+                  href="?{% for key, values in request.GET.lists %}{% if key != 'page' %}{% for value in values %}{{ key }}={{ value|urlencode }}&{% endfor %}{% endif %}{% endfor %}page={{ num }}"
+                  class="page-btn"
+                >{{ num }}</a>
+              {% endif %}
+            {% endif %}
+          {% endif %}
+        {% endif %}
+      {% endfor %}
+
+      <!-- Next Button -->
+      {% if results.has_next %}
+      <a
+        href="?{% for key, values in request.GET.lists %}{% if key != 'page' %}{% for value in values %}{{ key }}={{ value|urlencode }}&{% endfor %}{% endif %}{% endfor %}page={{ results.next_page_number }}"
+        class="page-btn"
+      >
+        <i class="fa-solid fa-chevron-right"></i>
+      </a>
+      {% endif %}
+    </div>
+  </div>
+  {% endif %}
+  {% else %}
+  <div class="search-placeholder">
+    <p>{% trans "Enter keywords to search..." %}</p>
+  </div>
+  {% endif %}
+  {% endif %}
 </section>
 
 {% endblock %}

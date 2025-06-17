@@ -1,7 +1,8 @@
 from modeltranslation.translator import register, TranslationOptions
 from .models import (
     BrandPromotionalItem, BrandImageLibrary, BrandVideo, 
-    BrandGuidelineDocument, BrandCatalogue
+    BrandGuidelineDocument, BrandCatalogue, TomoilLogoFullColor,
+    TomoilLogo, TomoilGuideline, TomoilBrandingCards
 )
 
 
@@ -29,3 +30,20 @@ class BrandGuidelineDocumentTranslationOptions(TranslationOptions):
 class BrandCatalogueTranslationOptions(TranslationOptions):
     fields = ('title', 'description')
 
+@register(TomoilLogoFullColor)
+class TomoilLogoFullColorTranslationOptions(TranslationOptions):
+    fields = ('title', 'description')
+
+@register(TomoilLogo)
+class TomoilLogoTranslationOptions(TranslationOptions):
+    fields = ('description', )
+
+
+@register(TomoilGuideline)
+class TomoilGuidelineTranslationOptions(TranslationOptions):
+    fields = ('title', 'description', 'logo_title', 'logo_description')
+
+
+@register(TomoilBrandingCards)
+class TomoilBrandingCardsTranslationOptions(TranslationOptions):
+    fields = ('description', )

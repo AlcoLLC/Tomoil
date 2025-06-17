@@ -35,33 +35,37 @@
                     {% endblocktrans %} 
                 </p>
 
-                {% for guideline in brand_guidelines %}
-                {% if 'logo' in guideline.title|lower %}
                 <div class="brand-section logo-section">
                     <div class="logo-container">
                         <div class="logo-primary">
-                            {% if guideline.document %}
-                            <img src="{{ guideline.document.url }}" alt="{{ guideline.title }}">
-                            {% else %}
                             <img src="{% static 'images/tomoil-logo.svg' %}" alt="Tomoil Logo">
-                            {% endif %}
                         </div>
                         <div class="logo-content">
-                            <h3 class="logo-title">{{ guideline.title }}</h3>
+                            <h3 class="logo-title">Logo, Full-color logo (Standard)</h3>
                             <p class="section-description">
-                                {{ guideline.description|default:"Logo guideline document" }}
+                                The S.R.V. (acronym of Schwingung, Reibung, Verschleiß namely Oscillating, Friction,
+                                Wear)
+                                measures the physical interactions between a lubricant and two specimens in a loaded
+                                contact in either rotational or linear oscillatory motion.
+                            </p>
+                            <p class="section-description">
+                                It determines the efficiency of lubricants and greases by measuring friction, anti-wear
+                                (AW) and extreme pressure (EP) properties simulating real metal to metal sliding
+                                contact.
                             </p>
                             <div class="download-buttons">
-                                <a href="{% url 'brand_portal:download_file' 'guideline' guideline.id %}" class="download-button">
-                                    LOGO {{ guideline.file_type|default:"PDF" }}
+                                <button class="download-button">
+                                    LOGO PNG
                                     <img src="{% static 'images/download-icon.svg' %}" alt="Download Icon">
-                                </a>
+                                </button>
+                                <button class="download-button">
+                                    LOGO PDF
+                                    <img src="{% static 'images/download-icon.svg' %}" alt="Download Icon">
+                                </button>
                             </div>
                         </div>
                     </div>
                 </div>
-                {% endif %}
-                {% endfor %}
 
                 <!-- Logo Variations -->
                 <div class="logo-variations">
@@ -88,6 +92,38 @@
                             <img src="{% static 'images/tomoil-logo-white.svg' %}" alt="Tomoil Logo White">
                         </div>
                         <p class="logo-variation-text">No elements may be placed in the protected area X.</p>
+                    </div>
+                </div>
+
+                 <div class="brand-section logo-section">
+                    <div class="logo-container">
+                        <div class="logo-primary">
+                            <img src="{% static 'images/tomoil-logo.svg' %}" alt="Tomoil Logo">
+                        </div>
+                        <div class="logo-content">
+                            <h3 class="logo-title">Logo, Full-color logo (Standard)</h3>
+                            <p class="section-description">
+                                The S.R.V. (acronym of Schwingung, Reibung, Verschleiß namely Oscillating, Friction,
+                                Wear)
+                                measures the physical interactions between a lubricant and two specimens in a loaded
+                                contact in either rotational or linear oscillatory motion.
+                            </p>
+                            <p class="section-description">
+                                It determines the efficiency of lubricants and greases by measuring friction, anti-wear
+                                (AW) and extreme pressure (EP) properties simulating real metal to metal sliding
+                                contact.
+                            </p>
+                            <div class="download-buttons">
+                                <button class="download-button">
+                                    LOGO PNG
+                                    <img src="{% static 'images/download-icon.svg' %}" alt="Download Icon">
+                                </button>
+                                <button class="download-button">
+                                    LOGO PDF
+                                    <img src="{% static 'images/download-icon.svg' %}" alt="Download Icon">
+                                </button>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
@@ -121,6 +157,116 @@
                         </p>
                     </div>
                 </div>
+
+                 <div class="brand-section guidelines-section">
+                    <h3 class="section-title">Guidelines writing (focus national)</h3>
+                    <p class="section-description">
+                        The shield logo is the most recognizable element of the Eurol corporate identity. This logo
+                        takes
+                        priority, and in case of doubt about logo usage, we recommend using this variant. The logo with
+                        the
+                        tagline 'Powering Performance' is used as a closing element when there is sufficient space, such
+                        as
+                        on the back of a brochure, business card, or trailer. The landscape logo should only be used in
+                        exceptional cases, as a secondary option to the shield logo when limited space compromises
+                        readability and
+                        visibility. It is suitable for wide applications.
+                    </p>
+                </div>
+
+                 <div class="brand-section origin-section">
+                    <div class="logo-container">
+                        <div class="logo-primary">
+                            <img src="{% static 'images/tomoil-logo.svg' %}" alt="Tomoil Logo">
+                        </div>
+                        <div class="logo-content">
+                            <h3 class="logo-title">Designation of origin "Made in Germany"</h3>
+                            <p class="section-description">
+                                The S.R.V. (acronym of Schwingung, Reibung, Verschleiß namely Oscillating, Friction,
+                                Wear)
+                                measures the physical interactions between a lubricant and two specimens in a loaded
+                                contact in either rotational or linear oscillatory motion.
+                            </p>
+                            <p class="section-description">
+                                It determines the efficiency of lubricants and greases by measuring friction, anti-wear
+                                (AW) and extreme pressure (EP) properties simulating real metal to metal sliding
+                                contact.
+                            </p>
+                            <div class="download-buttons">
+                                <button class="download-button">
+                                    LOGO PNG
+                                    <img src="{% static 'images/download-icon.svg' %}" alt="Download Icon">
+                                </button>
+                                <button class="download-button">
+                                    LOGO PDF
+                                    <img src="{% static 'images/download-icon.svg' %}" alt="Download Icon">
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="brand-section imagery-section">
+                    <div class="section-image">
+                        <img src="{% static 'images/racing-car.png' %}" alt="Racing Car">
+                    </div>
+                    <div class="section-content">
+                        <h3 class="section-title">Our imagery</h3>
+                        <p class="section-description">
+                            A strong brand has a recognizable and consistent brand identity. This brand identity manual
+                            provides guidelines for the correct usage of various brand identity elements, such as the
+                            logo, colors, fonts, and photography. You will also find examples here for the proper
+                            application of the brand identity across different design materials, including
+                            advertisements, brochures, banners, and flyers. The blue, red and white logo is LIQUI MOLY's
+                            trademark and has a high recognition value. The main colors have been defined for all print
+                            and web applications. There are separate color schemes for special product areas, which are
+                            explained on the following pages.
+                        </p>
+                    </div>
+                </div>
+
+                 <div class="image-gallery">
+                    <div class="gallery-item">
+                        <img src="{% static 'images/by-playing-1.png' %}" alt="Product Pouring">
+                        <p class="gallery-caption">By playing with focus, it is possible to tailor our visual language
+                            to be more dynamic and modern.</p>
+
+                    </div>
+                    <div class="gallery-item">
+                        <img src="{% static 'images/by-playing-2.png' %}" alt="Product Can">
+                        <p class="gallery-caption">By playing with focus, it is possible to tailor our visual language
+                            to be more dynamic and modern.</p>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="{% static 'images/by-playing-3.png' %}" alt="Product Bottles">
+                        <p class="gallery-caption">By playing with focus, it is possible to tailor our visual language
+                            to be more dynamic and modern.</p>
+                    </div>
+                    <div class="gallery-item">
+                        <img src="{% static 'images/by-playing-4.png' %}" alt="Product Testing">
+                        <p class="gallery-caption">By playing with focus, it is possible to tailor our visual language
+                            to be more dynamic and modern.</p>
+                    </div>
+                </div>
+
+                 <div class="brand-section mediacenter-section">
+                    <div class="section-image">
+                        <img src="{% static 'images/product-lineup.png' %}" alt="Product Lineup">
+                    </div>
+                    <div class="section-content">
+                        <h3 class="section-title">The Mediacenter</h3>
+                        <p class="section-description">
+                            A strong brand has a recognizable and consistent brand identity. This brand identity manual
+                            provides guidelines for the correct usage of various brand identity elements, such as the
+                            logo, colors, fonts, and photography. You will also find examples here for the proper
+                            application of the brand identity across different design materials, including
+                            advertisements, brochures, banners, and flyers. The blue, red and white logo is LIQUI MOLY's
+                            trademark and has a high recognition value. The main colors have been defined for all print
+                            and web applications. There are separate color schemes for special product areas, which are
+                            explained on the following pages.
+                        </p>
+                    </div>
+                </div> 
 
                 <!-- Downloads Section -->
                 <div class="brand-section downloads-section">

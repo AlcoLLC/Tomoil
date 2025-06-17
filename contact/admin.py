@@ -9,7 +9,7 @@ class ContactAdmin(admin.ModelAdmin):
                     'contact_number', 'enquiry_type')
 
 @admin.register(HomeSwiper)
-class HomeSwiperAdmin(admin.ModelAdmin):
+class HomeSwiperAdmin(TranslationAdmin):
     list_display = ('title', 'order', 'is_active', 'image_preview')
     list_filter = ('is_active',)
     list_editable = ('order', 'is_active')
@@ -51,7 +51,7 @@ class PartnerLogoAdmin(admin.ModelAdmin):
     list_editable = ('order', 'is_active')
 
 @admin.register(TomoilReview)
-class TomoilReviewAdmin(admin.ModelAdmin):
+class TomoilReviewAdmin(TranslationAdmin):
     list_display = ('name', 'created_at', 'is_active')
     list_filter = ('is_active',)
     search_fields = ('name', 'review')

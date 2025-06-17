@@ -99,7 +99,7 @@ class PackagingSizesAdmin(admin.ModelAdmin):
     list_editable = ('order',)
 
 @admin.register(Review)
-class ReviewAdmin(admin.ModelAdmin):
+class ReviewAdmin(TranslationAdmin):
     list_display = ('full_name', 'product', 'rating', 'is_approved', 'created_at')
     list_filter = ('rating', 'is_approved', 'created_at', 'product')
     search_fields = ('first_name', 'surname', 'email_address', 'product__title')
