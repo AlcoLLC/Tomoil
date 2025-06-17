@@ -161,18 +161,21 @@ function initCaseStudiesSlider() {
 
   let currentIndex = 0;
   const totalCards = cards.length;
-  const visibleCards = 5;
+  const visibleCards = 5; // Həmişə 5 kart görünəcək
   let isTransitioning = false;
   let autoplayInterval;
-  const autoplayDelay = 4000;
+  const autoplayDelay = 2000; // 2 saniyə
 
+  // Klonlaşdırma - sonsuz dövrə üçün
   function createClones() {
+    // Əvvələ son kartları əlavə et
     for (let i = totalCards - visibleCards; i < totalCards; i++) {
       const clone = cards[i].cloneNode(true);
       clone.classList.add('clone');
       sliderTrack.insertBefore(clone, cards[0]);
     }
 
+    // Sona ilk kartları əlavə et
     for (let i = 0; i < visibleCards; i++) {
       const clone = cards[i].cloneNode(true);
       clone.classList.add('clone');
@@ -180,10 +183,12 @@ function initCaseStudiesSlider() {
     }
   }
 
+  // Yalnız 5-dən çox kart varsa klonlaşdır
   if (totalCards > visibleCards) {
     createClones();
   }
 
+  // Yenilənmiş kart siyahısı (klonlar daxil olmaqla)
   const allCards = document.querySelectorAll('.case-study-card');
   const startIndex = totalCards > visibleCards ? visibleCards + 1 : 1; // İkinci element aktiv olsun
   currentIndex = startIndex;
@@ -201,8 +206,9 @@ function initCaseStudiesSlider() {
     sliderContainer.style.height = maxHeight + 40 + 'px';
   }
 
+  // Autoplay funksiyası
   function startAutoplay() {
-    stopAutoplay();
+    stopAutoplay(); // Əvvəl mövcud interval-ı dayandır
     autoplayInterval = setInterval(() => {
       if (!isTransitioning) {
         nextBtn.click();
@@ -217,12 +223,13 @@ function initCaseStudiesSlider() {
     }
   }
 
+  // Kart interaksiyaları
   function setupCardInteractions() {
     allCards.forEach((card, index) => {
       card.classList.add('interactive');
 
       card.addEventListener('mouseenter', function () {
-        stopAutoplay();
+        stopAutoplay(); // Hover zamanı autoplay-i dayandır
         const currentActiveCard = document.querySelector(
           '.case-study-card.active'
         );
@@ -233,7 +240,8 @@ function initCaseStudiesSlider() {
       });
 
       card.addEventListener('mouseleave', function () {
-        startAutoplay();
+        startAutoplay(); // Hover bitdikdə autoplay-i yenidən başlat
+        // Yalnız aktivləşdirilmiş kart aktivliyini saxla
         allCards.forEach((c) => c.classList.remove('active'));
         allCards[currentIndex].classList.add('active');
       });
@@ -249,11 +257,13 @@ function initCaseStudiesSlider() {
       sliderTrack.classList.remove('transitioning');
     }
 
+    // Aktiv kartı təyin et
     allCards.forEach((card) => card.classList.remove('active'));
     if (allCards[currentIndex]) {
       allCards[currentIndex].classList.add('active');
     }
 
+    // Slider mövqeyini hesabla
     const cardWidth = allCards[0] ? allCards[0].offsetWidth : 150;
     const expandedWidth = 330;
     const gap = 20;
@@ -261,8 +271,10 @@ function initCaseStudiesSlider() {
     let translateX;
 
     if (totalCards <= visibleCards) {
+      // 5 və ya daha az kart varsa, soldan başla
       translateX = 0;
     } else {
+      // 5-dən çox kart varsa, aktiv kartı mərkəzləşdir
       const activeCardOffset = currentIndex * (cardWidth + gap);
       const centerOffset = sliderContainer.offsetWidth / 2 - expandedWidth / 2;
       translateX = centerOffset - activeCardOffset;
@@ -270,6 +282,7 @@ function initCaseStudiesSlider() {
 
     sliderTrack.style.transform = `translateX(${translateX}px)`;
 
+    // Sonsuz dövrə üçün mövqe yoxlaması
     if (totalCards > visibleCards && withTransition) {
       setTimeout(() => {
         handleInfiniteLoop();
@@ -282,20 +295,25 @@ function initCaseStudiesSlider() {
 
     sliderTrack.classList.remove('transitioning');
 
+    // Son klonlara çatdıqda əvvələ qayıt
     if (currentIndex >= allCards.length - visibleCards) {
       currentIndex = visibleCards;
       updateSlider(false);
-    } else if (currentIndex < visibleCards) {
+    }
+    // İlk klonlara çatdıqda sona qayıt
+    else if (currentIndex < visibleCards) {
       currentIndex = allCards.length - visibleCards - 1;
       updateSlider(false);
     }
   }
 
+  // İlkin slider mövqeyi
   updateSlider(false);
 
+  // Düymə hadisələri
   prevBtn.addEventListener('click', () => {
     if (isTransitioning) return;
-    stopAutoplay();
+    stopAutoplay(); // Manual naviqasiya zamanı autoplay-i dayandır
     isTransitioning = true;
 
     currentIndex--;
@@ -307,13 +325,13 @@ function initCaseStudiesSlider() {
 
     setTimeout(() => {
       isTransitioning = false;
-      startAutoplay();
+      startAutoplay(); // Autoplay-i yenidən başlat
     }, 300);
   });
 
   nextBtn.addEventListener('click', () => {
     if (isTransitioning) return;
-    stopAutoplay();
+    stopAutoplay(); // Manual naviqasiya zamanı autoplay-i dayandır
     isTransitioning = true;
 
     currentIndex++;
@@ -325,10 +343,11 @@ function initCaseStudiesSlider() {
 
     setTimeout(() => {
       isTransitioning = false;
-      startAutoplay();
+      startAutoplay(); // Autoplay-i yenidən başlat
     }, 300);
   });
 
+  // Touch hadisələri
   let touchStartX = 0;
   let touchEndX = 0;
 
@@ -354,14 +373,15 @@ function initCaseStudiesSlider() {
     const swipeThreshold = 50;
 
     if (touchEndX < touchStartX - swipeThreshold) {
-
+      // Sağa swipe - növbəti
       nextBtn.click();
     } else if (touchEndX > touchStartX + swipeThreshold) {
-
+      // Sola swipe - əvvəlki
       prevBtn.click();
     }
   }
 
+  // Slider container hover hadisələri - autoplay idarəsi
   sliderContainer.addEventListener('mouseenter', () => {
     stopAutoplay();
   });
@@ -370,12 +390,10 @@ function initCaseStudiesSlider() {
     startAutoplay();
   });
 
+  // Autoplay-i başlat
   startAutoplay();
 
-
-
-
-
+  // Ekran ölçüsü dəyişdikdə yenilə
   window.addEventListener('resize', () => {
     updateSlider(false);
     updateSliderHeight();
