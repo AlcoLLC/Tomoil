@@ -174,9 +174,9 @@
                         </div>
                         <div class="logo-content">
                             <h3 class="logo-title">{{ tomoil_guideline.logo_title|linebreaks }}</h3>
-                            <p class="section-description">
+                            <div class="section-description">
                                 {{ tomoil_guideline.logo_description|linebreaks }}
-                            </p>
+                            </div>
                            <div class="download-buttons">
                         <a href="{{ tomoil_guideline.logo_png.url }}" download class="download-button">
                             {% trans 'LOGO PNG' %}
@@ -217,7 +217,7 @@
                  <div class="image-gallery">
                      {% for tomoil_branding_card in tomoil_branding_cards %}
                     <div class="gallery-item">
-                        <img src="{% static 'images/by-playing-1.png' %}" alt="Product Pouring">
+                        <img src="{{ tomoil_branding_card.image.url }}" alt="Product Pouring">
                         <div class="gallery-caption">{{ tomoil_branding_card.description|linebreaks }}</div>
                     </div>
                     {% endfor %}

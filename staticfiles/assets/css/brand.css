@@ -78,7 +78,7 @@
   font-family: Atyp Medium;
   color: #223160;
   font-size: 18px;
-  line-height: 30px;
+  line-height: 25px;
   font-weight: 600;
   margin-bottom: 10px;
 }
@@ -100,7 +100,7 @@
 }
 
 .brand-portal-section .logo-primary img {
-  width: 220px;
+  width: 80%;
 }
 
 .brand-portal-section .logo-content {
@@ -124,9 +124,10 @@
   padding: 13px 30px;
   font-size: 12px;
   font-weight: 600;
-  font-family: Unbounded, sans-serif;
+  font-family: "Unbounded", sans-serif;
   display: flex;
   align-items: center;
+  justify-content: center;
   gap: 8px;
   cursor: pointer;
   transition: all 0.4s ease;
@@ -171,13 +172,13 @@
 }
 
 .brand-portal-section .logo-variation-image img {
-  width: 190px;
+  width: 80%;
 }
 
 .brand-portal-section .logo-variation-text {
   border-top: #d8dee39f solid 1.5px;
   color: #223160;
-  font-size: 12px;
+  font-size: 14px;
   padding: 20px 25px;
   padding-bottom: 35px;
   font-family: Atyp Regular;
@@ -199,28 +200,35 @@
   height: 280px;
   background-color: #fff;
   display: flex;
-  gap: 30px;
 }
+
+
+.brand-portal-section .imagery-section,
+.brand-portal-section .mediacenter-section {
+  height: 330px;
+}
+
 
 .brand-portal-section .section-image {
   width: 44%;
   height: 100%;
+
 }
 
 .brand-portal-section .section-image img {
   width: 100%;
   height: 100%;
+  object-fit: cover;
   border-radius: 12px;
 }
 
 .brand-portal-section .section-content {
-  padding: 30px 55px;
+  padding: 30px 40px;
   width: 56%;
 }
 
 .brand-portal-section .section-content .section-description {
-  color: #727272;
-  font-size: 12px;
+  line-height: 20px;
 }
 
 .brand-portal-section .image-gallery {
@@ -243,10 +251,13 @@
   object-fit: cover;
 }
 
+.brand-portal-section .gallery-caption {
+  padding: 20px 25px;
+}
+
 .brand-portal-section .gallery-caption p {
   color: #223160;
   font-size: 12px;
-  padding: 20px 25px;
   font-family: Atyp Regular;
   line-height: 1.5;
 }
@@ -258,7 +269,6 @@
 }
 
 .brand-portal-section .download-links .download-button {
-  white-space: nowrap;
   background-color: transparent;
   border: 1px solid #223160;
   border-bottom-left-radius: 20px;
@@ -272,7 +282,7 @@
   justify-content: center;
   gap: 8px;
   cursor: pointer;
-  font-family: Unbounded, sans-serif;
+  font-family: "Unbounded", sans-serif;
   transition: all 0.3s ease;
 }
 
@@ -473,10 +483,7 @@
   margin-bottom: 25px;
 }
 
-.brand-portal-section
-  .image-library-container
-  .brand-content
-  .promotional-card {
+.brand-portal-section .image-library-container .brand-content .promotional-card {
   margin-bottom: 25px;
 }
 
@@ -592,11 +599,7 @@
   opacity: 1;
 }
 
-.brand-portal-section
-  .brand-video-gallery
-  .video-thumbnail:hover
-  .play-icon
-  img {
+.brand-portal-section .brand-video-gallery .video-thumbnail:hover .play-icon img {
   transform: scale(1.2);
 }
 
