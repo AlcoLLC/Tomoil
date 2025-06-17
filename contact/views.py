@@ -196,12 +196,12 @@ def get_countries_and_codes(form):
 def home_view(request):
     swiper_images = HomeSwiper.objects.filter(is_active=True).order_by('order')
     products = Product.objects.filter(is_home=True).order_by('order')
-    application_areas = ApplicationArea.objects.filter(is_home=True)
+    application_areas = ApplicationArea.objects.filter(is_home=True).order_by('order')
     home_news = News.objects.filter(in_home=True).order_by('-created_at')
     home_news_list = list(home_news[:3])
     large_card_news = home_news_list[0] if home_news_list else None
     small_cards_news = home_news_list[1:3] if len(home_news_list) > 1 else []
-    case_studies = CaseStudy.objects.filter(is_home=True).order_by('-created_at')
+    case_studies = CaseStudy.objects.filter(is_home=True).order_by('order')
     car_logos = CarLogo.objects.filter(is_active=True).order_by('order')
     partner_logos = PartnerLogo.objects.filter(is_active=True).order_by('order')
     reviews = TomoilReview.objects.filter(is_active=True).order_by('-created_at')
