@@ -278,7 +278,7 @@ def search_view(request):
             })
         
         # Search Brand Guidelines
-        brand_guide_fields = ['title', 'description']
+        brand_guide_fields = ['title']
         
         brand_guides = BrandGuidelineDocument.objects.filter(
             build_search_q(query, brand_guide_fields)
@@ -287,7 +287,7 @@ def search_view(request):
         for guide in brand_guides:
             results.append({
                 'title': guide.title,
-                'description': guide.description[:200] + '...' if guide.description and len(guide.description) > 200 else guide.description or '',
+                'description': f'Brand Guideline: {guide.title}',
                 'url': '/brand/?tab=brand-guideline',
                 'type': 'Brand Guidelines',
                 'image': None
