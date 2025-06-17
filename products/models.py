@@ -27,7 +27,7 @@ class ProductRange(models.Model):
 class ApplicationArea(models.Model):
     name = models.CharField(max_length=100, blank=True, null=True)
     slug = models.SlugField(max_length=120, unique=True, blank=True)
-    icon = models.ImageField(upload_to='application_icons/')
+    icon = models.FileField(upload_to='application_icons/')
     is_active = models.BooleanField(default=True)
     is_home = models.BooleanField(default=False, verbose_name="Show on Home Page")
     
