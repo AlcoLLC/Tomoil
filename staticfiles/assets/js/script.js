@@ -142,6 +142,7 @@ function initProductSlider() {
   sliderContainer.addEventListener('mouseleave', startAutoplay);
 }
 
+
 function initCaseStudiesSlider() {
   const sliderTrack = document.querySelector('.case-studies-track');
   const cards = document.querySelectorAll('.case-study-card');
