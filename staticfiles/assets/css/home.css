@@ -1186,17 +1186,15 @@ nav {
 }
 
 .comments-section .swiper {
-  width: 100% !important; 
-  margin: 0 auto; 
+  width: 1300px;
 }
 
-
 .comments-section .swiper-wrapper {
+  max-width: 1000px;
   margin: 0 auto;
   width: 100%;
   background-color: transparent !important;
-  display: flex;
-  align-items: stretch;
+  gap: 15px;
 }
 
 .comments-section .swiper-slide {
@@ -1205,9 +1203,10 @@ nav {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  width: calc(50% - 7.5px) !important;
+  width: 48% !important;
   height: 400px;
   padding: 30px;
+  cursor: pointer;
 }
 
 .comments-section .swiper-slide>div:first-of-type {
