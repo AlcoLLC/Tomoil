@@ -61,6 +61,8 @@ CORS_ALLOWED_ORIGINS = [
     "https://65.108.93.160",
     'http://65.108.93.160:100',
     "https://65.108.93.160:100",
+    'https://tomoil.de/',
+    "http://tomoil.de/",
 ]
 
 CSRF_TRUSTED_ORIGINS = [
@@ -68,6 +70,8 @@ CSRF_TRUSTED_ORIGINS = [
     "https://65.108.93.160",
     'http://65.108.93.160:100',
     "https://65.108.93.160:100",
+    'https://tomoil.de/',
+    "http://tomoil.de/",
 ]
 
 # Application definition
