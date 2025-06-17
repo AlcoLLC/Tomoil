@@ -30,6 +30,7 @@ class ApplicationArea(models.Model):
     icon = models.FileField(upload_to='application_icons/')
     is_active = models.BooleanField(default=True)
     is_home = models.BooleanField(default=False, verbose_name="Show on Home Page")
+    order = models.PositiveIntegerField(default=0, verbose_name="Order")
     
     def save(self, *args, **kwargs):
         if not self.slug and self.name:
@@ -83,6 +84,7 @@ class Composition(models.Model):
     name = models.CharField(max_length=255)
     slug = models.SlugField(max_length=275, unique=True, blank=True)
     is_active = models.BooleanField(default=True)
+    order = models.PositiveIntegerField(default=0, verbose_name="Order")
     
     def save(self, *args, **kwargs):
         if not self.slug:
@@ -100,6 +102,7 @@ class PackSize(models.Model):
     size = models.DecimalField(max_digits=10, decimal_places=2)
     slug = models.SlugField(max_length=50, unique=True, blank=True)
     is_active = models.BooleanField(default=True)
+    order = models.PositiveIntegerField(default=0, verbose_name="Order")
     
     def save(self, *args, **kwargs):
         if not self.slug:

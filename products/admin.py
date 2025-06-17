@@ -15,7 +15,7 @@ class ProductRangeAdmin(TranslationAdmin):
 
 @admin.register(ApplicationArea)
 class ApplicationAreaAdmin(admin.ModelAdmin):
-    list_display = ('name', 'is_active', 'is_home')
+    list_display = ('name', 'is_active', 'is_home', 'order')
     list_filter = ('is_active',)
     search_fields = ('name',)
     list_editable = ('is_active',)
@@ -36,14 +36,14 @@ class ViscosityAdmin(admin.ModelAdmin):
 
 @admin.register(Composition)
 class CompositionAdmin(TranslationAdmin):
-    list_display = ('name', 'is_active')
+    list_display = ('name', 'is_active', 'order')
     list_filter = ('is_active',)
     search_fields = ('name', 'name_en')
     list_editable = ('is_active',)
 
 @admin.register(PackSize)
 class PackSizeAdmin(admin.ModelAdmin):
-    list_display = ('size', 'is_active')
+    list_display = ('size', 'is_active', 'order')
     list_filter = ('is_active',)
     search_fields = ('size',)
     list_editable = ('is_active',)

@@ -13,6 +13,10 @@ class CaseStudy(models.Model):
     created_at = models.DateTimeField(default=timezone.now)
     is_home = models.BooleanField(
         default=False, verbose_name="Show on Home Page")
+    order = models.PositiveIntegerField(
+        default=0, verbose_name="Order",
+        help_text="Order of the case study in the display"
+    )
 
     def __str__(self):
         return self.title
