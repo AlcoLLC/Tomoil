@@ -35,37 +35,36 @@
                     {% endblocktrans %} 
                 </p>
 
-                <div class="brand-section logo-section">
-                    <div class="logo-container">
-                        <div class="logo-primary">
-                            <img src="{% static 'images/tomoil-logo.svg' %}" alt="Tomoil Logo">
-                        </div>
-                        <div class="logo-content">
-                            <h3 class="logo-title">Logo, Full-color logo (Standard)</h3>
-                            <p class="section-description">
-                                The S.R.V. (acronym of Schwingung, Reibung, Verschleiß namely Oscillating, Friction,
-                                Wear)
-                                measures the physical interactions between a lubricant and two specimens in a loaded
-                                contact in either rotational or linear oscillatory motion.
-                            </p>
-                            <p class="section-description">
-                                It determines the efficiency of lubricants and greases by measuring friction, anti-wear
-                                (AW) and extreme pressure (EP) properties simulating real metal to metal sliding
-                                contact.
-                            </p>
-                            <div class="download-buttons">
-                                <button class="download-button">
-                                    LOGO PNG
-                                    <img src="{% static 'images/download-icon.svg' %}" alt="Download Icon">
-                                </button>
-                                <button class="download-button">
-                                    LOGO PDF
-                                    <img src="{% static 'images/download-icon.svg' %}" alt="Download Icon">
-                                </button>
-                            </div>
-                        </div>
+                {% if tomoil_logos_full_color %}
+    {% with tomoil_logos_full_color|first as first_logo %}
+        <div class="brand-section logo-section">
+            <div class="logo-container">
+                <div class="logo-primary">
+                    <img src="{{ first_logo.logo.url }}" alt="{{ first_logo.title }}">
+                </div>
+                <div class="logo-content">
+                    <h3 class="logo-title">{{ first_logo.title }}</h3>
+                    <p class="section-description">
+                        {{ first_logo.description|linebreaks }}
+                    </p>
+                    <div class="download-buttons">
+                        <a href="{{ first_logo.logo.url }}" download class="download-button">
+                            LOGO PNG
+                            <img src="{% static 'images/download-icon.svg' %}" alt="Download Icon">
+                        </a>
+                        {% if first_logo.logo_pdf %}
+                            <a href="{{ first_logo.logo_pdf.url }}" download class="download-button">
+                                LOGO PDF
+                                <img src="{% static 'images/download-icon.svg' %}" alt="Download Icon">
+                            </a>
+                        {% endif %}
                     </div>
                 </div>
+            </div>
+        </div>
+    {% endwith %}
+{% else %}
+{% endif %}
 
                 <!-- Logo Variations -->
                 <div class="logo-variations">
@@ -73,59 +72,58 @@
                         <div class="logo-variation-image">
                             <img src="{% static 'images/tomoil-logo-navy.svg' %}" alt="Tomoil Logo Navy">
                         </div>
-                        <p class="logo-variation-text">No elements may be placed in the protected area X.</p>
+                        <p class="logo-variation-text">{% trans 'logo_description' %}</p>
                     </div>
                     <div class="logo-variation-item">
                         <div class="logo-variation-image red-bg">
                             <img src="{% static 'images/tomoil-logo-white.svg' %}" alt="Tomoil Logo White">
                         </div>
-                        <p class="logo-variation-text">No elements may be placed in the protected area X.</p>
+                        <p class="logo-variation-text">{% trans 'logo_description' %}</p>
                     </div>
                     <div class="logo-variation-item">
                         <div class="logo-variation-image">
                             <img src="{% static 'images/tomoil-logo-red.svg' %}" alt="Tomoil Logo Red">
                         </div>
-                        <p class="logo-variation-text">No elements may be placed in the protected area X.</p>
+                        <p class="logo-variation-text">{% trans 'logo_description' %}</p>
                     </div>
                     <div class="logo-variation-item">
                         <div class="logo-variation-image navy-bg">
                             <img src="{% static 'images/tomoil-logo-white.svg' %}" alt="Tomoil Logo White">
                         </div>
-                        <p class="logo-variation-text">No elements may be placed in the protected area X.</p>
+                        <p class="logo-variation-text">{% trans 'logo_description' %}</p>
                     </div>
                 </div>
 
-                 <div class="brand-section logo-section">
-                    <div class="logo-container">
-                        <div class="logo-primary">
-                            <img src="{% static 'images/tomoil-logo.svg' %}" alt="Tomoil Logo">
-                        </div>
-                        <div class="logo-content">
-                            <h3 class="logo-title">Logo, Full-color logo (Standard)</h3>
-                            <p class="section-description">
-                                The S.R.V. (acronym of Schwingung, Reibung, Verschleiß namely Oscillating, Friction,
-                                Wear)
-                                measures the physical interactions between a lubricant and two specimens in a loaded
-                                contact in either rotational or linear oscillatory motion.
-                            </p>
-                            <p class="section-description">
-                                It determines the efficiency of lubricants and greases by measuring friction, anti-wear
-                                (AW) and extreme pressure (EP) properties simulating real metal to metal sliding
-                                contact.
-                            </p>
-                            <div class="download-buttons">
-                                <button class="download-button">
-                                    LOGO PNG
-                                    <img src="{% static 'images/download-icon.svg' %}" alt="Download Icon">
-                                </button>
-                                <button class="download-button">
-                                    LOGO PDF
-                                    <img src="{% static 'images/download-icon.svg' %}" alt="Download Icon">
-                                </button>
-                            </div>
-                        </div>
+                {% if tomoil_logos_full_color|length >= 2 %}
+    {% with tomoil_logos_full_color.1 as second_logo %}
+        <div class="brand-section logo-section">
+            <div class="logo-container">
+                <div class="logo-primary">
+                    <img src="{{ second_logo.logo.url }}" alt="{{ second_logo.title }}">
+                </div>
+                <div class="logo-content">
+                    <h3 class="logo-title">{{ second_logo.title }}</h3>
+                    <p class="section-description">
+                        {{ second_logo.description|linebreaks }}
+                    </p>
+                    <div class="download-buttons">
+                        <a href="{{ second_logo.logo.url }}" download class="download-button">
+                            LOGO PNG
+                            <img src="{% static 'images/download-icon.svg' %}" alt="Download Icon">
+                        </a>
+                        {% if second_logo.logo_pdf %}
+                            <a href="{{ second_logo.logo_pdf.url }}" download class="download-button">
+                                LOGO PDF
+                                <img src="{% static 'images/download-icon.svg' %}" alt="Download Icon">
+                            </a>
+                        {% endif %}
                     </div>
                 </div>
+            </div>
+        </div>
+    {% endwith %}
+{% else %}
+{% endif %}
 
                 <!-- Other Brand Sections -->
                 <div class="brand-section color-section">
