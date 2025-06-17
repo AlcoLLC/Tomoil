@@ -61,7 +61,7 @@
 
 .contact-section .info-value {
   font-family: "Plus Jakarta Sans", sans-serif;
-  color: #223160;
+  color: #223160 !important;
   font-size: 14px;
   font-weight: 600;
 }
