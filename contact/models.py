@@ -2,6 +2,8 @@ from django.db import models
 from django.utils import timezone
 
 
+from django.utils.translation import gettext_lazy as _
+
 class Contact(models.Model):
     CONTACT_METHODS = [
         ('email', 'Email'),
@@ -17,22 +19,50 @@ class Contact(models.Model):
         ('Distributorship', 'Distributorship'),
     ]
 
-    first_name = models.CharField(max_length=100)
-    last_name = models.CharField(max_length=100)
-    country_code = models.CharField(max_length=10)
-    contact_number = models.CharField(max_length=20)
-    email = models.EmailField()
-    country = models.CharField(max_length=100)
-    enquiry_type = models.CharField(max_length=100, choices=ENQUIRY_TYPES)
+    first_name = models.CharField(max_length=100, verbose_name=_('First Name'))
+    last_name = models.CharField(max_length=100, verbose_name=_('Last Name'))
+    country_code = models.CharField(max_length=10, verbose_name=_('Country Code'))
+    contact_number = models.CharField(max_length=20, verbose_name=_('Contact Number'))
+    email = models.EmailField(verbose_name=_('Email'))
+    country = models.CharField(max_length=100, verbose_name=_('Country'))
+    enquiry_type = models.CharField(
+        max_length=100, 
+        choices=ENQUIRY_TYPES, 
+        verbose_name=_('Enquiry Type')
+    )
     preferred_contact_method = models.CharField(
-        max_length=20, choices=CONTACT_METHODS)
-    message = models.TextField(blank=True, null=True)
-    consent = models.BooleanField(default=False)
-    created_at = models.DateTimeField(default=timezone.now)
+        max_length=20, 
+        choices=CONTACT_METHODS,
+        verbose_name=_('Preferred Contact Method')
+    )
+    message = models.TextField(blank=True, null=True, verbose_name=_('Message'))
+    consent = models.BooleanField(default=False, verbose_name=_('Consent'))
+    
+    # New fields for reCAPTCHA and IP tracking
+    ip_address = models.GenericIPAddressField(
+        verbose_name=_('IP Address'), 
+        null=True, 
+        blank=True
+    )
+    recaptcha_verified = models.BooleanField(
+        default=False, 
+        verbose_name=_('reCAPTCHA Verified')
+    )
+    
+    created_at = models.DateTimeField(default=timezone.now, verbose_name=_('Created At'))
 
     def __str__(self):
         return f"{self.first_name} {self.last_name} - {self.email}"
 
+    class Meta:
+        verbose_name = _('Contact')
+        verbose_name_plural = _('Contacts')
+        indexes = [
+            models.Index(fields=['ip_address']),
+            models.Index(fields=['created_at']),
+        ]
+
+        
 class HomeSwiper(models.Model):    
     image = models.ImageField(
         upload_to='home_swiper/',

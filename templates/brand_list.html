@@ -72,25 +72,25 @@
                         <div class="logo-variation-image">
                             <img src="{% static 'images/tomoil-logo-navy.svg' %}" alt="Tomoil Logo Navy">
                         </div>
-                        <p class="logo-variation-text">{% trans 'logo_description' %}</p>
+                        <p class="logo-variation-text">{% trans 'logo_description_1' %}</p>
                     </div>
                     <div class="logo-variation-item">
                         <div class="logo-variation-image red-bg">
                             <img src="{% static 'images/tomoil-logo-white.svg' %}" alt="Tomoil Logo White">
                         </div>
-                        <p class="logo-variation-text">{% trans 'logo_description' %}</p>
+                        <p class="logo-variation-text">{% trans 'logo_description_2' %}</p>
                     </div>
                     <div class="logo-variation-item">
                         <div class="logo-variation-image">
                             <img src="{% static 'images/tomoil-logo-red.svg' %}" alt="Tomoil Logo Red">
                         </div>
-                        <p class="logo-variation-text">{% trans 'logo_description' %}</p>
+                        <p class="logo-variation-text">{% trans 'logo_description_3' %}</p>
                     </div>
                     <div class="logo-variation-item">
                         <div class="logo-variation-image navy-bg">
                             <img src="{% static 'images/tomoil-logo-white.svg' %}" alt="Tomoil Logo White">
                         </div>
-                        <p class="logo-variation-text">{% trans 'logo_description' %}</p>
+                        <p class="logo-variation-text">{% trans 'logo_description_4' %}</p>
                     </div>
                 </div>
 
@@ -223,7 +223,7 @@
                     {% endfor %}
                 </div>
 
-                 <div class="brand-section mediacenter-section">
+                 {% comment %} <div class="brand-section mediacenter-section">
                     <div class="section-image">
                         <img src="{% static 'images/product-lineup.png' %}" alt="Product Lineup">
                     </div>
@@ -240,7 +240,7 @@
                             explained on the following pages.
                         </p>
                     </div>
-                </div> 
+                </div>  {% endcomment %}
 
                 <!-- Downloads Section -->
                 <div class="brand-section downloads-section">
@@ -265,7 +265,7 @@
                             <div>
                                 <h2 class="section-title">{{ catalogue.title }}</h2>
                             <p class="section-description">
-                                {{ catalogue.description }}
+                                {{ catalogue.description|truncatechars:270 }}
                             </p>
                             </div>
                             <div class="brochure-buttons">

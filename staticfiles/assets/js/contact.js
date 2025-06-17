@@ -20,6 +20,7 @@ document.addEventListener("DOMContentLoaded", function () {
         customSelect.classList.remove("open");
       }
     });
+
     options.forEach(function (option) {
       option.addEventListener("click", function () {
         const code = this.getAttribute("data-country-code");
@@ -45,6 +46,7 @@ document.addEventListener("DOMContentLoaded", function () {
   const phoneValidationMessage = document.getElementById(
     "phone-validation-message"
   );
+  const recaptchaError = document.getElementById("recaptcha-error");
 
   document.querySelectorAll(".custom-select-wrapper").forEach((wrapper) => {
     const select = wrapper.querySelector(".custom-select");
@@ -122,17 +124,17 @@ document.addEventListener("DOMContentLoaded", function () {
     phoneInput.classList.remove("valid", "invalid");
 
     if (code && number) {
-      const form = new FormData();
-      form.append("country_code", code);
-      form.append("phone_number", number);
-      form.append(
+      const formData = new FormData();
+      formData.append("country_code", code);
+      formData.append("phone_number", number);
+      formData.append(
         "csrfmiddlewaretoken",
         document.querySelector("[name=csrfmiddlewaretoken]").value
       );
 
       fetch("/validate-phone/", {
         method: "POST",
-        body: form,
+        body: formData,
         headers: { "X-Requested-With": "XMLHttpRequest" },
       })
         .then((response) => response.json())
@@ -171,6 +173,10 @@ document.addEventListener("DOMContentLoaded", function () {
     );
     const phoneValid = phoneInput.classList.contains("valid");
 
+    // Check if reCAPTCHA is completed
+    const recaptchaResponse =
+      grecaptcha && grecaptcha.getResponse && grecaptcha.getResponse();
+
     const isValid =
       firstName &&
       lastName &&
@@ -179,10 +185,41 @@ document.addEventListener("DOMContentLoaded", function () {
       enquiryType &&
       contactMethod &&
       phoneValid &&
-      consentCheckbox.checked;
+      consentCheckbox.checked &&
+      recaptchaResponse &&
+      recaptchaResponse.length > 0;
 
     submitButton.disabled = !isValid;
+
+    // Show/hide reCAPTCHA error message
+    if (recaptchaError) {
+      if (recaptchaResponse && recaptchaResponse.length > 0) {
+        recaptchaError.style.display = "none";
+      } else if (firstName || lastName || email) {
+        // Only show error if user has started filling the form
+        recaptchaError.style.display = "block";
+      }
+    }
   }
+
+  // Handle form submission with additional validation
+  form.addEventListener("submit", function (e) {
+    const recaptchaResponse =
+      grecaptcha && grecaptcha.getResponse && grecaptcha.getResponse();
+
+    if (!recaptchaResponse || recaptchaResponse.length === 0) {
+      e.preventDefault();
+      if (recaptchaError) {
+        recaptchaError.style.display = "block";
+      }
+      alert("Please complete the reCAPTCHA verification before submitting.");
+      return false;
+    }
+
+    // Optional: Show loading state
+    submitButton.disabled = true;
+    submitButton.textContent = "Submitting...";
+  });
 
   document.querySelectorAll("input, select, textarea").forEach((input) => {
     input.addEventListener("input", validateForm);
@@ -198,5 +235,37 @@ document.addEventListener("DOMContentLoaded", function () {
     consentCheckbox.addEventListener("change", validateForm);
   }
 
+  // Initialize form validation
   validateForm();
+
+  // Check for reCAPTCHA periodically if it's loaded
+  const checkRecaptcha = setInterval(() => {
+    if (typeof grecaptcha !== "undefined") {
+      clearInterval(checkRecaptcha);
+      validateForm();
+    }
+  }, 100);
 });
+
+// Global reCAPTCHA callback functions (called from HTML)
+function enableSubmitButton() {
+  const recaptchaError = document.getElementById("recaptcha-error");
+  if (recaptchaError) {
+    recaptchaError.style.display = "none";
+  }
+  // Trigger form validation
+  const event = new Event("change");
+  document.querySelector(".contact-form").dispatchEvent(event);
+}
+
+function disableSubmitButton() {
+  const submitButton = document.getElementById("submit-button");
+  const recaptchaError = document.getElementById("recaptcha-error");
+
+  if (submitButton) {
+    submitButton.disabled = true;
+  }
+  if (recaptchaError) {
+    recaptchaError.style.display = "block";
+  }
+}

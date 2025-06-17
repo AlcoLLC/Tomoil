@@ -93,7 +93,7 @@ class BrandGuidelineDocument(models.Model):
 
 
 class BrandCatalogue(models.Model):
-    title = models.CharField(max_length=255)
+    title = models.CharField(max_length=120)
     description = models.TextField(blank=True)
     document = models.FileField(upload_to='brand_catalogues/')
     preview_image = models.ImageField(upload_to='brand_catalogues/previews/')
