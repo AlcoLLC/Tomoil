@@ -761,6 +761,17 @@
     .product-opinions .opinions {
         width: 37%;
     }
+
+    .brand-portal-section .image-library-container {
+        grid-template-columns: 1fr 1fr;
+        gap: 25px;
+    }
+
+    .brand-portal-section .image-library-container .brand-detail-row {
+        grid-template-columns: repeat(1, 1fr);
+        gap: 10px;
+        margin-bottom: 0;
+    }
 }
 
 @media screen and (max-width: 800px) {
@@ -1811,6 +1822,8 @@
 }
 
 @media screen and (max-width: 500px) {
+
+    
     .brand-portal-section .promotional-row {
         grid-template-columns: repeat(1, 1fr);
     }
