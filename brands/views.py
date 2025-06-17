@@ -9,7 +9,7 @@ from .models import (
     BrandImageLibrary,
     BrandVideo,
     BrandGuidelineDocument,
-    BrandCatalogue
+    BrandCatalogue, TomoilLogoFullColor, TomoilLogo, TomoikGuideline, TomoilBrandingCards
 )
 from pageheader.models import PageHeader
 
@@ -19,6 +19,7 @@ class BrandPortalView(TemplateView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
 
+        # Mövcud brand məlumatları
         context['promotional_items'] = BrandPromotionalItem.objects.all()
         context['image_library'] = {
             'corporate': BrandImageLibrary.objects.filter(type='corporate'),
@@ -28,6 +29,11 @@ class BrandPortalView(TemplateView):
         context['videos'] = BrandVideo.objects.all()
         context['brand_guidelines'] = BrandGuidelineDocument.objects.all()
         context['catalogues'] = BrandCatalogue.objects.all()
+
+        context['tomoil_logos_full_color'] = TomoilLogoFullColor.objects.all()
+        context['tomoil_logos_mono'] = TomoilLogo.objects.all()
+        context['tomoil_guidelines'] = TomoikGuideline.objects.all()
+        context['tomoil_branding_cards'] = TomoilBrandingCards.objects.all()
 
         active_tab = self.request.GET.get('tab', 'brand-guideline')
         context['active_tab'] = active_tab
