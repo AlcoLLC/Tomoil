@@ -16,38 +16,95 @@ function initProductSlider() {
   const prevBtn = document.querySelector('.featured-section .prev-btn');
   const nextBtn = document.querySelector('.featured-section .next-btn');
 
-  let currentIndex = 1;
-  const totalProducts = productCards.length;
+  const originalProductCount = productCards.length;
+  let autoplayInterval;
+
+  // Orijinal elementləri kopyalayıb əvvələ və sona əlavə et
+  function createInfiniteLoop() {
+    // Sonuncu elementləri əvvələ əlavə et
+    for (let i = originalProductCount - 1; i >= 0; i--) {
+      const clone = productCards[i].cloneNode(true);
+      sliderContainer.insertBefore(clone, sliderContainer.firstChild);
+    }
+    
+    // İlk elementləri sona əlavə et
+    for (let i = 0; i < originalProductCount; i++) {
+      const clone = productCards[i].cloneNode(true);
+      sliderContainer.appendChild(clone);
+    }
+  }
+
+  createInfiniteLoop();
+
+  // Yenilənmiş card listini al
+  const allCards = document.querySelectorAll('.featured-section .product-card');
+  const totalCards = allCards.length;
+  
+  // Başlanğıc pozisiyası - orijinal ilk element (ortadakı grup)
+  let currentIndex = originalProductCount + 1; // İkinci qrupdan başla (orijinal mərkəz)
 
   function updateSlider() {
-    productCards.forEach((card) => {
-      card.classList.remove('visible');
-      card.classList.remove('active');
+    allCards.forEach((card) => {
+      card.classList.remove('visible', 'active');
     });
 
-    const prevIndex = (currentIndex - 1 + totalProducts) % totalProducts;
-    const nextIndex = (currentIndex + 1) % totalProducts;
+    const prevIndex = currentIndex - 1;
+    const nextIndex = currentIndex + 1;
 
-    productCards[prevIndex].classList.add('visible');
-    productCards[currentIndex].classList.add('visible', 'active');
-    productCards[nextIndex].classList.add('visible');
+    if (allCards[prevIndex]) allCards[prevIndex].classList.add('visible');
+    if (allCards[currentIndex]) allCards[currentIndex].classList.add('visible', 'active');
+    if (allCards[nextIndex]) allCards[nextIndex].classList.add('visible');
+  }
+
+  function nextSlide() {
+    currentIndex++;
+    
+    // Sona çatdıqda başa qayıt
+    if (currentIndex >= totalCards - originalProductCount) {
+      currentIndex = originalProductCount;
+    }
+    
+    updateSlider();
+  }
+
+  function prevSlide() {
+    currentIndex--;
+    
+    // Başa çatdıqda sona qayıt  
+    if (currentIndex < originalProductCount) {
+      currentIndex = totalCards - originalProductCount - 1;
+    }
+    
+    updateSlider();
+  }
+
+  function startAutoplay() {
+    autoplayInterval = setInterval(() => {
+      nextSlide();
+    }, 3000);
+  }
+
+  function stopAutoplay() {
+    clearInterval(autoplayInterval);
+  }
+
+  function restartAutoplay() {
+    stopAutoplay();
+    startAutoplay();
   }
 
   prevBtn.addEventListener('click', () => {
-    if (currentIndex - 1 > 0) {
-      currentIndex = currentIndex - 1;
-      updateSlider();
-    }
+    prevSlide();
+    restartAutoplay();
   });
 
   nextBtn.addEventListener('click', () => {
-    if (currentIndex + 1 < totalProducts - 1) {
-      currentIndex = currentIndex + 1;
-      updateSlider();
-    }
+    nextSlide();
+    restartAutoplay();
   });
 
   updateSlider();
+  startAutoplay();
 
   let touchStartX = 0;
   let touchEndX = 0;
@@ -56,6 +113,7 @@ function initProductSlider() {
     'touchstart',
     (e) => {
       touchStartX = e.changedTouches[0].screenX;
+      stopAutoplay();
     },
     false
   );
@@ -65,25 +123,23 @@ function initProductSlider() {
     (e) => {
       touchEndX = e.changedTouches[0].screenX;
       handleSwipe();
+      restartAutoplay();
     },
     false
   );
 
   function handleSwipe() {
     if (touchEndX < touchStartX - 50) {
-      if (currentIndex + 1 < totalProducts - 1) {
-        currentIndex = currentIndex + 1;
-        updateSlider();
-      }
+      nextSlide();
     }
 
     if (touchEndX > touchStartX + 50) {
-      if (currentIndex - 1 > 0) {
-        currentIndex = currentIndex - 1;
-        updateSlider();
-      }
+      prevSlide();
     }
   }
+
+  sliderContainer.addEventListener('mouseenter', stopAutoplay);
+  sliderContainer.addEventListener('mouseleave', startAutoplay);
 }
 
 function initCaseStudiesSlider() {
