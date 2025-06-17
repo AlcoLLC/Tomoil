@@ -458,8 +458,8 @@
     }
 
     .market-segments ul li div img {
-        width: 40px;
-        height: 35px;
+        width: 30px;
+        height: 28px;
     }
 
     .featured-section .product-card.active .product-image a::after {
@@ -1090,6 +1090,10 @@
     .case-detail-section .case-detail-images img {
         height: 350px;
     }
+
+    .product-range .card-image {
+        height: 150px;
+    }
 }
 
 @media (max-width: 720px) {
@@ -1690,15 +1694,57 @@
     }
 
     .product-range .card-container .card-content {
-        min-height: 120px;
+        min-height: 95px;
     }
 
-    .product-range .card-title {
+    .product-range .card-button i {
         font-size: 12px;
     }
 
+    .product-range .navigation.nav-none {
+        display: block;
+        display: flex;
+        gap: 10px;
+        margin-top: 0 auto;
+        justify-content: center;
+    }
+
+    .product-range .nav-top {
+        display: none !important;
+    }
+
+    .product-range .swiper {
+        padding-bottom: 10rem !important;
+        margin-bottom: 10px;
+        width: 100%;
+    }
+
+    .product-range .swiper {
+        padding-bottom: 6rem !important;
+        margin-bottom: 10px;
+        width: 100%;
+    }
+
+    .product-range .swiper-slide {
+        width: 65% !important;
+    }
+
+    .product-range .card-container .card-content {
+        width: 100%;
+        border-top-right-radius: 30px;
+        border-bottom-left-radius: 30px;
+    }
+
+    .product-range .card-title {
+        font-size: 14px;
+        line-height: 16px;
+    }
+
     .product-range .card-description {
-        font-size: 11px;
+        font-size: 12px;
+        line-height: 15px;
+        margin-top: 10px;
+
     }
 
     .map-header h6 {
@@ -1771,6 +1817,10 @@
 
     .brand-portal-section .promotional-info .section-title {
         font-size: 14px;
+    }
+
+    .product-range .card-title {
+        font-size: 12px;
     }
 
     .case-detail-section .main-image {
@@ -1904,9 +1954,7 @@
         padding: 0 15px;
     }
 
-    .product-range .card-button i {
-        font-size: 12px;
-    }
+
 
     .mobile-languages .lang-btn {
         padding: 5px;
@@ -1959,49 +2007,7 @@
         height: 200px;
     }
 
-    .product-range .navigation.nav-none {
-        display: block;
-        display: flex;
-        gap: 10px;
-        margin-top: 0 auto;
-        justify-content: center;
-    }
 
-    .product-range .nav-top {
-        display: none !important;
-    }
-
-    .product-range .swiper {
-        padding-bottom: 10rem !important;
-        margin-bottom: 10px;
-        width: 100%;
-    }
-
-    .product-range .swiper {
-        padding-bottom: 6rem !important;
-        margin-bottom: 10px;
-        width: 100%;
-    }
-
-    .product-range .swiper-slide {
-        width: 65% !important;
-    }
-
-    .product-range .card-container .card-content {
-        width: 100%;
-        border-top-right-radius: 30px;
-        border-bottom-left-radius: 30px;
-    }
-
-    .product-range .card-title {
-        font-size: 14px;
-        line-height: 16px;
-    }
-
-    .product-range .card-description {
-        font-size: 12px;
-        line-height: 15px;
-    }
 
     .map-header {
         flex-direction: column;
