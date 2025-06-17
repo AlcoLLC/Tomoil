@@ -87,8 +87,6 @@ class BrandVideo(models.Model):
 class BrandGuidelineDocument(models.Model):
     title = models.CharField(max_length=255)
     document = models.FileField(upload_to='brand_guidelines/documents/')
-    description = models.TextField(blank=True, null=True)
-    file_type = models.CharField(max_length=10, blank=True, null=True) 
     
     def __str__(self):
         return self.title
@@ -135,29 +133,29 @@ class TomoilLogoFullColor(models.Model):
         verbose_name = "Tomoil Full Color Logo"
         verbose_name_plural = "Tomoil Full Color Logos (Max: 2)"
 
-class TomoilLogo(models.Model):
-    logo = models.ImageField(
-        upload_to='brand_logos/mono/',
-        help_text="Monochrome Tomoil logo"
-    )
-    description = models.TextField(
-        help_text="Description for the logo"
-    )
+# class TomoilLogo(models.Model):
+#     logo = models.ImageField(
+#         upload_to='brand_logos/mono/',
+#         help_text="Monochrome Tomoil logo"
+#     )
+#     description = models.TextField(
+#         help_text="Description for the logo"
+#     )
     
-    def clean(self):
-        if not self.pk and TomoilLogo.objects.count() >= 4:
-            raise ValidationError('Maximum 4 Monochrome Tomoil logos allowed.')
+#     def clean(self):
+#         if not self.pk and TomoilLogo.objects.count() >= 4:
+#             raise ValidationError('Maximum 4 Monochrome Tomoil logos allowed.')
     
-    def save(self, *args, **kwargs):
-        self.clean()
-        super().save(*args, **kwargs)
+#     def save(self, *args, **kwargs):
+#         self.clean()
+#         super().save(*args, **kwargs)
     
-    def __str__(self):
-        return f"Tomoil Logo Monochrome - {self.description[:50]}"
+#     def __str__(self):
+#         return f"Tomoil Logo Monochrome - {self.description[:50]}"
 
-    class Meta:
-        verbose_name = "Tomoil Monochrome Logo"
-        verbose_name_plural = "Tomoil Monochrome Logos (Max: 4)"
+#     class Meta:
+#         verbose_name = "Tomoil Monochrome Logo"
+#         verbose_name_plural = "Tomoil Monochrome Logos (Max: 4)"
 
 class TomoilGuideline(models.Model):
     title = models.CharField(

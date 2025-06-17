@@ -44,17 +44,17 @@
                 </div>
                 <div class="logo-content">
                     <h3 class="logo-title">{{ first_logo.title }}</h3>
-                    <p class="section-description">
+                    <div class="section-description">
                         {{ first_logo.description|linebreaks }}
-                    </p>
+                    </div>
                     <div class="download-buttons">
                         <a href="{{ first_logo.logo.url }}" download class="download-button">
-                            LOGO PNG
+                            {% trans 'LOGO PNG' %}
                             <img src="{% static 'images/download-icon.svg' %}" alt="Download Icon">
                         </a>
                         {% if first_logo.logo_pdf %}
                             <a href="{{ first_logo.logo_pdf.url }}" download class="download-button">
-                                LOGO PDF
+                                {% trans 'LOGO PDF' %}
                                 <img src="{% static 'images/download-icon.svg' %}" alt="Download Icon">
                             </a>
                         {% endif %}
@@ -103,17 +103,17 @@
                 </div>
                 <div class="logo-content">
                     <h3 class="logo-title">{{ second_logo.title }}</h3>
-                    <p class="section-description">
+                    <div class="section-description">
                         {{ second_logo.description|linebreaks }}
-                    </p>
+                    </div>
                     <div class="download-buttons">
                         <a href="{{ second_logo.logo.url }}" download class="download-button">
-                            LOGO PNG
+                            {% trans 'LOGO PNG' %}
                             <img src="{% static 'images/download-icon.svg' %}" alt="Download Icon">
                         </a>
                         {% if second_logo.logo_pdf %}
                             <a href="{{ second_logo.logo_pdf.url }}" download class="download-button">
-                                LOGO PDF
+                                {% trans 'LOGO PDF' %}
                                 <img src="{% static 'images/download-icon.svg' %}" alt="Download Icon">
                             </a>
                         {% endif %}
@@ -131,13 +131,15 @@
                         <img src="{% static 'images/color-palette.png' %}" alt="Color Palette">
                     </div>
                     <div class="section-content">
-                        <h3 class="section-title">Color</h3>
+                        <h3 class="section-title">{% trans 'Color' %}</h3>
                         <p class="section-description">
+                            {% blocktrans %}
                             A strong brand has a recognizable and consistent brand identity. This brand identity manual
                             provides guidelines for the correct usage of various brand identity elements, such as the
                             logo, colors, fonts, and photography. You will also find examples here for the proper
                             application of the brand identity across different design materials, including
                             advertisements, brochures, banners, and flyers.
+                            {% endblocktrans %}
                         </p>
                     </div>
                 </div>
@@ -147,59 +149,46 @@
                         <img src="{% static 'images/typography.png' %}" alt="Typography">
                     </div>
                     <div class="section-content">
-                        <h3 class="section-title">Typography</h3>
+                        <h3 class="section-title">{% trans 'Typography' %}</h3>
                         <p class="section-description">
-                            A strong brand has a recognizable and consistent brand identity. This brand identity manual
+                            {% blocktrans %}
+                           A strong brand has a recognizable and consistent brand identity. This brand identity manual
                             provides guidelines for the correct usage of various brand identity elements, such as the
-                            logo, colors, fonts, and photography.
+                            logo, colors, fonts, and photography. 
+                            {% endblocktrans %}
                         </p>
                     </div>
                 </div>
 
                  <div class="brand-section guidelines-section">
-                    <h3 class="section-title">Guidelines writing (focus national)</h3>
+                    <h3 class="section-title">{{ tomoil_guideline.title }}</h3>
                     <p class="section-description">
-                        The shield logo is the most recognizable element of the Eurol corporate identity. This logo
-                        takes
-                        priority, and in case of doubt about logo usage, we recommend using this variant. The logo with
-                        the
-                        tagline 'Powering Performance' is used as a closing element when there is sufficient space, such
-                        as
-                        on the back of a brochure, business card, or trailer. The landscape logo should only be used in
-                        exceptional cases, as a secondary option to the shield logo when limited space compromises
-                        readability and
-                        visibility. It is suitable for wide applications.
+                        {{ tomoil_guideline.description|linebreaks }}
                     </p>
                 </div>
 
                  <div class="brand-section origin-section">
                     <div class="logo-container">
                         <div class="logo-primary">
-                            <img src="{% static 'images/tomoil-logo.svg' %}" alt="Tomoil Logo">
+                            <img src="{{ tomoil_guideline.logo_png.url }}" alt="{{ tomoil_guideline.title }}">
                         </div>
                         <div class="logo-content">
-                            <h3 class="logo-title">Designation of origin "Made in Germany"</h3>
+                            <h3 class="logo-title">{{ tomoil_guideline.logo_title|linebreaks }}</h3>
                             <p class="section-description">
-                                The S.R.V. (acronym of Schwingung, Reibung, Verschleiß namely Oscillating, Friction,
-                                Wear)
-                                measures the physical interactions between a lubricant and two specimens in a loaded
-                                contact in either rotational or linear oscillatory motion.
+                                {{ tomoil_guideline.logo_description|linebreaks }}
                             </p>
-                            <p class="section-description">
-                                It determines the efficiency of lubricants and greases by measuring friction, anti-wear
-                                (AW) and extreme pressure (EP) properties simulating real metal to metal sliding
-                                contact.
-                            </p>
-                            <div class="download-buttons">
-                                <button class="download-button">
-                                    LOGO PNG
-                                    <img src="{% static 'images/download-icon.svg' %}" alt="Download Icon">
-                                </button>
-                                <button class="download-button">
-                                    LOGO PDF
-                                    <img src="{% static 'images/download-icon.svg' %}" alt="Download Icon">
-                                </button>
-                            </div>
+                           <div class="download-buttons">
+                        <a href="{{ tomoil_guideline.logo_png.url }}" download class="download-button">
+                            {% trans 'LOGO PNG' %}
+                            <img src="{% static 'images/download-icon.svg' %}" alt="Download Icon">
+                        </a>
+                        {% if tomoil_guideline.logo_pdf %}
+                            <a href="{{ tomoil_guideline.logo_pdf.url }}" download class="download-button">
+                                {% trans 'LOGO PDF' %}
+                                <img src="{% static 'images/download-icon.svg' %}" alt="Download Icon">
+                            </a>
+                        {% endif %}
+                    </div>
                         </div>
                     </div>
                 </div>
@@ -209,8 +198,9 @@
                         <img src="{% static 'images/racing-car.png' %}" alt="Racing Car">
                     </div>
                     <div class="section-content">
-                        <h3 class="section-title">Our imagery</h3>
+                        <h3 class="section-title">{% trans 'Our imagery' %}</h3>
                         <p class="section-description">
+                           {% blocktrans %}
                             A strong brand has a recognizable and consistent brand identity. This brand identity manual
                             provides guidelines for the correct usage of various brand identity elements, such as the
                             logo, colors, fonts, and photography. You will also find examples here for the proper
@@ -219,32 +209,18 @@
                             trademark and has a high recognition value. The main colors have been defined for all print
                             and web applications. There are separate color schemes for special product areas, which are
                             explained on the following pages.
+                           {% endblocktrans %}
                         </p>
                     </div>
                 </div>
 
                  <div class="image-gallery">
+                     {% for tomoil_branding_card in tomoil_branding_cards %}
                     <div class="gallery-item">
                         <img src="{% static 'images/by-playing-1.png' %}" alt="Product Pouring">
-                        <p class="gallery-caption">By playing with focus, it is possible to tailor our visual language
-                            to be more dynamic and modern.</p>
-
+                        <div class="gallery-caption">{{ tomoil_branding_card.description|linebreaks }}</div>
                     </div>
-                    <div class="gallery-item">
-                        <img src="{% static 'images/by-playing-2.png' %}" alt="Product Can">
-                        <p class="gallery-caption">By playing with focus, it is possible to tailor our visual language
-                            to be more dynamic and modern.</p>
-                    </div>
-                    <div class="gallery-item">
-                        <img src="{% static 'images/by-playing-3.png' %}" alt="Product Bottles">
-                        <p class="gallery-caption">By playing with focus, it is possible to tailor our visual language
-                            to be more dynamic and modern.</p>
-                    </div>
-                    <div class="gallery-item">
-                        <img src="{% static 'images/by-playing-4.png' %}" alt="Product Testing">
-                        <p class="gallery-caption">By playing with focus, it is possible to tailor our visual language
-                            to be more dynamic and modern.</p>
-                    </div>
+                    {% endfor %}
                 </div>
 
                  <div class="brand-section mediacenter-section">
@@ -252,7 +228,7 @@
                         <img src="{% static 'images/product-lineup.png' %}" alt="Product Lineup">
                     </div>
                     <div class="section-content">
-                        <h3 class="section-title">The Mediacenter</h3>
+                        <h3 class="section-title">{% trans 'The Mediacenter' %}</h3>
                         <p class="section-description">
                             A strong brand has a recognizable and consistent brand identity. This brand identity manual
                             provides guidelines for the correct usage of various brand identity elements, such as the
@@ -268,7 +244,7 @@
 
                 <!-- Downloads Section -->
                 <div class="brand-section downloads-section">
-                    <h2 class="section-title">Downloads</h2>
+                    <h2 class="section-title">{% trans 'Downloads' %}</h2>
                     <div class="download-links">
                         {% for guideline in brand_guidelines %}
                         <a href="{% url 'brand_portal:download_file' 'guideline' guideline.id %}" class="download-button">
@@ -293,8 +269,8 @@
                             </p>
                             </div>
                             <div class="brochure-buttons">
-                                <a href="{% url 'brand_portal:download_file' 'catalogue' catalogue.id %}" class="download-btn">DOWNLOAD</a>
-                                <a href="{% url 'brand_portal:view_catalogue' catalogue.id %}" class="view-btn" target="_blank">VIEW</a>
+                                <a href="{% url 'brand_portal:download_file' 'catalogue' catalogue.id %}" class="download-btn">{% trans 'DOWNLOAD' %}</a>
+                                <a href="{% url 'brand_portal:view_catalogue' catalogue.id %}" class="view-btn" target="_blank">{% trans 'VIEW' %}</a>
                             </div>
                         </div>
                         <div class="brochure-image">
@@ -333,19 +309,19 @@
                 <div class="image-library-container">
                     <div class="brand-nav">
                         <div class="brand-item active" data-brand="corporate">
-                            <span>Corporate</span>
+                            <span>{% trans 'Corporate' %}</span>
                             <div class="arrow-icon">
                                 <i class="fa-solid fa-chevron-right"></i>
                             </div>
                         </div>
                         <div class="brand-item" data-brand="dealership">
-                            <span>Dealership and formulas</span>
+                            <span>{% trans 'Dealership and formulas' %}</span>
                             <div class="arrow-icon">
                                 <i class="fa-solid fa-chevron-right"></i>
                             </div>
                         </div>
                         <div class="brand-item" data-brand="sponsorship">
-                            <span>Sponsorship</span>
+                            <span>{% trans 'Sponsorship' %}</span>
                             <div class="arrow-icon">
                                 <i class="fa-solid fa-chevron-right"></i>
                             </div>
@@ -424,17 +400,18 @@
 
             <!-- Videos Tab -->
             <div class="tab-content {% if active_tab == 'videos' %}active{% endif %}" id="videos">
-                <h2 class="section-title">Videos</h2>
+                <h2 class="section-title">{% trans 'Videos' %}</h2>
                 <p class="section-description">
+                    {% blocktrans %}
                     We have everything in place to promote our products. Here you will find marketing
                     materials including videos that can be used for social media, websites, presentations, and more.
+                    {% endblocktrans %}
                 </p>
                 <div class="brand-video-gallery">
                     {% for video in videos %}
                     <div class="video-thumbnail" data-video-url="{{ video.video_url }}">
                         {% if video.thumbnail %}
                         <img src="{{ video.thumbnail.url }}" alt="{{ video.title }}">
-                        
                         {% endif %}
                         <div class="play-icon">
                             <img src="{% static 'images/video-player-icon.svg' %}" alt="Play Video">

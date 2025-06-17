@@ -25,6 +25,7 @@ class GlanceGuide(models.Model):
 class VisionMission(models.Model):
     vision = models.TextField()
     mission = models.TextField()
+    image = models.ImageField(upload_to='vision_mission/', blank=True, null=True)
 
     def __str__(self):
         return self.vision

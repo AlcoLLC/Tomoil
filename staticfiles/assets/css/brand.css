@@ -59,6 +59,11 @@
   text-align: justify;
 }
 
+.brand-portal-section .section-description p {
+  color: #223160;
+  text-align: justify;
+}
+
 /* General Brand Content Styles */
 .brand-section {
   border-radius: 20px;
@@ -73,7 +78,7 @@
   font-family: Atyp Medium;
   color: #223160;
   font-size: 18px;
-  line-height: 40px;
+  line-height: 30px;
   font-weight: 600;
   margin-bottom: 10px;
 }
@@ -238,7 +243,7 @@
   object-fit: cover;
 }
 
-.brand-portal-section .gallery-caption {
+.brand-portal-section .gallery-caption p {
   color: #223160;
   font-size: 12px;
   padding: 20px 25px;
@@ -363,7 +368,6 @@
   cursor: pointer;
   transition: all 0.5s ease;
   margin-top: 10px;
-
 }
 
 .brand-portal-section .download-btn:hover {
@@ -469,7 +473,10 @@
   margin-bottom: 25px;
 }
 
-.brand-portal-section .image-library-container .brand-content .promotional-card {
+.brand-portal-section
+  .image-library-container
+  .brand-content
+  .promotional-card {
   margin-bottom: 25px;
 }
 
@@ -576,8 +583,6 @@
   transition: opacity 0.3s ease;
 }
 
-
-
 .brand-portal-section .brand-video-gallery .play-icon img {
   width: 100%;
   height: 100%;
@@ -587,10 +592,13 @@
   opacity: 1;
 }
 
-.brand-portal-section .brand-video-gallery .video-thumbnail:hover .play-icon img {
+.brand-portal-section
+  .brand-video-gallery
+  .video-thumbnail:hover
+  .play-icon
+  img {
   transform: scale(1.2);
 }
-
 
 /* Video Modal Styles */
 .video-modal {
@@ -637,7 +645,6 @@
   width: 100%;
   height: 100%;
 }
-
 
 .brand-portal-section .modal {
   display: none;

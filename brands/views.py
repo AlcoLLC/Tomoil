@@ -9,7 +9,7 @@ from .models import (
     BrandImageLibrary,
     BrandVideo,
     BrandGuidelineDocument,
-    BrandCatalogue, TomoilLogoFullColor, TomoilLogo, TomoilGuideline, TomoilBrandingCards
+    BrandCatalogue, TomoilLogoFullColor, TomoilGuideline, TomoilBrandingCards
 )
 from pageheader.models import PageHeader
 
@@ -29,8 +29,8 @@ class BrandPortalView(TemplateView):
         context['catalogues'] = BrandCatalogue.objects.all()
 
         context['tomoil_logos_full_color'] = TomoilLogoFullColor.objects.all()
-        context['tomoil_logos_mono'] = TomoilLogo.objects.all()
-        context['tomoil_guidelines'] = TomoilGuideline.objects.last()
+        # context['tomoil_logos_mono'] = TomoilLogo.objects.all()
+        context['tomoil_guideline'] = TomoilGuideline.objects.last()
         context['tomoil_branding_cards'] = TomoilBrandingCards.objects.all()
 
         active_tab = self.request.GET.get('tab', 'brand-guideline')
