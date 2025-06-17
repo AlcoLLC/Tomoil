@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import BrandPromotionalItem, BrandImageLibrary, BrandVideo, BrandCatalogue, BrandGuidelineDocument, TomoilLogoFullColor, TomoilLogo, TomoikGuideline, TomoilBrandingCards
+from .models import BrandPromotionalItem, BrandImageLibrary, BrandVideo, BrandCatalogue, BrandGuidelineDocument, TomoilLogoFullColor, TomoilLogo, TomoilGuideline, TomoilBrandingCards
 from modeltranslation.admin import TranslationAdmin
 from django.contrib import messages
 
@@ -42,7 +42,7 @@ class BrandCatalogueAdmin(TranslationAdmin):
     
 
 @admin.register(TomoilLogoFullColor)
-class TomoilLogoFullColorAdmin(admin.ModelAdmin):
+class TomoilLogoFullColorAdmin(TranslationAdmin):
     list_display = ['title', 'description']
     search_fields = ['title', 'description']
     fields = ['title', 'description', 'logo', 'logo_pdf']
@@ -59,7 +59,7 @@ class TomoilLogoFullColorAdmin(admin.ModelAdmin):
         return TomoilLogoFullColor.objects.count() < 2
 
 @admin.register(TomoilLogo)
-class TomoilLogoAdmin(admin.ModelAdmin):
+class TomoilLogoAdmin(TranslationAdmin):
     list_display = ['description']
     search_fields = ['description']
     fields = ['description', 'logo']
@@ -75,25 +75,25 @@ class TomoilLogoAdmin(admin.ModelAdmin):
     def has_add_permission(self, request):
         return TomoilLogo.objects.count() < 4
 
-@admin.register(TomoikGuideline)
-class TomoikGuidelineAdmin(admin.ModelAdmin):
+@admin.register(TomoilGuideline)
+class TomoilGuidelineAdmin(TranslationAdmin):
     list_display = ['title', 'logo_title']
     search_fields = ['title', 'logo_title', 'description']
     fields = ['title', 'description', 'logo_title', 'logo_description', 'logo_pdf', 'logo_png']
     
     def changelist_view(self, request, extra_context=None):
         extra_context = extra_context or {}
-        count = TomoikGuideline.objects.count()
+        count = TomoilGuideline.objects.count()
         extra_context['title'] = f'Tomoil Guidelines ({count}/1)'
         if count >= 1:
             messages.warning(request, 'Maximum limit reached (1/1). You cannot add more Guidelines.')
         return super().changelist_view(request, extra_context=extra_context)
     
     def has_add_permission(self, request):
-        return TomoikGuideline.objects.count() < 1
+        return TomoilGuideline.objects.count() < 1
 
 @admin.register(TomoilBrandingCards)
-class TomoilBrandingCardsAdmin(admin.ModelAdmin):
+class TomoilBrandingCardsAdmin(TranslationAdmin):
     list_display = ['description']
     search_fields = ['description']
     fields = ['description', 'image']

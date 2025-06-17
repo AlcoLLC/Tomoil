@@ -159,7 +159,7 @@ class TomoilLogo(models.Model):
         verbose_name = "Tomoil Monochrome Logo"
         verbose_name_plural = "Tomoil Monochrome Logos (Max: 4)"
 
-class TomoikGuideline(models.Model):
+class TomoilGuideline(models.Model):
     title = models.CharField(
         max_length=255,
         help_text="Title for the guideline document"
@@ -186,7 +186,7 @@ class TomoikGuideline(models.Model):
     )
     
     def clean(self):
-        if not self.pk and TomoikGuideline.objects.count() >= 1:
+        if not self.pk and TomoilGuideline.objects.count() >= 1:
             raise ValidationError('Only 1 Tomoil Guideline is allowed.')
     
     def save(self, *args, **kwargs):
