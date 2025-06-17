@@ -269,6 +269,14 @@
           {% endif %}
         </div>
 
+        <!-- reCAPTCHA Widget -->
+        <div class="form-group recaptcha-group">
+          <div class="g-recaptcha" data-sitekey="{{ recaptcha_site_key }}" data-callback="enableSubmitButton" data-expired-callback="disableSubmitButton"></div>
+          <div id="recaptcha-error" class="error-message" style="display: none;">
+            {% trans 'Please complete the reCAPTCHA verification.' %}
+          </div>
+        </div>
+
         <div class="form-group submit-group">
           <button
             type="submit"
@@ -297,4 +305,19 @@
     ></iframe>
   </div>
 </section>
+
+<script src="https://www.google.com/recaptcha/api.js" async defer></script>
+
+<script>
+function enableSubmitButton() {
+  document.getElementById('recaptcha-error').style.display = 'none';
+  validateForm();
+}
+
+function disableSubmitButton() {
+  document.getElementById('submit-button').disabled = true;
+  document.getElementById('recaptcha-error').style.display = 'block';
+}
+</script>
+
 {% endblock %}
