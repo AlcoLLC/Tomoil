@@ -223,7 +223,7 @@
                     {% endfor %}
                 </div>
 
-                 <div class="brand-section mediacenter-section">
+                 {% comment %} <div class="brand-section mediacenter-section">
                     <div class="section-image">
                         <img src="{% static 'images/product-lineup.png' %}" alt="Product Lineup">
                     </div>
@@ -240,7 +240,7 @@
                             explained on the following pages.
                         </p>
                     </div>
-                </div> 
+                </div>  {% endcomment %}
 
                 <!-- Downloads Section -->
                 <div class="brand-section downloads-section">
@@ -265,7 +265,7 @@
                             <div>
                                 <h2 class="section-title">{{ catalogue.title }}</h2>
                             <p class="section-description">
-                                {{ catalogue.description }}
+                                {{ catalogue.description|truncatechars:270 }}
                             </p>
                             </div>
                             <div class="brochure-buttons">
