@@ -419,6 +419,7 @@
 .section-case-studies {
   overflow: hidden;
   padding: 0%;
+  margin-top: 50px !important;
 }
 
 .section-case-studies .case-studies-header {

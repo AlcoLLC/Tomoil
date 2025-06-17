@@ -567,11 +567,11 @@ nav {
 }
 
 .navbar .nav-section ul li a.active,
-.navbar .nav-section ul li.active>a {
+.navbar .nav-section ul li.active > a {
   color: #e22131 !important;
 }
 
-.navbar .nav-section ul li.dropdown.active>a {
+.navbar .nav-section ul li.dropdown.active > a {
   color: #e22131 !important;
 }
 
@@ -755,7 +755,7 @@ nav {
   margin: 15px 0;
 }
 
-.market-segments>div:first-of-type {
+.market-segments > div:first-of-type {
   display: flex;
   justify-content: space-between;
   margin-bottom: 20px;
@@ -967,11 +967,11 @@ nav {
 }
 
 .cross-reference {
-  margin: 80px auto !important;
-  padding-top: 50px;
+  margin: 0 auto !important;
+  padding-top: 100px;
 }
 
-.cross-reference>div {
+.cross-reference > div {
   width: 100%;
   height: 100%;
   background-color: white !important;
@@ -1031,7 +1031,7 @@ nav {
   cursor: pointer;
 }
 
-.cross-reference .cross-reference-content>button {
+.cross-reference .cross-reference-content > button {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1046,7 +1046,7 @@ nav {
   transition: all 0.3s ease;
 }
 
-.cross-reference .cross-reference-content>button span {
+.cross-reference .cross-reference-content > button span {
   font-size: 14px;
   color: white;
   display: none;
@@ -1065,7 +1065,7 @@ nav {
   color: #223160;
 }
 
-.cross-reference .cross-reference-content>button i {
+.cross-reference .cross-reference-content > button i {
   font-size: 16px;
 }
 
@@ -1209,21 +1209,21 @@ nav {
   cursor: pointer;
 }
 
-.comments-section .swiper-slide>div:first-of-type {
+.comments-section .swiper-slide > div:first-of-type {
   display: flex;
   flex-direction: column;
 }
 
-.comments-section .swiper-slide>div:first-of-type img {
+.comments-section .swiper-slide > div:first-of-type img {
   margin-bottom: 15px;
 }
 
-.comments-section .swiper-slide>div>img {
+.comments-section .swiper-slide > div > img {
   width: 53px;
   height: 30px;
 }
 
-.comments-section .swiper-slide>div:first-of-type>p {
+.comments-section .swiper-slide > div:first-of-type > p {
   font-family: "Plus Jakarta Sans", sans-serif;
   font-weight: 400;
   font-size: 18px;
@@ -1232,13 +1232,13 @@ nav {
   color: #727272;
 }
 
-.comments-section .swiper-slide>div>div>img {
+.comments-section .swiper-slide > div > div > img {
   width: 50px;
   height: 50px;
   border-radius: 999px;
 }
 
-.comments-section .swiper-slide>div>div>h5 {
+.comments-section .swiper-slide > div > div > h5 {
   font-weight: 400;
   font-size: 22px;
   line-height: 30px;
@@ -1246,7 +1246,7 @@ nav {
   color: #223160;
 }
 
-.comments-section .swiper-slide>div>div>p {
+.comments-section .swiper-slide > div > div > p {
   font-weight: 400;
   font-size: 16px;
   line-height: 22px;
@@ -1254,14 +1254,14 @@ nav {
   color: #223160;
 }
 
-.swiper-horizontal>.swiper-pagination-bullets,
+.swiper-horizontal > .swiper-pagination-bullets,
 .swiper-pagination-bullets.swiper-pagination-horizontal,
 .swiper-pagination-custom,
 .swiper-pagination-fraction {
   display: none !important;
 }
 
-.comments-section .swiper-slide>div:last-of-type {
+.comments-section .swiper-slide > div:last-of-type {
   display: flex;
   gap: 15px;
 }
@@ -1332,7 +1332,7 @@ nav {
   height: auto;
 }
 
-.cross-reference .cross-reference-content>button:hover,
+.cross-reference .cross-reference-content > button:hover,
 .home-header .btn-learn:hover,
 .market-segments ul li div:hover,
 .button-style:hover {
@@ -1456,7 +1456,6 @@ nav {
 /* /////////////////////////////////////////////////// */
 
 @keyframes pulse {
-
   0%,
   100% {
     stroke-width: 2px;
