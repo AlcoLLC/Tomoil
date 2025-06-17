@@ -136,7 +136,7 @@ def products_view(request):
     pack_size_slugs = request.GET.getlist('pack_size')
     search_query = request.GET.get('search', '')
 
-    products = Product.objects.filter(is_active=True)
+    products = Product.objects.filter(is_active=True).order_by('order')
 
     from_date = request.GET.get('from_date', '')
 
