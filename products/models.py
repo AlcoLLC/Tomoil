@@ -122,7 +122,7 @@ class Product(models.Model):
     slug = models.SlugField(max_length=220, unique=True, blank=True)
     description = models.TextField(blank=True, null=True)
     product_id = models.CharField(max_length=50, unique=True)
-    image = models.ImageField(upload_to='products/')
+    image = models.ImageField(upload_to='products/', blank=True, null=True)
     pds = models.URLField(max_length=500, blank=True, null=True, verbose_name="Product Data Sheet")
     sds = models.URLField(max_length=500, blank=True, null=True, verbose_name="Safety Data Sheet")
     features_benefits = models.TextField(blank=True, null=True)
