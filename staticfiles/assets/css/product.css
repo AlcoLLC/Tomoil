@@ -650,6 +650,8 @@
   min-width: 180px;
 }
 
+
+
 .product-opinions {
   margin-top: 80px;
   margin-bottom: 120px;
@@ -1334,19 +1336,4 @@
 
 .review-modal-overlay .submit-btn:hover {
   background-color: #c62232;
-}
-
-@media (max-width: 768px) {
-  .form-row {
-    flex-direction: column;
-  }
-
-  .review-modal {
-    width: 95%;
-    margin: 10px;
-  }
-
-  .modal-form {
-    padding: 20px;
-  }
 }
