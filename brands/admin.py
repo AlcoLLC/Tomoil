@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import BrandPromotionalItem, BrandImageLibrary, BrandVideo, BrandCatalogue, BrandGuidelineDocument, TomoilLogoFullColor, TomoilLogo, TomoilGuideline, TomoilBrandingCards
+from .models import BrandPromotionalItem, BrandImageLibrary, BrandVideo, BrandCatalogue, BrandGuidelineDocument, TomoilLogoFullColor, TomoilGuideline, TomoilBrandingCards
 from modeltranslation.admin import TranslationAdmin
 from django.contrib import messages
 
@@ -29,8 +29,7 @@ class BrandVideoAdmin(TranslationAdmin):
 
 @admin.register(BrandGuidelineDocument)
 class BrandGuidelineDocumentAdmin(TranslationAdmin):
-    list_display = ('title', 'file_type')
-    list_filter = ('file_type',)
+    list_display = ('title', )
     search_fields = ('title', 'description')
     
   
@@ -58,22 +57,22 @@ class TomoilLogoFullColorAdmin(TranslationAdmin):
     def has_add_permission(self, request):
         return TomoilLogoFullColor.objects.count() < 2
 
-@admin.register(TomoilLogo)
-class TomoilLogoAdmin(TranslationAdmin):
-    list_display = ['description']
-    search_fields = ['description']
-    fields = ['description', 'logo']
+# @admin.register(TomoilLogo)
+# class TomoilLogoAdmin(TranslationAdmin):
+#     list_display = ['description']
+#     search_fields = ['description']
+#     fields = ['description', 'logo']
     
-    def changelist_view(self, request, extra_context=None):
-        extra_context = extra_context or {}
-        count = TomoilLogo.objects.count()
-        extra_context['title'] = f'Tomoil Monochrome Logos ({count}/4)'
-        if count >= 4:
-            messages.warning(request, 'Maximum limit reached (4/4). You cannot add more Monochrome logos.')
-        return super().changelist_view(request, extra_context=extra_context)
+#     def changelist_view(self, request, extra_context=None):
+#         extra_context = extra_context or {}
+#         count = TomoilLogo.objects.count()
+#         extra_context['title'] = f'Tomoil Monochrome Logos ({count}/4)'
+#         if count >= 4:
+#             messages.warning(request, 'Maximum limit reached (4/4). You cannot add more Monochrome logos.')
+#         return super().changelist_view(request, extra_context=extra_context)
     
-    def has_add_permission(self, request):
-        return TomoilLogo.objects.count() < 4
+#     def has_add_permission(self, request):
+#         return TomoilLogo.objects.count() < 4
 
 @admin.register(TomoilGuideline)
 class TomoilGuidelineAdmin(TranslationAdmin):

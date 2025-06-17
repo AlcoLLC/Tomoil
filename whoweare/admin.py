@@ -37,7 +37,7 @@ class ValueInline(TranslationTabularInline):
 
 @admin.register(VisionMission)
 class VisionMissionAdmin(TranslationAdmin):
-    list_display = ('vision', 'mission')
+    list_display = ('vision', 'mission', 'image')
     inlines = [ValueInline]
     
     formfield_overrides = {
