@@ -1,87 +1,6 @@
-{% extends 'base.html' %} {% load static %} {% load i18n %} {% block content %}
-<style>
-  /* Error message styles */
-  .field-error-message {
-    color: #e74c3c !important;
-    font-size: 12px !important;
-    margin-top: 5px !important;
-    display: block !important;
-    font-weight: 500;
-  }
-
-  .error-message {
-    color: #e74c3c;
-    font-size: 12px;
-    margin-top: 5px;
-    display: block;
-    font-weight: 500;
-  }
-
-  /* Input field error styles */
-  input.error,
-  textarea.error,
-  select.error {
-    border-color: #e74c3c !important;
-    box-shadow: 0 0 0 2px rgba(231, 76, 60, 0.1) !important;
-  }
-
-  /* Custom select error styles */
-  .custom-select-wrapper input.error + .custom-select {
-    border-color: #e74c3c !important;
-    box-shadow: 0 0 0 2px rgba(231, 76, 60, 0.1) !important;
-  }
-
-  /* Valid input styles */
-  input.valid {
-    border-color: #27ae60 !important;
-    box-shadow: 0 0 0 2px rgba(39, 174, 96, 0.1) !important;
-  }
-
-  /* Phone validation message styles */
-  .validation-message {
-    font-size: 12px;
-    margin-top: 5px;
-    display: block;
-  }
-
-  .validation-message.valid {
-    color: #27ae60;
-  }
-
-  .validation-message.invalid {
-    color: #e74c3c;
-  }
-
-  /* Radio button error styling */
-  .radio-options input[type="radio"].error + label {
-    color: #e74c3c;
-  }
-
-  /* Checkbox error styling */
-  .checkbox-wrapper input[type="checkbox"].error + label {
-    color: #e74c3c;
-  }
-
-  /* reCAPTCHA error message */
-  #recaptcha-error {
-    color: #e74c3c;
-    font-size: 12px;
-    margin-top: 10px;
-    font-weight: 500;
-  }
-
-  /* Form group error state */
-  .form-group.has-error input,
-  .form-group.has-error select,
-  .form-group.has-error textarea {
-    border-color: #e74c3c;
-  }
-
-  /* Custom select error state */
-  .custom-select-wrapper.has-error .custom-select {
-    border-color: #e74c3c;
-  }
-</style>
+{% extends 'base.html' %} {% load static %} {% load i18n %}
+ {% block content %}
+ 
 
 <section class="contact-section">
   <div class="section-container">
@@ -90,9 +9,10 @@
         <p class="section-subtitle">{% trans 'Contact Us' %}</p>
         <h2 class="section-title">{% trans 'Any Questions Or Feedback?' %}</h2>
         <p class="contact-description">
-          {% blocktrans %} Fill out the form below if you are interested or
-          inquiring on Tomoil products or services for your business.
-          {%endblocktrans %}
+          {% blocktrans %}
+          Fill out the form below if you are interested or inquiring on Tomoil
+          products or services for your business.
+          {% endblocktrans %}
         </p>
       </div>
 
@@ -117,9 +37,7 @@
           <i class="fa-solid fa-location-dot"></i>
           <div class="info-content">
             <p class="info-label">{% trans 'Address' %}</p>
-            <p class="info-value">
-              {% trans '6391 Elgin St. Celina, Delaware 10299' %}
-            </p>
+            <p class="info-value">{% trans '6391 Elgin St. Celina, Delaware 10299' %}</p>
           </div>
         </div>
       </div>
@@ -273,9 +191,7 @@
           <label for="enquiry_type">{% trans 'Type of Enquiry*' %}</label>
         </div>
         <div class="custom-select-wrapper">
-          <div class="custom-select" id="selected-enquiry">
-            {% trans 'Select' %}
-          </div>
+          <div class="custom-select" id="selected-enquiry">{% trans 'Select' %}</div>
           <div class="custom-options">
             {% for value, display in enquiry_types %}
             <div class="custom-option" data-value="{{ value }}">
@@ -341,10 +257,12 @@
           <div class="checkbox-wrapper">
             <input type="checkbox" name="consent" id="consent" required />
             <label for="consent"
-              >{% blocktrans %} By ticking this box, I consent to the use of my
-              personal information provided above by Tomoil, its subsidiaries
-              and affiliate partners to contact me with regard to my
-              enquiry/request. {% endblocktrans %}</label
+              >{% blocktrans %}
+              By ticking this box, I consent to the use of my personal
+              information provided above by Tomoil, its subsidiaries and
+              affiliate partners to contact me with regard to my
+              enquiry/request.
+              {% endblocktrans %}</label
             >
           </div>
           {% if form.consent.errors %}
@@ -354,13 +272,8 @@
 
         <!-- reCAPTCHA Widget -->
         <div class="form-group recaptcha-group">
-          <div
-            class="g-recaptcha"
-            data-sitekey="{{ recaptcha_site_key }}"
-            data-callback="enableSubmitButton"
-            data-expired-callback="disableSubmitButton"
-          ></div>
-          <div id="recaptcha-error" class="error-message" style="display: none">
+          <div class="g-recaptcha" data-sitekey="{{ recaptcha_site_key }}" data-callback="enableSubmitButton" data-expired-callback="disableSubmitButton"></div>
+          <div id="recaptcha-error" class="error-message" style="display: none;">
             {% trans 'Please complete the reCAPTCHA verification.' %}
           </div>
         </div>
@@ -389,15 +302,15 @@
 <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 
 <script>
-  function enableSubmitButton() {
-    document.getElementById("recaptcha-error").style.display = "none";
-    validateForm();
-  }
+function enableSubmitButton() {
+  document.getElementById('recaptcha-error').style.display = 'none';
+  validateForm();
+}
 
-  function disableSubmitButton() {
-    document.getElementById("submit-button").disabled = true;
-    document.getElementById("recaptcha-error").style.display = "block";
-  }
+function disableSubmitButton() {
+  document.getElementById('submit-button').disabled = true;
+  document.getElementById('recaptcha-error').style.display = 'block';
+}
 </script>
 
 {% endblock %}
