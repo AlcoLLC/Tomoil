@@ -291,7 +291,8 @@
   </div>
 
   <!-- Cross Reference Section -->
-  {% comment %} <section class="section-container cross-reference">
+  {% comment %}
+  <section class="section-container cross-reference">
     <div>
       <div class="cross-reference-header">
         <p class="section-subtitle">{% trans "CROSS REFERENCE" %}</p>
@@ -348,7 +349,8 @@
         </button>
       </div>
     </div>
-  </section> {% endcomment %}
+  </section>
+  {% endcomment %}
 
   <!-- Case Studies Section -->
   <section class="section-case-studies section-container">
@@ -623,10 +625,13 @@
           high-voltage insulation, and long-term durability. Drive the future
           with Tomoil's next-generation fluid solutions. {% endblocktrans %}
         </p>
-
-        <a href="{% url 'products:products_list' %}?product_range=ev-fluids" class="explore-btn">{% trans "Explore EV
-          Fluids" %}</a>
-      </div>
+        <a
+          href="{% url 'products:products_list' %}?product_range=ev-fluids"
+          class="explore-btn"
+        >
+          {% blocktrans %} Explore EV Fluids {% endblocktrans %}
+        </a>
+ </div>
       <div class="e-mobility-image">
         <img src="{% static 'images/explore-car.png' %}" alt="Electric Vehicle" class="ev-car-image" />
       </div>
