@@ -638,6 +638,9 @@
         justify-content: center;
     }
 
+    .section-case-studies .section-title {
+        max-width: 80%;
+    }
 }
 
 @media (max-width: 860px) {
@@ -849,6 +852,14 @@
         grid-template-columns: repeat(2, 1fr);
     }
 
+    .review-modal-overlay.active {
+        align-items: flex-start;
+    }
+
+    .review-modal {
+        margin-top: 75px;
+    }
+
     .review-modal {
         width: 95%;
         max-width: 95%;
@@ -864,35 +875,22 @@
         flex-direction: column;
     }
 
-    .review-modal-overlay .modal-header {
-        padding-bottom: 10px;
-    }
-
-    .review-modal-overlay .modal-title {
-        font-size: 20px;
-    }
-
     .review-modal-overlay .form-section {
         margin-bottom: 12px;
     }
 
     .review-modal-overlay .form-group textarea {
-        min-height: 80px;
+        height: 90px;
     }
 
     .review-modal-overlay .modal-form {
         padding: 14px 25px;
     }
 
-    .review-modal-overlay .form-group input,
-    .review-modal-overlay .form-group textarea {
+    .review-modal-overlay .form-group input {
         padding: 10px;
     }
 
-    .review-modal-overlay .checkbox-container label,
-    .review-modal-overlay label {
-        font-size: 13px;
-    }
 
     .review-modal-overlay .submit-btn {
         font-size: 12px;
@@ -1176,9 +1174,7 @@
         height: 150px;
     }
 
-    .section-case-studies .section-title {
-        max-width: 60%;
-    }
+
 }
 
 @media (max-width: 720px) {
@@ -1876,7 +1872,7 @@
         max-height: 35px;
     }
 
-    .section-case-studies .case-study-card {
+    /* .section-case-studies .case-study-card {
         flex: 0 0 130px;
         width: 150px;
         height: 320px;
@@ -1897,7 +1893,7 @@
     .section-case-studies .case-study-card.interactive:hover {
         flex: 0 0 330px;
         width: 330px;
-    }
+    } */
 
     .pagination-container .pagination-info {
         font-size: 13px;
@@ -1912,9 +1908,7 @@
 
 @media screen and (max-width: 500px) {
 
-    .section-case-studies .case-btn {
-        display: none !important;
-    }
+
 
     .brand-portal-section .section-image {
         height: 40%;
@@ -2247,7 +2241,7 @@
 
 @media screen and (max-width: 400px) {
     .section-case-studies .section-title {
-        max-width: 70%;
+        max-width: 90%;
     }
 
     .brand-portal-section .download-button {
@@ -2357,5 +2351,3 @@
         font-size: 13px;
     }
 }
-
-

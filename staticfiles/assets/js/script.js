@@ -246,31 +246,6 @@ function initCaseStudiesSlider() {
     }
   }
 
-  // Kart qarşılıqlı əlaqələri
-  function setupCardInteractions() {
-    allCards.forEach((card, index) => {
-      card.classList.add('interactive');
-
-      card.addEventListener('mouseenter', function () {
-        stopAutoplay();
-        allCards.forEach((c) => c.classList.remove('active'));
-        this.classList.add('active');
-      });
-
-      card.addEventListener('mouseleave', function () {
-        if (totalCards > 1) {
-          startAutoplay();
-        }
-        allCards.forEach((c) => c.classList.remove('active'));
-        if (allCards[currentIndex]) {
-          allCards[currentIndex].classList.add('active');
-        }
-      });
-    });
-  }
-
-  setupCardInteractions();
-
   // Slideri yeniləyən əsas funksiya
   function updateSlider(withTransition = true) {
     if (withTransition) {
@@ -428,12 +403,6 @@ function initCaseStudiesSlider() {
       }, 1000);
     }
   }
-
-  // Mouse hover events
-  sliderContainer.addEventListener('mouseenter', stopAutoplay);
-  sliderContainer.addEventListener('mouseleave', () => {
-    if (totalCards > 1) startAutoplay();
-  });
 
   // Window resize
   window.addEventListener('resize', () => {

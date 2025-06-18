@@ -5,8 +5,7 @@ class MinimalInfiniteSlider {
         this.nextBtn = document.getElementById(options.nextId);
         this.prevBtn = document.getElementById(options.prevId);
         
-        // Konfiqurasiya
-        this.speed = options.speed || 1.5; // Mobil üçün artırılmış sürət
+        this.speed = options.speed || 1; 
         this.gap = options.gap || 30;
         this.itemWidth = options.itemWidth || 100;
         this.pauseOnHover = options.pauseOnHover !== false;
@@ -34,29 +33,23 @@ class MinimalInfiniteSlider {
         const items = Array.from(this.content.children);
         if (items.length === 0) return;
         
-        // Orijinal elementləri klonlayırıq
         const clonedItems = items.map(item => item.cloneNode(true));
-        
-        // Klonları əlavə edirik
         clonedItems.forEach(item => this.content.appendChild(item));
         
-        // Başlanğıc mövqeyi
         this.singleWidth = items.length * (this.itemWidth + this.gap);
         this.currentTranslate = 0;
         
-        // CSS transform ilə mövqe təyin edirik
         this.content.style.transform = `translateX(${this.currentTranslate}px)`;
         this.content.style.transition = 'none';
     }
     
     setupEventListeners() {
-        // Hover hadisələri
+       
         if (this.pauseOnHover) {
             this.container.addEventListener('mouseenter', () => this.pause());
             this.container.addEventListener('mouseleave', () => this.resume());
         }
         
-        // Touch/Mouse drag hadisələri
         this.container.addEventListener('mousedown', (e) => this.startDrag(e));
         this.container.addEventListener('touchstart', (e) => this.startDrag(e), { passive: false });
         
@@ -66,7 +59,7 @@ class MinimalInfiniteSlider {
         document.addEventListener('mouseup', () => this.endDrag());
         document.addEventListener('touchend', () => this.endDrag());
         
-        // Düymə hadisələri
+        
         if (this.nextBtn) {
             this.nextBtn.addEventListener('click', () => this.next());
         }
@@ -75,7 +68,7 @@ class MinimalInfiniteSlider {
             this.prevBtn.addEventListener('click', () => this.prev());
         }
         
-        // Səhifə gizlənəndə dayandır
+       
         document.addEventListener('visibilitychange', () => {
             if (document.hidden) {
                 this.pause();
@@ -117,7 +110,6 @@ class MinimalInfiniteSlider {
         
         this.container.style.cursor = 'grab';
         
-        // Momentum əlavə etmək üçün
         setTimeout(() => this.resume(), 300);
     }
     
@@ -147,7 +139,6 @@ class MinimalInfiniteSlider {
             const elapsed = currentTime - startTime;
             const progress = Math.min(elapsed / duration, 1);
             
-            // Ease-out animasiyası
             const easeOut = 1 - Math.pow(1 - progress, 3);
             const current = start + (distance * easeOut);
             
@@ -170,7 +161,6 @@ class MinimalInfiniteSlider {
             return;
         }
         
-        // Sola hərəkət (mənfi istiqamət)
         this.currentTranslate -= this.speed;
         this.content.style.transform = `translateX(${this.currentTranslate}px)`;
         
@@ -179,12 +169,10 @@ class MinimalInfiniteSlider {
     }
     
     checkReset() {
-        // Əgər tam bir dəst keçmişsə, başlanğıca qaytar
         if (this.currentTranslate <= -this.singleWidth) {
             this.currentTranslate += this.singleWidth;
         }
         
-        // Əgər çox sağa getmişsə, sola qaytar
         if (this.currentTranslate > 0) {
             this.currentTranslate -= this.singleWidth;
         }
@@ -224,7 +212,6 @@ class MinimalInfiniteSlider {
     }
 }
 
-// Qlobal instanslar
 let sliderInstances = {};
 
 function createSlider(id, config) {
@@ -242,19 +229,19 @@ function getResponsiveConfig() {
     
     if (width <= 500) {
         return {
-            speed: 2, // Mobil üçün daha sürətli
+            speed: 1, 
             gap: 28,
             itemWidth: 85
         };
     } else if (width <= 620) {
         return {
-            speed: 1.8,
+            speed: 1.2,
             gap: 30,
             itemWidth: 100
         };
     } else if (width <= 800) {
         return {
-            speed: 1.6,
+            speed: 1.2,
             gap: 40,
             itemWidth: 100
         };
@@ -310,7 +297,6 @@ if (document.readyState === 'loading') {
     initializeSlider();
 }
 
-// Əlavə yardımçı funksiyalar
 window.pauseSlider = () => {
     Object.values(sliderInstances).forEach(slider => slider.pause());
 };

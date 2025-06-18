@@ -650,6 +650,10 @@
   min-width: 180px;
 }
 
+.specifications-table p {
+  padding: 15px;
+  text-align: center;
+}
 
 
 .product-opinions {
@@ -788,7 +792,7 @@
   top: 80px;
   left: 0;
   width: 100%;
-  height: 85vh;
+  max-height: 80vh;
   background-color: rgba(0, 0, 0, 0.5);
   z-index: 9999;
   display: none;
@@ -807,7 +811,7 @@
   background: white;
   width: 100%;
   max-width: 95%;
-  max-height: 85vh;
+  max-height: 80vh;
   border-bottom-left-radius: 26px;
   border-top-right-radius: 26px;
   display: flex;
@@ -829,7 +833,7 @@
 }
 
 .product-modal-overlay .product-modal-title {
-  font-size: 16px;
+  font-size: 18px;
   font-weight: 600;
   color: #223160;
   margin: 0;
@@ -838,10 +842,13 @@
 .product-modal-overlay .product-modal-close {
   background: none;
   border: none;
-  font-size: 16px;
-  color: #223160;
   cursor: pointer;
   padding: 5px;
+}
+
+.product-modal-overlay .product-modal-close i {
+  font-size: 18px;
+  color: #223160;
 }
 
 .product-modal-overlay .product-modal-body {
@@ -870,7 +877,7 @@
 }
 
 .product-modal-overlay .modal-filter-title {
-  font-size: 14px;
+  font-size: 16px;
   color: #034833;
 }
 
@@ -1066,13 +1073,13 @@
 
 .product-modal-overlay .modal-reset-btn {
   width: 100%;
-  padding: 14px;
+  padding: 12px;
   background-color: transparent;
   border: 1px solid #727272;
   border-bottom-left-radius: 26px;
   border-top-right-radius: 26px;
   color: #727272;
-  font-size: 12px;
+  font-size: 14px;
   font-weight: 600;
   font-family: "Unbounded", sans-serif;
   text-transform: uppercase;
@@ -1086,13 +1093,13 @@
 
 .product-modal-overlay .modal-apply-btn {
   width: 100%;
-  padding: 14px;
+  padding: 12px;
   background-color: #e22131;
   border: none;
   border-bottom-left-radius: 26px;
   border-top-right-radius: 26px;
   color: white;
-  font-size: 12px;
+  font-size: 14px;
   font-weight: 600;
   font-family: "Unbounded", sans-serif;
   text-transform: uppercase;
@@ -1151,7 +1158,7 @@
   left: 0;
   width: 100%;
   height: 100%;
-  z-index: 1000;
+  z-index: 999999;
   background-color: rgba(0, 0, 0, 0.5);
   opacity: 0;
   display: flex;
@@ -1174,11 +1181,13 @@
 
 .review-modal {
   background: white;
-  border-radius: 25px;
+  border-bottom-left-radius: 26px;
+  border-top-right-radius: 26px;
   padding: 0;
+  margin-top: 15px;
   max-width: 500px;
   width: 90%;
-  max-height: 90vh;
+  max-height: 85vh;
   overflow-y: auto;
   box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
   transform: scale(0.7);
@@ -1192,7 +1201,6 @@
 .review-modal-overlay .modal-header {
   color: #223160;
   padding: 25px;
-  border-radius: 15px 15px 0 0;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -1213,7 +1221,7 @@
 
 .review-modal-overlay .close-btn i {
   color: #223160;
-  font-size: 14px;
+  font-size: 20px;
 }
 
 .review-modal-overlay .modal-form {
@@ -1228,7 +1236,7 @@
   display: block;
   color: #034833;
   margin-bottom: 8px;
-  font-size: 14px;
+  font-size: 16px;
   opacity: 0.7;
 }
 
@@ -1267,7 +1275,7 @@
   padding: 12px;
   border: 1px solid #d8dee3;
   border-radius: 22px;
-  font-size: 12px;
+  font-size: 14px;
   transition: border-color 0.3s ease;
   color: #034833;
 }
@@ -1313,7 +1321,7 @@
 
 .review-modal-overlay input::placeholder,
 .review-modal-overlay textarea::placeholder {
-  font-size: 12px;
+  font-size: 14px;
   color: #034833b7;
   opacity: 0.5;
 }
