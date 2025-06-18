@@ -550,7 +550,6 @@
 
 .product-specifications .tabs {
   display: flex;
-  align-items: center;
   justify-content: center;
   position: relative;
 }
@@ -566,7 +565,9 @@
   text-align: center;
   transition: all 0.3s ease;
   position: relative;
-}
+  display: flex;
+  align-items: center;
+  justify-content: center;}
 
 .product-specifications .tab:not(:last-child)::after {
   content: "";
@@ -792,7 +793,7 @@
   top: 80px;
   left: 0;
   width: 100%;
-  max-height: 80vh;
+  max-height: 75vh;
   background-color: rgba(0, 0, 0, 0.5);
   z-index: 9999;
   display: none;
@@ -811,7 +812,7 @@
   background: white;
   width: 100%;
   max-width: 95%;
-  max-height: 80vh;
+  max-height: 75vh;
   border-bottom-left-radius: 26px;
   border-top-right-radius: 26px;
   display: flex;
@@ -847,7 +848,7 @@
 }
 
 .product-modal-overlay .product-modal-close i {
-  font-size: 18px;
+  font-size: 20px;
   color: #223160;
 }
 
