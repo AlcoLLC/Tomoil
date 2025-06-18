@@ -343,7 +343,7 @@
 .products-section .filter-products .checkbox-area.expanded,
 .products-section .filter-products .application-area.expanded,
 .products-section .filter-products .pack-size-area.expanded {
-  max-height: 200px;
+  max-height: 210px;
 }
 
 .products-section .filter-products .checkbox-area.expanded::-webkit-scrollbar-track,
@@ -785,10 +785,10 @@
 /* Product Filter Modal Styles */
 .product-modal-overlay {
   position: fixed;
-  top: 10px;
+  top: 80px;
   left: 0;
   width: 100%;
-  height: 100%;
+  height: 85vh;
   background-color: rgba(0, 0, 0, 0.5);
   z-index: 9999;
   display: none;
@@ -798,7 +798,7 @@
 
 .product-modal-overlay.active {
   display: flex;
-  align-items: flex-end;
+  align-items: flex-start;
   justify-content: center;
   opacity: 1;
 }

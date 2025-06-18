@@ -467,9 +467,6 @@
         height: 180px;
     }
 
-    .featured-section .product-image img {
-        max-width: 150%;
-    }
 
     .section-title {
         font-size: 26px;
@@ -1062,7 +1059,7 @@
     }
 
     .featured-section .product-image img {
-        max-width: 160%;
+        max-width: 90%;
     }
 
     .featured-section .product-card.active .product-image a::after {
@@ -1177,6 +1174,10 @@
 
     .product-range .card-image {
         height: 150px;
+    }
+
+    .section-case-studies .section-title {
+        max-width: 60%;
     }
 }
 
@@ -1397,7 +1398,7 @@
     .products-section .products-container {
         display: flex;
         align-items: start;
-        gap: 15px;
+        gap: 0px;
     }
 
     .products-section .filter-mobile {
@@ -1441,7 +1442,7 @@
     }
 
     .featured-section .product-image img {
-        max-width: 150%;
+        max-width: 100%;
     }
 
 }
@@ -1471,8 +1472,8 @@
     }
 
     .featured-section .product-image img {
-        max-width: 160%;
-        max-height: 110%;
+        max-width: 85%;
+        max-height: 90%;
     }
 
     .date-filter-container .filter-flex {
@@ -1910,6 +1911,11 @@
 }
 
 @media screen and (max-width: 500px) {
+
+    .section-case-studies .case-btn {
+        display: none !important;
+    }
+
     .brand-portal-section .section-image {
         height: 40%;
     }
@@ -2240,6 +2246,9 @@
 }
 
 @media screen and (max-width: 400px) {
+    .section-case-studies .section-title {
+        max-width: 70%;
+    }
 
     .brand-portal-section .download-button {
         padding: 8px;
@@ -2348,3 +2357,5 @@
         font-size: 13px;
     }
 }
+
+
