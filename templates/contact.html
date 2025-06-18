@@ -145,6 +145,7 @@
         <div class="form-group">
           <label for="country">{% trans 'Country*' %}</label>
         </div>
+
         <div class="custom-select-wrapper country-select">
           <img
             class="selected-flag"
@@ -170,19 +171,30 @@
                 data-value="{{ country.name }}"
                 data-flag="{{ country.flag }}"
                 data-code="{{ country.code }}"
+                onclick="console.log('Direct click test:', '{{ country.name }}', '{{ country.flag }}')"
+                style="
+                  display: flex;
+                  align-items: center;
+                  padding: 8px;
+                  cursor: pointer;
+                "
               >
-                <div class="flag-wrapper">
-                  <img src="{{ country.flag }}" alt="{{ country.name }} Flag" />
-                  <span>{{ country.name }}</span>
-                </div>
+                <img
+                  src="{{ country.flag }}"
+                  alt="{{ country.name }} Flag"
+                  style="
+                    width: 20px;
+                    height: 15px;
+                    margin-right: 8px;
+                    pointer-events: none;
+                  "
+                />
+                <span style="pointer-events: none">{{ country.name }}</span>
               </div>
               {% endfor %}
             </div>
           </div>
           <input type="hidden" name="country" id="country" value="" required />
-          {% if form.country.errors %}
-          <span class="error-message">{{ form.country.errors.0 }}</span>
-          {% endif %}
         </div>
 
         <div class="form-group">
@@ -322,6 +334,95 @@
     document.getElementById("submit-button").disabled = true;
     document.getElementById("recaptcha-error").style.display = "block";
   }
+
+  // Ülke seçimi için özel event listener - bu kodu mevcut JavaScript'inize ekleyin
+  document.addEventListener("DOMContentLoaded", function () {
+    // Sadece country select için özel işlem
+    const countryOptions = document.querySelectorAll(
+      ".country-select .custom-option"
+    );
+    const selectedFlag = document.getElementById("selected-flag");
+    const selectedCountryName = document.getElementById(
+      "selected-country-name"
+    );
+    const countryHiddenInput = document.getElementById("country");
+    const countrySelectDiv = document.querySelector(
+      ".country-select .custom-select"
+    );
+    const countryOptionsDiv = document.querySelector(
+      ".country-select .custom-options"
+    );
+
+    console.log("Country options found:", countryOptions.length);
+    console.log("Selected flag element:", selectedFlag);
+    console.log("Selected country name element:", selectedCountryName);
+
+    countryOptions.forEach((option) => {
+      option.addEventListener("click", function (e) {
+        e.preventDefault();
+        e.stopPropagation();
+
+        const countryName = this.getAttribute("data-value");
+        const flagUrl = this.getAttribute("data-flag");
+        const countryCode = this.getAttribute("data-code");
+
+        console.log("Clicked country:", countryName);
+        console.log("Flag URL:", flagUrl);
+        console.log("Country code:", countryCode);
+
+        // Bayrağı güncelle
+        if (selectedFlag && flagUrl) {
+          selectedFlag.src = flagUrl;
+          selectedFlag.alt = countryName + " Flag";
+          console.log("Flag updated to:", flagUrl);
+        }
+
+        // Ülke adını güncelle
+        if (selectedCountryName && countryName) {
+          selectedCountryName.textContent = countryName;
+          console.log("Country name updated to:", countryName);
+        }
+
+        // Hidden input'u güncelle
+        if (countryHiddenInput && countryName) {
+          countryHiddenInput.value = countryName;
+          console.log("Hidden input updated to:", countryName);
+        }
+
+        // Dropdown'u kapat
+        if (countrySelectDiv) {
+          countrySelectDiv.classList.remove("active", "open");
+        }
+        if (countryOptionsDiv) {
+          countryOptionsDiv.classList.remove("active");
+        }
+
+        // Seçili option'ı işaretle
+        countryOptions.forEach((opt) => opt.classList.remove("selected"));
+        this.classList.add("selected");
+      });
+    });
+
+    // Dropdown açma/kapama
+    if (countrySelectDiv) {
+      countrySelectDiv.addEventListener("click", function (e) {
+        e.stopPropagation();
+        this.classList.toggle("active");
+        if (countryOptionsDiv) {
+          countryOptionsDiv.classList.toggle("active");
+        }
+      });
+    }
+
+    // Dışarı tıklandığında kapat
+    document.addEventListener("click", function (e) {
+      const countryWrapper = document.querySelector(".country-select");
+      if (countryWrapper && !countryWrapper.contains(e.target)) {
+        if (countrySelectDiv) countrySelectDiv.classList.remove("active");
+        if (countryOptionsDiv) countryOptionsDiv.classList.remove("active");
+      }
+    });
+  });
 </script>
 
 {% endblock %}

@@ -163,6 +163,7 @@
   padding-right: 10px;
 }
 
+/* Original styles */
 .contact-section .phone-number-input img,
 .contact-section .email-input img,
 .contact-section .message-input img {
@@ -170,14 +171,45 @@
   opacity: 1 !important;
   position: absolute;
   right: 16px;
-  /* top: 50%; */
+  top: 50%;
   transform: translateY(-50%);
   width: 15px;
   height: 15px;
   opacity: 0.5;
 }
 
-.contact-section .phone-number-input{
+/* Method 1: Using class-based approach (Recommended) */
+.contact-section .phone-number-input.has-error img,
+.contact-section .email-input.has-error img,
+.contact-section .message-input.has-error img,
+.contact-section .country-select.has-error .selected-flag {
+  top: 34%;
+}
+
+/* Method 2: More specific :has() selector targeting visible errors */
+.contact-section
+  .phone-number-input:has(.field-error-message[style*="display: block"])
+  img,
+.contact-section
+  .email-input:has(.field-error-message[style*="display: block"])
+  img,
+.contact-section
+  .message-input:has(.field-error-message[style*="display: block"])
+  img {
+  top: 34%;
+}
+
+/* Method 3: Using :has() with :not([style*="none"]) */
+.contact-section
+  .phone-number-input:has(.field-error-message:not([style*="display: none"]))
+  img,
+.contact-section
+  .email-input:has(.field-error-message:not([style*="display: none"]))
+  img,
+.contact-section
+  .message-input:has(.field-error-message:not([style*="display: none"]))
+  img {
+  top: 34%;
 }
 
 .contact-section .email-input,
@@ -455,6 +487,10 @@
   background-position: center;
   border-radius: 2px;
   z-index: 1;
+}
+
+.contact-section .custom-select-wrapper:has(.field-error-message) img {
+  top: 34%;
 }
 
 .contact-section .country-select .custom-option .selected-flag {
