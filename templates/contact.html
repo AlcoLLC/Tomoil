@@ -1,6 +1,4 @@
-{% extends 'base.html' %} {% load static %} {% load i18n %}
- {% block content %}
- 
+{% extends 'base.html' %} {% load static %} {% load i18n %} {% block content %}
 
 <section class="contact-section">
   <div class="section-container">
@@ -9,10 +7,9 @@
         <p class="section-subtitle">{% trans 'Contact Us' %}</p>
         <h2 class="section-title">{% trans 'Any Questions Or Feedback?' %}</h2>
         <p class="contact-description">
-          {% blocktrans %}
-          Fill out the form below if you are interested or inquiring on Tomoil
-          products or services for your business.
-          {% endblocktrans %}
+          {% blocktrans %} Fill out the form below if you are interested or
+          inquiring on Tomoil products or services for your business.
+          {%endblocktrans %}
         </p>
       </div>
 
@@ -37,7 +34,9 @@
           <i class="fa-solid fa-location-dot"></i>
           <div class="info-content">
             <p class="info-label">{% trans 'Address' %}</p>
-            <p class="info-value">{% trans '6391 Elgin St. Celina, Delaware 10299' %}</p>
+            <p class="info-value">
+              {% trans '6391 Elgin St. Celina, Delaware 10299' %}
+            </p>
           </div>
         </div>
       </div>
@@ -126,21 +125,20 @@
             </div>
             <div id="phone-validation-message" class="validation-message"></div>
           </div>
-
-          <div class="form-group">
-            <label for="email">{% trans 'Email*' %}</label>
-            <div class="email-input">
-              <input
-                type="email"
-                name="email"
-                placeholder="example@gmail.com"
-                required
-              />
-              <img src="{% static 'images/email-envelope.svg' %}" alt="Email" />
-              {% if form.email.errors %}
-              <span class="error-message">{{ form.email.errors.0 }}</span>
-              {% endif %}
-            </div>
+        </div>
+        <div class="form-group">
+          <label for="email">{% trans 'Email*' %}</label>
+          <div class="email-input">
+            <input
+              type="email"
+              name="email"
+              placeholder="example@gmail.com"
+              required
+            />
+            <img src="{% static 'images/email-envelope.svg' %}" alt="Email" />
+            {% if form.email.errors %}
+            <span class="error-message">{{ form.email.errors.0 }}</span>
+            {% endif %}
           </div>
         </div>
 
@@ -191,7 +189,9 @@
           <label for="enquiry_type">{% trans 'Type of Enquiry*' %}</label>
         </div>
         <div class="custom-select-wrapper">
-          <div class="custom-select" id="selected-enquiry">{% trans 'Select' %}</div>
+          <div class="custom-select" id="selected-enquiry">
+            {% trans 'Select' %}
+          </div>
           <div class="custom-options">
             {% for value, display in enquiry_types %}
             <div class="custom-option" data-value="{{ value }}">
@@ -257,12 +257,10 @@
           <div class="checkbox-wrapper">
             <input type="checkbox" name="consent" id="consent" required />
             <label for="consent"
-              >{% blocktrans %}
-              By ticking this box, I consent to the use of my personal
-              information provided above by Tomoil, its subsidiaries and
-              affiliate partners to contact me with regard to my
-              enquiry/request.
-              {% endblocktrans %}</label
+              >{% blocktrans %} By ticking this box, I consent to the use of my
+              personal information provided above by Tomoil, its subsidiaries
+              and affiliate partners to contact me with regard to my
+              enquiry/request. {% endblocktrans %}</label
             >
           </div>
           {% if form.consent.errors %}
@@ -272,8 +270,13 @@
 
         <!-- reCAPTCHA Widget -->
         <div class="form-group recaptcha-group">
-          <div class="g-recaptcha" data-sitekey="{{ recaptcha_site_key }}" data-callback="enableSubmitButton" data-expired-callback="disableSubmitButton"></div>
-          <div id="recaptcha-error" class="error-message" style="display: none;">
+          <div
+            class="g-recaptcha"
+            data-sitekey="{{ recaptcha_site_key }}"
+            data-callback="enableSubmitButton"
+            data-expired-callback="disableSubmitButton"
+          ></div>
+          <div id="recaptcha-error" class="error-message" style="display: none">
             {% trans 'Please complete the reCAPTCHA verification.' %}
           </div>
         </div>
@@ -310,15 +313,15 @@
 <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 
 <script>
-function enableSubmitButton() {
-  document.getElementById('recaptcha-error').style.display = 'none';
-  validateForm();
-}
+  function enableSubmitButton() {
+    document.getElementById("recaptcha-error").style.display = "none";
+    validateForm();
+  }
 
-function disableSubmitButton() {
-  document.getElementById('submit-button').disabled = true;
-  document.getElementById('recaptcha-error').style.display = 'block';
-}
+  function disableSubmitButton() {
+    document.getElementById("submit-button").disabled = true;
+    document.getElementById("recaptcha-error").style.display = "block";
+  }
 </script>
 
 {% endblock %}
