@@ -448,6 +448,7 @@ function initCaseStudiesSlider() {
 
   console.log(`Smooth infinite slider initialized`);
 }
+
 function initBrandLogosRotation() {
   const allLogos = Array.from(
     document.querySelectorAll('.brand-logo-container')
@@ -456,44 +457,99 @@ function initBrandLogosRotation() {
 
   if (!brandLogosWrapper || allLogos.length === 0) return;
 
-  let visibleCount = 4;
+  const visibleCount = 4;
   let visibleLogos = allLogos.slice(0, visibleCount);
   let hiddenLogos = allLogos.slice(visibleCount);
 
+  // Her container için pozisyon bilgilerini sakla
+  const positions = [];
+
   function updateVisibleLogos() {
     brandLogosWrapper.innerHTML = '';
-
-    visibleLogos.forEach((logo) => {
+    visibleLogos.forEach((logo, index) => {
       brandLogosWrapper.appendChild(logo);
+      // İlk yükleme sırasında pozisyonları kaydet
+      if (positions.length < visibleCount) {
+        setTimeout(() => {
+          const rect = logo.getBoundingClientRect();
+          positions[index] = { x: rect.left, y: rect.top };
+        }, 10);
+      }
     });
   }
 
-  function swapLogos() {
+  function animateSwap(fromIndex, toIndex, onComplete) {
+    const fromLogo = visibleLogos[fromIndex];
+    const toLogo = visibleLogos[toIndex];
+
+    // Mevcut pozisyonları al
+    const fromRect = fromLogo.getBoundingClientRect();
+    const toRect = toLogo.getBoundingClientRect();
+
+    // Hareket mesafelerini hesapla
+    const deltaX1 = toRect.left - fromRect.left;
+    const deltaY1 = toRect.top - fromRect.top;
+    const deltaX2 = fromRect.left - toRect.left;
+    const deltaY2 = fromRect.top - toRect.top;
+
+    // Animasyon stilleri ekle
+    fromLogo.style.transition = 'transform 0.6s cubic-bezier(0.4, 0, 0.2, 1)';
+    toLogo.style.transition = 'transform 0.6s cubic-bezier(0.4, 0, 0.2, 1)';
+    fromLogo.style.transform = `translate(${deltaX1}px, ${deltaY1}px)`;
+    toLogo.style.transform = `translate(${deltaX2}px, ${deltaY2}px)`;
+
+    // Animasyon bittiğinde pozisyonları değiştir
+    setTimeout(() => {
+      // Transformları temizle
+      fromLogo.style.transform = '';
+      toLogo.style.transform = '';
+      fromLogo.style.transition = '';
+      toLogo.style.transition = '';
+
+      // DOM'da pozisyonları değiştir
+      const temp = visibleLogos[fromIndex];
+      visibleLogos[fromIndex] = visibleLogos[toIndex];
+      visibleLogos[toIndex] = temp;
+
+      updateVisibleLogos();
+      onComplete();
+    }, 600);
+  }
+
+  function swapRandomLogo() {
     if (hiddenLogos.length === 0) return;
 
-    const visibleIndex = Math.floor(Math.random() * visibleLogos.length);
-    const hiddenIndex = Math.floor(Math.random() * hiddenLogos.length);
+    // İki farklı görünür logo seç
+    const index1 = Math.floor(Math.random() * visibleCount);
+    let index2 = Math.floor(Math.random() * visibleCount);
+    while (index2 === index1) {
+      index2 = Math.floor(Math.random() * visibleCount);
+    }
 
-    const visibleLogo = visibleLogos[visibleIndex];
-    const hiddenLogo = hiddenLogos[hiddenIndex];
+    // Animasyonlu değişim yap
+    animateSwap(index1, index2, () => {
+      // Sonra gizli logolardan biriyle değiştir
+      const visibleIndex = Math.floor(Math.random() * visibleLogos.length);
+      const hiddenIndex = Math.floor(Math.random() * hiddenLogos.length);
 
-    visibleLogos[visibleIndex] = hiddenLogo;
-    hiddenLogos[hiddenIndex] = visibleLogo;
+      const temp = visibleLogos[visibleIndex];
+      visibleLogos[visibleIndex] = hiddenLogos[hiddenIndex];
+      hiddenLogos[hiddenIndex] = temp;
 
-    visibleLogo.classList.add('changing');
-    hiddenLogo.classList.add('changing');
+      updateVisibleLogos();
+    });
+  }
 
-    updateVisibleLogos();
-
+  function scheduleNextSwap() {
+    const randomDelay = Math.random() * 2000 + 1500; // 1.5-3.5 saniye arası
     setTimeout(() => {
-      visibleLogo.classList.remove('changing');
-      hiddenLogo.classList.remove('changing');
-    }, 500);
+      swapRandomLogo();
+      scheduleNextSwap();
+    }, randomDelay);
   }
 
   updateVisibleLogos();
-
-  setInterval(swapLogos, 1500);
+  setTimeout(scheduleNextSwap, 2000); // İlk değişimi biraz geciktir
 }
 
 function initNumberCounters() {
@@ -510,18 +566,42 @@ function initNumberCounters() {
 
   if (statBoxes.length === 0) return;
 
+  let isAnimating = false; // Animasyon durumunu takip etmek için
+
   const observer = new IntersectionObserver(
     (entries) => {
       entries.forEach((entry) => {
-        if (entry.isIntersecting) {
+        if (entry.isIntersecting && !isAnimating) {
+          isAnimating = true;
+
+          // Tüm sayıları sıfırla
+          statBoxes.forEach((box, index) => {
+            const startValue = statValues[index].startFrom;
+            const unit = statValues[index].unit;
+
+            const formattedValue = Number.isInteger(startValue)
+              ? startValue.toString()
+              : startValue.toFixed(1);
+
+            box.textContent = formattedValue + unit;
+          });
+
+          // Animasyonu başlat
           statBoxes.forEach((box, index) => {
             animateNumber(box, statValues[index]);
           });
-          observer.disconnect();
+
+          // Animasyon tamamlandıktan sonra tekrar animasyon yapılabilir
+          setTimeout(() => {
+            isAnimating = false;
+          }, 2500); // Animasyon süresi + biraz buffer
         }
       });
     },
-    { threshold: 0.3 }
+    {
+      threshold: 0.3,
+      rootMargin: '0px 0px -50px 0px', // Biraz daha hassas tetikleme için
+    }
   );
 
   const bestOffersSection = document.querySelector('.section-best-offers');
