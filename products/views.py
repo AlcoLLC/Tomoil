@@ -185,7 +185,7 @@ def products_view(request):
     )
 
     page_number = request.GET.get('page', 1)
-    paginator = Paginator(products, 9)
+    paginator = Paginator(products, 12)
 
     try:
         page_obj = paginator.get_page(page_number)
