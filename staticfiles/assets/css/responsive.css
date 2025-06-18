@@ -1398,7 +1398,7 @@
     .products-section .products-container {
         display: flex;
         align-items: start;
-        gap: 15px;
+        gap: 0px;
     }
 
     .products-section .filter-mobile {
