@@ -61,6 +61,8 @@ CORS_ALLOWED_ORIGINS = [
     "https://65.108.93.160",
     'http://65.108.93.160:100',
     "https://65.108.93.160:100",
+    'https://tomoil.de/',
+    "http://tomoil.de/",
 ]
 
 CSRF_TRUSTED_ORIGINS = [
@@ -68,6 +70,8 @@ CSRF_TRUSTED_ORIGINS = [
     "https://65.108.93.160",
     'http://65.108.93.160:100',
     "https://65.108.93.160:100",
+    'https://tomoil.de/',
+    "http://tomoil.de/",
 ]
 
 # Application definition
@@ -246,8 +250,8 @@ EMAIL_USE_SSL = config('EMAIL_USE_SSL', cast=bool)
 EMAIL_USE_TLS = config('EMAIL_USE_TLS', cast=bool)
 EMAIL_BACKEND = config('EMAIL_BACKEND')
 DEFAULT_FROM_EMAIL = config('DEFAULT_FROM_EMAIL')
-# RECAPTCHA_SITE_KEY = config('RECAPTCHA_SITE_KEY')
-# RECAPTCHA_SECRET_KEY = config('RECAPTCHA_SECRET_KEY')
+RECAPTCHA_SITE_KEY = config('RECAPTCHA_SITE_KEY')
+RECAPTCHA_SECRET_KEY = config('RECAPTCHA_SECRET_KEY')
 
 CONTACT_FORM_SETTINGS = {
     'IP_SUBMISSION_LIMIT': 1,  
