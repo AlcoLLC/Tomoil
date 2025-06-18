@@ -131,6 +131,11 @@
   margin-top: 50px;
 }
 
+.data-sheet-section .no-results-message {
+  padding: 15px;
+  text-align: center;
+}
+
 .data-sheet-section .data-sheet-container {
   width: 100%;
   overflow-x: auto;
