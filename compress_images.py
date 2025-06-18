@@ -35,10 +35,10 @@ else:
     IMAGE_EXTENSIONS = ('.jpg', '.jpeg', '.png', '.webp', '.bmp', '.tiff', '.gif')
 
 # Source directory for original images - UPDATED to target only products folder
-SOURCE_DIR = "/Aminol/media/products"
+SOURCE_DIR = "/Tomoil/media/products"
 
 # Target directory for compressed images - UPDATED to products_demo
-COMPRESSED_OUTPUT_DIR = "/Aminol/media/products_demo"
+COMPRESSED_OUTPUT_DIR = "/Tomoil/media/products_demo"
 
 
 def get_file_size_kb(buffer):
@@ -281,11 +281,11 @@ def is_safe_path(path, base_dir):
 def process_source_directory():
     """Recursively process all valid image files from SOURCE_DIR to COMPRESSED_OUTPUT_DIR, converting to WebP."""
 
-    if not os.path.abspath(SOURCE_DIR).startswith(os.path.abspath("/Aminol")):
-        print(f"❌ Security error: Source path {SOURCE_DIR} is not within /Aminol.")
+    if not os.path.abspath(SOURCE_DIR).startswith(os.path.abspath("/Tomoil")):
+        print(f"❌ Security error: Source path {SOURCE_DIR} is not within /Tomoil.")
         return
-    if not os.path.abspath(COMPRESSED_OUTPUT_DIR).startswith(os.path.abspath("/Aminol")):
-        print(f"❌ Security error: Target path {COMPRESSED_OUTPUT_DIR} is not within /Aminol.")
+    if not os.path.abspath(COMPRESSED_OUTPUT_DIR).startswith(os.path.abspath("/Tomoil")):
+        print(f"❌ Security error: Target path {COMPRESSED_OUTPUT_DIR} is not within /Tomoil.")
         return
 
     if not os.path.exists(SOURCE_DIR):
