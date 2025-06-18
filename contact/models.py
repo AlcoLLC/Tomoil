@@ -173,3 +173,17 @@ class TomoilReview(models.Model):
 
     def __str__(self):
         return f"{self.name}"
+    
+class Footer(models.Model):
+    email = models.EmailField(
+        blank=True,
+        null=True,
+        help_text="Email address for the footer"
+    )
+
+    def __str__(self):
+        return f"Footer"
+
+    class Meta:
+        verbose_name = "Footer"
+        verbose_name_plural = "Footers"

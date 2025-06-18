@@ -1,5 +1,4 @@
-{% load static %}
-{% load i18n %}
+{% load static %} {% load i18n %}
 
 <footer class="site-footer">
   <div class="footer-container">
@@ -8,7 +7,8 @@
         <img src="{% static 'images/tomoil-logo.svg' %}" alt="Tomoil Logo" />
       </div>
       <p class="footer-description">
-        {% trans 'Corporate business typically refers to large-scale mansola it enterprises or organizat' %}
+        {% trans 'Corporate business typically refers to large-scale mansola it
+        enterprises or organizat' %}
       </p>
       <div class="social-icons">
         <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
@@ -32,16 +32,24 @@
     <div class="footer-col footer-menu2">
       <ul class="footer-menu-icons">
         <li>
-          <a href="/news"><i class="fas fa-chevron-right"></i> {% trans 'News' %}</a>
+          <a href="/news"
+            ><i class="fas fa-chevron-right"></i> {% trans 'News' %}</a
+          >
         </li>
         <li>
-          <a href="/faq"><i class="fas fa-chevron-right"></i> {% trans 'FAQ' %}</a>
+          <a href="/faq"
+            ><i class="fas fa-chevron-right"></i> {% trans 'FAQ' %}</a
+          >
         </li>
         <li>
-          <a href="/contact"><i class="fas fa-chevron-right"></i> {% trans 'Contact us' %}</a>
+          <a href="/contact"
+            ><i class="fas fa-chevron-right"></i> {% trans 'Contact us' %}</a
+          >
         </li>
         <li>
-          <a href="/pds_sds"><i class="fas fa-chevron-right"></i> {% trans 'PDS/SDS' %}</a>
+          <a href="/pds_sds"
+            ><i class="fas fa-chevron-right"></i> {% trans 'PDS/SDS' %}</a
+          >
         </li>
       </ul>
     </div>
@@ -49,13 +57,33 @@
     <div class="footer-col footer-info">
       <h3 class="footer-title">{% trans 'Stay in the Know' %}</h3>
       <p class="newsletter-text">
-        {% trans 'Be the first to hear about our latest news, updates, and exclusive insights.' %}
+        {% trans 'Be the first to hear about our latest news, updates, and
+        exclusive insights.' %}
       </p>
       <div class="newsletter-form">
-        <input type="email" placeholder="{% trans 'Enter your email' %}" />
-        <button type="submit" class="submit-btn">
-          <i class="fas fa-paper-plane"></i>
-        </button>
+        <form
+          action="{% url 'contact:footer_email_submit' %}"
+          method="post"
+          class="newsletter-form"
+        >
+          {% csrf_token %}
+          <input
+            type="email"
+            name="email"
+            placeholder="{% trans 'Enter your email' %}"
+            required
+          />
+          <button type="submit" class="submit-btn">
+            <i class="fas fa-paper-plane"></i>
+          </button>
+        </form>
+        {% if messages %}
+        <ul class="messages">
+          {% for message in messages %}
+          <li class="{{ message.tags }}">{{ message }}</li>
+          {% endfor %}
+        </ul>
+        {% endif %}
       </div>
     </div>
 
