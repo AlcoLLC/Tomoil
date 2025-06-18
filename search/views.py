@@ -513,11 +513,30 @@ def search_view(request):
         page_obj = paginator.get_page(page_number)
     else:
         page_obj = None
+
+    try:
+        page_header = PageHeader.objects.get(page_key='search_view')
+        header_context = {
+            'breadcrumb_title': page_header.breadcrumb_title,
+            'breadcrumb_url': page_header.breadcrumb_url,
+            'page_title': page_header.page_title,
+            'page_description': page_header.page_description,
+            'background_image': page_header.background_image
+        }
+    except PageHeader.DoesNotExist:
+        header_context = {
+            'breadcrumb_title': 'Search',
+            'breadcrumb_url': '/search/',
+            'page_title': 'Search',
+            'page_description': '',
+            'background_image': None
+        }
     
     context = {
         'query': query,
         'results': page_obj,
         'total_results': total_results,
+        **header_context
     }
     
     return render(request, 'search.html', context)
