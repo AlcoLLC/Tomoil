@@ -274,7 +274,7 @@ LOGGING = {
         },
     },
     'loggers': {
-        'yourapp.views': { 
+        'contact.views': { 
             'handlers': ['file', 'console'],
             'level': 'INFO',
             'propagate': True,
