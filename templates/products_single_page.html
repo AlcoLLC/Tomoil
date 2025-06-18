@@ -11,7 +11,8 @@
     <div class="left-content">
       <div class="product-detail-content">
         <h2 class="section-title">
-          {% for composition in product.compositions.all %} {{composition.name}}{% if not forloop.last %}, {% endif %} {% endfor %} {{product.product_range.name }}
+          {% for composition in product.compositions.all %} {{composition.name}}{% if not forloop.last %}, {% endif %}
+          {% endfor %} {{product.product_range.name }}
         </h2>
         <p class="section-description">{{ product.description }}</p>
       </div>
@@ -39,20 +40,14 @@
       <a href="{{ product.pds }}" target="_blank">
         <button>
           {% trans 'Product Data Sheet' %}
-          <img
-            src="{% static 'images/download-icon.svg' %}"
-            alt="Download Icon"
-          />
+          <img src="{% static 'images/download-icon.svg' %}" alt="Download Icon" />
         </button>
       </a>
       {% endif %} {% if product.sds %}
       <a href="{{ product.sds }}" target="_blank">
         <button>
           {% trans 'Safety Data Sheet' %}
-          <img
-            src="{% static 'images/download-icon.svg' %}"
-            alt="Download Icon"
-          />
+          <img src="{% static 'images/download-icon.svg' %}" alt="Download Icon" />
         </button>
       </a>
       {% endif %}
@@ -61,7 +56,7 @@
   {% endif %}
 
   <div class="product-properties">
-      {% if product.features_benefits %}
+    {% if product.features_benefits %}
     <div class="featured">
       <h3>{% trans 'Features & Benefits' %}</h3>
       <div class="featured-content">
@@ -70,7 +65,7 @@
       </div>
     </div>
     {% else %}
-      {% endif %}
+    {% endif %}
     {% if product.application %}
     <div class="application">
       <h3>{% trans 'Application' %}</h3>
@@ -86,62 +81,47 @@
   <div class="product-specifications">
     <div class="specifications-components">
       <div class="tabs">
-        <div
-          class="tab active {% if active_tab == 'performance' %}active{% endif %}"
-          data-tab="performance"
-        >
+        <div class="tab active {% if active_tab == 'performance' %}active{% endif %}" data-tab="performance">
           {% trans 'Performance' %}
         </div>
-        <div
-          class="tab {% if active_tab == 'typical-properties' %}active{% endif %}"
-          data-tab="typical-properties"
-        >
+        <div class="tab {% if active_tab == 'typical-properties' %}active{% endif %}" data-tab="typical-properties">
           {% trans 'Typical Properties' %}
         </div>
-        <div
-          class="tab {% if active_tab == 'packaging-sizes' %}active{% endif %}"
-          data-tab="packaging-sizes"
-        >
+        <div class="tab {% if active_tab == 'packaging-sizes' %}active{% endif %}" data-tab="packaging-sizes">
           {% trans 'Packaging & Sizes' %}
         </div>
       </div>
     </div>
     <div class="specifications-content">
       <!-- Brand Guideline Tab -->
-      <div
-        class="tab-content active {% if active_tab == 'performance' %}active{% endif %}"
-        id="performance"
-      >
+      <div class="tab-content active {% if active_tab == 'performance' %}active{% endif %}" id="performance">
         <div class="performance-content">
           <h3>{% trans 'Specifications / Approvals:' %}</h3>
-             {% if product.specifications.exists %}
-                  <p>
-                    {% for specification in product.specifications.all %}
-                        {% if specification.is_active %}
-                            {{ specification.name }}{% if not forloop.last %}, {% endif %}
-                        {% endif %}
-                    {% endfor %}
-                </p>
-            {% else %}
-                <p>No specifications available for this product.</p>
+          {% if product.specifications.exists %}
+          <p>
+            {% for specification in product.specifications.all %}
+            {% if specification.is_active %}
+            {{ specification.name }}{% if not forloop.last %}, {% endif %}
             {% endif %}
-             {% if product.recommendation %}
+            {% endfor %}
+          </p>
+          {% else %}
+          <p>No specifications available for this product.</p>
+          {% endif %}
+          {% if product.recommendation %}
           <p>
             <span>Tomoil</span> {% blocktrans %} recommends this product for vehicles or
             assemblies for which the following specifications or original spare
             part numbers are required: {% endblocktrans %}
           </p>
-         
-                  <p>{{ product.recommendation|linebreaks }}</p>
-            {% else %}
-            {% endif %}
-        
+
+          <p>{{ product.recommendation|linebreaks }}</p>
+          {% else %}
+          {% endif %}
+
         </div>
       </div>
-      <div
-        class="tab-content {% if active_tab == 'typical-properties' %}active{% endif %}"
-        id="typical-properties"
-      >
+      <div class="tab-content {% if active_tab == 'typical-properties' %}active{% endif %}" id="typical-properties">
         <div class="specifications-table">
           {% if typical_properties %}
           <table>
@@ -170,10 +150,7 @@
         </div>
       </div>
 
-      <div
-        class="tab-content {% if active_tab == 'packaging-sizes' %}active{% endif %}"
-        id="packaging-sizes"
-      >
+      <div class="tab-content {% if active_tab == 'packaging-sizes' %}active{% endif %}" id="packaging-sizes">
         <div class="specifications-table">
           {% if packaging_sizes %}
           <table>
@@ -217,24 +194,19 @@
       </p>
 
       <button class="button-style" id="openReviewModal">
-        <a
-          >{% if reviews_count > 0 %}{% trans 'ADD YOUR REVIEW' %}{% else %}{% trans 'BE THE FIRST TO RATE PRODUCTS' %}{% endif %} <i class="fas fa-arrow-right"></i
-        ></a>
+        <a>{% if reviews_count > 0 %}{% trans 'ADD YOUR REVIEW' %}{% else %}{% trans 'BE THE FIRST TO RATE PRODUCTS'
+          %}{% endif %} <i class="fas fa-arrow-right"></i></a>
       </button>
     </div>
     {% if reviews %}
     <div class="opinions">
       {% for review in reviews %}
-      <div
-        class="opinion {% if forloop.first %}active{% endif %}"
-        data-index="{{ forloop.counter0 }}"
-      >
+      <div class="opinion {% if forloop.first %}active{% endif %}" data-index="{{ forloop.counter0 }}">
         <div class="star-rating">
-          {% for i in "12345" %} {% if forloop.counter <= review.rating %}
-          <i class="fa-solid fa-star"></i>
-          {% else %}
-          <i class="fa-regular fa-star"></i>
-          {% endif %} {% endfor %}
+          {% for i in "12345" %} {% if forloop.counter <= review.rating %} <i class="fa-solid fa-star"></i>
+            {% else %}
+            <i class="fa-regular fa-star"></i>
+            {% endif %} {% endfor %}
         </div>
         <div class="review-header">
           <h3>{{ review.full_name }}</h3>
@@ -245,7 +217,7 @@
       {% endfor %}
     </div>
     {% else %}
-   
+
     {% endif %}
   </div>
 
@@ -275,73 +247,43 @@
         <div class="form-row">
           <div class="form-group">
             <label for="firstName">{% trans 'First name' %}</label>
-            <input
-              type="text"
-              id="firstName"
-              name="first_name"
-              placeholder="{% trans 'Enter your name' %}"
-              required
-            />
+            <input type="text" id="firstName" name="first_name" placeholder="{% trans 'Enter your name' %}" required />
           </div>
           <div class="form-group">
             <label for="surname">{% trans 'Surname' %}</label>
-            <input
-              type="text"
-              id="surname"
-              name="surname"
-              placeholder="{% trans 'Enter your surname' %}"
-              required
-            />
+            <input type="text" id="surname" name="surname" placeholder="{% trans 'Enter your surname' %}" required />
           </div>
         </div>
 
         <div class="form-section">
           <div class="form-group">
             <label for="email">{% trans 'Email address' %}</label>
-            <input
-              type="email"
-              id="email"
-              name="email_address"
-              placeholder="{% trans 'Enter your email' %}"
-              required
-            />
+            <input type="email" id="email" name="email_address" placeholder="{% trans 'Enter your email' %}" required />
           </div>
         </div>
 
         <div class="form-section">
           <div class="form-group">
             <label for="summary">{% trans 'Summary of your review' %}</label>
-            <input
-              type="text"
-              id="summary"
-              name="summary"
-              placeholder="{% trans 'Enter your review summary' %}"
-              required
-              maxlength="200"
-            />
+            <input type="text" id="summary" name="summary" placeholder="{% trans 'Enter your review summary' %}"
+              required maxlength="200" />
           </div>
         </div>
 
         <div class="form-section">
           <div class="form-group">
             <label for="review">{% trans 'Review' %}</label>
-            <textarea
-              id="review"
-              name="review"
-              placeholder="{% trans 'Write your detailed review here...' %}"
-              required
-            ></textarea>
+            <textarea id="review" name="review" placeholder="{% trans 'Write your detailed review here...' %}"
+              required></textarea>
           </div>
         </div>
 
         <div class="checkbox-container">
           <input type="checkbox" id="agreement" name="agreement" required />
-          <label for="agreement"
-            >{% trans 'I agree to the publication and the' %}
-            <a href="#">{% trans 'evaluation conditions' %}</a>.</label
-          >
+          <label for="agreement">{% trans 'I agree to the publication and the' %}
+            <a href="#">{% trans 'evaluation conditions' %}</a>.</label>
         </div>
-      <p id="form-error-message" style="color: red; text-align: center; margin-bottom: 15px;"></p>
+        <p id="form-error-message" style="color: red; text-align: center; margin-bottom: 15px;"></p>
 
         <button type="submit" class="submit-btn">{% trans 'SUBMIT' %}</button>
       </form>
