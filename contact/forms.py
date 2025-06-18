@@ -1,6 +1,6 @@
 from django import forms
 from django.core.validators import RegexValidator
-from .models import Contact
+from .models import Contact, Footer
 import phonenumbers
 
 
@@ -69,3 +69,15 @@ class ContactForm(forms.ModelForm):
                 'consent', 'You must provide consent to submit this form.')
 
         return cleaned_data
+
+
+class FooterForm(forms.ModelForm):
+    class Meta:
+        model = Footer
+        fields = ['email']
+        widgets = {
+            'email': forms.EmailInput(attrs={
+                'placeholder': 'Enter your email',
+                'class': 'footer-email-input'
+            })
+        }

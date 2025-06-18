@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Contact, HomeSwiper, CarLogo, PartnerLogo, TomoilReview
+from .models import Contact, HomeSwiper, CarLogo, PartnerLogo, TomoilReview, Footer
 from modeltranslation.admin import TranslationAdmin
 
 
@@ -65,3 +65,7 @@ class TomoilReviewAdmin(TranslationAdmin):
             'fields': ('review',)
         }),
     )
+
+@admin.register(Footer)
+class FooterAdmin(admin.ModelAdmin):
+    list_display = ('email',)
