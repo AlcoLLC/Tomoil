@@ -315,7 +315,15 @@
 
 <section class="contact-map-section">
   <div class="section-container">
-    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2627.3348436630577!2d9.178569099999997!3d48.8136723!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4799db7e6177543f%3A0x5efcb72c54f88a56!2sLeitzstra%C3%9Fe%2045%2C%2070469%20Stuttgart%2C%20Almanya!5e0!3m2!1str!2saz!4v1750223328292!5m2!1str!2saz" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+    <iframe
+      src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2627.3348436630577!2d9.178569099999997!3d48.8136723!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4799db7e6177543f%3A0x5efcb72c54f88a56!2sLeitzstra%C3%9Fe%2045%2C%2070469%20Stuttgart%2C%20Almanya!5e0!3m2!1str!2saz!4v1750223328292!5m2!1str!2saz"
+      width="600"
+      height="450"
+      style="border: 0"
+      allowfullscreen=""
+      loading="lazy"
+      referrerpolicy="no-referrer-when-downgrade"
+    ></iframe>
   </div>
 </section>
 
@@ -420,6 +428,7 @@
       }
     });
   });
+
   function showIPDuplicateError() {
     const errorDiv = document.getElementById("ip-duplicate-error");
     if (errorDiv) {
@@ -431,11 +440,6 @@
       }, 5000);
     }
   }
-
-  // Example usage
-  setTimeout(() => {
-    showIPDuplicateError();
-  }, 2000);
 </script>
 
 {% endblock %}

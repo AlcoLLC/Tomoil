@@ -159,6 +159,7 @@ def index(request):
     if request.method == 'POST':
         client_ip = get_client_ip(request)
         
+        # İlk önce reCAPTCHA kontrolü
         recaptcha_response = request.POST.get('g-recaptcha-response')
         if not recaptcha_response or not verify_recaptcha(recaptcha_response, client_ip):
             messages.error(request, _("reCAPTCHA verification failed. Please try again."))
@@ -167,6 +168,7 @@ def index(request):
             context = get_countries_and_codes(form)
             return render(request, 'contact.html', context)
 
+        # Sonra IP kontrolü - sadece POST request'te
         from django.utils import timezone
         from datetime import timedelta
         
@@ -182,6 +184,7 @@ def index(request):
             context = get_countries_and_codes(form)
             return render(request, 'contact.html', context)
 
+        # Form validation
         form = ContactForm(request.POST)
 
         if form.is_valid():
@@ -261,10 +264,10 @@ Tomoil Support Team
         return render(request, 'contact.html', context)
 
     else:
+        # GET request - sadece boş form göster, IP kontrolü YOK
         form = ContactForm()
-
-    context = get_countries_and_codes(form)
-    return render(request, 'contact.html', context)
+        context = get_countries_and_codes(form)
+        return render(request, 'contact.html', context)
 
 def home_view(request):
     swiper_images = HomeSwiper.objects.filter(is_active=True).order_by('order')
