@@ -11,21 +11,21 @@
         enterprises or organizat {% endblocktrans %} 
       </p>
       <div class="social-icons">
-        <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
-        <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
-        <a href="#" class="social-icon"><i class="fab fa-youtube"></i></a>
-        <a href="#" class="social-icon"><i class="fab fa-tiktok"></i></a>
-        <a href="#" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+        <a href="https://www.facebook.com/people/Tomoil/61576825467224/" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+        <a href="https://www.instagram.com/tomoil.de/"  class="social-icon"><i class="fab fa-instagram"></i></a>
+        <!-- <a href="#" class="social-icon"><i class="fab fa-youtube"></i></a> -->
+        <!-- <a href="#" class="social-icon"><i class="fab fa-tiktok"></i></a> -->
+        <a href="https://www.linkedin.com/company/tomoil-lubricants-auto-chemicals/" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
       </div>
     </div>
 
     <div class="footer-col footer-links">
       <h3 class="footer-title">{% trans 'Quick Links' %}</h3>
       <ul class="footer-menu">
-        <li><a href="/glance">{% trans 'Who we are' %}</a></li>
-        <li><a href="/products">{% trans 'Products' %}</a></li>
-        <li><a href="/services">{% trans 'Services' %}</a></li>
-        <li><a href="/brand">{% trans 'Brand Portal' %}</a></li>
+        <li><a href="{% url 'whoweare:glance' %}">{% trans 'Who we are' %}</a></li>
+        <li><a href="{% url 'products:products_list' %}">{% trans 'Products' %}</a></li>
+        <li><a href="{% url 'services:services_list' %}">{% trans 'Services' %}</a></li>
+        <li><a href="{% url 'brand_portal:brand_portal' %}">{% trans 'Brand Portal' %}</a></li>
       </ul>
     </div>
 
