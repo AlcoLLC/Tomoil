@@ -4,7 +4,7 @@ from django.template.loader import render_to_string
 from django.http import JsonResponse
 from .models import Contact, HomeSwiper, CarLogo, PartnerLogo, TomoilReview
 from products.models import ProductRange, Product, ApplicationArea
-from .forms import ContactForm
+from .forms import ContactForm, FooterForm
 import requests
 import re
 import phonenumbers
@@ -14,6 +14,7 @@ from django.contrib import messages
 from django.conf import settings
 from django.utils.translation import gettext_lazy as _
 import logging
+from django.contrib import messages
 
 logger = logging.getLogger(__name__)
 
@@ -292,3 +293,13 @@ def home_view(request):
         'product_ranges': product_ranges,
     }
     return render(request, 'home.html', context) 
+
+def footer_email_submit(request):
+    if request.method == 'POST':
+        form = FooterForm(request.POST)
+        if form.is_valid():
+            form.save()
+            messages.success(request, "Thanks for subscribing!")
+        else:
+            messages.error(request, "Please enter a valid email.")
+    return redirect(request.META.get('HTTP_REFERER', '/'))
