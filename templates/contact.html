@@ -267,13 +267,14 @@
 
         <div class="form-group checkbox">
           <div class="checkbox-wrapper">
-            <input type="checkbox" name="consent" id="consent" required />
-            <label for="consent"
-              >{% blocktrans %} By ticking this box, I consent to the use of my
+            <!-- Removed required attribute -->
+            <input type="checkbox" name="consent" id="consent" />
+            <label for="consent">
+              {% blocktrans %} By ticking this box, I consent to the use of my
               personal information provided above by Tomoil, its subsidiaries
               and affiliate partners to contact me with regard to my
-              enquiry/request. {% endblocktrans %}</label
-            >
+              enquiry/request. {% endblocktrans %}
+            </label>
           </div>
           {% if form.consent.errors %}
           <span class="error-message">{{ form.consent.errors.0 }}</span>
@@ -293,21 +294,28 @@
           </div>
         </div>
 
-        <div class="form-group submit-group">
-          <div id="ip-duplicate-error" class="ip-error-message">
-            {% blocktrans %} You have already submitted a form recently. Please
-            wait before submitting again.{% endblocktrans %}
-          </div>
+       <div class="form-group submit-group">
+  {% if show_ip_duplicate %}
+  <div id="ip-duplicate-error" class="ip-error-message show">
+    {% blocktrans %} You have already submitted a form recently. Please
+    wait before submitting again.{% endblocktrans %}
+  </div>
+  {% else %}
+  <div id="ip-duplicate-error" class="ip-error-message">
+    {% blocktrans %} You have already submitted a form recently. Please
+    wait before submitting again.{% endblocktrans %}
+  </div>
+  {% endif %}
 
-          <button
-            type="submit"
-            id="submit-button"
-            class="submit-button"
-            disabled
-          >
-            {% trans "SUBMIT" %}
-          </button>
-        </div>
+  <button
+    type="submit"
+    id="submit-button"
+    class="submit-button"
+    {% if show_ip_duplicate %}disabled{% endif %}
+  >
+    {% trans "SUBMIT" %}
+  </button>
+</div>
       </form>
     </div>
   </div>

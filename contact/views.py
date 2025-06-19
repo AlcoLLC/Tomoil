@@ -182,6 +182,8 @@ def index(request):
             logger.warning(f"Duplicate submission attempt from IP: {client_ip}")
             form = ContactForm()
             context = get_countries_and_codes(form)
+            # IP duplicate flag'ini context'e ekle
+            context['show_ip_duplicate'] = True
             return render(request, 'contact.html', context)
 
         # Form validation
@@ -264,9 +266,22 @@ Tomoil Support Team
         return render(request, 'contact.html', context)
 
     else:
-        # GET request - sadece boş form göster, IP kontrolü YOK
+        client_ip = get_client_ip(request)
+        from django.utils import timezone
+        from datetime import timedelta
+        
+        recent_submission = Contact.objects.filter(
+            ip_address=client_ip,
+            created_at__gte=timezone.now() - timedelta(hours=1)
+        ).exists()
+        
         form = ContactForm()
         context = get_countries_and_codes(form)
+        
+        if recent_submission:
+            context['show_ip_duplicate'] = True
+            messages.warning(request, _("You have recently submitted a form. Please wait before submitting again."))
+        
         return render(request, 'contact.html', context)
 
 def home_view(request):
