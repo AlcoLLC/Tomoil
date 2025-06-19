@@ -8,5 +8,4 @@ urlpatterns = [
     path('validate-phone/', validate_phone_api, name='validate_phone'),
     path("", home_view, name='home'),
     path('footer/submit/', footer_email_submit, name='footer_email_submit'),
-
 ]
