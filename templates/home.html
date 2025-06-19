@@ -18,7 +18,7 @@
             <a href="#" class="btn-learn">{% trans 'LEARN MORE' %}</a>
             {% endif %}
           </div>
-          <a href="https://wa.me/4915221050103" class="header-whatsapp">
+          <a href="https://api.whatsapp.com/send?phone=4915221050103" class="header-whatsapp">
             <i class="fab fa-whatsapp"></i>
             <span>{% trans 'Any questions? Ask in WhatsApp' %}</span>
           </a>
@@ -33,7 +33,7 @@
       </div>
     </div>
   </header>
-  <a href="https://wa.me/4915221050103" class="fixed-whatsapp">
+  <a href="https://api.whatsapp.com/send?phone=4915221050103" class="fixed-whatsapp">
     <i class="fab fa-whatsapp"></i>
   </a>
 
@@ -510,13 +510,10 @@
           high-voltage insulation, and long-term durability. Drive the future
           with Tomoil's next-generation fluid solutions. {% endblocktrans %}
         </p>
-        <a
-          href="{% url 'products:products_list' %}?product_range=ev-fluids"
-          class="explore-btn"
-        >
+        <a href="{% url 'products:products_list' %}?product_range=ev-fluids" class="explore-btn">
           {% blocktrans %} Explore EV Fluids {% endblocktrans %}
         </a>
- </div>
+      </div>
       <div class="e-mobility-image">
         <img src="{% static 'images/explore-car.png' %}" alt="Electric Vehicle" class="ev-car-image" />
       </div>

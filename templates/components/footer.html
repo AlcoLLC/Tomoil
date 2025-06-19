@@ -7,8 +7,8 @@
         <img src="{% static 'images/tomoil-logo.svg' %}" alt="Tomoil Logo" />
       </div>
       <p class="footer-description">
-        {% trans 'Corporate business typically refers to large-scale mansola it
-        enterprises or organizat' %}
+        {% blocktrans %} Corporate business typically refers to large-scale mansola it
+        enterprises or organizat {% endblocktrans %} 
       </p>
       <div class="social-icons">
         <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
@@ -57,10 +57,10 @@
     <div class="footer-col footer-info">
       <h3 class="footer-title">{% trans 'Stay in the Know' %}</h3>
       <p class="newsletter-text">
-        {% trans 'Be the first to hear about our latest news, updates, and
-        exclusive insights.' %}
+      {% blocktrans %}  Be the first to hear about our latest news, updates, and
+        exclusive insights. {% endblocktrans %} 
       </p>
-      <div class="newsletter-form">
+      <div>
         <form
           action="{% url 'contact:footer_email_submit' %}"
           method="post"
