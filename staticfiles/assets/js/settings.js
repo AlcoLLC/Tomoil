@@ -562,8 +562,9 @@ var map_cfg = {
     },
     st66: {
       name: "",
-      shortname: "",
-      comment: "",
+      shortname: "●",
+      comment:
+        '<img class="flag-img" src="https://flagpedia.net/data/flags/w580/cy.webp" alt="Egypt Flag" width="40"> Egypt',
       link: "",
       color: "#BDBDBD",
       colorOver: "#9E9E9E",
@@ -1203,9 +1204,8 @@ var map_cfg = {
     },
     st145: {
       name: "",
-      shortname: "●",
-      comment:
-        '<img class="flag-img" src="https://flagpedia.net/data/flags/w580/md.webp" alt="Moldova Flag" width="40"> Moldova',
+      shortname: "",
+      comment: "",
       link: "",
       color: "#BDBDBD",
       colorOver: "#9E9E9E",
