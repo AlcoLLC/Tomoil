@@ -564,7 +564,7 @@ var map_cfg = {
       name: "",
       shortname: "●",
       comment:
-        '<img class="flag-img" src="https://flagpedia.net/data/flags/w580/cy.webp" alt="Egypt Flag" width="40"> Egypt',
+        '<img class="flag-img" src="https://flagpedia.net/data/flags/w580/eg.webp" alt="Egypt Flag" width="40"> Egypt',
       link: "",
       color: "#BDBDBD",
       colorOver: "#9E9E9E",
