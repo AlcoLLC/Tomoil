@@ -93,7 +93,7 @@
         </p>
       </div>
       <button class="btn-market-segments btn-block">
-        <a href="/products">See More <i class="fa-solid fa-arrow-right-long"></i></a>
+        <a href="/products">{% trans "See More " %}<i class="fa-solid fa-arrow-right-long"></i></a>
       </button>
     </div>
     <div class="market-segments-list">
@@ -112,7 +112,7 @@
     </div>
 
     <button class="btn-market-segments btn-none">
-      <a href="">See More <i class="fa-solid fa-arrow-right-long"></i></a>
+      <a href="">{% trans "See More " %} <i class="fa-solid fa-arrow-right-long"></i></a>
     </button>
   </div>
 
@@ -188,7 +188,7 @@
               <div class="share-button" data-url="{% url 'news:news_detail' large_card_news.id %}"
                 onclick="copyToClipboard(this)">
                 <i class="fas fa-share-alt share-icon"></i>
-                Share
+                {% trans "Share" %}
               </div>
             </div>
             <h3 class="card-title">{{ large_card_news.title }}</h3>
