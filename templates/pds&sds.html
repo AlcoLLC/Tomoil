@@ -25,14 +25,14 @@
                 <div class="form-group product-name">
                     <label for="product-name-input">{% trans 'Product name' %}</label>
                     <div class="input-wrapper">
-                        <input type="text" id="product-name-input" name="product_name" placeholder="Enter product name" value="{{ search_product_name|default:'' }}" />
+                        <input type="text" id="product-name-input" name="product_name" placeholder="{% trans 'Enter product name' %}" value="{{ search_product_name|default:'' }}" />
                     </div>
                 </div>
 
                 <div class="form-group product-id">
                     <label for="product-id-input">{% trans 'Product ID' %}</label>
                     <div class="input-wrapper">
-                        <input type="text" id="product-id-input" name="product_id" placeholder="Enter product ID" value="{{ search_product_id|default:'' }}" />
+                        <input type="text" id="product-id-input" name="product_id" placeholder="{% trans 'Enter product ID' %}" value="{{ search_product_id|default:'' }}" />
                     </div>
                 </div>
 
