@@ -27,8 +27,7 @@
                     <div class="checkbox-area">
                         {% for product_range in product_ranges %}
                         <label class="checkbox-group">
-                            <input type="checkbox" name="product_range" value="{{ product_range.slug }}" {% if
-                                product_range.slug in selected_product_ranges %}checked{% endif %} />
+                            <input type="checkbox" name="product_range" value="{{ product_range.slug }}" {%if product_range.slug in selected_product_ranges %}checked{%endif %} />
                             <span class="checkbox-label">{{ product_range.name }}</span>
                         </label>
                         {% endfor %}
@@ -56,8 +55,7 @@
                         </button>
                         {% endfor %}
                         {% for application_area in application_areas %}
-                        <input type="checkbox" name="application_area" value="{{ application_area.slug }}" {% if
-                            application_area.slug in selected_application_areas %}checked{% endif %}
+                        <input type="checkbox" name="application_area" value="{{ application_area.slug }}" {%if application_area.slug in selected_application_areas %}checked{%endif%}
                             style="display: none;" id="app-{{ application_area.slug }}" />
                         {% endfor %}
                     </div>
@@ -81,8 +79,7 @@
                     <div class="checkbox-area">
                         {% for specification in specifications %}
                         <label class="checkbox-group">
-                            <input type="checkbox" name="specification" value="{{ specification.slug }}" {% if
-                                specification.slug in selected_specifications %}checked{% endif %} />
+                            <input type="checkbox" name="specification" value="{{ specification.slug }}" {%if specification.slug in selected_specifications %}checked{%endif%} />
                             <span class="checkbox-label">{{ specification.name }}</span>
                         </label>
                         {% endfor %}
@@ -99,8 +96,7 @@
                     <div class="checkbox-area">
                         {% for viscosity in viscosities %}
                         <label class="checkbox-group">
-                            <input type="checkbox" name="viscosity" value="{{ viscosity.slug }}" {% if viscosity.slug in
-                                selected_viscosities %}checked{% endif %} />
+                            <input type="checkbox" name="viscosity" value="{{ viscosity.slug }}" {%if viscosity.slug in selected_viscosities %}checked{%endif%} />
                             <span class="checkbox-label">{{ viscosity.name }}</span>
                         </label>
                         {% endfor %}
@@ -117,8 +113,7 @@
                     <div class="checkbox-area">
                         {% for composition in compositions %}
                         <label class="checkbox-group">
-                            <input type="checkbox" name="composition" value="{{ composition.slug }}" {% if
-                                composition.slug in selected_compositions %}checked{% endif %} />
+                            <input type="checkbox" name="composition" value="{{ composition.slug }}" {%if composition.slug in selected_compositions %}checked{%endif%} />
                             <span class="checkbox-label">{{ composition.name }}</span>
                         </label>
                         {% endfor %}
@@ -141,8 +136,7 @@
                         </button>
                         {% endfor %}
                         {% for pack_size in pack_sizes %}
-                        <input type="checkbox" name="pack_size" value="{{ pack_size.slug }}" {% if pack_size.slug in
-                            selected_pack_sizes %}checked{% endif %} style="display: none;"
+                        <input type="checkbox" name="pack_size" value="{{ pack_size.slug }}" {%if pack_size.slug in  selected_pack_sizes %}checked{%endif%} style="display: none;"
                             id="size-{{ pack_size.slug }}" />
                         {% endfor %}
                     </div>
@@ -214,8 +208,7 @@
                         <div class="modal-filter-content" id="modal-product-range">
                             {% for product_range in product_ranges %}
                             <label class="modal-checkbox-group">
-                                <input type="checkbox" name="product_range" value="{{ product_range.slug }}" {% if
-                                    product_range.slug in selected_product_ranges %}checked{% endif %} />
+                                <input type="checkbox" name="product_range" value="{{ product_range.slug }}" {%if product_range.slug in selected_product_ranges %}checked{%endif%} />
                                 <span class="modal-checkbox-label">{{ product_range.name }}</span>
                             </label>
                             {% endfor %}
@@ -243,8 +236,7 @@
                                     <i class="fas fa-car"></i>
                                     {% endif %}
                                 </button>
-                                <input type="checkbox" name="application_area" value="{{ application_area.slug }}" {% if
-                                    application_area.slug in selected_application_areas %}checked{% endif %}
+                                <input type="checkbox" name="application_area" value="{{ application_area.slug }}" {%if application_area.slug in selected_application_areas %}checked{%endif%}
                                     style="display: none;" id="modal-app-{{ application_area.slug }}" />
                                 {% endfor %}
                             </div>
@@ -269,8 +261,7 @@
                             </div>
                             {% for specification in specifications %}
                             <label class="modal-checkbox-group">
-                                <input type="checkbox" name="specification" value="{{ specification.slug }}" {% if
-                                    specification.slug in selected_specifications %}checked{% endif %} />
+                                <input type="checkbox" name="specification" value="{{ specification.slug }}" {%if specification.slug in selected_specifications %}checked{%endif%} />
                                 <span class="modal-checkbox-label">{{ specification.name }}</span>
                             </label>
                             {% endfor %}
@@ -289,8 +280,7 @@
                         <div class="modal-filter-content" id="modal-viscosity">
                             {% for viscosity in viscosities %}
                             <label class="modal-checkbox-group">
-                                <input type="checkbox" name="viscosity" value="{{ viscosity.slug }}" {% if
-                                    viscosity.slug in selected_viscosities %}checked{% endif %} />
+                                <input type="checkbox" name="viscosity" value="{{ viscosity.slug }}" {%if viscosity.slug in selected_viscosities %}checked{%endif%} />
                                 <span class="modal-checkbox-label">{{ viscosity.name }}</span>
                             </label>
                             {% endfor %}
@@ -309,8 +299,7 @@
                         <div class="modal-filter-content" id="modal-composition">
                             {% for composition in compositions %}
                             <label class="modal-checkbox-group">
-                                <input type="checkbox" name="composition" value="{{ composition.slug }}" {% if
-                                    composition.slug in selected_compositions %}checked{% endif %} />
+                                <input type="checkbox" name="composition" value="{{ composition.slug }}" {%if composition.slug in selected_compositions %}checked{%endif%} />
                                 <span class="modal-checkbox-label">{{ composition.name }}</span>
                             </label>
                             {% endfor %}
@@ -335,8 +324,7 @@
                                     onclick="toggleModalPackSize('{{ pack_size.slug }}')">
                                     {{ pack_size.size|floatformat:0 }}
                                 </button>
-                                <input type="checkbox" name="pack_size" value="{{ pack_size.slug }}" {% if
-                                    pack_size.slug in selected_pack_sizes %}checked{% endif %} style="display: none;"
+                                <input type="checkbox" name="pack_size" value="{{ pack_size.slug }}" {%if pack_size.slug in selected_pack_sizes %}checked{% endif%} style="display: none;"
                                     id="modal-size-{{ pack_size.slug }}" />
                                 {% endfor %}
                             </div>
