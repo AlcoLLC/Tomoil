@@ -1,4 +1,8 @@
 {% extends 'base.html' %} {% load static %} {% load i18n %}
+
+{% block title %}{{ news_item.title }}{% endblock %}
+{% block description %}{% trans "news_meta_description" %}{% endblock %}
+
  {% block content %}
 
 <!-- Page Tabs -->

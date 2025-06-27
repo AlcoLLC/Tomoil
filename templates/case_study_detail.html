@@ -1,6 +1,8 @@
 {% extends 'base.html' %}
 {% load static %}
 {% load i18n %}
+{% block title %}{{ case_study.title }}{% endblock %}
+{% block description %}{% trans "case_studies_meta_description" %}{% endblock %}
 
 {% block content %}
 

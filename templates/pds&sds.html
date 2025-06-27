@@ -1,6 +1,8 @@
 {% extends 'base.html' %} 
 {% load static %} 
 {% load i18n %}
+{% block title %}{% trans "PDS/SDS" %}{% endblock %}
+{% block description %}{% trans "pds_sds_description" %}{% endblock %}
 
 {% block content %}
 {% include 'components/page-header.html' %}

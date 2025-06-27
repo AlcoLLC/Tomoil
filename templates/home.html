@@ -120,7 +120,7 @@
   <div class="section-container product-range">
     <div class="product-range-header">
       <div>
-        <h1 class="section-title">{% trans 'Product Range' %}</h1>
+        <h2 class="section-title">{% trans 'Product Range' %}</h2>
         <p class="section-description">
           {% blocktrans %} Explore our extensive portfolio of over 400 premium
           lubricants and service fluids — engineered for exceptional
@@ -251,6 +251,11 @@
       <h2 class="section-title">
         {% trans "Tomoil products are available worldwide" %}
       </h2>
+      <h1 class="section-description">
+        {% blocktrans %} TOMOIL - Leading Manufacturer of Premium Lubricants and Oils | Motor Oils, Industrial
+        Lubricants, Hydraulic Fluids and Specialized Lubrication Solutions for Automotive, Marine and Industrial
+        Applications {%endblocktrans %}
+      </h1>
       <p class="section-description">
         {% blocktrans %} Tomoil products are distributed to over 50 countries
         across the globe vida our reliable network of exclusive partners.
@@ -528,13 +533,13 @@
         <div class="swiper-slide">
           <div>
             <div>
-              <img src="{% static 'images_folder/vector.svg' %}" alt="" />
+              <img src="{% static 'images_folder/vector.svg' %}" alt="Vector" />
             </div>
             <p>{{review.review|truncatewords:60}}</p>
           </div>
           <div>
             <div>
-              <img src="{{ review.image.url}}" alt="" />
+              <img src="{{ review.image.url}}" alt="Review" />
             </div>
             <div>
               <h5>{{ review.name }}</h5>

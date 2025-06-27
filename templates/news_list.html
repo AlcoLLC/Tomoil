@@ -1,6 +1,8 @@
-{% extends 'base.html' %} 
-{% load static %} 
-{% load i18n %} 
+{% extends 'base.html' %} {% load static %} {% load i18n %}
+{% block title %}{% trans "News" %}{% endblock %}
+{% block description %}{% trans "news_meta_description" %}{% endblock %}
+{% block keywords %}{% trans "news_keywords" %}{% endblock %}
+
 {% block content %}
 
 <script>
@@ -353,5 +355,7 @@
 
 <!-- Include your news.js file -->
 <script src="{% static 'js/news.js' %}"></script>
+
+
 
 {% endblock %}
