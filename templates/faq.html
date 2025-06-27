@@ -1,5 +1,7 @@
 {% extends 'base.html' %} {% load static %}
 {% load i18n %}
+{% block title %}{% trans "Faq" %}{% endblock %}
+{% block description %}{% trans "faq_studies_meta_description" %}{% endblock %}
 
 {% block content %}
 
@@ -76,7 +78,7 @@
       {% trans 'Begin your journey towards world class products and services today with TOMOIL' %}
     </p>
     <a href="#" class="need-more-btn">
-      <img src="{% static 'images/comments.svg' %}" alt="" />
+      <img src="{% static 'images/comments.svg' %}" alt="Comments" />
       {% trans 'TALK TO US' %}</a
     >
   </div>

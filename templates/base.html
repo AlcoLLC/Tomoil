@@ -7,7 +7,16 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Tomoil</title>
+  <title>{% block title %}TOMOIL{% endblock %}</title>
+
+  <meta name="description" content="{% block description %}TOMOIL - High-quality oil products{% endblock %}">
+  <meta name="keywords"
+    content="{% block keywords %}tomoil, motor oil, car oil, lubricants, synthetic oil, engine oil, hydraulic oil, gear oil{% endblock %}">
+  <meta name="robots" content="index, follow">
+  <meta property="og:title" content="TOMOIL">
+  <meta property="og:description" content="TOMOIL - High-quality oil products">
+  <meta property="og:image" content="{% static 'images/tomoil-logo.svg' %}">
+  <meta property="og:url" content="https://tomoil.de{{ request.path }}">
   <link rel="icon" type="image/svg+xml" href="{% static 'images/tomoil-logo.svg' %}">
 
   <!-- Styles -->

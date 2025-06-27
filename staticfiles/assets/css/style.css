@@ -400,19 +400,19 @@
 }
 
 .accross-section .section-container {
-  width: 90%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 8px;
   text-align: center;
 }
-
+.accross-section .section-title {
+  margin-bottom: 10px;
+}
 .accross-section .section-description {
   color: #223160;
-  max-width: 550px;
-  margin: 15px 0px;
+  margin: 8px 0px;
   text-align: center;
+  max-width: 70%;
 }
 
 /* Case Studies Section */

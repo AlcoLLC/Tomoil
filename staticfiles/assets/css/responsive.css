@@ -250,26 +250,35 @@
     }
 
     .home-header .slide-content h2 {
-        font-size: 55px;
-        line-height: 70px;
+        font-size: 50px;
+        line-height: 56px;
     }
 
 
     .btn-learn {
         font-weight: 400;
-        font-size: 11px;
-        min-height: 48px;
-        width: 210px;
+        font-size: 12px;
+        min-height: 45px;
+        width: 180px;
     }
 
     .home-header .swiper-button-prev,
     .home-header .swiper-button-next {
-        width: 40px !important;
-        height: 40px !important;
+        width: 35px !important;
+        height: 35px !important;
+    }
+
+    .home-header .swiper-button-prev i,
+    .home-header .swiper-button-next i {
+        font-size: 12px;
     }
 
     .home-header .swiper-button-prev {
-        left: 15% !important;
+        left: 4% !important;
+    }
+
+    .home-header .swiper-button-next {
+        right: 3% !important;
     }
 
     .section-title {
@@ -731,7 +740,7 @@
 
     .home-header .slide-content h2 {
         font-size: 40px;
-        line-height: 50px;
+        line-height: 46px;
     }
 
     .home-header .slide-content p {
@@ -740,29 +749,26 @@
     }
 
     .home-header .slide-content {
-        max-width: 65%;
+        max-width: 95%;
     }
 
     .btn-learn {
         font-size: 10px;
-        min-height: 42px;
-        width: 200px;
+        min-height: 40px;
+        width: 170px;
     }
 
     .home-header .swiper-button-prev,
     .home-header .swiper-button-next {
-        width: 35px !important;
-        height: 35px !important;
-        bottom: 10vh !important;
+        width: 30px !important;
+        height: 30px !important;
     }
 
     .header-whatsapp {
         bottom: 10vh;
     }
 
-    .home-header .swiper-button-prev {
-        left: 13% !important;
-    }
+
 
     .product-range .card-title {
         font-size: 14px;
@@ -817,6 +823,11 @@
 }
 
 @media screen and (max-width: 800px) {
+
+    .home-header .swiper-button-prev,
+    .home-header .swiper-button-next {
+        display: none !important;
+    }
 
     .brand-portal-section .logo-variations,
     .brand-portal-section .image-gallery {
@@ -1732,22 +1743,13 @@
 
     .home-header .slide-content h2 {
         font-size: 28px;
-        line-height: 39px;
+        line-height: 33px;
     }
 
     .btn-learn {
         font-size: 10px;
         min-height: 35px;
-        width: 180px;
-    }
-
-    .home-header .swiper-button-prev,
-    .home-header .swiper-button-next {
-        bottom: 25px !important;
-    }
-
-    .home-header .swiper-button-prev {
-        left: 10% !important;
+        width: 160px;
     }
 
     .header-whatsapp {
@@ -1908,7 +1910,10 @@
 
 @media screen and (max-width: 500px) {
 
-
+    .home-header .swiper-button-prev i,
+    .home-header .swiper-button-next i {
+        font-size: 14px;
+    }
 
     .brand-portal-section .section-image {
         height: 40%;
@@ -2328,11 +2333,11 @@
 
     .home-header .slide-content h2 {
         font-size: 22px;
-        line-height: 40px;
+        line-height: 29px;
     }
 
     .home-header .slide-content {
-        max-width: 90%;
+        max-width: 100%;
     }
 
     .products-section .products-card {

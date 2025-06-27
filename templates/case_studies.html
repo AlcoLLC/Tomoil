@@ -1,5 +1,11 @@
 {% extends 'base.html' %} {% load static %} {% load i18n %}
- {% block content %}
+
+
+{% block title %}{% trans "Case Studies" %}{% endblock %}
+{% block description %}{% trans "case_studies_meta_description" %}{% endblock %}
+
+
+{% block content %}
 <!-- Page-Header -->
 {% include 'components/page-header.html' %}
 <!-- Data Filter -->
@@ -8,36 +14,20 @@
     <div class="section-container">
       <div class="filter-flex">
         <div class="date-filter">
-        <div class="date-input">
-          <input 
-            type="text" 
-            name="from_date" 
-            id="datepicker" 
-            placeholder="From (dd.mm.yyyy)"
-            value="{{ from_date_formatted }}" 
-            autocomplete="off" 
-          />
-          <span class="clear-date" onclick="clearDateFilter();">&times;</span>
-          <img src="{% static 'images/calendar-icon.svg' %}" alt="calendar-icon" class="calendar-icon" />
-        </div>
+          <div class="date-input">
+            <input type="text" name="from_date" id="datepicker" placeholder="From (dd.mm.yyyy)"
+              value="{{ from_date_formatted }}" autocomplete="off" />
+            <span class="clear-date" onclick="clearDateFilter();">&times;</span>
+            <img src="{% static 'images/calendar-icon.svg' %}" alt="calendar-icon" class="calendar-icon" />
+          </div>
         </div>
         <div class="date-filter">
-        <div class="date-input">
-          <input
-            type="text"
-            name="to_date"
-            id="datepicker2"
-            placeholder="To (dd.mm.yyyy)"
-            value="{{ to_date_formatted }}"
-            autocomplete="off"
-          />
-          <span class="clear-date" onclick="clearDateFilter();">&times;</span>
-          <img
-            src="{% static 'images/calendar-icon.svg' %}"
-            alt="calendar-icon"
-            class="calendar-icon"
-          />
-        </div>
+          <div class="date-input">
+            <input type="text" name="to_date" id="datepicker2" placeholder="To (dd.mm.yyyy)"
+              value="{{ to_date_formatted }}" autocomplete="off" />
+            <span class="clear-date" onclick="clearDateFilter();">&times;</span>
+            <img src="{% static 'images/calendar-icon.svg' %}" alt="calendar-icon" class="calendar-icon" />
+          </div>
         </div>
       </div>
       <button type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
@@ -55,26 +45,26 @@
     <div class="news-grid">
       {% for case in page_obj %}
       <div class="news-card">
-        <a href="{% url 'case_studies:case_study_detail' case.id %}" >
+        <a href="{% url 'case_studies:case_study_detail' case.id %}">
           <img src="{{ case.image_one.url }}" alt="{{ case.title }}" class="card-image" />
-        <div class="card-content">
-          <div class="card-meta">
-            <div class="card-date">
-              <i class="far fa-calendar-alt date-icon"></i>
-              {{ case.created_at|date:"F j, Y" }}
+          <div class="card-content">
+            <div class="card-meta">
+              <div class="card-date">
+                <i class="far fa-calendar-alt date-icon"></i>
+                {{ case.created_at|date:"F j, Y" }}
+              </div>
             </div>
+            <h3 class="card-title">{{ case.title }}</h3>
+            <p class="card-description">
+              {{ case.description|truncatewords:25 }}
+            </p>
+            <a href="{% url 'case_studies:case_study_detail' case.id %}" class="read-more">
+              {% trans 'Read More' %}
+              <i class="fas fa-arrow-right-long read-more-icon"></i>
+            </a>
           </div>
-          <h3 class="card-title">{{ case.title }}</h3>
-          <p class="card-description">
-            {{ case.description|truncatewords:25 }}
-          </p>
-          <a href="{% url 'case_studies:case_study_detail' case.id %}" class="read-more">
-            {% trans 'Read More' %}
-            <i class="fas fa-arrow-right-long read-more-icon"></i>
-          </a>
-        </div>
         </a>
-        
+
       </div>
       {% empty %}
       <p class="news-count">{% trans 'No case studies found.' %}</p>
@@ -84,14 +74,16 @@
     <!-- Pagination -->
     <div class="pagination-container">
       <p class="pagination-info">
-        {% trans 'Displaying' %} {{ page_obj.start_index }}–{{ page_obj.end_index }} {% trans 'of' %} {{ total_results }} {% trans 'results' %}
+        {% trans 'Displaying' %} {{ page_obj.start_index }}–{{ page_obj.end_index }} {% trans 'of' %} {{ total_results
+        }} {% trans 'results' %}
       </p>
       <div class="pagination">
         <!-- Page Numbers -->
         {% for num in page_obj.paginator.page_range %} {% if page_obj.number == num %}
         <span class="page-btn active">{{ num }}</span>
         {% elif num > page_obj.number|add:-3 and num < page_obj.number|add:3 %} <a
-          href="?from_date={{ from_date_formatted|urlencode }}&to_date={{ to_date_formatted|urlencode }}&page={{ num }}" class="page-btn">{{ num }}</a>
+          href="?from_date={{ from_date_formatted|urlencode }}&to_date={{ to_date_formatted|urlencode }}&page={{ num }}"
+          class="page-btn">{{ num }}</a>
           {% endif %} {% endfor %}
       </div>
     </div>
