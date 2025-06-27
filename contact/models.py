@@ -5,18 +5,19 @@ from django.utils import timezone
 from django.utils.translation import gettext_lazy as _
 
 class Contact(models.Model):
+    
     CONTACT_METHODS = [
-        ('email', 'Email'),
-        ('phone', 'Phone'),
-        ('no_preference', 'No preference'),
+        ('email', _('Email')),
+        ('phone', _('Phone')),
+        ('no_preference', _('No preference')),
     ]
 
     ENQUIRY_TYPES = [
-        ('General request', 'General request'),
-        ('Technical support', 'Technical support'),
-        ('Product inquiry', 'Product inquiry'),
-        ('Quotation', 'Quotation'),
-        ('Distributorship', 'Distributorship'),
+        ('General request', _('General request')),
+        ('Technical support', _('Technical support')),
+        ('Product inquiry', _('Product inquiry')),
+        ('Quotation', _('Quotation')),
+        ('Distributorship', _('Distributorship')),
     ]
 
     first_name = models.CharField(max_length=100, verbose_name=_('First Name'))

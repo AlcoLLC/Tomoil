@@ -7,47 +7,71 @@
         <img src="{% static 'images/tomoil-logo.svg' %}" alt="Tomoil Logo" />
       </div>
       <p class="footer-description">
-        {% blocktrans %} Corporate business typically refers to large-scale mansola it
-        enterprises or organizat {% endblocktrans %} 
+        {% blocktrans %} Corporate business typically refers to large-scale
+        mansola it enterprises or organizat {% endblocktrans %}
       </p>
       <div class="social-icons">
-        <a href="https://www.facebook.com/people/Tomoil/61576825467224/" class="social-icon"><i class="fab fa-facebook-f"></i></a>
-        <a href="https://www.instagram.com/tomoil.de/"  class="social-icon"><i class="fab fa-instagram"></i></a>
+        <a
+          href="https://www.facebook.com/people/Tomoil/61576825467224/"
+          class="social-icon"
+          ><i class="fab fa-facebook-f"></i
+        ></a>
+        <a href="https://www.instagram.com/tomoil.de/" class="social-icon"
+          ><i class="fab fa-instagram"></i
+        ></a>
         <!-- <a href="#" class="social-icon"><i class="fab fa-youtube"></i></a> -->
         <!-- <a href="#" class="social-icon"><i class="fab fa-tiktok"></i></a> -->
-        <a href="https://www.linkedin.com/company/tomoil-lubricants-auto-chemicals/" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+        <a
+          href="https://www.linkedin.com/company/tomoil-lubricants-auto-chemicals/"
+          class="social-icon"
+          ><i class="fab fa-linkedin-in"></i
+        ></a>
       </div>
     </div>
 
     <div class="footer-col footer-links">
       <h3 class="footer-title">{% trans 'Quick Links' %}</h3>
       <ul class="footer-menu">
-        <li><a href="{% url 'whoweare:glance' %}">{% trans 'Who we are' %}</a></li>
-        <li><a href="{% url 'products:products_list' %}">{% trans 'Products' %}</a></li>
-        <li><a href="{% url 'services:services_list' %}">{% trans 'Services' %}</a></li>
-        <li><a href="{% url 'brand_portal:brand_portal' %}">{% trans 'Brand Portal' %}</a></li>
+        <li>
+          <a href="{% url 'whoweare:glance' %}">{% trans 'Who we are' %}</a>
+        </li>
+        <li>
+          <a href="{% url 'products:products_list' %}"
+            >{% trans 'Products' %}</a
+          >
+        </li>
+        <li>
+          <a href="{% url 'services:services_list' %}"
+            >{% trans 'Services' %}</a
+          >
+        </li>
+        <li>
+          <a href="{% url 'brand_portal:brand_portal' %}"
+            >{% trans 'Brand Portal' %}</a
+          >
+        </li>
       </ul>
     </div>
 
     <div class="footer-col footer-menu2">
       <ul class="footer-menu-icons">
         <li>
-          <a href="/news"
+          <a href="{% url 'news:news_list' %}"
             ><i class="fas fa-chevron-right"></i> {% trans 'News' %}</a
           >
         </li>
         <li>
-          <a href="/faq"
+          <a href="{% url 'faq:faq' %}"
             ><i class="fas fa-chevron-right"></i> {% trans 'FAQ' %}</a
           >
         </li>
         <li>
-          <a href="/contact"
+          <a href="{% url 'contact:contact' %}"
             ><i class="fas fa-chevron-right"></i> {% trans 'Contact us' %}</a
           >
         </li>
         <li>
-          <a href="/pds_sds"
+          <a href="{% url 'products:pds_sds' %}"
             ><i class="fas fa-chevron-right"></i> {% trans 'PDS/SDS' %}</a
           >
         </li>
@@ -57,8 +81,8 @@
     <div class="footer-col footer-info">
       <h3 class="footer-title">{% trans 'Stay in the Know' %}</h3>
       <p class="newsletter-text">
-      {% blocktrans %}  Be the first to hear about our latest news, updates, and
-        exclusive insights. {% endblocktrans %} 
+        {% blocktrans %} Be the first to hear about our latest news, updates,
+        and exclusive insights. {% endblocktrans %}
       </p>
       <div>
         <form

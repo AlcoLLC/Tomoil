@@ -1,12 +1,24 @@
 {% extends 'base.html' %} {% load static %} {% load i18n %}
-
 {% block title %}{% trans "News" %}{% endblock %}
 {% block description %}{% trans "news_meta_description" %}{% endblock %}
 {% block keywords %}{% trans "news_keywords" %}{% endblock %}
 
-
-
 {% block content %}
+
+<script>
+  window.newsTranslations = {
+    "No news items found matching your criteria.":
+      '{% trans "No news items found matching your criteria." %}',
+    Displaying: '{% trans "Displaying" %}',
+    of: '{% trans "of" %}',
+    results: '{% trans "results" %}',
+    "Failed to load news data. Please try again later.":
+      '{% trans "Failed to load news data. Please try again later." %}',
+    "Read More": '{% trans "Read More" %}',
+    Share: '{% trans "Share" %}',
+  };
+</script>
+
 <!-- Page-Header -->
 {% include 'components/page-header.html' %}
 
@@ -15,7 +27,11 @@
   <div class="section-container">
     <div class="news-filter-header">
       <div class="search-bar">
-        <input type="text" placeholder="{% trans 'Search' %}" class="search-input" />
+        <input
+          type="text"
+          placeholder="{% trans 'Search' %}"
+          class="search-input"
+        />
         <button class="search-button">
           <img src="{% static 'images/search-icon.svg' %}" alt="Search" />
         </button>
@@ -27,12 +43,28 @@
         </div>
         <div class="view-buttons">
           <button class="view-button grid-view active">
-            <img class="icon-dark" src="{% static 'images/grid-icon-dark.svg' %}" alt="Grid view" />
-            <img class="icon-light" src="{% static 'images/grid-icon-light.svg' %}" alt="Grid view active" />
+            <img
+              class="icon-dark"
+              src="{% static 'images/grid-icon-dark.svg' %}"
+              alt="Grid view"
+            />
+            <img
+              class="icon-light"
+              src="{% static 'images/grid-icon-light.svg' %}"
+              alt="Grid view active"
+            />
           </button>
           <button class="view-button list-view">
-            <img class="icon-dark" src="{% static 'images/list view-icon-dark.svg' %}" alt="List view" />
-            <img class="icon-light" src="{% static 'images/list view-icon-light.svg' %}" alt="List view active" />
+            <img
+              class="icon-dark"
+              src="{% static 'images/list view-icon-dark.svg' %}"
+              alt="List view"
+            />
+            <img
+              class="icon-light"
+              src="{% static 'images/list view-icon-light.svg' %}"
+              alt="List view active"
+            />
           </button>
         </div>
       </div>
@@ -72,19 +104,43 @@
         <div class="form-group-calendar">
           <div class="date-filter input-wrapper">
             <div class="date-input">
-              <input type="text" name="from_date" id="datepicker3" placeholder="From (dd.mm.yyyy)"
-                value="{{ formatted_date }}" autocomplete="off" />
-              <span class="clear-date" onclick="clearDateFilter(event);">&times;</span>
-              <img src="{% static 'images/calendar-icon.svg' %}" alt="calendar-icon" class="calendar-icon" />
+              <input
+                type="text"
+                name="from_date"
+                id="datepicker3"
+                placeholder="From (dd.mm.yyyy)"
+                value="{{ formatted_date }}"
+                autocomplete="off"
+              />
+              <span class="clear-date" onclick="clearDateFilter(event);"
+                >&times;</span
+              >
+              <img
+                src="{% static 'images/calendar-icon.svg' %}"
+                alt="calendar-icon"
+                class="calendar-icon"
+              />
             </div>
           </div>
 
           <div class="date-filter input-wrapper">
             <div class="date-input">
-              <input type="text" name="to_date" id="datepicker4" placeholder="To (dd.mm.yyyy)"
-                value="{{ formatted_date }}" autocomplete="off" />
-              <span class="clear-date" onclick="clearDateFilter(event);">&times;</span>
-              <img src="{% static 'images/calendar-icon.svg' %}" alt="calendar-icon" class="calendar-icon" />
+              <input
+                type="text"
+                name="to_date"
+                id="datepicker4"
+                placeholder="To (dd.mm.yyyy)"
+                value="{{ formatted_date }}"
+                autocomplete="off"
+              />
+              <span class="clear-date" onclick="clearDateFilter(event);"
+                >&times;</span
+              >
+              <img
+                src="{% static 'images/calendar-icon.svg' %}"
+                alt="calendar-icon"
+                class="calendar-icon"
+              />
             </div>
           </div>
         </div>
@@ -111,8 +167,12 @@
       </div>
 
       <div class="modal-actions">
-        <button type="button" class="btn btn-clear">{% trans 'CLEAR ALL' %}</button>
-        <button type="button" class="btn btn-view">{% trans 'VIEW RESULT' %}</button>
+        <button type="button" class="btn btn-clear">
+          {% trans 'CLEAR ALL' %}
+        </button>
+        <button type="button" class="btn btn-view">
+          {% trans 'VIEW RESULT' %}
+        </button>
       </div>
     </form>
   </div>
@@ -124,25 +184,173 @@
     <div class="news-content grid-view-active" id="newsContent">
       <!-- Grid View Content -->
       <div class="news-grid">
-        <!-- News cards will be dynamically populated here by JavaScript -->
+        <!-- Initial news cards loaded from server -->
+        {% for news_item in news_items %}
+        <div class="news-card">
+          <a href="{% url 'news:news_detail' news_item.id %}">
+            <img src="{{ news_item.image_one.url|default:'' }}" alt="{{ news_item.title }}" class="card-image" />
+            <div class="card-content">
+              <div class="card-meta">
+                <div class="card-date">
+                  <i class="far fa-calendar-alt date-icon"></i>
+                  {{ news_item.created_at|date:"F j, Y" }}
+                </div>
+                <div class="share-button">
+                  <i class="fas fa-share-alt share-icon"></i>
+                  {% trans "Share" %}
+                </div>
+              </div>
+              <h3 class="card-title">
+                {{ news_item.title }}
+              </h3>
+              <p class="card-description">
+                {% if news_item.description|length > 120 %}
+                  {{ news_item.description|slice:":120" }}...
+                {% else %}
+                  {{ news_item.description }}
+                {% endif %}
+              </p>
+              <a href="{% url 'news:news_detail' news_item.id %}" class="read-more">
+                {% trans "Read More" %}
+                <i class="fas fa-arrow-right-long read-more-icon"></i>
+              </a>
+            </div>
+          </a>
+        </div>
+        {% empty %}
+        <div class="no-results">{% trans "No news items found matching your criteria." %}</div>
+        {% endfor %}
       </div>
 
       <!-- List View Content -->
       <div class="news-list">
-        <!-- News list items will be dynamically populated here by JavaScript -->
+        <!-- Initial news list items loaded from server -->
+        {% for news_item in news_items %}
+        <div class="news-list-item">
+          <div class="list-item-image">
+            <img src="{{ news_item.image_one.url|default:'' }}" alt="{{ news_item.title }}" />
+          </div>
+          <div class="list-item-content">
+            <div class="card-meta">
+              <div class="card-date">
+                <i class="far fa-calendar-alt date-icon"></i>
+                {{ news_item.created_at|date:"F j, Y" }}
+              </div>
+              <div class="share-button">
+                <i class="fas fa-share-alt share-icon"></i>
+                {% trans "Share" %}
+              </div>
+            </div>
+            <h3 class="card-title">
+              {{ news_item.title }}
+            </h3>
+            <p class="card-description">
+              {% if news_item.description|length > 100 %}
+                {{ news_item.description|slice:":100" }}...
+              {% else %}
+                {{ news_item.description }}
+              {% endif %}
+            </p>
+            <a href="{% url 'news:news_detail' news_item.id %}" class="read-more">
+              {% trans "Read More" %}
+              <i class="fas fa-arrow-right-long read-more-icon"></i>
+            </a>
+          </div>
+        </div>
+        {% empty %}
+        <div class="no-results">{% trans "No news items found matching your criteria." %}</div>
+        {% endfor %}
       </div>
 
       <!-- Pagination -->
       <div class="pagination-container">
-        <p class="pagination-info">{% trans 'Displaying results' %}</p>
-        <div class="pagination"></div>
+        <p class="pagination-info">
+          {% trans 'Displaying' %} {{ start_index }}–{{ end_index }} {% trans 'of' %} {{ total_count }} {% trans 'results' %}
+        </p>
+        <div class="pagination">
+          {% if page_obj.has_previous %}
+            <a href="?page={{ page_obj.previous_page_number }}{% if request.GET.search %}&search={{ request.GET.search }}{% endif %}{% if request.GET.sort_by %}&sort_by={{ request.GET.sort_by }}{% endif %}{% if request.GET.per_page %}&per_page={{ request.GET.per_page }}{% endif %}{% if request.GET.from_date %}&from_date={{ request.GET.from_date }}{% endif %}{% if request.GET.to_date %}&to_date={{ request.GET.to_date }}{% endif %}" class="page-btn prev">«</a>
+          {% else %}
+            <span class="page-btn prev disabled">«</span>
+          {% endif %}
+
+          {% for num in page_obj.paginator.page_range %}
+            {% if page_obj.number == num %}
+              <span class="page-btn active">{{ num }}</span>
+            {% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'3' %}
+              <a href="?page={{ num }}{% if request.GET.search %}&search={{ request.GET.search }}{% endif %}{% if request.GET.sort_by %}&sort_by={{ request.GET.sort_by }}{% endif %}{% if request.GET.per_page %}&per_page={{ request.GET.per_page }}{% endif %}{% if request.GET.from_date %}&from_date={{ request.GET.from_date }}{% endif %}{% if request.GET.to_date %}&to_date={{ request.GET.to_date }}{% endif %}" class="page-btn">{{ num }}</a>
+            {% endif %}
+          {% endfor %}
+
+          {% if page_obj.has_next %}
+            <a href="?page={{ page_obj.next_page_number }}{% if request.GET.search %}&search={{ request.GET.search }}{% endif %}{% if request.GET.sort_by %}&sort_by={{ request.GET.sort_by }}{% endif %}{% if request.GET.per_page %}&per_page={{ request.GET.per_page }}{% endif %}{% if request.GET.from_date %}&from_date={{ request.GET.from_date }}{% endif %}{% if request.GET.to_date %}&to_date={{ request.GET.to_date }}{% endif %}" class="page-btn next">»</a>
+          {% else %}
+            <span class="page-btn next disabled">»</span>
+          {% endif %}
+        </div>
       </div>
     </div>
   </div>
 </section>
 
+<!-- Hidden templates for JavaScript -->
+<script type="text/template" id="news-card-template">
+  <div class="news-card">
+    <a href="{% url 'news:news_detail' 0 %}">
+      <img src="{image}" alt="{title}" class="card-image" />
+      <div class="card-content">
+        <div class="card-meta">
+          <div class="card-date">
+            <i class="far fa-calendar-alt date-icon"></i>
+            {date}
+          </div>
+          <div class="share-button">
+            <i class="fas fa-share-alt share-icon"></i>
+            {% trans "Share" %}
+          </div>
+        </div>
+        <h3 class="card-title">{title}</h3>
+        <p class="card-description">{description}</p>
+        <a href="{% url 'news:news_detail' 0 %}" class="read-more">
+          {% trans "Read More" %}
+          <i class="fas fa-arrow-right-long read-more-icon"></i>
+        </a>
+      </div>
+    </a>
+  </div>
+</script>
+
+<script type="text/template" id="news-list-template">
+  <div class="news-list-item">
+    <div class="list-item-image">
+      <img src="{image}" alt="{title}" />
+    </div>
+    <div class="list-item-content">
+      <div class="card-meta">
+        <div class="card-date">
+          <i class="far fa-calendar-alt date-icon"></i>
+          {date}
+        </div>
+        <div class="share-button">
+          <i class="fas fa-share-alt share-icon"></i>
+          {% trans "Share" %}
+        </div>
+      </div>
+      <h3 class="card-title">{title}</h3>
+      <p class="card-description">{description}</p>
+      <a href="{% url 'news:news_detail' 0 %}" class="read-more">
+        {% trans "Read More" %}
+        <i class="fas fa-arrow-right-long read-more-icon"></i>
+      </a>
+    </div>
+  </div>
+</script>
+
 <!-- Include Flatpickr for date picker -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css" />
+<link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css"
+/>
 <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
 
 <!-- Include your news.js file -->
