@@ -1,4 +1,3 @@
-from .models import Glance, GlanceGuide
 from django.contrib import admin
 from django.db import models
 from .models import VisionMission, Value, Glance, GlanceGuide, OurCommitment
