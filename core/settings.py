@@ -89,6 +89,8 @@ INSTALLED_APPS = [
     'ckeditor',
     'ckeditor_uploader',
     'rosetta',
+     'django.contrib.sites',
+    'django.contrib.sitemaps',
 
     # apps
     'products',
@@ -103,6 +105,8 @@ INSTALLED_APPS = [
     'search',
 
 ]
+
+SITE_ID = 1
 
 CKEDITOR_UPLOAD_PATH = "uploads/"
 CKEDITOR_IMAGE_BACKEND = "pillow"
