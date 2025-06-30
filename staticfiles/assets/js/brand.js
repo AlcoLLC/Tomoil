@@ -20,7 +20,7 @@ document.addEventListener("DOMContentLoaded", function () {
         el.classList.remove("active");
       });
       this.classList.add("active");
-
+      
       const selectedBrand = this.getAttribute("data-brand");
       const selectedContentId = selectedBrand + "-content";
 

@@ -19,9 +19,7 @@
     <div class="products-container">
         <form id="filterForm" method="GET" action="{% url 'products:products_list' %}">
             <div class="filter-products">
-                <button type="button" class="reset-filter-btn" onclick="resetFilters()">{% trans 'RESET FILTERS'
-                    %}</button>
-
+                <button type="button" class="reset-filter-btn" onclick="resetFilters()">{%trans 'RESET FILTERS' %}</button>           
                 <div class="filter-section">
                     <h3>{% trans 'Product Range' %}</h3>
                     <div class="checkbox-area">
