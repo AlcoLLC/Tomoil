@@ -95,7 +95,7 @@ function initSimpleDatePicker(inputId) {
         if (dateInput.value.length < 10) {
           dateFilterContainer.classList.add("error");
         } else {
-          validateDate(dateInput.value, false); 
+          validateDate(dateInput.value, false);
         }
       }
     }
@@ -135,7 +135,7 @@ function initSimpleDatePicker(inputId) {
     e.target.value = value;
 
     if (value.length === 10) {
-      validateDate(value, false); 
+      validateDate(value, false);
     } else {
       dateFilterContainer.classList.remove("error");
     }
@@ -145,7 +145,7 @@ function initSimpleDatePicker(inputId) {
     if (dateInput.value.length > 0 && dateInput.value.length < 10) {
       dateFilterContainer.classList.add("error");
     } else if (dateInput.value.length === 10) {
-      validateDate(dateInput.value, false); 
+      validateDate(dateInput.value, false);
     }
   });
 
@@ -164,7 +164,7 @@ function initSimpleDatePicker(inputId) {
 
     const date = new Date(year, month, day);
 
-  
+
     if (
       date.getDate() !== day ||
       date.getMonth() !== month ||
