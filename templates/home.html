@@ -63,7 +63,7 @@
           <div class="product-card">
             <div class="product-image">
               <a href="{% url 'products:products_detail_view' product.slug %}">
-                <img src="{{ product.image.url }}" alt="{{ product.title }}" />
+                <img loading="lazy" src="{{ product.image.url }}" alt="{{ product.title }}" />
               </a>
             </div>
             <div class="product-info">
@@ -110,7 +110,7 @@
         <li>
           <a href="{% url 'products:products_list' %}?application_area={{ area.slug }}">
             <div>
-              <img src="{{ area.icon.url }}" alt="{{ area.name }}" />
+              <img loading="lazy" src="{{ area.icon.url }}" alt="{{ area.name }}" />
             </div>
             {{ area.name }}
           </a>
@@ -148,7 +148,7 @@
       <div class="swiper-wrapper card-container">
         {% for product_range in product_ranges %}
         <div class="swiper-slide card">
-          <img src="{{ product_range.image.url }}" alt="Engine Oils" class="card-image" />
+          <img loading="lazy" src="{{ product_range.image.url }}" alt="Engine Oils" class="card-image" />
           <div class="card-content">
             <div class="card-text">
               <h2 class="card-title">{{ product_range.name }}</h2>
@@ -186,7 +186,8 @@
         {% if large_card_news %}
         <!-- Large Card - En son eklenen haber -->
         <div class="news-card card-large">
-          <img src="{{ large_card_news.image_one.url }}" alt="{{ large_card_news.title }}" class="card-image" />
+          <img loading="lazy" src="{{ large_card_news.image_one.url }}" alt="{{ large_card_news.title }}"
+            class="card-image" />
           <div class="card-content">
             <div class="card-meta">
               <div class="card-date">
@@ -213,7 +214,7 @@
         {% endif %} {% for news in small_cards_news %}
         <div class="news-card card-small">
           <div class="card-image-container">
-            <img src="{{ news.image_one.url }}" alt="{{ news.title }}" class="card-image" />
+            <img loading="lazy" src="{{ news.image_one.url }}" alt="{{ news.title }}" class="card-image" />
           </div>
           <div class="card-content">
             <div class="card-meta">
@@ -386,7 +387,7 @@
           {% for case_study in case_studies %}
           <div class="case-study-card">
             <div class="case-study-image">
-              <img src="{{ case_study.image_one.url }}" alt="Industrial machinery" />
+              <img loading="lazy" src="{{ case_study.image_one.url }}" alt="Industrial machinery" />
             </div>
             <div class="case-study-info">
               <h3 class="case-study-title">{{ case_study.title }}</h3>
@@ -421,7 +422,8 @@
         {% for car_logo in car_logos %}``
         <div class="brand-logo-container">
           <div class="brand-logo">
-            <img src="{{ car_logo.image.url }}" alt="Mercedes-Benz" class="logo-img" data-brand="mercedes" />
+            <img loading="lazy" src="{{ car_logo.image.url }}" alt="Mercedes-Benz" class="logo-img"
+              data-brand="mercedes" />
           </div>
         </div>
         {% endfor %}
@@ -435,7 +437,7 @@
       <div id="carousel">
         <div id="content">
           {% for partner_logo in partner_logos %}
-          <img src="{{ partner_logo.image.url }}" class="item" />
+          <img loading="lazy" src="{{ partner_logo.image.url }}" class="item" />
           {% endfor %}
         </div>
       </div>
@@ -459,13 +461,13 @@
     <div class="section-container">
       <div class="best-offers-wrapper">
         <div class="offer-left">
-          <img src="{% static 'images/best-offers-large.jpg' %}" alt="Motor Oil" />
+          <img loading="lazy" src="{% static 'images/best-offers-large.jpg' %}" alt="Motor Oil" />
         </div>
         <div class="offer-right">
           <div class="offer-right-top">
             <div class="offer-content">
               <div class="offer-icon">
-                <img src="{% static 'images/Group.svg' %}" alt="Icon" />
+                <img loading="lazy" src="{% static 'images/Group.svg' %}" alt="Icon" />
               </div>
               <h2>{% trans "Get our best offers quickly" %}</h2>
               <p>
@@ -479,7 +481,7 @@
               </a>
             </div>
             <div class="offer-image-right">
-              <img src="{% static 'images/bes-offers-small.png' %}" alt="Car" />
+              <img loading="lazy" src="{% static 'images/bes-offers-small.png' %}" alt="Car" />
             </div>
           </div>
           <div class="offer-right-bottom">
@@ -523,7 +525,7 @@
         </a>
       </div>
       <div class="e-mobility-image">
-        <img src="{% static 'images/explore-car.png' %}" alt="Electric Vehicle" class="ev-car-image" />
+        <img loading="lazy" src="{% static 'images/explore-car.png' %}" alt="Electric Vehicle" class="ev-car-image" />
       </div>
     </div>
   </section>
@@ -536,13 +538,13 @@
         <div class="swiper-slide">
           <div>
             <div>
-              <img src="{% static 'images_folder/vector.svg' %}" alt="Vector" />
+              <img loading="lazy" src="{% static 'images_folder/vector.svg' %}" alt="Vector" />
             </div>
             <p>{{review.review|truncatewords:60}}</p>
           </div>
           <div>
             <div>
-              <img src="{{ review.image.url}}" alt="Review" />
+              <img loading="lazy" src="{{ review.image.url}}" alt="Review" />
             </div>
             <div>
               <h5>{{ review.name }}</h5>

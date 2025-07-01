@@ -2,7 +2,13 @@
 {% load i18n %}
 {% block title %}{% trans "meta_title_faq" %}{% endblock %}
 {% block description %}{% trans "meta_description_faq" %}{% endblock %}
+{% block page_css %}
+  <link rel="stylesheet" href="{% static 'assets/css/faq.min.css' %}" />
+{% endblock %}
 
+{% block page_js %}
+  <script src="{% static 'assets/js/faq.min.js' %}" defer></script>
+{% endblock %}
 {% block content %}
 
 <!-- Page-Header -->
@@ -39,32 +45,16 @@
         long-term durability. Drive the future with Tomoil’s next-generation
         fluid solutions.
         {% endblocktrans %}
-        
+
       </p>
       <a href="#" class="wolver-btn">{% trans 'Go To Catalog' %}</a>
     </div>
     <div class="wolver-products">
       <div class="product-container">
-        <img
-          src="{% static 'images/image 64.svg' %}"
-          alt="Tomoil 0W-20"
-          class="oil-container top"
-        />
-        <img
-          src="{% static 'images/image 64.svg' %}"
-          alt="Tomoil Product"
-          class="oil-container middle"
-        />
-        <img
-          src="{% static 'images/image 64.svg' %}"
-          alt="Tomoil 5W-30"
-          class="oil-container bottom"
-        />
-        <img
-          src="{% static 'images/oil-barrel.png' %}"
-          alt="Tomoil Barrel"
-          class="oil-barrel"
-        />
+        <img src="{% static 'images/image 64.svg' %}" alt="Tomoil 0W-20" class="oil-container top" />
+        <img src="{% static 'images/image 64.svg' %}" alt="Tomoil Product" class="oil-container middle" />
+        <img src="{% static 'images/image 64.svg' %}" alt="Tomoil 5W-30" class="oil-container bottom" />
+        <img src="{% static 'images/oil-barrel.png' %}" alt="Tomoil Barrel" class="oil-barrel" />
       </div>
     </div>
   </div>
@@ -78,9 +68,8 @@
       {% trans 'Begin your journey towards world class products and services today with TOMOIL' %}
     </p>
     <a href="#" class="need-more-btn">
-      <img src="{% static 'images/comments.svg' %}" alt="Comments" />
-      {% trans 'TALK TO US' %}</a
-    >
+      <img loading="lazy" src="{% static 'images/comments.svg' %}" alt="Comments" />
+      {% trans 'TALK TO US' %}</a>
   </div>
 </section>
 

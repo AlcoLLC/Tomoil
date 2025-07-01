@@ -2,6 +2,13 @@
 
 {% block title %}{% trans 'meta_title_commitments' %}{% endblock %}
 {% block description %}{% trans "meta_description_commitments" %}{% endblock %}
+{% block page_css %}
+<link rel="stylesheet" href="{% static 'assets/css/glance&vision&commit.min.css' %}" />
+{% endblock %}
+{% block page_js %}
+    <script src="{% static 'assets/js/contact.min.js' %}" defer></script>
+{% endblock %}
+
 
 {% block content %}
 
@@ -14,10 +21,8 @@
     <!-- Tab Titles -->
     <div class="commitment-nav">
       {% for item in items %}
-      <div
-        class="commitment-item {% if forloop.first %}active{% endif %}"
-        data-commitment="commitment-{{ forloop.counter }}"
-      >
+      <div class="commitment-item {% if forloop.first %}active{% endif %}"
+        data-commitment="commitment-{{ forloop.counter }}">
         <span>{{ item.tab_title }}</span>
         <div class="arrow-icon">
           <i class="fa-solid fa-chevron-right"></i>
@@ -29,10 +34,8 @@
     <!-- Tab Contents -->
     <div class="commitment-content">
       {% for item in items %}
-      <div
-        class="commitment-detail {% if forloop.first %}active{% endif %}"
-        id="commitment-{{ forloop.counter }}-content"
-      >
+      <div class="commitment-detail {% if forloop.first %}active{% endif %}"
+        id="commitment-{{ forloop.counter }}-content">
         <div class="commitment-header">
           <h2 class="section-title">{{ item.title }}</h2>
           <div class="section-description">
@@ -41,7 +44,7 @@
         </div>
 
         {% if item.image %}
-        <img src="{{ item.image.url }}" alt="commitment Image" />
+        <img loading="lazy" src="{{ item.image.url }}" alt="commitment Image" />
         {% endif %}
 
         <div class="commitment-description">

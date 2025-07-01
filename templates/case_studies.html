@@ -4,6 +4,12 @@
 {% block title %}{% trans "meta_title_case_studies" %}{% endblock %}
 {% block description %}{% trans "meta_description_case_studies" %}{% endblock %}
 
+{% block page_css %}
+  <link rel="stylesheet" href="{% static 'assets/css/case.min.css' %}" />
+{% endblock %}
+{% block page_js %}
+  <script src="{% static 'assets/js/case.min.js' %}" defer></script>
+{% endblock %}
 
 {% block content %}
 <!-- Page-Header -->
@@ -18,7 +24,8 @@
             <input type="text" name="from_date" id="datepicker" placeholder="From (dd.mm.yyyy)"
               value="{{ from_date_formatted }}" autocomplete="off" />
             <span class="clear-date" onclick="clearDateFilter();">&times;</span>
-            <img src="{% static 'images/calendar-icon.svg' %}" alt="calendar-icon" class="calendar-icon" />
+            <img loading="lazy" src="{% static 'images/calendar-icon.svg' %}" alt="calendar-icon"
+              class="calendar-icon" />
           </div>
         </div>
         <div class="date-filter">
@@ -26,7 +33,8 @@
             <input type="text" name="to_date" id="datepicker2" placeholder="To (dd.mm.yyyy)"
               value="{{ to_date_formatted }}" autocomplete="off" />
             <span class="clear-date" onclick="clearDateFilter();">&times;</span>
-            <img src="{% static 'images/calendar-icon.svg' %}" alt="calendar-icon" class="calendar-icon" />
+            <img loading="lazy" src="{% static 'images/calendar-icon.svg' %}" alt="calendar-icon"
+              class="calendar-icon" />
           </div>
         </div>
       </div>
@@ -46,7 +54,7 @@
       {% for case in page_obj %}
       <div class="news-card">
         <a href="{% url 'case_studies:case_study_detail' case.id %}">
-          <img src="{{ case.image_one.url }}" alt="{{ case.title }}" class="card-image" />
+          <img loading="lazy" src="{{ case.image_one.url }}" alt="{{ case.title }}" class="card-image" />
           <div class="card-content">
             <div class="card-meta">
               <div class="card-date">

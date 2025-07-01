@@ -19,7 +19,7 @@
             </li>
             <li>
               <i class="fa-solid fa-phone"></i>
-              <a  href="https://wa.me/4915221050103">{% trans 'Phone number' %}</a>
+              <a href="https://wa.me/4915221050103">{% trans 'Phone number' %}</a>
             </li>
           </ul>
         </div>
@@ -33,7 +33,9 @@
 
           <div class="language-dropdown">
             <button class="lang-dropdown-btn">
-              {% if LANGUAGE_CODE == 'en' %}EN{% elif LANGUAGE_CODE == 'de' %}DE{% elif LANGUAGE_CODE == 'es' %}ES{% elif LANGUAGE_CODE == 'fr' %}FR{% elif LANGUAGE_CODE == 'it' %}IT{% elif LANGUAGE_CODE == 'ca' %}汉语{% else %}EN{% endif %} 
+              {% if LANGUAGE_CODE == 'en' %}EN{% elif LANGUAGE_CODE == 'de' %}DE{% elif LANGUAGE_CODE == 'es' %}ES{%
+              elif LANGUAGE_CODE == 'fr' %}FR{% elif LANGUAGE_CODE == 'it' %}IT{% elif LANGUAGE_CODE == 'ca' %}汉语{% else
+              %}EN{% endif %}
               <i class="fa-solid fa-angle-down"></i>
             </button>
             <div class="dropdown-content" id="languageDropdown">
@@ -42,7 +44,8 @@
               <button class="lang-option {% if LANGUAGE_CODE == 'es' %}active{% endif %}" data-lang="es">ES</button>
               <button class="lang-option {% if LANGUAGE_CODE == 'fr' %}active{% endif %}" data-lang="fr">FR</button>
               <button class="lang-option {% if LANGUAGE_CODE == 'it' %}active{% endif %}" data-lang="it">IT</button>
-              <button class="lang-option {% if LANGUAGE_CODE == 'zh-hans' %}active{% endif %}" data-lang="zh-hans">汉语</button>
+              <button class="lang-option {% if LANGUAGE_CODE == 'zh-hans' %}active{% endif %}"
+                data-lang="zh-hans">汉语</button>
             </div>
           </div>
 
@@ -50,7 +53,7 @@
       </div>
       <div class="nav-section">
         <a href="{% url 'contact:home' %}" class="logo">
-          <img src="{% static 'images/tomoil-logo.svg' %}" alt="Tomoil Logo" />
+          <img loading="lazy" src="{% static 'images/tomoil-logo.svg' %}" alt="Tomoil Logo" />
         </a>
         <div class="nav-list">
           <ul>
@@ -113,7 +116,7 @@
         <a href="">{% trans 'Lets book a call' %}</a>
       </button>
       <button class="mobile-btn">
-            <a href="{% url 'products:pds_sds' %}">{% trans 'PDS/SDS' %}</a>
+        <a href="{% url 'products:pds_sds' %}">{% trans 'PDS/SDS' %}</a>
       </button>
     </div>
 
@@ -138,7 +141,8 @@
       <button class="mobile lang-btn {% if LANGUAGE_CODE == 'es' %}active{% endif %}" data-lang="es">ES</button>
       <button class="mobile lang-btn {% if LANGUAGE_CODE == 'fr' %}active{% endif %}" data-lang="fr">FR</button>
       <button class="mobile lang-btn {% if LANGUAGE_CODE == 'it' %}active{% endif %}" data-lang="it">IT</button>
-      <button class="mobile lang-btn {% if LANGUAGE_CODE == 'zh-hans' %}active{% endif %}" data-lang="zh-hans">汉语</button>
+      <button class="mobile lang-btn {% if LANGUAGE_CODE == 'zh-hans' %}active{% endif %}"
+        data-lang="zh-hans">汉语</button>
     </div>
   </div>
 </div>

@@ -4,6 +4,16 @@
 
 {% block description %}{% trans "meta_description_products" %}{% endblock %}
 
+
+{% block page_css %}
+<link rel="stylesheet" href="{% static 'assets/css/product.min.css' %}" />
+{% endblock %}
+
+{% block page_js %}
+  <script src="{% static 'assets/js/product.min.js' %}" defer></script>
+  <script src="{% static 'assets/js/product_detail.min.js' %}" defer></script>
+{% endblock %}
+
 {% block content %}
 
 <!-- Page-Header -->
@@ -31,7 +41,7 @@
 
     <div class="details-image">
       {% if product.image %}
-      <img src="{{ product.image.url }}" alt="{{ product.title }}" />
+      <img loading="lazy" src="{{ product.image.url }}" alt="{{ product.title }}" />
       {% else %} {% endif %}
     </div>
   </div>
@@ -45,14 +55,14 @@
       <a href="{{ product.pds }}" target="_blank">
         <button>
           {% trans 'Product Data Sheet' %}
-          <img src="{% static 'images/download-icon.svg' %}" alt="Download Icon" />
+          <img loading="lazy" src="{% static 'images/download-icon.svg' %}" alt="Download Icon" />
         </button>
       </a>
       {% endif %} {% if product.sds %}
       <a href="{{ product.sds }}" target="_blank">
         <button>
           {% trans 'Safety Data Sheet' %}
-          <img src="{% static 'images/download-icon.svg' %}" alt="Download Icon" />
+          <img loading="lazy" src="{% static 'images/download-icon.svg' %}" alt="Download Icon" />
         </button>
       </a>
       {% endif %}
