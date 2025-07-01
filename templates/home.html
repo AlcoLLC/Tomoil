@@ -1,4 +1,10 @@
-{% extends 'base.html' %} {% load static %} {% load i18n %} {% block content %}
+{% extends 'base.html' %} {% load static %} {% load i18n %}
+
+
+{% block title %}{% trans "home_meta_title" %}{% endblock %}
+{% block description %}{% trans "home_meta_description" %}{% endblock %}
+
+{% block content %}
 
 <div class="main">
   <header class="placeholder-header home-header">
@@ -7,9 +13,9 @@
         {% for swiper in swiper_images %}
         <div class="swiper-slide" style="background-image: url('{{ swiper.image.url }}');">
           <div class="slide-content">
-            <h5>{{ swiper.title }}</h5>
+            <span>{{ swiper.title }}</span>
             {% if swiper.title_description %}
-            <h2>{{ swiper.title_description }}</h2>
+            <p>{{ swiper.title_description }}</p>
             {% endif %} {% if swiper.description %}
             <p>{{ swiper.description }}</p>
             {% endif %} {% if swiper.link %}
@@ -45,9 +51,9 @@
     <div class="featured-container main-container">
       <div class="section-header">
         <p class="section-subtitle">{% trans 'FEATURED PRODUCTS' %}</p>
-        <h2 class="section-title">
+        <h1 class="section-title">
           {% trans 'Discover our top-recommended products' %}
-        </h2>
+        </h1>
       </div>
 
       <div class="products-slider">
@@ -237,7 +243,7 @@
         {% endfor %}
       </div>
 
-      <a href="/news" class="all-news-button news-none">
+      <a href="{% url 'news:news_list' %}" class="all-news-button news-none">
         {% trans " All news" %}
         <i class="fas fa-arrow-right-long all-news-icon"></i>
       </a>
@@ -253,11 +259,6 @@
       <h2 class="section-title">
         {% trans "Tomoil products are available worldwide" %}
       </h2>
-      <h1 class="section-description">
-        {% blocktrans %} TOMOIL - Leading Manufacturer of Premium Lubricants and Oils | Motor Oils, Industrial
-        Lubricants, Hydraulic Fluids and Specialized Lubrication Solutions for Automotive, Marine and Industrial
-        Applications {%endblocktrans %}
-      </h1>
       <p class="section-description">
         {% blocktrans %} Tomoil products are distributed to over 50 countries
         across the globe vida our reliable network of exclusive partners.

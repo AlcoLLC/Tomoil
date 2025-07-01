@@ -2,9 +2,8 @@
 {% load static %}
 {% load i18n %}
 
-{% block title %}{% trans "Products" %}{% endblock %}
-{% block description %}{% trans "products_meta_description" %}{% endblock %}
-{% block keywords %}{% trans "products_keywords" %}{% endblock %}
+{% block title %}{% trans "meta_title_products" %}{% endblock %}
+{% block description %}{% trans "meta_description_products" %}{% endblock %}
 
 {% block content %}
 
@@ -341,8 +340,7 @@
     <!-- Pagination -->
     <div class="pagination-container">
         <p class="pagination-info">
-            {% trans 'Displaying' %} {{ products.start_index }}–{{ products.end_index }} {% trans 'of' %} {{
-            total_results }} {% trans 'results' %}
+            {% trans 'Displaying' %} {{ products.start_index }}–{{products.end_index}} {%trans 'of'%} {{total_results}} {% trans 'results' %}
         </p>
         <div class="pagination">
             <!-- Previous Button -->

@@ -7,18 +7,38 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>{% block title %}TOMOIL{% endblock %}</title>
+
+  <link rel="canonical" href="https://tomoil.de{{ request.get_full_path }}">
+  <link rel="alternate" hreflang="en" href="https://tomoil.de/">
+  <link rel="alternate" hreflang="de" href="https://tomoil.de/de/">
+  <link rel="alternate" hreflang="es" href="https://tomoil.de/es/">
+  <link rel="alternate" hreflang="fr" href="https://tomoil.de/fr/">
+  <link rel="alternate" hreflang="it" href="https://tomoil.de/it/">
+  <link rel="alternate" hreflang="zh-hans" href="https://tomoil.de/zh-hans/">
+
+  <title>{% block title %}{% trans "TOMOIL - High-quality oil products" %}{% endblock %}</title>
 
   <meta name="description" content="{% block description %}TOMOIL - High-quality oil products{% endblock %}">
   <meta name="keywords"
     content="{% block keywords %}tomoil, motor oil, car oil, lubricants, synthetic oil, engine oil, hydraulic oil, gear oil{% endblock %}">
   <meta name="robots" content="index, follow">
   <meta property="og:title" content="TOMOIL">
-  <meta property="og:description" content="TOMOIL - High-quality oil products">
+  <meta property="og:type" content="website">
+  <meta property="og:description" content="{% trans 'TOMOIL - High-quality oil products' %}">
   <meta property="og:image" content="{% static 'images/tomoil-logo.svg' %}">
   <meta property="og:url" content="https://tomoil.de{{ request.path }}">
   <link rel="icon" type="image/svg+xml" href="{% static 'images/tomoil-logo.svg' %}">
   <meta name="google-site-verification" content="YveM3J5-9PcWzZR7E04pTePer-8alu7FD7qo7W3k7UM" />
+
+  <!-- Twitter Card tags -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:site" content="@TomoilOfficial"> 
+  <meta name="twitter:title" content="TOMOIL">
+  <meta name="twitter:description" content="{% trans 'TOMOIL - High-quality oil products' %}">
+  <meta name="twitter:image" content="https://tomoil.de/static/images/tomoil-logo.svg">
+
+
+
   <!-- Styles -->
   <link rel="stylesheet" href="{% static 'assets/css/style.min.css' %}" />
   <link rel="stylesheet" href="{% static 'assets/css/case.min.css' %}" />
@@ -40,13 +60,14 @@
     integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
     crossorigin="anonymous" referrerpolicy="no-referrer" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
-  
+
 </head>
 
 <body>
   {% include 'components/navbar.html' %}
   <div class="main">
     {% block content %} {% endblock %}
+
 
     {% include 'components/footer.html' %}
   </div>

@@ -1,7 +1,7 @@
 {% extends 'base.html' %} {% load static %} {% load i18n %}
 
-{% block title %}{% trans "Search" %}{% endblock %}
-
+{% block title %}{% trans "meta_title_search" %}{% endblock %}
+{% block description %}{% trans "meta_description_search" %}{% endblock %}
 {% block content %}
 
 <!-- Page-Header -->
@@ -9,7 +9,7 @@
 <header class="placeholder-header page-header">
   <div class="section-container">
     <div class="page-header-content">
-      <h2>{% trans 'Search' %}</h2>
+      <h2 class="page-title">{% trans 'Search' %}</h2>
       <div class="container search-bar">
         <form method="GET" class="search-form">
           <input
