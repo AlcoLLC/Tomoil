@@ -4,6 +4,15 @@
 {% block title %}{% trans "meta_title-glance" %}{% endblock %}
 {% block description %}{% trans "meta_description_glance" %}{% endblock %}
 
+{% block page_css %}
+  <link rel="stylesheet" href="{% static 'assets/css/glance&vision&commit.min.css' %}" />
+{% endblock %}
+
+{% block page_js %}
+  <script src="{% static 'assets/js/commitment.min.js' %}" defer></script>
+{% endblock %}
+
+
 {% block content %}
 
 <!-- Page-Header -->

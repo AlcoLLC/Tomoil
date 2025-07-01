@@ -4,6 +4,13 @@
 {% block title %}{% trans "meta_title_pds_sds" %}{% endblock %}
 {% block description %}{% trans "meta_description_pds_sds" %}{% endblock %}
 
+{% block page_css %}
+  <link rel="stylesheet" href="{% static 'assets/css/glance&vision&commit.min.css' %}" />
+{% endblock %}
+
+{% block page_js %}
+  <script src="{% static 'assets/js/commitment.min.js' %}" defer></script>
+{% endblock %}
 
 {% block content %}
 {% include 'components/page-header.html' %}

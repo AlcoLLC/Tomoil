@@ -2,7 +2,13 @@
 {% load i18n %}
 {% block title %}{% trans "meta_title_faq" %}{% endblock %}
 {% block description %}{% trans "meta_description_faq" %}{% endblock %}
+{% block page_css %}
+  <link rel="stylesheet" href="{% static 'assets/css/faq.min.css' %}" />
+{% endblock %}
 
+{% block page_js %}
+  <script src="{% static 'assets/js/faq.min.js' %}" defer></script>
+{% endblock %}
 {% block content %}
 
 <!-- Page-Header -->

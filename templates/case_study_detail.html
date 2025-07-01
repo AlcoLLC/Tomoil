@@ -3,7 +3,9 @@
 {% load i18n %}
 {% block title %}{{ case_study.title }}{% endblock %}
 {% block description %}{% trans "meta_description-case_studies" %}{% endblock %}
-
+{% block page_css %}
+  <link rel="stylesheet" href="{% static 'assets/css/case.min.css' %}" />
+{% endblock %}
 
 {% block content %}
 
