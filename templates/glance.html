@@ -4,6 +4,11 @@
 {% block title %}{% trans "meta_title-glance" %}{% endblock %}
 {% block description %}{% trans "meta_description_glance" %}{% endblock %}
 
+{% block page_css %}
+  <link rel="stylesheet" href="{% static 'assets/css/glance&vision&commit.min.css' %}" />
+{% endblock %}
+
+
 {% block content %}
 
 <!-- Page-Header -->
@@ -12,27 +17,27 @@
 <!-- Glance Section -->
 <section class="glance-section section-container">
     <div class="glance-container">
-    <h2 class="section-title">{{ item.title }}</h2>
-   <div class="section-description">
-    {{ item.header_text|safe }}
-</div>
-    <div class="guides-grid">
-        {% for guide in item.guides.all %}
-        <div>
-            <h4><i class="fa-solid fa-square-check"></i> {{ guide.guide }}</h4>
-            <div class="glance-description">
-                {{ guide.guide_text|safe }}
-            </div>
+        <h2 class="section-title">{{ item.title }}</h2>
+        <div class="section-description">
+            {{ item.header_text|safe }}
         </div>
-        {% endfor %}
-    </div>
+        <div class="guides-grid">
+            {% for guide in item.guides.all %}
+            <div>
+                <h4><i class="fa-solid fa-square-check"></i> {{ guide.guide }}</h4>
+                <div class="glance-description">
+                    {{ guide.guide_text|safe }}
+                </div>
+            </div>
+            {% endfor %}
+        </div>
 
-    <img src="{{ item.image.url }}" alt="Glance Image">
+        <img loading="lazy" src="{{ item.image.url }}" alt="Glance Image">
 
-    <h3 class="section-title glance-title">{{ item.description_header_text }}</h3>
-    <div class="glance-description">
-        {{ item.description|safe }}
-    </div>
+        <h3 class="section-title glance-title">{{ item.description_header_text }}</h3>
+        <div class="glance-description">
+            {{ item.description|safe }}
+        </div>
 
     </div>
 </section>

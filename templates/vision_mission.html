@@ -3,7 +3,13 @@
 {% load i18n %}
 {% block title %}{% trans "meta_title_vision_mission" %}{% endblock %}
 {% block description %}{% trans "meta_description_vision_mission" %}{% endblock %}
+{% block page_css %}
+  <link rel="stylesheet" href="{% static 'assets/css/glance&vision&commit.min.css' %}" />
+{% endblock %}
 
+{% block page_js %}
+  <script src="{% static 'assets/js/commitment.min.js' %}" defer></script>
+{% endblock %}
 {% block content %}
 
 <!-- Page-Header -->
@@ -27,7 +33,7 @@
             </div>
         </div>
 
-        <img src="{{ item.image.url }}" alt="vision-mission Image">
+        <img loading="lazy" src="{{ item.image.url }}" alt="vision-mission Image">
 
     </div>
     <div class="vision-mission-bottom">
@@ -36,15 +42,15 @@
 
         <div class="values-grid">
             {% for value in item.values.all %}
-                <div class="values-grid-item">
-                    <i class="fa-solid fa-check"></i>
-                    <div>
-                        <h4>{{ value.title }}</h4>
-                        <div class="section-description">{{ value.description|safe }}</div>
-                    </div>
+            <div class="values-grid-item">
+                <i class="fa-solid fa-check"></i>
+                <div>
+                    <h4>{{ value.title }}</h4>
+                    <div class="section-description">{{ value.description|safe }}</div>
                 </div>
+            </div>
             {% empty %}
-                <p>{% trans 'No values available.' %}</p>
+            <p>{% trans 'No values available.' %}</p>
             {% endfor %}
         </div>
 

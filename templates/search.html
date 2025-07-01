@@ -2,6 +2,16 @@
 
 {% block title %}{% trans "meta_title_search" %}{% endblock %}
 {% block description %}{% trans "meta_description_search" %}{% endblock %}
+
+{% block page_css %}
+<link rel="stylesheet" href="{% static 'assets/css/search.min.css' %}" />
+{% endblock %}
+
+{% block page_js %}
+<script src="{% static 'assets/js/search.min.js' %}" defer></script>
+{% endblock %}
+
+
 {% block content %}
 
 <!-- Page-Header -->
@@ -12,13 +22,8 @@
       <h2 class="page-title">{% trans 'Search' %}</h2>
       <div class="container search-bar">
         <form method="GET" class="search-form">
-          <input
-            type="text"
-            name="search"
-            class="search-input"
-            value="{{ query }}"
-            placeholder="{% trans 'Search...' %}"
-          />
+          <input type="text" name="search" class="search-input" value="{{ query }}"
+            placeholder="{% trans 'Search...' %}" />
           <button type="button" class="cancel-button">
             <i class="fa-solid fa-xmark"></i>
           </button>
@@ -38,7 +43,8 @@
 <section class="search-section section-container">
   {% if query %}
   <span class="search-results-count">
-    {% blocktrans count counter=total_results %} {{ counter }} result found {% plural %} {{ counter }} results found {% endblocktrans %}
+    {% blocktrans count counter=total_results %} {{ counter }} result found {% plural %} 
+    {{ counter }} results found {% endblocktrans %}
   </span>
 
   {% if results %} {% for result in results %}
@@ -46,7 +52,7 @@
     <div class="result-content">
       {% if result.image %}
       <div class="result-image">
-        <img src="{{ result.image }}" alt="{{ result.title }}" />
+        <img loading="lazy" src="{{ result.image }}" alt="{{ result.title }}" />
       </div>
       {% endif %}
       <div class="result-text">
@@ -61,8 +67,8 @@
       <a href="{{ result.url }}"><i class="fa-solid fa-arrow-right"></i></a>
     </button>
   </div>
-  {% endfor %} 
-  
+  {% endfor %}
+
   {% if results.has_other_pages %}
   <div class="pagination-container">
     <p class="pagination-info">
@@ -72,67 +78,56 @@
     <div class="pagination">
       <!-- Previous Button -->
       {% if results.has_previous %}
-      <a
-        href="?{% for key, values in request.GET.lists %}{% if key != 'page' %}{% for value in values %}{{ key }}={{ value|urlencode }}&{% endfor %}{% endif %}{% endfor %}page={{ results.previous_page_number }}"
-        class="page-btn"
-      >
+      <a href="?{% for key, values in request.GET.lists %}{% if key != 'page' %}{% for value in values %}{{ key }}={{ value|urlencode }}&{% endfor %}{% endif %}{% endfor %}page={{ results.previous_page_number }}"
+        class="page-btn">
         <i class="fa-solid fa-chevron-left"></i>
       </a>
       {% endif %}
 
       <!-- Page Numbers -->
       {% for num in results.paginator.page_range %}
-        {% if results.number == num %}
-          <!-- Current Page -->
-          <span class="page-btn active">{{ num }}</span>
-        {% else %}
-          {% if num == 1 %}
-            <!-- First Page -->
-            <a
-              href="?{% for key, values in request.GET.lists %}{% if key != 'page' %}{% for value in values %}{{ key }}={{ value|urlencode }}&{% endfor %}{% endif %}{% endfor %}page={{ num }}"
-              class="page-btn"
-            >{{ num }}</a>
-            {% if results.number > 5 %}
-              <span class="ellipsis">...</span>
-            {% endif %}
-          {% else %}
-            {% if num == results.paginator.num_pages %}
-              <!-- Last Page -->
-              {% if results.number < results.paginator.num_pages|add:'-4' %}
-                <span class="ellipsis">...</span>
-              {% endif %}
-              <a
-                href="?{% for key, values in request.GET.lists %}{% if key != 'page' %}{% for value in values %}{{ key }}={{ value|urlencode }}&{% endfor %}{% endif %}{% endfor %}page={{ num }}"
-                class="page-btn"
-              >{{ num }}</a>
-            {% else %}
-              {% if num >= results.number|add:'-2' and num <= results.number|add:'2' %}
-                <!-- Pages around current page (±2 range) -->
-                <a
-                  href="?{% for key, values in request.GET.lists %}{% if key != 'page' %}{% for value in values %}{{ key }}={{ value|urlencode }}&{% endfor %}{% endif %}{% endfor %}page={{ num }}"
-                  class="page-btn"
-                >{{ num }}</a>
-              {% endif %}
-            {% endif %}
-          {% endif %}
-        {% endif %}
-      {% endfor %}
-
-      <!-- Next Button -->
-      {% if results.has_next %}
-      <a
-        href="?{% for key, values in request.GET.lists %}{% if key != 'page' %}{% for value in values %}{{ key }}={{ value|urlencode }}&{% endfor %}{% endif %}{% endfor %}page={{ results.next_page_number }}"
-        class="page-btn"
-      >
-        <i class="fa-solid fa-chevron-right"></i>
-      </a>
+      {% if results.number == num %}
+      <!-- Current Page -->
+      <span class="page-btn active">{{ num }}</span>
+      {% else %}
+      {% if num == 1 %}
+      <!-- First Page -->
+      <a href="?{% for key, values in request.GET.lists %}{% if key != 'page' %}{% for value in values %}{{ key }}={{ value|urlencode }}&{% endfor %}{% endif %}{% endfor %}page={{ num }}"
+        class="page-btn">{{ num }}</a>
+      {% if results.number > 5 %}
+      <span class="ellipsis">...</span>
       {% endif %}
+      {% else %}
+      {% if num == results.paginator.num_pages %}
+      <!-- Last Page -->
+      {% if results.number < results.paginator.num_pages|add:'-4' %} <span class="ellipsis">...</span>
+        {% endif %}
+        <a href="?{% for key, values in request.GET.lists %}{% if key != 'page' %}{% for value in values %}{{ key }}={{ value|urlencode }}&{% endfor %}{% endif %}{% endfor %}page={{ num }}"
+          class="page-btn">{{ num }}</a>
+        {% else %}
+        {% if num >= results.number|add:'-2' and num <= results.number|add:'2' %} <!-- Pages around current page (±2
+          range) -->
+          <a href="?{% for key, values in request.GET.lists %}{% if key != 'page' %}{% for value in values %}{{ key }}={{ value|urlencode }}&{% endfor %}{% endif %}{% endfor %}page={{ num }}"
+            class="page-btn">{{ num }}</a>
+          {% endif %}
+          {% endif %}
+          {% endif %}
+          {% endif %}
+          {% endfor %}
+
+          <!-- Next Button -->
+          {% if results.has_next %}
+          <a href="?{% for key, values in request.GET.lists %}{% if key != 'page' %}{% for value in values %}{{ key }}={{ value|urlencode }}&{% endfor %}{% endif %}{% endfor %}page={{ results.next_page_number }}"
+            class="page-btn">
+            <i class="fa-solid fa-chevron-right"></i>
+          </a>
+          {% endif %}
     </div>
   </div>
   {% endif %}
- 
+
   {% endif %}
-   {% else %}
+  {% else %}
   <div class="search-placeholder">
     <p>{% trans "Enter keywords to search..." %}</p>
   </div>

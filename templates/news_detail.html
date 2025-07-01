@@ -2,8 +2,14 @@
 
 {% block title %}{{ news_item.title }}{% endblock %}
 {% block description %}{% trans "meta_description_news" %}{% endblock %}
+{% block page_css %}
+<link rel="stylesheet" href="{% static 'assets/css/news.min.css' %}" />
+<link rel="stylesheet" href="{% static 'assets/css/case.min.css' %}" />
+{% endblock %}
 
- {% block content %}
+
+
+{% block content %}
 
 <!-- Page Tabs -->
 <div class="page-tabs">
@@ -29,20 +35,16 @@
     <p class="case-detail-title">{{ news_item.header_text }}</p>
 
     {% if news_item.image_one %}
-    <img
-      class="main-image"
-      src="{{ news_item.image_one.url }}"
-      alt="Main Image"
-    />
+    <img class="main-image" src="{{ news_item.image_one.url }}" alt="Main Image" />
     {% endif %}
 
     <p class="case-detail-description">{{ news_item.description }}</p>
 
     <div class="case-detail-images">
       {% if news_item.image_two %}
-      <img src="{{ news_item.image_two.url }}" alt="Image Two" />
+      <img loading="lazy" src="{{ news_item.image_two.url }}" alt="Image Two" />
       {% endif %} {% if news_item.image_three %}
-      <img src="{{ news_item.image_three.url }}" alt="Image Three" />
+      <img loading="lazy" src="{{ news_item.image_three.url }}" alt="Image Three" />
       {% endif %}
     </div>
   </div>

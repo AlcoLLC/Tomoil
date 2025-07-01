@@ -27,7 +27,7 @@ class HomeSwiperAdmin(TranslationAdmin):
     
     def image_preview(self, obj):
         if obj.image:
-            return f'<img src="{obj.image.url}" width="50" height="50" style="object-fit: cover; border-radius: 4px;" />'
+            return f'<img loading="lazy"  src="{obj.image.url}" width="50" height="50" style="object-fit: cover; border-radius: 4px;" />'
         return "No Image"
     image_preview.allow_tags = True
     image_preview.short_description = 'Önizleme'

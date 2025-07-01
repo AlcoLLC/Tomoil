@@ -4,6 +4,13 @@
 
 {% block title %}{% trans "meta_title_brand_portal" %}{% endblock %}
 {% block description %}{% trans "meta_description_brand_portal" %}{% endblock %}
+{% block page_css %}
+<link rel="stylesheet" href="{% static 'assets/css/brand.min.css' %}" />
+{% endblock %}
+
+{% block page_js %}
+  <script src="{% static 'assets/js/brand.min.js' %}" defer></script>
+{% endblock %}
 
 {% block content %}
 
@@ -15,11 +22,17 @@
     <div class="section-container">
         <div class="brand-components">
             <div class="tabs">
-                <div class="tab {% if active_tab == 'brand-guideline' %}active{% endif %}" data-tab="brand-guideline">{% trans 'Brand Guideline' %}</div>
-                <div class="tab {% if active_tab == 'catalogue' %}active{% endif %}" data-tab="catalogue">{% trans 'Catalogue & Brochures' %}</div>
-                <div class="tab {% if active_tab == 'promotional' %}active{% endif %}" data-tab="promotional">{% trans 'Promotional Items' %}</div>
-                <div class="tab {% if active_tab == 'image-library' %}active{% endif %}" data-tab="image-library">{% trans 'Image Library' %}</div>
-                <div class="tab {% if active_tab == 'videos' %}active{% endif %}" data-tab="videos">{% trans 'Videos' %}</div>
+                <div class="tab {% if active_tab == 'brand-guideline' %}active{% endif %}" data-tab="brand-guideline">
+                    {% trans 'Brand Guideline' %}</div>
+                <div class="tab {% if active_tab == 'catalogue' %}active{% endif %}" data-tab="catalogue">
+                    {% trans 'Catalogue & Brochures' %}</div>
+                <div class="tab {% if active_tab == 'promotional' %}active{% endif %}" data-tab="promotional">
+                    {% trans 'Promotional Items' %}</div>
+                <div class="tab {% if active_tab == 'image-library' %}active{% endif %}" data-tab="image-library">
+                    {% trans 'Image Library' %}</div>
+                <div class="tab {% if active_tab == 'videos' %}active{% endif %}" data-tab="videos">
+                    {% trans 'Videos' %}
+                </div>
             </div>
         </div>
         <div class="brand-content">
@@ -35,103 +48,109 @@
                     on the back of a brochure, business card, or trailer. The landscape logo should only be used in
                     exceptional cases, as a secondary option to the shield logo when limited space compromises
                     readability and visibility. It is suitable for wide applications.
-                    {% endblocktrans %} 
+                    {% endblocktrans %}
                 </p>
 
                 {% if tomoil_logos_full_color %}
-    {% with tomoil_logos_full_color|first as first_logo %}
-        <div class="brand-section logo-section">
-            <div class="logo-container">
-                <div class="logo-primary">
-                    <img src="{{ first_logo.logo.url }}" alt="{{ first_logo.title }}">
-                </div>
-                <div class="logo-content">
-                    <h3 class="logo-title">{{ first_logo.title }}</h3>
-                    <div class="section-description">
-                        {{ first_logo.description|linebreaks }}
+                {% with tomoil_logos_full_color|first as first_logo %}
+                <div class="brand-section logo-section">
+                    <div class="logo-container">
+                        <div class="logo-primary">
+                            <img loading="lazy" src="{{ first_logo.logo.url }}" alt="{{ first_logo.title }}">
+                        </div>
+                        <div class="logo-content">
+                            <h3 class="logo-title">{{ first_logo.title }}</h3>
+                            <div class="section-description">
+                                {{ first_logo.description|linebreaks }}
+                            </div>
+                            <div class="download-buttons">
+                                <a href="{{ first_logo.logo.url }}" download class="download-button">
+                                    {% trans 'LOGO PNG' %}
+                                    <img loading="lazy" src="{% static 'images/download-icon.svg' %}"
+                                        alt="Download Icon">
+                                </a>
+                                {% if first_logo.logo_pdf %}
+                                <a href="{{ first_logo.logo_pdf.url }}" download class="download-button">
+                                    {% trans 'LOGO PDF' %}
+                                    <img loading="lazy" src="{% static 'images/download-icon.svg' %}"
+                                        alt="Download Icon">
+                                </a>
+                                {% endif %}
+                            </div>
+                        </div>
                     </div>
-                    <div class="download-buttons">
-                        <a href="{{ first_logo.logo.url }}" download class="download-button">
-                            {% trans 'LOGO PNG' %}
-                            <img src="{% static 'images/download-icon.svg' %}" alt="Download Icon">
-                        </a>
-                        {% if first_logo.logo_pdf %}
-                            <a href="{{ first_logo.logo_pdf.url }}" download class="download-button">
-                                {% trans 'LOGO PDF' %}
-                                <img src="{% static 'images/download-icon.svg' %}" alt="Download Icon">
-                            </a>
-                        {% endif %}
-                    </div>
                 </div>
-            </div>
-        </div>
-    {% endwith %}
-{% else %}
-{% endif %}
+                {% endwith %}
+                {% else %}
+                {% endif %}
 
                 <!-- Logo Variations -->
                 <div class="logo-variations">
                     <div class="logo-variation-item">
                         <div class="logo-variation-image">
-                            <img src="{% static 'images/tomoil-logo-navy.svg' %}" alt="Tomoil Logo Navy">
+                            <img loading="lazy" src="{% static 'images/tomoil-logo-navy.svg' %}" alt="Tomoil Logo Navy">
                         </div>
                         <p class="logo-variation-text">{% trans 'logo_description_1' %}</p>
                     </div>
                     <div class="logo-variation-item">
                         <div class="logo-variation-image red-bg">
-                            <img src="{% static 'images/tomoil-logo-white.svg' %}" alt="Tomoil Logo White">
+                            <img loading="lazy" src="{% static 'images/tomoil-logo-white.svg' %}"
+                                alt="Tomoil Logo White">
                         </div>
                         <p class="logo-variation-text">{% trans 'logo_description_2' %}</p>
                     </div>
                     <div class="logo-variation-item">
                         <div class="logo-variation-image">
-                            <img src="{% static 'images/tomoil-logo-red.svg' %}" alt="Tomoil Logo Red">
+                            <img loading="lazy" src="{% static 'images/tomoil-logo-red.svg' %}" alt="Tomoil Logo Red">
                         </div>
                         <p class="logo-variation-text">{% trans 'logo_description_3' %}</p>
                     </div>
                     <div class="logo-variation-item">
                         <div class="logo-variation-image navy-bg">
-                            <img src="{% static 'images/tomoil-logo-white.svg' %}" alt="Tomoil Logo White">
+                            <img loading="lazy" src="{% static 'images/tomoil-logo-white.svg' %}"
+                                alt="Tomoil Logo White">
                         </div>
                         <p class="logo-variation-text">{% trans 'logo_description_4' %}</p>
                     </div>
                 </div>
 
                 {% if tomoil_logos_full_color|length >= 2 %}
-    {% with tomoil_logos_full_color.1 as second_logo %}
-        <div class="brand-section logo-section">
-            <div class="logo-container">
-                <div class="logo-primary">
-                    <img src="{{ second_logo.logo.url }}" alt="{{ second_logo.title }}">
-                </div>
-                <div class="logo-content">
-                    <h3 class="logo-title">{{ second_logo.title }}</h3>
-                    <div class="section-description">
-                        {{ second_logo.description|linebreaks }}
+                {% with tomoil_logos_full_color.1 as second_logo %}
+                <div class="brand-section logo-section">
+                    <div class="logo-container">
+                        <div class="logo-primary">
+                            <img loading="lazy" src="{{ second_logo.logo.url }}" alt="{{ second_logo.title }}">
+                        </div>
+                        <div class="logo-content">
+                            <h3 class="logo-title">{{ second_logo.title }}</h3>
+                            <div class="section-description">
+                                {{ second_logo.description|linebreaks }}
+                            </div>
+                            <div class="download-buttons">
+                                <a href="{{ second_logo.logo.url }}" download class="download-button">
+                                    {% trans 'LOGO PNG' %}
+                                    <img loading="lazy" src="{% static 'images/download-icon.svg' %}"
+                                        alt="Download Icon">
+                                </a>
+                                {% if second_logo.logo_pdf %}
+                                <a href="{{ second_logo.logo_pdf.url }}" download class="download-button">
+                                    {% trans 'LOGO PDF' %}
+                                    <img loading="lazy" src="{% static 'images/download-icon.svg' %}"
+                                        alt="Download Icon">
+                                </a>
+                                {% endif %}
+                            </div>
+                        </div>
                     </div>
-                    <div class="download-buttons">
-                        <a href="{{ second_logo.logo.url }}" download class="download-button">
-                            {% trans 'LOGO PNG' %}
-                            <img src="{% static 'images/download-icon.svg' %}" alt="Download Icon">
-                        </a>
-                        {% if second_logo.logo_pdf %}
-                            <a href="{{ second_logo.logo_pdf.url }}" download class="download-button">
-                                {% trans 'LOGO PDF' %}
-                                <img src="{% static 'images/download-icon.svg' %}" alt="Download Icon">
-                            </a>
-                        {% endif %}
-                    </div>
                 </div>
-            </div>
-        </div>
-    {% endwith %}
-{% else %}
-{% endif %}
+                {% endwith %}
+                {% else %}
+                {% endif %}
 
                 <!-- Other Brand Sections -->
                 <div class="brand-section color-section">
                     <div class="section-image">
-                        <img src="{% static 'images/color-palette.png' %}" alt="Color Palette">
+                        <img loading="lazy" src="{% static 'images/color-palette.png' %}" alt="Color Palette">
                     </div>
                     <div class="section-content">
                         <h3 class="section-title">{% trans 'Color' %}</h3>
@@ -149,61 +168,64 @@
 
                 <div class="brand-section typography-section">
                     <div class="section-image">
-                        <img src="{% static 'images/typography.png' %}" alt="Typography">
+                        <img loading="lazy" src="{% static 'images/typography.png' %}" alt="Typography">
                     </div>
                     <div class="section-content">
                         <h3 class="section-title">{% trans 'Typography' %}</h3>
                         <p class="section-description">
                             {% blocktrans %}
-                           A strong brand has a recognizable and consistent brand identity. This brand identity manual
+                            A strong brand has a recognizable and consistent brand identity. This brand identity manual
                             provides guidelines for the correct usage of various brand identity elements, such as the
-                            logo, colors, fonts, and photography. 
+                            logo, colors, fonts, and photography.
                             {% endblocktrans %}
                         </p>
                     </div>
                 </div>
 
-                 <div class="brand-section guidelines-section">
+                <div class="brand-section guidelines-section">
                     <h3 class="section-title">{{ tomoil_guideline.title }}</h3>
                     <p class="section-description">
                         {{ tomoil_guideline.description|linebreaks }}
                     </p>
                 </div>
 
-                 <div class="brand-section origin-section">
+                <div class="brand-section origin-section">
                     <div class="logo-container">
                         <div class="logo-primary">
-                            <img src="{{ tomoil_guideline.logo_png.url }}" alt="{{ tomoil_guideline.title }}">
+                            <img loading="lazy" src="{{ tomoil_guideline.logo_png.url }}"
+                                alt="{{ tomoil_guideline.title }}">
                         </div>
                         <div class="logo-content">
                             <h3 class="logo-title">{{ tomoil_guideline.logo_title|linebreaks }}</h3>
                             <div class="section-description">
                                 {{ tomoil_guideline.logo_description|linebreaks }}
                             </div>
-                           <div class="download-buttons">
-                        <a href="{{ tomoil_guideline.logo_png.url }}" download class="download-button">
-                            {% trans 'LOGO PNG' %}
-                            <img src="{% static 'images/download-icon.svg' %}" alt="Download Icon">
-                        </a>
-                        {% if tomoil_guideline.logo_pdf %}
-                            <a href="{{ tomoil_guideline.logo_pdf.url }}" download class="download-button">
-                                {% trans 'LOGO PDF' %}
-                                <img src="{% static 'images/download-icon.svg' %}" alt="Download Icon">
-                            </a>
-                        {% endif %}
-                    </div>
+                            <div class="download-buttons">
+                                <a href="{{ tomoil_guideline.logo_png.url }}" download class="download-button">
+                                    {% trans 'LOGO PNG' %}
+                                    <img loading="lazy" src="{% static 'images/download-icon.svg' %}"
+                                        alt="Download Icon">
+                                </a>
+                                {% if tomoil_guideline.logo_pdf %}
+                                <a href="{{ tomoil_guideline.logo_pdf.url }}" download class="download-button">
+                                    {% trans 'LOGO PDF' %}
+                                    <img loading="lazy" src="{% static 'images/download-icon.svg' %}"
+                                        alt="Download Icon">
+                                </a>
+                                {% endif %}
+                            </div>
                         </div>
                     </div>
                 </div>
 
                 <div class="brand-section imagery-section">
                     <div class="section-image">
-                        <img src="{% static 'images/racing-car.png' %}" alt="Racing Car">
+                        <img loading="lazy" src="{% static 'images/racing-car.png' %}" alt="Racing Car">
                     </div>
                     <div class="section-content">
                         <h3 class="section-title">{% trans 'Our imagery' %}</h3>
                         <p class="section-description">
-                           {% blocktrans %}
+                            {% blocktrans %}
                             A strong brand has a recognizable and consistent brand identity. This brand identity manual
                             provides guidelines for the correct usage of various brand identity elements, such as the
                             logo, colors, fonts, and photography. You will also find examples here for the proper
@@ -212,23 +234,23 @@
                             trademark and has a high recognition value. The main colors have been defined for all print
                             and web applications. There are separate color schemes for special product areas, which are
                             explained on the following pages.
-                           {% endblocktrans %}
+                            {% endblocktrans %}
                         </p>
                     </div>
                 </div>
 
-                 <div class="image-gallery">
-                     {% for tomoil_branding_card in tomoil_branding_cards %}
+                <div class="image-gallery">
+                    {% for tomoil_branding_card in tomoil_branding_cards %}
                     <div class="gallery-item">
-                        <img src="{{ tomoil_branding_card.image.url }}" alt="Product Pouring">
+                        <img loading="lazy" src="{{ tomoil_branding_card.image.url }}" alt="Product Pouring">
                         <div class="gallery-caption">{{ tomoil_branding_card.description|linebreaks }}</div>
                     </div>
                     {% endfor %}
                 </div>
 
-                 {% comment %} <div class="brand-section mediacenter-section">
+                {% comment %} <div class="brand-section mediacenter-section">
                     <div class="section-image">
-                        <img src="{% static 'images/product-lineup.png' %}" alt="Product Lineup">
+                        <img loading="lazy" src="{% static 'images/product-lineup.png' %}" alt="Product Lineup">
                     </div>
                     <div class="section-content">
                         <h3 class="section-title">{% trans 'The Mediacenter' %}</h3>
@@ -243,16 +265,17 @@
                             explained on the following pages.
                         </p>
                     </div>
-                </div>  {% endcomment %}
+                </div> {% endcomment %}
 
                 <!-- Downloads Section -->
                 <div class="brand-section downloads-section">
                     <h2 class="section-title">{% trans 'Downloads' %}</h2>
                     <div class="download-links">
                         {% for guideline in brand_guidelines %}
-                        <a href="{% url 'brand_portal:download_file' 'guideline' guideline.id %}" class="download-button">
+                        <a href="{% url 'brand_portal:download_file' 'guideline' guideline.id %}"
+                            class="download-button">
                             {{ guideline.title }}
-                            <img src="{% static 'images/download-icon-dark.svg' %}" alt="Download Icon">
+                            <img loading="lazy" src="{% static 'images/download-icon-dark.svg' %}" alt="Download Icon">
                         </a>
                         {% endfor %}
                     </div>
@@ -267,20 +290,22 @@
                         <div class="brochure-info">
                             <div>
                                 <h2 class="section-title">{{ catalogue.title }}</h2>
-                            <p class="section-description">
-                                {{ catalogue.description|truncatechars:270 }}
-                            </p>
+                                <p class="section-description">
+                                    {{ catalogue.description|truncatechars:270 }}
+                                </p>
                             </div>
                             <div class="brochure-buttons">
-                                <a href="{% url 'brand_portal:download_file' 'catalogue' catalogue.id %}" class="download-btn">{% trans 'DOWNLOAD' %}</a>
-                                <a href="{% url 'brand_portal:view_catalogue' catalogue.id %}" class="view-btn" target="_blank">{% trans 'VIEW' %}</a>
+                                <a href="{% url 'brand_portal:download_file' 'catalogue' catalogue.id %}"
+                                    class="download-btn">{% trans 'DOWNLOAD' %}</a>
+                                <a href="{% url 'brand_portal:view_catalogue' catalogue.id %}" class="view-btn"
+                                    target="_blank">{% trans 'VIEW' %}</a>
                             </div>
                         </div>
                         <div class="brochure-image">
                             {% if catalogue.preview_image %}
-                            <img src="{{ catalogue.preview_image.url }}" alt="{{ catalogue.title }}">
+                            <img loading="lazy" src="{{ catalogue.preview_image.url }}" alt="{{ catalogue.title }}">
                             {% else %}
-                            <img src="{% static 'images/agricultural-brochure.png' %}" alt="Brochure">
+                            <img loading="lazy" src="{% static 'images/agricultural-brochure.png' %}" alt="Brochure">
                             {% endif %}
                         </div>
                     </div>
@@ -293,14 +318,14 @@
                     {% for item in promotional_items %}
                     <div class="promotional-card">
                         <div class="promotional-image">
-                            <img src="{{ item.preview_image.url }}" alt="{{ item.title }}">
+                            <img loading="lazy" src="{{ item.preview_image.url }}" alt="{{ item.title }}">
                         </div>
                         <div class="promotional-info">
                             <div>
                                 <h2 class="section-title">{{ item.title }}</h2>
                                 <p class="section-description">{{ item.width }} x {{ item.height }} px</p>
                             </div>
-                            
+
                         </div>
                     </div>
                     {% endfor %}
@@ -338,15 +363,17 @@
                                 {% for image in image_library.corporate %}
                                 <div class="promotional-card">
                                     <div class="promotional-image">
-                                        <img src="{{ image.preview_image.url }}" alt="{{ image.title }}">
+                                        <img loading="lazy" src="{{ image.preview_image.url }}" alt="{{ image.title }}">
                                     </div>
                                     <div class="promotional-info">
                                         <div>
                                             <h2 class="section-title">{{ image.title }}</h2>
                                             <p class="section-description">{{ image.width }} x {{ image.height }} px</p>
                                         </div>
-                                        <a href="{% url 'brand_portal:download_file' 'image' image.id %}" class="promotional-button">
-                                            <img src="{% static 'images/download-icon-dark.svg' %}" alt="Download Image">
+                                        <a href="{% url 'brand_portal:download_file' 'image' image.id %}"
+                                            class="promotional-button">
+                                            <img loading="lazy" src="{% static 'images/download-icon-dark.svg' %}"
+                                                alt="Download Image">
                                         </a>
                                     </div>
                                 </div>
@@ -360,15 +387,17 @@
                                 {% for image in image_library.dealership %}
                                 <div class="promotional-card">
                                     <div class="promotional-image">
-                                        <img src="{{ image.preview_image.url }}" alt="{{ image.title }}">
+                                        <img loading="lazy" src="{{ image.preview_image.url }}" alt="{{ image.title }}">
                                     </div>
                                     <div class="promotional-info">
                                         <div>
                                             <h2 class="section-title">{{ image.title }}</h2>
                                             <p class="section-description">{{ image.width }} x {{ image.height }} px</p>
                                         </div>
-                                        <a href="{% url 'brand_portal:download_file' 'image' image.id %}" class="promotional-button">
-                                            <img src="{% static 'images/download-icon-dark.svg' %}" alt="Download Image">
+                                        <a href="{% url 'brand_portal:download_file' 'image' image.id %}"
+                                            class="promotional-button">
+                                            <img loading="lazy" src="{% static 'images/download-icon-dark.svg' %}"
+                                                alt="Download Image">
                                         </a>
                                     </div>
                                 </div>
@@ -382,15 +411,17 @@
                                 {% for image in image_library.sponsorship %}
                                 <div class="promotional-card">
                                     <div class="promotional-image">
-                                        <img src="{{ image.preview_image.url }}" alt="{{ image.title }}">
+                                        <img loading="lazy" src="{{ image.preview_image.url }}" alt="{{ image.title }}">
                                     </div>
                                     <div class="promotional-info">
                                         <div>
                                             <h2 class="section-title">{{ image.title }}</h2>
                                             <p class="section-description">{{ image.width }} x {{ image.height }} px</p>
                                         </div>
-                                        <a href="{% url 'brand_portal:download_file' 'image' image.id %}" class="promotional-button">
-                                            <img src="{% static 'images/download-icon-dark.svg' %}" alt="Download Image">
+                                        <a href="{% url 'brand_portal:download_file' 'image' image.id %}"
+                                            class="promotional-button">
+                                            <img loading="lazy" src="{% static 'images/download-icon-dark.svg' %}"
+                                                alt="Download Image">
                                         </a>
                                     </div>
                                 </div>
@@ -414,10 +445,10 @@
                     {% for video in videos %}
                     <div class="video-thumbnail" data-video-url="{{ video.video_url }}">
                         {% if video.thumbnail %}
-                        <img src="{{ video.thumbnail.url }}" alt="{{ video.title }}">
+                        <img loading="lazy" src="{{ video.thumbnail.url }}" alt="{{ video.title }}">
                         {% endif %}
                         <div class="play-icon">
-                            <img src="{% static 'images/video-player-icon.svg' %}" alt="Play Video">
+                            <img loading="lazy" src="{% static 'images/video-player-icon.svg' %}" alt="Play Video">
                         </div>
                     </div>
                     {% endfor %}
@@ -438,79 +469,79 @@
 
 <!-- JavaScript for tab functionality and video modal -->
 <script>
-    document.addEventListener('DOMContentLoaded', function() {
+    document.addEventListener('DOMContentLoaded', function () {
         // Tab functionality
         const tabs = document.querySelectorAll('.tab');
         const tabContents = document.querySelectorAll('.tab-content');
-        
+
         tabs.forEach(tab => {
-            tab.addEventListener('click', function() {
+            tab.addEventListener('click', function () {
                 // Remove active class from all tabs and contents
                 tabs.forEach(t => t.classList.remove('active'));
                 tabContents.forEach(c => c.classList.remove('active'));
-                
+
                 // Add active class to clicked tab
                 this.classList.add('active');
-                
+
                 // Show corresponding content
                 const tabId = this.getAttribute('data-tab');
                 document.getElementById(tabId).classList.add('active');
-                
+
                 // Update URL parameter to reflect active tab
                 const url = new URL(window.location);
                 url.searchParams.set('tab', tabId);
                 window.history.pushState({}, '', url);
             });
         });
-        
+
         // Brand image library navigation
         const brandItems = document.querySelectorAll('.brand-item');
         const brandDetails = document.querySelectorAll('.brand-detail');
-        
+
         brandItems.forEach(item => {
-            item.addEventListener('click', function() {
+            item.addEventListener('click', function () {
                 // Remove active class from all items and details
                 brandItems.forEach(i => i.classList.remove('active'));
                 brandDetails.forEach(d => d.classList.remove('active'));
-                
+
                 // Add active class to clicked item
                 this.classList.add('active');
-                
+
                 // Show corresponding detail
                 const brandId = this.getAttribute('data-brand');
                 document.getElementById(brandId + '-content').classList.add('active');
             });
         });
-        
+
         // Video modal functionality
         const videoThumbnails = document.querySelectorAll('.video-thumbnail');
         const videoModal = document.getElementById('videoModal');
         const videoFrame = document.getElementById('videoFrame');
         const closeModal = document.querySelector('.close-modal');
-        
+
         videoThumbnails.forEach(thumbnail => {
-            thumbnail.addEventListener('click', function() {
+            thumbnail.addEventListener('click', function () {
                 const videoUrl = this.getAttribute('data-video-url');
                 // Convert YouTube URL to embed format if necessary
                 let embedUrl = videoUrl;
                 if (videoUrl.includes('youtube.com/watch') || videoUrl.includes('youtu.be')) {
-                    const videoId = videoUrl.includes('?v=') 
+                    const videoId = videoUrl.includes('?v=')
                         ? videoUrl.split('?v=')[1].split('&')[0]
                         : videoUrl.split('/').pop().split('?')[0];
                     embedUrl = `https://www.youtube.com/embed/${videoId}?autoplay=1`;
                 }
-                
+
                 videoFrame.src = embedUrl;
                 videoModal.style.display = 'flex';
             });
         });
-        
-        closeModal.addEventListener('click', function() {
+
+        closeModal.addEventListener('click', function () {
             videoFrame.src = '';
             videoModal.style.display = 'none';
         });
-        
-        window.addEventListener('click', function(event) {
+
+        window.addEventListener('click', function (event) {
             if (event.target === videoModal) {
                 videoFrame.src = '';
                 videoModal.style.display = 'none';
