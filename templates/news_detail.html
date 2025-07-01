@@ -14,11 +14,11 @@
 <!-- Page Tabs -->
 <div class="page-tabs">
   <div class="section-container breadcrumb">
-    <span>{% trans 'Home' %}</span>
+    <a href="{% url 'contact:home' %}">{% trans 'Home' %}</a>
     <i class="fa-solid fa-angle-right"></i>
-    <span>{% trans 'News' %}</span>
+    <a href="{% url 'news:news_list' %}">{% trans 'News' %}</a>
     <i class="fa-solid fa-angle-right"></i>
-    <a href="#">{{ news_item.title }}</a>
+    <span>{{ news_item.title }}</span>
   </div>
 </div>
 

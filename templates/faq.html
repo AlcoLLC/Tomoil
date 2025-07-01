@@ -47,7 +47,7 @@
         {% endblocktrans %}
 
       </p>
-      <a href="#" class="wolver-btn">{% trans 'Go To Catalog' %}</a>
+      <a href="{% url 'products:products_list' %}" class="wolver-btn">{% trans 'Go To Catalog' %}</a>
     </div>
     <div class="wolver-products">
       <div class="product-container">
@@ -67,7 +67,7 @@
     <p class="section-description">
       {% trans 'Begin your journey towards world class products and services today with TOMOIL' %}
     </p>
-    <a href="#" class="need-more-btn">
+    <a href="https://api.whatsapp.com/send?phone=4915221050103" class="need-more-btn">
       <img loading="lazy" src="{% static 'images/comments.svg' %}" alt="Comments" />
       {% trans 'TALK TO US' %}</a>
   </div>

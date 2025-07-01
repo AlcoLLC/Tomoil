@@ -585,7 +585,7 @@ nav {
 .product-range .navigation.nav-none,
 .product-range .swiper-button-next::after,
 .product-range .swiper-button-prev::after {
-  display: none;
+  display: none !important;
 }
 .home-header .swiper-button-next i,
 .home-header .swiper-button-prev i {

@@ -21,7 +21,7 @@
             {% endif %} {% if swiper.link %}
             <a href="{{ swiper.link }}" class="btn-learn">{% trans 'LEARN MORE' %}</a>
             {% else %}
-            <a href="#" class="btn-learn">{% trans 'LEARN MORE' %}</a>
+            <a href="{% url 'products:products_list' %}" class="btn-learn">{% trans 'LEARN MORE' %}</a>
             {% endif %}
           </div>
           <a href="https://api.whatsapp.com/send?phone=4915221050103" class="header-whatsapp">
@@ -83,7 +83,7 @@
         </div>
       </div>
 
-      <a href="/products" class="view-catalog">{% trans 'VIEW OUR CATALOGUE' %}</a>
+      <a href="{% url 'products:products_list' %}" class="view-catalog">{% trans 'VIEW OUR CATALOGUE' %}</a>
     </div>
   </section>
 
@@ -99,7 +99,7 @@
         </p>
       </div>
       <button class="btn-market-segments btn-block">
-        <a href="/products">{% trans "See More " %}<i class="fa-solid fa-arrow-right-long"></i></a>
+        <a href="{% url 'products:products_list' %}">{% trans "See More " %}<i class="fa-solid fa-arrow-right-long"></i></a>
       </button>
     </div>
 
@@ -120,7 +120,7 @@
     </div>
 
     <button class="btn-market-segments btn-none">
-      <a href="">{% trans "See More " %} <i class="fa-solid fa-arrow-right-long"></i></a>
+      <a href="{% url 'products:products_list' %}">{% trans "See More " %} <i class="fa-solid fa-arrow-right-long"></i></a>
     </button>
   </div>
 
@@ -176,7 +176,7 @@
         <h2 class="section-title">
           {% trans "Adventure Thrills and Excitement Await" %}
         </h2>
-        <a href="/news" class="all-news-button news-btn">
+        <a href="{% url 'news:news_list' %}" class="all-news-button news-btn">
           {% trans "All news" %}
           <i class="fas fa-arrow-right-long all-news-icon"></i>
         </a>
@@ -278,7 +278,7 @@
               <div class="map-header">
                 <h6>{% trans "Are you interested in partnership?" %}</h6>
                 <button class="button-style">
-                  <a href="">{% trans "GET IN TOUCH" %}
+                  <a href="{% url 'contact:contact' %}">{% trans "GET IN TOUCH" %}
                     <i class="fas fa-arrow-right-long"></i></a>
                 </button>
               </div>
@@ -370,7 +370,7 @@
           <h2 class="section-title">
             {% trans "Fresh Insights from Recent Case Studies" %}
           </h2>
-          <a href="/case-studies" class="all-case-studies">{% trans "All Case Studies" %}</a>
+          <a href="{% url 'case_studies:case_studies' %}" class="all-case-studies">{% trans "All Case Studies" %}</a>
         </div>
         <div class="slider-controls case-btn">
           <button class="slider-arrow prev-case">
@@ -476,7 +476,7 @@
                 Lorem Ipsum has been the industry's standard dummy
                 {%endblocktrans %}
               </p>
-              <a href="/contact" class="quote-btn">{% trans "Get a quote" %}
+              <a href="{% url 'contact:contact' %}" class="quote-btn">{% trans "Get a quote" %}
                 <i class="fa-solid fa-arrow-right-long"></i>
               </a>
             </div>
