@@ -4,9 +4,15 @@
 {% block title %}{% trans "home_meta_title" %}{% endblock %}
 {% block description %}{% trans "home_meta_description" %}{% endblock %}
 {% block page_js %}
-  <script src="{% static 'assets/js/home.min.js' %}" defer></script>
-  <script src="{% static 'assets/js/script.min.js' %}" defer></script>
-  <script src="{% static 'assets/js/carousel.min.js' %}" defer></script>
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<script src="{% static 'assets/js/home.min.js' %}" defer></script>
+<script src="{% static 'assets/js/script.min.js' %}" defer></script>
+<script src="{% static 'assets/js/carousel.min.js' %}" defer></script>
+<script src="{% static 'assets/js/map1.js' %}" defer></script>
+<script src="{% static 'assets/js/map2.js' %}" defer></script>
+<script src="{% static 'assets/js/map3.js' %}" defer></script>
+<script src="{% static 'assets/js/map4.js' %}" defer></script>
+
 {% endblock %}
 
 {% block content %}
@@ -104,7 +110,8 @@
         </p>
       </div>
       <button class="btn-market-segments btn-block">
-        <a href="{% url 'products:products_list' %}">{% trans "See More " %}<i class="fa-solid fa-arrow-right-long"></i></a>
+        <a href="{% url 'products:products_list' %}">{% trans "See More " %}<i
+            class="fa-solid fa-arrow-right-long"></i></a>
       </button>
     </div>
 
@@ -125,7 +132,8 @@
     </div>
 
     <button class="btn-market-segments btn-none">
-      <a href="{% url 'products:products_list' %}">{% trans "See More " %} <i class="fa-solid fa-arrow-right-long"></i></a>
+      <a href="{% url 'products:products_list' %}">{% trans "See More " %} <i
+          class="fa-solid fa-arrow-right-long"></i></a>
     </button>
   </div>
 
