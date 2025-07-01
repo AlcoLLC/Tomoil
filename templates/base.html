@@ -8,7 +8,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <link rel="canonical" href="{{ request.scheme }}://{{ request.get_host }}{% url 'products:products_list' %}" />
+  <link rel="canonical" href="https://tomoil.de{{ request.get_full_path }}">
   <link rel="alternate" hreflang="en" href="https://tomoil.de/">
   <link rel="alternate" hreflang="de" href="https://tomoil.de/de/">
   <link rel="alternate" hreflang="es" href="https://tomoil.de/es/">
@@ -18,8 +18,7 @@
 
   <title>{% block title %}{% trans "TOMOIL - High-quality oil products" %}{% endblock %}</title>
 
-  <meta name="description"
-    content="{% block description %}Discover TOMOIL’s range of high-quality engine oils, hydraulic oils, gear lubricants, and synthetic motor oils designed for ultimate performance.{% endblock %}">
+  <meta name="description" content="{% block description %}Discover TOMOIL’s range of high-quality engine oils, hydraulic oils, gear lubricants, and synthetic motor oils designed for ultimate performance.{% endblock %}">
   <meta name="keywords"
     content="{% block keywords %}tomoil, motor oil, car oil, lubricants, synthetic oil, engine oil, hydraulic oil, gear oil{% endblock %}">
   <meta name="robots" content="index, follow">
@@ -33,25 +32,34 @@
 
   <!-- Twitter Card tags -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:site" content="@TomoilOfficial">
+  <meta name="twitter:site" content="@TomoilOfficial"> 
   <meta name="twitter:title" content="TOMOIL">
   <meta name="twitter:description" content="{% trans 'TOMOIL - High-quality oil products' %}">
   <meta name="twitter:image" content="https://tomoil.de/static/images/tomoil-logo.svg">
 
+
   <!-- Styles -->
   <link rel="stylesheet" href="{% static 'assets/css/style.min.css' %}" />
-  <link rel="stylesheet" href="{% static 'assets/css/home.min.css' %}" />
-  <link rel="stylesheet" href="{% static 'assets/css/map.min.css' %}" />
   <link rel="stylesheet" href="{% static 'assets/css/case.min.css' %}" />
+  <link rel="stylesheet" href="{% static 'assets/css/faq.min.css' %}" />
+  <link rel="stylesheet" href="{% static 'assets/css/home.min.css' %}" />
+  <link rel="stylesheet" href="{% static 'assets/css/contact.min.css' %}" />
+  <link rel="stylesheet" href="{% static 'assets/css/services.min.css' %}" />
+  <link rel="stylesheet" href="{% static 'assets/css/news.min.css' %}" />
+  <link rel="stylesheet" href="{% static 'assets/css/map.min.css' %}" />
+  <link rel="stylesheet" href="{% static 'assets/css/brand.min.css' %}" />
+  <link rel="stylesheet" href="{% static 'assets/css/product.min.css' %}" />
+  <link rel="stylesheet" href="{% static 'assets/css/glance&vision&commit.min.css' %}" />
+  <link rel="stylesheet" href="{% static 'assets/css/pds-sds&data-sheet.min.css' %}" />
+  <link rel="stylesheet" href="{% static 'assets/css/search.min.css' %}" />
   <link rel="stylesheet" href="{% static 'assets/css/responsive.min.css' %}" />
-
-  {% block page_css %}{% endblock %}
 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
     integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
     crossorigin="anonymous" referrerpolicy="no-referrer" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
 </head>
 
 <body>
@@ -63,17 +71,23 @@
     {% include 'components/footer.html' %}
   </div>
 
+
   <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
   <script src="{% static 'assets/js/navbar.min.js' %}" defer></script>
   <script src="{% static 'assets/js/script.min.js' %}" defer></script>
   <script src="{% static 'assets/js/home.min.js' %}" defer></script>
-  <script src="{% static 'assets/js/brand.min.js' %}" defer></script>
+  <script src="{% static 'assets/js/faq.min.js' %}" defer></script>
+  <script src="{% static 'assets/js/case.min.js' %}" defer></script>
+  <script src="{% static 'assets/js/services.min.js' %}" defer></script>
   <script src="{% static 'assets/js/news.min.js' %}" defer></script>
+  <script src="{% static 'assets/js/brand.min.js' %}" defer></script>
   <script src="{% static 'assets/js/commitment.min.js' %}" defer></script>
-
-  {% block page_js %}{% endblock %}
-
+  <script src="{% static 'assets/js/product.min.js' %}" defer></script>
+  <script src="{% static 'assets/js/product_detail.min.js' %}" defer></script>
+  <script src="{% static 'assets/js/search.min.js' %}" defer></script>
+  <script src="{% static 'assets/js/contact.min.js' %}" defer></script>
   <script src="{% static 'assets/js/carousel.min.js' %}" defer></script>
+
 
   <script>
     window.addEventListener("scroll", function () {
