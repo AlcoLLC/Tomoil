@@ -3,6 +3,11 @@
 
 {% block title %}{% trans "home_meta_title" %}{% endblock %}
 {% block description %}{% trans "home_meta_description" %}{% endblock %}
+{% block page_js %}
+  <script src="{% static 'assets/js/home.min.js' %}" defer></script>
+  <script src="{% static 'assets/js/script.min.js' %}" defer></script>
+  <script src="{% static 'assets/js/carousel.min.js' %}" defer></script>
+{% endblock %}
 
 {% block content %}
 
