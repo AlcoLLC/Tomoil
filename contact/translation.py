@@ -3,7 +3,7 @@ from .models import HomeSwiper, TomoilReview
 
 @register(HomeSwiper)
 class HomeSwiperTranslationOptions(TranslationOptions):
-    fields = ('title', 'title_description', 'description')
+    fields = ('title', 'title_description', 'description', 'link')
 
 @register(TomoilReview)
 class TomoilReviewTranslationOptions(TranslationOptions):

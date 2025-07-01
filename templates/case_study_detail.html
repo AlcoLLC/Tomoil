@@ -3,20 +3,18 @@
 {% load i18n %}
 {% block title %}{{ case_study.title }}{% endblock %}
 {% block description %}{% trans "meta_description-case_studies" %}{% endblock %}
-{% block page_css %}
-  <link rel="stylesheet" href="{% static 'assets/css/case.min.css' %}" />
-{% endblock %}
+
 
 {% block content %}
 
 <!-- Page Tabs -->
 <div class="page-tabs">
     <div class="section-container breadcrumb">
-        <span>{% trans 'Home' %}</span>
+        <a href="{% url 'contact:home' %}">{% trans 'Home' %}</a>
         <i class="fa-solid fa-angle-right"></i>
-        <span>{% trans 'Case Studies' %}</span>
+        <a href="{% url 'case_studies:case_studies' %}">{% trans 'Case Studies' %}</a>
         <i class="fa-solid fa-angle-right"></i>
-        <a href="#">{{ case_study.title }}</a>
+        <span>{{ case_study.title }}</span>
     </div>
 </div>
 
