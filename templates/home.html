@@ -3,11 +3,6 @@
 
 {% block title %}{% trans "home_meta_title" %}{% endblock %}
 {% block description %}{% trans "home_meta_description" %}{% endblock %}
-{% block page_css %}
-{% if swiper_images %}
-<link rel="preload" as="image" href="{{ swiper_images.0.image.url }}">
-{% endif %}
-{% endblock %}
 
 
 {% block page_js %}
