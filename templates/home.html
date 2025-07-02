@@ -452,7 +452,7 @@
       <div id="carousel">
         <div id="content">
           {% for partner_logo in partner_logos %}
-          <img loading="lazy" src="{{ partner_logo.image.url }}" class="item" />
+          <img loading="lazy" src="{{ partner_logo.image.url }}" alt="{{ partner_logo.image.url }}" class="item" />
           {% endfor %}
         </div>
       </div>
@@ -476,7 +476,7 @@
     <div class="section-container">
       <div class="best-offers-wrapper">
         <div class="offer-left">
-          <img loading="lazy" src="{% static 'images/best-offers-large.jpg' %}" alt="Motor Oil" />
+          <img loading="lazy" src="{% static 'images/best-offers-large.webp' %}" alt="Motor Oil" />
         </div>
         <div class="offer-right">
           <div class="offer-right-top">

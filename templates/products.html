@@ -246,7 +246,7 @@
                                     <i class="fas fa-car"></i>
                                     {% endif %}
                                 </button>
-                                <input type="checkbox" name="application_area" value="{{ application_area.slug }}" 
+                                <input type="checkbox" name="application_area" value="{{ application_area.slug }}"
                                 {%if application_area.slug in selected_application_areas %}checked{%endif%}
                                     style="display: none;" id="modal-app-{{ application_area.slug }}" />
                                 {% endfor %}
@@ -272,7 +272,7 @@
                             </div>
                             {% for specification in specifications %}
                             <label class="modal-checkbox-group">
-                                <input type="checkbox" name="specification" value="{{ specification.slug }}" 
+                                <input type="checkbox" name="specification" value="{{ specification.slug }}"
                                 {%if specification.slug in selected_specifications %}checked{%endif%} />
                                 <span class="modal-checkbox-label">{{ specification.name }}</span>
                             </label>
@@ -338,7 +338,7 @@
                                     onclick="toggleModalPackSize('{{ pack_size.slug }}')">
                                     {{ pack_size.size|floatformat:0 }}
                                 </button>
-                                <input type="checkbox" name="pack_size" value="{{ pack_size.slug }}" 
+                                <input type="checkbox" name="pack_size" value="{{ pack_size.slug }}"
                                 {%if pack_size.slug in selected_pack_sizes %}checked{% endif%} style="display: none;"
                                     id="modal-size-{{ pack_size.slug }}" />
                                 {% endfor %}
@@ -688,15 +688,13 @@
     {
       "@type": "ListItem",
       "position": {{ forloop.counter }},
-      "url": "{{ request.build_absolute_uri(product.get_absolute_url) }}",
+      "url": "{{ request.build_absolute_uri|slice:":-1" }}{% url 'products:products_detail_view' product.slug %}",
       "item": {
         "@type": "Product",
         "name": "{{ product.title|escapejs }}",
         "image": [
           {% if product.image %}
           "{{ product.image.url }}"
-          {% else %}
-          "{{ static('images/placeholder-product.jpg') }}"
           {% endif %}
         ],
         "description": "{{ product.description|truncatechars:150|escapejs }}",
