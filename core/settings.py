@@ -28,7 +28,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 load_dotenv(BASE_DIR / ".env", override=False)
 
 SECRET_KEY = os.getenv('SECRET_KEY', 'dummy-secret')
-DEBUG = os.getenv('DEBUG', 'true').lower() == 'true'
+DEBUG = os.getenv("DEBUG", "false").lower() == "true"
 ALLOWED_HOSTS = ['*']
 
 USE_POSTGRES = os.getenv('USE_POSTGRES', 'false').lower() == 'true'
