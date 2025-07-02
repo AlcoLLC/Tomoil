@@ -1,7 +1,7 @@
 {% extends 'base.html' %} {% load static %} {% load i18n %}
 
 {% block page_css %}
-<link rel="stylesheet" href="{% static 'assets/css/error.css' %}" />
+<link rel="stylesheet" href="{% static 'assets/css/error.min.css' %}" />
 {% endblock %}
 
 {% block page_js %}
@@ -13,9 +13,10 @@
 <div class="error-page">
     <img loading="lazy" class="bg-image" src="{% static 'images/oil.webp' %}" alt="Tomoil Image" />
     <div class="error-content ">
-            <h2 class="title">{% blocktrans %}503 - Service Unavailable{% endblocktrans %}</h2>
-            <p class="description"> {% blocktrans %}The server is temporarily unavailable. Please try again later.{%endblocktrans%}
-            </p>
+        <h2 class="title">{% blocktrans %}503 - Service Unavailable{% endblocktrans %}</h2>
+        <p class="description"> {% blocktrans %}The server is temporarily unavailable. Please try again
+            later.{%endblocktrans%}
+        </p>
     </div>
 </div>
 {% endblock %}
