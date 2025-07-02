@@ -45,6 +45,10 @@
   transition: max-height 0.3s;
   padding: 0 30px;
 }
+
+.need-more-section{
+  margin: 50px auto;
+}
 .need-more-section .need-more-btn,
 .wolver-section .wolver-btn {
   transition: background-color 0.3s;

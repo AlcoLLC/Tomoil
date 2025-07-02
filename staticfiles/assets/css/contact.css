@@ -356,7 +356,9 @@
   outline: none;
   border-color: #223160;
 }
-
+.contact-map-section{
+  margin: 50px auto;
+}
 .contact-map-section iframe {
   border-radius: 20px;
   width: 100% !important;

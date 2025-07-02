@@ -1,6 +1,7 @@
 .data-sheet-section,
 .pds-sds-section {
   margin-top: 50px;
+  margin-bottom: 50px;
 }
 .pds-sds-section .pds-sds-container {
   display: flex;
