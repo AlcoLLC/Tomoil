@@ -240,7 +240,7 @@
   }
 
   .home-header .swiper {
-    height: 85vh;
+    height: 75vh;
   }
 
   .home-header .swiper-slide {
@@ -252,7 +252,7 @@
   }
 
   .home-header .slide-content p:nth-of-type(1) {
-   font-size: 40px;
+    font-size: 40px;
     line-height: 48px;
   }
 
@@ -690,7 +690,7 @@
   }
 
   .home-header .swiper {
-    height: 75vh;
+    height: 65vh;
   }
 
   .home-header .swiper-slide {
@@ -1693,7 +1693,7 @@
   }
 
   .home-header .swiper {
-    height: 65vh;
+    height: 55vh;
   }
 
   .home-header .slide-content span {
@@ -2231,7 +2231,7 @@
   }
 
   .home-header .swiper {
-    height: 60vh;
+    height: 50vh;
   }
 
   .home-header .slide-content p:nth-of-type(1){

@@ -307,4 +307,39 @@
   </div>
 </section>
 
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Product",
+  "name": "{{ product.title|escapejs }}",
+  "image": ["{{ product.image.url|default_if_none:'' }}"],
+  "description": "{{ product.description|truncatechars:150|striptags|escapejs }}",
+  "brand": {
+    "@type": "Brand",
+    "name": "Tomoil"
+  },
+  "review": [
+    {% for review in reviews %}
+    {
+      "@type": "Review",
+      "reviewRating": {
+        "@type": "Rating",
+        "ratingValue": "{{ review.rating }}"
+      },
+      "author": {
+        "@type": "Person",
+        "name": "{{ review.full_name|escapejs }}"
+      },
+      "reviewBody": "{{ review.review|truncatechars:200|striptags|escapejs }}"
+    }{% if not forloop.last %},{% endif %}
+    {% endfor %}
+  ],
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "{{ avg_rating|default:4 }}",
+    "reviewCount": "{{ reviews_count }}"
+  }
+}
+</script>
+
 {% endblock %}

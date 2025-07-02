@@ -678,4 +678,39 @@
     }
 
 </script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  "itemListElement": [
+    {% for product in products %}
+    {
+      "@type": "ListItem",
+      "position": {{ forloop.counter }},
+      "url": "{{ request.build_absolute_uri(product.get_absolute_url) }}",
+      "item": {
+        "@type": "Product",
+        "name": "{{ product.title|escapejs }}",
+        "image": [
+          {% if product.image %}
+          "{{ product.image.url }}"
+          {% else %}
+          "{{ static('images/placeholder-product.jpg') }}"
+          {% endif %}
+        ],
+        "description": "{{ product.description|truncatechars:150|escapejs }}",
+        "sku": "{{ product.product_id }}",
+        "brand": {
+          "@type": "Brand",
+          "name": "{{ product.product_range.name|escapejs }}"
+        }
+      }
+    }{% if not forloop.last %},{% endif %}
+    {% endfor %}
+  ]
+}
+</script>
+
+
 {% endblock %}
