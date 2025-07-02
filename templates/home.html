@@ -4,11 +4,6 @@
 {% block title %}{% trans "home_meta_title" %}{% endblock %}
 {% block description %}{% trans "home_meta_description" %}{% endblock %}
 
-{% block page_css %}
-{% for image in swiper_images|slice:":3" %}
-  <link rel="preload" as="image" href="{{ image.image.url }}">
-{% endfor %}
-{% endblock %}
 
 {% block page_js %}
 <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
