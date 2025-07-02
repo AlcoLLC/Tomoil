@@ -540,3 +540,4 @@ def search_view(request):
     }
     
     return render(request, 'search.html', context)
+
