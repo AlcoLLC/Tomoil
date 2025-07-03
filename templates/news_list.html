@@ -6,6 +6,54 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css" />
 {% endblock %}
 
+
+{% block extra_schema %}
+
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  "name": "{% trans 'Tomoil News and Updates' %}",
+  "description": "{% trans 'Latest news, updates and insights from Tomoil - your trusted partner for high-quality lubricants and oil products.' %}",
+  "url": "{{ request.scheme }}://{{ request.get_host }}{% url 'news:news_list' %}",
+  "numberOfItems": {{ total_count }},
+  "itemListElement": [
+    {% for news_item in news_items %}
+    {
+      "@type": "ListItem",
+      "position": {{ forloop.counter }},
+      "item": {
+        "@type": "Article",
+        "headline": "{{ news_item.title|escapejs }}",
+        "description": "{{ news_item.description|truncatechars:160|striptags|escapejs }}",
+        "url": "{{ request.scheme }}://{{ request.get_host }}{% url 'news:news_detail' news_item.id %}",
+        "datePublished": "{{ news_item.created_at|date:'c' }}",
+        "author": {
+          "@type": "Organization",
+          "name": "Tomoil"
+        },
+        "publisher": {
+          "@type": "Organization",
+          "name": "Tomoil",
+          "logo": {
+            "@type": "ImageObject",
+            "url": "{{ request.scheme }}://{{ request.get_host }}{% static 'images/tomoil-logo.svg' %}"
+          }
+        }{% if news_item.image_one %},
+        "image": {
+          "@type": "ImageObject",
+          "url": "{{ request.scheme }}://{{ request.get_host }}{{ news_item.image_one.url }}"
+        }{% endif %}
+      }
+    }{% if not forloop.last %},{% endif %}
+    {% endfor %}
+  ]
+}
+</script>
+{% endblock %}
+
+
 {% block page_js %}
 <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>{% endblock %}
 
@@ -319,46 +367,5 @@
 
 
 
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "ItemList",
-  "name": "{% trans 'Tomoil News and Updates' %}",
-  "description": "{% trans 'Latest news, updates and insights from Tomoil - your trusted partner for high-quality lubricants and oil products.' %}",
-  "url": "{{ request.scheme }}://{{ request.get_host }}{% url 'news:news_list' %}",
-  "numberOfItems": {{ total_count }},
-  "itemListElement": [
-    {% for news_item in news_items %}
-    {
-      "@type": "ListItem",
-      "position": {{ forloop.counter }},
-      "item": {
-        "@type": "Article",
-        "headline": "{{ news_item.title|escapejs }}",
-        "description": "{{ news_item.description|truncatechars:160|striptags|escapejs }}",
-        "url": "{{ request.scheme }}://{{ request.get_host }}{% url 'news:news_detail' news_item.id %}",
-        "datePublished": "{{ news_item.created_at|date:'c' }}",
-        "author": {
-          "@type": "Organization",
-          "name": "Tomoil"
-        },
-        "publisher": {
-          "@type": "Organization",
-          "name": "Tomoil",
-          "logo": {
-            "@type": "ImageObject",
-            "url": "{{ request.scheme }}://{{ request.get_host }}{% static 'images/tomoil-logo.svg' %}"
-          }
-        }{% if news_item.image_one %},
-        "image": {
-          "@type": "ImageObject",
-          "url": "{{ request.scheme }}://{{ request.get_host }}{{ news_item.image_one.url }}"
-        }{% endif %}
-      }
-    }{% if not forloop.last %},{% endif %}
-    {% endfor %}
-  ]
-}
-</script>
 
 {% endblock %}

@@ -23,9 +23,11 @@ def robots_txt(request):
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('ckeditor/', include('ckeditor_uploader.urls')),
-    path('i18n/', include('django.conf.urls.i18n')),  
+    path('i18n/', include('django.conf.urls.i18n')),
     path('sitemap.xml', sitemap, {'sitemaps': sitemaps}, name='django.contrib.sitemaps.views.sitemap'),
     path('robots.txt', robots_txt),
+    path('sitemap.xml', sitemap, {'sitemaps': sitemaps}),
+
 ]
 
 urlpatterns += i18n_patterns(
@@ -39,7 +41,7 @@ urlpatterns += i18n_patterns(
     path('', include("products.urls")),
     path('', include("search.urls")),
 
-    prefix_default_language=False 
+    prefix_default_language=False
 )
 
 urlpatterns += [

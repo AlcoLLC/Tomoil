@@ -11,6 +11,39 @@
 {% endblock %}
 
 
+
+{% block extra_schema %}
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ContactPage",
+  "mainEntity": {
+    "@type": "Organization",
+    "name": "Tomoil",
+    "url": "https://tomoil.de",
+    "logo": "https://tomoil.de/static/images/tomoil-logo.svg",
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "telephone": "+41 76 494 43 94",
+      "contactType": "Customer Service",
+      "email": "info@tomoil.de",
+      "areaServed": "Worldwide",
+    "availableLanguage": ["English", "German", "Spanish", "French", "Italian", "Chinese"]
+    },
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Leitzstraße 45",
+      "addressLocality": "Stuttgart",
+      "addressCountry": "DE"
+    }
+  }
+}
+</script>
+{% endblock %}
+
+
+
 {% block content %}
 
 <section class="contact-section">
@@ -377,31 +410,6 @@
 </script>
 
 
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "ContactPage",
-  "mainEntity": {
-    "@type": "Organization",
-    "name": "Tomoil",
-    "url": "https://tomoil.de",
-    "logo": "https://tomoil.de/static/images/tomoil-logo.svg",
-    "contactPoint": {
-      "@type": "ContactPoint",
-      "telephone": "+41 76 494 43 94",
-      "contactType": "Customer Service",
-      "email": "info@tomoil.de",
-      "areaServed": "Worldwide",
-    "availableLanguage": ["English", "German", "Spanish", "French", "Italian", "Chinese"]
-    },
-    "address": {
-      "@type": "PostalAddress",
-      "streetAddress": "Leitzstraße 45",
-      "addressLocality": "Stuttgart",
-      "addressCountry": "DE"
-    }
-  }
-}
-</script>
+
 
 {% endblock %}

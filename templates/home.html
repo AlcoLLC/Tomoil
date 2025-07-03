@@ -4,6 +4,23 @@
 {% block title %}{% trans "home_meta_title" %}{% endblock %}
 {% block description %}{% trans "home_meta_description" %}{% endblock %}
 
+{% block extra_schema %}
+
+ <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "Tomoil",
+    "url": "https://tomoil.de",
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": "https://tomoil.de/search?q={search_term_string}",
+      "query-input": "required name=search_term_string"
+    }
+  }
+  </script>
+{% endblock %}
+
 
 {% block page_js %}
 <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
@@ -578,5 +595,7 @@
     </div>
   </section>
 </div>
+
+
 
 {% endblock %}

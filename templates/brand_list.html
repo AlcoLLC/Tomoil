@@ -4,9 +4,53 @@
 
 {% block title %}{% trans "meta_title_brand_portal" %}{% endblock %}
 {% block description %}{% trans "meta_description_brand_portal" %}{% endblock %}
+
 {% block page_css %}
 <link rel="stylesheet" href="{% static 'assets/css/brand.min.css' %}" />
 {% endblock %}
+
+
+{% block extra_schema %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": "Tomoil Brand Portal",
+  "url": "{{ request.build_absolute_uri }}",
+  "description": "{% blocktrans %}Download official Tomoil logos, branding materials, catalogs, brochures, and promotional items.{% endblocktrans %}",
+  "publisher": {
+    "@type": "Organization",
+    "name": "Tomoil",
+    "url": "{{ request.build_absolute_uri|slice:':-1' }}",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "{{ tomoil_guideline.logo_png.url }}"
+    }
+  },
+  "mainEntity": [
+    {% if brand_guidelines %}
+    {
+      "@type": "CreativeWork",
+      "name": "Brand Guidelines",
+      "fileFormat": "application/pdf",
+      "url": "{% url 'brand_portal:download_file' 'guideline' brand_guidelines.0.id %}"
+    },
+    {% endif %}
+    {% if videos %}
+    {
+      "@type": "VideoObject",
+      "name": "{{ videos.0.title }}",
+      "thumbnailUrl": "{{ videos.0.thumbnail.url }}",
+      "uploadDate": "{{ videos.0.created_at|date:'Y-m-d' }}",
+      "contentUrl": "{{ videos.0.video_url }}"
+    }
+    {% endif %}
+  ]
+}
+</script>
+
+{% endblock %}
+
 
 {% block content %}
 
@@ -545,5 +589,9 @@
         });
     });
 </script>
+
+
+
+
 
 {% endblock %}

@@ -9,6 +9,42 @@
 <link rel="stylesheet" href="{% static 'assets/css/product.min.css' %}" />
 {% endblock %}
 
+
+{% block extra_schema %}
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  "itemListElement": [
+    {% for product in products %}
+    {
+      "@type": "ListItem",
+      "position": {{ forloop.counter }},
+      "url": "{{ request.build_absolute_uri|slice:":-1" }}{% url 'products:products_detail_view' product.slug %}",
+      "item": {
+        "@type": "Product",
+        "name": "{{ product.title|escapejs }}",
+        "image": [
+          {% if product.image %}
+          "{{ product.image.url }}"
+          {% endif %}
+        ],
+        "description": "{{ product.description|truncatechars:150|escapejs }}",
+        "sku": "{{ product.product_id }}",
+        "brand": {
+          "@type": "Brand",
+          "name": "{{ product.product_range.name|escapejs }}"
+        }
+      }
+    }{% if not forloop.last %},{% endif %}
+    {% endfor %}
+  ]
+}
+</script>
+{% endblock %}
+
+
 {% block page_js %}
   <script src="{% static 'assets/js/product.min.js' %}" defer></script>
   <script src="{% static 'assets/js/product_detail.min.js' %}" defer></script>
@@ -679,36 +715,7 @@
 
 </script>
 
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "ItemList",
-  "itemListElement": [
-    {% for product in products %}
-    {
-      "@type": "ListItem",
-      "position": {{ forloop.counter }},
-      "url": "{{ request.build_absolute_uri|slice:":-1" }}{% url 'products:products_detail_view' product.slug %}",
-      "item": {
-        "@type": "Product",
-        "name": "{{ product.title|escapejs }}",
-        "image": [
-          {% if product.image %}
-          "{{ product.image.url }}"
-          {% endif %}
-        ],
-        "description": "{{ product.description|truncatechars:150|escapejs }}",
-        "sku": "{{ product.product_id }}",
-        "brand": {
-          "@type": "Brand",
-          "name": "{{ product.product_range.name|escapejs }}"
-        }
-      }
-    }{% if not forloop.last %},{% endif %}
-    {% endfor %}
-  ]
-}
-</script>
+
 
 
 {% endblock %}
