@@ -17,6 +17,9 @@
         <p class="description"> {% blocktrans %}The server is temporarily unavailable. Please try again
             later.{%endblocktrans%}
         </p>
+
+        <a href="{% url 'contact:home' %}" class="error-btn">{% blocktrans %}Go Home{%endblocktrans%}</a>
+
     </div>
 </div>
 {% endblock %}

@@ -109,7 +109,6 @@
   padding: 13px 30px;
   font-size: 12px;
   font-weight: 600;
-  font-family: Unbounded, sans-serif;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -235,7 +234,6 @@
   justify-content: center;
   gap: 8px;
   cursor: pointer;
-  font-family: Unbounded, sans-serif;
   transition: 0.3s;
 }
 .brand-portal-section .download-links .download-button:hover {
@@ -268,7 +266,6 @@
   padding: 12px;
   font-size: 11px;
   font-weight: 500;
-  font-family: Unbounded, sans-serif;
   margin-top: 10px;
   cursor: pointer;
 }
@@ -401,7 +398,6 @@
 }
 .brand-portal-section .image-library-container .brand-item span {
   color: #223160;
-  font-family: "Plus Jakarta Sans", sans-serif;
   flex-grow: 1;
   font-size: 14px;
   font-weight: 600;

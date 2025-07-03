@@ -16,6 +16,9 @@
         <h2 class="title">{% blocktrans %}403 - Forbidden{% endblocktrans %}</h2>
         <p class="description"> {% blocktrans %}You don’t have permission to access this page.{%endblocktrans%}
         </p>
+
+        <a href="{% url 'contact:home' %}" class="error-btn">{% blocktrans %}Go Home{%endblocktrans%}</a>
+
     </div>
 </div>
 {% endblock %}

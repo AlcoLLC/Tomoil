@@ -17,6 +17,9 @@
         <p class="description"> {% blocktrans %}The page you are looking for doesn’t exist or has been
             moved.{%endblocktrans%}
         </p>
+
+        <a href="{% url 'contact:home' %}" class="error-btn">{% blocktrans %}Go Home{%endblocktrans%}</a>
+
     </div>
 </div>
 {% endblock %}

@@ -22,7 +22,6 @@
   color: #223160;
   font-size: 16px;
   margin-bottom: 10px;
-  font-family: Plus Jakarta Sans;
   font-weight: 800;
   line-height: 28px;
   letter-spacing: 0;
@@ -130,7 +129,6 @@
 }
 .our-commitment-section .commitment-container .commitment-item span {
   color: #223160;
-  font-family: "Plus Jakarta Sans", sans-serif;
   flex-grow: 1;
   font-size: 14px;
   font-weight: 600;
@@ -187,7 +185,6 @@
   margin-bottom: 30px;
 }
 .our-commitment-section .commitment-description h3 {
-  font-family: "Plus Jakarta Sans", sans-serif;
   font-weight: 600;
   font-size: 24px;
   line-height: 30px;

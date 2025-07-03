@@ -293,7 +293,6 @@
   z-index: 2;
 }
 .page-tabs .breadcrumb a {
-  font-family: "Plus Jakarta Sans", sans-serif;
   color: #223160;
   text-decoration: none;
   font-weight: 600;
@@ -308,7 +307,6 @@
   max-width: 800px;
 }
 .case-detail-section .section-title {
-  font-family: "Plus Jakarta Sans", sans-serif;
   font-size: 50px;
   color: #223160;
   font-weight: 700;

@@ -9,6 +9,7 @@
 {% block page_css %}
 <link rel="stylesheet" href="{% static 'assets/css/product.min.css' %}" media="print" onload="this.media='all'" />
 <noscript><link rel="stylesheet" href="{% static 'assets/css/product.min.css' %}" /></noscript>
+
 {% endblock %}
 
 
@@ -19,7 +20,11 @@
   "@context": "https://schema.org",
   "@type": "Product",
   "name": "{{ product.title|escapejs }}",
-  "image": ["{{ product.image.url|default_if_none:'' }}"],
+   "image": [
+          {% if product.image %}
+          "{{ product.image.url }}"
+          {% endif %}
+        ],
   "description": "{{ product.description|truncatechars:150|striptags|escapejs }}",
   "brand": {
     "@type": "Brand",
