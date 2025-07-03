@@ -79,9 +79,7 @@
       </div>
       <div>
         <h3>{% trans 'Are you interested in partnership?' %} </h3>
-        <button class="button-style">
-          <a href="">{% trans 'GET IN TOUCH' %} <i class="fas fa-arrow-right-long"></i></a>
-        </button>
+          <a class="button-style" href="">{% trans 'GET IN TOUCH' %} <i class="fas fa-arrow-right-long"></i></a>
       </div>
     </div>
 
@@ -255,10 +253,10 @@
       </p>
 
       <button class="button-style" id="openReviewModal">
-        <a>{% if reviews_count > 0 %}{% trans 'ADD YOUR REVIEW' %}{% else %}
+         {% if reviews_count > 0 %}{% trans 'ADD YOUR REVIEW' %}{% else %}
           {% blocktrans %} BE THE FIRST TO RATE PRODUCTS {% endblocktrans %}
           {% endif %}
-          <i class="fas fa-arrow-right"></i></a>
+          <i class="fas fa-arrow-right"></i>
       </button>
     </div>
     {% if reviews %}
@@ -347,7 +345,7 @@
         </div>
         <p id="form-error-message" style="color: red; text-align: center; margin-bottom: 15px;"></p>
 
-        <button type="submit" class="submit-btn">{% trans 'SUBMIT' %}</button>
+        <button type="submit" class="submit-btn" aria-label="{% trans 'SUBMIT' %}" >{% trans 'SUBMIT' %}</button>
       </form>
     </div>
   </div>

@@ -11,12 +11,12 @@
         mansola it enterprises or organizat {% endblocktrans %}
       </p>
       <div class="social-icons">
-        <a href="https://www.facebook.com/people/Tomoil/61576825467224/" class="social-icon"><i
+        <a href="https://www.facebook.com/people/Tomoil/61576825467224/" class="social-icon" aria-label="Link To Facebook"><i
             class="fab fa-facebook-f"></i></a>
-        <a href="https://www.instagram.com/tomoil.de/" class="social-icon"><i class="fab fa-instagram"></i></a>
+        <a href="https://www.instagram.com/tomoil.de/" class="social-icon" aria-label="Link To Instagram"><i class="fab fa-instagram"></i></a>
         <!-- <a href="#" class="social-icon"><i class="fab fa-youtube"></i></a> -->
         <!-- <a href="#" class="social-icon"><i class="fab fa-tiktok"></i></a> -->
-        <a href="https://www.linkedin.com/company/tomoil-lubricants-auto-chemicals/" class="social-icon"><i
+        <a href="https://www.linkedin.com/company/tomoil-lubricants-auto-chemicals/" class="social-icon" aria-label="Link To Linkedin"><i
             class="fab fa-linkedin-in"></i></a>
       </div>
     </div>
@@ -66,7 +66,7 @@
         <form action="{% url 'contact:footer_email_submit' %}" method="post" class="newsletter-form">
           {% csrf_token %}
           <input type="email" name="email" placeholder="{% trans 'Enter your email' %}" required />
-          <button type="submit" class="submit-btn">
+          <button type="submit" class="submit-btn" aria-label="{% trans 'SUBMIT' %}">
             <i class="fas fa-paper-plane"></i>
           </button>
         </form>
