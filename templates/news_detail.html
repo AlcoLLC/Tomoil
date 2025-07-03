@@ -2,6 +2,8 @@
 
 {% block title %}{{ news_item.title }}{% endblock %}
 {% block description %}{% trans "meta_description_news" %}{% endblock %}
+{% block keywords %}{% trans "news_keywords" %}{% endblock %}
+
 
 {% block page_css %}
 <link rel="stylesheet" href="{% static 'assets/css/news.min.css' %}" media="print" onload="this.media='all'" />
