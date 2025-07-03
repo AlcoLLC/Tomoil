@@ -6,11 +6,16 @@
   background-color: #fff;
   margin: 40px 0;
 }
+.brand-portal-section{
+  margin-bottom: 50px;
+}
+
 .brand-portal-section .tabs {
   display: flex;
   justify-content: center;
   position: relative;
 }
+
 .brand-portal-section .tab {
   padding: 15px 8px;
   cursor: pointer;
@@ -131,7 +136,7 @@
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 20px;
-  margin-bottom: 50px;
+  margin: 30px auto;
 }
 .brand-portal-section .gallery-item,
 .brand-portal-section .logo-variation-item {

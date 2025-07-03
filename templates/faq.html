@@ -2,9 +2,12 @@
 {% load i18n %}
 {% block title %}{% trans "meta_title_faq" %}{% endblock %}
 {% block description %}{% trans "meta_description_faq" %}{% endblock %}
+
 {% block page_css %}
-  <link rel="stylesheet" href="{% static 'assets/css/faq.min.css' %}" />
+<link rel="stylesheet" href="{% static 'assets/css/faq.min.css' %}" media="print" onload="this.media='all'" />
+<noscript><link rel="stylesheet" href="{% static 'assets/css/faq.min.css' %}" /></noscript>
 {% endblock %}
+
 
 {% block extra_schema %}
 <script type="application/ld+json">

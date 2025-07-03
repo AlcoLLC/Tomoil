@@ -1,10 +1,14 @@
 {% extends 'base.html' %} {% load static %} {% load i18n %}
 {% block title %}{% trans "meta_title_news" %}{% endblock %}
 {% block description %}{% trans "meta_description_news" %}{% endblock %}
+
 {% block page_css %}
-<link rel="stylesheet" href="{% static 'assets/css/news.min.css' %}" />
+<link rel="stylesheet" href="{% static 'assets/css/news.min.css' %}" media="print" onload="this.media='all'" />
+<noscript><link rel="stylesheet" href="{% static 'assets/css/news.min.css' %}" /></noscript>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css" />
+
 {% endblock %}
+
 
 
 {% block extra_schema %}

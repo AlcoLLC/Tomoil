@@ -4,8 +4,10 @@
 {% block title %}{% trans "meta_title-glance" %}{% endblock %}
 {% block description %}{% trans "meta_description_glance" %}{% endblock %}
 
+
 {% block page_css %}
-  <link rel="stylesheet" href="{% static 'assets/css/glance&vision&commit.min.css' %}" />
+<link rel="stylesheet" href="{% static 'assets/css/glance&vision&commit.min.css' %}" media="print" onload="this.media='all'" />
+<noscript><link rel="stylesheet" href="{% static 'assets/css/glance&vision&commit.min.css' %}" /></noscript>
 {% endblock %}
 
 {% block page_js %}

@@ -5,11 +5,11 @@
 
 {% block keywords %}{% trans "contact_keywords" %}{% endblock %}
 
+
 {% block page_css %}
-<link rel="stylesheet" href="{% static 'assets/css/contact.min.css' %}" />
-
+<link rel="stylesheet" href="{% static 'assets/css/contact.min.css' %}" media="print" onload="this.media='all'" />
+<noscript><link rel="stylesheet" href="{% static 'assets/css/contact.min.css' %}" /></noscript>
 {% endblock %}
-
 
 
 {% block extra_schema %}
