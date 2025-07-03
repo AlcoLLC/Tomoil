@@ -1,10 +1,15 @@
 {% extends 'base.html' %} 
 {% load static %} 
 {% load i18n %}
-
-
 {% block title %}{% trans "meta_title_pds_sds" %}{% endblock %}
 {% block description %}{% trans "meta_description_pds_sds" %}{% endblock %}
+
+
+{% block page_css %}
+<link rel="stylesheet" href="{% static 'assets/css/pds-sds&data-sheet.min.css' %}" media="print" onload="this.media='all'" />
+<noscript><link rel="stylesheet" href="{% static 'assets/css/pds-sds&data-sheet.min.css' %}" /></noscript>
+{% endblock %}
+
 
 {% block content %}
 {% include 'components/page-header.html' %}

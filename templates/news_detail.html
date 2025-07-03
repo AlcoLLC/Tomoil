@@ -2,10 +2,12 @@
 
 {% block title %}{{ news_item.title }}{% endblock %}
 {% block description %}{% trans "meta_description_news" %}{% endblock %}
+
 {% block page_css %}
-<link rel="stylesheet" href="{% static 'assets/css/news.min.css' %}" />
-<link rel="stylesheet" href="{% static 'assets/css/case.min.css' %}" />
+<link rel="stylesheet" href="{% static 'assets/css/news.min.css' %}" media="print" onload="this.media='all'" />
+<noscript><link rel="stylesheet" href="{% static 'assets/css/news.min.css' %}" /></noscript>
 {% endblock %}
+
 
 {% block extra_schema %}
 <script type="application/ld+json">

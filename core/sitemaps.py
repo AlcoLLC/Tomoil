@@ -63,7 +63,7 @@ class NewsSitemap(Sitemap):
         return obj.created_at
 
     def location(self, obj):
-       return reverse('news:news_detail', kwargs={'slug': obj.slug})
+       return reverse('news:news_detail', kwargs={'pk': obj.pk})
 
 
 
@@ -76,7 +76,7 @@ class CaseStudySitemap(Sitemap):
         return CaseStudy.objects.all()
 
     def location(self, obj):
-        return reverse('case_studies:case_study_detail', kwargs={'slug': obj.slug})
+        return reverse('case_studies:case_study_detail',  kwargs={'pk': obj.pk})
 
 
 

@@ -4,7 +4,8 @@
 {% block description %}{% trans "meta_description_search" %}{% endblock %}
 
 {% block page_css %}
-<link rel="stylesheet" href="{% static 'assets/css/search.min.css' %}" />
+<link rel="stylesheet" href="{% static 'assets/css/search.min.css' %}" media="print" onload="this.media='all'" />
+<noscript><link rel="stylesheet" href="{% static 'assets/css/search.min.css' %}" /></noscript>
 {% endblock %}
 
 {% block page_js %}
