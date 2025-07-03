@@ -231,7 +231,7 @@
                 {{ news_item.description }}
                 {% endif %}
               </p>
-              <a href="{% url 'news:news_detail' news_item.id %}" class="read-more">
+              <a href="{% url 'news:news_detail' news_item.id %}" class="read-more" aria-label="{% trans 'Learn more about news' %}">
                 {% trans "Read More" %}
                 <i class="fas fa-arrow-right-long read-more-icon"></i>
               </a>
@@ -272,7 +272,7 @@
               {{ news_item.description }}
               {% endif %}
             </p>
-            <a href="{% url 'news:news_detail' news_item.id %}" class="read-more">
+            <a href="{% url 'news:news_detail' news_item.id %}" class="read-more" aria-label="{% trans 'Learn more about news' %}">
               {% trans "Read More" %}
               <i class="fas fa-arrow-right-long read-more-icon"></i>
             </a>
@@ -336,7 +336,7 @@
         </div>
         <h3 class="card-title">{title}</h3>
         <p class="card-description">{description}</p>
-        <a href="{% url 'news:news_detail' 0 %}" class="read-more">
+        <a href="{% url 'news:news_detail' 0 %}" class="read-more" aria-label="{% trans 'Learn more about news' %}">
           {% trans "Read More" %}
           <i class="fas fa-arrow-right-long read-more-icon"></i>
         </a>
@@ -363,7 +363,7 @@
       </div>
       <h3 class="card-title">{title}</h3>
       <p class="card-description">{description}</p>
-      <a href="{% url 'news:news_detail' 0 %}" class="read-more">
+      <a href="{% url 'news:news_detail' 0 %}" class="read-more" aria-label="{% trans 'Learn more about news' %}">
         {% trans "Read More" %}
         <i class="fas fa-arrow-right-long read-more-icon"></i>
       </a>
