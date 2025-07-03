@@ -1,8 +1,9 @@
 {% extends 'base.html' %} {% load static %} {% load i18n %}
 
 {% block title %}{{ product.title }}{% endblock %}
-
 {% block description %}{% trans "meta_description_products" %}{% endblock %}
+{% block keywords %}{% trans "product_keywords" %}{% endblock %}
+
 
 
 {% block page_css %}

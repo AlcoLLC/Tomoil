@@ -1,6 +1,8 @@
 {% extends 'base.html' %} {% load static %} {% load i18n %}
 {% block title %}{% trans "meta_title_news" %}{% endblock %}
 {% block description %}{% trans "meta_description_news" %}{% endblock %}
+{% block keywords %}{% trans "news_keywords" %}{% endblock %}
+
 
 {% block page_css %}
 <link rel="stylesheet" href="{% static 'assets/css/news.min.css' %}" media="print" onload="this.media='all'" />

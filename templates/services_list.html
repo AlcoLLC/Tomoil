@@ -1,6 +1,8 @@
 {% extends 'base.html' %} {% load static %} {% load i18n %}
 {% block title %}{% trans "meta_title_services" %}{% endblock %}
 {% block description %}{% trans "meta_description_services" %}{% endblock %}
+{% block keywords %}{% trans "services_keywords" %}{% endblock %}
+
 {% block page_css %}
 <link rel="stylesheet" href="{% static 'assets/css/services.min.css' %}" media="print" onload="this.media='all'" />
 <noscript><link rel="stylesheet" href="{% static 'assets/css/services.min.css' %}" /></noscript>
