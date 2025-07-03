@@ -1,27 +1,22 @@
 @font-face {
   font-family: "Atyp Medium";
-  src: url("/static/assets/font/AtypTextMedium.woff2") format("woff2");
+  src: url("/static/assets/font/AtypTextMedium.otf") format("opentype");
   font-display: swap;
 }
 
 @font-face {
   font-family: "Atyp Regular";
-  src: url("/static/assets/font/AtypTextRegular.woff2") format("woff2");
+  src: url("/static/assets/font/AtypTextRegular.otf") format("opentype");
   font-display: swap;
 }
 
 @font-face {
   font-family: Atyp Bold;
-  src: url("/static/assets/font/AtypTextBold.woff2") format("woff2");
+  src: url("/static/assets/font/AtypTextBold.otf") format("opentype");
   font-display: swap;
 }
 
-.navbar .language-dropdown .dropdown-content button,
-.navbar .nav-list .dropdown-content a {
-  font-size: 12px !important;
-  transition: color 0.3s !important;
-  text-align: center;
-}
+
 
 * {
   margin: 0;
@@ -42,6 +37,13 @@
 .mobile-languages .lang-btn.active,
 body {
   background-color: #f1f3f9;
+}
+
+.navbar .language-dropdown .dropdown-content button,
+.navbar .nav-list .dropdown-content a {
+  font-size: 12px !important;
+  transition: color 0.3s !important;
+  text-align: center;
 }
 
 .main-container {
