@@ -24,12 +24,8 @@
           </ul>
         </div>
         <div class="info-book">
-          <button>
-            <a href="">{% trans 'Lets book a call' %}</a>
-          </button>
-          <button>
-            <a href="{% url 'products:pds_sds' %}">{% trans 'PDS/SDS' %}</a>
-          </button>
+            <a class="button" href="{% url 'contact:contact' %}">{% trans 'Lets book a call' %}</a>
+            <a class="button" href="{% url 'products:pds_sds' %}">{% trans 'PDS/SDS' %}</a>
 
           <div class="language-dropdown">
             <button class="lang-dropdown-btn">
@@ -75,11 +71,9 @@
         </div>
         <div class="flex-buttons">
 
-          <button class="search">
-            <a href="{% url 'search:search' %}"><i class="fa-solid fa-magnifying-glass"></i></a>
-          </button>
+          <a class="search" aria-label="{% trans 'Search' %}" href="{% url 'search:search' %}"><i class="fa-solid fa-magnifying-glass"></i></a>
 
-          <button class="hamburger" id="hamburger">
+          <button class="hamburger" id="hamburger" aria-label="Mobile-Menu">
             <i class="fas fa-bars"></i>
           </button>
 
@@ -112,12 +106,8 @@
 
   <div class="mobile-footer">
     <div class="mobile-buttons">
-      <button class="mobile-btn">
-        <a href="">{% trans 'Lets book a call' %}</a>
-      </button>
-      <button class="mobile-btn">
-        <a href="{% url 'products:pds_sds' %}">{% trans 'PDS/SDS' %}</a>
-      </button>
+        <a class="mobile-btn" href="{% url 'contact:contact' %}">{% trans 'Lets book a call' %}</a>
+        <a class="mobile-btn" href="{% url 'products:pds_sds' %}">{% trans 'PDS/SDS' %}</a>
     </div>
 
     <div class="mobile-contact">

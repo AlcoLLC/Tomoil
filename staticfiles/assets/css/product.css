@@ -591,6 +591,9 @@
 .product-opinions .button-style {
   width: 70%;
 }
+.product-details-info .button-style {
+  width: 50%;
+}
 .product-opinions .opinions {
   width: 40%;
   min-height: 150px;

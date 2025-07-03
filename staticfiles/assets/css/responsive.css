@@ -707,7 +707,7 @@
   }
 
   .home-header .slide-content p:nth-of-type(2),
-  .map-header h6 {
+  .map-header h3 {
     font-size: 16px;
     line-height: 20px;
   }
@@ -747,7 +747,7 @@
   }
 
   .button-style {
-    padding: 4px 24px;
+    padding: 12px 24px;
   }
 
   .button-style a {
@@ -1785,7 +1785,7 @@
     margin-top: 10px;
   }
 
-  .map-header h6 {
+  .map-header h3 {
     font-size: 14px;
     line-height: 15px;
   }
@@ -2059,7 +2059,7 @@
   }
 
   .button-style {
-    padding: 4px 30px;
+    padding: 12px 30px;
   }
 
   .logos-section #content {
