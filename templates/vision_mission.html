@@ -7,6 +7,38 @@
   <link rel="stylesheet" href="{% static 'assets/css/glance&vision&commit.min.css' %}" />
 {% endblock %}
 
+
+
+{% block extra_schema %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "AboutPage",
+  "name": "Tomoil - Vision, Mission & Values",
+  "url": "{{ request.build_absolute_uri }}",
+  "description": "{% trans 'meta_description_vision_mission' %}",
+  "mainEntity": {
+    "@type": "Organization",
+    "name": "Tomoil",
+    "url": "{{ request.scheme }}://{{ request.get_host }}",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "{{ item.image.url }}"
+    },
+    "slogan": "{{ item.vision|striptags|truncatechars:160 }}",
+    "missionStatement": "{{ item.mission|striptags|truncatechars:160 }}",
+    "values": [
+      {% for value in item.values.all %}
+      "{{ value.title|escapejs }}"{% if not forloop.last %},{% endif %}
+      {% endfor %}
+    ]
+  }
+}
+</script>
+
+{% endblock %}
+
+
 {% block page_js %}
   <script src="{% static 'assets/js/commitment.min.js' %}" defer></script>
 {% endblock %}
@@ -56,5 +88,9 @@
 
     </div>
 </section>
+
+
+
+
 
 {% endblock %}

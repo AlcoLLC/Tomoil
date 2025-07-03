@@ -54,6 +54,31 @@
     integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
     crossorigin="anonymous" referrerpolicy="no-referrer" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Tomoil",
+  "url": "https://tomoil.de",
+  "logo": "https://tomoil.de/static/images/tomoil-logo.svg",
+  "contactPoint": {
+    "@type": "ContactPoint",
+    "telephone": "+41 76 494 43 94",
+    "contactType": "customer service",
+    "areaServed": "Worldwide",
+    "availableLanguage": ["English", "German", "Spanish", "French", "Italian", "Chinese"]
+  },
+  "sameAs": [
+    "https://www.linkedin.com/company/tomoil-lubricants-auto-chemicals/",
+    "https://www.instagram.com/tomoil.de/",
+    "https://www.facebook.com/people/Tomoil/61576825467224/"
+  ]
+}
+</script>
+
+
+  {% block extra_schema %}{% endblock %}
 </head>
 
 <body>
@@ -79,29 +104,6 @@
   <script src="{% static 'assets/js/commitment.min.js' %}" defer></script>
 
   {% block page_js %}{% endblock %}
-
-
-  <script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@type": "Organization",
-  "name": "Tomoil",
-  "url": "https://tomoil.de",
-  "logo": "https://tomoil.de/static/images/tomoil-logo.svg",
-  "contactPoint": {
-    "@type": "ContactPoint",
-    "telephone": "+41 76 494 43 94",
-    "contactType": "customer service",
-    "areaServed": "Worldwide",
-    "availableLanguage": ["English", "German", "Spanish", "French", "Italian", "Chinese"]
-  },
-  "sameAs": [
-    "https://www.linkedin.com/company/tomoil-lubricants-auto-chemicals/",
-    "https://www.instagram.com/tomoil.de/",
-    "https://www.facebook.com/people/Tomoil/61576825467224/"
-  ]
-}
-</script>
 
 
 

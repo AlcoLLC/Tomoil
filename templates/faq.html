@@ -6,6 +6,28 @@
   <link rel="stylesheet" href="{% static 'assets/css/faq.min.css' %}" />
 {% endblock %}
 
+{% block extra_schema %}
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": [
+    {% for question in questions %}
+    {
+      "@type": "Question",
+      "name": "{{ question.question|escapejs }}",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "{{ question.answer|striptags|escapejs }}"
+      }
+    }{% if not forloop.last %},{% endif %}
+    {% endfor %}
+  ]
+}
+</script>
+{% endblock %}
+
+
 {% block page_js %}
   <script src="{% static 'assets/js/faq.min.js' %}" defer></script>
 {% endblock %}
