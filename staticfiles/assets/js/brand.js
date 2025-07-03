@@ -20,7 +20,7 @@ document.addEventListener("DOMContentLoaded", function () {
         el.classList.remove("active");
       });
       this.classList.add("active");
-      
+
       const selectedBrand = this.getAttribute("data-brand");
       const selectedContentId = selectedBrand + "-content";
 
@@ -52,8 +52,9 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 
-  closeBtn.addEventListener("click", closeModal);
-
+  if (closeBtn) {
+    closeBtn.addEventListener("click", closeModal);
+  }
   window.addEventListener("click", function (event) {
     if (event.target === modal) {
       closeModal();

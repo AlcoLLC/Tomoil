@@ -56,12 +56,12 @@
             {% endif %} {% if swiper.description %}
             <p>{{ swiper.description }}</p>
             {% endif %} {% if swiper.link %}
-            <a href="{{ swiper.link }}" class="btn-learn">{% trans 'LEARN MORE' %}</a>
+            <a href="{{ swiper.link }}" class="btn-learn" aria-label="{% trans 'Learn more about our products' %}">{% trans 'LEARN MORE' %}</a>
             {% else %}
-            <a href="{% url 'products:products_list' %}" class="btn-learn">{% trans 'LEARN MORE' %}</a>
+            <a href="{% url 'products:products_list' %}" class="btn-learn"aria-label="{% trans 'Learn more about our products' %}">{% trans 'LEARN MORE' %}</a>
             {% endif %}
           </div>
-          <a href="https://api.whatsapp.com/send?phone=4915221050103" class="header-whatsapp">
+          <a href="https://api.whatsapp.com/send?phone=4915221050103" class="header-whatsapp" aria-label="Link Whatsapp">
             <i class="fab fa-whatsapp"></i>
             <span>{% trans 'Any questions? Ask in WhatsApp' %}</span>
           </a>
@@ -135,7 +135,7 @@
           environments - regardless of application complexity. {%endblocktrans%}
         </p>
       </div>
-        <a class="btn-market-segments btn-block" href="{% url 'products:products_list' %}">{% trans "See More " %}<i
+        <a class="btn-market-segments btn-block" href="{% url 'products:products_list' %}" aria-label="{% trans 'Learn more about our products' %}">{% trans "See More " %}<i
             class="fa-solid fa-arrow-right-long"></i></a>
     </div>
 
@@ -155,7 +155,7 @@
       </ul>
     </div>
 
-      <a class="btn-market-segments btn-none" href="{% url 'products:products_list' %}">{% trans "See More " %} <i
+      <a class="btn-market-segments btn-none" href="{% url 'products:products_list' %}" aria-label="{% trans 'Learn more about our products' %}">{% trans "See More " %} <i
           class="fa-solid fa-arrow-right-long"></i></a>
   </div>
 
@@ -193,7 +193,7 @@
             </div>
             <div class="card-button-container">
               <a href="{% url 'products:products_list' %}?product_range={{ product_range.slug }}" class="card-button" aria-label="Filter Product Range">
-                <i class="fa-solid fa-arrow-up" style="transform: rotate(45deg)"></i>
+                <i class="fa-solid fa-arrow-up"></i>
               </a>
             </div>
           </div>

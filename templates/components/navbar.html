@@ -54,7 +54,7 @@
         <div class="nav-list">
           <ul>
             <li class="dropdown">
-              <a class="no-pointer">{% trans 'Who we Are' %}</a>
+              <a  href="{% url 'whoweare:glance' %}" >{% trans 'Who we Are' %}</a>
               <div class="dropdown-content">
                 <a href="{% url 'whoweare:glance' %}">{% trans 'GLANCE' %}</a>
                 <a href="{% url 'whoweare:vision_mission' %}">{% trans 'VISION & MISSION' %}</a>
@@ -88,7 +88,7 @@
   <div class="mobile-nav-content">
     <ul class="mobile-nav-list">
       <li class="mobile-dropdown">
-        <a class="mobile-dropdown-head">{% trans 'WHO WE ARE' %} <i class="fa-solid fa-chevron-right"></i></a>
+        <a  href="{% url 'whoweare:glance' %}" class="mobile-dropdown-head">{% trans 'WHO WE ARE' %} <i class="fa-solid fa-chevron-right"></i></a>
         <div class="mobile-dropdown-content">
           <a href="{% url 'whoweare:glance' %}">{% trans 'GLANCE' %}</a>
           <a href="{% url 'whoweare:vision_mission' %}">{% trans 'VISION & MISSION' %}</a>
