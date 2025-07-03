@@ -29,7 +29,7 @@ load_dotenv(BASE_DIR / ".env", override=False)
 
 SECRET_KEY = os.getenv('SECRET_KEY', 'dummy-secret')
 DEBUG = os.getenv('DEBUG', 'true').lower() in ('true', '1', 'yes')
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = ['tomoil.de', 'www.tomoil.de','127.0.0.1', 'localhost']
 
 USE_POSTGRES = os.getenv('USE_POSTGRES', 'false').lower() == 'true'
 

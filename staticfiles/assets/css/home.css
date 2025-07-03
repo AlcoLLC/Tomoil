@@ -1,22 +1,5 @@
-@import url(https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap);
-@import url(https://fonts.googleapis.com/css2?family=Unbounded:wght@200..900&display=swap);
-*,
-.section-title {
-  font-family: "Atyp Medium", sans-serif;
-}
-.navbar .language-dropdown .dropdown-content button,
-.navbar .nav-list .dropdown-content a {
-  font-size: 12px !important;
-  transition: color 0.3s !important;
-  font-family: "Plus Jakarta Sans", sans-serif;
-  text-align: center;
-}
-.home-header .slide-content p:nth-of-type(1),
-.mobile-btn a,
-.navbar .info-book button,
-.navbar .nav-list .dropdown-content a {
-  font-family: "Plus Jakarta Sans", sans-serif;
-}
+
+
 @font-face {
   font-family: "Atyp Medium";
   src: url("/static/assets/font/AtypTextMedium.woff2") format("woff2");
@@ -32,12 +15,22 @@
   src: url("/static/assets/font/AtypTextBold.woff2") format("woff2");
   font-display: swap;
 }
+
+.navbar .language-dropdown .dropdown-content button,
+.navbar .nav-list .dropdown-content a {
+  font-size: 12px !important;
+  transition: color 0.3s !important;
+  text-align: center;
+}
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   text-decoration: none;
   list-style: none;
+    font-family: "Atyp Medium", sans-serif;
+
 }
 .container {
   width: 1300px;
@@ -62,6 +55,8 @@ body {
   font-size: 40px;
   line-height: 50px;
   font-weight: 600;
+    font-family: "Atyp Medium", sans-serif;
+
 }
 .section-description {
   font-family: "Atyp Regular", sans-serif;
@@ -537,7 +532,6 @@ nav {
   background-color: #e22131;
   color: #fff;
   padding: 6px 14px;
-  font-family: Unbounded, sans-serif;
   font-weight: 600;
   font-size: 14px;
   line-height: 20px;
@@ -633,7 +627,6 @@ nav {
 .market-segments .btn-market-segments a {
   white-space: nowrap;
   color: #fff;
-  font-family: "Plus Jakarta Sans", sans-serif;
   font-weight: 600;
   font-size: 14px;
   line-height: 30px;
@@ -992,7 +985,6 @@ nav {
   height: 30px;
 }
 .comments-section .swiper-slide > div:first-of-type > p {
-  font-family: "Plus Jakarta Sans", sans-serif;
   font-weight: 400;
   font-size: 18px;
   line-height: 26px;
@@ -1172,7 +1164,6 @@ nav {
   align-items: center;
   justify-content: center;
   gap: 10px;
-  font-family: Unbounded;
   font-weight: 600;
   font-size: 12px;
   line-height: 16px;

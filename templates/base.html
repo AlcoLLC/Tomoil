@@ -25,7 +25,8 @@
   <meta name="robots" content="index, follow">
   <meta property="og:title" content="TOMOIL">
   <meta property="og:type" content="website">
-  <meta property="og:description" content="{% trans 'Discover Tomoil™ – manufacturer of premium motor oils. Explore our engine oils, gear lubricants, and synthetic oil range.' %}">
+  <meta property="og:description"
+    content="{% trans 'Discover Tomoil™ – manufacturer of premium motor oils. Explore our engine oils, gear lubricants, and synthetic oil range.' %}">
   <meta property="og:image" content="{% static 'images/tomoil-logo.svg' %}">
   <meta property="og:url" content="https://tomoil.de{{ request.path }}">
   <link rel="icon" type="image/svg+xml" href="{% static 'images/tomoil-logo.svg' %}">
@@ -35,20 +36,28 @@
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:site" content="@TomoilOfficial">
   <meta name="twitter:title" content="TOMOIL">
-  <meta name="twitter:description" content="{% trans 'Discover Tomoil™ – manufacturer of premium motor oils. Explore our engine oils, gear lubricants, and synthetic oil range.' %}">
+  <meta name="twitter:description"
+    content="{% trans 'Discover Tomoil™ – manufacturer of premium motor oils. Explore our engine oils, gear lubricants, and synthetic oil range.' %}">
   <meta name="twitter:image" content="https://tomoil.de/static/images/tomoil-logo.svg">
   <meta name="ahrefs-site-verification" content="9e4cf268be7fc6c2b3be9598e3c023ec7ab0e3f8a6e5ac6884bf3d6fa032897c">
 
+  <!-- Fonts -->
+
+  <link rel="preload" as="font" href="{% static 'assets/font/AtypTextMedium.woff2' %}" type="font/woff2"
+    crossorigin="anonymous">
+  <link rel="preload" as="font" href="{% static 'assets/font/AtypTextRegular.woff2' %}" type="font/woff2"
+    crossorigin="anonymous">
+  <link rel="preload" as="font" href="{% static 'assets/font/AtypTextBold.woff2' %}" type="font/woff2"
+    crossorigin="anonymous">
+
   <!-- Styles -->
-   
+
   <link rel="stylesheet" href="{% static 'assets/css/style.min.css' %}" />
   <link rel="stylesheet" href="{% static 'assets/css/home.min.css' %}" />
   <link rel="stylesheet" href="{% static 'assets/css/case.min.css' %}" media="print" onload="this.media='all'" />
   <noscript>
     <link rel="stylesheet" href="{% static 'assets/css/case.min.css' %}" />
   </noscript>
-
-
 
 
   {% block page_css %}{% endblock %}

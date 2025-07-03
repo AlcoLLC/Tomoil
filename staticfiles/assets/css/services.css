@@ -48,7 +48,6 @@
   display: block;
 }
 .section-services .service-item span {
-  font-family: "Plus Jakarta Sans", sans-serif;
   flex-grow: 1;
   font-size: 14px;
   font-weight: 600;
@@ -120,7 +119,6 @@
   justify-content: center;
 }
 .section-services .stat-value {
-  font-family: "Plus Jakarta Sans", sans-serif;
   font-weight: 700;
   font-size: 24px;
   color: #223160;
@@ -139,7 +137,6 @@
   text-align: justify;
 }
 .section-services .service-description h3 {
-  font-family: "Plus Jakarta Sans", sans-serif;
   font-weight: 600;
   font-size: 30px;
   line-height: 36px;

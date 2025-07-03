@@ -58,6 +58,27 @@
   clip-path: polygon(0 0, 100% 0, 85% 100%, 0 100%);
 }
 
+.error-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: transparent;
+  margin-top: 50px;
+  color: #fff;
+  font-weight: 600;
+  padding: 10px 20px;
+  border: 1px solid #ffffff79;
+  border-radius: 6px;
+  width: 180px;
+  transition: all 0.4s ease-in-out;
+  position: relative;
+  font-size: 18px;
+}
+
+.error-btn:hover {
+background-color: #22316086;
+}
+
 @media (max-width: 850px) {
   .error-page .error-content {
     width: 80%;
