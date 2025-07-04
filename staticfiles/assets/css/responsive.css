@@ -2018,13 +2018,12 @@
     width: 90%;
   }
 
-  .market-segments .btn-block {
-    display: none !important;
+  .btn-market-segments-flex{
+    flex-direction: column;
   }
 
-  .market-segments .btn-none {
+  .market-segments .btn-market-segments{
     width: 100%;
-    display: block !important;
   }
 
   .market-segments ul li a {
