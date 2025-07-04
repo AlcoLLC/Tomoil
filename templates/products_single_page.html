@@ -1,7 +1,7 @@
 {% extends 'base.html' %} {% load static %} {% load i18n %}
 
-{% block title %}{{ product.title }}{% endblock %}
-{% block description %}{% trans "meta_description_products" %}{% endblock %}
+{% block title %}{{ product.title|truncatechars:60 }}{% endblock %}
+{% block description %}{{ product.description|truncatechars:160 }}{% endblock %}
 {% block keywords %}{% trans "product_keywords" %}{% endblock %}
 
 
@@ -25,7 +25,7 @@
           "{{ product.image.url }}"
           {% endif %}
         ],
-  "description": "{{ product.description|truncatechars:150|striptags|escapejs }}",
+  "description": "{{ product.description|truncatechars:155|striptags|escapejs }}",
   "brand": {
     "@type": "Brand",
     "name": "Tomoil"

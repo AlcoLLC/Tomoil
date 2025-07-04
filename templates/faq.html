@@ -1,7 +1,7 @@
 {% extends 'base.html' %} {% load static %}
 {% load i18n %}
-{% block title %}{% trans "meta_title_faq" %}{% endblock %}
-{% block description %}{% trans "meta_description_faq" %}{% endblock %}
+{% block title %}{{ _("meta_title_faq")|truncatechars:60 }}{% endblock %}
+{% block description %}{{ _("meta_description_faq")|truncatechars:160 }}{% endblock %}
 
 {% block page_css %}
 <link rel="stylesheet" href="{% static 'assets/css/faq.min.css' %}" media="print" onload="this.media='all'" />

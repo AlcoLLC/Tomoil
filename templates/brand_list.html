@@ -2,18 +2,14 @@
 {% load static %}
 {% load i18n %}
 
-{% block title %}{% trans "meta_title_brand_portal" %}{% endblock %}
-{% block description %}{% trans "meta_description_brand_portal" %}{% endblock %}
+{% block title %}{{ _("meta_title_brand_portal")|truncatechars:60 }}{% endblock %}
+{% block description %}{{ _("meta_description_brand_portal")|truncatechars:160 }}{% endblock %}
 {% block keywords %}{% trans "brand_portal_keywords" %}{% endblock %}
-
-
 
 {% block page_css %}
 <link rel="stylesheet" href="{% static 'assets/css/brand.min.css' %}" media="print" onload="this.media='all'" />
 <noscript><link rel="stylesheet" href="{% static 'assets/css/brand.min.css' %}" /></noscript>
 {% endblock %}
-
-
 
 {% block extra_schema %}
 <script type="application/ld+json">

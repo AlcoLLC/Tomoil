@@ -1,8 +1,8 @@
 {% extends 'base.html' %} {% load static %} {% load i18n %}
 
 
-{% block title %}{% trans "meta_title_case_studies" %}{% endblock %}
-{% block description %}{% trans "meta_description_case_studies" %}{% endblock %}
+{% block title %}{{ _("meta_title_case_studies")|truncatechars:60 }}{% endblock %}
+{% block description %}{{ _("meta_description_case_studies")|truncatechars:160 }}{% endblock %}
 
 
 {% block page_js %}

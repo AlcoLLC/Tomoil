@@ -2,8 +2,8 @@
 {% load static %}
 {% load i18n %}
 
-{% block title %}{% trans "meta_title_products" %}{% endblock %}
-{% block description %}{% trans "meta_description_products" %}{% endblock %}
+{% block title %}{{ _("meta_title_products")|truncatechars:60 }}{% endblock %}
+{% block description %}{{ _("meta_description_products")|truncatechars:160 }}{% endblock %}
 {% block keywords %}{% trans "product_keywords" %}{% endblock %}
 
 {% block page_css %}
