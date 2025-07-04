@@ -8,12 +8,12 @@
 
 
 {% block page_css %}
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
 {% endblock %}
 
 {% block extra_schema %}
 
- <script type="application/ld+json">
+<script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "WebSite",
@@ -49,19 +49,32 @@
       <div class="swiper-wrapper">
         {% for swiper in swiper_images %}
         <div class="swiper-slide" style="background-image: url('{{ swiper.image.url }}');">
-          <div class="slide-content">
+          {% if swiper.link %}
+          <a href="{{ swiper.link }}" class="slide-content">
             <span>{{ swiper.title }}</span>
             {% if swiper.title_description %}
             <p>{{ swiper.title_description }}</p>
-            {% endif %} {% if swiper.description %}
-            <p>{{ swiper.description }}</p>
-            {% endif %} {% if swiper.link %}
-            <a href="{{ swiper.link }}" class="btn-learn" aria-label="{% trans 'Learn more about our products' %}">{% trans 'LEARN MORE' %}</a>
-            {% else %}
-            <a href="{% url 'products:products_list' %}" class="btn-learn"aria-label="{% trans 'Learn more about our products' %}">{% trans 'LEARN MORE' %}</a>
             {% endif %}
-          </div>
-          <a href="https://api.whatsapp.com/send?phone=4915221050103" class="header-whatsapp" aria-label="Link Whatsapp">
+            {% if swiper.description %}
+            <p>{{ swiper.description }}</p>
+            {% endif %}
+            <span class="btn-learn">{% trans 'LEARN MORE' %}</span>
+          </a>
+          {% else %}
+          <a href="{% url 'products:products_list' %}" class="slide-content">
+            <span>{{ swiper.title }}</span>
+            {% if swiper.title_description %}
+            <p>{{ swiper.title_description }}</p>
+            {% endif %}
+            {% if swiper.description %}
+            <p>{{ swiper.description }}</p>
+            {% endif %}
+            <span class="btn-learn">{% trans 'LEARN MORE' %}</span>
+          </a>
+          {% endif %}
+
+          <a href="https://api.whatsapp.com/send?phone=4915221050103" class="header-whatsapp"
+            aria-label="Link Whatsapp">
             <i class="fab fa-whatsapp"></i>
             <span>{% trans 'Any questions? Ask in WhatsApp' %}</span>
           </a>
@@ -127,18 +140,19 @@
   <!-- Market Segments Section -->
   <div class="section-container market-segments">
     <div>
-      <div class="market-segments-header">
-        <h2 class="section-title">{% trans 'Market Segments' %}</h2>
-        <p class="section-description">
-          {% blocktrans %} Tomoil products are developed to meet the diverse
-          technical requirements of various industries and operating
-          environments - regardless of application complexity. {%endblocktrans%}
-        </p>
-      </div>
-        <a class="btn-market-segments btn-block" href="{% url 'products:products_list' %}" aria-label="{% trans 'Learn more about our products' %}">{% trans "See More " %}<i
-            class="fa-solid fa-arrow-right-long"></i></a>
+      <a class="btn-market-segments-flex" href="{% url 'products:products_list' %}">
+        <div class="market-segments-header">
+          <h2 class="section-title">{% trans 'Market Segments' %}</h2>
+          <p class="section-description">
+            {% blocktrans %} Tomoil products are developed to meet the diverse
+            technical requirements of various industries and operating
+            environments - regardless of application complexity. {%endblocktrans%}
+          </p>
+        </div>
+        <span class="btn-market-segments btn-block"> {% trans "See More " %}<i
+            class="fa-solid fa-arrow-right-long"></i></span>
+      </a>
     </div>
-
 
     <div class="market-segments-list ">
       <ul>
@@ -155,8 +169,9 @@
       </ul>
     </div>
 
-      <a class="btn-market-segments btn-none" href="{% url 'products:products_list' %}" aria-label="{% trans 'Learn more about our products' %}">{% trans "See More " %} <i
-          class="fa-solid fa-arrow-right-long"></i></a>
+    <a class="btn-market-segments btn-none" href="{% url 'products:products_list' %}"
+      aria-label="{% trans 'See more about our product segments' %}">{% trans "See More " %} <i
+        class="fa-solid fa-arrow-right-long"></i></a>
   </div>
 
   <!-- Product Range Section -->
@@ -192,7 +207,8 @@
               </p>
             </div>
             <div class="card-button-container">
-              <a href="{% url 'products:products_list' %}?product_range={{ product_range.slug }}" class="card-button" aria-label="Filter Product Range">
+              <a href="{% url 'products:products_list' %}?product_range={{ product_range.slug }}" class="card-button"
+                aria-label="Filter Product Range">
                 <i class="fa-solid fa-arrow-up"></i>
               </a>
             </div>
@@ -234,16 +250,19 @@
                 <i class="fas fa-share-alt share-icon"></i>
                 {% trans "Share" %}
               </div>
+              <div class="copy-message">{% trans "Copied!" %}</div>
+
             </div>
-            <h3 class="card-title">{{ large_card_news.title }}</h3>
-            <p class="card-description">
-              {{ large_card_news.description|truncatewords:20 }}
-            </p>
+
             <a href="{% url 'news:news_detail' large_card_news.id %}" class="read-more">
-              {% trans "Read More" %}
-              <i class="fas fa-arrow-right-long read-more-icon"></i>
+              <h3 class="card-title">{{ large_card_news.title }}</h3>
+              <p class="card-description">
+                {{ large_card_news.description|truncatewords:20 }}
+              </p>
+              <span>{% trans "Read More" %} <i class="fas fa-arrow-right-long read-more-icon"></i></span>
             </a>
-            <div class="copy-message">{% trans "Copied!" %}</div>
+
+
           </div>
         </div>
         {% endif %} {% for news in small_cards_news %}
@@ -262,18 +281,20 @@
                   onclick="copyToClipboard(this)">
                   <i class="fas fa-share-alt share-icon"></i>
                   {% trans "Share" %}
+                  <div class="copy-message">{% trans "Copied!" %}</div>
                 </div>
               </div>
             </div>
-            <h3 class="card-title">{{ news.title }}</h3>
-            <p class="card-description">
-              {{ news.description|truncatewords:15 }}
-            </p>
-            <a href="{% url 'news:news_detail' news.id %}" class="read-more">
-              {% trans "Read More" %}
-              <i class="fas fa-arrow-right-long read-more-icon"></i>
+
+            <a href="{% url 'news:news_detail' news.id %}" class="read-more"
+              aria-label="{% trans 'Read more about' %} {{ news.title }}">
+              <h3 class="card-title">{{ news.title }}</h3>
+              <p class="card-description">
+                {{ news.description|truncatewords:15 }}
+              </p>
+              <span> {% trans "Read More" %} <i class="fas fa-arrow-right-long read-more-icon"></i></span>
+
             </a>
-            <div class="copy-message">{% trans "Copied!" %}</div>
           </div>
         </div>
         {% endfor %}
@@ -312,19 +333,26 @@
             <div id="map-container">
               <div class="map-header">
                 <h3>{% trans "Are you interested in partnership?" %}</h3>
-                  <a class="button-style" href="{% url 'contact:contact' %}">{% trans "GET IN TOUCH" %}
-                    <i class="fas fa-arrow-right-long"></i></a>
+                <a class="button-style" href="{% url 'contact:contact' %}">{% trans "GET IN TOUCH" %}
+                  <i class="fas fa-arrow-right-long"></i></a>
               </div>
             </div>
             <link href="{% static 'assets/css/map.min.css' %}" rel="stylesheet" />
-            <script src="{% static 'assets/js/raphael.min.js' %}"  ></script>
-            <script src="{% static 'assets/js/settings.min.js' %}" ></script>
-            <script src="{% static 'assets/js/paths.min.js' %}" ></script>
-            <script src="{% static 'assets/js/map.min.js' %}" ></script>
+            <script src="{% static 'assets/js/raphael.min.js' %}"></script>
+            <script src="{% static 'assets/js/settings.min.js' %}"></script>
+            <script src="{% static 'assets/js/paths.min.js' %}"></script>
+            <script src="{% static 'assets/js/map.min.js' %}"></script>
             <script>
               map_cfg.mapWidth = 0;
               var map = new FlaMap(map_cfg);
               map.drawOnDomReady("map-container");
+            </script>
+            <script>
+              document.addEventListener("DOMContentLoaded", function () {
+                document.querySelectorAll('a.fm-scale-plus, a.fm-scale-minus').forEach(link => {
+                  link.remove();
+                });
+              });
             </script>
           </div>
         </section>
