@@ -439,9 +439,6 @@ document.addEventListener("DOMContentLoaded", function () {
     const email = document.querySelector('input[name="email"]');
     const country = document.getElementById("country");
     const enquiryType = document.getElementById("enquiry_type");
-    const contactMethod = document.querySelector(
-      'input[name="preferred_contact_method"]:checked'
-    );
     const phoneValid = phoneInput.classList.contains("valid");
 
     const recaptchaResponse =
