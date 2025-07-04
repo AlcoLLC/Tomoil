@@ -389,7 +389,7 @@
 
 .contact-section .custom-select:after {
   content: "\f078";
-  font-family: "Font Awesome 5 Free";
+  font-family: "Font Awesome 6 Free";
   font-weight: 900;
   position: absolute;
   right: 15px;
@@ -401,7 +401,6 @@
 
 .contact-section .custom-select.open:after {
   content: "\f077";
-  /* FontAwesome chevron-up icon */
 }
 
 .contact-section .custom-options {

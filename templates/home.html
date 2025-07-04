@@ -28,6 +28,7 @@
 
 
 {% block page_js %}
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js" defer></script>
 <script src="{% static 'assets/js/home.min.js' %}" defer></script>
 <script src="{% static 'assets/js/script.min.js' %}" defer></script>
@@ -47,13 +48,7 @@
     map.drawOnDomReady("map-container");
   });
 </script>
-<script>
-  document.addEventListener("DOMContentLoaded", function () {
-    document.querySelectorAll('a.fm-scale-plus, a.fm-scale-minus').forEach(link => {
-      link.remove();
-    });
-  });
-</script>
+
 {% endblock %}
 
 {% block content %}
@@ -65,7 +60,8 @@
       <div class="swiper-wrapper">
         {% for swiper in swiper_images %}
         <div class="swiper-slide">
-          <img class="background-image" src="{{ swiper.image.url }}" alt="{{ swiper.image.url }} Slider Image" fetchpriority="high"  loading="eager" />
+          <img class="background-image" src="{{ swiper.image.url }}" alt="{{ swiper.image.url }} Slider Image"
+            fetchpriority="high" loading="eager" />
           {% if swiper.link %}
           <a href="{{ swiper.link }}" class="slide-content">
             <span>{{ swiper.title }}</span>
@@ -349,6 +345,13 @@
                   <i class="fas fa-arrow-right-long"></i></a>
               </div>
             </div>
+            <script>
+              document.addEventListener("DOMContentLoaded", function () {
+                document.querySelectorAll('a.fm-scale-plus, a.fm-scale-minus').forEach(link => {
+                  link.remove();
+                });
+              });
+            </script>
           </div>
         </section>
       </main>
