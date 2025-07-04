@@ -476,53 +476,53 @@ document.addEventListener("DOMContentLoaded", function () {
       }
     }
   }
+  if (form) {
+    form.addEventListener("submit", function (e) {
+      let isFormValid = true;
 
-  form.addEventListener("submit", function (e) {
-    let isFormValid = true;
+      const requiredFields = [
+        'input[name="first_name"]',
+        'input[name="last_name"]',
+        'input[name="email"]',
+        "#country_code",
+        "#contact_number",
+        "#country",
+        "#enquiry_type",
+        "#consent",
+      ];
 
-    const requiredFields = [
-      'input[name="first_name"]',
-      'input[name="last_name"]',
-      'input[name="email"]',
-      "#country_code",
-      "#contact_number",
-      "#country",
-      "#enquiry_type",
-      "#consent",
-    ];
+      requiredFields.forEach((selector) => {
+        const field = document.querySelector(selector);
+        if (field && !validateField(field)) {
+          isFormValid = false;
+        }
+      });
 
-    requiredFields.forEach((selector) => {
-      const field = document.querySelector(selector);
-      if (field && !validateField(field)) {
+      if (!validateRadioGroup("preferred_contact_method")) {
         isFormValid = false;
       }
-    });
 
-    if (!validateRadioGroup("preferred_contact_method")) {
-      isFormValid = false;
-    }
-
-    const recaptchaResponse =
-      grecaptcha && grecaptcha.getResponse && grecaptcha.getResponse();
-    if (!recaptchaResponse || recaptchaResponse.length === 0) {
-      e.preventDefault();
-      if (recaptchaError) {
-        recaptchaError.style.display = "block";
+      const recaptchaResponse =
+        grecaptcha && grecaptcha.getResponse && grecaptcha.getResponse();
+      if (!recaptchaResponse || recaptchaResponse.length === 0) {
+        e.preventDefault();
+        if (recaptchaError) {
+          recaptchaError.style.display = "block";
+        }
+        alert("Please complete the reCAPTCHA verification before submitting.");
+        return false;
       }
-      alert("Please complete the reCAPTCHA verification before submitting.");
-      return false;
-    }
 
-    if (!isFormValid) {
-      e.preventDefault();
-      alert("Please fill in all required fields correctly.");
-      return false;
-    }
+      if (!isFormValid) {
+        e.preventDefault();
+        alert("Please fill in all required fields correctly.");
+        return false;
+      }
 
-    submitButton.disabled = true;
-    submitButton.textContent = "Submitting...";
-  });
-
+      submitButton.disabled = true;
+      submitButton.textContent = "Submitting...";
+    });
+  }
   document.querySelectorAll("input, select, textarea").forEach((input) => {
     input.addEventListener("input", function () {
       validateField(this);
@@ -576,6 +576,7 @@ function enableSubmitButton() {
     recaptchaError.style.display = "none";
   }
   const event = new Event("change");
+
   document.querySelector(".contact-form").dispatchEvent(event);
 }
 
