@@ -663,7 +663,6 @@ nav {
 .comments-section .swiper-button-prev::after,
 .home-header .swiper-button-next::after,
 .home-header .swiper-button-prev::after,
-.market-segments .btn-none,
 .product-range .navigation.nav-none,
 .product-range .swiper-button-next::after,
 .product-range .swiper-button-prev::after {
@@ -731,6 +730,7 @@ nav {
   display: flex;
   align-items: start;
   justify-content: space-between;
+  gap: 20px;
 }
 
 .market-segments .btn-market-segments:hover {
