@@ -439,6 +439,10 @@ document.addEventListener("DOMContentLoaded", function () {
     const email = document.querySelector('input[name="email"]');
     const country = document.getElementById("country");
     const enquiryType = document.getElementById("enquiry_type");
+    const phoneInput = document.getElementById("contact_number");
+    if (!phoneInput) {
+      return false;
+    }
     const phoneValid = phoneInput.classList.contains("valid");
 
     const recaptchaResponse =
