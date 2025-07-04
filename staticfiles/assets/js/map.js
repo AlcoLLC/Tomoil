@@ -4876,7 +4876,7 @@ FlaMap = (function () {
       d97.O9G(52);
       var U9T = d97.d6A(9, 9329, 83443, 3);
       this[e_6][v42] =
-        '<div class="fm-tooltip"><div class="fm-tooltip-name"></div><table class="fm-tooltip-frame"><tr class="fm-tooltip-frame" valign="top"><td class="fm-tooltip-image"></td><td class="fm-tooltip-comment"><a href="javascript:void(0)" class="fm-tooltip-x"><img loading="lazy"  src="' +
+        '<div class="fm-tooltip"><div class="fm-tooltip-name"></div><table class="fm-tooltip-frame"><tr class="fm-tooltip-frame" valign="top"><td class="fm-tooltip-image"></td><td class="fm-tooltip-comment"><a href="#" role="button" aria-label="Close tooltip" class="fm-tooltip-x"><img loading="lazy"  src="' +
         b3 +
         d97.P6y(J1z) +
         d97.P6y(s_X) +
