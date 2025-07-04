@@ -1,7 +1,7 @@
 {% extends 'base.html' %} {% load static %} {% load i18n %}
 
-{% block title %}{% trans 'meta_title_commitments' %}{% endblock %}
-{% block description %}{% trans "meta_description_commitments" %}{% endblock %}
+{% block title %}{{ _("meta_title_commitments")|truncatechars:60 }}{% endblock %}
+{% block description %}{{ _("meta_description_commitments")|truncatechars:160 }}{% endblock %}
 
 {% block page_css %}
 <link rel="stylesheet" href="{% static 'assets/css/glance&vision&commit.min.css' %}" media="print" onload="this.media='all'" />

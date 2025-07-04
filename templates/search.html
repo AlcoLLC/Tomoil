@@ -1,7 +1,7 @@
 {% extends 'base.html' %} {% load static %} {% load i18n %}
 
-{% block title %}{% trans "meta_title_search" %}{% endblock %}
-{% block description %}{% trans "meta_description_search" %}{% endblock %}
+{% block title %}{{ _("meta_title_search")|truncatechars:60 }}{% endblock %}
+{% block description %}{{ _("meta_description_search")|truncatechars:160 }}{% endblock %}
 {% block keywords %}{% trans "search_keywords" %}{% endblock %}
 
 

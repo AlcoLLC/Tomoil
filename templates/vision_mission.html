@@ -1,8 +1,8 @@
 {% extends 'base.html' %}
 {% load static %}
 {% load i18n %}
-{% block title %}{% trans "meta_title_vision_mission" %}{% endblock %}
-{% block description %}{% trans "meta_description_vision_mission" %}{% endblock %}
+{% block title %}{{ _("meta_title_vision_mission")|truncatechars:60 }}{% endblock %}
+{% block description %}{{ _("meta_description_vision_mission")|truncatechars:160 }}{% endblock %}
 {% block keywords %}{% trans "vision_mission_keywords" %}{% endblock %}
 
 

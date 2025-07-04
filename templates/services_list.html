@@ -1,6 +1,7 @@
 {% extends 'base.html' %} {% load static %} {% load i18n %}
-{% block title %}{% trans "meta_title_services" %}{% endblock %}
-{% block description %}{% trans "meta_description_services" %}{% endblock %}
+
+{% block title %}{{ _("meta_title_services")|truncatechars:60 }}{% endblock %}
+{% block description %}{{ _("meta_description_services")|truncatechars:160 }}{% endblock %}
 {% block keywords %}{% trans "services_keywords" %}{% endblock %}
 
 {% block page_css %}

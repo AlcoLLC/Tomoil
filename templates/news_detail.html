@@ -1,15 +1,13 @@
 {% extends 'base.html' %} {% load static %} {% load i18n %}
 
-{% block title %}{{ news_item.title }}{% endblock %}
-{% block description %}{% trans "meta_description_news" %}{% endblock %}
+{% block title %}{{ news_item.title|truncatechars:60 }}{% endblock %}
+{% block description %}{{ news_item.description|truncatechars:160 }}{% endblock %}
 {% block keywords %}{% trans "news_keywords" %}{% endblock %}
-
 
 {% block page_css %}
 <link rel="stylesheet" href="{% static 'assets/css/news.min.css' %}" media="print" onload="this.media='all'" />
 <noscript><link rel="stylesheet" href="{% static 'assets/css/news.min.css' %}" /></noscript>
 {% endblock %}
-
 
 {% block extra_schema %}
 <script type="application/ld+json">
@@ -55,13 +53,9 @@
 }
 </script>
 
-
 {% endblock %}
 
-
-
 {% block content %}
-
 <!-- Page Tabs -->
 <div class="page-tabs">
   <div class="section-container breadcrumb">

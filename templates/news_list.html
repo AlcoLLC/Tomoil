@@ -1,6 +1,6 @@
 {% extends 'base.html' %} {% load static %} {% load i18n %}
-{% block title %}{% trans "meta_title_news" %}{% endblock %}
-{% block description %}{% trans "meta_description_news" %}{% endblock %}
+{% block title %}{{ _("meta_title_news")|truncatechars:60 }}{% endblock %}
+{% block description %}{{ _("meta_description_news")|truncatechars:160 }}{% endblock %}
 {% block keywords %}{% trans "news_keywords" %}{% endblock %}
 
 
