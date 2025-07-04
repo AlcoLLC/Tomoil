@@ -8,7 +8,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <link rel="canonical" href="{{ request.scheme }}://{{ request.get_host }}{% url 'products:products_list' %}" />
+  <link rel="canonical" href="https://tomoil.de{{ request.path }}" />
   <link rel="alternate" hreflang="en" href="https://tomoil.de/">
   <link rel="alternate" hreflang="de" href="https://tomoil.de/de/">
   <link rel="alternate" hreflang="es" href="https://tomoil.de/es/">
@@ -28,7 +28,7 @@
   <meta property="og:description"
     content="{% trans 'Discover Tomoil™ – manufacturer of premium motor oils. Explore our engine oils, gear lubricants, and synthetic oil range.' %}">
   <meta property="og:image" content="{% static 'images/tomoil-logo.svg' %}">
-  <meta property="og:url" content="{{ request.scheme }}://{{ request.get_host }}{% url 'products:products_list' %}" />
+  <meta property="og:url" content="https://tomoil.de{{ request.path }}">
   <link rel="icon" type="image/svg+xml" href="{% static 'images/tomoil-logo.svg' %}">
   <meta name="google-site-verification" content="YveM3J5-9PcWzZR7E04pTePer-8alu7FD7qo7W3k7UM" />
 
