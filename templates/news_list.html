@@ -208,7 +208,7 @@
         {% for news_item in news_items %}
         <div class="news-card">
           <a href="{% url 'news:news_detail' news_item.id %}">
-            <img loading="lazy" src="{{ news_item.image_one.url|default:'' }}" alt="{{ news_item.title }}"
+            <img loading="lazy" src="{{ news_item.image_one.url|default:'' }}" width="490" height="245" alt="{{ news_item.title }}"
               class="card-image" />
             <div class="card-content">
               <div class="card-meta">

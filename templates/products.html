@@ -203,7 +203,7 @@
                 <div class="product-type">{{ product.product_range.name|upper }}</div>
                 <a href="{% url 'products:products_detail_view' product.slug %}" class="product-image">
                     {% if product.image %}
-                    <img loading="lazy" src="{{ product.image.url }}" alt="{{ product.title }}">
+                    <img loading="lazy" src="{{ product.image.url }}" width="143" height="151" alt="{{ product.title }}">
                     {% else %}
                     <img loading="lazy" src="{% static 'images/placeholder-product.jpg' %}" alt="{{ product.title }}">
                     {% endif %}

@@ -37,12 +37,12 @@
 <script src="{% static 'assets/js/settings.min.js' %}" defer></script>
 <script src="{% static 'assets/js/paths.min.js' %}" defer></script>
 <script src="{% static 'assets/js/map.min.js' %}" defer></script>
+<script src="{% static 'assets/js/map-init.js' %}" defer></script>
 <script src="{% static 'assets/js/map1.min.js' %}" defer></script>
 <script src="{% static 'assets/js/map2.min.js' %}" defer></script>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="{% static 'assets/js/map3.min.js' %}" defer></script>
-<script src="{% static 'assets/js/map4.min.js' %}" defer></script>
-<script src="{% static 'assets/js/map-init.js' %}" defer></script>
+<!-- <script src="{% static 'assets/js/map4.min.js' %}" defer></script> -->
 
 {% endblock %}
 
@@ -201,7 +201,7 @@
       <div class="swiper-wrapper card-container">
         {% for product_range in product_ranges %}
         <div class="swiper-slide card">
-          <img loading="lazy" src="{{ product_range.image.url }}" alt="Engine Oils" class="card-image" />
+          <img loading="lazy" src="{{ product_range.image.url }}" alt="Engine Oils" width="305" height="200" class="card-image" />
           <div class="card-content">
             <div class="card-text">
               <h2 class="card-title">{{ product_range.name }}</h2>
@@ -434,7 +434,7 @@
           {% for case_study in case_studies %}
           <div class="case-study-card">
             <div class="case-study-image">
-              <img loading="lazy" src="{{ case_study.image_one.url }}" alt="Industrial machinery" />
+              <img loading="lazy" src="{{ case_study.image_one.url }}" width="330" height="320" alt="Industrial machinery" />
             </div>
             <div class="case-study-info">
               <h3 class="case-study-title">{{ case_study.title }}</h3>
@@ -484,7 +484,7 @@
       <div id="carousel">
         <div id="content">
           {% for partner_logo in partner_logos %}
-          <img loading="lazy" src="{{ partner_logo.image.url }}" alt="{{ partner_logo.image.url }}" class="item" />
+          <img loading="lazy" src="{{ partner_logo.image.url }}" width="155" height="70" alt="{{ partner_logo.image.url }}" class="item" />
           {% endfor %}
         </div>
       </div>
