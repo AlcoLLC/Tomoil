@@ -1,18 +1,13 @@
 {% extends 'base.html' %}
 {% load static %}
 {% load i18n %}
-
 {% block title %}{{ _("meta_title_products")|truncatechars:60 }}{% endblock %}
 {% block description %}{{ _("meta_description_products")|truncatechars:160 }}{% endblock %}
 {% block keywords %}{% trans "product_keywords" %}{% endblock %}
-
 {% block page_css %}
 <link rel="stylesheet" href="{% static 'assets/css/product.min.css' %}" />
 {% endblock %}
-
-
 {% block extra_schema %}
-
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
@@ -43,10 +38,7 @@
   ]
 }
 </script>
-
 {% endblock %}
-
-
 {% block page_js %}
   <script src="{% static 'assets/js/product.min.js' %}" defer></script>
   <script src="{% static 'assets/js/product_detail.min.js' %}" defer></script>
@@ -203,7 +195,7 @@
                 <div class="product-type">{{ product.product_range.name|upper }}</div>
                 <a href="{% url 'products:products_detail_view' product.slug %}" class="product-image">
                     {% if product.image %}
-                    <img loading="lazy" src="{{ product.image.url }}" width="143" height="151" alt="{{ product.title }}">
+                    <img loading="lazy" src="{{ product.image.url }}" width="143" height="230" alt="{{ product.title }}">
                     {% else %}
                     <img loading="lazy" src="{% static 'images/placeholder-product.jpg' %}" alt="{{ product.title }}">
                     {% endif %}
