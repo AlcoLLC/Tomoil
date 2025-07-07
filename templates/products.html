@@ -277,7 +277,7 @@
                                 </button>
                                 <input type="checkbox" name="application_area" value="{{ application_area.slug }}"
                                 {%if application_area.slug in selected_application_areas %}checked{%endif%}
-                                    style="display: none;" id="modal-app-{{ application_area.slug }}" />
+                                    class="application-area-none" id="modal-app-{{ application_area.slug }}" />
                                 {% endfor %}
                             </div>
 

@@ -63,7 +63,7 @@
         {% for swiper in swiper_images %}
         <div class="swiper-slide">
           <img class="background-image" src="{{ swiper.image.url }}" alt="{{ swiper.image.url }} Slider Image"
-            fetchpriority="high" loading="eager"  width="1920" height="850" />
+            fetchpriority="high" loading="eager" />
           {% if swiper.link %}
           <a href="{{ swiper.link }}" class="slide-content">
             <span>{{ swiper.title }}</span>
@@ -128,7 +128,7 @@
           <div class="product-card">
             <div class="product-image">
               <a href="{% url 'products:products_detail_view' product.slug %}">
-                <img loading="lazy" src="{{ product.image.url }}" alt="{{ product.title }}" width="200" height="210" />
+                <img loading="lazy" src="{{ product.image.url }}" alt="{{ product.title }}"  />
               </a>
             </div>
             <div class="product-info">
@@ -172,7 +172,7 @@
       <ul>
         {% for area in application_areas %}
         <li>
-          <a href="{% url 'products:products_list_by_application_area' area.slug %}">
+          <a href="{% url 'products:products_list' %}?application_area={{ area.slug }}">
             <div>
               <img loading="lazy" src="{{ area.icon.url }}" alt="{{ area.name }} {% trans 'Product Range' %}" />
             </div>
@@ -217,7 +217,7 @@
               </p>
             </div>
             <div class="card-button-container">
-              <a href="{% url 'products:products_list_by_range' product_range.slug %}" class="card-button"
+              <a href="{% url 'products:products_list' %}?product_range={{ product_range.slug }}" class="card-button"
                 aria-label="Filter Product Range">
                 <i class="fa-solid fa-arrow-up"></i>
               </a>
