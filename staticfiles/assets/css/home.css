@@ -16,6 +16,11 @@
   font-display: swap;
 }
 
+@font-face {
+  font-family: 'Font Awesome 6 Free';
+  src: local('Font Awesome 6 Free');
+  font-display: swap;
+}
 
 
 * {
@@ -896,7 +901,7 @@ nav {
 }
 
 .product-range .card-button i {
-  font-family: Font Awesome 6 Free !important;
+  font-family: "Font Awesome 6 Free" !important;
   font-weight: 600;
   font-size: 16px;
   line-height: 100%;
