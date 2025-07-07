@@ -58,7 +58,7 @@
 
   <noscript>
     <link rel="stylesheet" href="{% static 'assets/css/style.min.css' %}">
-    <link rel="stylesheet" href="{% static 'assets/css/home.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/home.min.css' %}">
     <link rel="stylesheet" href="{% static 'assets/css/case.min.css' %}" />
   </noscript>
 
@@ -67,13 +67,31 @@
   {% block page_css %}{% endblock %}
 
 
-  <link rel="stylesheet" href="{% static 'assets/css/responsive.css' %}" media="print" onload="this.media='all'" />
+  <link rel="stylesheet" href="{% static 'assets/css/responsive.min.css' %}" media="print" onload="this.media='all'" />
   <noscript>
-    <link rel="stylesheet" href="{% static 'assets/css/responsive.css' %}" />
+    <link rel="stylesheet" href="{% static 'assets/css/responsive.min.css' %}" />
   </noscript>
 
 
   <script src="https://kit.fontawesome.com/aa02fbbfef.js" crossorigin="anonymous" defer></script>
+
+  <script>
+    !function (f, b, e, v, n, t, s) {
+      if (f.fbq) return; n = f.fbq = function () {
+        n.callMethod ?
+        n.callMethod.apply(n, arguments) : n.queue.push(arguments)
+      };
+      if (!f._fbq) f._fbq = n; n.push = n; n.loaded = !0; n.version = '2.0';
+      n.queue = []; t = b.createElement(e); t.async = !0;
+      t.src = v; s = b.getElementsByTagName(e)[0];
+      s.parentNode.insertBefore(t, s)
+    }(window, document, 'script',
+      'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '1613078692966266');
+    fbq('track', 'PageView');
+  </script>
+  <noscript><img height="1" width="1" style="display:none"
+      src="https://www.facebook.com/tr?id=1613078692966266&ev=PageView&noscript=1" /></noscript>
 
   <script type="application/ld+json">
 {
@@ -97,8 +115,6 @@
 }
 
 </script>
-
-
   {% block extra_schema %}{% endblock %}
 </head>
 

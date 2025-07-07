@@ -1,6 +1,6 @@
 {% extends 'base.html' %} {% load static %} {% load i18n %}
 
-{% block title %}{{ product.title|truncatechars:60 }}{% endblock %}
+{% block title %}{{ product.title|truncatechars:60 }} | {% trans 'Product name' %}{% endblock %}
 {% block description %}{{ product.description|truncatechars:160 }}{% endblock %}
 {% block keywords %}{% trans "product_keywords" %}{% endblock %}
 
@@ -18,41 +18,46 @@
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "Product",
-  "name": "{{ product.title|escapejs }}",
-   "image": [
-          {% if product.image %}
-          "{{ product.image.url }}"
-          {% endif %}
-        ],
-  "description": "{{ product.description|truncatechars:155|striptags|escapejs }}",
-  "brand": {
-    "@type": "Brand",
-    "name": "Tomoil"
+  "@type": "LocalBusiness",
+  "name": "Tomoil",
+  "image": "https://tomoil.de/static/images/tomoil-logo.svg",
+  "@id": "https://tomoil.de",
+  "url": "https://tomoil.de",
+  "telephone": "+41 76 494 43 94",
+   "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Leitzstraße 45",
+    "addressLocality": "Stuttgart",
+    "postalCode": "70469",
+    "addressCountry": "DE"
   },
-  "review": [
-    {% for review in reviews %}
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": 48.81368197797313,
+    "longitude":  9.178480161618834
+  },
+  "openingHoursSpecification": [
     {
-      "@type": "Review",
-      "reviewRating": {
-        "@type": "Rating",
-        "ratingValue": "{{ review.rating }}"
-      },
-      "author": {
-        "@type": "Person",
-        "name": "{{ review.full_name|escapejs }}"
-      },
-      "reviewBody": "{{ review.review|truncatechars:200|striptags|escapejs }}"
-    }{% if not forloop.last %},{% endif %}
-    {% endfor %}
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": [
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday"
+      ],
+      "opens": "09:00",
+      "closes": "18:00"
+    }
   ],
-  "aggregateRating": {
-    "@type": "AggregateRating",
-    "ratingValue": "{{ avg_rating|default:4 }}",
-    "reviewCount": "{{ reviews_count }}"
-  }
+  "sameAs": [
+    "https://www.linkedin.com/company/tomoil-lubricants-auto-chemicals/",
+    "https://www.instagram.com/tomoil.de/",
+    "https://www.facebook.com/people/Tomoil/61576825467224/"
+  ]
 }
 </script>
+
 {% endblock %}
 
 {% block page_js %}

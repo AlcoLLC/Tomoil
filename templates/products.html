@@ -197,7 +197,6 @@
                     {% if product.image %}
                     <img loading="lazy" src="{{ product.image.url }}" width="143" height="230" alt="{{ product.title }}">
                     {% else %}
-                    <img loading="lazy" src="{% static 'images/placeholder-product.jpg' %}" alt="{{ product.title }}">
                     {% endif %}
                 </a>
                 <div class="product-info">

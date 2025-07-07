@@ -109,7 +109,7 @@ def all_data_sheets_view(request):
     return render(request, 'all_data_sheets.html', context)
 
 
-def products_view(request):
+def products_view(request, product_range_slug=None, application_area_slug=None):
     try:
         page_header = PageHeader.objects.get(page_key='products_view')
         header_context = {
@@ -128,48 +128,39 @@ def products_view(request):
             'background_image': None
         }
 
-    product_range_slugs = request.GET.getlist('product_range')
-    application_area_slugs = request.GET.getlist('application_area')
+    products = Product.objects.filter(is_active=True).order_by('order')
+
     specification_slugs = request.GET.getlist('specification')
     viscosity_slugs = request.GET.getlist('viscosity')
     composition_slugs = request.GET.getlist('composition')
     pack_size_slugs = request.GET.getlist('pack_size')
-    search_query = request.GET.get('search', '')
+    search_query = request.GET.get('search', '').strip()
+    from_date = request.GET.get('from_date', '').strip()
 
-    products = Product.objects.filter(is_active=True).order_by('order')
-
-    from_date = request.GET.get('from_date', '')
+    if product_range_slug:
+        products = products.filter(product_range__slug=product_range_slug)
+    if application_area_slug:
+        products = products.filter(application_areas__slug=application_area_slug)
+    if specification_slugs:
+        products = products.filter(specifications__slug__in=specification_slugs)
+    if viscosity_slugs:
+        products = products.filter(viscosities__slug__in=viscosity_slugs)
+    if composition_slugs:
+        products = products.filter(compositions__slug__in=composition_slugs)
+    if pack_size_slugs:
+        products = products.filter(pack_sizes__slug__in=pack_size_slugs)
 
     if from_date:
         try:
             if '.' in from_date:
                 day, month, year = from_date.split('.')
                 formatted_date = f"{year}-{month}-{day}"
-                products = products.filter(
-                    created_at__gte=formatted_date)
+                products = products.filter(created_at__gte=formatted_date)
             elif '-' in from_date:
                 products = products.filter(created_at__gte=from_date)
-        except (ValueError, IndexError):
+        except Exception:
             pass
 
-    if product_range_slugs:
-        products = products.filter(product_range__slug__in=product_range_slugs)
-    
-    if application_area_slugs:
-        products = products.filter(application_areas__slug__in=application_area_slugs)
-    
-    if specification_slugs:
-        products = products.filter(specifications__slug__in=specification_slugs)
-    
-    if viscosity_slugs:
-        products = products.filter(viscosities__slug__in=viscosity_slugs)
-    
-    if composition_slugs:
-        products = products.filter(compositions__slug__in=composition_slugs)
-    
-    if pack_size_slugs:
-        products = products.filter(pack_sizes__slug__in=pack_size_slugs)
-    
     if search_query:
         products = products.filter(
             Q(title__icontains=search_query) |
@@ -184,6 +175,7 @@ def products_view(request):
         'viscosities', 'compositions', 'pack_sizes'
     )
 
+    # Pagination
     page_number = request.GET.get('page', 1)
     paginator = Paginator(products, 12)
 
@@ -192,6 +184,7 @@ def products_view(request):
     except (ValueError, TypeError):
         page_obj = paginator.get_page(1)
 
+    # Tarix göstərmə üçün formatlama
     formatted_display_date = ''
     if from_date:
         if '.' in from_date:
@@ -200,7 +193,7 @@ def products_view(request):
             try:
                 year, month, day = from_date.split('-')
                 formatted_display_date = f"{day}.{month}.{year}"
-            except (ValueError, IndexError):
+            except Exception:
                 formatted_display_date = from_date
 
     context = {
@@ -212,8 +205,8 @@ def products_view(request):
         'viscosities': Viscosity.objects.filter(is_active=True).order_by('name'),
         'compositions': Composition.objects.filter(is_active=True).order_by('order'),
         'pack_sizes': PackSize.objects.filter(is_active=True).order_by('order'),
-        'selected_product_ranges': product_range_slugs,
-        'selected_application_areas': application_area_slugs,
+        'selected_product_range': product_range_slug,
+        'selected_application_area': application_area_slug,
         'selected_specifications': specification_slugs,
         'selected_viscosities': viscosity_slugs,
         'selected_compositions': composition_slugs,
@@ -224,6 +217,8 @@ def products_view(request):
     }
 
     return render(request, 'products.html', context)
+
+
 
 def products_detail_view(request, product_slug):
     product = get_object_or_404(

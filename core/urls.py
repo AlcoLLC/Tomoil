@@ -14,8 +14,10 @@ def robots_txt(request):
         "Disallow: /admin/",
         "Disallow: /api/",
         "Disallow: /media/private/",
+        "Disallow: /i18n/setlang/",
         "",
         "Sitemap: https://tomoil.de/sitemap.xml"
+        
     ]
     return HttpResponse('\n'.join(lines), content_type="text/plain")
 
