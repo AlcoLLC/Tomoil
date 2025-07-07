@@ -52,24 +52,28 @@
 
   <!-- Styles -->
 
-  <link rel="stylesheet" href="{% static 'assets/css/style.min.css' %}" />
-  <link rel="stylesheet" href="{% static 'assets/css/home.min.css' %}" />
+  <link rel="stylesheet" href="{% static 'assets/css/style.min.css' %}" onload="this.rel='stylesheet'">
+  <link rel="stylesheet" href="{% static 'assets/css/home.css' %}" onload="this.rel='stylesheet'">
   <link rel="stylesheet" href="{% static 'assets/css/case.min.css' %}" media="print" onload="this.media='all'" />
+
   <noscript>
+    <link rel="stylesheet" href="{% static 'assets/css/style.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/home.css' %}">
     <link rel="stylesheet" href="{% static 'assets/css/case.min.css' %}" />
   </noscript>
+
 
 
   {% block page_css %}{% endblock %}
 
 
-  <link rel="stylesheet" href="{% static 'assets/css/responsive.min.css' %}" media="print" onload="this.media='all'" />
+  <link rel="stylesheet" href="{% static 'assets/css/responsive.css' %}" media="print" onload="this.media='all'" />
   <noscript>
-    <link rel="stylesheet" href="{% static 'assets/css/responsive.min.css' %}" />
+    <link rel="stylesheet" href="{% static 'assets/css/responsive.css' %}" />
   </noscript>
 
 
-  <script src="https://kit.fontawesome.com/aa02fbbfef.js" crossorigin="anonymous"></script>
+  <script src="https://kit.fontawesome.com/aa02fbbfef.js" crossorigin="anonymous" defer></script>
 
   <script type="application/ld+json">
 {

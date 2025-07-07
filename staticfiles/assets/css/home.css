@@ -553,6 +553,7 @@ nav {
 
 .home-header .swiper-slide {
   width: 100%;
+  height: 85vh;
   background-size: cover;
   background-position: center;
   display: flex;
