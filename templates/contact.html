@@ -7,8 +7,10 @@
 
 
 {% block page_css %}
-<link rel="stylesheet" href="{% static 'assets/css/contact.min.css' %}" media="print" onload="this.media='all'" />
-<noscript><link rel="stylesheet" href="{% static 'assets/css/contact.min.css' %}" /></noscript>
+<link rel="stylesheet" href="{% static 'assets/css/contact.min.css' %}" onload="this.rel='stylesheet'" />
+<noscript>
+  <link rel="stylesheet" href="{% static 'assets/css/contact.min.css' %}" />
+</noscript>
 {% endblock %}
 
 
@@ -258,7 +260,7 @@
         <div class="form-group recaptcha-group">
           <div class="g-recaptcha" data-sitekey="{{ recaptcha_site_key }}" data-callback="enableSubmitButton"
             data-expired-callback="disableSubmitButton"></div>
-          <div id="recaptcha-error" class="error-message" style="display: none">
+          <div id="recaptcha-error" class="error-message">
             {% trans 'Please complete the reCAPTCHA verification.' %}
           </div>
         </div>
@@ -309,6 +311,12 @@
 
   // Ülke seçimi için özel event listener - bu kodu mevcut JavaScript'inize ekleyin
   document.addEventListener("DOMContentLoaded", function () {
+
+    const recaptchaError = document.getElementById("recaptcha-error");
+    if (recaptchaError) {
+      recaptchaError.style.display = "none";
+    }
+
     // Sadece country select için özel işlem
     const countryOptions = document.querySelectorAll(
       ".country-select .custom-option"

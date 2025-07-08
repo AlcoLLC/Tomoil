@@ -22,6 +22,7 @@
   font-weight: 600;
   color: #223160;
   margin: 0;
+  transition: color 0.3s ease;
 }
 .section-questions .faq-icon {
   min-width: 35px;

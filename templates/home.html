@@ -5,14 +5,16 @@
 {% block keywords %}{% trans "home_keywords" %}{% endblock %}
 
 {% block page_css %}
-<link href="{% static 'assets/css/map.min.css' %}" rel="stylesheet" media="print" onload="this.media='all'" />
-<link 
-  rel="stylesheet" 
-  href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" 
-  media="print" 
+<link rel="stylesheet" href="{% static 'assets/css/map.min.css' %}" onload="this.rel='stylesheet'" />
+<link rel="stylesheet" href="{% static 'assets/css/home.min.css' %}" onload="this.rel='stylesheet'">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" media="print"
   onload="this.media='all'" />
 <noscript>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+  <link rel="stylesheet" href="{% static 'assets/css/home.min.css' %}">
+  <link rel="stylesheet" href="{% static 'assets/css/map.min.css' %}" />
+
 </noscript>
 {% endblock %}
 
@@ -33,7 +35,6 @@
   </script>
 {% endblock %}
 
-
 {% block page_js %}
 
 <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js" defer></script>
@@ -46,13 +47,12 @@
 <script src="{% static 'assets/js/map.min.js' %}" defer></script>
 <script src="{% static 'assets/js/map-init.js' %}" defer></script>
 <script src="{% static 'assets/js/map1.min.js' %}" defer></script>
-<script src="{% static 'assets/js/map2.min.js' %}" defer></script>
+<!-- <script src="{% static 'assets/js/map2.min.js' %}" defer></script> -->
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="{% static 'assets/js/map3.min.js' %}" defer></script>
 <!-- <script src="{% static 'assets/js/map4.min.js' %}" defer></script> -->
 
 {% endblock %}
-
 {% block content %}
 
 <div class="main">
@@ -110,7 +110,7 @@
 
   <!-- Featured Section -->
   <section class="featured-section">
-    <div class="background-svg"></div>
+    <img src="{% static 'images/Vector.svg' %}" alt="Decorative vector background" fetchpriority="high" decoding="async" class="background-svg" />
     <div class="background-overlay"></div>
 
     <div class="featured-container main-container">
@@ -128,7 +128,7 @@
           <div class="product-card">
             <div class="product-image">
               <a href="{% url 'products:products_detail_view' product.slug %}">
-                <img loading="lazy" src="{{ product.image.url }}" alt="{{ product.title }}"  />
+                <img loading="lazy" src="{{ product.image.url }}" alt="{{ product.title }}" />
               </a>
             </div>
             <div class="product-info">
@@ -208,7 +208,8 @@
       <div class="swiper-wrapper card-container">
         {% for product_range in product_ranges %}
         <div class="swiper-slide card">
-          <img loading="lazy" src="{{ product_range.image.url }}" alt="Engine Oils" width="305" height="200" class="card-image" />
+          <img loading="lazy" src="{{ product_range.image.url }}" alt="Engine Oils" width="305" height="200"
+            class="card-image" />
           <div class="card-content">
             <div class="card-text">
               <h2 class="card-title">{{ product_range.name }}</h2>
@@ -441,7 +442,8 @@
           {% for case_study in case_studies %}
           <div class="case-study-card">
             <div class="case-study-image">
-              <img loading="lazy" src="{{ case_study.image_one.url }}" width="330" height="320" alt="Industrial machinery" />
+              <img loading="lazy" src="{{ case_study.image_one.url }}" width="330" height="320"
+                alt="Industrial machinery" />
             </div>
             <div class="case-study-info">
               <h3 class="case-study-title">{{ case_study.title }}</h3>
@@ -491,7 +493,8 @@
       <div id="carousel">
         <div id="content">
           {% for partner_logo in partner_logos %}
-          <img loading="lazy" src="{{ partner_logo.image.url }}" width="155" height="70" alt="{{ partner_logo.image.url }}" class="item" />
+          <img loading="lazy" src="{{ partner_logo.image.url }}" width="155" height="70"
+            alt="{{ partner_logo.image.url }}" class="item" />
           {% endfor %}
         </div>
       </div>

@@ -4,7 +4,7 @@
 {% block description %}{{ _("meta_description_faq")|truncatechars:160 }}{% endblock %}
 
 {% block page_css %}
-<link rel="stylesheet" href="{% static 'assets/css/faq.min.css' %}" media="print" onload="this.media='all'" />
+<link rel="stylesheet" href="{% static 'assets/css/faq.min.css' %}" onload="this.rel='stylesheet'"  />
 <noscript><link rel="stylesheet" href="{% static 'assets/css/faq.min.css' %}" /></noscript>
 {% endblock %}
 
