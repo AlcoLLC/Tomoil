@@ -62,7 +62,7 @@ class PackagingSizesInline(admin.TabularInline):
 class ProductAdmin(TranslationAdmin):
     list_display = ('title', 'product_id', 'product_range', 'is_active', 'created_at')
     list_filter = ('is_active', 'product_range', 'created_at')
-    search_fields = ('title', 'product_id', 'description', 'description_en')
+    search_fields = ('title', 'product_id', 'description', 'description_en','image')
     list_editable = ('is_active',)
     filter_horizontal = ('application_areas', 'specifications', 'viscosities', 'compositions', 'pack_sizes')
     
