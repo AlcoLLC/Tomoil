@@ -40,7 +40,7 @@ def vision_mision_list(request):
     except PageHeader.DoesNotExist:
         header_context = {
             'breadcrumb_title': 'Vision, Mission & Values',
-            'breadcrumb_url': '/vision_mission/',
+            'breadcrumb_url': '/vision-mission/',
             'page_title': 'Vision, Mission & Values',
             'page_description': '',
             'background_image': None
@@ -63,7 +63,7 @@ def our_commitment_list(request):
     except PageHeader.DoesNotExist:
         header_context = {
             'breadcrumb_title': 'Our Commitments',
-            'breadcrumb_url': '/our_commitment/',
+            'breadcrumb_url': '/our-commitment/',
             'page_title': 'Our Commitments',
             'page_description': '',
             'background_image': None

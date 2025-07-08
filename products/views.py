@@ -21,7 +21,7 @@ def pds_sds_view(request):
     except PageHeader.DoesNotExist:
         header_context = {
             'breadcrumb_title': 'PDS & SDS',
-            'breadcrumb_url': '/pds_sds/',
+            'breadcrumb_url': '/pds-sds/',
             'page_title': 'PDS & SDS Search',
             'page_description': 'Find the product data sheets and safety data sheets you need.',
             'background_image': None
@@ -49,7 +49,7 @@ def all_data_sheets_view(request):
     except PageHeader.DoesNotExist:
         header_context = {
             'breadcrumb_title': 'All Data Sheets',
-            'breadcrumb_url': '/all_data_sheets/',
+            'breadcrumb_url': '/all-data-sheets/',
             'page_title': 'All Data Sheets',
             'page_description': 'Browse all available product and safety data sheets.',
             'background_image': None

@@ -434,7 +434,7 @@ def search_view(request):
             results.append({
                 'title': 'Vision & Mission',
                 'description': vm.vision[:200] + '...' if vm.vision and len(vm.vision) > 200 else vm.vision or '',
-                'url': '/vision_mission/',
+                'url': '/vision-mission/',
                 'type': 'Vision & Mission',
                 'image': None
             })
@@ -450,7 +450,7 @@ def search_view(request):
             results.append({
                 'title': value.title,
                 'description': value.description[:200] + '...' if value.description and len(value.description) > 200 else value.description or '',
-                'url': '/vision_mission/',
+                'url': '/visionmission/',
                 'type': 'Values',
                 'image': None
             })
@@ -466,7 +466,7 @@ def search_view(request):
             results.append({
                 'title': commitment.title,
                 'description': commitment.description[:200] + '...' if commitment.description and len(commitment.description) > 200 else commitment.description or '',
-                'url': '/our_commitment/',
+                'url': '/our-commitment/',
                 'type': 'Our Commitments',
                 'image': commitment.image.url if commitment.image else None
             })
