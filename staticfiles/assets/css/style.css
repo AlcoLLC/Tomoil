@@ -77,7 +77,9 @@
   line-height: 28px;
 }
 
-
+.facebook-pixel-none {
+  display: none;
+}
 
 .mobile-languages .lang-btn.active,
 body {
@@ -714,6 +716,7 @@ nav {
 }
 
 @keyframes pulse {
+
   0%,
   100% {
     stroke-width: 2px;
