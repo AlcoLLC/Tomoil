@@ -1317,8 +1317,7 @@
   
   .featured-section .background-svg {
     height: 90vh;
-    top: 170px;
-    left: -400px;
+    top: 190px;
   }
 }
 
@@ -1830,10 +1829,6 @@
   .section-services .service-description h3 {
     font-size: 24px;
     line-height: 33px;
-  }
-
-  .featured-section .background-svg {
-    left: -480px;
   }
 
   .brand-portal-section .image-gallery,
