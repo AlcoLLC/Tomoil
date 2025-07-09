@@ -356,7 +356,7 @@
     letter-spacing: 0 !important;
   }
 
-  .case-detail-section .section-title {
+  .case-detail-section h1 {
     font-size: 42px;
   }
 
@@ -1189,7 +1189,7 @@
     gap: 20px;
   }
 
-  .case-detail-section .section-title {
+  .case-detail-section h1 {
     font-size: 34px;
   }
 
@@ -1937,7 +1937,7 @@
     left: 90%;
   }
 
-  .case-detail-section .section-title,
+  .case-detail-section h1,
   .header-whatsapp i,
   .product-opinions .section-title {
     font-size: 22px;
