@@ -6,7 +6,9 @@
 
 {% block page_css %}
 <link rel="stylesheet" href="{% static 'assets/css/news.min.css' %}" media="print" onload="this.media='all'" />
-<noscript><link rel="stylesheet" href="{% static 'assets/css/news.min.css' %}" /></noscript>
+<noscript>
+  <link rel="stylesheet" href="{% static 'assets/css/news.min.css' %}" />
+</noscript>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css" />
 
 {% endblock %}
@@ -36,15 +38,15 @@
         "url": "{{ request.scheme }}://{{ request.get_host }}{% url 'news:news_detail' news_item.id %}",
         "datePublished": "{{ news_item.created_at|date:'c' }}",
         "author": {
-          "@type": "Organization",
+          "@type": "LocalBusiness", 
           "name": "Tomoil"
         },
         "publisher": {
-          "@type": "Organization",
+          "@type": "LocalBusiness", 
           "name": "Tomoil",
           "logo": {
             "@type": "ImageObject",
-            "url": "{{ request.scheme }}://{{ request.get_host }}{% static 'images/tomoil-logo.svg' %}"
+            "url": "{{ request.scheme }}://{{ request.get_host }}{% static 'images/tomoil-logo.png' %}"
           }
         }{% if news_item.image_one %},
         "image": {
@@ -208,8 +210,8 @@
         {% for news_item in news_items %}
         <div class="news-card">
           <a href="{% url 'news:news_detail' news_item.id %}">
-            <img loading="lazy" src="{{ news_item.image_one.url|default:'' }}" width="490" height="245" alt="{{ news_item.title }}"
-              class="card-image" />
+            <img loading="lazy" src="{{ news_item.image_one.url|default:'' }}" width="490" height="245"
+              alt="{{ news_item.title }}" class="card-image" />
             <div class="card-content">
               <div class="card-meta">
                 <div class="card-date">
@@ -231,7 +233,8 @@
                 {{ news_item.description }}
                 {% endif %}
               </p>
-              <a href="{% url 'news:news_detail' news_item.id %}" class="read-more" aria-label="{% trans 'Learn more about news' %}">
+              <a href="{% url 'news:news_detail' news_item.id %}" class="read-more"
+                aria-label="{% trans 'Learn more about news' %}">
                 {% trans "Read More" %}
                 <i class="fas fa-arrow-right-long read-more-icon"></i>
               </a>
@@ -272,7 +275,8 @@
               {{ news_item.description }}
               {% endif %}
             </p>
-            <a href="{% url 'news:news_detail' news_item.id %}" class="read-more" aria-label="{% trans 'Learn more about news' %}">
+            <a href="{% url 'news:news_detail' news_item.id %}" class="read-more"
+              aria-label="{% trans 'Learn more about news' %}">
               {% trans "Read More" %}
               <i class="fas fa-arrow-right-long read-more-icon"></i>
             </a>
@@ -286,7 +290,7 @@
       <!-- Pagination -->
       <div class="pagination-container">
         <p class="pagination-info">
-          {% trans 'Displaying' %} {{ start_index }}–{{ end_index }} {% trans 'of' %} {{ total_count }} 
+          {% trans 'Displaying' %} {{ start_index }}–{{ end_index }} {% trans 'of' %} {{ total_count }}
           {% trans 'results' %}
         </p>
         <div class="pagination">

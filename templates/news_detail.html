@@ -6,7 +6,9 @@
 
 {% block page_css %}
 <link rel="stylesheet" href="{% static 'assets/css/news.min.css' %}" media="print" onload="this.media='all'" />
-<noscript><link rel="stylesheet" href="{% static 'assets/css/news.min.css' %}" /></noscript>
+<noscript>
+  <link rel="stylesheet" href="{% static 'assets/css/news.min.css' %}" />
+</noscript>
 {% endblock %}
 
 {% block extra_schema %}
@@ -20,15 +22,15 @@
   "datePublished": "{{ news_item.created_at|date:'c' }}",
   "dateModified": "{{ news_item.updated_at|date:'c'|default:news_item.created_at|date:'c' }}",
   "author": {
-    "@type": "Organization",
+  "@type": "LocalBusiness", 
     "name": "Tomoil"
   },
   "publisher": {
-    "@type": "Organization",
+  "@type": "LocalBusiness", 
     "name": "Tomoil",
     "logo": {
       "@type": "ImageObject",
-      "url": "{{ request.scheme }}://{{ request.get_host }}{% static 'images/tomoil-logo.svg' %}"
+      "url": "{{ request.scheme }}://{{ request.get_host }}{% static 'images/tomoil-logo.png' %}"
     }
   }{% if news_item.image_one %},
   "image": [

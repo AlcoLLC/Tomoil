@@ -8,7 +8,9 @@
 
 {% block page_css %}
 <link rel="stylesheet" href="{% static 'assets/css/product.min.css' %}" media="print" onload="this.media='all'" />
-<noscript><link rel="stylesheet" href="{% static 'assets/css/product.min.css' %}" /></noscript>
+<noscript>
+  <link rel="stylesheet" href="{% static 'assets/css/product.min.css' %}" />
+</noscript>
 
 {% endblock %}
 
@@ -20,10 +22,10 @@
   "@context": "https://schema.org",
   "@type": "LocalBusiness",
   "name": "Tomoil",
-  "image": "https://tomoil.de/static/images/tomoil-logo.svg",
+  "image": "https://tomoil.de/static/images/tomoil-logo.png",
   "@id": "https://tomoil.de",
   "url": "https://tomoil.de",
-  "telephone": "+41 76 494 43 94",
+  "telephone": "+49 1522 1050103",
    "address": {
     "@type": "PostalAddress",
     "streetAddress": "Leitzstraße 45",
@@ -61,8 +63,8 @@
 {% endblock %}
 
 {% block page_js %}
-  <script src="{% static 'assets/js/product.min.js' %}" defer></script>
-  <script src="{% static 'assets/js/product_detail.min.js' %}" defer></script>
+<script src="{% static 'assets/js/product.min.js' %}" defer></script>
+<script src="{% static 'assets/js/product_detail.min.js' %}" defer></script>
 {% endblock %}
 
 {% block content %}
@@ -84,7 +86,7 @@
       </div>
       <div>
         <h3>{% trans 'Are you interested in partnership?' %} </h3>
-          <a class="button-style" href="">{% trans 'GET IN TOUCH' %} <i class="fas fa-arrow-right-long"></i></a>
+        <a class="button-style" href="">{% trans 'GET IN TOUCH' %} <i class="fas fa-arrow-right-long"></i></a>
       </div>
     </div>
 
@@ -258,10 +260,10 @@
       </p>
 
       <button class="button-style" id="openReviewModal">
-         {% if reviews_count > 0 %}{% trans 'ADD YOUR REVIEW' %}{% else %}
-          {% blocktrans %} BE THE FIRST TO RATE PRODUCTS {% endblocktrans %}
-          {% endif %}
-          <i class="fas fa-arrow-right"></i>
+        {% if reviews_count > 0 %}{% trans 'ADD YOUR REVIEW' %}{% else %}
+        {% blocktrans %} BE THE FIRST TO RATE PRODUCTS {% endblocktrans %}
+        {% endif %}
+        <i class="fas fa-arrow-right"></i>
       </button>
     </div>
     {% if reviews %}
@@ -346,11 +348,12 @@
 
         <div class="checkbox-container">
           <input type="checkbox" id="agreement" name="agreement" required />
-          <label for="agreement">{% trans 'I agree to the publication and the' %} {% trans 'evaluation conditions' %}.</label>
+          <label for="agreement">{% trans 'I agree to the publication and the' %} {% trans 'evaluation conditions'
+            %}.</label>
         </div>
         <p id="form-error-message" style="color: red; text-align: center; margin-bottom: 15px;"></p>
 
-        <button type="submit" class="submit-btn" aria-label="{% trans 'SUBMIT' %}" >{% trans 'SUBMIT' %}</button>
+        <button type="submit" class="submit-btn" aria-label="{% trans 'SUBMIT' %}">{% trans 'SUBMIT' %}</button>
       </form>
     </div>
   </div>

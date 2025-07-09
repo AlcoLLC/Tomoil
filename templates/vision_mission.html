@@ -18,11 +18,11 @@
 {
   "@context": "https://schema.org",
   "@type": "AboutPage",
-  "name": "Tomoil - Vision, Mission & Values",
+  "name": "Tomoil - {% trans 'VISION' %}, {% trans 'MISSION' %}, {% trans 'VALUES' %}",
   "url": "{{ request.build_absolute_uri }}",
   "description": "{% trans 'meta_description_vision_mission' %}",
   "mainEntity": {
-    "@type": "Organization",
+    "@type": "LocalBusiness", 
     "name": "Tomoil",
     "url": "{{ request.scheme }}://{{ request.get_host }}",
     "logo": {

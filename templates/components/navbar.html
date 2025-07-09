@@ -24,8 +24,8 @@
           </ul>
         </div>
         <div class="info-book">
-            <a class="button" href="{% url 'contact:contact' %}">{% trans 'Lets book a call' %}</a>
-            <a class="button" href="{% url 'products:pds_sds' %}">{% trans 'PDS/SDS' %}</a>
+          <a class="button" href="{% url 'contact:contact' %}">{% trans 'Lets book a call' %}</a>
+          <a class="button" href="{% url 'products:pds_sds' %}">{% trans 'PDS/SDS' %}</a>
 
           <div class="language-dropdown">
             <button class="lang-dropdown-btn">
@@ -49,12 +49,12 @@
       </div>
       <div class="nav-section">
         <a href="{% url 'contact:home' %}" class="logo">
-          <img loading="lazy" src="{% static 'images/tomoil-logo.svg' %}" alt="Tomoil" />
+          <img loading="lazy" src="{% static 'images/tomoil-logo.png' %}" alt="Tomoil" />
         </a>
         <div class="nav-list">
           <ul>
             <li class="dropdown">
-              <a  href="{% url 'whoweare:glance' %}" >{% trans 'Who we Are' %}</a>
+              <a href="{% url 'whoweare:glance' %}">{% trans 'Who we Are' %}</a>
               <div class="dropdown-content">
                 <a href="{% url 'whoweare:glance' %}">{% trans 'GLANCE' %}</a>
                 <a href="{% url 'whoweare:vision_mission' %}">{% trans 'VISION & MISSION' %}</a>
@@ -71,7 +71,8 @@
         </div>
         <div class="flex-buttons">
 
-          <a class="search" aria-label="{% trans 'Search' %}" href="{% url 'search:search' %}"><i class="fa-solid fa-magnifying-glass"></i></a>
+          <a class="search" aria-label="{% trans 'Search' %}" href="{% url 'search:search' %}"><i
+              class="fa-solid fa-magnifying-glass"></i></a>
 
           <button class="hamburger" id="hamburger" aria-label="Mobile-Menu">
             <i class="fas fa-bars"></i>
@@ -88,7 +89,8 @@
   <div class="mobile-nav-content">
     <ul class="mobile-nav-list">
       <li class="mobile-dropdown">
-        <a  href="{% url 'whoweare:glance' %}" class="mobile-dropdown-head">{% trans 'WHO WE ARE' %} <i class="fa-solid fa-chevron-right"></i></a>
+        <a href="{% url 'whoweare:glance' %}" class="mobile-dropdown-head">{% trans 'WHO WE ARE' %} <i
+            class="fa-solid fa-chevron-right"></i></a>
         <div class="mobile-dropdown-content">
           <a href="{% url 'whoweare:glance' %}">{% trans 'GLANCE' %}</a>
           <a href="{% url 'whoweare:vision_mission' %}">{% trans 'VISION & MISSION' %}</a>
@@ -106,8 +108,8 @@
 
   <div class="mobile-footer">
     <div class="mobile-buttons">
-        <a class="mobile-btn" href="{% url 'contact:contact' %}">{% trans 'Lets book a call' %}</a>
-        <a class="mobile-btn" href="{% url 'products:pds_sds' %}">{% trans 'PDS/SDS' %}</a>
+      <a class="mobile-btn" href="{% url 'contact:contact' %}">{% trans 'Lets book a call' %}</a>
+      <a class="mobile-btn" href="{% url 'products:pds_sds' %}">{% trans 'PDS/SDS' %}</a>
     </div>
 
     <div class="mobile-contact">
