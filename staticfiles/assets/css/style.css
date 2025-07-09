@@ -53,7 +53,15 @@
   padding: 20px;
 }
 
-.section-title,
+.section-title {
+  color: #223160;
+  font-size: 40px;
+  line-height: 50px;
+  font-weight: 600;
+  font-family: "Atyp Medium", sans-serif;
+}
+
+
 section h1 {
   color: #223160;
   font-size: 40px;

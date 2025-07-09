@@ -1,8 +1,7 @@
 {% load static %}
 {% load i18n %}
 
-<header class="placeholder-header page-header " {% if background_image
-    %}style="background-image: url('{{ background_image.url }}')" {% endif %}>
+<header class="placeholder-header page-header " {% if background_image %}style="background-image: url('{{ background_image.url }}')" {% endif %}>
     <div class="section-container">
         <div class="breadcrumb">
             <a href="/">{% trans 'Home' %}</a>
