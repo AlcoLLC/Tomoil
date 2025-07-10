@@ -61,10 +61,12 @@
   font-family: "Atyp Medium", sans-serif;
 }
 
-
+article h1,
+aside h1,
+nav h1,
 section h1 {
   color: #223160;
-  font-size: 40px;
+  font-size: 40px !important;
   line-height: 50px;
   font-weight: 600;
   font-family: "Atyp Medium", sans-serif;

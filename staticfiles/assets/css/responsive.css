@@ -282,8 +282,11 @@
     line-height: 40px;
   }
 
-   section h1 {
-    font-size: 32px;
+  article h1,
+  aside h1,
+  nav h1,
+  section h1 {
+    font-size: 32px !important;
     line-height: 40px;
   }
 
@@ -484,8 +487,11 @@
     line-height: 32px;
   }
 
-    section h1 {
-    font-size: 26px;
+  article h1,
+  aside h1,
+  nav h1,
+  section h1 {
+    font-size: 26px !important;
     line-height: 32px;
   }
 
@@ -799,9 +805,11 @@
     font-size: 24px;
     line-height: 30px;
   }
-
-    section h1 {
-    font-size: 24px;
+  article h1,
+  aside h1,
+  nav h1,
+  section h1 {
+    font-size: 24px !important;
     line-height: 30px;
   }
 
@@ -1329,7 +1337,7 @@
     max-width: 100%;
   }
 
-  
+
   .featured-section .background-svg {
     height: 90vh;
     top: 190px;
@@ -2059,8 +2067,11 @@
     line-height: 28px;
   }
 
-    section h1 {
-    font-size: 20px;
+  article h1,
+  aside h1,
+  nav h1,
+  section h1 {
+    font-size: 20px !important;
     line-height: 28px;
   }
 
