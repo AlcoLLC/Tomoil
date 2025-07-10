@@ -175,7 +175,7 @@ nav {
 }
 
 .contact-item a,
-.navbar .search a {
+.navbar .search {
   color: #223160;
   text-decoration: none;
 }
@@ -312,20 +312,20 @@ nav {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 10px;
+  gap: 5px;
 }
 
 .navbar .search {
   background-color: inherit;
   border: none;
   cursor: pointer;
-  padding: 5px;
+  padding: 8px;
 }
 
 .navbar .search i {
   color: #223160;
   font-size: 20px;
-  margin-right: 10px;
+  margin-right: 8px;
 }
 
 .navbar .dropdown .no-pointer {
@@ -376,10 +376,16 @@ nav {
   background: 0 0;
   border: none;
   color: #223160;
-  font-size: 24px;
   cursor: pointer;
   transition: color 0.3s;
   z-index: 1000001;
+  min-width: 40px;
+  min-height: 40px;
+  padding: 12px;
+
+}
+.navbar .hamburger i {
+  font-size: 24px;
 }
 
 .mobile-menu {
