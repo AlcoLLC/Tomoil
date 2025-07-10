@@ -108,8 +108,10 @@ def all_data_sheets_view(request):
 
     return render(request, 'all_data_sheets.html', context)
 
-
-def products_view(request):
+def products_view(request, product_range_slug=None, application_area_slug=None, 
+                 specification_slug=None, viscosity_slug=None, composition_slug=None, 
+                 pack_size_slug=None):
+    
     try:
         page_header = PageHeader.objects.get(page_key='products_view')
         header_context = {
@@ -128,12 +130,14 @@ def products_view(request):
             'background_image': None
         }
 
-    product_range_slugs = request.GET.getlist('product_range')
-    application_area_slugs = request.GET.getlist('application_area')
-    specification_slugs = request.GET.getlist('specification')
-    viscosity_slugs = request.GET.getlist('viscosity')
-    composition_slugs = request.GET.getlist('composition')
-    pack_size_slugs = request.GET.getlist('pack_size')
+    # URL parametrlərindən gələn filter-lər
+    product_range_slugs = [product_range_slug] if product_range_slug else request.GET.getlist('product_range')
+    application_area_slugs = [application_area_slug] if application_area_slug else request.GET.getlist('application_area')
+    specification_slugs = [specification_slug] if specification_slug else request.GET.getlist('specification')
+    viscosity_slugs = [viscosity_slug] if viscosity_slug else request.GET.getlist('viscosity')
+    composition_slugs = [composition_slug] if composition_slug else request.GET.getlist('composition')
+    pack_size_slugs = [pack_size_slug] if pack_size_slug else request.GET.getlist('pack_size')
+    
     search_query = request.GET.get('search', '')
 
     products = Product.objects.filter(is_active=True).order_by('order')
