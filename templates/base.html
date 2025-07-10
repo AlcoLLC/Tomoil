@@ -51,9 +51,30 @@
     crossorigin="anonymous">
 
   <!-- Styles -->
-  <link rel="stylesheet" href="{% static 'assets/css/home.min.css' %}">
-  <link rel="stylesheet" href="{% static 'assets/css/style.min.css' %}">
-  <link rel="stylesheet" href="{% static 'assets/css/case.min.css' %}" />
+  <style>
+    h1,
+    article h1,
+    aside h1,
+    nav h1,
+    section h1 {
+      font-size: 40px !important;
+    }
+  </style>
+  
+  <!-- Styles with Preload -->
+  <link rel="preload" href="{% static 'assets/css/home.min.css' %}" as="style"
+    onload="this.onload=null;this.rel='stylesheet'">
+  <link rel="preload" href="{% static 'assets/css/style.min.css' %}" as="style"
+    onload="this.onload=null;this.rel='stylesheet'">
+  <link rel="preload" href="{% static 'assets/css/case.min.css' %}" as="style"
+    onload="this.onload=null;this.rel='stylesheet'">
+
+  <noscript>
+    <link rel="stylesheet" href="{% static 'assets/css/home.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/style.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/case.min.css' %}">
+  </noscript>
+
 
   {% block page_css %}{% endblock %}
 
