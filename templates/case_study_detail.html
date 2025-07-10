@@ -4,7 +4,9 @@
 {% block title %}{{ case_study.title|truncatechars:60 }}{% endblock %}
 {% block description %} {{ case_study.description|truncatechars:160 }}{% endblock %}
 
-
+{% block page_css %}
+  <link rel="stylesheet" href="{% static 'assets/css/case.min.css' %}">
+{% endblock %}
 
 {% block content %}
 

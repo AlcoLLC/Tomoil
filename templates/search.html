@@ -6,8 +6,7 @@
 
 
 {% block page_css %}
-<link rel="stylesheet" href="{% static 'assets/css/search.min.css' %}" media="print" onload="this.media='all'" />
-<noscript><link rel="stylesheet" href="{% static 'assets/css/search.min.css' %}" /></noscript>
+<link rel="stylesheet" href="{% static 'assets/css/search.min.css' %}"/>
 {% endblock %}
 
 {% block page_js %}
@@ -39,7 +38,8 @@
     <span>{% trans 'Any questions? Ask in WhatsApp' %}</span>
   </a>
 </header>
-<a href="https://wa.me/message/YOUR_WHATSAPP_NUMBER" class="fixed-whatsapp">
+<a href="https://wa.me/message/YOUR_WHATSAPP_NUMBER" class="fixed-whatsapp"
+ aria-label="{% trans 'Any questions? Ask in WhatsApp' %}" title="{% trans 'Any questions? Ask in WhatsApp' %}">
   <i class="fab fa-whatsapp"></i>
 </a>
 

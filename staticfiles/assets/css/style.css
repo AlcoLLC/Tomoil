@@ -1027,3 +1027,44 @@ nav {
 .page-header .header-whatsapp {
   bottom: 60px;
 }
+
+.pagination-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 40px;
+  margin-bottom: 40px;
+}
+
+.pagination-container .pagination-info {
+  font-size: 15px;
+  color: #223160;
+  font-weight: 600;
+}
+
+.pagination-container .pagination {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.pagination-container .page-btn {
+  width: 40px;
+  height: 40px;
+  border-radius: 5px;
+  background: 0 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 0.1px solid #7272723e;
+  cursor: pointer;
+  color: #223160;
+  font-weight: 500;
+  transition: 0.2s;
+}
+.pagination-container .page-btn:hover {
+  background-color: #fff;
+}
+.pagination-container .page-btn.active {
+  border: 1px solid #e22131;
+  background-color: #fff;
+}

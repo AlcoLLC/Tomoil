@@ -4,6 +4,9 @@
 {% block title %}{{ _("meta_title_case_studies")|truncatechars:60 }}{% endblock %}
 {% block description %}{{ _("meta_description_case_studies")|truncatechars:160 }}{% endblock %}
 
+{% block page_css %}
+  <link rel="stylesheet" href="{% static 'assets/css/case.min.css' %}">
+{% endblock %}
 
 {% block page_js %}
   <script src="{% static 'assets/js/case.min.js' %}" defer></script>
@@ -80,8 +83,7 @@
     <!-- Pagination -->
     <div class="pagination-container">
       <p class="pagination-info">
-        {% trans 'Displaying' %} {{ page_obj.start_index }}–{{ page_obj.end_index }} {% trans 'of' %} {{ total_results
-        }} {% trans 'results' %}
+        {% trans 'Displaying' %} {{ page_obj.start_index }}–{{ page_obj.end_index }} {% trans 'of' %} {{ total_results}} {% trans 'results' %}
       </p>
       <div class="pagination">
         <!-- Page Numbers -->
