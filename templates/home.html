@@ -6,11 +6,10 @@
 
 {% block page_css %}
 <link rel="stylesheet" href="{% static 'assets/css/map.min.css' %}" onload="this.rel='stylesheet'" />
+<link rel="stylesheet" href="{% static 'assets/css/swiper-bundle.min.css' %}" onload="this.rel='stylesheet'">
 
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" media="print"
-  onload="this.media='all'" />
 <noscript>
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+  <link rel="stylesheet" href="{% static 'assets/css/swiper-bundle.min.css' %}">
   <link rel="stylesheet" href="{% static 'assets/css/map.min.css' %}" />
 </noscript>
 {% endblock %}
@@ -36,7 +35,7 @@
 
 {% block page_js %}
 
-<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js" defer></script>
+<script src="{% static 'assets/js/swiper-bundle.min.js' %}" defer></script>
 <script src="{% static 'assets/js/home.min.js' %}" defer></script>
 <script src="{% static 'assets/js/script.min.js' %}" defer></script>
 <script src="{% static 'assets/js/carousel.min.js' %}" defer></script>
@@ -46,10 +45,8 @@
 <script src="{% static 'assets/js/map.min.js' %}" defer></script>
 <script src="{% static 'assets/js/map-init.js' %}" defer></script>
 <script src="{% static 'assets/js/map1.min.js' %}" defer></script>
-<!-- <script src="{% static 'assets/js/map2.min.js' %}" defer></script> -->
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="{% static 'assets/js/map3.min.js' %}" defer></script>
-<!-- <script src="{% static 'assets/js/map4.min.js' %}" defer></script> -->
 
 {% endblock %}
 {% block content %}
@@ -88,7 +85,8 @@
           {% endif %}
 
           <a href="https://api.whatsapp.com/send?phone=4915221050103" class="header-whatsapp"
-            aria-label="{% trans 'Any questions? Ask in WhatsApp' %}" title="{% trans 'Any questions? Ask in WhatsApp' %}">
+            aria-label="{% trans 'Any questions? Ask in WhatsApp' %}"
+            title="{% trans 'Any questions? Ask in WhatsApp' %}">
             <i class="fab fa-whatsapp"></i>
             <span>{% trans 'Any questions? Ask in WhatsApp' %}</span>
           </a>
@@ -104,13 +102,14 @@
     </div>
   </header>
   <a href="https://api.whatsapp.com/send?phone=4915221050103" class="fixed-whatsapp"
-   aria-label="{% trans 'Any questions? Ask in WhatsApp' %}" title="{% trans 'Any questions? Ask in WhatsApp' %}">
+    aria-label="{% trans 'Any questions? Ask in WhatsApp' %}" title="{% trans 'Any questions? Ask in WhatsApp' %}">
     <i class="fab fa-whatsapp"></i>
   </a>
 
   <!-- Featured Section -->
   <section class="featured-section">
-    <img src="{% static 'images/Vector.svg' %}" alt="Decorative vector background" loading="lazy" class="background-svg" />
+    <img src="{% static 'images/Vector.svg' %}" alt="Decorative vector background" loading="lazy"
+      class="background-svg" />
     <div class="background-overlay"></div>
 
     <div class="featured-container main-container">

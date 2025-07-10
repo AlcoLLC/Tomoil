@@ -1140,25 +1140,20 @@
   height: 45px;
   border-radius: 50%;
   border: none;
-  background-color: #fff;
   color: #727272;
   border: 0.1px solid #72727237;
-  font-size: 11px;
+  font-size: 12px;
   padding: 12px;
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  transition: background-color 0.3s;
+  padding: 23px;
+  background-color: #fff;
+  transition: all 0.3s ease;
 }
 
-.section-case-studies .next-case,
-.section-case-studies .prev-case {
-  padding: 22px;
-}
-
-.section-case-studies .next-case:hover,
-.section-case-studies .prev-case:hover {
+.section-case-studies .slider-arrow:hover {
   background-color: #c62232;
   color: #fff;
 }
