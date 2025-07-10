@@ -50,18 +50,7 @@
   <link rel="preload" as="font" href="{% static 'assets/font/AtypTextBold.otf' %}" type="font/otf"
     crossorigin="anonymous">
 
-  <!-- Styles -->
-  <style>
-    h1,
-    article h1,
-    aside h1,
-    nav h1,
-    section h1 {
-      font-size: 40px !important;
-    }
-  </style>
-  
-  <!-- Styles with Preload -->
+ 
   <link rel="preload" href="{% static 'assets/css/home.min.css' %}" as="style"
     onload="this.onload=null;this.rel='stylesheet'">
   <link rel="preload" href="{% static 'assets/css/style.min.css' %}" as="style"
@@ -83,8 +72,10 @@
   <noscript>
     <link rel="stylesheet" href="{% static 'assets/css/responsive.min.css' %}" />
   </noscript>
+
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" media="print"
     onload="this.media='all'">
+    
   <script>
     !function (f, b, e, v, n, t, s) {
       if (f.fbq) return; n = f.fbq = function () {

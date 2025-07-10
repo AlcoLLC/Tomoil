@@ -282,12 +282,8 @@
     line-height: 40px;
   }
 
-  h1,
-  article h1,
-  aside h1,
-  nav h1,
   section h1 {
-    font-size: 32px !important;
+    font-size: 32px ;
     line-height: 40px;
   }
 
@@ -361,7 +357,7 @@
   }
 
   .case-detail-section h1 {
-    font-size: 42px !important;
+    font-size: 42px ;
   }
 
   .navbar {
@@ -488,12 +484,8 @@
     line-height: 32px;
   }
 
-  h1,
-  article h1,
-  aside h1,
-  nav h1,
   section h1 {
-    font-size: 26px !important;
+    font-size: 26px ;
     line-height: 32px;
   }
 
@@ -808,12 +800,8 @@
     line-height: 30px;
   }
 
-  h1,
-  article h1,
-  aside h1,
-  nav h1,
   section h1 {
-    font-size: 24px !important;
+    font-size: 24px;
     line-height: 30px;
   }
 
@@ -1202,7 +1190,7 @@
   }
 
   .case-detail-section h1 {
-    font-size: 34px !important;
+    font-size: 34px ;
   }
 
   .contact-section {
@@ -1955,7 +1943,7 @@
   }
 
   .case-detail-section h1{
-    font-size: 22px !important;
+    font-size: 22px ;
   }
 
   .product-specifications .tab {
@@ -2074,11 +2062,8 @@
     line-height: 28px;
   }
 
-  article h1,
-  aside h1,
-  nav h1,
   section h1 {
-    font-size: 20px !important;
+    font-size: 20px ;
     line-height: 28px;
   }
 
