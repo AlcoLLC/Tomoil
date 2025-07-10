@@ -61,6 +61,7 @@
   font-family: "Atyp Medium", sans-serif;
 }
 
+h1,
 article h1,
 aside h1,
 nav h1,
@@ -1012,7 +1013,7 @@ nav {
 
 .page-header .page-header-content .page-title,
 header h1 {
-  font-size: 55px;
+  font-size: 55px !important;
   line-height: 60px;
   font-weight: 700;
   color: #fff;

@@ -282,6 +282,7 @@
     line-height: 40px;
   }
 
+  h1,
   article h1,
   aside h1,
   nav h1,
@@ -360,7 +361,7 @@
   }
 
   .case-detail-section h1 {
-    font-size: 42px;
+    font-size: 42px !important;
   }
 
   .navbar {
@@ -383,7 +384,7 @@
   }
 
   .page-header .page-header-content .page-title {
-    font-size: 45px;
+    font-size: 45px !important;
     line-height: 50px;
   }
 
@@ -487,6 +488,7 @@
     line-height: 32px;
   }
 
+  h1,
   article h1,
   aside h1,
   nav h1,
@@ -805,6 +807,8 @@
     font-size: 24px;
     line-height: 30px;
   }
+
+  h1,
   article h1,
   aside h1,
   nav h1,
@@ -1198,7 +1202,7 @@
   }
 
   .case-detail-section h1 {
-    font-size: 34px;
+    font-size: 34px !important;
   }
 
   .contact-section {
@@ -1622,7 +1626,7 @@
   }
 
   .page-header .page-header-content .page-title {
-    font-size: 36px;
+    font-size: 36px !important;
     line-height: 40px;
   }
 
@@ -1945,10 +1949,13 @@
     left: 90%;
   }
 
-  .case-detail-section h1,
   .header-whatsapp i,
   .product-opinions .section-title {
     font-size: 22px;
+  }
+
+  .case-detail-section h1{
+    font-size: 22px !important;
   }
 
   .product-specifications .tab {
@@ -2021,7 +2028,7 @@
   }
 
   .page-header .page-header-content .page-title {
-    font-size: 26px;
+    font-size: 26px !important;
     line-height: 30px;
   }
 
