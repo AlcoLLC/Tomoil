@@ -89,7 +89,7 @@ INSTALLED_APPS = [
     'ckeditor',
     'ckeditor_uploader',
     'rosetta',
-     'django.contrib.sites',
+    'django.contrib.sites',
     'django.contrib.sitemaps',
 
     # apps
