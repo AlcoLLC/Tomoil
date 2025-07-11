@@ -1333,10 +1333,8 @@
     max-width: 100%;
   }
 
-
   .featured-section .background-svg {
-    height: 90vh;
-    top: 190px;
+    top: 250px;
   }
 }
 
