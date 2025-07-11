@@ -15,7 +15,7 @@
             </li>
             <li>
               <i class="fa-solid fa-envelope"></i>
-              <p>{% trans 'Email_address' %}</p>
+               <a href="mailto:info&#64;tomoil&#46;de">info&#64;tomoil&#46;de</a>
             </li>
             <li>
               <i class="fa-solid fa-phone"></i>
@@ -27,8 +27,8 @@
           <a class="button" href="{% url 'contact:contact' %}">{% trans 'Lets book a call' %}</a>
           <a class="button" href="{% url 'products:pds_sds' %}">{% trans 'PDS/SDS' %}</a>
 
-          <div class="language-dropdown">
-            <button class="lang-dropdown-btn">
+          <div class="language-dropdown ">
+            <button class="lang-dropdown-btn button">
               {% if LANGUAGE_CODE == 'en' %}EN{% elif LANGUAGE_CODE == 'de' %}DE{% elif LANGUAGE_CODE == 'es' %}ES{%
               elif LANGUAGE_CODE == 'fr' %}FR{% elif LANGUAGE_CODE == 'it' %}IT{% elif LANGUAGE_CODE == 'ca' %}汉语{% else
               %}EN{% endif %}
@@ -119,7 +119,7 @@
       </div>
       <div class="contact-item">
         <i class="fa-solid fa-envelope"></i>
-        <span>{% trans 'Email_address' %}</span>
+         <a href="mailto:info&#64;tomoil&#46;de">info&#64;tomoil&#46;de</a>
       </div>
       <div class="contact-item">
         <i class="fa-solid fa-phone"></i>

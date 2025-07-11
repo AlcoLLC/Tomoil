@@ -48,10 +48,6 @@
     padding: 0 40px;
   }
 
-  .navbar .nav-section ul {
-    margin-left: 60px;
-    gap: 25px;
-  }
 
   .page-header .section-container {
     padding-top: 11%;
@@ -108,11 +104,6 @@
     max-width: 1150px;
   }
 
-  .navbar .nav-section ul {
-    margin-left: 40px;
-    gap: 20px;
-  }
-
   .navbar .info {
     height: 35px;
     padding: 0 8px;
@@ -129,8 +120,7 @@
     line-height: 15px;
   }
 
-  .navbar .info-book button {
-    padding: 0 4px;
+  .navbar .info-book .button {
     font-weight: 400;
     font-size: 10px;
     line-height: 22px;
@@ -147,7 +137,7 @@
 
   .navbar .nav-section ul li a {
     font-size: 10px;
-    line-height: 75%;
+    line-height: 12px;
   }
 
   .navbar .logo img {
@@ -366,8 +356,11 @@
   }
 
   .navbar .nav-section ul {
-    margin-left: 35px;
-    gap: 14px;
+    gap: 10px;
+  }
+
+    .navbar .nav-section ul li a{
+    padding: 6px;
   }
 
   .page-header {
@@ -626,6 +619,15 @@
 }
 
 @media (max-width: 860px) {
+
+    .navbar .nav-section ul {
+    gap: 8px;
+  }
+
+  .navbar .nav-section ul li a{
+    padding: 4px;
+  }
+
 
   .brand-portal-section .brochure-info .section-title,
   .product-range .card-title {
