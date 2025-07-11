@@ -281,26 +281,33 @@ nav {
   border-bottom-right-radius: 20px;
   height: 60px;
   padding: 0 60px;
+  gap: 15px;
 }
 
 .navbar .nav-section ul {
   display: flex;
   align-items: center;
-  gap: 30px;
-  margin-left: 100px;
+  gap: 15px;
   list-style: none;
+}
+.navbar .nav-section ul li {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
 }
 
 .navbar .nav-section ul li a {
   color: #111214;
   font-weight: 400;
   font-size: 12px;
-  line-height: 80%;
+  line-height: 14px;
   letter-spacing: 1px;
   vertical-align: middle;
   text-transform: uppercase;
   transition: color 0.3s !important;
   text-decoration: none;
+  padding: 8px;
 }
 
 .contact-item a:hover,
