@@ -65,7 +65,6 @@ handler503 = 'contact.views.custom_503_view'
 
 
 
-# Köhnə səhifələri ana səhifəyə yönləndiririk
 old_urls = [
     'company/culture',
     'company/vision-mission',

@@ -5,7 +5,6 @@ from django.utils import timezone
 from products.models import Product
 from news.models import News
 from caseStudies.models import CaseStudy
-from django.contrib.sites.models import Site
 
 
 
@@ -37,11 +36,6 @@ class StaticViewSitemap(Sitemap):
     def location(self, item):
         return reverse(item)
 
-    def get_urls(self, site=None, **kwargs):
-        if site is None:
-            site = Site(domain='www.tomoil.de', name='Tomoil')
-        return super().get_urls(site=site, **kwargs)
-
 
 class ProductSitemap(Sitemap):
     changefreq = 'weekly'
@@ -55,11 +49,6 @@ class ProductSitemap(Sitemap):
 
     def location(self, obj):
         return reverse('products:products_detail_view', kwargs={'product_slug': obj.slug})
-    
-    def get_urls(self, site=None, **kwargs):
-        if site is None:
-          site = Site(domain='www.tomoil.de', name='Tomoil')
-        return super().get_urls(site=site, **kwargs)
 
 
 
@@ -74,12 +63,7 @@ class NewsSitemap(Sitemap):
         return obj.created_at
 
     def location(self, obj):
-        return reverse('news:news_detail', kwargs={'pk': obj.pk})
-
-    def get_urls(self, site=None, **kwargs):
-        if site is None:
-            site = Site(domain='www.tomoil.de', name='Tomoil')
-        return super().get_urls(site=site, **kwargs)
+       return reverse('news:news_detail', kwargs={'pk': obj.pk})
 
 
 
@@ -94,10 +78,6 @@ class CaseStudySitemap(Sitemap):
     def location(self, obj):
         return reverse('case_studies:case_study_detail',  kwargs={'pk': obj.pk})
 
-    def get_urls(self, site=None, **kwargs):
-        if site is None:
-            site = Site(domain='www.tomoil.de', name='Tomoil')
-        return super().get_urls(site=site, **kwargs)
 
 
 class BrandPortalSitemap(Sitemap):
@@ -118,10 +98,6 @@ class BrandPortalSitemap(Sitemap):
             return reverse('brand_portal:brand_portal') + f'?tab={item[1]}'
         return reverse(item)
 
-    def get_urls(self, site=None, **kwargs):
-        if site is None:
-            site = Site(domain='www.tomoil.de', name='Tomoil')
-        return super().get_urls(site=site, **kwargs)
 
 
 sitemaps = {
