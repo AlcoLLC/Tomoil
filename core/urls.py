@@ -6,6 +6,7 @@ from django.conf.urls.i18n import i18n_patterns
 from django.http import HttpResponse
 from django.contrib.sitemaps.views import sitemap
 from core.sitemaps import sitemaps
+from django.shortcuts import redirect
 
 
 def robots_txt(request):
@@ -61,3 +62,21 @@ handler404 = 'contact.views.custom_404_view'
 handler500 = 'contact.views.custom_500_view'
 handler403 = 'contact.views.custom_403_view'
 handler503 = 'contact.views.custom_503_view'
+
+
+
+# Köhnə səhifələri ana səhifəyə yönləndiririk
+old_urls = [
+    'company/culture',
+    'company/vision-mission',
+    'company/why-tomoil',
+    'products/motor-oil-for-cars',
+    'products/motor-oil-for-truck-and-buses',
+    'products/motor-oil-for-bikes-and-scooters',
+    'products/adblue',
+    'products/break-fluid',
+    'services/marketing',
+]
+
+for url in old_urls:
+    urlpatterns += [path(f'{url}/', lambda request: redirect('/', permanent=True))]
