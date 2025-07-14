@@ -1468,8 +1468,17 @@
   justify-content: space-between;
   padding: 0 50px;
   position: relative;
-  background-image: url("../../images/explore-background.png");
+  border-radius: 30px;
+}
+
+.e-mobility-container .background-image {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
   background-size: cover;
+  object-fit: cover;
   border-radius: 30px;
 }
 
