@@ -9,6 +9,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <link rel="canonical" href="https://tomoil.de{{ request.path }}" />
+  <link rel="alternate" hreflang="x-default" href="https://tomoil.de/" />
   <link rel="alternate" hreflang="en" href="https://tomoil.de/">
   <link rel="alternate" hreflang="de" href="https://tomoil.de/de/">
   <link rel="alternate" hreflang="es" href="https://tomoil.de/es/">
@@ -23,7 +24,7 @@
   <meta name="keywords"
     content="{% block keywords %}{% trans 'tomoil, motor oil, car oil, lubricants, synthetic oil, engine oil, hydraulic oil, gear oil' %}{% endblock %}">
   <meta name="robots" content="index, follow">
-  <meta property="og:title" content="TOMOIL">
+  <meta property="og:title" content="{% trans 'Tomoil™ | Premium Engine Oils - Official Website' %}">
   <meta property="og:type" content="website">
   <meta property="og:description"
     content="{% trans 'Discover Tomoil™ – manufacturer of premium motor oils. Explore our engine oils, gear lubricants, and synthetic oil range.' %}">
@@ -35,7 +36,7 @@
   <!-- Twitter Card tags -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:site" content="@TomoilOfficial">
-  <meta name="twitter:title" content="TOMOIL">
+  <meta name="twitter:title" content="{% trans 'Tomoil™ | Premium Engine Oils - Official Website' %}">
   <meta name="twitter:description"
     content="{% trans 'Discover Tomoil™ – manufacturer of premium motor oils. Explore our engine oils, gear lubricants, and synthetic oil range.' %}">
   <meta name="twitter:image" content="https://tomoil.de/static/images/tomoil-logo.svg">
@@ -128,7 +129,7 @@
     "telephone": "+49 1522 1050103",
     "contactType": "customer service",
     "areaServed": "Worldwide",
-    "availableLanguage": ["English", "German", "Spanish", "French", "Italian", "Chinese"]
+    "availableLanguage": ["en", "de", "es", "fr", "it", "zh-hans"]
   },
   "address": {
     "@type": "PostalAddress",
@@ -185,7 +186,6 @@
     document.getElementsByTagName('head')[0].appendChild(ahrefs_analytics_script);
   </script>
 
-
   <!-- Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-4N7NQSHY4F"></script>
   <script>
@@ -195,7 +195,6 @@
 
     gtag('config', 'G-4N7NQSHY4F');
   </script>
-
 
   <script src="{% static 'assets/js/navbar.min.js' %}" defer></script>
   <script src="{% static 'assets/js/brand.min.js' %}" defer></script>
