@@ -281,7 +281,7 @@
     flex: 0 0 33%;
   }
 
-  featured-section .product-card.active .product-image a::after {
+  .featured-section .product-card.active .product-image a::after {
     width: 190px;
     height: 190px;
   }
