@@ -1,10 +1,28 @@
 from django.contrib import admin
-from modeltranslation.admin import TranslationAdmin
+from modeltranslation.admin import TranslationAdmin, TranslationTabularInline
 from .models import (
-    ProductRange, ApplicationArea, Specification, Viscosity, 
+    ProductRange, ProductRangeCategory, ApplicationArea, Specification, Viscosity, 
     Composition, PackSize, Product, TypicalProperties, 
     PackagingSizes, Review
 )
+
+@admin.register(ProductRangeCategory)
+class ProductRangeCategoryAdmin(TranslationAdmin):
+    list_display = ('get_category_name', 'product_range')
+    list_filter = ('product_range',)
+    search_fields = ('title', 'description')
+
+    def get_category_name(self, obj):
+        from django.utils.html import strip_tags
+        if obj.title:
+            return strip_tags(obj.title)[:50]
+        return "No Title"
+    get_category_name.short_description = "Category Title"
+
+class ProductRangeCategoryInline(TranslationTabularInline):
+    model = ProductRangeCategory
+    extra = 1
+    
 
 @admin.register(ProductRange)
 class ProductRangeAdmin(TranslationAdmin):
@@ -12,6 +30,7 @@ class ProductRangeAdmin(TranslationAdmin):
     list_filter = ('is_active',)
     search_fields = ('name', 'name_en')
     list_editable = ('order', 'is_active')
+    inlines = [ProductRangeCategoryInline]
 
 @admin.register(ApplicationArea)
 class ApplicationAreaAdmin(TranslationAdmin):
