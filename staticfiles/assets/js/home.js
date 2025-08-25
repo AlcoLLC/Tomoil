@@ -1,96 +1,75 @@
-const swiper = new Swiper(".home-header .mySwiper", {
+const swiper = new Swiper('.home-header .mySwiper', {
   loop: true,
-  effect: "fade",
+  effect: 'fade',
   autoplay: {
     delay: 5000,
-    disableOnInteraction: false,
+    disableOnInteraction: false
   },
   navigation: {
-    nextEl: ".home-header .swiper-button-next",
-    prevEl: ".home-header .swiper-button-prev",
+    nextEl: '.home-header .swiper-button-next',
+    prevEl: '.home-header .swiper-button-prev'
   },
   pagination: {
-    el: ".home-header .swiper-pagination",
-    clickable: true,
-  },
+    el: '.home-header .swiper-pagination',
+    clickable: true
+  }
 });
 
-document.addEventListener("DOMContentLoaded", function () {
-  const commentSwiper = new Swiper(".comments-section .commentSwiper", {
+document.addEventListener('DOMContentLoaded', function () {
+  const commentSwiper = new Swiper('.comments-section .commentSwiper', {
     cssMode: true,
     slidesPerView: 2,
     spaceBetween: 20,
     navigation: {
-      nextEl: ".comments-section .swiper-button-next",
-      prevEl: ".comments-section .swiper-button-prev",
+      nextEl: '.comments-section .swiper-button-next',
+      prevEl: '.comments-section .swiper-button-prev'
     },
     pagination: {
-      el: ".comments-section .swiper-pagination",
+      el: '.comments-section .swiper-pagination'
     },
     mousewheel: true,
-    keyboard: true,
+    keyboard: true
   });
 });
 
-document.addEventListener("DOMContentLoaded", function () {
-  const rangeswiper = new Swiper(".product-range .mySwiper", {
-    slidesPerView: "auto",
-    spaceBetween: 30,
-    navigation: {
-      nextEl: ".product-range .swiper-button-next",
-      prevEl: ".product-range .swiper-button-prev",
-    },
-    autoplay: {
-      delay: 5000,
-      disableOnInteraction: false,
-    },
-    loop: true,
-    centeredSlides: false,
-    loopedSlides: 8,
-  });
-});
-
-document.addEventListener("DOMContentLoaded", () => {
-  const dropdowns = document.querySelectorAll(
-    ".cross-reference-content .dropdown"
-  );
+document.addEventListener('DOMContentLoaded', () => {
+  const dropdowns = document.querySelectorAll('.cross-reference-content .dropdown');
 
   dropdowns.forEach((dropdown) => {
-    const button = dropdown.querySelector(".dropdown-toggle");
+    const button = dropdown.querySelector('.dropdown-toggle');
 
-    button.addEventListener("click", (e) => {
+    button.addEventListener('click', (e) => {
       e.stopPropagation();
       dropdowns.forEach((d) => {
-        if (d !== dropdown) d.classList.remove("open");
+        if (d !== dropdown) d.classList.remove('open');
       });
-      dropdown.classList.toggle("open");
+      dropdown.classList.toggle('open');
     });
   });
 
-  document.addEventListener("click", () => {
-    dropdowns.forEach((d) => d.classList.remove("open"));
+  document.addEventListener('click', () => {
+    dropdowns.forEach((d) => d.classList.remove('open'));
   });
 });
 
-
 function copyToClipboard(element) {
-  const url = element.getAttribute("data-url");
+  const url = element.getAttribute('data-url');
   const fullUrl = window.location.origin + url;
 
   navigator.clipboard
     .writeText(fullUrl)
     .then(() => {
-      const cardContent = element.closest(".card-content");
-      const messageDiv = cardContent.querySelector(".copy-message");
+      const cardContent = element.closest('.card-content');
+      const messageDiv = cardContent.querySelector('.copy-message');
 
       if (messageDiv) {
-        messageDiv.classList.add("show");
+        messageDiv.classList.add('show');
         setTimeout(() => {
-          messageDiv.classList.remove("show");
+          messageDiv.classList.remove('show');
         }, 2000);
       }
     })
     .catch((err) => {
-      console.error("Could not copy text: ", err);
+      console.error('Could not copy text: ', err);
     });
 }
