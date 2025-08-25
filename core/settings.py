@@ -116,13 +116,12 @@ CKEDITOR_CONFIGS = {
     'default': {
         'toolbar': 'full',
         'height': 300,
-        'width': '100%',
+        'width': '400px',
         'removePlugins': 'stylesheetparser',
         'allowedContent': True,
         'extraAllowedContent': '*(*);*{*}',
     },
 }
-
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

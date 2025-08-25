@@ -185,25 +185,21 @@
     ahrefs_analytics_script.setAttribute('data-key', 'EA94fV1Ml6D2dYPP4rHnzw');
     document.getElementsByTagName('head')[0].appendChild(ahrefs_analytics_script);
   </script>
-
   <!-- Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-4N7NQSHY4F"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag() { dataLayer.push(arguments); }
     gtag('js', new Date());
-
     gtag('config', 'G-4N7NQSHY4F');
   </script>
-
   <script src="{% static 'assets/js/navbar.min.js' %}" defer></script>
   <script src="{% static 'assets/js/brand.min.js' %}" defer></script>
   <script src="{% static 'assets/js/news.min.js' %}" defer></script>
   <script src="{% static 'assets/js/contact.min.js' %}" defer></script>
   <script src="{% static 'assets/js/commitment.min.js' %}" defer></script>
-
+  
   {% block page_js %}{% endblock %}
 
 </body>
-
 </html>

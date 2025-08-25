@@ -4,7 +4,7 @@ from django.db.models import Q, Avg
 from django.core.paginator import Paginator
 from pageheader.models import PageHeader
 from .models import (
-    Product, ProductRange, ApplicationArea, Specification, 
+    Product, ProductRange, ProductRangeCategory, ApplicationArea, Specification, 
     Viscosity, Composition, PackSize, Review
 )
 
@@ -129,7 +129,7 @@ def products_view(request, product_range_slug=None, application_area_slug=None,
             'page_description': '',
             'background_image': None
         }
-
+    product_range_categories = None
     # URL parametrlərindən gələn filter-lər
     product_range_slugs = [product_range_slug] if product_range_slug else request.GET.getlist('product_range')
     application_area_slugs = [application_area_slug] if application_area_slug else request.GET.getlist('application_area')
@@ -207,6 +207,14 @@ def products_view(request, product_range_slug=None, application_area_slug=None,
             except (ValueError, IndexError):
                 formatted_display_date = from_date
 
+
+    if len(product_range_slugs) == 1:
+        try:
+            selected_group = ProductRange.objects.get(slug=product_range_slugs[0])
+            product_range_categories = ProductRangeCategory.objects.filter(product_range=selected_group)
+        except ProductRange.DoesNotExist:
+            product_range_categories = None
+
     context = {
         **header_context,
         'products': page_obj,
@@ -225,6 +233,7 @@ def products_view(request, product_range_slug=None, application_area_slug=None,
         'search_query': search_query,
         'formatted_date': formatted_display_date,
         'total_results': paginator.count,
+        'product_range_categories': product_range_categories,
     }
 
     return render(request, 'products.html', context)

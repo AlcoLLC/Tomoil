@@ -1,9 +1,15 @@
-from modeltranslation.translator import register, TranslationOptions
-from .models import ProductRange, Composition, Product, TypicalProperties, Review, ApplicationArea
+from modeltranslation.translator import register, TranslationOptions, translator
+
+from .models import ProductRange, ProductRangeCategory, Composition, Product, TypicalProperties, Review, ApplicationArea
 
 @register(ProductRange)
 class ProductRangeTranslationOptions(TranslationOptions):
     fields = ('name', 'description',)
+
+class ProductRangeCategoryTranslationOptions(TranslationOptions):
+    fields = ('title', 'description')
+
+translator.register(ProductRangeCategory, ProductRangeCategoryTranslationOptions)
 
 @register(Composition)
 class CompositionTranslationOptions(TranslationOptions):
@@ -24,3 +30,4 @@ class ReviewTranslationOptions(TranslationOptions):
 @register(ApplicationArea)
 class ApplicationAreaTranslationOptions(TranslationOptions):
     fields = ('name',)
+

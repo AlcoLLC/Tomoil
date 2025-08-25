@@ -1,4 +1,5 @@
 from django.db import models
+from ckeditor_uploader.fields import RichTextUploadingField
 from django.core.validators import MinValueValidator, MaxValueValidator
 from django.utils.text import slugify
 
@@ -24,6 +25,15 @@ class ProductRange(models.Model):
         verbose_name = "Product Range"
         verbose_name_plural = "Product Ranges"
 
+
+class ProductRangeCategory(models.Model):
+    product_range = models.ForeignKey(ProductRange, on_delete=models.CASCADE, related_name="categories")
+    title = RichTextUploadingField(blank=True, null=True) 
+    description = RichTextUploadingField(blank=True, null=True) 
+
+    def __str__(self):
+        return f"{self.product_range.name}"
+    
 class ApplicationArea(models.Model):
     name = models.CharField(max_length=100, blank=True, null=True)
     slug = models.SlugField(max_length=120, unique=True, blank=True)

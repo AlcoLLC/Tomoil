@@ -420,6 +420,17 @@
     </div>
 </section>
 
+ {% if selected_product_ranges|length == 1 and product_range_categories %}
+<section class="section-container">   
+  <div class="product-group-content">
+    {% for category in product_range_categories %}
+      <h2>{{ category.title|safe }}</h2>
+      <p>{{ category.description|safe }}</p>
+    {% endfor %}
+  </div>
+</section>
+{% endif %}
+
 <script>
 
     // Product Filter Modal JavaScript
