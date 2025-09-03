@@ -9,6 +9,7 @@ from core.sitemaps import sitemaps
 from django.shortcuts import redirect
 
 
+
 def robots_txt(request):
     lines = [
         "User-agent: *",
@@ -64,18 +65,76 @@ handler403 = 'contact.views.custom_403_view'
 handler503 = 'contact.views.custom_503_view'
 
 
+# Error URLs redirects
+error_urls = {
+    'pds_sds/': 'pds-sds/',
+    'our_commitment/': 'our-commitment/',
+    'vision_mission/': 'vision-mission/',
+    'fr/news/0/': 'fr/news/',
+    'services/marketing/': 'services/',
+    'products/motor-oil-for-truck-and-buses/': '',
+    'de/news/0/': 'de/news/',
+    'zh-hans/news/0/': 'zh-hans/news/',
+    'es/news/0/': 'es/news/',
+    'services/industry/': 'services/',
+    'news/0/': 'news/',
+    'products/adblue/': 'products/',
+    'products/gear-oils-and-transmission-fluids/': 'products/',
+    'products/antifreeze-and-coolants/': 'products/',
+    'products/break-fluid/': 'products/',
+    'services/fleet/': 'services/',
+    'company/vision-mission/': 'vision-mission/',
+    'products/industrial-oils/': '?product_range=industrial-gear-oil',
+    'company/culture/': '',
+    'cdn-cgi/l/email-protection/': '',
+    'static/tomoil-motoroil.pdf/': '',
+}
 
-old_urls = [
-    'company/culture',
-    'company/vision-mission',
-    'company/why-tomoil',
-    'products/motor-oil-for-cars',
-    'products/motor-oil-for-truck-and-buses',
-    'products/motor-oil-for-bikes-and-scooters',
-    'products/adblue',
-    'products/break-fluid',
-    'services/marketing',
+for old_slug, new_slug in error_urls.items():
+    urlpatterns += [
+        path(f'{old_slug}', lambda request, new_slug=new_slug: redirect(f'/{new_slug}', permanent=True))
+    ]
+
+# Product URLs redirects
+product_urls = [
+    'products/motor-oil-for-cars/',
+    'products/motor-oil-for-bikes-and-scooters/',
+    'products/product/tomoil-engine-oil-5w-20-spgf-6a/',
+    'products/product/tomoil-engine-oil-5w-30-spgf-6a/',
+    'products/product/tomoil-engine-oil-5w-40-sp/',
+    'products/product/tomoil-engine-oil-10w-30-spgf-6a/',
+    'products/product/tomoil-engine-oil-0w-30-sp/',
+    'products/product/tomoil-engine-oil-0w-30-spgf-6a/',
+    'products/product/tomoil-engine-oil-0w-16-spgf-6b/',
+    'products/product/tomoil-engine-oil-0w-20-c5c6/',
+    'products/product/tomoil-engine-oil-0w-8-glv-1/',
+    'products/product/tomoil-engine-oil-0w-20-spgf-6a/',
+    'products/product/tomoil-engine-oil-0w-20-c5/',
+    'products/product/tomoil-engine-oil-5w-30-sp/',
 ]
 
-for url in old_urls:
-    urlpatterns += [path(f'{url}/', lambda request: redirect('/', permanent=True))]
+for url in product_urls:
+    urlpatterns += [
+        path(f'{url}', lambda request, url=url: redirect('/products/?product_range=engine-oils/', permanent=True))
+    ]
+
+# DE Product URLs redirects
+de_product_urls = [
+    'de/products/de/product/tomoil-engine-oil-0w-30-sp/',
+    'de/products/de/product/tomoil-engine-oil-0w-8-glv-1/',
+    'de/products/de/product/tomoil-engine-oil-5w-20-spgf-6a/',
+    'de/products/de/product/tomoil-engine-oil-0w-20-c5/',
+    'de/products/de/product/tomoil-engine-oil-5w-30-spgf-6a/',
+    'de/products/de/product/tomoil-engine-oil-10w-30-spgf-6a/',
+    'de/products/de/product/tomoil-engine-oil-0w-30-spgf-6a/',
+    'de/products/de/product/tomoil-engine-oil-5w-30-sp/',
+    'de/products/de/product/tomoil-engine-oil-0w-20-c5c6/',
+    'de/products/de/product/tomoil-engine-oil-5w-40-sp/',
+    'de/products/de/product/tomoil-engine-oil-0w-20-spgf-6a/',
+    'de/products/de/product/tomoil-engine-oil-0w-16-spgf-6b/',
+]
+
+for url in de_product_urls:
+    urlpatterns += [
+        path(f'{url}', lambda request, url=url: redirect('/de/products/?product_range=engine-oils/', permanent=True))
+    ]
