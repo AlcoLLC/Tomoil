@@ -1,6 +1,10 @@
 {% extends 'base.html' %}
 {% load static %}
 {% load i18n %}
+
+{% block canonical %}
+ <link rel="canonical" href="{{ request.scheme }}://{{ request.get_host }}{% url 'products:products_list' %}">
+{% endblock %}
 {% block title %}{{ _("meta_title_products")|truncatechars:60 }}{% endblock %}
 {% block description %}{{ _("meta_description_products")|truncatechars:160 }}{% endblock %}
 {% block keywords %}{% trans "product_keywords" %}{% endblock %}

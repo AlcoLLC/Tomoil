@@ -3,6 +3,9 @@
 {% block description %}{{ _("meta_description_news")|truncatechars:160 }}{% endblock %}
 {% block keywords %}{% trans "news_keywords" %}{% endblock %}
 
+{% block canonical %}
+<link rel="canonical" href="{{ request.scheme }}://{{ request.get_host }}{% url 'news:news_list' %}">
+{% endblock  %}
 
 {% block page_css %}
 <link rel="stylesheet" href="{% static 'assets/css/news.min.css' %}"  />

@@ -1,5 +1,9 @@
 {% extends 'base.html' %} {% load static %} {% load i18n %}
 
+{% block canonical %}
+<link rel="canonical" href="{{ request.scheme }}://{{ request.get_host }}{% url 'news:news_detail' news_item.id %}">
+{% endblock  %}
+
 {% block title %}{{ news_item.title|truncatechars:60 }}{% endblock %}
 {% block description %}{{ news_item.description|truncatechars:160 }}{% endblock %}
 {% block keywords %}{% trans "news_keywords" %}{% endblock %}
