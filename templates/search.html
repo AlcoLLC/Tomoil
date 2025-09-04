@@ -1,5 +1,13 @@
 {% extends 'base.html' %} {% load static %} {% load i18n %}
 
+{% block canoncial %}
+  {% if query %}
+    <link rel="canonical" href="https://tomoil.de/search/?search={{ query|urlencode }}">
+  {% else %}
+    <link rel="canonical" href="https://tomoil.de/search/">
+  {% endif %}
+{% endblock %}
+
 {% block title %}{{ _("meta_title_search")|truncatechars:60 }}{% endblock %}
 {% block description %}{{ _("meta_description_search")|truncatechars:160 }}{% endblock %}
 {% block keywords %}{% trans "search_keywords" %}{% endblock %}

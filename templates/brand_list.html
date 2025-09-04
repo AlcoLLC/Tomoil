@@ -2,6 +2,12 @@
 {% load static %}
 {% load i18n %}
 
+
+{% block canonical %}
+<link rel="canonical" href="https://tomoil.de/brand/?tab={{ active_tab|default:'brand-guideline' }}" />
+{% endblock %}
+
+
 {% block title %}{{ _("meta_title_brand_portal")|truncatechars:60 }}{% endblock %}
 {% block description %}{{ _("meta_description_brand_portal")|truncatechars:160 }}{% endblock %}
 {% block keywords %}{% trans "brand_portal_keywords" %}{% endblock %}

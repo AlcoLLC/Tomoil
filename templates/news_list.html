@@ -4,8 +4,8 @@
 {% block keywords %}{% trans "news_keywords" %}{% endblock %}
 
 {% block canonical %}
-<link rel="canonical" href="{{ request.scheme }}://{{ request.get_host }}{% url 'news:news_list' %}">
-{% endblock  %}
+  <link rel="canonical" href="https://tomoil.de/news/" />
+{% endblock %}
 
 {% block page_css %}
 <link rel="stylesheet" href="{% static 'assets/css/news.min.css' %}"  />
