@@ -1,5 +1,11 @@
 {% extends 'base.html' %} {% load static %} {% load i18n %}
 
+
+{% block canonical %}
+<link rel="canonical" href="https://tomoil.de/products/{{ product.slug }}/">
+{% endblock %}
+
+
 {% block title %}{{ product.title|truncatechars:60 }} | {% trans 'Product name' %}{% endblock %}
 {% block description %}{{ product.description|truncatechars:160 }}{% endblock %}
 {% block keywords %}{% trans "product_keywords" %}{% endblock %}

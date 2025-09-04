@@ -1,5 +1,8 @@
 {% extends 'base.html' %} {% load static %} {% load i18n %}
 
+{% block canonical %}
+  <link rel="canonical" href="https://tomoil.de/case-studies/" />
+{% endblock %}
 
 {% block title %}{{ _("meta_title_case_studies")|truncatechars:60 }}{% endblock %}
 {% block description %}{{ _("meta_description_case_studies")|truncatechars:160 }}{% endblock %}
