@@ -1,6 +1,11 @@
 {% extends 'base.html' %}
 {% load static %}
 {% load i18n %}
+
+{% block canonical %}
+<link rel="canonical" href="{{ request.scheme }}://{{ request.get_host }}{% url 'case_studies:case_study_detail' case_study.id %}" />
+{% endblock  %}
+
 {% block title %}{{ case_study.title|truncatechars:60 }}{% endblock %}
 {% block description %} {{ case_study.description|truncatechars:160 }}{% endblock %}
 
