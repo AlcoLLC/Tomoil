@@ -93,10 +93,13 @@ document.addEventListener("DOMContentLoaded", function () {
     let csrfValue = getCsrfToken();
     const newPath = calculateNewPath(langCode);
 
+    const currentQueryString = window.location.search;
+    const nextUrl = newPath + currentQueryString;
+
     if (csrfValue) {
-      submitLanguageForm(langCode, newPath, csrfValue);
+      submitLanguageForm(langCode, nextUrl, csrfValue);
     } else {
-      window.location.href = newPath;
+      window.location.href = nextUrl;
     }
   }
 
