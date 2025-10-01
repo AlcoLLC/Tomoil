@@ -5,11 +5,6 @@
 }
 
 @media screen and (max-width: 1550px) {
-  .navbar {
-    width: 75vw;
-    max-width: 1400px;
-  }
-
   .page-header .section-container {
     padding-top: 10%;
   }
@@ -27,17 +22,16 @@
     height: 400px;
   }
 
-  .comments-section .swiper-slide>div:first-of-type>p {
+  .comments-section .swiper-slide > div:first-of-type > p {
     font-size: 16px;
     line-height: 22px;
   }
 }
 
 @media screen and (max-width: 1400px) {
-
   .comments-section .swiper,
   .navbar {
-    width: 90vw;
+    width: 95vw;
   }
 
   .navbar {
@@ -47,7 +41,6 @@
   .navbar .nav-section {
     padding: 0 40px;
   }
-
 
   .page-header .section-container {
     padding-top: 11%;
@@ -76,10 +69,17 @@
 }
 
 @media screen and (max-width: 1200px) {
-
   .comments-section .swiper,
   .navbar {
     width: 95vw;
+  }
+
+  .home-header .slide-content p:nth-of-type(1) {
+    max-width: 80%;
+  }
+
+  .home-header .slide-content p:nth-of-type(2) {
+    max-width: 80%;
   }
 
   .wolver-section .wolver-container {
@@ -167,7 +167,7 @@
     right: 2%;
   }
 
-  .comments-section .swiper-slide>div>div>h5,
+  .comments-section .swiper-slide > div > div > h5,
   .header-whatsapp i {
     font-size: 20px;
   }
@@ -177,6 +177,10 @@
   .home-header .swiper-button-next i,
   .home-header .swiper-button-prev i {
     font-size: 12px;
+  }
+
+  .home-header .home-navigation {
+    gap: 25px;
   }
 
   .site-footer .footer-brand {
@@ -218,7 +222,7 @@
     max-width: 75vw;
   }
 
-  .comments-section .swiper-slide>div>div>p,
+  .comments-section .swiper-slide > div > div > p,
   .featured-section .product-title {
     font-size: 15px;
   }
@@ -253,14 +257,6 @@
   .home-header .swiper-button-prev {
     width: 35px !important;
     height: 35px !important;
-  }
-
-  .home-header .swiper-button-prev {
-    left: 4% !important;
-  }
-
-  .home-header .swiper-button-next {
-    right: 3% !important;
   }
 
   .section-title {
@@ -322,7 +318,6 @@
 }
 
 @media screen and (max-width: 956px) {
-
   .adventure-section .read-more,
   .section-services .service-detail .section-description {
     margin-top: 15px;
@@ -355,7 +350,7 @@
     gap: 10px;
   }
 
-    .navbar .nav-section ul li a{
+  .navbar .nav-section ul li a {
     padding: 6px;
   }
 
@@ -619,15 +614,13 @@
 }
 
 @media (max-width: 860px) {
-
-    .navbar .nav-section ul {
+  .navbar .nav-section ul {
     gap: 8px;
   }
 
-  .navbar .nav-section ul li a{
+  .navbar .nav-section ul li a {
     padding: 4px;
   }
-
 
   .brand-portal-section .brochure-info .section-title,
   .product-range .card-title {
@@ -719,6 +712,7 @@
   .home-header .slide-content p:nth-of-type(1) {
     font-size: 35px;
     line-height: 40px;
+    max-width: 85%;
   }
 
   .home-header .slide-content p:nth-of-type(2),
@@ -727,8 +721,8 @@
     line-height: 20px;
   }
 
-  .home-header .slide-content {
-    max-width: 95%;
+  .home-header .slide-content p:nth-of-type(2) {
+    max-width: 85%;
   }
 
   .btn-learn {
@@ -786,7 +780,6 @@
 }
 
 @media screen and (max-width: 800px) {
-
   .review-modal,
   .wolver-section .wolver-content {
     max-width: 95%;
@@ -988,7 +981,7 @@
     border-radius: 0 20px;
   }
 
-  .cross-reference .cross-reference-content>button span,
+  .cross-reference .cross-reference-content > button span,
   .hamburger {
     display: block !important;
   }
@@ -1042,7 +1035,7 @@
     gap: 12px;
   }
 
-  .cross-reference .cross-reference-content>button {
+  .cross-reference .cross-reference-content > button {
     width: 100%;
     margin-top: 10px;
   }
@@ -1112,7 +1105,6 @@
 }
 
 @media (max-width: 720px) {
-
   .adventure-section .card-small,
   .brand-portal-section .tabs,
   .section-oem .oem-container {
@@ -1130,7 +1122,7 @@
   }
 
   .brand-portal-section .tab:not(:last-child)::before {
-    content: "";
+    content: '';
     position: absolute;
     right: 0;
     bottom: 0;
@@ -1437,7 +1429,6 @@
 }
 
 @media (max-width: 620px) {
-
   .brand-portal-section .brand-video-gallery,
   .glance-section .guides-grid {
     grid-template-columns: repeat(1, 1fr);
@@ -1466,7 +1457,7 @@
     padding: 18px 20px;
   }
 
-  .section-services .stat-item>div:last-of-type {
+  .section-services .stat-item > div:last-of-type {
     text-align: left;
     margin-left: 5px;
   }
@@ -1732,6 +1723,11 @@
   .home-header .slide-content p:nth-of-type(1) {
     font-size: 24px;
     line-height: 30px;
+    max-width: 90%;
+  }
+
+  .home-header .slide-content p:nth-of-type(2) {
+    max-width: 90%;
   }
 
   .btn-learn {
@@ -1752,7 +1748,6 @@
     border-radius: 0;
     padding: 40px 0 !important;
   }
-
 
   .featured-section .slider-nav,
   .logos-section #next,
@@ -1947,7 +1942,7 @@
     font-size: 22px;
   }
 
-  .case-detail-section h1{
+  .case-detail-section h1 {
     font-size: 22px !important;
     line-height: 26px !important;
   }
