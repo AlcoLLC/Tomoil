@@ -271,9 +271,9 @@
 .product-range .card-container .card-content {
   position: absolute;
   top: 80%;
-  right: 0;
+  left: 0;
   background-color: #fff;
-  width: 92%;
+  width: 100%;
   padding: 20px;
   min-height: 125px;
   max-height: 155px;
@@ -776,8 +776,12 @@
   justify-content: center;
   align-items: center;
   width: 75%;
-  transition: transform 0.5s;
+  transition: transform 1s;
   position: relative;
+  -webkit-transition: transform 1s;
+  -moz-transition: transform 1s;
+  -ms-transition: transform 1s;
+  -o-transition: transform 1s;
 }
 
 .featured-section .product-card {
@@ -785,9 +789,13 @@
   margin: 0 auto;
   position: relative;
   opacity: 0.7;
-  transition: 0.5s;
+  transition: 1s;
   z-index: 1;
   display: none;
+  -webkit-transition: 1s;
+  -moz-transition: 1s;
+  -ms-transition: 1s;
+  -o-transition: 1s;
 }
 
 .featured-section .product-card.visible {
@@ -888,6 +896,14 @@
 
 .featured-section .slider-nav:hover {
   background-color: #f8f9fa;
+}
+
+/* Aktif olmayan kartlardaki resimler daha küçük olsun */
+.featured-section .product-card:not(.active) .product-image img {
+  max-width: 60%;   /* 80% yerine daha küçük */
+  max-height: 80%;  /* biraz daha kısalt */
+  transition: 0.4s;
+  opacity: 0.8;     /* istersen biraz şeffaflık da ekleyebilirsin */
 }
 
 .featured-section .prev-btn {

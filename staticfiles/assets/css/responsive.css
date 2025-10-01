@@ -264,8 +264,8 @@
     line-height: 40px;
   }
 
-  section h1 {
-    font-size: 32px;
+  section h1, .featured-section .section-header h1 {
+    font-size: 32px ;
     line-height: 40px;
   }
 
@@ -469,8 +469,8 @@
     line-height: 32px;
   }
 
-  section h1 {
-    font-size: 26px;
+  section h1, .featured-section .section-header h1 {
+    font-size: 26px ;
     line-height: 32px;
   }
 
@@ -600,6 +600,10 @@
 
   .section-case-studies .section-title {
     max-width: 80%;
+  }
+
+  .section-subtitle {
+    font-size: 16px;
   }
 }
 
@@ -792,10 +796,13 @@
     line-height: 30px;
   }
 
-  section h1 {
+  section h1, .featured-section .section-header h1 {
     font-size: 24px;
     line-height: 30px;
   }
+  .section-subtitle {
+        font-size: 14px;
+    }
 
   .home-header .swiper-button-next,
   .home-header .swiper-button-prev {
@@ -2056,11 +2063,15 @@
     line-height: 28px;
   }
 
-  section h1 {
-    font-size: 20px;
+  section h1, .featured-section .section-header h1 {
+    font-size: 20px ;
     line-height: 28px;
   }
 
+      .section-subtitle {
+        font-size: 12px;
+        line-height: 24px;
+    }
   .featured-section .product-card {
     flex: 0 0 65%;
   }
