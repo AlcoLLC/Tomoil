@@ -76,10 +76,14 @@ section h1 {
 
 .section-subtitle {
   color: #223160;
-  font-size: 12px;
+  font-size: 18px;
   text-transform: uppercase;
   letter-spacing: 1px;
   line-height: 28px;
+}
+
+.featured-section .section-header h1{
+  font-size: 36px;
 }
 
 .facebook-pixel-none {

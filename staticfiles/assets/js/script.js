@@ -81,7 +81,7 @@ function initProductSlider() {
   function startAutoplay() {
     autoplayInterval = setInterval(() => {
       nextSlide();
-    }, 3000);
+    }, 5000);
   }
 
   function stopAutoplay() {
