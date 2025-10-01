@@ -1,75 +1,92 @@
-const swiper = new Swiper('.home-header .mySwiper', {
-  loop: true,
-  effect: 'fade',
-  autoplay: {
-    delay: 5000,
-    disableOnInteraction: false
-  },
+let swiper = new Swiper(".home-header .mySwiper", {
+  loop: !0,
+  effect: "fade",
+  autoplay: { delay: 5e3, disableOnInteraction: !1 },
   navigation: {
-    nextEl: '.home-header .swiper-button-next',
-    prevEl: '.home-header .swiper-button-prev'
+    nextEl: ".home-header .swiper-button-next",
+    prevEl: ".home-header .swiper-button-prev",
   },
-  pagination: {
-    el: '.home-header .swiper-pagination',
-    clickable: true
-  }
+  pagination: { el: ".home-header .swiper-pagination", clickable: !0 },
 });
-
-document.addEventListener('DOMContentLoaded', function () {
-  const commentSwiper = new Swiper('.comments-section .commentSwiper', {
-    cssMode: true,
+function copyToClipboard(t) {
+  var e = t.getAttribute("data-url"),
+    e = window.location.origin + e;
+  navigator.clipboard
+    .writeText(e)
+    .then(() => {
+      let e = t.closest(".card-content").querySelector(".copy-message");
+      e &&
+        (e.classList.add("show"),
+        setTimeout(() => {
+          e.classList.remove("show");
+        }, 2e3));
+    })
+    .catch((e) => {
+      console.error("Could not copy text: ", e);
+    });
+}
+document.addEventListener("DOMContentLoaded", function () {
+  new Swiper(".comments-section .commentSwiper", {
+    cssMode: !0,
     slidesPerView: 2,
     spaceBetween: 20,
     navigation: {
-      nextEl: '.comments-section .swiper-button-next',
-      prevEl: '.comments-section .swiper-button-prev'
+      nextEl: ".comments-section .swiper-button-next",
+      prevEl: ".comments-section .swiper-button-prev",
     },
-    pagination: {
-      el: '.comments-section .swiper-pagination'
-    },
-    mousewheel: true,
-    keyboard: true
+    pagination: { el: ".comments-section .swiper-pagination" },
+    mousewheel: !0,
+    keyboard: !0,
   });
+}),
+  document.addEventListener("DOMContentLoaded", function () {
+   new Swiper(".product-range .mySwiper", {
+  slidesPerView: 3,
+  spaceBetween: 30,
+  loop: true,
+  navigation: {
+    nextEl: ".product-range .swiper-button-next",
+    prevEl: ".product-range .swiper-button-prev",
+  },
+  autoplay: { delay: 5000, disableOnInteraction: false },
 });
 
-document.addEventListener('DOMContentLoaded', () => {
-  const dropdowns = document.querySelectorAll('.cross-reference-content .dropdown');
-
-  dropdowns.forEach((dropdown) => {
-    const button = dropdown.querySelector('.dropdown-toggle');
-
-    button.addEventListener('click', (e) => {
-      e.stopPropagation();
-      dropdowns.forEach((d) => {
-        if (d !== dropdown) d.classList.remove('open');
+  }),
+  document.addEventListener("DOMContentLoaded", () => {
+    let o = document.querySelectorAll(".cross-reference-content .dropdown");
+    o.forEach((t) => {
+      t.querySelector(".dropdown-toggle").addEventListener("click", (e) => {
+        e.stopPropagation(),
+          o.forEach((e) => {
+            e !== t && e.classList.remove("open");
+          }),
+          t.classList.toggle("open");
       });
-      dropdown.classList.toggle('open');
-    });
+    }),
+      document.addEventListener("click", () => {
+        o.forEach((e) => e.classList.remove("open"));
+      });
+  }),
+  window.addEventListener("scroll", function () {
+    var e = document.querySelector(".navbar"),
+      t = document.querySelector("nav"),
+      e =
+        (20 < window.scrollY
+          ? (e.classList.remove("transparent"),
+            e.classList.add("scrolled"),
+            t.classList.add("scrolled-nav"))
+          : (e.classList.add("transparent"),
+            e.classList.remove("scrolled"),
+            t.classList.remove("scrolled-nav")),
+        document.querySelector(".header-whatsapp")),
+      t = document.querySelector(".fixed-whatsapp"),
+      o = window.scrollY;
+    document.querySelector(".placeholder-header").offsetHeight;
+    100 < o
+      ? ((t.style.opacity = "1"),
+        (t.style.visibility = "visible"),
+        e && ((e.style.opacity = "0"), (e.style.visibility = "hidden")))
+      : ((t.style.opacity = "0"),
+        (t.style.visibility = "hidden"),
+        e && ((e.style.opacity = "1"), (e.style.visibility = "visible")));
   });
-
-  document.addEventListener('click', () => {
-    dropdowns.forEach((d) => d.classList.remove('open'));
-  });
-});
-
-function copyToClipboard(element) {
-  const url = element.getAttribute('data-url');
-  const fullUrl = window.location.origin + url;
-
-  navigator.clipboard
-    .writeText(fullUrl)
-    .then(() => {
-      const cardContent = element.closest('.card-content');
-      const messageDiv = cardContent.querySelector('.copy-message');
-
-      if (messageDiv) {
-        messageDiv.classList.add('show');
-        setTimeout(() => {
-          messageDiv.classList.remove('show');
-        }, 2000);
-      }
-    })
-    .catch((err) => {
-      console.error('Could not copy text: ', err);
-    });
-}
