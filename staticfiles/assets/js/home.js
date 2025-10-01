@@ -66,27 +66,4 @@ document.addEventListener("DOMContentLoaded", function () {
       document.addEventListener("click", () => {
         o.forEach((e) => e.classList.remove("open"));
       });
-  }),
-  window.addEventListener("scroll", function () {
-    var e = document.querySelector(".navbar"),
-      t = document.querySelector("nav"),
-      e =
-        (20 < window.scrollY
-          ? (e.classList.remove("transparent"),
-            e.classList.add("scrolled"),
-            t.classList.add("scrolled-nav"))
-          : (e.classList.add("transparent"),
-            e.classList.remove("scrolled"),
-            t.classList.remove("scrolled-nav")),
-        document.querySelector(".header-whatsapp")),
-      t = document.querySelector(".fixed-whatsapp"),
-      o = window.scrollY;
-    document.querySelector(".placeholder-header").offsetHeight;
-    100 < o
-      ? ((t.style.opacity = "1"),
-        (t.style.visibility = "visible"),
-        e && ((e.style.opacity = "0"), (e.style.visibility = "hidden")))
-      : ((t.style.opacity = "0"),
-        (t.style.visibility = "hidden"),
-        e && ((e.style.opacity = "1"), (e.style.visibility = "visible")));
   });
