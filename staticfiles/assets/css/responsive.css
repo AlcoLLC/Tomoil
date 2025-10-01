@@ -234,10 +234,6 @@
     height: 75vh;
   }
 
-  .home-header .swiper-slide {
-    padding-left: 8%;
-  }
-
   .home-header .slide-content span {
     font-size: 14px;
   }
