@@ -38,9 +38,10 @@
   z-index: 1;
 }
 
-.home-header .swiper-slide .container {
+.home-header .swiper-slide .container.homed-slider-content {
   z-index: 2;
-  padding-left: 5px;
+  display: flex;
+  padding-left: 3px;
 }
 
 .home-header .swiper-slide .container .btn-learn {
@@ -77,11 +78,11 @@
   margin-top: 10px;
   margin-bottom: 20px;
   text-transform: capitalize;
-  max-width: 60%;
+  max-width: 70%;
 }
 
 .home-header .slide-content p:nth-of-type(2) {
-  max-width: 70%;
+  max-width: 75%;
   font-family: 'Atyp Regular', sans-serif;
   font-weight: 400;
   font-size: 18px;
@@ -91,10 +92,14 @@
   color: #f1f3f9;
 }
 
+.home-header .home-navigation {
+  display: flex;
+  gap: 35px;
+  margin-right: 10px;
+}
+
 .home-header .swiper-button-next,
 .home-header .swiper-button-prev {
-  position: absolute !important;
-  bottom: 19vh !important;
   width: 45px !important;
   height: 45px !important;
   border-radius: 50%;
@@ -104,16 +109,7 @@
   align-items: center !important;
   justify-content: center !important;
   transition: 0.4s;
-  top: 50% !important;
-  transform: translate(-50%, -50%);
-}
-
-.home-header .swiper-button-prev {
-  left: 12% !important;
-}
-
-.home-header .swiper-button-next {
-  right: 10% !important;
+  position: relative !important;
 }
 
 .comments-section .swiper-button-next::after,
@@ -690,7 +686,7 @@
 
 .product-range .swiper-slide {
   max-width: 350px;
-  height: auto;
+  height: auto;
 }
 
 .button-style:hover,

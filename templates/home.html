@@ -60,7 +60,8 @@
         <div class="swiper-slide">
           <img class="background-image" src="{{ swiper.image.url }}" alt="{{ swiper.image.url }} Slider Image"
             fetchpriority="high" loading="eager" />
-            <div class="container">
+            <div class="container homed-slider-content">
+
               {% if swiper.link %}
               <a href="{{ swiper.link }}" class="slide-content">
                 <span>{{ swiper.title }}</span>
@@ -84,6 +85,15 @@
                 <span class="btn-learn">{% trans 'LEARN MORE' %}</span>
               </a>
               {% endif %}
+
+              <div class="home-navigation">
+                <div class="swiper-button-prev">
+                  <i class="fa-solid fa-arrow-left"></i>
+                </div>
+                <div class="swiper-button-next">
+                  <i class="fa-solid fa-arrow-right"></i>
+                </div>
+              </div>
             </div>
 
             <div class="container whatsapp">
@@ -97,12 +107,7 @@
         </div>
         {% empty %} {% endfor %}
       </div>
-      <div class="swiper-button-prev">
-        <i class="fa-solid fa-arrow-left"></i>
-      </div>
-      <div class="swiper-button-next">
-        <i class="fa-solid fa-arrow-right"></i>
-      </div>
+      
     </div>
   
     <a href="https://api.whatsapp.com/send?phone=4915221050103" class="fixed-whatsapp"
