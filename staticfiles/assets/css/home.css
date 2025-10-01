@@ -656,7 +656,130 @@
 }
 
 .comments-section .swiper-button-next i,
-.comments-section .swiper-button-prev i {z
+.comments-section .swiper-button-prev i {
+  font-size: 18px;
+  color: #223160;
+}
+
+.product-range .nav-button {
+  position: static !important;
+  font-size: 12px;
+  width: 45px !important;
+  height: 45px !important;
+  border: 0.5px solid #d8dee3;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 !important;
+  cursor: pointer;
+  color: #727272;
+  transition: 0.4s;
+  background-color: #fff;
+}
+
+.product-range .swiper-button-next {
+  margin-right: 20px !important;
+}
+
+.product-range .swiper {
+  padding-bottom: 10rem !important;
+  margin-bottom: 10px;
+  width: 100%;
+}
+
+.product-range .swiper-slide {
+  max-width: 350px;
+  height: auto;
+}
+
+.button-style:hover,
+.cross-reference .cross-reference-content > button:hover,
+.home-header .btn-learn:hover,
+.market-segments ul li div:hover {
+  background-color: #c62232;
+}
+
+.home-header .slide-back {
+  background-image: url('../../images_folder/header.jpg');
+}
+
+.featured-section .background-overlay {
+  position: absolute;
+  width: 1300px;
+  background-position: left;
+  background-repeat: no-repeat;
+  background-size: contain;
+}
+
+.featured-section {
+  position: relative;
+  width: 100%;
+  max-width: 1300px;
+  margin: -75px auto 0;
+  padding: 40px 20px;
+  border-radius: 40px;
+  background-color: #fff;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+  overflow: hidden;
+  z-index: 10;
+}
+
+.featured-section .background-svg {
+  position: absolute;
+  width: 100%;
+  max-width: 1300px;
+  height: 650px;
+  top: 0;
+  left: 0;
+  opacity: 0.5;
+  z-index: 0;
+  object-fit: cover;
+  aspect-ratio: 1000 / 498;
+}
+
+.featured-section .background-overlay {
+  top: -512.82px;
+  left: -50px;
+  height: 1000.51px;
+  background-color: #fff;
+  opacity: 0.2;
+  z-index: 1;
+}
+
+.featured-section .featured-container {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.featured-section .section-header {
+  text-align: center;
+  margin-bottom: 50px;
+  position: relative;
+  z-index: 3;
+}
+
+.featured-section .products-slider {
+  position: relative;
+  width: 100%;
+  height: auto;
+  margin: 0 auto 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+  overflow: visible;
+}
+
+.featured-section .slider-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 75%;
   transition: transform 0.5s;
   position: relative;
 }
