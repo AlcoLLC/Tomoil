@@ -60,36 +60,40 @@
         <div class="swiper-slide">
           <img class="background-image" src="{{ swiper.image.url }}" alt="{{ swiper.image.url }} Slider Image"
             fetchpriority="high" loading="eager" />
-          {% if swiper.link %}
-          <a href="{{ swiper.link }}" class="slide-content">
-            <span>{{ swiper.title }}</span>
-            {% if swiper.title_description %}
-            <p>{{ swiper.title_description }}</p>
-            {% endif %}
-            {% if swiper.description %}
-            <p>{{ swiper.description }}</p>
-            {% endif %}
-            <span class="btn-learn">{% trans 'LEARN MORE' %}</span>
-          </a>
-          {% else %}
-          <a href="{% url 'products:products_list' %}" class="slide-content">
-            <span>{{ swiper.title }}</span>
-            {% if swiper.title_description %}
-            <p>{{ swiper.title_description }}</p>
-            {% endif %}
-            {% if swiper.description %}
-            <p>{{ swiper.description }}</p>
-            {% endif %}
-            <span class="btn-learn">{% trans 'LEARN MORE' %}</span>
-          </a>
-          {% endif %}
+            <div class="container">
+              {% if swiper.link %}
+              <a href="{{ swiper.link }}" class="slide-content">
+                <span>{{ swiper.title }}</span>
+                {% if swiper.title_description %}
+                <p>{{ swiper.title_description }}</p>
+                {% endif %}
+                {% if swiper.description %}
+                <p>{{ swiper.description }}</p>
+                {% endif %}
+                <span class="btn-learn">{% trans 'LEARN MORE' %}</span>
+              </a>
+              {% else %}
+              <a href="{% url 'products:products_list' %}" class="slide-content">
+                <span>{{ swiper.title }}</span>
+                {% if swiper.title_description %}
+                <p>{{ swiper.title_description }}</p>
+                {% endif %}
+                {% if swiper.description %}
+                <p>{{ swiper.description }}</p>
+                {% endif %}
+                <span class="btn-learn">{% trans 'LEARN MORE' %}</span>
+              </a>
+              {% endif %}
+            </div>
 
-          <a href="https://api.whatsapp.com/send?phone=4915221050103" class="header-whatsapp"
-            aria-label="{% trans 'Any questions? Ask in WhatsApp' %}"
-            title="{% trans 'Any questions? Ask in WhatsApp' %}">
-            <i class="fab fa-whatsapp"></i>
-            <span>{% trans 'Any questions? Ask in WhatsApp' %}</span>
-          </a>
+            <div class="container whatsapp">
+              <a href="https://api.whatsapp.com/send?phone=4915221050103" class="header-whatsapp "
+                aria-label="{% trans 'Any questions? Ask in WhatsApp' %}"
+                title="{% trans 'Any questions? Ask in WhatsApp' %}">
+                <i class="fab fa-whatsapp"></i>
+                <span>{% trans 'Any questions? Ask in WhatsApp' %}</span>
+              </a>
+            </div>
         </div>
         {% empty %} {% endfor %}
       </div>
@@ -100,11 +104,12 @@
         <i class="fa-solid fa-arrow-right"></i>
       </div>
     </div>
+  
+    <a href="https://api.whatsapp.com/send?phone=4915221050103" class="fixed-whatsapp"
+      aria-label="{% trans 'Any questions? Ask in WhatsApp' %}" title="{% trans 'Any questions? Ask in WhatsApp' %}">
+      <i class="fab fa-whatsapp"></i>
+    </a>
   </header>
-  <a href="https://api.whatsapp.com/send?phone=4915221050103" class="fixed-whatsapp"
-    aria-label="{% trans 'Any questions? Ask in WhatsApp' %}" title="{% trans 'Any questions? Ask in WhatsApp' %}">
-    <i class="fab fa-whatsapp"></i>
-  </a>
 
   <!-- Featured Section -->
   <section class="featured-section">

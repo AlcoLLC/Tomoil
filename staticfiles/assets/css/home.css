@@ -9,11 +9,9 @@
   background-size: cover;
   background-position: center;
   display: flex;
-  align-items: center;
-  justify-content: flex-start;
-  padding-left: 18%;
-  padding-right: 10%;
-  background-repeat: no-repeat;
+  flex-direction: column;
+  align-items: start;
+  justify-content: center;
   position: relative;
   overflow: hidden;
 }
@@ -30,7 +28,7 @@
 }
 
 .home-header .swiper-slide::after {
-  content: "";
+  content: '';
   position: absolute;
   top: 0;
   left: 0;
@@ -40,11 +38,27 @@
   z-index: 1;
 }
 
+.home-header .swiper-slide .container {
+  z-index: 2;
+  padding-left: 5px;
+}
+
+.home-header .swiper-slide .container .btn-learn {
+  border-radius: 29px !important;
+}
+
+.home-header .swiper-slide .container.whatsapp {
+  z-index: 2;
+  display: flex;
+  align-items: end;
+  justify-content: end;
+  margin-top: 50px;
+}
+
 .home-header .slide-content {
   color: #fff;
   z-index: 2;
-  max-width: 60%;
-  margin-bottom: 20px;
+  width: 100%;
 }
 
 .home-header .slide-content span {
@@ -63,11 +77,12 @@
   margin-top: 10px;
   margin-bottom: 20px;
   text-transform: capitalize;
+  max-width: 60%;
 }
 
 .home-header .slide-content p:nth-of-type(2) {
   max-width: 70%;
-  font-family: "Atyp Regular", sans-serif;
+  font-family: 'Atyp Regular', sans-serif;
   font-weight: 400;
   font-size: 18px;
   line-height: 24px;
@@ -117,7 +132,6 @@
   color: #fff;
 }
 
-
 .market-segments {
   margin: 40px auto;
   margin-top: 65px !important;
@@ -136,7 +150,7 @@
   margin-top: 15px;
 }
 
-.market-segments>div:first-of-type {
+.market-segments > div:first-of-type {
   display: flex;
   justify-content: space-between;
   margin-bottom: 20px;
@@ -320,7 +334,7 @@
 }
 
 .product-range .card-button i {
-  font-family: "Font Awesome 6 Free" !important;
+  font-family: 'Font Awesome 6 Free' !important;
   font-weight: 600;
   font-size: 16px;
   line-height: 100%;
@@ -342,7 +356,7 @@
   padding-top: 100px;
 }
 
-.cross-reference>div {
+.cross-reference > div {
   width: 100%;
   height: 100%;
   background-color: #fff !important;
@@ -403,7 +417,7 @@
   cursor: pointer;
 }
 
-.cross-reference .cross-reference-content>button {
+.cross-reference .cross-reference-content > button {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -418,7 +432,7 @@
   transition: 0.3s;
 }
 
-.cross-reference .cross-reference-content>button span {
+.cross-reference .cross-reference-content > button span {
   font-size: 14px;
   color: #fff;
   display: none;
@@ -433,7 +447,7 @@
   color: #727272c6;
 }
 
-.cross-reference .cross-reference-content>button i {
+.cross-reference .cross-reference-content > button i {
   font-size: 16px;
 }
 
@@ -568,21 +582,21 @@
   cursor: pointer;
 }
 
-.comments-section .swiper-slide>div:first-of-type {
+.comments-section .swiper-slide > div:first-of-type {
   display: flex;
   flex-direction: column;
 }
 
-.comments-section .swiper-slide>div:first-of-type img {
+.comments-section .swiper-slide > div:first-of-type img {
   margin-bottom: 15px;
 }
 
-.comments-section .swiper-slide>div>img {
+.comments-section .swiper-slide > div > img {
   width: 53px;
   height: 30px;
 }
 
-.comments-section .swiper-slide>div:first-of-type>p {
+.comments-section .swiper-slide > div:first-of-type > p {
   font-weight: 400;
   font-size: 18px;
   line-height: 26px;
@@ -590,13 +604,13 @@
   color: #727272;
 }
 
-.comments-section .swiper-slide>div>div>img {
+.comments-section .swiper-slide > div > div > img {
   width: 50px;
   height: 50px;
   border-radius: 999px;
 }
 
-.comments-section .swiper-slide>div>div>h5 {
+.comments-section .swiper-slide > div > div > h5 {
   font-weight: 400;
   font-size: 22px;
   line-height: 30px;
@@ -604,7 +618,7 @@
   color: #223160;
 }
 
-.comments-section .swiper-slide>div>div>p {
+.comments-section .swiper-slide > div > div > p {
   font-weight: 400;
   font-size: 16px;
   line-height: 22px;
@@ -612,14 +626,14 @@
   color: #223160;
 }
 
-.swiper-horizontal>.swiper-pagination-bullets,
+.swiper-horizontal > .swiper-pagination-bullets,
 .swiper-pagination-bullets.swiper-pagination-horizontal,
 .swiper-pagination-custom,
 .swiper-pagination-fraction {
   display: none !important;
 }
 
-.comments-section .swiper-slide>div:last-of-type {
+.comments-section .swiper-slide > div:last-of-type {
   display: flex;
   gap: 15px;
 }
@@ -675,20 +689,19 @@
 }
 
 .product-range .swiper-slide {
-  width: 30.5% !important;
   max-width: 350px;
-  height: auto;
+  height: auto;
 }
 
 .button-style:hover,
-.cross-reference .cross-reference-content>button:hover,
+.cross-reference .cross-reference-content > button:hover,
 .home-header .btn-learn:hover,
 .market-segments ul li div:hover {
   background-color: #c62232;
 }
 
 .home-header .slide-back {
-  background-image: url("../../images_folder/header.jpg");
+  background-image: url('../../images_folder/header.jpg');
 }
 
 .featured-section .background-overlay {
@@ -806,7 +819,7 @@
 }
 
 .featured-section .product-card.active .product-image a::after {
-  content: "";
+  content: '';
   position: absolute;
   width: 200px;
   height: 200px;
@@ -840,7 +853,7 @@
 
 .featured-section .product-info {
   width: 75%;
-  font-family: "Atyp Regular", sans-serif;
+  font-family: 'Atyp Regular', sans-serif;
   color: #223160;
 }
 
@@ -934,7 +947,6 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 20px;
-
 }
 
 .adventure-section .news-card {
@@ -1019,7 +1031,7 @@
 
 .adventure-section .card-title {
   color: #223160;
-  font-family: "Atyp Medium", sans-serif;
+  font-family: 'Atyp Medium', sans-serif;
   font-weight: 600;
   font-size: 18px;
   margin-top: 20px;
@@ -1283,7 +1295,7 @@
 }
 
 .section-oem .section-description {
-  font-family: "Atyp Regular", sans-serif;
+  font-family: 'Atyp Regular', sans-serif;
   margin-top: 15px;
   padding-right: 30px;
   font-weight: 300;
@@ -1374,7 +1386,7 @@
 }
 
 .section-best-offers .offer-content h2 {
-  font-family: "Atyp Bold", sans-serif;
+  font-family: 'Atyp Bold', sans-serif;
   font-size: 18px;
   font-weight: 300;
   color: #223160;
@@ -1383,7 +1395,7 @@
 
 .section-best-offers .offer-content p {
   color: #727272;
-  font-family: "Atyp Regular", sans-serif;
+  font-family: 'Atyp Regular', sans-serif;
   font-size: 12px;
   line-height: 1.5;
   margin-bottom: 20px;
@@ -1449,7 +1461,7 @@
 }
 
 .section-best-offers .stat-box p {
-  font-family: "Atyp Regular", sans-serif;
+  font-family: 'Atyp Regular', sans-serif;
   font-size: 12px;
   line-height: 1.5;
 }
@@ -1496,7 +1508,7 @@
 
 .e-mobility-section .e-mobility-content p {
   font-size: 9px;
-  font-family: "Atyp Regular", sans-serif;
+  font-family: 'Atyp Regular', sans-serif;
   line-height: 1.5;
   width: 70%;
 }
@@ -1531,7 +1543,6 @@
   height: auto;
   object-fit: contain;
 }
-
 
 .adventure-section .news-card .copy-message {
   display: none;

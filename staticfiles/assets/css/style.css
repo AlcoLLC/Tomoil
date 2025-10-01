@@ -1,18 +1,18 @@
 @font-face {
-  font-family: "Atyp Medium";
-  src: url("/static/assets/font/AtypTextMedium.otf") format("opentype");
+  font-family: 'Atyp Medium';
+  src: url('/static/assets/font/AtypTextMedium.otf') format('opentype');
   font-display: swap;
 }
 
 @font-face {
-  font-family: "Atyp Regular";
-  src: url("/static/assets/font/AtypTextRegular.otf") format("opentype");
+  font-family: 'Atyp Regular';
+  src: url('/static/assets/font/AtypTextRegular.otf') format('opentype');
   font-display: swap;
 }
 
 @font-face {
-  font-family: "Atyp Bold";
-  src: url("/static/assets/font/AtypTextBold.otf") format("opentype");
+  font-family: 'Atyp Bold';
+  src: url('/static/assets/font/AtypTextBold.otf') format('opentype');
   font-display: swap;
 }
 
@@ -22,14 +22,13 @@
   font-display: swap;
 }
 
-
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   text-decoration: none;
   list-style: none;
-  font-family: "Atyp Medium", sans-serif;
+  font-family: 'Atyp Medium', sans-serif;
 }
 
 .container {
@@ -43,7 +42,6 @@
   max-width: 95%;
   margin: 0 auto;
   padding: 0;
-
 }
 
 .main-container {
@@ -58,19 +56,19 @@
   font-size: 40px;
   line-height: 50px;
   font-weight: 600;
-  font-family: "Atyp Medium", sans-serif;
+  font-family: 'Atyp Medium', sans-serif;
 }
 
 section h1 {
   color: #223160;
-  font-size: 40px ;
+  font-size: 40px;
   line-height: 50px;
   font-weight: 600;
-  font-family: "Atyp Medium", sans-serif;
+  font-family: 'Atyp Medium', sans-serif;
 }
 
 .section-description {
-  font-family: "Atyp Regular", sans-serif;
+  font-family: 'Atyp Regular', sans-serif;
   font-weight: 400;
   font-size: 16px;
   line-height: 1.5;
@@ -99,7 +97,6 @@ body {
   transition: color 0.3s !important;
   text-align: center;
 }
-
 
 nav {
   transition: 0.3s;
@@ -224,7 +221,7 @@ nav {
 }
 
 .navbar .language-dropdown::after {
-  content: "";
+  content: '';
   position: absolute;
   width: 100%;
   height: 15px;
@@ -255,8 +252,8 @@ nav {
 .mobile-nav-item a.active,
 .navbar .nav-list .dropdown-content a:hover,
 .navbar .nav-section ul li a.active,
-.navbar .nav-section ul li.active>a,
-.navbar .nav-section ul li.dropdown.active>a {
+.navbar .nav-section ul li.active > a,
+.navbar .nav-section ul li.dropdown.active > a {
   color: #e22131 !important;
 }
 
@@ -354,7 +351,7 @@ nav {
 }
 
 .navbar .nav-list .dropdown::after {
-  content: "";
+  content: '';
   position: absolute;
   width: 100%;
   height: 20px;
@@ -389,7 +386,6 @@ nav {
   min-width: 40px;
   min-height: 40px;
   padding: 12px;
-
 }
 .navbar .hamburger i {
   font-size: 24px;
@@ -623,17 +619,17 @@ nav {
   transition: 0.3s;
 }
 
-
 .button-style:hover {
   background-color: #c62232;
 }
 
 .header-whatsapp {
-  position: absolute;
-  bottom: 19vh;
-  right: 8%;
+  position: relative;
   display: flex;
   align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-left: auto;
   background-color: #34c759;
   color: #fff;
   padding: 10px 20px;
@@ -652,11 +648,11 @@ nav {
 
 .header-whatsapp i {
   font-size: 24px;
-  margin-right: 10px;
+  margin-bottom: 2px;
 }
 
 .header-whatsapp span {
-  font-size: 14px;
+  font-size: 16px;
   font-weight: 500;
 }
 
@@ -711,10 +707,8 @@ nav {
   letter-spacing: 0;
   text-align: center;
   color: #223160;
-  font-family: "Atyp Medium", sans-serif;
+  font-family: 'Atyp Medium', sans-serif;
 }
-
-
 
 .fm-map-container .fm-item text,
 .fm-map-container text {
@@ -728,7 +722,7 @@ nav {
 .fm-tooltip-comment {
   color: #223160 !important;
   text-align: center !important;
-  font-family: "Atyp Medium", sans-serif !important;
+  font-family: 'Atyp Medium', sans-serif !important;
   font-weight: 400 !important;
   font-size: 16px !important;
   line-height: 1.5 !important;
@@ -736,7 +730,6 @@ nav {
 }
 
 @keyframes pulse {
-
   0%,
   100% {
     stroke-width: 2px;
@@ -751,19 +744,15 @@ nav {
   }
 }
 
-
-
 .site-footer .footer-links-bottom {
   display: flex;
   align-items: center;
 }
 
-
 .footer-container,
 .site-footer .footer-menu a {
-  font-family: "Atyp Regular", sans-serif !important;
+  font-family: 'Atyp Regular', sans-serif !important;
 }
-
 
 .site-footer {
   width: 100%;
@@ -984,7 +973,7 @@ nav {
 }
 
 .page-header::after {
-  content: "";
+  content: '';
   position: absolute;
   top: 0;
   left: 0;
@@ -1021,7 +1010,7 @@ nav {
 }
 
 .page-header .page-header-content .page-title {
-  font-size: 55px ;
+  font-size: 55px;
   line-height: 60px;
   font-weight: 700;
   color: #fff;
@@ -1029,7 +1018,7 @@ nav {
 }
 
 .page-header .page-header-content p {
-  font-family: "Atyp Regular", sans-serif;
+  font-family: 'Atyp Regular', sans-serif;
   font-size: 12px;
   line-height: 20px;
   letter-spacing: 0.5px;
