@@ -36,7 +36,7 @@
 {% block page_js %}
 
 <script src="{% static 'assets/js/swiper-bundle.min.js' %}" defer></script>
-<script src="{% static 'assets/js/home.js' %}" defer></script>
+<script src="{% static 'assets/js/home.min.js' %}" defer></script>
 <script src="{% static 'assets/js/script.min.js' %}" defer></script>
 <script src="{% static 'assets/js/carousel.min.js' %}" defer></script>
 <script src="{% static 'assets/js/raphael.min.js' %}" defer></script>
@@ -601,6 +601,7 @@
   </section>
 
   <!-- Comments Section -->
+   {% if  reviews %}
   <section class="comments-section container">
     <div class="swiper commentSwiper">
       <div class="swiper-wrapper section-case-studies">
@@ -632,6 +633,7 @@
       </div>
     </div>
   </section>
+  {% endif %}
 </div>
 
 

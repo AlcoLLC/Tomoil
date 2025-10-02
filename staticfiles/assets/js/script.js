@@ -76,7 +76,7 @@ function initProductSlider() {
   function startAutoplay() {
     autoplayInterval = setInterval(() => {
       nextSlide();
-    }, 2000);
+    }, 5000);
   }
 
   function stopAutoplay() {
@@ -251,8 +251,8 @@ function initCaseStudiesSlider() {
     const cardWidth = allCards[0]
       ? allCards[0].getBoundingClientRect().width 
       : 150;
-    const expandedWidth = 330;
-    const gap = 18.5;
+    const expandedWidth = 322;
+    const gap = 17.5;
     const containerWidth = sliderContainer.getBoundingClientRect().width;
 
     // Aktiv kartı mərkəzə çəkirik
