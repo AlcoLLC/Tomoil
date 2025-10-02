@@ -687,8 +687,6 @@ nav {
 }
 
 #map-container {
-  width: 1300px !important;
-  max-width: 95%;
   margin: 30px auto 0;
   background-color: #fff;
   padding: 10px;

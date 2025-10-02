@@ -238,8 +238,6 @@
     box-shadow:0 4px 12px rgba(102,126,234,.3)
 }
 #map-container{
-    width:1300px!important;
-    max-width:95%;
     margin:30px auto 0;
     background-color:#fff;
     padding:10px;
