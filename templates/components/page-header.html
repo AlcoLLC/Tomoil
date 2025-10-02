@@ -3,23 +3,28 @@
 
 <header class="placeholder-header page-header " {% if background_image %}style="background-image: url('{{ background_image.url }}')" {% endif %}>
     <div class="section-container">
-        <div class="breadcrumb">
-            <a href="/">{% trans 'Home' %}</a>
-            {% if breadcrumb_title %}
-            <i class="fa-solid fa-angle-right"></i>
-            <a href="{{ breadcrumb_url|default:'/' }}">{{ breadcrumb_title }}</a>
-            {% endif %}
-        </div>
-        <div class="page-header-content">
-            <h1 class="page-title">{{ page_title}}</h1>
-            <p>{{ page_description }}</p>
-        </div>
+            <div class="header-left">
+                <div class="breadcrumb">
+                    <a href="/">{% trans 'Home' %}</a>
+                    {% if breadcrumb_title %}
+                    <i class="fa-solid fa-angle-right"></i>
+                    <a href="{{ breadcrumb_url|default:'/' }}">{{ breadcrumb_title }}</a>
+                    {% endif %}
+                </div>
+                <div class="page-header-content">
+                    <h1 class="page-title">{{ page_title}}</h1>
+                    <p>{{ page_description }}</p>
+                </div>
+            </div>
+            <div class="header-right">
+                <a href="https://api.whatsapp.com/send?phone=4915221050103" class="header-whatsapp"
+                    aria-label="{% trans 'Any questions? Ask in WhatsApp' %}" title="{% trans 'Any questions? Ask in WhatsApp' %}">
+                    <i class="fab fa-whatsapp"></i>
+                    <span>{% trans 'Any questions? Ask in WhatsApp' %}</span>
+                </a>
+           </div> 
     </div>
-    {% comment %} <a href="https://api.whatsapp.com/send?phone=4915221050103" class="header-whatsapp"
-        aria-label="{% trans 'Any questions? Ask in WhatsApp' %}" title="{% trans 'Any questions? Ask in WhatsApp' %}">
-        <i class="fab fa-whatsapp"></i>
-        <span>{% trans 'Any questions? Ask in WhatsApp' %}</span>
-    </a> {% endcomment %}
+
 </header>
 <a href="https://api.whatsapp.com/send?phone=4915221050103" class="fixed-whatsapp"
     aria-label="{% trans 'Any questions? Ask in WhatsApp' %}" title="{% trans 'Any questions? Ask in WhatsApp' %}">

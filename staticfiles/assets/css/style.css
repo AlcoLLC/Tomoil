@@ -82,7 +82,7 @@ section h1 {
   line-height: 28px;
 }
 
-.featured-section .section-header h1{
+.featured-section .section-header h1 {
   font-size: 36px;
 }
 
@@ -989,6 +989,15 @@ nav {
   z-index: 1;
 }
 
+.page-header .header-left {
+  position: relative;
+  z-index: 2;
+}
+
+.page-header .header-right {
+  margin-left: auto;
+}
+
 .page-header .breadcrumb {
   display: flex;
   align-items: center;
@@ -1029,10 +1038,6 @@ nav {
   letter-spacing: 0.5px;
   color: #fff !important;
   margin-bottom: 10px;
-}
-
-.page-header .header-whatsapp {
-  bottom: 60px;
 }
 
 .pagination-container {

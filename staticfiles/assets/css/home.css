@@ -1134,7 +1134,7 @@
 
 .section-case-studies {
   overflow: hidden;
-  padding: 0;
+  padding: 0 !important;
   margin-top: 80px !important;
 }
 
@@ -1199,23 +1199,22 @@
 
 .section-case-studies .case-studies-track {
   display: flex;
-  gap: 20px;
   height: 100%;
-  justify-content: space-between;
   align-items: center;
   transform: translateX(0);
 }
 
 .section-case-studies .case-study-card {
-  flex: 0 0 140px;
+  flex: 0 0 148px;
   width: 150px;
-  height: 320px;
+  height: 322px;
   border-radius: 10px;
   overflow: hidden;
   position: relative;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
   cursor: pointer;
   transition: 0.3s;
+  margin-left: 18.5px;
 }
 
 .case-study-card.active,

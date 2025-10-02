@@ -6,12 +6,8 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 function initProductSlider() {
-  const sliderContainer = document.querySelector(
-    '.featured-section .slider-container'
-  );
-  const productCards = document.querySelectorAll(
-    '.featured-section .product-card'
-  );
+  const sliderContainer = document.querySelector('.featured-section .slider-container');
+  const productCards = document.querySelectorAll('.featured-section .product-card');
   const prevBtn = document.querySelector('.featured-section .prev-btn');
   const nextBtn = document.querySelector('.featured-section .next-btn');
 
@@ -51,8 +47,7 @@ function initProductSlider() {
     const nextIndex = currentIndex + 1;
 
     if (allCards[prevIndex]) allCards[prevIndex].classList.add('visible');
-    if (allCards[currentIndex])
-      allCards[currentIndex].classList.add('visible', 'active');
+    if (allCards[currentIndex]) allCards[currentIndex].classList.add('visible', 'active');
     if (allCards[nextIndex]) allCards[nextIndex].classList.add('visible');
   }
 
@@ -144,20 +139,12 @@ function initProductSlider() {
 
 function initCaseStudiesSlider() {
   const sliderTrack = document.querySelector('.case-studies-track');
-  const originalCards = document.querySelectorAll(
-    '.case-study-card:not(.clone)'
-  );
+  const originalCards = document.querySelectorAll('.case-study-card:not(.clone)');
   const prevBtn = document.querySelector('.prev-case');
   const nextBtn = document.querySelector('.next-case');
   const sliderContainer = document.querySelector('.case-studies-slider');
 
-  if (
-    !sliderTrack ||
-    !originalCards.length ||
-    !prevBtn ||
-    !nextBtn ||
-    !sliderContainer
-  ) {
+  if (!sliderTrack || !originalCards.length || !prevBtn || !nextBtn || !sliderContainer) {
     return;
   }
 
@@ -261,10 +248,12 @@ function initCaseStudiesSlider() {
     }
 
     // Kart ölçülərini hesablayırıq
-    const cardWidth = allCards[0] ? allCards[0].offsetWidth : 150;
+    const cardWidth = allCards[0]
+      ? allCards[0].getBoundingClientRect().width 
+      : 150;
     const expandedWidth = 330;
-    const gap = 20;
-    const containerWidth = sliderContainer.offsetWidth;
+    const gap = 18.5;
+    const containerWidth = sliderContainer.getBoundingClientRect().width;
 
     // Aktiv kartı mərkəzə çəkirik
     const activeCardOffset = currentIndex * (cardWidth + gap);
@@ -419,9 +408,7 @@ function initCaseStudiesSlider() {
 }
 
 function initBrandLogosRotation() {
-  const allLogos = Array.from(
-    document.querySelectorAll('.brand-logo-container')
-  );
+  const allLogos = Array.from(document.querySelectorAll('.brand-logo-container'));
   const brandLogosWrapper = document.querySelector('.brand-logos');
 
   if (!brandLogosWrapper || allLogos.length === 0) return;
@@ -526,12 +513,10 @@ function initNumberCounters() {
     { value: 8, unit: '', startFrom: 0 },
     { value: 1.5, unit: 'k', startFrom: 1.0 },
     { value: 82, unit: '', startFrom: 0 },
-    { value: 8, unit: 'm', startFrom: 0 },
+    { value: 8, unit: 'm', startFrom: 0 }
   ];
 
-  const statBoxes = document.querySelectorAll(
-    '.section-best-offers .stat-box h3'
-  );
+  const statBoxes = document.querySelectorAll('.section-best-offers .stat-box h3');
 
   if (statBoxes.length === 0) return;
 
@@ -569,7 +554,7 @@ function initNumberCounters() {
     },
     {
       threshold: 0.3,
-      rootMargin: '0px 0px -50px 0px', // Biraz daha hassas tetikleme için
+      rootMargin: '0px 0px -50px 0px' // Biraz daha hassas tetikleme için
     }
   );
 
