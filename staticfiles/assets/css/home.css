@@ -1137,10 +1137,6 @@
   margin-bottom: 10px;
 }
 
-.section-case-studies .section-title {
-  max-width: 400px;
-}
-
 .section-case-studies .all-case-studies {
   color: #223160;
   text-decoration: underline;
@@ -1197,8 +1193,8 @@
 }
 
 .section-case-studies .case-study-card {
-  flex: 0 0 152px;
-  width: 152px;
+  flex: 0 0 151px;
+  width: 151px;
   height: 320px;
   border-radius: 10px;
   overflow: hidden;
@@ -1206,7 +1202,7 @@
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
   cursor: pointer;
   transition: 0.3s;
-  margin-left: 15.9px;
+  margin-left: 15.8px;
 }
 
 .case-study-card.active,

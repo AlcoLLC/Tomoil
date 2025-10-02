@@ -250,7 +250,7 @@ function initCaseStudiesSlider() {
     // Kart ölçülərini hesablayırıq
     const cardWidth = allCards[0] ? allCards[0].getBoundingClientRect().width : 152;
     const expandedWidth = 330;
-    const gap = 16.59; // CSS-dəki gap dəyəri
+    const gap = 16.42; // CSS-dəki gap dəyəri
     const containerWidth = sliderContainer.getBoundingClientRect().width;
 
     // Aktiv kartı mərkəzə çəkirik
