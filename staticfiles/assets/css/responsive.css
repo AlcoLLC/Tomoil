@@ -501,7 +501,8 @@
   }
 
   .e-mobility-section .e-mobility-content h2 {
-    font-size: 22px;
+    font-size: 20px;
+        margin: 14px 0;
   }
 
   .e-mobility-section .e-mobility-image {
@@ -598,12 +599,15 @@
     justify-content: center;
   }
 
-  .section-case-studies .section-title {
-    max-width: 80%;
-  }
-
   .section-subtitle {
     font-size: 16px;
+  }
+  .e-mobility-section .e-mobility-content p {
+    font-size: 11px;
+  }
+  .e-mobility-section .explore-btn {
+    padding: 11px 29px;
+    font-size: 11px;
   }
 }
 
@@ -611,6 +615,9 @@
   .glance-section .guides-grid {
     grid-template-columns: repeat(2, 1fr);
   }
+  .section-oem .logo-img {
+  max-height: 70px;
+}
 }
 
 @media (max-width: 860px) {
@@ -1054,10 +1061,18 @@
   }
 
   .e-mobility-section .e-mobility-content p {
-    width: 80%;
+    width: 85%;
     text-align: center;
     margin: 0 auto;
+    font-size: 13px;
   }
+      .e-mobility-section .explore-btn {
+        font-size: 12px;
+    }
+        .e-mobility-section .e-mobility-content h2 {
+        font-size: 21px;
+        margin: 16px 0;
+    }
 
   .e-mobility-section .e-mobility-content {
     max-width: 100%;
@@ -1426,6 +1441,12 @@
     width: 40px;
     height: 40px;
   }
+
+  #map-container .button-style {
+        padding: 10px 20px;
+            font-size: 10px;
+    }
+
 }
 
 @media (max-width: 620px) {
@@ -1838,6 +1859,16 @@
     height: 32px;
     font-size: 12px;
   }
+      .e-mobility-section .e-mobility-content h2 {
+        font-size: 20px;
+ }
+.e-mobility-section .e-mobility-content p {
+        width: 89%;
+        font-size: 12px;
+}
+    .e-mobility-section .explore-btn {
+        font-size: 11px;
+    }
 }
 
 @media screen and (max-width: 500px) {
@@ -2180,6 +2211,18 @@
     font-size: 24px;
     color: #fff;
   }
+
+  #map-container .button-style {
+        padding: 7px 17px;
+        font-size: 8px;
+  }
+
+.section-oem .logo-img {
+  max-height: 50px;
+}
+    .e-mobility-section .e-mobility-content h2 {
+        font-size: 18px;
+    }
 }
 
 @media screen and (max-width: 400px) {
@@ -2288,4 +2331,15 @@
   .products-section .product-card .product-title {
     font-size: 13px;
   }
+    .e-mobility-section .e-mobility-content h2 {
+        font-size: 17px;
+    }
+        .e-mobility-section .e-mobility-content p {
+        font-size: 11px;
+    }
+        .e-mobility-section .explore-btn {
+        font-size: 10px;
+    }
 }
+
+

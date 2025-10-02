@@ -81,7 +81,7 @@ function initProductSlider() {
   function startAutoplay() {
     autoplayInterval = setInterval(() => {
       nextSlide();
-    }, 3000);
+    }, 2000);
   }
 
   function stopAutoplay() {
@@ -325,7 +325,7 @@ function initCaseStudiesSlider() {
 
     setTimeout(() => {
       isTransitioning = false;
-    }, 3000);
+    }, 350);
   }
 
   // Əvvəlki slayda keç
