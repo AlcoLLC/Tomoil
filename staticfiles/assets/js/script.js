@@ -6,8 +6,12 @@ document.addEventListener('DOMContentLoaded', function () {
 });
 
 function initProductSlider() {
-  const sliderContainer = document.querySelector('.featured-section .slider-container');
-  const productCards = document.querySelectorAll('.featured-section .product-card');
+  const sliderContainer = document.querySelector(
+    '.featured-section .slider-container'
+  );
+  const productCards = document.querySelectorAll(
+    '.featured-section .product-card'
+  );
   const prevBtn = document.querySelector('.featured-section .prev-btn');
   const nextBtn = document.querySelector('.featured-section .next-btn');
 
@@ -47,7 +51,8 @@ function initProductSlider() {
     const nextIndex = currentIndex + 1;
 
     if (allCards[prevIndex]) allCards[prevIndex].classList.add('visible');
-    if (allCards[currentIndex]) allCards[currentIndex].classList.add('visible', 'active');
+    if (allCards[currentIndex])
+      allCards[currentIndex].classList.add('visible', 'active');
     if (allCards[nextIndex]) allCards[nextIndex].classList.add('visible');
   }
 
@@ -76,7 +81,7 @@ function initProductSlider() {
   function startAutoplay() {
     autoplayInterval = setInterval(() => {
       nextSlide();
-    }, 5000);
+    }, 2000);
   }
 
   function stopAutoplay() {
@@ -136,6 +141,7 @@ function initProductSlider() {
   sliderContainer.addEventListener('mouseenter', stopAutoplay);
   sliderContainer.addEventListener('mouseleave', startAutoplay);
 }
+
 
 function initCaseStudiesSlider() {
   const sliderTrack = document.querySelector('.case-studies-track');
