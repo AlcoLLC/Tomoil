@@ -851,8 +851,12 @@
   max-width: 80%;
   max-height: 100%;
   z-index: 2;
-  transition: 0.4s;
+  transition:1s;
   position: relative;
+  -webkit-transition:1s;
+  -moz-transition:1s;
+  -ms-transition:1s;
+  -o-transition:1s;
 }
 
 .featured-section .product-info {
@@ -900,10 +904,14 @@
 
 /* Aktif olmayan kartlardaki resimler daha küçük olsun */
 .featured-section .product-card:not(.active) .product-image img {
-  max-width: 60%;   /* 80% yerine daha küçük */
-  max-height: 80%;  /* biraz daha kısalt */
-  transition: 0.4s;
-  opacity: 0.8;     /* istersen biraz şeffaflık da ekleyebilirsin */
+  max-width: 60%;
+  /*80%yerinedahaküçük*/max-height: 80%;
+  opacity: 0.8;
+  transition: 1s;
+  -webkit-transition: 1s;
+  -moz-transition: 1s;
+  -ms-transition: 1s;
+  -o-transition: 1s;
 }
 
 .featured-section .prev-btn {
