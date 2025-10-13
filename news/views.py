@@ -1,7 +1,7 @@
 from django.utils.dateparse import parse_date
 from django.core.paginator import Paginator
 from django.http import HttpResponse, JsonResponse
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from .models import News
 from django.http import JsonResponse
 from django.core.serializers import serialize
@@ -16,7 +16,6 @@ def news_api(request):
     try:
         news_items = News.objects.all()
 
-        # Handle search functionality
         search_query = request.GET.get("search", "").strip()
         if search_query:
             news_items = news_items.filter(
@@ -175,24 +174,23 @@ def news_list(request):
         "formatted_date": from_date or "",
         "sort_by": sort_by,
         "per_page": per_page,
-        "search_query": search_query,  # Add search query to context
-        "from_date": from_date,       # Add from_date to context
-        "to_date": to_date,           # Add to_date to context
+        "search_query": search_query,
+        "from_date": from_date, 
+        "to_date": to_date, 
         **header_context
     }
 
     return render(request, "news_list.html", context)
 
 
-def news_detail(request, pk):
-    try:
-        news_item = News.objects.get(pk=pk)
+def news_detail(request, slug):
+    news_item = get_object_or_404(News, slug=slug)
 
-        news_item.views_count += 1
-        news_item.save(update_fields=['views_count'])
+    news_item.views_count += 1
+    news_item.save(update_fields=['views_count'])
 
-        return render(request, 'news_detail.html', {
-            'news_item': news_item
-        })
-    except News.DoesNotExist:
-        return HttpResponse('News article not found', status=404)
+    context = {
+        'news_item': news_item
+    }
+    
+    return render(request, 'news_detail.html', context)

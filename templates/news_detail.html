@@ -1,12 +1,12 @@
 {% extends 'base.html' %} {% load static %} {% load i18n %}
 
 {% block canonical %}
-<link rel="canonical" href="{{ request.scheme }}://{{ request.get_host }}{% url 'news:news_detail' news_item.id %}">
+<link rel="canonical" href="{{ request.scheme }}://{{ request.get_host }}{% url 'news:news_detail' news_item.slug %}">
 {% endblock  %}
 
-{% block title %}{{ news_item.title|truncatechars:60 }}{% endblock %}
-{% block description %}{{ news_item.description|truncatechars:160 }}{% endblock %}
-{% block keywords %}{% trans "news_keywords" %}{% endblock %}
+{% block title %} {{ news.meta_title|safe }} {% endblock %}
+{% block description %} {{ news.meta_description|safe }} {% endblock %}
+{% block keywords %} {{ news.meta_keywords|safe }} {% endblock %}
 
 {% block page_css %}
 <link rel="stylesheet" href="{% static 'assets/css/news.min.css' %}"/>
@@ -20,15 +20,15 @@
   "@type": "Article",
   "headline": "{{ news_item.title|escapejs }}",
   "description": "{{ news_item.description|safe|truncatechars:160|striptags|escapejs }}",
-  "url": "{{ request.scheme }}://{{ request.get_host }}{% url 'news:news_detail' news_item.id %}",
+  "url": "{{ request.scheme }}://{{ request.get_host }}{% url 'news:news_detail' news_item.slug %}",
   "datePublished": "{{ news_item.created_at|date:'c' }}",
   "dateModified": "{{ news_item.updated_at|date:'c'|default:news_item.created_at|date:'c' }}",
   "author": {
-  "@type": "LocalBusiness", 
+    "@type": "LocalBusiness", 
     "name": "Tomoil"
   },
   "publisher": {
-  "@type": "LocalBusiness", 
+    "@type": "LocalBusiness", 
     "name": "Tomoil",
     "logo": {
       "@type": "ImageObject",
@@ -51,12 +51,11 @@
   ]{% endif %},
   "mainEntityOfPage": {
     "@type": "WebPage",
-    "@id": "{{ request.scheme }}://{{ request.get_host }}{% url 'news:news_detail' news_item.id %}"
+    "@id": "{{ request.scheme }}://{{ request.get_host }}{% url 'news:news_detail' news_item.slug %}"
   },
   "articleBody": "{{ news_item.description|safe|striptags|escapejs }}"
 }
 </script>
-
 {% endblock %}
 
 {% block content %}

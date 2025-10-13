@@ -35,7 +35,7 @@
         "@type": "Article",
         "headline": "{{ news_item.title|escapejs }}",
         "description": "{{ news_item.description|safe|truncatechars:160|striptags|escapejs }}",
-        "url": "{{ request.scheme }}://{{ request.get_host }}{% url 'news:news_detail' news_item.id %}",
+        "url": "{{ request.scheme }}://{{ request.get_host }}{% url 'news:news_detail' news_item.slug %}",
         "datePublished": "{{ news_item.created_at|date:'c' }}",
         "author": {
           "@type": "LocalBusiness", 
@@ -209,7 +209,7 @@
         <!-- Initial news cards loaded from server -->
         {% for news_item in news_items %}
         <div class="news-card">
-          <a href="{% url 'news:news_detail' news_item.id %}">
+          <a href="{% url 'news:news_detail' news_item.slug %}">
             <img loading="lazy" src="{{ news_item.image_one.url|default:'' }}" width="490" height="245"
               alt="{{ news_item.title }}" class="card-image" />
             <div class="card-content">
@@ -233,7 +233,7 @@
                 {{ news_item.description|safe }}
                 {% endif %}
               </p>
-              <a href="{% url 'news:news_detail' news_item.id %}" class="read-more"
+              <a href="{% url 'news:news_detail' news_item.slug %}" class="read-more"
                 aria-label="{% trans 'Learn more about news' %}">
                 {% trans "Read More" %}
                 <i class="fas fa-arrow-right-long read-more-icon"></i>
@@ -275,7 +275,7 @@
               {{ news_item.description|safe }}
               {% endif %}
             </p>
-            <a href="{% url 'news:news_detail' news_item.id %}" class="read-more"
+            <a href="{% url 'news:news_detail' news_item.slug %}" class="read-more"
               aria-label="{% trans 'Learn more about news' %}">
               {% trans "Read More" %}
               <i class="fas fa-arrow-right-long read-more-icon"></i>
@@ -321,59 +321,6 @@
     </div>
   </div>
 </section>
-
-<!-- Hidden templates for JavaScript -->
-<script type="text/template" id="news-card-template">
-  <div class="news-card">
-    <a href="{% url 'news:news_detail' 0 %}">
-      <img loading="lazy"  src="{image}" alt="{title}" class="card-image" />
-      <div class="card-content">
-        <div class="card-meta">
-          <div class="card-date">
-            <i class="far fa-calendar-alt date-icon"></i>
-            {date}
-          </div>
-          <div class="share-button">
-            <i class="fas fa-share-alt share-icon"></i>
-            {% trans "Share" %}
-          </div>
-        </div>
-        <h3 class="card-title">{title}</h3>
-        <p class="card-description">{description|safe}</p>
-        <a href="{% url 'news:news_detail' 0 %}" class="read-more" aria-label="{% trans 'Learn more about news' %}">
-          {% trans "Read More" %}
-          <i class="fas fa-arrow-right-long read-more-icon"></i>
-        </a>
-      </div>
-    </a>
-  </div>
-</script>
-
-<script type="text/template" id="news-list-template">
-  <div class="news-list-item">
-    <div class="list-item-image">
-      <img loading="lazy"  src="{image}" alt="{title}" />
-    </div>
-    <div class="list-item-content">
-      <div class="card-meta">
-        <div class="card-date">
-          <i class="far fa-calendar-alt date-icon"></i>
-          {date}
-        </div>
-        <div class="share-button">
-          <i class="fas fa-share-alt share-icon"></i>
-          {% trans "Share" %}
-        </div>
-      </div>
-      <h3 class="card-title">{title}</h3>
-      <p class="card-description">{description|safe}</p>
-      <a href="{% url 'news:news_detail' 0 %}" class="read-more" aria-label="{% trans 'Learn more about news' %}">
-        {% trans "Read More" %}
-        <i class="fas fa-arrow-right-long read-more-icon"></i>
-      </a>
-    </div>
-  </div>
-</script>
 
 
 
