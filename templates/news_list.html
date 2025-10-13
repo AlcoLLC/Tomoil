@@ -34,7 +34,7 @@
       "item": {
         "@type": "Article",
         "headline": "{{ news_item.title|escapejs }}",
-        "description": "{{ news_item.description|truncatechars:160|striptags|escapejs }}",
+        "description": "{{ news_item.description|safe|truncatechars:160|striptags|escapejs }}",
         "url": "{{ request.scheme }}://{{ request.get_host }}{% url 'news:news_detail' news_item.id %}",
         "datePublished": "{{ news_item.created_at|date:'c' }}",
         "author": {
@@ -228,9 +228,9 @@
               </h3>
               <p class="card-description">
                 {% if news_item.description|length > 120 %}
-                {{ news_item.description|slice:":120" }}...
+                {{ news_item.description|safe|slice:":120" }}...
                 {% else %}
-                {{ news_item.description }}
+                {{ news_item.description|safe }}
                 {% endif %}
               </p>
               <a href="{% url 'news:news_detail' news_item.id %}" class="read-more"
@@ -269,10 +269,10 @@
               {{ news_item.title }}
             </h3>
             <p class="card-description">
-              {% if news_item.description|length > 100 %}
-              {{ news_item.description|slice:":100" }}...
+              {% if news_item.description|safe|length > 100 %}
+              {{ news_item.description|safe|slice:":100" }}...
               {% else %}
-              {{ news_item.description }}
+              {{ news_item.description|safe }}
               {% endif %}
             </p>
             <a href="{% url 'news:news_detail' news_item.id %}" class="read-more"
@@ -339,7 +339,7 @@
           </div>
         </div>
         <h3 class="card-title">{title}</h3>
-        <p class="card-description">{description}</p>
+        <p class="card-description">{description|safe}</p>
         <a href="{% url 'news:news_detail' 0 %}" class="read-more" aria-label="{% trans 'Learn more about news' %}">
           {% trans "Read More" %}
           <i class="fas fa-arrow-right-long read-more-icon"></i>
@@ -366,7 +366,7 @@
         </div>
       </div>
       <h3 class="card-title">{title}</h3>
-      <p class="card-description">{description}</p>
+      <p class="card-description">{description|safe}</p>
       <a href="{% url 'news:news_detail' 0 %}" class="read-more" aria-label="{% trans 'Learn more about news' %}">
         {% trans "Read More" %}
         <i class="fas fa-arrow-right-long read-more-icon"></i>
