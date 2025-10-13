@@ -276,7 +276,7 @@
             <a href="{% url 'news:news_detail' large_card_news.id %}" class="read-more">
               <h3 class="card-title">{{ large_card_news.title }}</h3>
               <p class="card-description">
-                {{ large_card_news.description|truncatewords:20 }}
+                {{ large_card_news.description|safe|truncatewords:20 }}
               </p>
               <span>{% trans "Read More" %} <i class="fas fa-arrow-right-long read-more-icon"></i></span>
             </a>
@@ -309,7 +309,7 @@
               aria-label="{% trans 'Read more about' %} {{ news.title }}">
               <h3 class="card-title">{{ news.title }}</h3>
               <p class="card-description">
-                {{ news.description|truncatewords:15 }}
+                {{ news.description|safe|truncatewords:15 }}
               </p>
               <span> {% trans "Read More" %} <i class="fas fa-arrow-right-long read-more-icon"></i></span>
 
