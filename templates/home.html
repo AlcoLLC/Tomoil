@@ -252,72 +252,70 @@
         </a>
       </div>
 
-      <div class="news-grid">
-        {% if large_card_news %}
-        <!-- Large Card - En son eklenen haber -->
-        <div class="news-card card-large">
-          <img loading="lazy" src="{{ large_card_news.image_one.url }}" alt="{{ large_card_news.title }}"
-            class="card-image" />
-          <div class="card-content">
+      {% load i18n %}
+
+<div class="news-grid">
+    {% if large_card_news %}
+    <div class="news-card card-large">
+        <img loading="lazy" src="{{ large_card_news.image_one.url }}" alt="{{ large_card_news.title }}" class="card-image" />
+        <div class="card-content">
             <div class="card-meta">
-              <div class="card-date">
-                <i class="far fa-calendar-alt date-icon"></i>
-                {{ large_card_news.created_at|date:"F j, Y" }}
-              </div>
-              <div class="share-button" data-url="{% url 'news:news_detail' large_card_news.id %}"
-                onclick="copyToClipboard(this)">
-                <i class="fas fa-share-alt share-icon"></i>
-                {% trans "Share" %}
-              </div>
-              <div class="copy-message">{% trans "Copied!" %}</div>
-
-            </div>
-
-            <a href="{% url 'news:news_detail' large_card_news.id %}" class="read-more">
-              <h3 class="card-title">{{ large_card_news.title }}</h3>
-              <p class="card-description">
-                {{ large_card_news.description|safe|truncatewords:20 }}
-              </p>
-              <span>{% trans "Read More" %} <i class="fas fa-arrow-right-long read-more-icon"></i></span>
-            </a>
-
-
-          </div>
-        </div>
-        {% endif %} {% for news in small_cards_news %}
-        <div class="news-card card-small">
-          <div class="card-image-container">
-            <img loading="lazy" src="{{ news.image_one.url }}" alt="{{ news.title }}" class="card-image" />
-          </div>
-          <div class="card-content">
-            <div class="card-meta">
-              <div class="card-date">
-                <i class="far fa-calendar-alt date-icon"></i>
-                {{ news.created_at|date:"F j, Y" }}
-              </div>
-              <div class="share-button-container">
-                <div class="share-button" data-url="{% url 'news:news_detail' news.id %}"
-                  onclick="copyToClipboard(this)">
-                  <i class="fas fa-share-alt share-icon"></i>
-                  {% trans "Share" %}
-                  <div class="copy-message">{% trans "Copied!" %}</div>
+                <div class="card-date">
+                    <i class="far fa-calendar-alt date-icon"></i>
+                    {{ large_card_news.created_at|date:"F j, Y" }}
                 </div>
-              </div>
+                <div class="share-button" data-url="{% url 'news:news_detail' large_card_news.slug %}"
+                    onclick="copyToClipboard(this)">
+                    <i class="fas fa-share-alt share-icon"></i>
+                    {% trans "Share" %}
+                </div>
+                <div class="copy-message">{% trans "Copied!" %}</div>
             </div>
 
-            <a href="{% url 'news:news_detail' news.id %}" class="read-more"
-              aria-label="{% trans 'Read more about' %} {{ news.title }}">
-              <h3 class="card-title">{{ news.title }}</h3>
-              <p class="card-description">
-                {{ news.description|safe|truncatewords:15 }}
-              </p>
-              <span> {% trans "Read More" %} <i class="fas fa-arrow-right-long read-more-icon"></i></span>
-
+            <a href="{% url 'news:news_detail' large_card_news.slug %}" class="read-more">
+                <h3 class="card-title">{{ large_card_news.title }}</h3>
+                <p class="card-description">
+                    {{ large_card_news.description|safe|truncatewords:20 }}
+                </p>
+                <span>{% trans "Read More" %} <i class="fas fa-arrow-right-long read-more-icon"></i></span>
             </a>
-          </div>
         </div>
-        {% endfor %}
-      </div>
+    </div>
+    {% endif %} 
+    
+    {% for news in small_cards_news %}
+    <div class="news-card card-small">
+        <div class="card-image-container">
+            <img loading="lazy" src="{{ news.image_one.url }}" alt="{{ news.title }}" class="card-image" />
+        </div>
+        <div class="card-content">
+            <div class="card-meta">
+                <div class="card-date">
+                    <i class="far fa-calendar-alt date-icon"></i>
+                    {{ news.created_at|date:"F j, Y" }}
+                </div>
+                <div class="share-button-container">
+                    <div class="share-button" data-url="{% url 'news:news_detail' news.slug %}"
+                        onclick="copyToClipboard(this)">
+                        <i class="fas fa-share-alt share-icon"></i>
+                        {% trans "Share" %}
+                        <div class="copy-message">{% trans "Copied!" %}</div>
+                    </div>
+                </div>
+            </div>
+
+            <a href="{% url 'news:news_detail' news.slug %}" class="read-more"
+                aria-label="{% trans 'Read more about' %} {{ news.title }}">
+                <h3 class="card-title">{{ news.title }}</h3>
+                <p class="card-description">
+                    {{ news.description|safe|truncatewords:15 }}
+                </p>
+                <span> {% trans "Read More" %} <i class="fas fa-arrow-right-long read-more-icon"></i></span>
+            </a>
+        </div>
+    </div>
+    {% endfor %}
+</div>
 
       <a href="{% url 'news:news_list' %}" class="all-news-button news-none">
         {% trans " All news" %}
