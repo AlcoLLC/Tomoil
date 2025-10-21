@@ -130,7 +130,6 @@ def products_view(request, product_range_slug=None, application_area_slug=None,
             'background_image': None
         }
     product_range_categories = None
-    # URL parametrlərindən gələn filter-lər
     product_range_slugs = [product_range_slug] if product_range_slug else request.GET.getlist('product_range')
     application_area_slugs = [application_area_slug] if application_area_slug else request.GET.getlist('application_area')
     specification_slugs = [specification_slug] if specification_slug else request.GET.getlist('specification')
@@ -215,6 +214,49 @@ def products_view(request, product_range_slug=None, application_area_slug=None,
         except ProductRange.DoesNotExist:
             product_range_categories = None
 
+    meta_title = None
+    meta_description = None
+
+    active_filter_count = sum([
+        1 if product_range_slugs else 0,
+        1 if application_area_slugs else 0,
+        1 if specification_slugs else 0,
+        1 if viscosity_slugs else 0,
+        1 if composition_slugs else 0,
+        1 if pack_size_slugs else 0,
+    ])
+
+    if active_filter_count == 1:
+        try:
+            if len(product_range_slugs) == 1:
+                obj = ProductRange.objects.get(slug=product_range_slugs[0])
+                meta_title = obj.meta_title
+                meta_description = obj.meta_description
+            elif len(application_area_slugs) == 1:
+                obj = ApplicationArea.objects.get(slug=application_area_slugs[0])
+                meta_title = obj.meta_title
+                meta_description = obj.meta_description
+            elif len(specification_slugs) == 1:
+                obj = Specification.objects.get(slug=specification_slugs[0])
+                meta_title = obj.meta_title
+                meta_description = obj.meta_description
+            elif len(viscosity_slugs) == 1:
+                obj = Viscosity.objects.get(slug=viscosity_slugs[0])
+                meta_title = obj.meta_title
+                meta_description = obj.meta_description
+            elif len(composition_slugs) == 1:
+                obj = Composition.objects.get(slug=composition_slugs[0])
+                meta_title = obj.meta_title
+                meta_description = obj.meta_description
+            elif len(pack_size_slugs) == 1:
+                obj = PackSize.objects.get(slug=pack_size_slugs[0])
+                meta_title = obj.meta_title
+                meta_description = obj.meta_description
+        except (ProductRange.DoesNotExist, ApplicationArea.DoesNotExist, 
+                Specification.DoesNotExist, Viscosity.DoesNotExist, 
+                Composition.DoesNotExist, PackSize.DoesNotExist):
+            pass
+
     context = {
         **header_context,
         'products': page_obj,
@@ -234,6 +276,8 @@ def products_view(request, product_range_slug=None, application_area_slug=None,
         'formatted_date': formatted_display_date,
         'total_results': paginator.count,
         'product_range_categories': product_range_categories,
+        'meta_title': meta_title,
+        'meta_description': meta_description,
     }
 
     return render(request, 'products.html', context)

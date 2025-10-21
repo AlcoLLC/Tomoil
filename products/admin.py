@@ -98,6 +98,9 @@ class ProductAdmin(TranslationAdmin):
         ('Classifications', {
             'fields': ('product_range', 'application_areas', 'specifications', 'recommendation', 'viscosities', 'compositions', 'pack_sizes')
         }),
+        ('Meta Information', {
+            'fields': ('meta_title', 'meta_description', 'meta_keywords')
+        }),
     )
     
     inlines = [TypicalPropertiesInline, PackagingSizesInline]

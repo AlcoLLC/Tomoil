@@ -6,10 +6,36 @@
 {% endblock %}
 
 
-{% block title %}{{ product.title|truncatechars:60 }} | {% trans 'Product name' %}{% endblock %}
-{% block description %}{{ product.description|truncatechars:160 }}{% endblock %}
-{% block keywords %}{% trans "product_keywords" %}{% endblock %}
+{% extends 'base.html' %} 
+{% load static %}
+{% load i18n %}
 
+{% block title %}
+    {% if product.meta_title %}
+        {{ product.meta_title }}
+    {% else %}
+        {{ product.title|truncatechars:60 }} | {% trans 'Product name' %}
+    {% endif %}
+{% endblock %}
+
+{% block description %}
+    {% if product.meta_description %}
+        {{ product.meta_description }}
+    {% else %}
+        {{ product.description|truncatechars:160 }}
+    {% endif %}
+{% endblock %}
+
+{% block keywords %}
+    {% if product.meta_keywords %}
+        {{ product.meta_keywords }}
+    {% else %}
+        {% trans "product_keywords" %}
+    {% endif %}
+{% endblock %}
+
+{% block content %}
+    {% endblock %}
 
 
 {% block page_css %}

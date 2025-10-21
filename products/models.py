@@ -11,6 +11,9 @@ class ProductRange(models.Model):
     order = models.PositiveIntegerField(default=0, verbose_name="Order")
     description = models.TextField(blank=True, null=True, verbose_name="Description")
     is_home = models.BooleanField(default=False, verbose_name="Show on Home Page")
+
+    meta_title = models.CharField(max_length=255, blank=True, null=True)
+    meta_description = models.TextField(blank=True, null=True, verbose_name="Meta Description")
     
     def save(self, *args, **kwargs):
         if not self.slug:
@@ -41,6 +44,9 @@ class ApplicationArea(models.Model):
     is_active = models.BooleanField(default=True)
     is_home = models.BooleanField(default=False, verbose_name="Show on Home Page")
     order = models.PositiveIntegerField(default=0, verbose_name="Order")
+
+    meta_title = models.CharField(max_length=255, blank=True, null=True)
+    meta_description = models.TextField(blank=True, null=True, verbose_name="Meta Description")
     
     def save(self, *args, **kwargs):
         if not self.slug and self.name:
@@ -60,6 +66,9 @@ class Specification(models.Model):
     name = models.CharField(max_length=100, unique=True)
     slug = models.SlugField(max_length=120, unique=True, blank=True)
     is_active = models.BooleanField(default=True)
+
+    meta_title = models.CharField(max_length=255, blank=True, null=True)
+    meta_description = models.TextField(blank=True, null=True, verbose_name="Meta Description")
     
     def save(self, *args, **kwargs):
         if not self.slug:
@@ -77,6 +86,9 @@ class Viscosity(models.Model):
     name = models.CharField(max_length=255)
     slug = models.SlugField(max_length=275, unique=True, blank=True)
     is_active = models.BooleanField(default=True)
+
+    meta_title = models.CharField(max_length=255, blank=True, null=True)
+    meta_description = models.TextField(blank=True, null=True, verbose_name="Meta Description")
     
     def save(self, *args, **kwargs):
         if not self.slug:
@@ -95,6 +107,9 @@ class Composition(models.Model):
     slug = models.SlugField(max_length=275, unique=True, blank=True)
     is_active = models.BooleanField(default=True)
     order = models.PositiveIntegerField(default=0, verbose_name="Order")
+
+    meta_title = models.CharField(max_length=255, blank=True, null=True)
+    meta_description = models.TextField(blank=True, null=True, verbose_name="Meta Description")
     
     def save(self, *args, **kwargs):
         if not self.slug:
@@ -113,6 +128,9 @@ class PackSize(models.Model):
     slug = models.SlugField(max_length=50, unique=True, blank=True)
     is_active = models.BooleanField(default=True)
     order = models.PositiveIntegerField(default=0, verbose_name="Order")
+
+    meta_title = models.CharField(max_length=255, blank=True, null=True)
+    meta_description = models.TextField(blank=True, null=True, verbose_name="Meta Description")
     
     def save(self, *args, **kwargs):
         if not self.slug:
@@ -151,6 +169,10 @@ class Product(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
     is_active = models.BooleanField(default=True)
     is_home = models.BooleanField(default=False, verbose_name="Show on Home Page")
+
+    meta_title = models.CharField(max_length=255, blank=True, null=True)
+    meta_description = models.TextField(blank=True, null=True, verbose_name="Meta Description")
+    meta_keywords = models.CharField(max_length=500, blank=True, null=True, verbose_name="Meta Keywords")
     
     def save(self, *args, **kwargs):
         if not self.slug:

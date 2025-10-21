@@ -6,12 +6,24 @@
 {% block canonical %}
   <link rel="canonical" href="https://tomoil.de/products/" />
 {% endblock %}
-{% block title %}{{ _("meta_title_products")|truncatechars:60 }}{% endblock %}
-{% block description %}{{ _("meta_description_products")|truncatechars:160 }}{% endblock %}
+
+{% block title %}
+    {% if meta_title %}{{ meta_title }}{% else %}{{ _("meta_title_products")|truncatechars:60 }}{% endif %}
+{% endblock %}
+
+{% block description %}
+    {% if meta_description %}{{ meta_description }}{% else %}{{ _("meta_description_products")|truncatechars:160 }}{% endif %}
+{% endblock %}
+
+{% block content %}
+    {% endblock %}
+
 {% block keywords %}{% trans "product_keywords" %}{% endblock %}
+
 {% block page_css %}
 <link rel="stylesheet" href="{% static 'assets/css/product.min.css' %}" />
 {% endblock %}
+
 {% block extra_schema %}
 <script type="application/ld+json">
 {
