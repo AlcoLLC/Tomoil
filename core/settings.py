@@ -94,7 +94,6 @@ INSTALLED_APPS = [
 
     # apps
     'questions',
-    'caseStudies',
     'contact',
     'brands',
     'services',
