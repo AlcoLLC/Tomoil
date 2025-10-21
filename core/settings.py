@@ -93,11 +93,9 @@ INSTALLED_APPS = [
     'django.contrib.sitemaps',
 
     # apps
-    'products',
     'questions',
     'caseStudies',
     'contact',
-    'news',
     'brands',
     'services',
     'whoweare',
