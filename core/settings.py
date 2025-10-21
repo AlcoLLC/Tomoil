@@ -103,6 +103,9 @@ INSTALLED_APPS = [
     'whoweare',
     'pageheader',
     'search',
+    'news.apps.NewsConfig', 
+    'products.apps.ProductsConfig',
+    'caseStudies.apps.CasestudiesConfig',
 
 ]
 
@@ -295,3 +298,6 @@ SESSION_COOKIE_AGE = 1800
 SESSION_SAVE_EVERY_REQUEST = True
 SESSION_COOKIE_SECURE = False 
 SESSION_COOKIE_HTTPONLY = True
+
+GOOGLE_INDEXING_KEY_FILE = BASE_DIR / 'tomoil-a425551e65cb.json'
+SITE_DOMAIN = 'https://tomoil.de'
