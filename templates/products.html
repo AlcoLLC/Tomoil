@@ -15,9 +15,6 @@
     {% if meta_description %}{{ meta_description }}{% else %}{{ _("meta_description_products")|truncatechars:160 }}{% endif %}
 {% endblock %}
 
-{% block content %}
-    {% endblock %}
-
 {% block keywords %}{% trans "product_keywords" %}{% endblock %}
 
 {% block page_css %}
