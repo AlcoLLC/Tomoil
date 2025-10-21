@@ -1,6 +1,6 @@
 import requests
 from google.oauth2 import service_account
-from google.auth.transport.requests import Request
+from google.auth.transport.requests import Request, AuthorizedSession
 import time
 import os
 
@@ -10,24 +10,14 @@ JSON_KEY_FILE = os.path.join(os.path.dirname(BASE_DIR), 'tomoil-a425551e65cb.jso
 API_SCOPE = 'https://www.googleapis.com/auth/indexing'
 ENDPOINT = 'https://indexing.googleapis.com/v3/urlNotifications:publish'
 
-SITE_DOMAIN = "https://tomoil.de" 
+SITE_DOMAIN = "https://tomoil.de"
 LANGUAGE_PREFIX = "" 
 
 STATIC_PATHS = [
-    "/",        
-    "/brand/",      
-    "/case-studies/",  
-    "/contact/",   
-    "/news/",     
-    "/pds-sds/",    
-    "/all-data-sheets/", 
-    "/products/",
-    "/faq/",         
-    "/search/",     
-    "/services/",       
-    "/glance/",  
-    "/vision-mission/",   
-    "/our-commitment/", 
+    "/", "/brand/", "/case-studies/", "/contact/", "/news/",
+    "/pds-sds/", "/all-data-sheets/", "/products/", "/faq/",
+    "/search/", "/services/", "/glance/", "/vision-mission/",
+    "/our-commitment/",
 ]
 
 def get_credentials():
@@ -47,14 +37,7 @@ def get_credentials():
         return None
 
 def submit_url_to_google(url_to_submit, credentials, url_type="URL_UPDATED"):
-    session = requests.Session()
-    
-    if credentials.expired:
-        print(f"Token süresi dolmuş, {url_to_submit} için yenileniyor...")
-        credentials.refresh(Request())
-        
-    session.auth = credentials
-    # -------------------------------------
+    session = AuthorizedSession(credentials)
     
     payload = {
         "url": url_to_submit,

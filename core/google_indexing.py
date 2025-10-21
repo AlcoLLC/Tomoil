@@ -1,6 +1,6 @@
 import requests
 from google.oauth2 import service_account
-from google.auth.transport.requests import Request
+from google.auth.transport.requests import Request, AuthorizedSession
 from django.conf import settings
 import logging
 import os
@@ -33,14 +33,7 @@ def submit_url_to_google(url_to_submit, url_type="URL_UPDATED"):
         logger.warning(f"[Google Indexing] Kimlik bilgisi yok, {url_to_submit} gönderilemedi.")
         return
 
-    if credentials.expired:
-        credentials.refresh(Request())
-
-    session = requests.Session()
-    
-    session.auth = credentials
-    # -------------------------------------
-    
+    session = AuthorizedSession(credentials)
     payload = {
         "url": url_to_submit,
         "type": url_type
