@@ -291,7 +291,7 @@ else:
             'file': {
                 'level': 'ERROR',
                 'class': 'logging.FileHandler',
-                'filename': '/var/log/avtoil/django_error.log',
+                'filename': '/var/log/tomoil/django_error.log',
             },
         },
         'loggers': {
