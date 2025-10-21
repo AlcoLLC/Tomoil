@@ -37,7 +37,9 @@ def submit_url_to_google(url_to_submit, url_type="URL_UPDATED"):
         credentials.refresh(Request())
 
     session = requests.Session()
-    session.auth = (f"Bearer {credentials.token}")
+    
+    session.auth = credentials
+    # -------------------------------------
     
     payload = {
         "url": url_to_submit,

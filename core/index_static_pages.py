@@ -5,30 +5,31 @@ import time
 import os
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-JSON_KEY_FILE = os.path.join(BASE_DIR, 'tomoil-a425551e65cb.json')
+JSON_KEY_FILE = os.path.join(os.path.dirname(BASE_DIR), 'tomoil-a425551e65cb.json') 
 
 API_SCOPE = 'https://www.googleapis.com/auth/indexing'
 ENDPOINT = 'https://indexing.googleapis.com/v3/urlNotifications:publish'
 
-SITE_DOMAIN = "https://tomoil.de"
-LANGUAGE_PREFIX = ""
+SITE_DOMAIN = "https://tomoil.de" 
+LANGUAGE_PREFIX = "" 
 
 STATIC_PATHS = [
-    "/",  
-    "/brand/",   
-    "/case-studies/", 
-    "/contact/", 
-    "/news/", 
-    "/pds-sds/", 
-    "/all-data-sheets/",
-    "/products/",  
-    "/faq/", 
-    "/search/",   
-    "/services/",  
-    "/glance/",   
-    "/vision-mission/",
-    "/our-commitment/",  
+    "/",        
+    "/brand/",      
+    "/case-studies/",  
+    "/contact/",   
+    "/news/",     
+    "/pds-sds/",    
+    "/all-data-sheets/", 
+    "/products/",
+    "/faq/",         
+    "/search/",     
+    "/services/",       
+    "/glance/",  
+    "/vision-mission/",   
+    "/our-commitment/", 
 ]
+
 def get_credentials():
     try:
         creds = service_account.Credentials.from_service_account_file(
@@ -52,7 +53,8 @@ def submit_url_to_google(url_to_submit, credentials, url_type="URL_UPDATED"):
         print(f"Token süresi dolmuş, {url_to_submit} için yenileniyor...")
         credentials.refresh(Request())
         
-    session.auth = (f"Bearer {credentials.token}")
+    session.auth = credentials
+    # -------------------------------------
     
     payload = {
         "url": url_to_submit,
@@ -65,8 +67,11 @@ def submit_url_to_google(url_to_submit, credentials, url_type="URL_UPDATED"):
         print(f"  BAŞARILI ({url_type}): {url_to_submit}")
         return True
     except requests.exceptions.HTTPError as e:
-        error_json = e.response.json()
-        error_message = error_json.get("error", {}).get("message", e.response.text)
+        try:
+            error_json = e.response.json()
+            error_message = error_json.get("error", {}).get("message", e.response.text)
+        except requests.exceptions.JSONDecodeError:
+            error_message = e.response.text
         print(f"  HATA ({e.response.status_code}) {url_to_submit}: {error_message}")
         return False
     except Exception as e:
