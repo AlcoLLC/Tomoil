@@ -5,11 +5,6 @@
 <link rel="canonical" href="https://tomoil.de/products/{{ product.slug }}/">
 {% endblock %}
 
-
-{% extends 'base.html' %} 
-{% load static %}
-{% load i18n %}
-
 {% block title %}
     {% if product.meta_title %}
         {{ product.meta_title }}
