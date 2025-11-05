@@ -29,8 +29,7 @@ class StaticViewSitemap(Sitemap):
             'whoweare:vision_mission',
             'whoweare:our_commitment_list',
             'faq:faq',
-            'search:search',
-
+            'search:search'
         ]
 
     def location(self, item):
@@ -63,7 +62,7 @@ class NewsSitemap(Sitemap):
         return obj.created_at
 
     def location(self, obj):
-       return reverse('news:news_detail', kwargs={'pk': obj.pk})
+       return reverse('news:news_detail', kwargs={'slug': obj.slug})
 
 
 
